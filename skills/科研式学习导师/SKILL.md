@@ -149,8 +149,13 @@ description: 科研式学习导师。把一门学科拆成"课题—里程碑—
 
 ---
 
-## 8. 上游技能出处（诚实记账）
+## 8. 技能库与上游出处（诚实记账）
 
-drill-me（教学循环/FSRS账本）、memory-system（6引擎记忆架构）、growth-log（成长日志三原则）、
-rules-distill（跨技能铁律蒸馏）、nuwa-skill（人物思维蒸馏）。本 SKILL.md 已把所需部分
-内化并做了用户化改造（批量提问、打脸链路、大师团面试、判卷预案），无需再读上游原文件。
+- **本仓库精选技能库**：`skills/library/`（索引 `skills/library/SKILL_LIBRARY.md`），源自用户
+  `-SKILL-` 仓库 `arena/01a0095c-skill` 分支：DeepTutor（教学平台方法论+内置文档技能）、
+  nuwa-skill（人物蒸馏）、manim-video（数学动画）、pdf-handling、doc-to-markdown、
+  mermaid-diagrams、latex-posters。各学科开局指令 §0.5 有调用说明；调用方式=打开对应 SKILL.md 照做。
+- **已内化的上游**：drill-me（教学循环/FSRS账本）、memory-system（6引擎记忆架构）、
+  growth-log（成长日志三原则）、rules-distill（跨技能铁律蒸馏）、self-improving-agent——
+  本 SKILL.md 已把所需部分内化并用户化改造（批量提问、打脸链路、大师团面试、判卷预案），
+  无需再读上游原文件。

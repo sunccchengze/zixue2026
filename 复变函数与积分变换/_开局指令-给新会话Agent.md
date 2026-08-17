@@ -1,8 +1,7 @@
 # 复变函数与积分变换 · 开局指令（新会话 Agent 唯一入口）
 
 > 用户已开启本学科新会话。**按本文档顺序执行，勿跳步、勿自作主张。全程中文。**
-> ⚠️ 注意：仓库根目录另有 `复变函数/` 文件夹（仅含"三小时搞定.md"），与本学科同源，
-> 该文件**必须并入**本学科资料清单；两文件夹是否合并由用户决定，你只负责把内容用上。
+> 注：原 `复变函数/` 文件夹已由用户合并入本文件夹（"三小时搞定.md"已在此处）。
 
 ## 0. 必读（按顺序）
 
@@ -19,6 +18,16 @@
 - **语音输入容错**（同音错字先确认，如 φ→"斐"、Cauchy→"柯西"类识别问题）；**提速**；记忆锚三件套；
 - **发现式学习**：先问后讲、打脸链路；**低自信型答对**先肯定再拆解；超额输出表扬并命名；
 - 导师犯错当场认领记 ERRORS；会话过长主动提醒换新+备开场白+HANDOFF。
+
+## 0.5 技能库（可选但推荐）
+
+学科文件夹之外还有精选技能库 `/home/user/zixue2026/skills/library/`（索引：`skills/library/SKILL_LIBRARY.md`）。
+常用调用：
+- 资料预处理（PDF/docx/pptx 阅读与转 Markdown）：`skills/library/pdf-handling/`、`skills/library/doc-to-markdown/`、`skills/library/DeepTutor/builtin-*.md`；
+- 大师天团人物蒸馏：`skills/library/nuwa-skill/SKILL.md`（快速档流程照做+诚实声明）；
+- 动态可视化：`skills/library/manim-video/`（需要动画时）；流程图：`skills/library/mermaid-diagrams/`；
+- 报告公式排版：`skills/library/latex-posters/`。
+调用方式：打开对应 SKILL.md 照做；工具类（DeepTutor CLI）需先征得用户同意再安装。
 
 ## 2. 开局七步
 

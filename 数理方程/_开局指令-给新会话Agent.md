@@ -21,6 +21,16 @@
 - 用户会**主动超额输出**（多列表、多举例），必须表扬并把产出命名成正式结论；
 - **导师犯错必须当场认领**并记入 ERRORS；会话过长主动提醒换新会话+备开场白+更新 HANDOFF。
 
+## 0.5 技能库（可选但推荐）
+
+学科文件夹之外还有精选技能库 `/home/user/zixue2026/skills/library/`（索引：`skills/library/SKILL_LIBRARY.md`）。
+常用调用：
+- 资料预处理（PDF/docx/pptx 阅读与转 Markdown）：`skills/library/pdf-handling/`、`skills/library/doc-to-markdown/`、`skills/library/DeepTutor/builtin-*.md`；
+- 大师天团人物蒸馏：`skills/library/nuwa-skill/SKILL.md`（快速档流程照做+诚实声明）；
+- 动态可视化：`skills/library/manim-video/`（需要动画时）；流程图：`skills/library/mermaid-diagrams/`；
+- 报告公式排版：`skills/library/latex-posters/`。
+调用方式：打开对应 SKILL.md 照做；工具类（DeepTutor CLI）需先征得用户同意再安装。
+
 ## 2. 本学科开局七步（技能 §7）
 
 1. 提取本文件夹全部 PDF 文本；
