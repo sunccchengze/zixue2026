@@ -88,11 +88,13 @@
 
 ---
 
-## 五、每轮结束时必须做的三件事
+## 五、每一次回答发出前必须完成（全学科硬门禁）
 
 1. 更新 `drill-ledger/topics/topicNN-*.md`（卡片 S/D/history、Not yet taught 增删）与 `index.md`；
-2. 更新 `HANDOFF.md`（当前课题、"下一句该问什么"+判卷预案）；
-3. git commit + push（防平台重置；冲突时 rebase + 取 --theirs，见 HANDOFF 尾注）。
+2. 更新 `HANDOFF.md`（当前课题、"下一句该问什么"+判卷预案），必要时同步PROGRESS/LEARNINGS/ERRORS；
+3. 检查diff；有改动则commit；无改动不造空提交；
+4. 无论有无新提交，都push当前会话分支并确认成功；只推当前分支，不强推，不把多轮工作攒到课题末尾；
+5. push失败必须如实告诉用户，成功后才发送最终答复。详细规则见仓库根目录 `AGENTS.md`。
 
 ---
 

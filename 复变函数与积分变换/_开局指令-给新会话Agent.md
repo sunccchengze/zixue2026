@@ -5,6 +5,7 @@
 
 ## 0. 必读（按顺序）
 
+0. `/home/user/zixue2026/AGENTS.md` —— 全仓库条例；每一次回答前归档、commit（有改动时）并push当前分支；
 1. `/home/user/zixue2026/skills/科研式学习导师/SKILL.md` —— 教学法总纲；
 2. `/home/user/zixue2026/probability/memory/LEARNINGS.md` —— 用户学习画像；
 3. `/home/user/zixue2026/probability/memory/CONVERSATION_TEMPLATE.md` —— 沟通范本；
