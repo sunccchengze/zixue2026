@@ -127,6 +127,13 @@
 
 ## 会话记录（最近）
 
+- 2026-08-24（晚）：按用户指示从 `arena/01a032eb` 分支取 0824 新增资料（该分支与本分支
+  无共同祖先，外科手术式 checkout，仅取资料）：**《工程力学（第三版）》教材 3 册
+  （杨庆生主编·科学出版社·西安交大教材，与 2024 真题同源！）+ 复变函数（第二版）2 册 +
+  大学化学实验 + 数理方程**，共 7 文件约 225MB。教材目录已提取，资料映射完成
+  （18 章 ↔ 15 课题，路线图无需修订；第12/13章+第3篇动力学未考仅了解）。
+  本回合又遇沙箱 .git refs 重置（HEAD 回基点），按新标准套路（fetch→reset --soft→
+  add→查diff→commit→push）处理，套路已写入 git 注意节。
 - 2026-08-24（续）：课题02 开题批判毕（K1–K3✅ K4❌ 标"我猜"答错，用户自问"力偶是啥"）；
   力偶概念+力矩/力偶对比表+符号位置法已讲；开间隔卡 3 张（topic02）；新增判例
   "力偶≠力矩、d 不随矩心变"；验证批 3 题已发（K4 重做/方向盘 30 N·m/共线边界），待答。
@@ -184,5 +191,17 @@
 
 ## git 注意
 
-- 本会话分支：`arena/01a00ee1-zixue2026`。冲突恢复参考 probability HANDOFF 尾注手法，
-  勿 force push。
+- 本会话分支：`arena/01a02459-zixue2026`（旧注的 01a00ee1 是源分支，已存档；
+  2026-08-24 起本分支在 GitHub 上持续推送，用户可见）。
+- **沙箱环境怪癖（2026-08-24 实测）**：回合开始时本地 .git refs 可能被重置回基点
+  （分支 tip 回 c9d03a6、remote-tracking ref 清空、venv 等目录可能丢失），但工作区文件保留。
+  **标准 git 套路（每个归档节点执行）**：
+  1. `git fetch origin 'refs/heads/arena/01a02459-zixue2026:refs/remotes/origin/arena/01a02459-zixue2026'`
+  2. `git reset --soft origin/arena/01a02459-zixue2026`（接到远端 tip，不动工作区）
+  3. `git add -A`，**必查 `git diff --cached --stat origin/...` 增量只含本轮内容**再提交
+  4. `git commit` + `git push origin arena/01a02459-zixue2026` + `git ls-remote origin` 验 tip
+  - 绝不 force push；diff 出现意外内容先停下排查（2026-08-24 曾出现回合中途
+    工作区瞬态"丢文件"假象，重查后确认无损）。
+- **跨分支取资料**（01a032eb 与本分支无共同祖先，不能 merge）：
+  `git ls-tree -r --name-only <ref>` 找准确路径 → `git checkout <ref> -- <paths>`
+  只取资料文件，不带对方 session 的记忆文件（2026-08-24 已用此法取 7 册教材）。
