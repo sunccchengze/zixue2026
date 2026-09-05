@@ -12,6 +12,7 @@ probability/memory/
 ├── HANDOFF.md            交接总账本：现在进展到哪一步、下一步做什么（最重要，永远最新）
 ├── LEARNINGS.md          你的学习画像：偏好、卡点、已验证有效的讲法
 ├── ERRORS.md             判例库：你犯过的典型错误/误区，转成"红线"，之后审稿必查
+├── MEMORY.md             当前理解主账本：核心直觉 + 预测→打脸→修正日志（只增不改流水）
 ├── PROGRESS.md           18课题进度台账：每个课题的状态（未开始/攻关中/已验收）
 └── drill-ledger/         drill-me式间隔重复卡片账本（一个课题一个文件）
     ├── index.md
@@ -20,6 +21,7 @@ probability/memory/
 
 ## 新会话接入协议（下一个我必须做的事）
 
+0. 先读仓库根 `AGENTS.md`（回合级 commit+push 为全仓库最高优先级；输入双通道规则见该文件）——
 1. 先读 `HANDOFF.md`——了解上次卡在哪、下一步该问什么。
 2. 再扫一眼 `LEARNINGS.md` 和 `ERRORS.md`——避免用你已经验证"没用"的讲法，避免踩你踩过的坑。
 3. 查 `PROGRESS.md`——知道现在在18课题地图的第几站。

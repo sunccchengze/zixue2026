@@ -11,6 +11,7 @@
 │   ├── HANDOFF.md         交接总账本（永远最新：进展/下一句/判卷预案/会话记录）
 │   ├── LEARNINGS.md       学习画像：偏好|卡点|有效讲法|知识背景
 │   ├── ERRORS.md          判例库：通用红线+本学科判例
+│   ├── MEMORY.md          当前理解主账本：核心直觉+预测→打脸→修正日志
 │   ├── PROGRESS.md        课题台账（⬜/🟡/✅）
 │   └── drill-ledger/      间隔重复账本：index.md + topics/topicNN-*.md
 ├── 大师天团/              思维视角蒸馏（诚实声明）

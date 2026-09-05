@@ -11,6 +11,7 @@
 ├── HANDOFF.md            交接总账本：现在进展到哪一步、下一步做什么（最重要，永远最新）
 ├── LEARNINGS.md          本学科学到的：用户卡点、有效讲法（通用硬偏好在 probability/memory/LEARNINGS.md 单点维护）
 ├── ERRORS.md             判例库：通用红线（继承）+ 本学科用户判例
+├── MEMORY.md             当前理解主账本：核心直觉+预测→打脸→修正日志
 ├── PROGRESS.md           课题台账：每个课题的状态（⬜/🟡/✅）
 └── drill-ledger/         drill-me 间隔重复卡片账本
     ├── index.md

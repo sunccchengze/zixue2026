@@ -12,6 +12,7 @@
 ├── HANDOFF.md            交接总账本：现在进展到哪一步、下一步做什么（最重要，永远最新）
 ├── LEARNINGS.md          本学科学习画像（用户全科画像单点维护于 probability/memory/LEARNINGS.md）
 ├── ERRORS.md             判例库：通用红线 + 本学科用户判例（每条带红线）
+├── MEMORY.md             当前理解主账本：核心直觉+预测→打脸→修正日志
 ├── PROGRESS.md           14课题进度台账：每个课题的状态（未开始/攻关中/已验收）
 └── drill-ledger/         drill-me式间隔重复卡片账本（一个课题一个文件）
     ├── index.md

@@ -12,6 +12,7 @@
 │   ├── HANDOFF.md          交接总账本：进展/下一句该问什么/判卷预案（最重要，永远最新）
 │   ├── LEARNINGS.md        本学科学习画像（跨学科通用画像在 probability/memory/LEARNINGS.md 单点维护）
 │   ├── ERRORS.md           判例库：通用红线（导师纪律）+ 大物用户判例（逐条积累）
+│   ├── MEMORY.md           当前理解主账本：核心直觉+预测→打脸→修正日志
 │   ├── PROGRESS.md         19课题+选修模块进度台账
 │   └── drill-ledger/       间隔重复卡片账本（index.md + topics/topicNN-*.md）
 ├── _extracted/             全部 PDF/docx 提取文本（可 grep，公式有乱码，以原PDF为准）
