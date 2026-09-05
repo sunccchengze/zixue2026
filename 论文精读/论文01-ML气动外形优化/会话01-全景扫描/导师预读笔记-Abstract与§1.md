@@ -1,7 +1,7 @@
 # 导师预读笔记 · Abstract (p1) + §1 Introduction (p3) + Nomenclature (p2–3)
 
 > ⚠️ **这是导师的答案，不是用户的。** 打脸链路要求：用户的预测写完后才对照本文件。
-> 所有条目都带页码，可回查 `../materials/Machine learning in aerodynamic shape optimization.pdf`。
+> 所有条目都带页码，可回查 `../资料原件/Machine learning in aerodynamic shape optimization.pdf`。
 
 ---
 

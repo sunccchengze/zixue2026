@@ -31,14 +31,14 @@
 
 `/home/user/zixue2026/skills/library/`（索引：`skills/library/SKILL_LIBRARY.md`）。
 - 主题内容来源：`-SKILL-` 仓库 `arena/01a048e7-skill` 分支的
-  `skills/core/zixue2026-expanded/references/tracks/track-5/README.md`（20 主题清单已落到本文件夹的 `Track5-东方智慧-README.md`）；
+  `skills/core/zixue2026-expanded/references/tracks/track-5/README.md`（20 主题清单已落到本文件夹的 `README.md`，原 Track5-东方智慧-README.md 于 2026-09-05 大扫除改名）；
 - 本轨道是**主题蒸馏/读书系统**，主要用教学法总纲，鲜少用 PDF/公式类技能；如需视觉化可用
   `skills/library/mermaid-diagrams/`（画轨道地图），人物蒸馏可参考 `skills/library/nuwa-skill/`。
 - 调用方式：打开对应 SKILL.md 照做；工具类需先征得用户同意再安装。
 
 ## 2. 本轨道开局七步
 
-1. 读 `Track5-东方智慧-README.md`（20 主题清单 + 核心洞察 + 打脸练习 + 跨轨道联结）；
+1. 读 `README.md`（20 主题清单 + 核心洞察 + 打脸练习 + 跨轨道联结）；
 2. 读 `科研式学习路线图.md`（三段式课题地图：核心/设计应用/哲学深化）；
 3. 建 `memory/` 全套骨架（见 §3）+ `drill-ledger` 空账本；
 4. 确认开头主题：**技能01 传习录（知行合一）**；
@@ -51,7 +51,7 @@
 ```
 东方智慧/
 ├── _开局指令-给新会话Agent.md
-├── Track5-东方智慧-README.md        20 主题清单 + 核心洞察 + 打脸练习（来源 track-5 README）
+├── README.md                        20 主题清单 + 核心洞察 + 打脸练习（原 Track5-东方智慧-README.md）
 ├── 科研式学习路线图.md               三段式课题地图（核心→设计应用→哲学深化）
 ├── memory/
 │   ├── MEMORY.md                    当前理解库（随学习更新，模板见 track 记忆模板）

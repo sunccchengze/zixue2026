@@ -18,11 +18,11 @@
 |---|---|
 | 标题 | Machine Learning in Aerodynamic Shape Optimization |
 | 作者 | Jichao Li (NUS 机械系)、Xiaosong Du、Joaquim R. R. A. Martins (U Michigan 航空航天系) |
-| 文件 | `materials/Machine learning in aerodynamic shape optimization.pdf` |
+| 文件 | `资料原件/Machine learning in aerodynamic shape optimization.pdf` |
 | 页数 | **103 页**（正文 1–68，参考文献 69–103） |
-| 图数 | **47 幅**（索引见 `materials/图表索引.md`） |
+| 图数 | **47 幅**（索引见 `资料原件/图表索引.md`） |
 | 出处 | Progress in Aerospace Sciences **134** (2022) 100849 · DOI 10.1016/j.paerosci.2022.100849 · arXiv 2202.07141 |
-| 全文文本 | `materials/论文全文-提取文本.md`（PyMuPDF 提取，按页打标记，供检索） |
+| 全文文本 | `资料原件/论文全文-提取文本.md`（PyMuPDF 提取，按页打标记，供检索） |
 | 章节页码 | `资料映射.md`（由 PDF 书签直读，**与上游指南目录有 4 处出入，已纠正**） |
 
 ## 二、文件地图
@@ -34,7 +34,7 @@
 ├── _开局指令-给新会话Agent.md      新会话第一步读这个
 ├── 论文精读方法论.md               打脸链路五步 / 提问与解释策略 / 验收五项 / 一页报告
 ├── 资料映射.md                     章节 ↔ PDF页 ↔ 会话（含与上游指南的差异表）
-├── materials/
+├── 资料原件/
 │   ├── *.pdf                      唯一权威资料源
 │   ├── 论文全文-提取文本.md         检索用（34万字符）
 │   └── 图表索引.md                 47 幅图的图号↔页码↔图题↔所属会话
@@ -60,7 +60,7 @@
 
 - 最新提交 `4cbe659`「Rewrite paper study track based on actual PDF content」（2026-08-31 04:33 UTC）；
 - `README.md` 升到 **v2.0（基于 PDF 实际内容重写）**，并新增 `paper.pdf`；
-- 我核过：上游那份 `paper.pdf` 与本仓库 `materials/` 里的 PDF **sha256 完全一致**
+- 我核过：上游那份 `paper.pdf` 与本仓库 `资料原件/` 里的 PDF **sha256 完全一致**
   （`1a97b96b2b001928a5ac5a5878554ec70e74870660b195782d4ac3bb1e4d1052`，5,337,421 字节）；
 - v2.0 的章节页码与我从 PDF 书签读出的 45 条书签**逐条吻合**。
 

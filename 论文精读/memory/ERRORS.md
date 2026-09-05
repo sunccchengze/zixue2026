@@ -78,7 +78,7 @@
 `track-paper-aso/README.md` 升到 **v2.0（基于 PDF 实际内容重写）**，并新增 `paper.pdf`。
 
 **我核过的**：上游 v2.0 的 `paper.pdf` 与本仓库
-`论文精读/materials/Machine learning in aerodynamic shape optimization.pdf`
+`论文精读/资料原件/Machine learning in aerodynamic shape optimization.pdf`
 **sha256 完全一致**（1a97b96b2b001928a5ac5a5878554ec70e74870660b195782d4ac3bb1e4d1052，5,337,421 字节）。
 v2.0 的章节页码与我从 PDF 书签读出的 45 条书签逐条吻合（2.1 p4 / 2.2 p6 / 3.1 p8 / 3.5 p32 /
 4.1 p41 / 4.1.1 p43 / 4.1.2 p46 / 4.2 p47 / 4.2.1 p48 / 4.2.2 p52 / 4.2.3 p56 / 4.2.4 p57 /
