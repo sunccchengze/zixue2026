@@ -103,3 +103,6 @@ h2 .hint{font-size:13px;color:var(--muted);font-weight:400}
 .tile .go{color:var(--blue);font-weight:600;font-size:15px;margin-top:16px;display:block}
 .tile.dark{background:#000;color:#fff}.tile.dark .t2{color:#ccc}
 .foot{text-align:center;color:var(--muted);font-size:12px;margin-top:60px}
+table.tbl{border-collapse:collapse;width:100%;font-size:13.5px;margin:8px 0;display:block;overflow-x:auto}
+.tbl th,.tbl td{border:.5px solid var(--hairline);padding:6px 12px;text-align:left;white-space:nowrap}
+.tbl th{background:#fafafc;font-weight:600}

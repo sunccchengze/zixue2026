@@ -74,7 +74,23 @@
   const save = () => localStorage.setItem(LS, JSON.stringify(state));
   const $ = s => document.querySelector(s);
   const el = (t,c,h)=>{const e=document.createElement(t); if(c)e.className=c; if(h!=null)e.innerHTML=h; return e};
-  const cem = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\n/g,'<br>');
+  const cem = s => {
+    s = s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const lines = s.split('\n'); const out = []; let tbl = null;
+    const flush = () => { if (!tbl) return;
+      const row = (r,t)=>'<tr>'+r.map(c=>'<'+t+'>'+c.replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')+'</'+t+'>').join('')+'</tr>';
+      out.push('<table class="tbl">'+ row(tbl[0],'th') + tbl.slice(1).map(r=>row(r,'td')).join('') + '</table>'); tbl = null; };
+    for (const ln of lines) {
+      if (/^\|.*\|\s*$/.test(ln) && ln.includes('|',1)) {
+        const cells = ln.slice(1).split('|').map(c=>c.trim());
+        cells.pop();
+        if (cells.every(c=>/^:?-{2,}:?$/.test(c))) continue;   // |---| 分隔行
+        (tbl = tbl || []).push(cells); continue;
+      }
+      flush(); out.push(ln.replace(/\*\*(.+?)\*\*/g,'<b>$1</b>'));
+    }
+    flush(); return out.join('<br>');
+  };
 
   /* ---------- 计时 ---------- */
   let timer;

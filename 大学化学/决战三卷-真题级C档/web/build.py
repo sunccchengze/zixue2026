@@ -82,7 +82,7 @@ def parse_keys(ktxt):
     calc = {}
     csec = re.search(r'## 四、计算题标准解(.*?)(## 五|\Z)', ktxt, re.S)
     if csec:
-        for m in re.finditer(r'### 算(\d+)（\d+ 分[）)](.*?)(?=\n### 算|\n## |\Z)', csec.group(1), re.S):
+        for m in re.finditer(r'### 算(\d+)（\d+ 分[^）)]*[）)](.*?)(?=\n### 算|\n## |\Z)', csec.group(1), re.S):
             calc[int(m.group(1))] = m.group(2).strip()
     return mca, expl, fill, calc
 
@@ -106,6 +106,7 @@ for pid, slug, title, sub in PAPERS:
         q['rawans'] = fill_ans.get(q['num'], '')
     for q in ca:
         q['sol'] = calc_ans.get(q['num'], '')
+    assert all(c['sol'].strip() for c in ca), f'卷{pid} 计算解析有空洞'
     data['papers'].append(dict(id=pid, slug=slug, title=title, subtitle=sub,
                                mc=mc, fill=fl, calc=ca))
     print(f'卷{pid} 解析完成： MC20 Fill{[(f["num"],f["nblanks"]) for f in fl]} Calc5 答案分布OK')
