@@ -102,7 +102,7 @@
       card.append(el('div','qhead',`${q.num}. <span class="tag">${cem(q.tag)}</span>`));
       card.append(el('div','stem',cem(q.stem)));
       const kbd = el('div','opts');
-      'ABCD'.forEach((L,i) => {
+      [...'ABCD'].forEach((L,i) => {
         const o = el('button','opt'); o.dataset.k = L;
         o.innerHTML = `<span class="lt">${L}</span><span>${cem(q.options[i])}</span>`;
         if (state.mc[q.num] === L) o.classList.add('sel');
@@ -173,14 +173,13 @@
     app.append(actions);
     $('#practice').onchange = e => { state.practice = e.target.checked; save(); };
 
-    $('#count').textContent = '';
     renderReport();
     updateNav();
   }
 
   /* ---------- 判分 ---------- */
   function markMC(q, card) {
-    'ABCD'.forEach((L,i) => {
+    [...'ABCD'].forEach((L,i) => {
       const b = card.querySelectorAll('.opt')[i];
       b.classList.toggle('ok', L === q.ans);
       b.classList.toggle('bad', state.mc[q.num] === L && L !== q.ans);
@@ -227,7 +226,7 @@
     P.fill.forEach(q => markFill(q, $('#fl'+q.num)));
     document.querySelectorAll('.sol summary').forEach(x=>x.style.opacity=1);
     $('#submitBtn').textContent='已交卷 · 查看报告';
-    renderReport(); $('#report').scrollIntoView({behavior:'smooth'});
+    renderReport(); $('#report')?.scrollIntoView?.({behavior:'smooth'});
   }
 
   /* ---------- 报告 ---------- */
@@ -280,7 +279,7 @@
     P.mc.forEach(q=>dots.append(dot('mc'+q.num, q.num<21? tr(!!state.mc[q.num]) : '' )));
     // 简化：dots 只显示选择 20 个作答状态
   }
-  function dot(id, cls) { const d=el('span','dot '+(cls||'')); if(cls)d.classList.add('done'); d.onclick=()=>$('#'+id).scrollIntoView({behavior:'smooth',block:'center'}); return d; }
+  function dot(id, cls) { const d=el('span','dot '+(cls||'')); if(cls)d.classList.add('done'); d.onclick=()=>document.getElementById(id)?.scrollIntoView?.({behavior:'smooth',block:'center'}); return d; }
   function tr(x){return x}
 
   /* ---------- 化学小键盘 ---------- */
