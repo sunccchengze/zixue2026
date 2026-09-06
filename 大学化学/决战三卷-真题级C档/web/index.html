@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>决战三卷 · 互动答题</title><link rel="stylesheet" href="style.css">
+</head><body>
+<div class="hub">
+  <div class="hero" style="text-align:left">
+    <div class="kicker">大学化学 · 真题级 C 档</div>
+    <h1>决战三卷。<br>客观题即判，计算题自评待导师复核。</h1>
+    <p class="sub">每卷 100 分：选择 20×2 + 填空 10×2 + 计算 5×8。限时 120 分钟。<br>
+    判分口径 = 判例⑯：C 档水位题正确率 ≥70% 才算过。</p>
+  </div>
+  <div id="tiles" class="tiles"></div>
+  <p class="foot">作答自动存档在本机浏览器 · 断网可用 · 报告可一键复制/下载交给导师复核</p>
+</div>
+<script src="data.js"></script>
+<script>
+const T=document.getElementById('tiles');
+DATA.papers.forEach((p,i)=>{
+  const a=document.createElement('a'); a.href='paper.html?p='+p.id; a.className='tile'+(p.id==='3'?' dark':'');
+  const st=localStorage.getItem('chem-arena-'+p.id); let badge='未开始';
+  if(st){const s=JSON.parse(st); badge=s.submitted?'已交卷（可回看/自评）':'进行中（自动存档恢复）';}
+  a.innerHTML=`<div class="kicker">${p.id==='1'?'第一关':p.id==='2'?'第二关':'终关'}</div>
+    <div class="t1">${p.title}</div><div class="t2">${p.subtitle}</div>
+    <span class="go">${badge} →</span>`;
+  T.append(a);
+});
+</script>
+</body></html>
