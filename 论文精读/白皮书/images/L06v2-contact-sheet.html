@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>讲 06 v2 新图对照表（人工质检用）</title>
+<style>
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; margin: 24px; color: #222; }
+  h1 { font-size: 20px; }
+  p.note { color: #666; font-size: 13px; }
+  table { border-collapse: collapse; width: 100%; }
+  td { border: 1px solid #ddd; padding: 8px; vertical-align: top; width: 20%; }
+  img { width: 100%; display: block; }
+  .cap { font-size: 12px; color: #333; margin-top: 6px; }
+  .cap b { display: block; font-size: 12px; color: #0a5; }
+</style>
+</head>
+<body>
+<h1>讲 06 v2 · 本轮新增 10 张图（人工质检对照表）</h1>
+<p class="note">画风基准：第零章 <code>ch0v2_s3_two_routes_zh.png</code> 与 <code>ch0v2_s3_blind_search_timeline_zh.png</code>。
+判定：中文有没有糊、一图是否只讲一义、有没有混入装饰性 Emoji、和基准画风是否一致。</p>
+<table>
+<tr>
+<td><img src="./L06v2_s1_mixer_gate_zh.png" alt="s1"><div class="cap"><b>§3 引子 s1</b>左：调音台把上百个控制点收成八个推子；右：门禁不减变量，只拦人</div></td>
+<td><img src="./L06v2_s2_two_scissors_zh.png" alt="s2"><div class="cap"><b>§3 s2</b>两把剪刀：一把从里面剪掉维度，一把从外面剪掉坏点</div></td>
+<td><img src="./L06v2_s3_shrink_visual_zh.png" alt="s3a"><div class="cap"><b>§5(a) s3</b>二十维收成六维：每维点数从 1.41 涨到 3.16</div></td>
+<td><img src="./L06v2_s3_validity_score_zh.png" alt="s3b"><div class="cap"><b>§5(c) s3</b>合法性得分从真实到畸形单调平滑衰减（对照 Fig.44）</div></td>
+<td><img src="./L06v2_s3_energy_line_zh.png" alt="s3c"><div class="cap"><b>§5(d) 打脸 s3</b>能量线 99%→95%：模态 6→4、每维点数 3.16→7.95（须含“预期/实测”）</div></td>
+</tr>
+<tr>
+<td><img src="./L06v2_s3_subspace_zh.png" alt="s3d"><div class="cap"><b>§5(d) s3</b>取点幅度从 1.0σ 放大到 1.6σ，畸形开始漏进来</div></td>
+<td><img src="./L06v2_s4_three_routes_zh.png" alt="s4"><div class="cap"><b>§6 s4</b>三条抽模态路线：先攒好形状、用公开库、生成加过滤</div></td>
+<td><img src="./L06v2_s5_fig_reading_zh.png" alt="s5"><div class="cap"><b>§7 s5</b>三张图读法：翻倍看形变、少了方差曲线、平滑才能进梯度</div></td>
+<td><img src="./L06v2_s8_channel_split_zh.png" alt="s8a"><div class="cap"><b>§10 s8</b>七十四维拆三层：设计通道、工况通道、中间表征</div></td>
+<td><img src="./L06v2_s8_gate_pipeline_zh.png" alt="s8b"><div class="cap"><b>§10 s8</b>门禁前后：一次 CFD 白烧概率从 93.5% 压到 2.8%</div></td>
+</tr>
+</table>
+</body>
+</html>
