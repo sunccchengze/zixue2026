@@ -165,10 +165,11 @@ def build() -> str:
     # ---------------- 目录（渲染器无关的稳定锚点） ----------------
     toc = ['## 目录', '']
     toc.append('- [第零章 从零地基：一个黑箱、一千次预算与维度灾难](#ch0)')
-    toc.append("  - [0.1 这本书的研究对象：一根会喘气的管子](#ch0-1)")
-    toc.append("  - [0.2 什么是 CFD：把牛顿定律扔给超算去解](#ch0-2)")
-    toc.append("  - [0.3 什么是「优化」：为什么不能全枚举](#ch0-3)")
-    toc.append("  - [0.4 维度灾难：一个 74 维的算术题](#ch0-4)")
+    toc.append("  - [0.1 研究对象：一根会喘气的管子](#ch0-1)")
+    toc.append("  - [0.2 什么是 CFD：把牛顿定律扔给超算](#ch0-2)")
+    toc.append('  - [0.3 什么是"优化"，以及为什么不能暴力枚举](#ch0-3)')
+    toc.append("  - [0.4 维度灾难：一道 74 个变量的算术题](#ch0-4)")
+    toc.append("  - [0.5 证据档位 E0–E4](#ch0-5)")
     for num, pp, title, scope, pages, figs in LECTURES:
         if pp not in ("0", "1", "2", "3") or num == "12":
             continue
