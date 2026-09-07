@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>讲 04 v2 新图对照表（人工质检用）</title>
+<style>
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; margin: 24px; color: #222; }
+  h1 { font-size: 20px; }
+  p.note { color: #666; font-size: 13px; }
+  table { border-collapse: collapse; width: 100%; }
+  td { border: 1px solid #ddd; padding: 8px; vertical-align: top; width: 20%; }
+  img { width: 100%; display: block; }
+  .cap { font-size: 12px; color: #333; margin-top: 6px; }
+  .cap b { display: block; font-size: 12px; color: #0a5; }
+</style>
+</head>
+<body>
+<h1>讲 04 v2 · 本轮新增 10 张图（人工质检对照表）</h1>
+<p class="note">画风基准：第零章 <code>ch0v2_s3_two_routes_zh.png</code> 与 <code>ch0v2_s3_blind_search_timeline_zh.png</code>。
+判定：中文有没有糊、一图是否只讲一义、有没有混入装饰性 Emoji、和基准画风是否一致。</p>
+<table>
+<tr>
+<td><img src="./L04v2_s1_exam_scene_zh.png" alt="s1"><div class="cap"><b>§3 引子 s1</b>一摞作业的四种批法：全批、不批、批一半、只有期末分</div></td>
+<td><img src="./L04v2_s3_pseudo_three_steps_zh.png" alt="s3a"><div class="cap"><b>§5(a) s3</b>伪标签三步：训 M0、贴伪标签、合并再训，中间挂着 λ 与置信闸门</div></td>
+<td><img src="./L04v2_s3_self_reinforce_zh.png" alt="s3b"><div class="cap"><b>§5(a) 打脸 s3</b>预期误差被稀释，实测误差被固化并逐轮放大（须含“预期/实测”字样）</div></td>
+<td><img src="./L04v2_s3_rbm_energy_zh.png" alt="s3c"><div class="cap"><b>§5(b) s3</b>数据配置落在能量谷底，模型自造的配置被压向高处</div></td>
+<td><img src="./L04v2_s3_rbm_bipartite_zh.png" alt="s3d"><div class="cap"><b>§5(b) s3</b>两层全连、层内不连：给定一层，另一层各神经元条件独立</div></td>
+</tr>
+<tr>
+<td><img src="./L04v2_s3_cd_k_steps_zh.png" alt="s3e"><div class="cap"><b>§5(b) s3</b>对比散度：长链采到平衡太慢，走 k 步就够用</div></td>
+<td><img src="./L04v2_s3_rl_loop_zh.png" alt="s3f"><div class="cap"><b>§5(c) s3</b>智能体与环境的一圈：动作出去，状态与奖励回来，一格就是几小时</div></td>
+<td><img src="./L04v2_s6_when_to_use_zh.png" alt="s6"><div class="cap"><b>§6 s6</b>四行决策卡：该用、谨慎、了解即可、与本讲无关</div></td>
+<td><img src="./L04v2_s7_fig_reading_zh.png" alt="s7"><div class="cap"><b>§7 s7</b>三张图的读法提示：回流线、正负相位、缺成本标注</div></td>
+<td><img src="./L04v2_s10_platform_zh.png" alt="s10"><div class="cap"><b>§10 s10</b>左：未收敛数据别丢，过闸门再做伪标签；右：先走一维 bandit</div></td>
+</tr>
+</table>
+</body>
+</html>
