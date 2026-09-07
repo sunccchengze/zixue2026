@@ -9,6 +9,8 @@
 | `kriging.py` | 最小可用 Kriging：高斯相关 + 常数趋势 + θ 的极大似然网格搜索，输出 μ、σ | 讲 02 | `python3 code/kriging.py` |
 | `ego.py` | EI 加点准则 + 20 步序贯优化，在 y = x·sin(x) 上找最小值，打印每步 z 与 EI | 讲 02 / 讲 09 | `python3 code/ego.py` |
 | `pca.py` | PCA 三步（中心化 → 协方差 → 特征分解），打印特征值与累计方差保留曲线 | 讲 03 | `python3 code/pca.py` |
+| `modal.py` | 20 维玩具翼型：PCA 模态收缩（含标准库 Jacobi 特征分解）+ 几何有效性门，实测"每维点数"与"白烧 CFD 概率" | 讲 06 | `python3 code/modal.py` |
+| `gek.py` | 间接梯度增强 Kriging（式 19 虚拟点），θ 用**留一交叉验证**选，多随机设计取平均报 RMSE 与比值 | 讲 02 | `python3 code/gek.py` |
 
 ## 与白皮书的关系
 
@@ -20,7 +22,6 @@
 
 | 文件 | 计划内容 | 依赖 |
 | :--- | :--- | :--- |
-| `modal.py` | 预优化采样 → PCA 模态 → 8 维子空间里再优化（复现讲 06 §3 的"100 → 15"精神） | 本目录 `pca.py` |
-| `validity.py` | 玩具版几何合法性判别器（2 层 MLP，正样本=正弦扰动翼型，负样本=随机多边形） | `numpy` |
-| `gek.py` | 间接 GEK：用一阶泰勒造虚拟点，对比纯 Kriging 的 RMSE | 本目录 `kriging.py` |
+| `validity.py` | 玩具版几何合法性判别器（2 层 MLP，正样本=正弦扰动翼型，负样本=随机多边形）；目前 `modal.py` 里是**规则版**门（3 条可手算判据），要上学习版就得引入 numpy/torch | `numpy` |
+| ~~`gek.py`~~ ✅ 已交付 | 间接 GEK 已写成 `gek.py`（含 LOOCV 选 θ、多 seed 取平均），并暴露了两个真实短板：**样本点上不插值**、**n=10 时反而更差** | — |
 | `moo.py` | 加权法 vs NSGA-II 在同一双目标上的 Pareto 采样密度对比（讲 01 挑战②） | `numpy` |

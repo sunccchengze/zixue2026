@@ -138,7 +138,8 @@ track based on actual PDF content」，README 升 v2.0，新增 `paper.pdf`（�
 | `tools/verify_all.py` | 六项验收：A 引用可回溯（**133 条全过**）/ B 图表号（94）/ C 图片（10，无悬空无孤儿）/ D 讲次结构（12 讲）/ E 零 Emoji 图注 / F 装配自足性 | ✅ 全绿 |
 | `tools/scan_corpus.py` | 实测：**正文引用标记 826 处、不同编号 513、书目最大 528 条**；承重榜 [312]×18 第一；盲区 five-key 全 0 命中 | ✅ |
 | `code/{curse,kriging,ego,pca}.py` | 可运行原型（纯标准库），`make checks` 全 PASS；二次函数上 EGO 12 步 |x̂−x*|=0.005 | ✅ |
-| `images/*.png` | **20 张** AI 示意图（中文标注、零装饰 Emoji；正文 26 处引用，C 项无悬空无孤儿）；生成额度 10 张/轮，第 3 轮已用尽 9 张 + 触顶 1 张 | ✅ |
+| `images/*.png` | **24 张** AI 示意图（中文标注、零装饰 Emoji；正文 30 处引用，无悬空无孤儿；每张经拼表人工质检） | ✅ |
+| `code/modal.py`、`code/gek.py` | 2026-09-07 第 4 轮新增：模态收缩 + 有效性门 / 间接 GEK（LOOCV 选 θ）；**两者都给了不利于漂亮说法的实测结论**，讲 02 §4 与 part6 §6.4 已照实写 | ✅ |
 | `corpus/facts/P01-local.md` | 项目侧 14 条数字账本 + E0–E4 红线 | ✅ |
 
 **对教学的直接影响（下一任必读）**：
@@ -158,7 +159,7 @@ track based on actual PDF content」，README 升 v2.0，新增 `paper.pdf`（�
 | 4 | 蒸馏 Box（S3 前）、Karniadakis（S6 前），诚实声明照写 | 🟡 |
 | 5 | 会话01 结束建第一批术语卡（adjoint / design variable / surrogate / XDSM / two compounding challenges / PINN） | 🟡 |
 | 6 | 47 幅图是否提取成 PNG 便于手写对照（当前白皮书用 AI 示意图，未裁原图） | 🟢 |
-| 8 | ~~写讲 08~~ ✅、~~第零章借图~~ ✅。剩余：`code/modal.py`、`code/gek.py`；**4 张待生成图**（讲 11 盲区、讲 10 结论与展望、讲 06 第二张、讲 12 报告版式；**每轮上限 10 张，需下轮续**）；**讲 12 第四段"我还存疑的地方"必须由用户手写** | 🟡 |
+| 8 | 白皮书线欠账已清（讲 12 全齐、24 张图、6 个代码模块）。**唯一仍挂着的人类任务：讲 12 第四段"我还存疑的地方"必须由用户手写**，导师不代写；可选升级项 `code/validity.py`、`code/moo.py`（需 numpy） | 🟡 |
 | 9 | 配图规矩已写进 `白皮书/docs/README.md`（一图一义 / 示意数字必须在图注下挂牌 / 不许长期借图 / 生成后必须拼图亲检）——**下一任生成图前照做** | 🔴 |
 | 7 | FNO / DeepONet 两篇补编的题录核实（不在本综述参考文献内） | 🟢 |
 

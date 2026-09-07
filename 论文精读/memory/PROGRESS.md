@@ -73,8 +73,15 @@
 `L04_s2_label_budget_zh`（半监督标签预算）、`L05_s4_ae_and_pinn_loss_zh`（AE 瓶颈 + PINN 三项损失）、
 `L08_s3_three_acceleration_routes_zh` + `L08_s5_separation_sensor_zh`（讲 08 三招与替代约束）、
 `L09_s2_four_architectures_zh`（讲 09 四架构）。**配额限制：每轮最多 10 张，本轮第 10 张触顶未生成。**
-**仍欠**：`code/modal.py`、`code/gek.py`；4 张图（`L11_s2_blindspots_zh`、`L10_s4_three_claims_zh`、讲 06 第二张、`L12_s3_report_layout_zh`）；
-讲 12 第四段"我还存疑的地方"**必须他本人手写**。
+**第 4 轮（同日）：欠账清空**——再补 4 张图（`L11_s2_blindspots_zh`、`L10_s4_three_claims_five_outlooks_zh`、
+`L12_s3_one_page_report_zh`、`L06_s4_shrink_and_gate_zh`〔第一版把"每维 1.41"错写成 1.03，已重画并公示于 §6.4〕），
+images/ 达 **24 张 / 正文 30 处引用**，每讲 ≥2、无悬空无孤儿。
+代码新增 2 个：**`code/modal.py`**（20 维玩具翼型：PCA 模态 + 3 条可手算有效性门；实测每维点数 1.41→3.16、
+白烧 CFD 概率 93.5%→2.8%、能量线 99%→95% 时 r 由 6 掉到 4）；
+**`code/gek.py`**（间接 GEK 虚拟点 + **LOOCV 选 θ**；网格 MLE 会退化到 σ²→0，这是实装坑，已写进讲稿）。
+两者结论都**不利于**漂亮的说法：GEK 平均只有 1.13×，n=10 反而更差（0.93×）——已如实写进讲 02 §4 并在 part6 §6.4 公示。
+**代码模块 6 个自检全 PASS。仍欠**：`code/validity.py`、`code/moo.py`（升级项，需 numpy）；
+**讲 12 第四段"我还存疑的地方"必须他本人手写**。
 
 ## 统计
 
