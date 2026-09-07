@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>讲 05 v2 新图对照表（人工质检用）</title>
+<style>
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; margin: 24px; color: #222; }
+  h1 { font-size: 20px; }
+  p.note { color: #666; font-size: 13px; }
+  table { border-collapse: collapse; width: 100%; }
+  td { border: 1px solid #ddd; padding: 8px; vertical-align: top; width: 20%; }
+  img { width: 100%; display: block; }
+  .cap { font-size: 12px; color: #333; margin-top: 6px; }
+  .cap b { display: block; font-size: 12px; color: #0a5; }
+</style>
+</head>
+<body>
+<h1>讲 05 v2 · 本轮新增 10 张图（人工质检对照表）</h1>
+<p class="note">画风基准：第零章 <code>ch0v2_s3_two_routes_zh.png</code> 与 <code>ch0v2_s3_blind_search_timeline_zh.png</code>。
+判定：中文有没有糊、一图是否只讲一义、有没有混入装饰性 Emoji、和基准画风是否一致。</p>
+<table>
+<tr>
+<td><img src="./L05v2_s1_factory_line_zh.png" alt="s1"><div class="cap"><b>§3 引子 s1</b>一件外形数据走过八个工位，最后吐出气动系数</div></td>
+<td><img src="./L05v2_s2_family_tree_zh.png" alt="s2"><div class="cap"><b>§3 家族树 s2</b>一根主干分出“看结构”与“压缩生成”两支，另有“加物理”侧枝</div></td>
+<td><img src="./L05v2_s3_param_count_zh.png" alt="s3a"><div class="cap"><b>§5(a) s3</b>参数量算账：74×256+256 与 256²+256</div></td>
+<td><img src="./L05v2_s3_activation_zh.png" alt="s3b"><div class="cap"><b>§5(c) s3</b>三种激活：直线、S 形、取正值</div></td>
+<td><img src="./L05v2_s3_backprop_chain_zh.png" alt="s3c"><div class="cap"><b>§5(c) 打脸 s3</b>梯度消失链：每回传一层乘 0.25（须含“预期/实测”字样）</div></td>
+</tr>
+<tr>
+<td><img src="./L05v2_s3_ae_bottleneck_zh.png" alt="s3d"><div class="cap"><b>§5(d) s3</b>沙漏形结构：编码压到瓶颈层，解码再还原（对照 Fig.36）</div></td>
+<td><img src="./L05v2_s3_vae_mu_sigma_zh.png" alt="s3e"><div class="cap"><b>§5(d) s3</b>自编码瓶颈是一个点，变分自编码的瓶颈是均值与标准差（对照 Fig.37）</div></td>
+<td><img src="./L05v2_s3_pinn_two_terms_zh.png" alt="s3f"><div class="cap"><b>§5(e) s3</b>损失两项：有答案的数据项 + 没有答案的配点残差项</div></td>
+<td><img src="./L05v2_s7_fig_reading_zh.png" alt="s7"><div class="cap"><b>§7 s7</b>三张图读法：回传只是求梯度、瓶颈层、一个点变一坨概率</div></td>
+<td><img src="./L05v2_s10_platform_zh.png" alt="s10"><div class="cap"><b>§10 s10</b>三行诊断：缺物理项、不确定度互污、只看拟合优度</div></td>
+</tr>
+</table>
+</body>
+</html>
