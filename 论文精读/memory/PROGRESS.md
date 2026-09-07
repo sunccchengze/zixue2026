@@ -66,7 +66,15 @@
 **状态更新（同日第 2 轮）**：讲 08 补完 → **12 / 12 讲全部有正文**；十二讲对照表改由装配脚本现算（查文件在不在 + 有无 `<!-- TBD -->`），"手抄状态"漂移的病根已除。
 **验收**：`python3 tools/verify_all.py` → A **133** 条引用可回溯 / B 图表号 94 / C 图片 10（无悬空无孤儿）/ D 结构 12 讲 / E 图注零 Emoji / F 装配自足，**六项全绿**；
 **代码**：`code/{curse,kriging,ego,pca}.py` 自检全 PASS（`make checks`，输出在 `白皮书/images/selftest-report.txt`）。
-**仍欠**：`code/modal.py`、`code/gek.py`；2 张借用的示意图（`wp00_cfd_blackbox_zh`、`L11_s2_blindspots_zh`）；讲 12 第四段"我还存疑的地方"**必须他本人手写**。
+**配图（用户指"图太少"后追加，同日第 3 轮）**：images/ 10 → **20 张**（正文 26 处引用，C 项无悬空无孤儿）。
+本轮新增 9 张并逐张拼图质检过：`wp00_cfd_blackbox_zh`（第零章 0.2，还掉借图）、
+`L01_s3_volume_shell_zh`（0.4 单位球体积坍向壳层）、`L02_s3_ei_acquisition_zh`（EI 峰在"没人测过"处）、
+`L06_s3_gek_and_exploration_zh`（GEK 置信带收窄 + 探索旋钮，讲 02 §4）、`L03_s4_moe_routing_zh`（混合专家路由）、
+`L04_s2_label_budget_zh`（半监督标签预算）、`L05_s4_ae_and_pinn_loss_zh`（AE 瓶颈 + PINN 三项损失）、
+`L08_s3_three_acceleration_routes_zh` + `L08_s5_separation_sensor_zh`（讲 08 三招与替代约束）、
+`L09_s2_four_architectures_zh`（讲 09 四架构）。**配额限制：每轮最多 10 张，本轮第 10 张触顶未生成。**
+**仍欠**：`code/modal.py`、`code/gek.py`；4 张图（`L11_s2_blindspots_zh`、`L10_s4_three_claims_zh`、讲 06 第二张、`L12_s3_report_layout_zh`）；
+讲 12 第四段"我还存疑的地方"**必须他本人手写**。
 
 ## 统计
 
