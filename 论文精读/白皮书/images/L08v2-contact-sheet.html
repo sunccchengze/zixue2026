@@ -1,0 +1,25 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
+<title>讲08 v2 新图 · 人工质检拼表</title>
+<style>
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f7f8;color:#1b1b1f;margin:0;padding:24px}
+h1{font-size:20px} p.lead{color:#555;max-width:900px;line-height:1.7}
+table{border-collapse:collapse;background:#fff;width:100%} td,th{border:1px solid #ddd;padding:10px;vertical-align:middle}
+td:nth-child(1){width:36px;text-align:center;color:#888}
+td:nth-child(2){width:520px} img{width:500px;display:block;background:#fff}
+code{font-size:12px;color:#666} span{color:#333}
+</style></head><body>
+<h1>讲 08 v2 新图 · 人工质检拼表（10 张）</h1>
+<p class="lead">逐张看文字是否清晰不糊、中文是否有错字、结构是否与正文一致。发现问题的图，把 <code>文件名</code> 报给我，我单独重画。
+（自检脚本无视觉能力，本页只能由人眼完成。）</p>
+<table><tr><th>#</th><th>图</th><th>位置 / 应表达的意思</th></tr>
+  <tr><td>1</td><td><img src="L08v2_s1_two_shortcuts_zh.png" loading="lazy"></td><td><b>§3 场景引子</b><br><span>两种抄近路：别从门口起步（少走几步）vs 每一步迈得更聪明（改走路的方法）</span><br><code>L08v2_s1_two_shortcuts_zh.png</code></td></tr>
+  <tr><td>2</td><td><img src="L08v2_s2_three_factors_zh.png" loading="lazy"></td><td><b>§5(a)</b><br><span>成本式三因子：迭代次数 / 单步时间 / 网格点数，看谁被砍掉</span><br><code>L08v2_s2_three_factors_zh.png</code></td></tr>
+  <tr><td>3</td><td><img src="L08v2_s3_speedup_range_zh.png" loading="lazy"></td><td><b>§5(c) 👊</b><br><span>预期：两个倍数可直接比；实测：分母不同（含收尾 vs 只算求解器内部）</span><br><code>L08v2_s3_speedup_range_zh.png</code></td></tr>
+  <tr><td>4</td><td><img src="L08v2_s3_grid_coarse_zh.png" loading="lazy"></td><td><b>§5(c)</b><br><span>细网格基准 vs 粗 4–8× 网格仍保持精度</span><br><code>L08v2_s3_grid_coarse_zh.png</code></td></tr>
+  <tr><td>5</td><td><img src="L08v2_s3_closure_trade_zh.png" loading="lazy"></td><td><b>§5(b)</b><br><span>换闭合：同样算力换更高保真，不是算得更快</span><br><code>L08v2_s3_closure_trade_zh.png</code></td></tr>
+  <tr><td>6</td><td><img src="L08v2_s4_su2_restart_zh.png" loading="lazy"></td><td><b>§6 操作流</b><br><span>SU2 通路：几何参数 → 代理预测场量 → 写重启文件 → 求解器接着算</span><br><code>L08v2_s4_su2_restart_zh.png</code></td></tr>
+  <tr><td>7</td><td><img src="L08v2_s5_fig45_reading_zh.png" loading="lazy"></td><td><b>§7 数据与图表</b><br><span>读图四步：看横轴 / 比对峰值 / 找阈值线（图里没有）/ 问样本量</span><br><code>L08v2_s5_fig45_reading_zh.png</code></td></tr>
+  <tr><td>8</td><td><img src="L08v2_s5_constraint_swap_zh.png" loading="lazy"></td><td><b>§7</b><br><span>换约束：非定常很贵 → 机理量 + 标定阈值 4%（阈值来源薄）</span><br><code>L08v2_s5_constraint_swap_zh.png</code></td></tr>
+  <tr><td>9</td><td><img src="L08v2_s6_can_stack_zh.png" loading="lazy"></td><td><b>§8 批判</b><br><span>三招能不能叠？论文没给叠加后的实测数字</span><br><code>L08v2_s6_can_stack_zh.png</code></td></tr>
+  <tr><td>10</td><td><img src="L08v2_s8_platform_hookup_zh.png" loading="lazy"></td><td><b>§10 你的项目</b><br><span>先补分布输出，才有初场可喂，再测加速</span><br><code>L08v2_s8_platform_hookup_zh.png</code></td></tr>
+</table></body></html>
