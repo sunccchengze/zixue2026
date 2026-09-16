@@ -146,10 +146,11 @@ vite.config.ts.timestamp-*
 .arena-tools/
 .venv/
 /大学化学/课件2016/
-<<<<<<< HEAD
 
 # 白皮书代码自检产生的缓存
 __pycache__/
 *.pyc
-=======
->>>>>>> origin/main
+
+# generated figs for docus
+tmp_generated_figs/
+tmp_homework_images/
