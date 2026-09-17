@@ -127,14 +127,14 @@
     align: left + top,
     stroke: (x, y) => (bottom: if y == 0 { 0.9pt + luma(105) } else { 0.25pt + luma(220) }),
     table.header([下载这个], [页数], [说明]),
-    [#strong[#raw("讲义/pdf/大模型实训讲义-全书.pdf")]], [23], [★ #strong[首选]：封面 + 版权说明 + 目录 + M0–M3 + 大纲],
+    [#strong[#raw("讲义/pdf/大模型实训讲义-全书.pdf")]], [24], [★ #strong[首选]：封面 + 版权说明 + 目录 + M0–M3 + 大纲],
     [#raw("讲义/pdf/M0…M3.pdf") 等单讲分册], [2–5], [手机上读、单讲打印、发给同学],
     [#raw("章程与地图/pdf/章程与地图-全书.pdf")], [28], [九份章程合订（学什么/跟谁学/什么叫学过/何时学/谁写代码）],
   )
 ]
 ]
 
-#strong[排版与验收]：正文思源宋体、标题黑体、代码等宽；全书 23 页里 99 条去重公式已#strong[逐条单独编译验证]过， 每讲章节也做了齐备性自检（防排版吞内容）。重生成与维护见 #raw("环境/pdf/README.md")。
+#strong[排版与验收]：正文思源宋体、标题黑体、代码等宽；全书 24 页里 99 条去重公式已#strong[逐条单独编译验证]过， 每讲章节也做了齐备性自检（防排版吞内容）。重生成与维护见 #raw("环境/pdf/README.md")。
 
 #block(width: 100%, above: 9pt, below: 9pt, inset: (x: 10pt, y: 8pt), radius: (right: 4pt), fill: luma(248), stroke: (left: 2.5pt + luma(165)))[
   #raw("cd 人工智能基础与应用 && 环境/pdf/生成讲义PDF.sh        # 每讲 + 全书

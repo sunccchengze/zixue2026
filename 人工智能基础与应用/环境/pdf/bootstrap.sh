@@ -17,9 +17,9 @@
 # 注：/home/user/opt 不在 git 仓库内；若沙箱重建，重跑本脚本即可复原。
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"   # 必须在任何 cd 之前取绝对路径
 PYENV=/home/user/opt/.venv
 FONTS=/home/user/opt/fonts
-DL=/home/user/opt/dl
 NPM_TMP=/tmp/pdf-fonts
 
 echo "=== ① Python 排版工具链 ==="
@@ -61,12 +61,14 @@ ls -1 "$FONTS" | sed 's/^/  ✔ /'
 echo "=== ②b 字体子集化（48 MB → 约 12 MB）==="
 # 中文字体 15 MB/字重，四个字重 48 MB；只保留讲义实际会用到的字符集后体积降 75%，
 # 渲染结果完全不变。需要完整字体时：删掉字体文件重跑本脚本即可。
-"$PYENV/bin/python" "$(dirname "$0")/subset_fonts.py"
+"$PYENV/bin/python" "$SCRIPT_DIR/subset_fonts.py"
 
 echo "=== ③ 自检（渲染一页中文 + 一条公式 + 一个 emoji）==="
+# 注意：typst 的数学**不用反斜杠命令**（没有 \frac；\f 会被当成转义 → unknown variable: rac）。
+# 这里写的是 typst 原生数学语法，等价于 md2typst.py 翻译 LaTeX 之后的形态。
 cat > /tmp/font_selftest.typ <<'TYPST'
 #set text(font: ("Noto Serif SC", "DejaVu Sans", "Noto Emoji"), size: 12pt)
-自检：中文（思源宋体）＋ 数学 $\frac{QK^\top}{\sqrt{d_k}}$ ＋ 符号 →↦∝∈ ＋ emoji 🦙
+自检：中文（思源宋体）＋ 数学 $ frac(Q K^top, sqrt(d_k)) $ ＋ 符号 →↦∝∈ ＋ emoji 🦙
 TYPST
 "$PYENV/bin/python" - <<'PY'
 import typst

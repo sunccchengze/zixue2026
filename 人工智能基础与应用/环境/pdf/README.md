@@ -70,6 +70,7 @@ cd 人工智能基础与应用
 | 符号名随版本变动 | `angle.l`、`dot.circle`、`diff`、`prod` 在 0.15 里**不存在** | 一律改用**字面 Unicode 字符**（`⟨ ⟩ ⊙ × √ ∂ ∏`），实测在数学模式下渲染正确且稳定 |
 | `*…*` 强调有边界歧义 | `③*bpb 会变吗？*` 这种「数字字符 + 星号 + 拉丁」组合会报 `unclosed delimiter`（中文文本里极易踩） | 粗体/斜体改写成函数式 `#strong[..]` / `#emph[..]`，无歧义 |
 | 封面里 `1fr` 无效 | `#v(1fr)` 在 block 里不撑开高度 | 用固定间距；并把 `#align(center)[` 的开括号补回（一次手改曾误删，导致 `unclosed delimiter` 追查很久） |
+| typst 数学**没有反斜杠命令** | 手写 `$\frac{..}{..}$` → `unknown variable: rac`（`\f` 被当成转义） | 数学一律写 typst 原生语法 `frac(a,b)`；LaTeX 的 `\frac` 由转换器负责翻译，**不要手写 LaTeX 进 .typ** |
 | 标题里有引号 | `#set document(title: "…"我"…")` 字符串被截断 | `typst_str()` 统一转义 |
 
 ## 五、自动验收（不是"能编译就算过"）
