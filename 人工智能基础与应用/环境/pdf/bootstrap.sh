@@ -17,7 +17,7 @@
 # 注：/home/user/opt 不在 git 仓库内；若沙箱重建，重跑本脚本即可复原。
 set -euo pipefail
 
-PYENV=/home/user/opt/pdfenv
+PYENV=/home/user/opt/.venv
 FONTS=/home/user/opt/fonts
 DL=/home/user/opt/dl
 NPM_TMP=/tmp/pdf-fonts
@@ -57,6 +57,11 @@ for f in DejaVuSans.ttf DejaVuSansMono.ttf DejaVuSansMono-Bold.ttf; do
   [ -f "$FONTS/$f" ] || { [ -f "$src" ] && cp "$src" "$FONTS/"; }
 done
 ls -1 "$FONTS" | sed 's/^/  ✔ /'
+
+echo "=== ②b 字体子集化（48 MB → 约 12 MB）==="
+# 中文字体 15 MB/字重，四个字重 48 MB；只保留讲义实际会用到的字符集后体积降 75%，
+# 渲染结果完全不变。需要完整字体时：删掉字体文件重跑本脚本即可。
+"$PYENV/bin/python" "$(dirname "$0")/subset_fonts.py"
 
 echo "=== ③ 自检（渲染一页中文 + 一条公式 + 一个 emoji）==="
 cat > /tmp/font_selftest.typ <<'TYPST'

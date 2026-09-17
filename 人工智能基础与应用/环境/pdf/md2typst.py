@@ -664,6 +664,53 @@ def lecture_files() -> list[Path]:
     return files + extra
 
 
+_CMAP_CACHE: dict[str, set[int]] = {}
+
+
+def font_cmap(name: str) -> set[int]:
+    """读字体里实际有的码位（字体已子集化，缺字必须报出来而不是出豆腐块）"""
+    if name in _CMAP_CACHE:
+        return _CMAP_CACHE[name]
+    from fontTools.ttLib import TTFont
+    p = FONT_DIR / name
+    codes: set[int] = set()
+    if p.exists():
+        f = TTFont(p, lazy=True)
+        for t in f["cmap"].tables:
+            codes |= set(t.cmap.keys())
+        f.close()
+    _CMAP_CACHE[name] = codes
+    return codes
+
+
+def glyph_check(paths: list[Path]) -> int:
+    """字形覆盖自检：正文/标题（宋体链）与代码（等宽链）各查一遍"""
+    chains = {
+        "正文/标题": ["NotoSerifSC-Regular.ttf", "NotoSansSC-Regular.ttf",
+                     "DejaVuSans.ttf", "NotoEmoji-Regular.ttf"],
+        "代码块": ["DejaVuSansMono.ttf", "NotoSansSC-Regular.ttf", "NotoEmoji-Regular.ttf"],
+    }
+    have = {label: set().union(*(font_cmap(n) for n in names))
+            for label, names in chains.items()}
+    bad = 0
+    for f in paths:
+        text = f.read_text(encoding="utf-8")
+        body = re.sub(r"```.*?```", "", text, flags=re.S)
+        code = "".join(re.findall(r"```.*?\n(.*?)```", text, flags=re.S))
+        for label, chunk in (("正文/标题", body), ("代码块", code)):
+            # 行内代码里的字符同样走等宽链
+            missing = sorted({c for c in chunk if len(c) == 1 and ord(c) > 0x20
+                              and ord(c) not in have[label]})
+            if missing:
+                show = "".join(missing[:24])
+                print(f"  ⚠ [{f.name} · {label}] {len(missing)} 个字符无字形（会渲染成豆腐块）：{show}")
+                print(f"      U+{' U+'.join(f'{ord(c):04X}' for c in missing[:12])}")
+                bad += 1
+    if bad == 0:
+        print("  ✔ 字形覆盖自检通过（讲义用到的字符全在字体链里）")
+    return bad
+
+
 def extract_math(paths: list[Path]) -> list[tuple[str, str]]:
     """抽出讲义里所有数学片段（跳过代码块）"""
     spans: list[tuple[str, str]] = []
@@ -795,6 +842,7 @@ def main() -> int:
 
     problems = 0
     print(f"讲义源：{LECTURE_DIR}")
+    glyph_check(files)
 
     # 体检（并把转换结果打印出来，便于定位）
     bodies: dict[str, str] = {}
@@ -808,7 +856,8 @@ def main() -> int:
         print(f"\n✘ 有 {problems} 个文件存在无法翻译的公式，已中止（绝不静默丢公式）")
         return 1
     if a.check:
-        print("  ✔ 结构可翻译；开始逐条公式体检")
+        print("  ✔ 结构可翻译；开始字体与公式体检")
+        problems += glyph_check(files)
         problems += check_math(files)
         return 1 if problems else 0
 

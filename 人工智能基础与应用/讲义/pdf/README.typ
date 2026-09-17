@@ -115,22 +115,60 @@
 ]
 ]
 
+== 📕 下载 PDF（离线阅读 / 打印用）
+
+不用看屏幕读 Markdown——#strong[讲义已排成 PDF]，直接下载：
+
+#block(width: 100%, above: 8pt, below: 10pt)[
+#text(size: 9pt)[
+  #table(
+    columns: (0.405fr, 0.121fr, 0.474fr),
+    inset: (x: 7pt, y: 5pt),
+    align: left + top,
+    stroke: (x, y) => (bottom: if y == 0 { 0.9pt + luma(105) } else { 0.25pt + luma(220) }),
+    table.header([下载这个], [页数], [说明]),
+    [#strong[#raw("讲义/pdf/大模型实训讲义-全书.pdf")]], [23], [★ #strong[首选]：封面 + 版权说明 + 目录 + M0–M3 + 大纲],
+    [#raw("讲义/pdf/M0…M3.pdf") 等单讲分册], [2–5], [手机上读、单讲打印、发给同学],
+    [#raw("章程与地图/pdf/章程与地图-全书.pdf")], [28], [九份章程合订（学什么/跟谁学/什么叫学过/何时学/谁写代码）],
+  )
+]
+]
+
+#strong[排版与验收]：正文思源宋体、标题黑体、代码等宽；全书 23 页里 99 条去重公式已#strong[逐条单独编译验证]过， 每讲章节也做了齐备性自检（防排版吞内容）。重生成与维护见 #raw("环境/pdf/README.md")。
+
+#block(width: 100%, above: 9pt, below: 9pt, inset: (x: 10pt, y: 8pt), radius: (right: 4pt), fill: luma(248), stroke: (left: 2.5pt + luma(165)))[
+  #raw("cd 人工智能基础与应用 && 环境/pdf/生成讲义PDF.sh        # 每讲 + 全书
+cd 人工智能基础与应用 && 环境/pdf/生成讲义PDF.sh --charter   # 章程分册", block: true, lang: "bash")
+]
+
+#block(width: 100%, above: 9pt, below: 9pt, inset: (left: 12pt, right: 8pt, y: 6pt), stroke: (left: 3pt + luma(180)), fill: luma(252))[
+#text(size: 9.8pt)[
+铁律：#strong[母版是这里的 #raw(".md")，PDF 是派生物]。改了讲义必须重跑一次生成脚本。
+]
+]
+
 == 目录与状态
 
 #block(width: 100%, above: 8pt, below: 10pt)[
 #text(size: 9pt)[
   #table(
-    columns: (0.362fr, 0.143fr, 0.262fr, 0.232fr),
+    columns: (0.317fr, 0.125fr, 0.229fr, 0.203fr, 0.125fr),
     inset: (x: 7pt, y: 5pt),
     align: left + top,
     stroke: (x, y) => (bottom: if y == 0 { 0.9pt + luma(105) } else { 0.25pt + luma(220) }),
-    table.header([讲义], [模块], [对应课题/周次], [状态]),
-    [#raw("M0-数学与机器学习地基.md")], [M0], [贯穿，W1 起], [✔ 已写],
-    [#raw("M1-从n-gram到Transformer.md")], [M1], [课题02，W2], [✔ 已写],
-    [#raw("M2-分词与表示.md")], [M2], [#strong[课题01，W1（当前）]], [✔ 已写],
-    [#raw("M3-Transformer内部机制.md")], [M3], [课题02，W2–W3], [✔ 已写],
-    [#raw("M4-M9-待展开大纲.md")], [M4–M9], [W4–W16], [◐ 大纲已就位，按周展开],
+    table.header([讲义], [模块], [对应课题/周次], [状态], [PDF]),
+    [#raw("M0-数学与机器学习地基.md")], [M0], [贯穿，W1 起], [✔ 已写], [✔ 5 页],
+    [#raw("M1-从n-gram到Transformer.md")], [M1], [课题02，W2], [✔ 已写], [✔ 4 页],
+    [#raw("M2-分词与表示.md")], [M2], [#strong[课题01，W1（当前）]], [✔ 已写], [✔ 5 页],
+    [#raw("M3-Transformer内部机制.md")], [M3], [课题02，W2–W3], [✔ 已写], [✔ 5 页],
+    [#raw("M4-M9-待展开大纲.md")], [M4–M9], [W4–W16], [◐ 大纲已就位，按周展开], [✔ 4 页],
   )
+]
+]
+
+#block(width: 100%, above: 9pt, below: 9pt, inset: (left: 12pt, right: 8pt, y: 6pt), stroke: (left: 3pt + luma(180)), fill: luma(252))[
+#text(size: 9.8pt)[
+PDF 生成日期：2026-09-17（母版有改动就要重跑 #raw("环境/pdf/生成讲义PDF.sh")）。
 ]
 ]
 

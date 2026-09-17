@@ -14,7 +14,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
-PY="${PDF_PY:-/home/user/opt/pdfenv/bin/python}"
+PY="${PDF_PY:-/home/user/opt/.venv/bin/python}"
 if [ ! -x "$PY" ]; then
   cat <<'EOF'
 ✘ 排版环境未就绪（找不到 typst 版 Python 环境）。
