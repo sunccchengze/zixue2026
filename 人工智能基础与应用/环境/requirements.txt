@@ -1,0 +1,7 @@
+# T0 档依赖（纯 CPU 判分，不带 CUDA）
+# 说明：torch 由 bootstrap_cpu.sh 用 CPU 专用源单独安装（体积小得多）
+numpy
+pytest
+tiktoken
+psutil
+jaxtyping

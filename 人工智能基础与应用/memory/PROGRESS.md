@@ -6,8 +6,8 @@
 
 | # | 课题 | 模块 | 状态 | 备注 |
 |---|---|---|---|---|
-| 01 | BPE 分词器 | M2 | ⬜ | 开题批 5 题已备（HANDOFF），纯 CPU |
-| 02 | Transformer 骨架 + 训练循环 | M0/M1/M3 | ⬜ | 含三组改坏实验 |
+| 01 | BPE 分词器 | M2 | 🟡 | **判分器已接通并实跑**（28 测试 = 27 failed + 1 xfailed，仅缺 `手写/bpe.py`）；开题批 5 题已备；纯 CPU |
+| 02 | Transformer 骨架 + 训练循环 | M0/M1/M3 | ⬜ | 含三组改坏实验；需 `--with-torch` |
 | 03 | Scaling Law 预演 | M4 | ⬜ | 自建替代 CS336 A3（A3_API_KEY 不可得） |
 | 04 | 0.1B 端到端预训练 | M4/M5 | ⬜ | 首次上 GPU（双 T4），含成本账单 |
 | 05 | Triton attention kernel | M5 | ⬜ | **必须 T4**；P100 不可用（SM60） |

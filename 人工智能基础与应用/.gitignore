@@ -49,3 +49,9 @@ uv.lock.bak
 # 大体积日志（只保留摘要与关键片段）
 *.log
 !证据/**/*.log
+
+# 判分工作区（每次判分重建）
+环境/judge/.build/
+
+# tiktoken 离线词表缓存（可重建：环境/judge/prefetch_tiktoken.py）
+环境/tiktoken-cache/

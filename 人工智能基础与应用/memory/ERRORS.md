@@ -32,7 +32,23 @@
   与**无预测就跑实验**（这算错误）。首次实战后按此格式记录：
   `[日期] 现象 → 根因 → 红线（下次先问什么）`。
 
-### 环境类判例（踩坑记录，实测后写）
+### 环境类判例（踩坑记录，**均为 2026-09-17 实跑实测**）
 
-- ⬜ 待填。已预登记的坑（来自调研）：Kaggle 可能给 P100（Triton 不可用）、
-  CS336 A2 的 flash-attn 需两步安装、A3 需要 8 位学号 API key、A5 年度大改基座。
+- **E-05 · 官方判分器需要 Python ≥3.12**：CS336 2026 的 `tests/conftest.py` 使用 PEP 695 泛型语法
+  （`def f[T](...)` / `class C[T]`），`pyproject.toml` 写死 `requires-python = ">=3.12,<3.14"`；
+  沙箱为 Python 3.11.2，**解析即报 SyntaxError**。
+  **处置**：3.11 下自动改用等价轻量 conftest（保留同一 `snapshot` 夹具语义），并在判分日志头部声明；
+  升到 3.12+ 自动切回官方原文。**红线**：不许为了让测试跑起来去改官方 `test_*.py`。
+- **E-06 · tiktoken 对齐测试需要外网**：`test_*_matches_tiktoken` 共 12 项依赖 tiktoken 的 GPT-2 编码器，
+  首次使用会联网下载 `openaipublic.blob.core.windows.net` 上的 vocab.bpe / encoder.json；
+  沙箱该域名 SSL 被拦 → 12 项测试报 `requests.exceptions.SSLError`（**看起来像代码错，其实是网络**）。
+  **处置**：`环境/judge/prefetch_tiktoken.py` 用官方 fixture 离线构造缓存
+  （实测 `gpt2_vocab.json` 的 sha256 与 tiktoken 内置期望**完全一致**；vocab.bpe 补 `#version: 0.2` 首行即可，
+  因 tiktoken 解析时 `split("\n")[1:-1]` 跳过首行且对 gpt2 不校验哈希）。验证：n_vocab=50257、往返一致。
+  **红线**：判分失败先分辨"代码错 / 环境错"，不许把环境问题记成用户错误。
+- **E-07 · PyTorch CPU 专用源被拦**：`download.pytorch.org` 在沙箱返回 SSL EOF；
+  PyPI 上的 torch 是 555MB 的 CUDA 版（连带依赖数 GB，而沙箱内存仅 3GB）。
+  **处置**：T0 档默认**不装 torch**（课题01 判分确实不需要），需要时 `--with-torch` 先试 CPU 源再退回 PyPI。
+- **E-08 · Kaggle 可能分配 P100**：P100 计算能力 6.0，**Triton 不支持**（要求 ≥7.0），
+  且 nanochat 在 SM<80 下自动降级 fp32（慢 3–5 倍）。**红线**：课题05 开跑前必须验明 GPU 型号，P100 立即重开会话。
+
