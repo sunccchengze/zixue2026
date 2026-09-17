@@ -55,3 +55,7 @@ uv.lock.bak
 
 # tiktoken 离线词表缓存（可重建：环境/judge/prefetch_tiktoken.py）
 环境/tiktoken-cache/
+
+# PDF 排版的预览图（随时重出：环境/pdf/生成讲义PDF.sh --preview N）
+讲义/pdf/*.png
+章程与地图/pdf/*.png

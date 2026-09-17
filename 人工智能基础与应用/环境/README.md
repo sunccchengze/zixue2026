@@ -8,13 +8,14 @@
 ```
 环境/
 ├── README.md         本文件
-├── bootstrap_cpu.sh  T0：沙箱/本地 CPU 环境（uv + 依赖，跑判分用）        ← 待建
-├── bootstrap_kaggle.md Kaggle 会话开场清单（预检 + 依赖 + 数据）          ← 待建
-├── 预检.md           会话预检：GPU 型号门禁（T4 ✅ / P100 ❌）            ← 待建
-├── judge/            判分器接入：CS336 tests + adapters + judge.sh        ← 待建
-├── 数据/             TinyStories / owt-sample 的获取与分片（小样本进仓）  ← 待建
-├── 归档/             run.yaml 生成、曲线绘图、产物哈希                    ← 待建
-└── 报告模板/         一页四段（中文）+ NeurIPS（英文）模板                ← 待建
+├── bootstrap_cpu.sh  T0：沙箱/本地 CPU 环境（跑判分用）                  ✅
+├── 预检.md           会话预检：GPU 型号门禁（T4 ✅ / P100 ❌）            ✅
+├── judge/            判分器接入：CS336 tests + adapters + judge.sh        ✅
+├── 归档/             run.yaml 生成（commit/预测/预算/产物哈希）           ✅
+├── 报告模板/         一页四段（中文）+ NeurIPS（英文）模板                ✅
+├── pdf/              讲义排版链：md2typst.py + 生成脚本 + 字体配方        ✅
+├── bootstrap_kaggle.md Kaggle 会话开场清单（预检 + 依赖 + 数据）          ← 待建（课题04 前）
+└── 数据/             TinyStories / owt-sample 的获取与分片（小样本进仓）  ← 待建（课题04 前）
 ```
 
 ## 三、建设状态（2026-09-17 实跑验证）
@@ -25,8 +26,9 @@
 | `judge/judge.sh` + `run_judge.py` | ✅ 建成并实跑 | **CS336 官方 28 个测试真实执行**（基线 27 failed + 1 xfailed，全部因缺 `手写/bpe.py`）；自动归档原始输出到 `证据/` |
 | `judge/prefetch_tiktoken.py` | ✅ 建成并实跑 | 离线构造 tiktoken GPT-2 词表缓存（绕开沙箱外网限制），实测 n_vocab=50257 |
 | `预检.md` | ✅ 建成 | 会话门禁（P100 一票否决）+ 实验卡制度 |
-| `归档/` | ⬜ 待建 | run.yaml 生成 + 曲线绘制（课题04 前必须就绪） |
-| `报告模板/` | ⬜ 待建 | 中文一页四段 + 英文 NeurIPS 骨架（W3 前就绪） |
+| `归档/make_run.py` | ✅ 建成并实跑 | `run.yaml`：git commit / 上游 HEAD / GPU 探针 / **预测留痕** / 停止条件 / 产物 sha256；未写预测会主动告警 |
+| `报告模板/` | ✅ 建成 | 中文一页四段（八条写作红线）+ 英文 NeurIPS 骨架（Limitations 与"最强反方论点"必写） |
+| `pdf/` | ✅ 建成并实跑 | **讲义 PDF 排版链**：PyPI typst + npm 思源字体，编译全程离线；99 条公式逐条验证。详见 `pdf/README.md` |
 
 ## 四、技术决定（写在这里防止漂移）
 
@@ -38,6 +40,7 @@
 | 断点续训 | 强制，checkpoint 写 `/kaggle/working` | Kaggle 会话随时可能断（9–12h 上限） |
 | 超时 | 脚本内置 wall-clock 上限（默认 3h） | 防"忘记关机"式浪费配额 |
 | 曲线 | 本地 matplotlib → PNG 进 `证据/` | 不依赖 wandb（免费额度/网络都不稳） |
+| 讲义 PDF | **PyPI 版 typst + npm 版思源字体**，自研 `md2typst.py` 转换 | 沙箱无 LaTeX、无 Chromium、**无中文字体**、中国镜像不可达；此路线免 root、免 apt、编译离线（单份 0.2 秒）；pandoc 数学转写有损已弃用 |
 | 大文件 | 一律 `.gitignore`（见学科根 `.gitignore`） | 仓库有快照体积上限 |
 
 ## 三、待建设清单（下一步实现顺序）
