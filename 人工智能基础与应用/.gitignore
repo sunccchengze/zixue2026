@@ -1,0 +1,51 @@
+# 大模型实训 · 反污染规则（本学科专用，防止大文件撑爆仓库）
+# 仓库有快照体积上限（约 128MB / 10000 文件），以下一律不进 git。
+
+# 模型与训练产物
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.onnx
+*.gguf
+checkpoints/
+ckpt/
+runs/
+wandb/
+outputs/
+
+# 数据（只用小样本进入资料目录，其余走 Kaggle/外部存储）
+data/
+datasets/
+*.jsonl
+*.parquet
+*.arrow
+*.idx
+*.bin.index
+
+# 上游代码（只锁 commit，不复制进仓）
+上游/
+third_party/
+vendor/
+
+# 实验中间产物
+*.npz
+*.npy
+profiles/
+*.nsys-rep
+*.sqlite
+*.trace.json
+
+# 缓存与虚拟环境
+__pycache__/
+*.pyc
+.venv/
+.venv-*/
+uv.lock.bak
+.ipynb_checkpoints/
+.pytest_cache/
+
+# 大体积日志（只保留摘要与关键片段）
+*.log
+!证据/**/*.log
