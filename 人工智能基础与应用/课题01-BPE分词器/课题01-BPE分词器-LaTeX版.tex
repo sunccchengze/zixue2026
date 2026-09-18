@@ -1,0 +1,430 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{listings}
+\newcommand{\passthrough}[1]{#1}
+\lstset{defaultdialect=[5.3]Lua}
+\lstset{defaultdialect=[x86masm]Assembler}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+\ifLuaTeX
+\else
+\fi
+\ifLuaTeX
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% ═══ 由 环境/pdf/latex/md到LaTeX.py 生成 ═══
+% 中文字体：思源宋体（子集，SIL OFL 1.1）；拉丁/数学：Latin Modern（随 TeX Live 分发）
+% 编译：xelatex（本仓库自带 wasm 版 XeTeX 引擎，见 环境/pdf/latex/编译LaTeX.mjs）
+\usepackage[T1]{fontenc}      % 否则 ASCII 的 < > | 在 OT1 下排成 ¡ ¿ —
+\usepackage{lmodern}          % 必需：数学的物理字模（否则 xdvipdfmx 拒绝出 PDF）
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs,longtable,array,multirow}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+% 不用 hyperref：新版 hyperref 强制依赖 bookmark.sty，而 bundle 里没有。
+% 链接命令用降级定义，保证正文里的 \href / \url 不会报错。
+\providecommand{\href}[2]{#2}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\hypertarget}[2]{#2}
+\providecommand{\hyperlink}[2]{#2}
+\providecommand{\urlstyle}[1]{}
+\providecommand{\texorpdfstring}[2]{#1}   % hyperref 的命令，剥离后仍被模板/标题用到
+\providecommand{\phantomsection}{}
+\providecommand{\pdfstringdef}[2]{}
+\providecommand{\hypersetup}[1]{}
+
+% ── 三套字体：中文 / 符号 / emoji（按字符 cmap 自动选择）──
+\font\zhfont="[NotoSerifSC-Regular.ttf]:script=hani" at 10.5pt
+\font\symfont="[DejaVuSans.ttf]" at 10.5pt
+\font\emofont="[NotoEmoji-Regular.ttf]" at 10.5pt
+\font\zhmonofont="[NotoSansSC-Regular.ttf]" at 9pt
+% 用法：\zh{中文} / \sym{→} / \emo{🦙}
+% 注意：必须**带参数**。写成 \def\zh{{\zhfont}} 是错的——字体赋值只在小群里有效，
+% 那个小群随 \zh 立刻结束，于是中文仍然用拉丁字体排，报 Missing character。
+\def\zh#1{{\zhfont #1}}
+\def\sym#1{{\symfont #1}}
+\def\emo#1{{\emofont #1}}
+% 含汉字的行内代码：listings 的 \lstinline 遇到汉字必炸（`\lst@arg ->判`
+% 未定义控制字，catcode 设 12 也无效），所以直接自己排。
+\def\codezh#1{{\zhmonofont #1}}
+
+\def\zhglue{\hskip0pt plus .06em minus .01em}
+\linespread{1.12}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+% ── 代码块：等宽 + 中文字体（listings 默认字体不含汉字）──
+\lstset{
+  basicstyle=\zhmonofont,
+  breaklines=true,
+  breakatwhitespace=false,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  frame=single,
+  framesep=4pt,
+  rulecolor=\color{gray!45},
+  backgroundcolor=\color{gray!7},
+  xleftmargin=6pt,
+  extendedchars=true,
+  tabsize=2,
+  % 代码块里的 emoji：NotoSansSC 没有这些字形（listings 不做字符级回退）。
+  % 用 escapeinside 开口子，转换器把 emoji 逐字包成 (*@{\emo{⭐}}@*)。
+  % 试过 literate={⭐}{{\emofont ⭐}}1，会把 ASCII 字母也吞掉并报
+  % `Improper alphabetic constant`，不可用。
+  escapeinside={(*@}{@*)},
+}
+\renewcommand{\lstlistingname}{\zh{代\zhglue 码}}
+
+% ── 表格线宽（booktabs 风格）──
+\renewcommand{\arraystretch}{1.25}
+
+% ── 标题样式 ──
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.1em}{0.5em}
+\urlstyle{same}
+\hypersetup{
+  pdftitle={\zh{课\zhglue 题}01-BPE\zh{分\zhglue 词\zhglue 器}},
+  pdflang={zh-CN},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{\zh{课\zhglue 题}01-BPE\zh{分\zhglue 词\zhglue 器}}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section{\zh{课\zhglue 题}01 \zh{开\zhglue 题\zhglue 简\zhglue 报} \sym{·} BPE \zh{分\zhglue 词\zhglue 器}}\label{ux8bfeux989801-ux5f00ux9898ux7b80ux62a5-bpe-ux5206ux8bcdux5668}
+
+\begin{quote}
+\zh{模\zhglue 块\zhglue ：}\textbf{M2 \zh{分\zhglue 词\zhglue 与\zhglue 表\zhglue 示}} \zh{｜} \zh{周\zhglue 次\zhglue ：}\textbf{W1\zh{（}09-14\sym{→}09-20\zh{）}} \zh{｜} \zh{算\zhglue 力\zhglue ：}\textbf{T0 \zh{纯} CPU\zh{，}0 GPU\sym{·}\zh{小\zhglue 时}} \zh{唐\zhglue 杰\zhglue 作\zhglue 业\zhglue 对\zhglue 应\zhglue ：}\textbf{\sym{①} \zh{从\zhglue 零\zhglue 写} Tokenizer} \zh{的\zhglue 前\zhglue 半} \zh{｜} \zh{判\zhglue 分\zhglue 来\zhglue 源\zhglue ：}\textbf{CS336 A1 \passthrough{\lstinline!tests/test\_tokenizer.py!} + \passthrough{\lstinline!test\_train\_bpe.py!}} \zh{手\zhglue 写}/\zh{代\zhglue 写\zhglue ：\zhglue 本\zhglue 课\zhglue 题}\textbf{\zh{全\zhglue 部\zhglue 核\zhglue 心\zhglue 代\zhglue 码\zhglue 属\zhglue 手\zhglue 写\zhglue 区} R1}\zh{（\zhglue 见\zhglue 《\zhglue 造\zhglue 轮\zhglue 子\zhglue 边\zhglue 界}.md\zh{》\zhglue ）}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\zh{一\zhglue 、\zhglue 研\zhglue 究\zhglue 背\zhglue 景\zhglue （\zhglue 这\zhglue 个\zhglue 问\zhglue 题\zhglue 历\zhglue 史\zhglue 上\zhglue 卡\zhglue 过\zhglue 谁\zhglue ）}}\label{ux4e00ux7814ux7a76ux80ccux666fux8fd9ux4e2aux95eeux9898ux5386ux53f2ux4e0aux5361ux8fc7ux8c01}
+
+\begin{itemize}
+\tightlist
+\item
+  2017 \zh{年\zhglue 前\zhglue 的} NLP \zh{用\zhglue 整\zhglue 词\zhglue 表\zhglue ，\zhglue 未\zhglue 登\zhglue 录\zhglue 词\zhglue （}OOV\zh{）\zhglue 是\zhglue 死\zhglue 穴\zhglue ；\zhglue 字\zhglue 符\zhglue 级\zhglue 建\zhglue 模\zhglue 又\zhglue 让\zhglue 序\zhglue 列\zhglue 变\zhglue 得\zhglue 极\zhglue 长\zhglue 。}
+\item
+  BPE \zh{从} 2016\zh{（}Sennrich \zh{等\zhglue ）\zhglue 的}\textbf{\zh{机\zhglue 器\zhglue 翻\zhglue 译\zhglue 子\zhglue 词\zhglue 切\zhglue 分}}\zh{技\zhglue 术\zhglue ，\zhglue 被} GPT-2\zh{（}2019\zh{）\zhglue 引\zhglue 入\zhglue 到}\textbf{\zh{字\zhglue 节\zhglue 级}}\zh{，} \zh{从\zhglue 此\zhglue 成\zhglue 为\zhglue 大\zhglue 模\zhglue 型\zhglue 的\zhglue 事\zhglue 实\zhglue 标\zhglue 准\zhglue （}GPT-2/3/4\zh{、}LLaMA\zh{、}Qwen\zh{、}GLM \zh{都\zhglue 是} BPE \zh{系\zhglue ）\zhglue 。}
+\item
+  \zh{关\zhglue 键\zhglue 洞\zhglue 察\zhglue ：}\textbf{\zh{词\zhglue 表\zhglue 不\zhglue 是}''\zh{词\zhglue 汇\zhglue 表}''\zh{，\zhglue 而\zhglue 是\zhglue 一\zhglue 个\zhglue 可\zhglue 学\zhglue 习\zhglue 的\zhglue 压\zhglue 缩\zhglue 算\zhglue 法}}------\zh{它\zhglue 同\zhglue 时\zhglue 决\zhglue 定\zhglue 了} \sym{①}\zh{模\zhglue 型\zhglue 的\zhglue 输\zhglue 入\zhglue 长\zhglue 度} \sym{②}\zh{嵌\zhglue 入\zhglue 层\zhglue 参\zhglue 数\zhglue 量} \sym{③}\zh{模\zhglue 型\zhglue 能\zhglue 见\zhglue 到\zhglue 的\zhglue 最\zhglue 小\zhglue 语\zhglue 义\zhglue 单\zhglue 元} \sym{④}\zh{多\zhglue 语\zhglue 言}/\zh{代\zhglue 码}/\zh{数\zhglue 学\zhglue 的\zhglue 公\zhglue 平\zhglue 性\zhglue 。}
+\end{itemize}
+
+\subsection{\zh{二\zhglue 、\zhglue 研\zhglue 究\zhglue 问\zhglue 题\zhglue （\zhglue 一\zhglue 句\zhglue 话\zhglue ，\zhglue 开\zhglue 放\zhglue 问\zhglue 题\zhglue ）}}\label{ux4e8cux7814ux7a76ux95eeux9898ux4e00ux53e5ux8bddux5f00ux653eux95eeux9898}
+
+\begin{quote}
+\textbf{\zh{在\zhglue 固\zhglue 定\zhglue 词\zhglue 表\zhglue 预\zhglue 算\zhglue 下\zhglue ，\zhglue 如\zhglue 何\zhglue 设\zhglue 计\zhglue 一\zhglue 个\zhglue 训\zhglue 练}-\zh{编\zhglue 码\zhglue 两\zhglue 阶\zhglue 段\zhglue 都\zhglue 正\zhglue 确\zhglue 、\zhglue 且\zhglue 对\zhglue 中\zhglue 文}/\zh{英\zhglue 文}/\zh{代\zhglue 码\zhglue 都\zhglue 公\zhglue 平\zhglue 的\zhglue 子\zhglue 词\zhglue 分\zhglue 词\zhglue 器\zhglue ？}} ------\zh{并\zhglue 回\zhglue 答\zhglue ：\zhglue 为\zhglue 什\zhglue 么}''\zh{字\zhglue 节\zhglue 起\zhglue 步}''\zh{是\zhglue 零\zhglue 预\zhglue 算\zhglue 下\zhglue 唯\zhglue 一\zhglue 不\zhglue 会\zhglue 翻\zhglue 车\zhglue 的\zhglue 选\zhglue 择\zhglue ？}
+\end{quote}
+
+\subsection{\zh{三\zhglue 、\zhglue 攻\zhglue 关\zhglue 线\zhglue 索\zhglue （\zhglue 路\zhglue 标\zhglue ，\zhglue 不\zhglue 是\zhglue 答\zhglue 案\zhglue ）}}\label{ux4e09ux653bux5173ux7ebfux7d22ux8defux6807ux4e0dux662fux7b54ux6848}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{\zh{压\zhglue 缩\zhglue 视\zhglue 角}}\zh{：\zhglue 如\zhglue 果\zhglue 词\zhglue 表\zhglue 大\zhglue 小\zhglue 为} V\zh{，}BPE \zh{训\zhglue 练\zhglue 在\zhglue 最\zhglue 大\zhglue 化\zhglue 什\zhglue 么\zhglue ？\zhglue 把\zhglue 它\zhglue 写\zhglue 成}''\zh{每\zhglue 一\zhglue 步\zhglue 减\zhglue 少\zhglue 多\zhglue 少} token \zh{数}''\zh{。}
+\item
+  \textbf{\zh{字\zhglue 节\zhglue 起\zhglue 步\zhglue 的\zhglue 理\zhglue 由}}\zh{：\zhglue 从} Unicode \zh{字\zhglue 符\zhglue 起\zhglue 步\zhglue 会\zhglue 在\zhglue 哪\zhglue 些\zhglue 具\zhglue 体\zhglue 输\zhglue 入\zhglue 上\zhglue 崩\zhglue ？\zhglue （\zhglue 想} 3 \zh{个\zhglue 真\zhglue 实\zhglue 例\zhglue 子\zhglue 再\zhglue 往\zhglue 下\zhglue 走\zhglue ）}
+\item
+  \textbf{\zh{训\zhglue 练\zhglue 算\zhglue 法}}\zh{：\zhglue 朴\zhglue 素\zhglue 实\zhglue 现\zhglue 为\zhglue 什\zhglue 么\zhglue 是} O(n\sym{²})\zh{？\zhglue 哪\zhglue 些\zhglue 数\zhglue 据\zhglue 结\zhglue 构\zhglue 能\zhglue 把\zhglue 它\zhglue 压\zhglue 到\zhglue 近\zhglue 似\zhglue 线\zhglue 性\zhglue ？\zhglue （\zhglue 提\zhglue 示\zhglue 方\zhglue 向\zhglue ：\zhglue 不\zhglue 要\zhglue 用\zhglue 字\zhglue 符\zhglue 串\zhglue 拼\zhglue 接\zhglue ）}
+\item
+  \textbf{\zh{并\zhglue 列\zhglue 与\zhglue 终\zhglue 止}}\zh{：\zhglue 最\zhglue 高\zhglue 频\zhglue 并\zhglue 列\zhglue 时\zhglue 怎\zhglue 么\zhglue 办\zhglue ？\zhglue 什\zhglue 么\zhglue 时\zhglue 候\zhglue 停\zhglue 止\zhglue 合\zhglue 并\zhglue ？\zhglue 特\zhglue 殊} token\zh{（}\passthrough{\lstinline!<|endoftext|>!}\zh{）\zhglue 为\zhglue 什\zhglue 么\zhglue 不\zhglue 能\zhglue 参\zhglue 与\zhglue 合\zhglue 并\zhglue ？}
+\item
+  \textbf{\zh{编\zhglue 码\zhglue 与\zhglue 解\zhglue 码}}\zh{：}encode \zh{的\zhglue 时\zhglue 候\zhglue ，\zhglue 遇\zhglue 到\zhglue 未\zhglue 在} merge \zh{表\zhglue 里\zhglue 的\zhglue 相\zhglue 邻\zhglue 对\zhglue 怎\zhglue 么\zhglue 处\zhglue 理\zhglue ？\zhglue 为\zhglue 什\zhglue 么\zhglue 必\zhglue 须\zhglue 保\zhglue 证} \passthrough{\lstinline!decode(encode(x)) == x!}\zh{（\zhglue 往\zhglue 返\zhglue 一\zhglue 致\zhglue 性\zhglue ）\zhglue ？}
+\item
+  \textbf{\zh{多\zhglue 语\zhglue 言\zhglue 公\zhglue 平\zhglue 性}}\zh{：\zhglue 同\zhglue 一\zhglue 段\zhglue 中\zhglue 文\zhglue ，\zhglue 字\zhglue 节\zhglue 级} BPE \zh{的} token \zh{数\zhglue 为\zhglue 什\zhglue 么\zhglue 比\zhglue 英\zhglue 文\zhglue 多\zhglue ？\zhglue 这\zhglue 对\zhglue 模\zhglue 型\zhglue 的}''\zh{中\zhglue 文\zhglue 成\zhglue 本}''\zh{意\zhglue 味\zhglue 着\zhglue 什\zhglue 么\zhglue ？}
+\end{enumerate}
+
+\subsection{\zh{四\zhglue 、\zhglue 里\zhglue 程\zhglue 碑\zhglue （\zhglue 可\zhglue 勾\zhglue 选\zhglue ，}3--6 \zh{个\zhglue ）}}\label{ux56dbux91ccux7a0bux7891ux53efux52feux900936-ux4e2a}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  \textbf{M1 \zh{手\zhglue 写} BPE \zh{训\zhglue 练}}\zh{：\zhglue 能\zhglue 从\zhglue 语\zhglue 料\zhglue 统\zhglue 计\zhglue 词\zhglue 频\zhglue 、\zhglue 迭\zhglue 代\zhglue 合\zhglue 并\zhglue 、\zhglue 输\zhglue 出} merge \zh{表\zhglue 与\zhglue 词\zhglue 表\zhglue ，\zhglue 并}\textbf{\zh{打\zhglue 印\zhglue 出\zhglue 前} 10 \zh{个} merge \zh{及\zhglue 其\zhglue 频\zhglue 次}}
+\item[$\square$]
+  \textbf{M2 \zh{手\zhglue 写\zhglue 编\zhglue 码\zhglue 器}}\zh{：\zhglue 支\zhglue 持\zhglue 特\zhglue 殊} token\zh{、\zhglue 未\zhglue 登\zhglue 录\zhglue 字\zhglue 节\zhglue 回\zhglue 退\zhglue 、\zhglue 往\zhglue 返\zhglue 一\zhglue 致\zhglue 性\zhglue （\zhglue 自\zhglue 测} 5 \zh{类\zhglue 边\zhglue 界\zhglue ：\zhglue 空\zhglue 串}/\zh{单\zhglue 字\zhglue 节}/\zh{中\zhglue 文}/emoji/\zh{控\zhglue 制\zhglue 字\zhglue 符\zhglue ）}
+\item[$\square$]
+  \textbf{M3 \zh{通\zhglue 过\zhglue 官\zhglue 方\zhglue 判\zhglue 分}}\zh{：}\passthrough{\lstinline!test\_tokenizer.py!} \zh{与} \passthrough{\lstinline!test\_train\_bpe.py!} \zh{全\zhglue 绿\zhglue （\zhglue 原\zhglue 始\zhglue 输\zhglue 出\zhglue 贴} \passthrough{\codezh{{\zh{判}}{\zh{卷}}{\zh{记}}{\zh{录}}.md}}\zh{）}
+\item[$\square$]
+  \textbf{M4 \zh{压\zhglue 缩\zhglue 率\zhglue 对\zhglue 照}}\zh{：\zhglue 在} TinyStories\zh{（\zhglue 英\zhglue ）\zhglue 与\zhglue 中\zhglue 文\zhglue 小\zhglue 语\zhglue 料\zhglue 上\zhglue 各\zhglue 训\zhglue 一\zhglue 个} 32k \zh{词\zhglue 表\zhglue ，\zhglue 出\zhglue 压\zhglue 缩\zhglue 率\zhglue 表} + \zh{与\zhglue 你\zhglue 的\zhglue 下\zhglue 注\zhglue 对\zhglue 照}
+\item[$\square$]
+  \textbf{M5 \zh{改\zhglue 坏\zhglue 实\zhglue 验\zhglue （\zhglue 必\zhglue 做\zhglue ）}}\zh{：}\sym{①}\zh{禁\zhglue 用} bytes \zh{回\zhglue 退} \sym{②}\zh{不\zhglue 处\zhglue 理\zhglue 特\zhglue 殊} token \sym{③}\zh{停\zhglue 止\zhglue 条\zhglue 件\zhglue 改\zhglue 成}''\zh{合\zhglue 并\zhglue 到\zhglue 只\zhglue 剩} 1 \zh{个\zhglue 词}'' ------\zh{每\zhglue 个\zhglue 先\zhglue 写}\textbf{\zh{预\zhglue 测}}\zh{，\zhglue 再\zhglue 跑\zhglue ，\zhglue 再\zhglue 记\zhglue 录\zhglue 现\zhglue 象}
+\item[$\square$]
+  \textbf{M6 \zh{一\zhglue 页\zhglue 报\zhglue 告} + \zh{知\zhglue 识\zhglue 卡}}\zh{：\zhglue 报\zhglue 告\zhglue 按\zhglue 一\zhglue 页\zhglue 四\zhglue 段\zhglue ；\zhglue 知\zhglue 识\zhglue 卡} \sym{≥}3 \zh{张\zhglue 进} drill-ledger
+\end{itemize}
+
+\subsection{\zh{五\zhglue 、\zhglue 交\zhglue 付\zhglue 物\zhglue 要\zhglue 求}}\label{ux4e94ux4ea4ux4ed8ux7269ux8981ux6c42}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\zh{交\zhglue 付\zhglue 物}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\zh{位\zhglue 置}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\zh{验\zhglue 收}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\zh{实\zhglue 现\zhglue 代\zhglue 码} & \passthrough{\codezh{{\zh{手}}{\zh{写}}/}}\zh{（\zhglue 你\zhglue 写\zhglue ）} & \zh{通\zhglue 过} M3 \\
+\zh{判\zhglue 分\zhglue 原\zhglue 始\zhglue 输\zhglue 出} & \passthrough{\codezh{{\zh{判}}{\zh{卷}}{\zh{记}}{\zh{录}}.md}} & \zh{粘\zhglue 贴} \passthrough{\codezh{{\zh{证}}{\zh{据}}/judge-*.log}} \zh{原\zhglue 文\zhglue （\zhglue 不\zhglue 许\zhglue 转\zhglue 述\zhglue ）} \\
+\zh{证\zhglue 据} & \passthrough{\codezh{{\zh{证}}{\zh{据}}/}} & \passthrough{\lstinline!run.yaml!}\zh{（}commit/\zh{时\zhglue 间}/\zh{命\zhglue 令\zhglue ）}+ \zh{日\zhglue 志} + \zh{压\zhglue 缩\zhglue 率\zhglue 表} + \zh{改\zhglue 坏\zhglue 实\zhglue 验\zhglue 记\zhglue 录} \\
+\zh{报\zhglue 告} & \passthrough{\codezh{{\zh{报}}{\zh{告}}.md}} & \zh{一\zhglue 页\zhglue 四\zhglue 段\zhglue ：\zhglue 问\zhglue 题}-\zh{动\zhglue 机}-\zh{方\zhglue 法}-\zh{结\zhglue 果} \\
+\zh{知\zhglue 识\zhglue 卡} & \passthrough{\lstinline!memory/drill-ledger/topics/!} & \sym{≥}3 \zh{张\zhglue （}bytes \zh{回\zhglue 退} / merge \zh{规\zhglue 则} / \zh{压\zhglue 缩\zhglue 率\zhglue 权\zhglue 衡\zhglue ）} \\
+\end{longtable}
+}
+
+\subsection{\texorpdfstring{\zh{五\zhglue 之\zhglue 二\zhglue 、\zhglue 官\zhglue 方\zhglue 判\zhglue 分\zhglue 标\zhglue 准\zhglue （}2026-09-17 \zh{实\zhglue 跑\zhglue 探\zhglue 明\zhglue ，}\textbf{\zh{先\zhglue 知\zhglue 道\zhglue 标\zhglue 准\zhglue 再\zhglue 动\zhglue 手}}\zh{）}}{\zh{五\zhglue 之\zhglue 二\zhglue 、\zhglue 官\zhglue 方\zhglue 判\zhglue 分\zhglue 标\zhglue 准\zhglue （}2026-09-17 \zh{实\zhglue 跑\zhglue 探\zhglue 明\zhglue ，\zhglue 先\zhglue 知\zhglue 道\zhglue 标\zhglue 准\zhglue 再\zhglue 动\zhglue 手\zhglue ）}}}\label{ux4e94ux4e4bux4e8cux5b98ux65b9ux5224ux5206ux6807ux51c62026-09-17-ux5b9eux8dd1ux63a2ux660eux5148ux77e5ux9053ux6807ux51c6ux518dux52a8ux624b}
+
+\zh{判\zhglue 分\zhglue 器\zhglue 已\zhglue 接\zhglue 通\zhglue ：}\passthrough{\codezh{{\zh{环}}{\zh{境}}/judge/judge.sh 01}}\zh{。\zhglue 实\zhglue 跑\zhglue 探\zhglue 明} \textbf{28 \zh{个\zhglue 测\zhglue 试}}\zh{（}27 \zh{项} + 1 \zh{项} xfail\zh{）\zhglue ，\zhglue 要\zhglue 求\zhglue 如\zhglue 下\zhglue ：}
+
+\subsubsection{\zh{接\zhglue 口\zhglue 契\zhglue 约\zhglue （\zhglue 你\zhglue 唯\zhglue 一\zhglue 需\zhglue 要\zhglue 遵\zhglue 守\zhglue 的\zhglue 外\zhglue 部\zhglue 形\zhglue 状\zhglue ）}}\label{ux63a5ux53e3ux5951ux7ea6ux4f60ux552fux4e00ux9700ux8981ux9075ux5b88ux7684ux5916ux90e8ux5f62ux72b6}
+
+\begin{lstlisting}[language=Python]
+# (*@{\zh{手}}@*)(*@{\zh{写}}@*)/bpe.py (*@{\zh{必}}@*)(*@{\zh{须}}@*)(*@{\zh{提}}@*)(*@{\zh{供}}@*)(*@{\zh{：}}@*)
+def train_bpe(input_path, vocab_size, special_tokens, **kwargs) -> tuple[dict[int, bytes], list[tuple[bytes, bytes]]]
+class Tokenizer:
+    def __init__(self, vocab, merges, special_tokens=None): ...
+    def encode(self, text: str) -> list[int]: ...
+    def decode(self, ids: list[int]) -> str: ...
+    def encode_iterable(self, iterable) -> Iterator[int]: ...   # (*@{\sym{←}}@*) (*@{\zh{隐}}@*)(*@{\zh{藏}}@*)(*@{\zh{要}}@*)(*@{\zh{求}}@*)(*@{\zh{，}}@*)(*@{\zh{见}}@*)(*@{\zh{下}}@*)
+\end{lstlisting}
+
+\subsubsection{\zh{三\zhglue 条\zhglue 硬\zhglue 门\zhglue 槛\zhglue （\zhglue 都\zhglue 会\zhglue 挂\zhglue 人\zhglue ）}}\label{ux4e09ux6761ux786cux95e8ux69dbux90fdux4f1aux6302ux4eba}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\#
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\zh{测\zhglue 试}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\zh{门\zhglue 槛}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\zh{说\zhglue 明}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & \passthrough{\lstinline!test\_train\_bpe\_speed!} & corpus.en + vocab 500 \textbf{\textless{} 1.5 \zh{秒}} & \zh{官\zhglue 方\zhglue 参\zhglue 考} 0.38s\zh{；}``\zh{玩\zhglue 具\zhglue 实\zhglue 现}''\zh{约} 3s \zh{会\zhglue 挂} \\
+2 & \passthrough{\lstinline!test\_train\_bpe!} & merges \textbf{\zh{逐\zhglue 项\zhglue 等\zhglue 于}}\zh{参\zhglue 考} merges\zh{；}vocab \zh{键\zhglue 值\zhglue 集\zhglue 合\zhglue 一\zhglue 致} & \zh{意\zhglue 味\zhglue 着\zhglue 预\zhglue 处\zhglue 理\zhglue 与}\textbf{\zh{并\zhglue 列\zhglue 打\zhglue 破\zhglue 规\zhglue 则}}\zh{都\zhglue 要\zhglue 与\zhglue 参\zhglue 考\zhglue 一\zhglue 致} \\
+3 & \passthrough{\lstinline!test\_encode\_iterable\_memory\_usage!} & \zh{用} \passthrough{\lstinline!encode\_iterable!} \zh{流\zhglue 式\zhglue 读} \textbf{5MB} \zh{语\zhglue 料\zhglue ，\zhglue 额\zhglue 外\zhglue 内\zhglue 存} \textbf{\sym{≤} 1MB}\zh{（}\passthrough{\lstinline!RLIMIT\_AS!} \zh{实\zhglue 测\zhglue ）} & \textbf{\zh{必\zhglue 须\zhglue 有\zhglue 真\zhglue 正\zhglue 的\zhglue 流\zhglue 式\zhglue 实\zhglue 现}}\zh{，\zhglue 不\zhglue 能\zhglue 先} read() \zh{全\zhglue 部} \\
+\end{longtable}
+}
+
+\subsubsection{\zh{一\zhglue 个\zhglue 官\zhglue 方}''\zh{故\zhglue 意\zhglue 让\zhglue 分}''\zh{的\zhglue 测\zhglue 试\zhglue （\zhglue 别\zhglue 被\zhglue 骗\zhglue ）}}\label{ux4e00ux4e2aux5b98ux65b9ux6545ux610fux8ba9ux5206ux7684ux6d4bux8bd5ux522bux88abux9a97}
+
+\begin{itemize}
+\tightlist
+\item
+  \passthrough{\lstinline!test\_encode\_memory\_usage!} \zh{被\zhglue 官\zhglue 方\zhglue 标\zhglue 记} \textbf{\passthrough{\lstinline!xfail!}}\zh{，\zhglue 理\zhglue 由\zhglue 原\zhglue 话\zhglue ：} \emph{``Tokenizer.encode is expected to take more memory than allotted (1MB)''}\zh{。} \sym{→} \zh{也\zhglue 就\zhglue 是\zhglue 说\zhglue ：}\textbf{\passthrough{\lstinline!encode()!} \zh{超\zhglue 内\zhglue 存\zhglue 是\zhglue 允\zhglue 许\zhglue 的\zhglue ，}\passthrough{\lstinline!encode\_iterable()!} \zh{超\zhglue 内\zhglue 存\zhglue 是\zhglue 不\zhglue 允\zhglue 许\zhglue 的}}\zh{。} \zh{这\zhglue 个} xfail \zh{恰\zhglue 好\zhglue 是\zhglue 本\zhglue 课\zhglue 题}''\zh{接\zhglue 口\zhglue 设\zhglue 计\zhglue 决\zhglue 定\zhglue 内\zhglue 存\zhglue 上\zhglue 界}''\zh{的\zhglue 活\zhglue 教\zhglue 材\zhglue （\zhglue 见\zhglue 知\zhglue 识\zhglue 地\zhglue 图} M5 \zh{的\zhglue 同\zhglue 类\zhglue 问\zhglue 题\zhglue ）\zhglue 。}
+\end{itemize}
+
+\subsubsection{\zh{对\zhglue 齐\zhglue 口\zhglue 径\zhglue 的\zhglue 隐\zhglue 含\zhglue 要\zhglue 求}}\label{ux5bf9ux9f50ux53e3ux5f84ux7684ux9690ux542bux8981ux6c42}
+
+\begin{itemize}
+\tightlist
+\item
+  \zh{与} \textbf{tiktoken \zh{的} GPT-2} \zh{逐} id \zh{对\zhglue 齐} \sym{→} \zh{编\zhglue 码\zhglue 时\zhglue 必\zhglue 须}\textbf{\zh{严\zhglue 格\zhglue 按} merges \zh{的} rank \zh{顺\zhglue 序}}\zh{合\zhglue 并\zhglue ，} \zh{而\zhglue 不\zhglue 是}''\zh{最\zhglue 长\zhglue 匹\zhglue 配\zhglue 优\zhglue 先}''\zh{；\zhglue 且\zhglue 需\zhglue 处\zhglue 理} \passthrough{\lstinline!allowed\_special!} \zh{与\zhglue 重\zhglue 叠\zhglue 特\zhglue 殊} token\zh{（}\passthrough{\lstinline!test\_overlapping\_special\_tokens!}\zh{）\zhglue 。}
+\item
+  \zh{往\zhglue 返\zhglue 一\zhglue 致\zhglue 性\zhglue 覆\zhglue 盖\zhglue ：\zhglue 空\zhglue 串} / \zh{单\zhglue 字\zhglue 符} / Unicode / \zh{多\zhglue 行} / \zh{特\zhglue 殊} token \zh{尾\zhglue 随\zhglue 换\zhglue 行} / \zh{地\zhglue 址\zhglue 文\zhglue 本} / \zh{德\zhglue 语} / TinyStories\zh{。}
+\end{itemize}
+
+\subsection{\zh{六\zhglue 、\zhglue 开\zhglue 题\zhglue 批\zhglue （\zhglue 开\zhglue 场\zhglue 直\zhglue 接\zhglue 发\zhglue 给\zhglue 用\zhglue 户\zhglue ，}3--5 \zh{题\zhglue ）}}\label{ux516dux5f00ux9898ux6279ux5f00ux573aux76f4ux63a5ux53d1ux7ed9ux7528ux623735-ux9898}
+
+\begin{quote}
+\zh{见} \passthrough{\lstinline!../memory/HANDOFF.md!} \zh{的}''\zh{课\zhglue 题}01 \zh{开\zhglue 题\zhglue 批}''\zh{五\zhglue 题\zhglue （\zhglue 下\zhglue 注\zhglue 题} / \zh{概\zhglue 念\zhglue 题} / \zh{手\zhglue 算\zhglue 题} / \zh{权\zhglue 衡\zhglue 题} / \zh{工\zhglue 程\zhglue 题\zhglue ）\zhglue 。} \textbf{\zh{第} 1 \zh{题\zhglue （\zhglue 中\zhglue 文} token \zh{倍\zhglue 数\zhglue ）\zhglue 必\zhglue 须\zhglue 先\zhglue 存\zhglue 档\zhglue 预\zhglue 测}}\zh{，\zhglue 它\zhglue 是\zhglue 本\zhglue 学\zhglue 科\zhglue 第\zhglue 一\zhglue 条}''\zh{预\zhglue 测}\sym{→}\zh{打\zhglue 脸}''\zh{链\zhglue 路\zhglue 。}
+\end{quote}
+
+\subsection{\zh{七\zhglue 、\zhglue 讲\zhglue 课\zhglue 锚\zhglue 点\zhglue （\zhglue 知\zhglue 行\zhglue 合\zhglue 一\zhglue 的}''\zh{讲}''\zh{这\zhglue 一\zhglue 腿\zhglue ）}}\label{ux4e03ux8bb2ux8bfeux951aux70b9ux77e5ux884cux5408ux4e00ux7684ux8bb2ux8fd9ux4e00ux817f}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\zh{讲\zhglue 什\zhglue 么}}\zh{：}M2 \zh{的\zhglue 五\zhglue 个\zhglue 核\zhglue 心\zhglue 问\zhglue 题\zhglue （\zhglue 压\zhglue 缩\zhglue 视\zhglue 角} \sym{→} \zh{字\zhglue 节\zhglue 起\zhglue 步} \sym{→} \zh{训\zhglue 练\zhglue 算\zhglue 法} \sym{→} \zh{编\zhglue 码\zhglue 与\zhglue 往\zhglue 返} \sym{→} \zh{多\zhglue 语\zhglue 言\zhglue 成\zhglue 本\zhglue ）}
+\item
+  \textbf{\zh{对\zhglue 标\zhglue 材\zhglue 料}}\zh{（\zhglue 三\zhglue 师\zhglue 制\zhglue ）\zhglue ：}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \zh{主\zhglue 线\zhglue ：}\textbf{CS336 A1 handout} \zh{的} tokenizer \zh{章\zhglue 节\zhglue （\zhglue 英\zhglue 文\zhglue ，\zhglue 规\zhglue 格\zhglue 权\zhglue 威\zhglue ）}
+  \item
+    \zh{中\zhglue 文\zhglue ：}\textbf{\zh{李\zhglue 沐} d2l ch14.6 \zh{子\zhglue 词\zhglue 嵌\zhglue 入}}\zh{；\zhglue 或} \textbf{minimind \zh{的} \passthrough{\lstinline!train\_tokenizer.py!} \zh{中\zhglue 文\zhglue 注\zhglue 释}}\zh{（\zhglue 只\zhglue 读\zhglue ，\zhglue 不\zhglue 得\zhglue 抄\zhglue 进\zhglue 手\zhglue 写\zhglue 区\zhglue ）}
+  \item
+    \zh{补\zhglue 充\zhglue ：}\textbf{HF LLM Course ch2}\zh{（}``Implement BPE/WordPiece/Unigram from the ground up''\zh{）}
+  \end{itemize}
+\item
+  \textbf{\zh{讲\zhglue 完\zhglue 必\zhglue 出\zhglue 代\zhglue 码\zhglue 级\zhglue 提\zhglue 问\zhglue （}3--5 \zh{道\zhglue ，\zhglue 示\zhglue 例\zhglue ）}}\zh{：}
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    \zh{把} merge \zh{循\zhglue 环\zhglue 里}''\zh{统\zhglue 计\zhglue 相\zhglue 邻\zhglue 对\zhglue 频\zhglue 次}''\zh{改\zhglue 成}''\zh{只\zhglue 统\zhglue 计\zhglue 出\zhglue 现\zhglue 次\zhglue 数} \textgreater1 \zh{的\zhglue 对}''\zh{，\zhglue 词\zhglue 表\zhglue 会\zhglue 变\zhglue 得\zhglue 更\zhglue 好\zhglue 还\zhglue 是\zhglue 更\zhglue 差\zhglue ？\zhglue 预\zhglue 测\zhglue 并\zhglue 说\zhglue 明\zhglue 。}
+  \item
+    \zh{你\zhglue 的} encode \zh{如\zhglue 果\zhglue 按}''\zh{最\zhglue 长\zhglue 匹\zhglue 配\zhglue 优\zhglue 先}''\zh{而\zhglue 不\zhglue 是}''\zh{按} merge \zh{顺\zhglue 序}''\zh{，\zhglue 往\zhglue 返\zhglue 一\zhglue 致\zhglue 性\zhglue 还\zhglue 成\zhglue 立\zhglue 吗\zhglue ？}
+  \item
+    \zh{词\zhglue 表\zhglue 里\zhglue 如\zhglue 果\zhglue 混\zhglue 入\zhglue 一\zhglue 个}\textbf{\zh{重\zhglue 复\zhglue 的} token}\zh{，\zhglue 哪\zhglue 一\zhglue 步\zhglue 会\zhglue 先\zhglue 崩\zhglue 溃\zhglue ？}
+  \end{enumerate}
+\end{itemize}
+
+\subsection{\texorpdfstring{\zh{八\zhglue 、\zhglue 参\zhglue 考\zhglue 实\zhglue 现\zhglue （}\textbf{\zh{只\zhglue 准\zhglue 用\zhglue 于\zhglue 对\zhglue 照\zhglue ，\zhglue 不\zhglue 准\zhglue 抄}}\zh{）}}{\zh{八\zhglue 、\zhglue 参\zhglue 考\zhglue 实\zhglue 现\zhglue （\zhglue 只\zhglue 准\zhglue 用\zhglue 于\zhglue 对\zhglue 照\zhglue ，\zhglue 不\zhglue 准\zhglue 抄\zhglue ）}}}\label{ux516bux53c2ux8003ux5b9eux73b0ux53eaux51c6ux7528ux4e8eux5bf9ux7167ux4e0dux51c6ux6284}
+
+\begin{itemize}
+\tightlist
+\item
+  \passthrough{\lstinline!karpathy/nanochat!} \zh{的} \passthrough{\lstinline!nanochat/tokenizer.py!}\zh{（\zhglue 接\zhglue 口\zhglue 设\zhglue 计\zhglue 与\zhglue 特\zhglue 殊} token \zh{处\zhglue 理\zhglue ）}
+\item
+  \passthrough{\lstinline!rasbt/LLMs-from-scratch!} ch2 \zh{附\zhglue 带\zhglue 的} ``BPE From Scratch''
+\item
+  \sym{⚠️} \zh{纪\zhglue 律\zhglue ：}GS=\zh{看\zhglue 接\zhglue 口\zhglue 与\zhglue 设\zhglue 计\zhglue 思\zhglue 路\zhglue ，}\textbf{\zh{不\zhglue 看\zhglue 实\zhglue 现\zhglue 细\zhglue 节}}\zh{；\zhglue 你\zhglue 的\zhglue 代\zhglue 码\zhglue 必\zhglue 须\zhglue 自\zhglue 己\zhglue 写\zhglue 。} \zh{判\zhglue 据\zhglue ：}M5 \zh{的\zhglue 改\zhglue 坏\zhglue 实\zhglue 验\zhglue 能\zhglue 不\zhglue 能\zhglue 被\zhglue 你\zhglue 解\zhglue 释}------\zh{抄\zhglue 来\zhglue 的\zhglue 人\zhglue 在\zhglue 这\zhglue 里\zhglue 一\zhglue 定\zhglue 卡\zhglue 住\zhglue 。}
+\end{itemize}
+
+\newpage
+
+\section{\zh{判\zhglue 卷\zhglue 记\zhglue 录} \sym{·} \zh{课\zhglue 题}01 BPE \zh{分\zhglue 词\zhglue 器}}\label{ux5224ux5377ux8bb0ux5f55-ux8bfeux989801-bpe-ux5206ux8bcdux5668}
+
+\begin{quote}
+\zh{判\zhglue 分\zhglue 器\zhglue ：}\passthrough{\codezh{{\zh{环}}{\zh{境}}/judge/judge.sh 01}}\zh{（}CS336 \zh{官\zhglue 方} 2026 \zh{测\zhglue 试\zhglue ，\zhglue 锁} commit \passthrough{\lstinline!a158843b2010!}\zh{，}test\_*.py \zh{未\zhglue 改\zhglue 一\zhglue 字\zhglue ）} \zh{归\zhglue 档\zhglue 规\zhglue 则\zhglue ：\zhglue 只\zhglue 贴}\textbf{\zh{原\zhglue 始\zhglue 输\zhglue 出}}\zh{，\zhglue 不\zhglue 做\zhglue 美\zhglue 化\zhglue 、\zhglue 不\zhglue 做\zhglue 转\zhglue 述\zhglue （\zhglue 《\zhglue 判\zhglue 分\zhglue 与\zhglue 验\zhglue 收\zhglue 标\zhglue 准}.md\zh{》}\sym{§}\zh{二}-3\zh{）\zhglue 。}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{L1 \sym{·} \zh{基\zhglue 线\zhglue （}2026-09-17 \zh{立\zhglue 科\zhglue 时\zhglue 实\zhglue 跑\zhglue ）}}\label{l1-ux57faux7ebf2026-09-17-ux7acbux79d1ux65f6ux5b9eux8dd1}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\zh{项}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\zh{结\zhglue 果}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\zh{命\zhglue 令} & \passthrough{\codezh{{\zh{环}}{\zh{境}}/judge/judge.sh 01}} \\
+\zh{结\zhglue 果} & \textbf{27 failed, 1 xfailed} \\
+\zh{失\zhglue 败\zhglue 原\zhglue 因} & \textbf{\zh{全\zhglue 部\zhglue 同\zhglue 一\zhglue 原\zhglue 因}}\zh{：}\passthrough{\codezh{FileNotFoundError: {\zh{手}}{\zh{写}}{\zh{区}}{\zh{还}}{\zh{没}}{\zh{有}}{\zh{实}}{\zh{现}}{\zh{文}}{\zh{件}}}}\zh{（\zhglue 接\zhglue 线\zhglue 层\zhglue 主\zhglue 动\zhglue 抛\zhglue 出\zhglue 的\zhglue 友\zhglue 好\zhglue 提\zhglue 示\zhglue ）} \\
+\zh{判\zhglue 分\zhglue 器\zhglue 状\zhglue 态} & \emo{✅} \zh{管\zhglue 线\zhglue 已\zhglue 验\zhglue 证\zhglue 可\zhglue 执\zhglue 行\zhglue （}28 \zh{个\zhglue 测\zhglue 试\zhglue 全\zhglue 部\zhglue 被\zhglue 收\zhglue 集\zhglue 并\zhglue 运\zhglue 行\zhglue ，\zhglue 非\zhglue 网\zhglue 络}/\zh{环\zhglue 境\zhglue 错\zhglue 误\zhglue ）} \\
+\zh{结\zhglue 论} & \zh{这\zhglue 是}\textbf{\zh{正\zhglue 确\zhglue 的\zhglue 初\zhglue 始\zhglue 状\zhglue 态}}\zh{：\zhglue 判\zhglue 分\zhglue 器\zhglue 就\zhglue 位\zhglue ，\zhglue 只\zhglue 差} \passthrough{\codezh{{\zh{手}}{\zh{写}}/bpe.py}} \\
+\end{longtable}
+}
+
+\textbf{\zh{当\zhglue 初\zhglue 实\zhglue 跑\zhglue 的\zhglue 关\zhglue 键\zhglue 片\zhglue 段}}\zh{（\zhglue 完\zhglue 整\zhglue 输\zhglue 出\zhglue 会\zhglue 由\zhglue 脚\zhglue 本\zhglue 落\zhglue 到} \passthrough{\codezh{{\zh{证}}{\zh{据}}/judge-*.log}}\zh{）\zhglue ：}
+
+\begin{lstlisting}
+FAILED tests/test_train_bpe.py::test_train_bpe_speed - FileNotFoundError
+FAILED tests/test_train_bpe.py::test_train_bpe - FileNotFoundError
+FAILED tests/test_train_bpe.py::test_train_bpe_special_tokens - FileNotFoundError
+FAILED tests/test_tokenizer.py::... (*@{\zh{（}}@*)24 (*@{\zh{项}}@*)(*@{\zh{，}}@*)(*@{\zh{含}}@*) test_encode_iterable_memory_usage(*@{\zh{）}}@*)
+======================== 27 failed, 1 xfailed in 3.67s =========================
+\end{lstlisting}
+
+\begin{quote}
+\zh{注\zhglue ：}\passthrough{\lstinline!1 xfailed!} \zh{不\zhglue 是\zhglue 缺\zhglue 陷}------\zh{它\zhglue 是\zhglue 官\zhglue 方}\textbf{\zh{故\zhglue 意\zhglue 标\zhglue 记}}\zh{的} \passthrough{\lstinline!test\_encode\_memory\_usage!} \zh{（\zhglue 理\zhglue 由\zhglue ：}``encode \zh{预\zhglue 期\zhglue 会\zhglue 超\zhglue 过} 1MB \zh{配\zhglue 额}''\zh{）\zhglue 。\zhglue 详\zhglue 见} \passthrough{\codezh{{\zh{开}}{\zh{题}}{\zh{简}}{\zh{报}}.md}} \sym{§}\zh{五\zhglue 之\zhglue 二\zhglue 。}
+\end{quote}
+
+\subsection{L2 \sym{·} \zh{导\zhglue 师\zhglue 审\zhglue 稿\zhglue 意\zhglue 见}}\label{l2-ux5bfcux5e08ux5ba1ux7a3fux610fux89c1}
+
+\emo{⏳} \zh{待\zhglue 用\zhglue 户\zhglue 提\zhglue 交\zhglue 首\zhglue 次\zhglue 实\zhglue 现\zhglue 后\zhglue 填\zhglue 写\zhglue （}3--5 \zh{条\zhglue ：\zhglue 必\zhglue 考\zhglue 项} / \zh{要\zhglue 记\zhglue 住} / \zh{预\zhglue 告\zhglue 项\zhglue ）\zhglue 。}
+
+\subsection{L3 \sym{·} \zh{费\zhglue 曼\zhglue 收\zhglue 口}}\label{l3-ux8d39ux66fcux6536ux53e3}
+
+\emo{⬜} \zh{未\zhglue 开\zhglue 始\zhglue 。\zhglue 收\zhglue 口\zhglue 动\zhglue 作\zhglue ：\zhglue 你\zhglue 对\zhglue 着}''\zh{完\zhglue 全\zhglue 不\zhglue 懂\zhglue 分\zhglue 词\zhglue 的\zhglue 人}''\zh{讲\zhglue 清} BPE\zh{，\zhglue 我\zhglue 装\zhglue 不\zhglue 懂\zhglue 连\zhglue 问\zhglue 三\zhglue 层} \zh{（}Why \sym{→} Why not \sym{→} What if\zh{）\zhglue ，\zhglue 再\zhglue 抽} 1 \zh{次}''\zh{改\zhglue 坏\zhglue 实\zhglue 验}''\zh{复\zhglue 述\zhglue 。}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\zh{本\zhglue 课\zhglue 题\zhglue 的\zhglue 判\zhglue 分\zhglue 环\zhglue 境\zhglue 坑\zhglue （\zhglue 已\zhglue 解\zhglue 决\zhglue ，\zhglue 记\zhglue 录\zhglue 备\zhglue 查\zhglue ）}}\label{ux672cux8bfeux9898ux7684ux5224ux5206ux73afux5883ux5751ux5df2ux89e3ux51b3ux8bb0ux5f55ux5907ux67e5}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\zh{坑}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\zh{现\zhglue 象}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\zh{处\zhglue 置}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\zh{官\zhglue 方} conftest \zh{需} Python \sym{≥}3.12 & \zh{官\zhglue 方} \passthrough{\lstinline!pyproject.toml!}: \passthrough{\lstinline!requires-python = ">=3.12,<3.14"!}\zh{；}conftest \zh{用} PEP 695 \zh{泛\zhglue 型\zhglue 语\zhglue 法\zhglue ，}3.11 \zh{无\zhglue 法\zhglue 解\zhglue 析} & 3.11 \zh{下\zhglue 自\zhglue 动\zhglue 改\zhglue 用}\textbf{\zh{等\zhglue 价\zhglue 轻\zhglue 量} conftest}\zh{（\zhglue 同\zhglue 一} \passthrough{\lstinline!snapshot!} \zh{夹\zhglue 具\zhglue 语\zhglue 义\zhglue ）\zhglue ，\zhglue 并\zhglue 在\zhglue 日\zhglue 志\zhglue 头\zhglue 部\zhglue 如\zhglue 实\zhglue 声\zhglue 明\zhglue ；\zhglue 升\zhglue 到} 3.12+ \zh{后\zhglue 自\zhglue 动\zhglue 切\zhglue 回\zhglue 官\zhglue 方\zhglue 原\zhglue 文} \\
+tiktoken \zh{需\zhglue 联\zhglue 网\zhglue 下\zhglue 载} GPT-2 \zh{词\zhglue 表} & \zh{无\zhglue 外\zhglue 网\zhglue 时} \passthrough{\lstinline!SSLError!} \zh{挂\zhglue 掉} 12 \zh{项\zhglue 对\zhglue 齐\zhglue 测\zhglue 试} & \zh{新\zhglue 增} \passthrough{\codezh{{\zh{环}}{\zh{境}}/judge/prefetch\textbackslash{}\_tiktoken.py}}\zh{：\zhglue 用\zhglue 官\zhglue 方} fixture \textbf{\zh{离\zhglue 线\zhglue 构\zhglue 造}} tiktoken \zh{缓\zhglue 存\zhglue （}encoder.json \zh{哈\zhglue 希\zhglue 与} tiktoken \zh{内\zhglue 置\zhglue 期\zhglue 望\zhglue 一\zhglue 致\zhglue ，\zhglue 已\zhglue 验\zhglue 证} n\_vocab=50257\zh{）} \\
+PyTorch CPU \zh{专\zhglue 用\zhglue 源\zhglue 不\zhglue 可\zhglue 达} & \passthrough{\lstinline!download.pytorch.org!} SSL \zh{被\zhglue 拦} & bootstrap \zh{改\zhglue 为\zhglue ：\zhglue 默\zhglue 认\zhglue 不\zhglue 装} torch\zh{（\zhglue 课\zhglue 题}01 \zh{不\zhglue 需\zhglue 要\zhglue ）\zhglue ；}\passthrough{\lstinline!--with-torch!} \zh{时\zhglue 先\zhglue 试} CPU \zh{源\zhglue 、\zhglue 失\zhglue 败\zhglue 退\zhglue 回} PyPI \\
+\end{longtable}
+}
+
+\end{document}

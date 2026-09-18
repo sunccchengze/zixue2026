@@ -1,0 +1,253 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{listings}
+\newcommand{\passthrough}[1]{#1}
+\lstset{defaultdialect=[5.3]Lua}
+\lstset{defaultdialect=[x86masm]Assembler}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+\ifLuaTeX
+\else
+\fi
+\ifLuaTeX
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% ═══ 由 环境/pdf/latex/md到LaTeX.py 生成 ═══
+% 中文字体：思源宋体（子集，SIL OFL 1.1）；拉丁/数学：Latin Modern（随 TeX Live 分发）
+% 编译：xelatex（本仓库自带 wasm 版 XeTeX 引擎，见 环境/pdf/latex/编译LaTeX.mjs）
+\usepackage[T1]{fontenc}      % 否则 ASCII 的 < > | 在 OT1 下排成 ¡ ¿ —
+\usepackage{lmodern}          % 必需：数学的物理字模（否则 xdvipdfmx 拒绝出 PDF）
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs,longtable,array,multirow}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+% 不用 hyperref：新版 hyperref 强制依赖 bookmark.sty，而 bundle 里没有。
+% 链接命令用降级定义，保证正文里的 \href / \url 不会报错。
+\providecommand{\href}[2]{#2}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\hypertarget}[2]{#2}
+\providecommand{\hyperlink}[2]{#2}
+\providecommand{\urlstyle}[1]{}
+\providecommand{\texorpdfstring}[2]{#1}   % hyperref 的命令，剥离后仍被模板/标题用到
+\providecommand{\phantomsection}{}
+\providecommand{\pdfstringdef}[2]{}
+\providecommand{\hypersetup}[1]{}
+
+% ── 三套字体：中文 / 符号 / emoji（按字符 cmap 自动选择）──
+\font\zhfont="[NotoSerifSC-Regular.ttf]:script=hani" at 10.5pt
+\font\symfont="[DejaVuSans.ttf]" at 10.5pt
+\font\emofont="[NotoEmoji-Regular.ttf]" at 10.5pt
+\font\zhmonofont="[NotoSansSC-Regular.ttf]" at 9pt
+% 用法：\zh{中文} / \sym{→} / \emo{🦙}
+% 注意：必须**带参数**。写成 \def\zh{{\zhfont}} 是错的——字体赋值只在小群里有效，
+% 那个小群随 \zh 立刻结束，于是中文仍然用拉丁字体排，报 Missing character。
+\def\zh#1{{\zhfont #1}}
+\def\sym#1{{\symfont #1}}
+\def\emo#1{{\emofont #1}}
+% 含汉字的行内代码：listings 的 \lstinline 遇到汉字必炸（`\lst@arg ->判`
+% 未定义控制字，catcode 设 12 也无效），所以直接自己排。
+\def\codezh#1{{\zhmonofont #1}}
+
+\def\zhglue{\hskip0pt plus .06em minus .01em}
+\linespread{1.12}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+% ── 代码块：等宽 + 中文字体（listings 默认字体不含汉字）──
+\lstset{
+  basicstyle=\zhmonofont,
+  breaklines=true,
+  breakatwhitespace=false,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  frame=single,
+  framesep=4pt,
+  rulecolor=\color{gray!45},
+  backgroundcolor=\color{gray!7},
+  xleftmargin=6pt,
+  extendedchars=true,
+  tabsize=2,
+  % 代码块里的 emoji：NotoSansSC 没有这些字形（listings 不做字符级回退）。
+  % 用 escapeinside 开口子，转换器把 emoji 逐字包成 (*@{\emo{⭐}}@*)。
+  % 试过 literate={⭐}{{\emofont ⭐}}1，会把 ASCII 字母也吞掉并报
+  % `Improper alphabetic constant`，不可用。
+  escapeinside={(*@}{@*)},
+}
+\renewcommand{\lstlistingname}{\zh{代\zhglue 码}}
+
+% ── 表格线宽（booktabs 风格）──
+\renewcommand{\arraystretch}{1.25}
+
+% ── 标题样式 ──
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.1em}{0.5em}
+\urlstyle{same}
+\hypersetup{
+  pdftitle={\zh{课\zhglue 题}06-\zh{多\zhglue 卡\zhglue 与\zhglue 分\zhglue 布\zhglue 式}},
+  pdflang={zh-CN},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{\zh{课\zhglue 题}06-\zh{多\zhglue 卡\zhglue 与\zhglue 分\zhglue 布\zhglue 式}}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section{\zh{课\zhglue 题}06 \zh{开\zhglue 题\zhglue 简\zhglue 报} \sym{·} \zh{多\zhglue 卡\zhglue 与\zhglue 分\zhglue 布\zhglue 式\zhglue 训\zhglue 练}}\label{ux8bfeux989806-ux5f00ux9898ux7b80ux62a5-ux591aux5361ux4e0eux5206ux5e03ux5f0fux8badux7ec3}
+
+\begin{quote}
+\zh{模\zhglue 块\zhglue ：}\textbf{M4} \zh{｜} \zh{周\zhglue 次\zhglue ：}\textbf{W9\zh{（}11-09\sym{→}11-15\zh{）}} \zh{｜} \zh{算\zhglue 力\zhglue ：}\textbf{T2 Kaggle 2\sym{×}T4\zh{，\zhglue 计\zhglue 划} 8 GPU\sym{·}\zh{小\zhglue 时}} \zh{唐\zhglue 杰\zhglue 作\zhglue 业\zhglue 对\zhglue 应\zhglue ：}\textbf{\sym{②} \zh{的}''\zh{多\zhglue 卡\zhglue 训\zhglue 练\zhglue 增\zhglue 益}''\zh{部\zhglue 分}} \zh{｜} \zh{判\zhglue 分\zhglue 来\zhglue 源\zhglue ：}\textbf{CS336 A2 \zh{分\zhglue 布\zhglue 式\zhglue 部\zhglue 分} + \zh{自\zhglue 建} benchmark} \zh{手\zhglue 写\zhglue ：}\textbf{R3 \zh{的\zhglue 延\zhglue 伸\zhglue （\zhglue 并\zhglue 行\zhglue 策\zhglue 略\zhglue 选\zhglue 择\zhglue 与\zhglue 通\zhglue 信\zhglue 原\zhglue 语\zhglue 判\zhglue 断\zhglue ）}}
+\end{quote}
+
+\subsection{\zh{一\zhglue 、\zhglue 研\zhglue 究\zhglue 背\zhglue 景}}\label{ux4e00ux7814ux7a76ux80ccux666f}
+
+\zh{数\zhglue 据\zhglue 并\zhglue 行\zhglue （}DDP\zh{）\zhglue 把\zhglue 同\zhglue 一\zhglue 模\zhglue 型\zhglue 复\zhglue 制\zhglue 到\zhglue 每\zhglue 张\zhglue 卡\zhglue 、\zhglue 各\zhglue 自\zhglue 算\zhglue 一\zhglue 个\zhglue 微\zhglue 批\zhglue 、\zhglue 再}\textbf{\zh{同\zhglue 步\zhglue 梯\zhglue 度}}\zh{；} \zh{当\zhglue 模\zhglue 型\zhglue 放\zhglue 不\zhglue 下\zhglue 单\zhglue 卡\zhglue 时\zhglue ，\zhglue 才\zhglue 有} FSDP/ZeRO\zh{（\zhglue 切\zhglue 分\zhglue 参\zhglue 数\zhglue 、\zhglue 梯\zhglue 度\zhglue 、\zhglue 优\zhglue 化\zhglue 器\zhglue 状\zhglue 态\zhglue ）\zhglue 、\zhglue 张\zhglue 量\zhglue 并\zhglue 行\zhglue （\zhglue 切\zhglue 层\zhglue 内\zhglue 矩\zhglue 阵\zhglue ）\zhglue 、\zhglue 流\zhglue 水\zhglue 线\zhglue 并\zhglue 行\zhglue （\zhglue 切\zhglue 层\zhglue ）\zhglue 。} \textbf{Kaggle \zh{免\zhglue 费\zhglue 档\zhglue 给\zhglue 的\zhglue 是} 2\sym{×}T4\zh{，\zhglue 且\zhglue 走} PCIe \zh{而\zhglue 非} NVLink} ------ \zh{这\zhglue 恰\zhglue 好\zhglue 是}''\zh{观\zhglue 察\zhglue 通\zhglue 信\zhglue 成\zhglue 为\zhglue 瓶\zhglue 颈}''\zh{的\zhglue 最\zhglue 佳\zhglue 实\zhglue 验\zhglue 台\zhglue 。}
+
+\subsection{\zh{二\zhglue 、\zhglue 研\zhglue 究\zhglue 问\zhglue 题}}\label{ux4e8cux7814ux7a76ux95eeux9898}
+
+\begin{quote}
+\textbf{\zh{在\zhglue 弱\zhglue 互\zhglue 联\zhglue （}PCIe\zh{）\zhglue 的} 2\sym{×}T4 \zh{上\zhglue ，}DDP \zh{的\zhglue 扩\zhglue 展\zhglue 效\zhglue 率\zhglue 是\zhglue 多\zhglue 少\zhglue ？\zhglue 瓶\zhglue 颈\zhglue 是\zhglue 计\zhglue 算\zhglue 还\zhglue 是\zhglue 通\zhglue 信\zhglue ？}FSDP \zh{在\zhglue 什\zhglue 么\zhglue 规\zhglue 模\zhglue 才\zhglue 开\zhglue 始\zhglue 划\zhglue 算\zhglue ？}}
+\end{quote}
+
+\subsection{\zh{三\zhglue 、\zhglue 攻\zhglue 关\zhglue 线\zhglue 索}}\label{ux4e09ux653bux5173ux7ebfux7d22}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{\zh{先\zhglue 对\zhglue 齐\zhglue 正\zhglue 确\zhglue 性}}\zh{：}DDP \zh{后\zhglue 的\zhglue 梯\zhglue 度\zhglue 应\zhglue 与\zhglue 单\zhglue 卡\zhglue （\zhglue 同\zhglue 等\zhglue 效\zhglue 批\zhglue 大\zhglue 小\zhglue ）}\textbf{\zh{数\zhglue 值\zhglue 一\zhglue 致}}\zh{，\zhglue 先\zhglue 验\zhglue 证\zhglue 再\zhglue 谈\zhglue 性\zhglue 能}
+\item
+  \textbf{\zh{批\zhglue 大\zhglue 小\zhglue 语\zhglue 义}}\zh{：}2 \zh{卡} \sym{×} \zh{每\zhglue 卡} batch = \zh{等\zhglue 效\zhglue 批\zhglue 大\zhglue 小\zhglue ；\zhglue 若\zhglue 显\zhglue 存\zhglue 受\zhglue 限\zhglue 要}\textbf{\zh{同\zhglue 步\zhglue 调\zhglue 整\zhglue 学\zhglue 习\zhglue 率}}\zh{（\zhglue 线\zhglue 性}/\zh{平\zhglue 方\zhglue 根\zhglue 缩\zhglue 放\zhglue ）}
+\item
+  \textbf{\zh{计\zhglue 时\zhglue 口\zhglue 径}}\zh{：}\passthrough{\lstinline!step time!} \zh{要\zhglue 区\zhglue 分}''\zh{纯\zhglue 计\zhglue 算\zhglue 时\zhglue 间}''\zh{与}''\zh{含} all-reduce \zh{的\zhglue 时\zhglue 间}''\zh{；\zhglue 用} \passthrough{\lstinline!torch.profiler!} \zh{或\zhglue 手\zhglue 写\zhglue 计\zhglue 时}
+\item
+  \textbf{\zh{扩\zhglue 展\zhglue 效\zhglue 率}}\zh{：}\(E = \dfrac{T_1}{2\,T_2}\)\zh{。}\textbf{\zh{先\zhglue 预\zhglue 测}}\zh{（}PCIe \zh{下} 0.6--0.8\zh{？\zhglue ）\zhglue 再\zhglue 测}
+\item
+  \textbf{\zh{通\zhglue 信\zhglue 占\zhglue 比}}\zh{：\zhglue 梯\zhglue 度\zhglue 同\zhglue 步\zhglue 量\zhglue 与\zhglue 参\zhglue 数\zhglue 量\zhglue 成\zhglue 正\zhglue 比\zhglue （}\(2N\) \zh{字\zhglue 节}/\zh{步\zhglue ，}all-reduce \zh{近\zhglue 似\zhglue ）\zhglue ；\zhglue 序\zhglue 列\zhglue 长}/\zh{批\zhglue 小\zhglue 时\zhglue 通\zhglue 信\zhglue 占\zhglue 比\zhglue 更\zhglue 高}
+\item
+  \textbf{FSDP \zh{的\zhglue 代\zhglue 价}}\zh{：\zhglue 切\zhglue 分\zhglue 带\zhglue 来\zhglue 额\zhglue 外\zhglue 通\zhglue 信\zhglue （}all-gather + reduce-scatter\zh{）\zhglue ，}\textbf{\zh{小\zhglue 模\zhglue 型\zhglue 上\zhglue 往\zhglue 往\zhglue 更\zhglue 慢}}
+\end{enumerate}
+
+\subsection{\zh{四\zhglue 、\zhglue 里\zhglue 程\zhglue 碑}}\label{ux56dbux91ccux7a0bux7891}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  M1 DDP \zh{梯\zhglue 度\zhglue 一\zhglue 致\zhglue 性\zhglue 验\zhglue 证\zhglue （\zhglue 与\zhglue 单\zhglue 卡\zhglue 同\zhglue 等\zhglue 效\zhglue 批\zhglue ）}\sym{→} \zh{记\zhglue 录\zhglue 最\zhglue 大\zhglue 误\zhglue 差}
+\item[$\square$]
+  M2 \zh{单\zhglue 卡} vs \zh{双\zhglue 卡} \zh{的} \passthrough{\lstinline!step time!}\zh{、}\passthrough{\lstinline!tokens/s!} \zh{对\zhglue 照\zhglue （\zhglue 同\zhglue 模\zhglue 型\zhglue 、\zhglue 同\zhglue 等\zhglue 效\zhglue 批\zhglue ）}
+\item[$\square$]
+  M3 \textbf{\zh{扩\zhglue 展\zhglue 效\zhglue 率\zhglue 曲\zhglue 线}}\zh{（\zhglue 至\zhglue 少} 3 \zh{个\zhglue 配\zhglue 置\zhglue 点\zhglue ：\zhglue 不\zhglue 同} batch/\zh{序\zhglue 列\zhglue 长\zhglue 度\zhglue ）}
+\item[$\square$]
+  M4 \textbf{\zh{通\zhglue 信\zhglue 占\zhglue 比\zhglue 分\zhglue 解}}\zh{：\zhglue 计\zhglue 算} / all-reduce / \zh{数\zhglue 据\zhglue 加\zhglue 载} \zh{三\zhglue 段\zhglue 计\zhglue 时}
+\item[$\square$]
+  M5 \zh{一\zhglue 次} FSDP \zh{实\zhglue 验\zhglue 并\zhglue 解\zhglue 释}''\zh{为\zhglue 什\zhglue 么\zhglue （\zhglue 不\zhglue ）\zhglue 划\zhglue 算}''
+\item[$\square$]
+  M6 \textbf{\zh{先\zhglue 写\zhglue 预\zhglue 测\zhglue 再\zhglue 实\zhglue 测}}\zh{：\zhglue 预\zhglue 测\zhglue 扩\zhglue 展\zhglue 效\zhglue 率\zhglue ，\zhglue 跑\zhglue 完\zhglue 对\zhglue 照\zhglue （\zhglue 进} \passthrough{\lstinline!memory/MEMORY.md!} \zh{打\zhglue 脸\zhglue 日\zhglue 志\zhglue ）}
+\item[$\square$]
+  M7 \zh{一\zhglue 页\zhglue 报\zhglue 告}
+\end{itemize}
+
+\subsection{\zh{五\zhglue 、\zhglue 交\zhglue 付\zhglue 物}}\label{ux4e94ux4ea4ux4ed8ux7269}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+\zh{交\zhglue 付\zhglue 物} & \zh{位\zhglue 置} & \zh{验\zhglue 收} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\zh{分\zhglue 布\zhglue 式\zhglue 脚\zhglue 本} & \passthrough{\codezh{{\zh{手}}{\zh{写}}/}} \zh{或} \passthrough{\codezh{{\zh{脚}}{\zh{手}}{\zh{架}}/}}\zh{（\zhglue 按} B3 \zh{分\zhglue 类\zhglue ）} & \zh{可\zhglue 复\zhglue 跑} \\
+\zh{计\zhglue 时\zhglue 原\zhglue 始\zhglue 数\zhglue 据} & \passthrough{\codezh{{\zh{证}}{\zh{据}}/bench.csv}} & \zh{含\zhglue 每\zhglue 配\zhglue 置} 3 \zh{次\zhglue 重\zhglue 复} \\
+\zh{扩\zhglue 展\zhglue 效\zhglue 率\zhglue 曲\zhglue 线} & \passthrough{\codezh{{\zh{证}}{\zh{据}}/}} & \zh{标\zhglue 注\zhglue 硬\zhglue 件\zhglue （}2\sym{×}T4 PCIe\zh{）\zhglue 与\zhglue 对\zhglue 比\zhglue 基\zhglue 准} \\
+\zh{报\zhglue 告} & \passthrough{\codezh{{\zh{报}}{\zh{告}}.md}} & \zh{解\zhglue 释}''\zh{为\zhglue 什\zhglue 么\zhglue 不\zhglue 是} 2 \zh{倍}'' \\
+\end{longtable}
+}
+
+\subsection{\zh{六\zhglue 、\zhglue 讲\zhglue 课\zhglue 锚\zhglue 点}}\label{ux516dux8bb2ux8bfeux951aux70b9}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\zh{讲\zhglue 义}}\zh{：}\passthrough{\codezh{M4-{\zh{训}}{\zh{练}}.md}}\zh{（}W3 \zh{展\zhglue 开\zhglue ）\zhglue 中\zhglue 并\zhglue 行\zhglue 一\zhglue 节}
+\item
+  \textbf{\zh{对\zhglue 标}}\zh{：}CS336 lecture 07--08\zh{（}Parallelism\zh{）}\sym{·} \passthrough{\lstinline!nanochat/optim.py!}\zh{（\zhglue 分\zhglue 布\zhglue 式\zhglue 优\zhglue 化\zhglue 器\zhglue 实\zhglue 现\zhglue ）}\sym{·} HF Ultra-Scale Playbook\zh{（\zhglue 用\zhglue 前\zhglue 先\zhglue 核\zhglue ）}
+\item
+  \textbf{\zh{搭\zhglue 桥}}\zh{：}M0 \zh{的}''\zh{梯\zhglue 度\zhglue 累\zhglue 加}''\sym{→} DDP \zh{就\zhglue 是}\textbf{\zh{跨\zhglue 卡\zhglue 的\zhglue 梯\zhglue 度\zhglue 累\zhglue 加}}
+\end{itemize}
+
+\subsection{\zh{七\zhglue 、\zhglue 代\zhglue 码\zhglue 级\zhglue 提\zhglue 问\zhglue 示\zhglue 例}}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95eeux793aux4f8b}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  2\sym{×}T4 \zh{上} DDP \zh{只\zhglue 快\zhglue 了} 1.4 \zh{倍\zhglue ，\zhglue 列\zhglue 出\zhglue 三\zhglue 个\zhglue 最\zhglue 可\zhglue 能\zhglue 的\zhglue 原\zhglue 因\zhglue 。}
+\item
+  \zh{把\zhglue 每\zhglue 卡} batch \zh{减\zhglue 半\zhglue 、\zhglue 用\zhglue 梯\zhglue 度\zhglue 累\zhglue 积\zhglue 补\zhglue 回\zhglue 等\zhglue 效\zhglue 批\zhglue ，\zhglue 通\zhglue 信\zhglue 量\zhglue 会\zhglue 怎\zhglue 么\zhglue 变\zhglue ？}
+\item
+  \zh{什\zhglue 么\zhglue 情\zhglue 况\zhglue 下} FSDP \zh{会}\textbf{\zh{比} DDP \zh{慢}}\zh{？\zhglue （\zhglue 用\zhglue 通\zhglue 信\zhglue 量\zhglue 解\zhglue 释\zhglue ）}
+\item
+  all-reduce \zh{的\zhglue 通\zhglue 信\zhglue 量\zhglue 是\zhglue 多\zhglue 少\zhglue 字\zhglue 节}/\zh{步\zhglue ？\zhglue 用\zhglue 参\zhglue 数\zhglue 量} \(N\) \zh{表\zhglue 示\zhglue 。}
+\end{enumerate}
+
+\subsection{\zh{八\zhglue 、\zhglue 风\zhglue 险\zhglue 与\zhglue 提\zhglue 醒}}\label{ux516bux98ceux9669ux4e0eux63d0ux9192}
+
+\begin{itemize}
+\tightlist
+\item
+  \sym{⚠️} Kaggle \zh{双} T4 \zh{会\zhglue 话}\textbf{\zh{不\zhglue 稳\zhglue 定}}\zh{（\zhglue 可\zhglue 能\zhglue 只\zhglue 给\zhglue 一\zhglue 张\zhglue ）\zhglue ：\zhglue 预\zhglue 检\zhglue 时\zhglue 确\zhglue 认} \passthrough{\lstinline!torch.cuda.device\_count()==2!}\zh{。}
+\item
+  \sym{⚠️} \zh{不\zhglue 要\zhglue 在\zhglue 本\zhglue 课\zhglue 题\zhglue 纠\zhglue 缠}''\zh{调\zhglue 到\zhglue 最\zhglue 快}''------\textbf{\zh{目\zhglue 标\zhglue 是\zhglue 理\zhglue 解\zhglue 扩\zhglue 展\zhglue 效\zhglue 率\zhglue 的\zhglue 成\zhglue 因}}\zh{，\zhglue 配\zhglue 额\zhglue 要\zhglue 留\zhglue 给\zhglue 课\zhglue 题}08\zh{。}
+\end{itemize}
+
+\end{document}

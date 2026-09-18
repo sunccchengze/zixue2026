@@ -63,7 +63,7 @@
     #v(1.4cm)
     #text(font: SANS, size: 27pt, weight: "bold", fill: ACCENT)[大模型实训讲义 · 全书]
     #v(0.5cm)
-    #text(font: SANS, size: 12.5pt, fill: ACCENT2)[从零实现大模型：M0–M9 知识主干（16 周 / 11 课题 / 零预算）]
+    #text(font: SANS, size: 12.5pt, fill: ACCENT2)[从零实现大模型：M0–M9 知识主干]
     #v(1.0cm)
     #line(length: 45%, stroke: 0.8pt + luma(150))
     #v(1.0cm)
@@ -78,33 +78,6 @@
   #pagebreak()
 ]
 
-#[
-  #set heading(numbering: none)
-  = 版权与使用说明
-  #text(size: 9.5pt)[
-  *这是什么。* 本 PDF 是「人工智能基础与应用 · 大模型实训」知识轨的讲义合集，由 `讲义/*.md` 自动排版生成。
-  讲义与课题一一对应：每讲都由「要回答的问题 → 主干 → 伪代码骨架 → 代码在哪里 → 常见误解 → 能立刻跑的实验 → 代码级提问 → 记忆锚」八件套组成。
-  *为什么以 Markdown 为母版。* PDF 便于通读与打印，但**唯一真相是仓库里的 `.md`**：
-  内容修订、代码定位、实验数据只改 Markdown，PDF 随时重新生成。看到 PDF 与仓库不一致时，以仓库为准。
-
-  *重新生成。*
-
-  ```bash
-  cd 人工智能基础与应用
-  环境/pdf/生成讲义PDF.sh --book      # 生成全书
-  环境/pdf/生成讲义PDF.sh --all       # 每讲各出一个 PDF
-  ```
-
-  *字体与排版。* 正文思源宋体（Noto Serif SC），标题思源黑体（Noto Sans SC），代码 DejaVu Sans Mono；
-  三者均按 SIL OFL 1.1 / Bitstream Vera 许可授权，可自由再分发。排版引擎 typst 0.15。
-  字体文件由 `环境/pdf/bootstrap.sh` 从 npm（\@expo-google-fonts 系列）取得，编译过程完全离线。
-
-  *读法建议。* 先读每讲开头的「要回答的问题」，自己试着答一遍；再读对标名师的原始材料（见《对标教学资源清单》）；
-  然后回到本讲义看主干与代码定位；最后做「代码级提问」并写下预测，再动手改代码验证。
-  预测错不是失败——#strong[预测错 + 实验打脸]才是这套学法里质量最高的时刻。
-  ]
-  #pagebreak()
-]
 #[
   = 目录
   #show outline.entry.where(level: 1): set text(weight: "bold", size: 11pt, fill: ACCENT)
@@ -227,6 +200,7 @@ PDF 生成日期：2026-09-17（母版有改动就要重跑 #raw("环境/pdf/生
 #strong[纪律]：讲义里#strong[不含可直接粘贴到 #raw("手写/") 的实现]（见《造轮子边界.md》）。 讲义给的是"坐标系 + 陷阱 + 判据"，代码必须你自己长出来。
 
 #pagebreak()
+
 = 讲义 M0 · 数学与机器学习地基
 
 #block(width: 100%, above: 9pt, below: 9pt, inset: (left: 12pt, right: 8pt, y: 6pt), stroke: (left: 3pt + luma(180)), fill: luma(252))[
@@ -428,6 +402,7 @@ PY", block: true, lang: "bash")
 - #strong[符号位置法]：把 $"bpb" = frac(H, ln 2 ⋅ B)$ 写在卡片中央， #strong[分子 H 是"每 token 的惊讶"，分母 B 是"每 token 的字节"]， 中间一条分数线＝"把单位从 token 换成 byte"——这条线就是跨分词器比较的桥。
 
 #pagebreak()
+
 = 讲义 M1 · 从 n-gram 到 Transformer
 
 #block(width: 100%, above: 9pt, below: 9pt, inset: (left: 12pt, right: 8pt, y: 6pt), stroke: (left: 3pt + luma(180)), fill: luma(252))[
@@ -598,6 +573,7 @@ PY", block: true, lang: "bash")
 - #strong[符号位置法]：把 $O(L)$ 与 $O(1)$ 并排写在卡片上—— #strong[左边是"要走 L 步"，右边是"一步直达"]；下面是代价 $O(L^2)$，提醒你注意力不是免费的。
 
 #pagebreak()
+
 = 讲义 M2 · 分词与表示
 
 #block(width: 100%, above: 9pt, below: 9pt, inset: (left: 12pt, right: 8pt, y: 6pt), stroke: (left: 3pt + luma(180)), fill: luma(252))[
@@ -848,6 +824,7 @@ PY", block: true, lang: "bash")
 - #strong[课程板块]：本讲直接对应课程大纲的"大语言模型"入门，也是大论文"方法"章的第一段素材
 
 #pagebreak()
+
 = 讲义 M3 · Transformer 内部机制
 
 #block(width: 100%, above: 9pt, below: 9pt, inset: (left: 12pt, right: 8pt, y: 6pt), stroke: (left: 3pt + luma(180)), fill: luma(252))[
@@ -1082,6 +1059,7 @@ PY", block: true, lang: "bash")
 - #strong[符号位置法]：$frac(Q K^(⊤), sqrt(d_k))$ —— 把 $sqrt(d_k)$ 写在分数线下方， 心里念"#strong[维度越高，内积越炸，除以根号拉回来]"。
 
 #pagebreak()
+
 = 讲义 M4–M9 · 展开大纲（按周写完整版）
 
 #block(width: 100%, above: 9pt, below: 9pt, inset: (left: 12pt, right: 8pt, y: 6pt), stroke: (left: 3pt + luma(180)), fill: luma(252))[

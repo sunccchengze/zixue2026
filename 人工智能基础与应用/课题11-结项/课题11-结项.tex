@@ -1,0 +1,210 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+  chinese,
+  11pt,
+]{ctexart}
+\usepackage{xcolor}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Noto Serif SC}
+    \setCJKsansfont[]{Noto Sans SC}
+    \setCJKmonofont[]{DejaVu Sans Mono}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Noto Serif SC}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\ifLuaTeX
+\usepackage[bidi=basic,shorthands=off,provide=*]{babel}
+\else
+\usepackage[bidi=default,shorthands=off,provide=*]{babel}
+\fi
+\ifLuaTeX
+  \usepackage{selnolig} % disable illegal ligatures
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={课题11-结项},
+  pdflang={zh-CN},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{课题11-结项}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section{课题11 开题简报 · 结项（NeurIPS 报告 + 现场 demo）}\label{ux8bfeux989811-ux5f00ux9898ux7b80ux62a5-ux7ed3ux9879neurips-ux62a5ux544a-ux73b0ux573a-demo}
+
+\begin{quote}
+模块：\textbf{M9} ｜ 周次：\textbf{W15--W16（12-21→2027-01-03）} ｜ 算力：\textbf{弹性 ≤4 GPU·小时} 唐杰作业对应：\textbf{⑥ 英文 NeurIPS 格式 + W16 现场 demo}、\textbf{⑦ 作业 40\% / 大项目 60\%} ｜ 判分来源：\textbf{报告协议 + 导师审稿 + 自我攻击}
+\end{quote}
+
+\subsection{一、研究背景}\label{ux4e00ux7814ux7a76ux80ccux666f}
+
+唐杰的原话是''\textbf{问题、动机、方法、结果，一项都不能糊}''。 这恰好也是本学科九份章程反复强调的：\textbf{没有证据的结论不采纳、no-go 不擦除、误差棒必填}。 结项不是''写一篇总结''，而是\textbf{把 11 个课题的证据链组装成一份可被审稿的作品}。
+
+\subsection{二、研究问题（结项版）}\label{ux4e8cux7814ux7a76ux95eeux9898ux7ed3ux9879ux7248}
+
+\begin{quote}
+\textbf{我能不能用一份英文技术报告 + 一个可运行的 demo，证明我独立完成了大模型全链路，并且知道自己的结论在哪里不成立？}
+\end{quote}
+
+\subsection{三、攻关线索}\label{ux4e09ux653bux5173ux7ebfux7d22}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{报告骨架}（NeurIPS 风格，8--10 页）：Abstract / Introduction / Related Work / Method / Experiments / Results / Discussion \& Limitations / Conclusion
+\item
+  \textbf{只写有证据的结论}：每个数字都能指回 \texttt{证据/} 中的原始日志
+\item
+  \textbf{Limitations 必须诚实}：规模受限（0.1B vs 前沿）、算力受限（免费档）、评测口径的局限
+\item
+  \textbf{Demo 设计}：现场演示要\textbf{可在 3 分钟内跑完}（预生成 checkpoint，不现场训练）
+\item
+  \textbf{自我攻击 3 条}：主动写出''我的结论最可能错在哪''
+\item
+  \textbf{一稿多用}：这份报告同时作为课程大论文（70\%）与唐杰作业⑦的交付物
+\end{enumerate}
+
+\subsection{四、里程碑}\label{ux56dbux91ccux7a0bux7891}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  M1 证据清点：11 个课题的 \texttt{证据/} 全部齐备，缺的补齐（这是一次''审计''）
+\item[$\square$]
+  M2 英文报告初稿（Abstract + Method + Experiments 先写）
+\item[$\square$]
+  M3 图表规范化：所有图有坐标轴、单位、误差棒、样本数
+\item[$\square$]
+  M4 \textbf{自我攻击 3 条} + 导师审稿 3--5 条 → 修订
+\item[$\square$]
+  M5 Demo 准备：脚本 + 预生成模型 + 3 分钟演练
+\item[$\square$]
+  M6 总复盘：写进 \texttt{memory/LEARNINGS.md}（哪些讲法有效、哪些坑最贵）
+\item[$\square$]
+  M7 课程大论文定稿并提交（署名直填：孙承泽 / 2253710052 / 能动强基2501）
+\end{itemize}
+
+\subsection{五、交付物}\label{ux4e94ux4ea4ux4ed8ux7269}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+交付物 & 位置 & 验收 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+英文报告 & \texttt{课题11-结项/report-en.md}（+ PDF） & 格式合规、结论有据 \\
+中文大论文 & \texttt{课程轨/大论文/} & 课程要求格式 \\
+Demo & \texttt{课题11-结项/脚手架/demo.sh} & 3 分钟内可跑 \\
+复盘 & \texttt{memory/LEARNINGS.md} + \texttt{HANDOFF.md} & 可被下一任直接接续 \\
+\end{longtable}
+}
+
+\subsection{六、讲课锚点}\label{ux516dux8bb2ux8bfeux951aux70b9}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{讲义}：\texttt{M9-前沿.md}（W15 展开）
+\item
+  \textbf{对标}：\textbf{rasbt ch3 的''先建评测''精神}贯穿全文 · CS336 报告规范 · \texttt{论文精读/} 的英文写作规范
+\item
+  \textbf{搭桥}：\texttt{turbine-blade-ai-platform}（应用章节）；\texttt{人工智能基础与应用/课程轨/大论文}（一稿两用）
+\end{itemize}
+
+\subsection{七、自检清单（结项前必过，抄自《判分与验收标准》§五）}\label{ux4e03ux81eaux68c0ux6e05ux5355ux7ed3ux9879ux524dux5fc5ux8fc7ux6284ux81eaux5224ux5206ux4e0eux9a8cux6536ux6807ux51c6ux4e94}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  每个数字都能在 \texttt{证据/} 找到原始日志吗？
+\item
+  ``变好了''有没有可能是口径变了 / 只挑了好种子？
+\item
+  有没有把\textbf{训练集表现}当能力？
+\item
+  每个''因为\ldots 所以\ldots``有没有反事实检验？
+\item
+  图表的坐标轴与误差棒都标了吗？
+\item
+  我写下的最强反方论点是什么？
+\end{enumerate}
+
+\subsection{八、风险与提醒}\label{ux516bux98ceux9669ux4e0eux63d0ux9192}
+
+\begin{itemize}
+\tightlist
+\item
+  ⚠️ 报告最易犯的错是\textbf{夸大}：规模受限就要说受限，这反而是可信度来源。
+\item
+  ⚠️ 不要为了''好看''删掉 no-go 记录------用户明确要求''负结果不许擦除''。
+\item
+  ⚠️ W16 现场 demo 必须有\textbf{失败预案}（预生成结果 + 录屏），不依赖现场网络与算力。
+\end{itemize}
+
+\end{document}

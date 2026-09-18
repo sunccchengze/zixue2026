@@ -1,0 +1,219 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+  chinese,
+  11pt,
+]{ctexart}
+\usepackage{xcolor}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Noto Serif SC}
+    \setCJKsansfont[]{Noto Sans SC}
+    \setCJKmonofont[]{DejaVu Sans Mono}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Noto Serif SC}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\ifLuaTeX
+\usepackage[bidi=basic,shorthands=off,provide=*]{babel}
+\else
+\usepackage[bidi=default,shorthands=off,provide=*]{babel}
+\fi
+\ifLuaTeX
+  \usepackage{selnolig} % disable illegal ligatures
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={课题10-长程Agent},
+  pdflang={zh-CN},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{课题10-长程Agent}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section{课题10 开题简报 · 长程 Agent 与 self-judge}\label{ux8bfeux989810-ux5f00ux9898ux7b80ux62a5-ux957fux7a0b-agent-ux4e0e-self-judge}
+
+\begin{quote}
+模块：\textbf{M8} ｜ 周次：\textbf{W14（12-14→12-20）} ｜ 算力：\textbf{T2 Kaggle 2×T4，计划 8 GPU·小时} 唐杰作业对应：\textbf{⑤ 训长程 Agent，鼓励 self-judge loop} ｜ 判分来源：\textbf{自建}（消融实验 + 轨迹日志） 手写：\textbf{R10（self-judge 协议设计）}
+\end{quote}
+
+\subsection{一、研究背景}\label{ux4e00ux7814ux7a76ux80ccux666f}
+
+从''回答问题''到''完成任务''的跨越，靠的是 \textbf{harness（外壳）}：工具调用、上下文管理、失败重试、自我评估。 Karpathy 与李宏毅都专讲 \textbf{context engineering}；nanochat 里 \texttt{execution.py} 就是一个最小的''能执行代码的 Agent 外壳''。 本课题的落点是\textbf{长程任务}：多步串联后误差累积，以及\textbf{self-judge（自我评判）到底有没有用}。
+
+\subsection{二、研究问题}\label{ux4e8cux7814ux7a76ux95eeux9898}
+
+\begin{quote}
+\textbf{多步任务中，失败主要来自模型能力还是来自 harness 设计？加上 self-judge loop 后成功率提升多少------还是反而下降？}
+\end{quote}
+
+\subsection{三、攻关线索}\label{ux4e09ux653bux5173ux7ebfux7d22}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{最小 ReAct}：不用任何框架，手写 \texttt{Thought\ →\ Action\ →\ Observation} 循环（三四十行就能跑）
+\item
+  \textbf{工具设计}：先给两个工具（计算器 / 受限代码执行）。\textbf{工具接口的清晰度往往比模型智力更决定成败}
+\item
+  \textbf{长程任务构造}：把课题09 的题改造成''需要 3--5 步''的复合任务（如：先算 → 再验 → 再格式化）
+\item
+  \textbf{失败分类}：格式错 / 工具调错 / 目标漂移（忘了原始要求）/ 循环打转 / 提前放弃
+\item
+  \textbf{self-judge 的两种形态}：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{自评重试}：模型给自己打分，低于阈值就重做（rasbt ch5 的 self-refinement）
+  \item
+    \textbf{自评过滤}：生成多个候选，自己挑最好的（best-of-N 的变体）
+  \end{itemize}
+\item
+  \textbf{关键实验（消融）}：同样的任务集，三组对照 = 无 self-judge / 自评重试 / 自评过滤
+\item
+  \textbf{警惕}：self-judge \textbf{会放大原有错误}（模型判不出自己错在哪，反而确信）→ 必须留失败案例
+\end{enumerate}
+
+\subsection{四、里程碑}\label{ux56dbux91ccux7a0bux7891}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  M1 手写最小 ReAct 循环（无框架），跑通单步任务
+\item[$\square$]
+  M2 加入第二个工具 + 多步任务集（≥30 个任务）
+\item[$\square$]
+  M3 \textbf{轨迹记录规范}：每步的 thought/action/observation 落盘（可复现）
+\item[$\square$]
+  M4 基线成功率 + \textbf{失败五分类}（每类给 2 个真实案例）
+\item[$\square$]
+  M5 \textbf{self-judge 消融}：三组对照，给出成功率差与误差棒
+\item[$\square$]
+  M6 \textbf{反例收集}：找出 ≥3 个''self-judge 导致更差''的案例并解释机制
+\item[$\square$]
+  M7 一页报告 + 知识卡
+\end{itemize}
+
+\subsection{五、交付物}\label{ux4e94ux4ea4ux4ed8ux7269}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+交付物 & 位置 & 验收 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+ReAct 循环 & \texttt{手写/} & 可跑通多步任务 \\
+self-judge 协议 & \texttt{手写/}（R10） & 有明确的判定时机与阈值设计说明 \\
+轨迹日志 & \texttt{证据/trajectories/} & 每任务一份，含步数与结果 \\
+消融数据 & \texttt{证据/} & 三组成功率 + 误差棒 \\
+报告 & \texttt{报告.md} & 必须回答''何时 self-judge 有害'' \\
+\end{longtable}
+}
+
+\subsection{六、讲课锚点}\label{ux516dux8bb2ux8bfeux951aux70b9}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{讲义}：\texttt{M8-智能体.md}（W13 展开）
+\item
+  \textbf{对标}：\textbf{李宏毅《Context Engineering》专讲}（Agent 时代的关键技术）· Berkeley LLM Agents MOOC（ReAct 原始论文那讲）· HF Agents Course（三框架对照 + 观测性/评测 bonus unit）· \textbf{rasbt ch5（self-refinement）} · \texttt{nanochat/execution.py}+\texttt{tests/test\_execution.py}（\textbf{沙箱执行的最小实现}，可读接口不可抄实现）
+\item
+  \textbf{搭桥}：M5 的 KV cache（长上下文的显存代价）→ 为什么长程 Agent 必须做\textbf{上下文压缩}
+\end{itemize}
+
+\subsection{七、代码级提问示例}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95eeux793aux4f8b}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  长程任务失败率随步数指数上升。\textbf{分解}：是每步错误率问题，还是错误会累积传播？
+\item
+  self-judge 什么时候\textbf{一定}无效？（提示：当模型无法区分''看起来对''和''真的对''时）
+\item
+  上下文压缩（截断/摘要）会引入什么新失败模式？
+\item
+  为什么''工具返回值要结构化''能显著提升成功率？（从 token 分布角度解释）
+\item
+  \textbf{【下注】} 预测 self-judge 在简单任务 vs 困难任务上的效果差异，先写再测。
+\end{enumerate}
+
+\subsection{八、风险与提醒}\label{ux516bux98ceux9669ux4e0eux63d0ux9192}
+
+\begin{itemize}
+\tightlist
+\item
+  🚨 \textbf{不要用框架起步}：手写一遍 ReAct 再去看 LangGraph/smolagents，否则学不到 harness 的本质。
+\item
+  ⚠️ self-judge 会显著增加 token 消耗与时间 → 算力预算要写进实验卡。
+\item
+  ⚠️ 轨迹日志可能很大 → 只保留结构化摘要（thought 截断 + 结果），避免污染仓库体积。
+\end{itemize}
+
+\end{document}

@@ -23,6 +23,23 @@ cd 人工智能基础与应用
 | `讲义/pdf/M0…M3、README、M4-M9-.pdf` | 2–5 | 单讲分册（手机上看、单讲打印、发给同学） |
 | `章程与地图/pdf/章程与地图-全书.pdf` | 28 | 九份章程合订（宪法层：学什么/跟谁学/什么叫学过/何时学/谁写代码） |
 
+## 一·B、LaTeX 通道（第二引擎，中文 + 公式 + 代码全通）
+
+typst 负责"人读的主 PDF"；LaTeX 通道负责"**拿得走的 LaTeX 正典**"：
+每份文档都有真正能编译的 `.tex` 与它编译出的 `-LaTeX版.pdf`。
+
+```bash
+bash 环境/pdf/latex/bootstrap_latex.sh                      # 装 wasm 版 XeTeX 引擎（约 1 分钟）
+/home/user/opt/.venv/bin/python 环境/pdf/latex/导出LaTeX.py --all    # 15 份：11 课题 + 2 合集 + 讲义 + 章程
+/home/user/opt/.venv/bin/python 环境/pdf/latex/导出LaTeX.py --check  # 只核验
+```
+
+- 引擎来源：npm 包 `glyphtex-engine`（Tectonic 编译的 XeTeX wasm + TeX Live 宏包树）；
+  本环境 CTAN/conda/GitHub release 全不可达，npm 是唯一通道（实测记录见该目录 README）。
+- 中文排版靠"按字符挑字体"（`\zh`/`\sym`/`\emo` 三套 + 汉字间零宽断行胶水），
+  数学必须 `lmodern`，代码块里的 emoji 走 `escapeinside`。
+- 15 份产物实测：**缺字 0 / 错误 0**（页数：课题 3–7 页、课题全集 36 页、总集 122 页、讲义 30 页、章程 52 页）。
+
 ## 二、这一套是怎么搭起来的（可复现）
 
 执行 `环境/pdf/bootstrap.sh` 一次性准备（约 1 分钟），之后**编译全程离线**。

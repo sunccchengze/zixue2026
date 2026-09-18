@@ -1,0 +1,72 @@
+% ═══ 由 环境/pdf/latex/md到LaTeX.py 生成 ═══
+% 中文字体：思源宋体（子集，SIL OFL 1.1）；拉丁/数学：Latin Modern（随 TeX Live 分发）
+% 编译：xelatex（本仓库自带 wasm 版 XeTeX 引擎，见 环境/pdf/latex/编译LaTeX.mjs）
+\usepackage[T1]{fontenc}      % 否则 ASCII 的 < > | 在 OT1 下排成 ¡ ¿ —
+\usepackage{lmodern}          % 必需：数学的物理字模（否则 xdvipdfmx 拒绝出 PDF）
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs,longtable,array,multirow}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+% 不用 hyperref：新版 hyperref 强制依赖 bookmark.sty，而 bundle 里没有。
+% 链接命令用降级定义，保证正文里的 \href / \url 不会报错。
+\providecommand{\href}[2]{#2}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\hypertarget}[2]{#2}
+\providecommand{\hyperlink}[2]{#2}
+\providecommand{\urlstyle}[1]{}
+\providecommand{\texorpdfstring}[2]{#1}   % hyperref 的命令，剥离后仍被模板/标题用到
+\providecommand{\phantomsection}{}
+\providecommand{\pdfstringdef}[2]{}
+\providecommand{\hypersetup}[1]{}
+
+% ── 三套字体：中文 / 符号 / emoji（按字符 cmap 自动选择）──
+\font\zhfont="[NotoSerifSC-Regular.ttf]:script=hani" at 10.5pt
+\font\symfont="[DejaVuSans.ttf]" at 10.5pt
+\font\emofont="[NotoEmoji-Regular.ttf]" at 10.5pt
+\font\zhmonofont="[NotoSansSC-Regular.ttf]" at 9pt
+% 用法：\zh{中文} / \sym{→} / \emo{🦙}
+% 注意：必须**带参数**。写成 \def\zh{{\zhfont}} 是错的——字体赋值只在小群里有效，
+% 那个小群随 \zh 立刻结束，于是中文仍然用拉丁字体排，报 Missing character。
+\def\zh#1{{\zhfont #1}}
+\def\sym#1{{\symfont #1}}
+\def\emo#1{{\emofont #1}}
+% 含汉字的行内代码：listings 的 \lstinline 遇到汉字必炸（`\lst@arg ->判`
+% 未定义控制字，catcode 设 12 也无效），所以直接自己排。
+\def\codezh#1{{\zhmonofont #1}}
+
+\def\zhglue{\hskip0pt plus .06em minus .01em}
+\linespread{1.12}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+% ── 代码块：等宽 + 中文字体（listings 默认字体不含汉字）──
+\lstset{
+  basicstyle=\zhmonofont,
+  breaklines=true,
+  breakatwhitespace=false,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  frame=single,
+  framesep=4pt,
+  rulecolor=\color{gray!45},
+  backgroundcolor=\color{gray!7},
+  xleftmargin=6pt,
+  extendedchars=true,
+  tabsize=2,
+  % 代码块里的 emoji：NotoSansSC 没有这些字形（listings 不做字符级回退）。
+  % 用 escapeinside 开口子，转换器把 emoji 逐字包成 (*@{\emo{⭐}}@*)。
+  % 试过 literate={⭐}{{\emofont ⭐}}1，会把 ASCII 字母也吞掉并报
+  % `Improper alphabetic constant`，不可用。
+  escapeinside={(*@}{@*)},
+}
+\renewcommand{\lstlistingname}{代码}
+
+% ── 表格线宽（booktabs 风格）──
+\renewcommand{\arraystretch}{1.25}
+
+% ── 标题样式 ──
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.1em}{0.5em}

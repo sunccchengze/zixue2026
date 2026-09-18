@@ -1,0 +1,215 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+  chinese,
+  11pt,
+]{ctexart}
+\usepackage{xcolor}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Noto Serif SC}
+    \setCJKsansfont[]{Noto Sans SC}
+    \setCJKmonofont[]{DejaVu Sans Mono}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Noto Serif SC}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\ifLuaTeX
+\usepackage[bidi=basic,shorthands=off,provide=*]{babel}
+\else
+\usepackage[bidi=default,shorthands=off,provide=*]{babel}
+\fi
+\ifLuaTeX
+  \usepackage{selnolig} % disable illegal ligatures
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={课题08-SFT-DPO-RLVR},
+  pdflang={zh-CN},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{课题08-SFT-DPO-RLVR}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section{课题08 开题简报 · SFT / DPO / RLVR 三方对照}\label{ux8bfeux989808-ux5f00ux9898ux7b80ux62a5-sft-dpo-rlvr-ux4e09ux65b9ux5bf9ux7167}
+
+\begin{quote}
+模块：\textbf{M6/M7} ｜ 周次：\textbf{W11--W12（11-23→12-06）} ｜ 算力：\textbf{T2 Kaggle 2×T4，计划 18 GPU·小时（全学期最贵）} 唐杰作业对应：\textbf{④ 同一基座上把 SFT、DPO、RLVR 做对照} ｜ 判分来源：\textbf{CS336 A5 \texttt{tests/test\_grpo.py}} + 自建三方对照 手写：\textbf{R7（损失函数与优势估计）}
+\end{quote}
+
+\subsection{一、研究背景}\label{ux4e00ux7814ux7a76ux80ccux666f}
+
+预训练给''知识''，后训练给''行为''。三条主流路线： \textbar{} 方法 \textbar{} 需要什么 \textbar{} 优化什么 \textbar{} \textbar---\textbar---\textbar---\textbar{} \textbar{} \textbf{SFT} \textbar{} (指令, 回答) 对 \textbar{} 最大似然（只对回答部分算 loss） \textbar{} \textbar{} \textbf{DPO} \textbar{} (指令, 好回答, 坏回答) 偏好对 \textbar{} 隐式奖励差（无需显式 reward model） \textbar{} \textbar{} \textbf{RLVR} \textbar{} 可判对错的答案 + 验证器 \textbar{} 期望可验证奖励（GRPO 用组内相对优势） \textbar{}
+
+\textbf{本课题的教学价值极高}：它是课程大纲''机器学习（强化学习）``与唐杰作业④的交点， 也是''知识讲解''最能发挥的地方------\textbf{GRPO 的每一项都能在概率论里找到根}（期望、方差、条件期望）。
+
+\subsection{二、研究问题}\label{ux4e8cux7814ux7a76ux95eeux9898}
+
+\begin{quote}
+\textbf{同一个基座、同一套评测，SFT / DPO / RLVR 各自把什么能力提升了、把什么能力损害了？训练奖励的上升，有多少是真的能力提升？}
+\end{quote}
+
+\subsection{三、攻关线索}\label{ux4e09ux653bux5173ux7ebfux7d22}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{基座与数据}：基座用课题04 的模型（或 0.1B 级开源小模型）；任务是\textbf{可验证}的（数学题/格式约束/单元测试）
+\item
+  \textbf{SFT 的损失掩码}：\textbf{只对回答部分算 loss}，指令部分不算 ------ 这是个高频错误点
+\item
+  \textbf{DPO 的推导}：为什么 \(\sigma(\beta \log\frac{\pi(y_w)}{\pi_{ref}(y_w)} - \beta\log\frac{\pi(y_l)}{\pi_{ref}(y_l)})\) 能等价于''隐式奖励''？
+\item
+  \textbf{GRPO 的四步}：采样一组输出 \(G\) 个 → 打分 → \textbf{组内归一化得优势} \(A_i = \frac{r_i - \mathrm{mean}(r)}{\mathrm{std}(r)}\) → 加权策略梯度 + KL 惩罚
+\item
+  \textbf{KL 惩罚的作用}：防止策略跑离参考模型太远（对应 RLHF Book 的''过度优化''章）
+\item
+  \textbf{评测口径}：\textbf{训练奖励 ≠ 能力}。必须在 held-out 题集上评，并且给误差棒
+\item
+  \textbf{制造一次 reward hacking}：例如让模型学到''输出格式对了但答案是瞎猜''，记录现象（这是本课题最好的素材）
+\end{enumerate}
+
+\subsection{四、里程碑}\label{ux56dbux91ccux7a0bux7891}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  M1 SFT 基线（含损失掩码正确性验证：打印一条样本的 mask）
+\item[$\square$]
+  M2 DPO 跑通 + 与 SFT 的对照（held-out）
+\item[$\square$]
+  M3 手写 GRPO 损失并\textbf{逐项注释}（优势从哪来、为什么要除标准差）
+\item[$\square$]
+  M4 \texttt{tests/test\_grpo.py} 通过（判分器接入后）
+\item[$\square$]
+  M5 \textbf{三方对照表}（同基座、同评测、同种子策略，带误差棒）
+\item[$\square$]
+  M6 \textbf{reward hacking 实验}：故意设计一个''可被钻空子''的奖励，观察并记录
+\item[$\square$]
+  M7 一页报告 + 知识卡（GRPO 递推必须能徒手推）
+\end{itemize}
+
+\subsection{五、交付物}\label{ux4e94ux4ea4ux4ed8ux7269}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+交付物 & 位置 & 验收 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+三个训练脚本 & \texttt{手写/}（损失与优势估计属 R7） & 可复跑 \\
+判分输出 & \texttt{判卷记录.md} & \texttt{test\_grpo.py} 原文 \\
+对照表 & \texttt{证据/} & 含误差棒与评测口径说明 \\
+reward hacking 记录 & \texttt{证据/} & 现象 + 机制解释 \\
+报告 & \texttt{报告.md} & ``能力提升 vs 训练奖励''必须分开讨论 \\
+\end{longtable}
+}
+
+\subsection{六、讲课锚点}\label{ux516dux8bb2ux8bfeux951aux70b9}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{讲义}：\texttt{M6-后训练.md}（W10 展开）
+\item
+  \textbf{对标}：\textbf{rasbt《Reasoning from Scratch》ch3（先建评测）+ ch6--ch7（GRPO）} · \textbf{《RLHF Book》ch4/6/8/14} · CS336 A5 + lecture 15--17 · \texttt{minimind/trainer/train\_grpo.py}（中文工程实现）· \texttt{nano-aha-moment}（单文件）
+\item
+  \textbf{搭桥（重点）}：\texttt{probability/} 的\textbf{期望、方差、条件期望}------GRPO 的优势归一化就是''标准化''， KL 惩罚就是''分布差异''，REINFORCE 就是''用样本均值估期望''
+\end{itemize}
+
+\subsection{七、代码级提问示例}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95eeux793aux4f8b}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  为什么 SFT 只对回答部分算 loss？若指令部分也算，会发生什么？
+\item
+  GRPO 里为什么要除以组内标准差？如果一组所有奖励\textbf{完全相同}，优势是多少？这时梯度会怎样？
+\item
+  DPO 不需要 reward model，那它的''奖励''藏在哪？（用对数比写出来）
+\item
+  训练奖励从 0.3 涨到 0.8，held-out 准确率却从 40\% 掉到 35\%。列出三个可能原因。
+\item
+  \textbf{【下注】} 预测三方在 held-out 上的排序，先写再测。
+\end{enumerate}
+
+\subsection{八、风险与提醒}\label{ux516bux98ceux9669ux4e0eux63d0ux9192}
+
+\begin{itemize}
+\tightlist
+\item
+  🚨 \textbf{最贵的一周}：18 GPU·小时是全学期 1/5，\textbf{三个方法各只跑一次正式实验}，其余用小规模调试。
+\item
+  🚨 \textbf{不做 held-out 评测就等于自欺}：训练奖励必须与独立评测同时报（写进报告硬要求）。
+\item
+  ⚠️ A5 官方仓库\textbf{未声明 SPDX 许可} → 只做本地学习对照，不复制进仓（见《上游锁定清单》§三）。
+\item
+  ⚠️ Kaggle 会话上限 9--12h：RL 训练务必支持\textbf{断点续训}，否则一次会话跑不完。
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,215 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+  chinese,
+  11pt,
+]{ctexart}
+\usepackage{xcolor}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Noto Serif SC}
+    \setCJKsansfont[]{Noto Sans SC}
+    \setCJKmonofont[]{DejaVu Sans Mono}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Noto Serif SC}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\ifLuaTeX
+\usepackage[bidi=basic,shorthands=off,provide=*]{babel}
+\else
+\usepackage[bidi=default,shorthands=off,provide=*]{babel}
+\fi
+\ifLuaTeX
+  \usepackage{selnolig} % disable illegal ligatures
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={课题03-Scaling-Law},
+  pdflang={zh-CN},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{课题03-Scaling-Law}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section{课题03 开题简报 · Scaling Law 预演与打脸链路}\label{ux8bfeux989803-ux5f00ux9898ux7b80ux62a5-scaling-law-ux9884ux6f14ux4e0eux6253ux8138ux94feux8def}
+
+\begin{quote}
+模块：\textbf{M4} ｜ 周次：\textbf{W4（10-05→10-11）} ｜ 算力：\textbf{T0 纯 CPU（极小规模 sweep）} 唐杰作业对应：\textbf{③ 拟合 scaling law 再外推} ｜ 判分来源：\textbf{无官方判分器}（CS336 A3 需 8 位学号 API key，不可得）→ \textbf{自建判分：预测 vs 实测的偏差} 手写：\textbf{R6（拟合与外推）}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{一、研究背景}\label{ux4e00ux7814ux7a76ux80ccux666f}
+
+Kaplan 等（2020）与 Chinchilla（2022）发现：loss 随参数量 \(N\) 与数据量 \(D\) 呈\textbf{幂律下降}， 且存在一个\textbf{算力最优配比}。这条规律是''为什么敢花几千万训一次大模型''的全部依据。 但初学者最常见的错误是：\textbf{把外推当预言}，不做回溯验证就把曲线画到天上去。
+
+本课题的核心不是''拟合出一条漂亮的线''，而是\textbf{建立''预测 → 验证 → 承认偏差''的科研习惯}。 这也是本学科''预测---打脸日志''（\texttt{memory/MEMORY.md}）的主要产地。
+
+\subsection{二、研究问题（一句话）}\label{ux4e8cux7814ux7a76ux95eeux9898ux4e00ux53e5ux8bdd}
+
+\begin{quote}
+\textbf{在极小规模（我的 CPU 能承受的范围内）跑 4--5 个点，能否外推出更大模型的 loss？外推误差有多大、什么时候会崩？}
+\end{quote}
+
+\subsection{三、攻关线索}\label{ux4e09ux653bux5173ux7ebfux7d22}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{口径}：横轴用什么？参数量 \(N\)？token 数 \(D\)？（提示：固定预算时，\(N\) 与 \(D\) 不能同时变）
+\item
+  \textbf{记账}：用 M0 的 \(6ND\) 估算每一次跑的算力，\textbf{确保不同点是在''同样算力预算''下比较}（否则曲线无意义）
+\item
+  \textbf{拟合}：幂律 \(L = aN^{-\alpha} + c\) 的形式里，那个常数项 \(c\) 代表什么？它会不会让外推失效？
+\item
+  \textbf{外推}：拟合完先\textbf{把预测写死在文件里}（带日期），再去跑验证点 ------ 顺序不能反
+\item
+  \textbf{偏差来源}：小规模数据是否''无限数据区''？学习率是否随规模重新调过？\textbf{这些都是外推失准的技术原因}
+\end{enumerate}
+
+\subsection{四、里程碑}\label{ux56dbux91ccux7a0bux7891}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  M1 设计 sweep：4--5 个规模点（如 d4/d6/d8/d10），预算固定、口径统一
+\item[$\square$]
+  M2 跑完 sweep，记录每个点的最终 loss/bpb 与耗时（CPU 上即可，分钟级）
+\item[$\square$]
+  M3 拟合幂律并画图（含数据点、拟合线、坐标轴标注）
+\item[$\square$]
+  M4 \textbf{先写死外推预测}（例如 d12 的 bpb 预测值 + 置信区间），归档到 \texttt{证据/}
+\item[$\square$]
+  M5 跑验证点，计算偏差，并\textbf{解释偏差的方向与原因}
+\item[$\square$]
+  M6 一页报告：包含''预测 vs 实测''对照表（\textbf{这一条是验收硬指标}）
+\end{itemize}
+
+\subsection{五、交付物}\label{ux4e94ux4ea4ux4ed8ux7269}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+交付物
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+位置
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+验收
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+sweep 原始数据 & \texttt{证据/sweep.csv} & 含配置、loss、耗时、算力估算 \\
+拟合脚本与图 & \texttt{脚手架/} + \texttt{证据/} & 图有坐标轴、有拟合优度 \\
+\textbf{外推预测存档} & \texttt{证据/预测-\textless{}日期\textgreater{}.md} & 跑验证点\textbf{之前}的文件时间戳 \\
+报告 & \texttt{报告.md} & 预测 vs 实测对照表 \\
+\end{longtable}
+}
+
+\subsection{六、讲课锚点}\label{ux516dux8bb2ux8bfeux951aux70b9}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{讲义}：\texttt{讲义/M4-M9-待展开大纲.md} 的 M4 部分（W3 展开为完整版 \texttt{M4-训练.md}）
+\item
+  \textbf{对标}：CS336 lecture 09/11（scaling laws）· \texttt{nanochat/runs/scaling\_laws.sh} 与其 miniseries 文档 · d2l 的线性回归/最小二乘（拟合的数学基础）
+\item
+  \textbf{搭桥}：\texttt{probability/} 的方差与回归 ------ 拟合优度、残差分析直接可用
+\end{itemize}
+
+\subsection{七、代码级提问示例}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95eeux793aux4f8b}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  为什么横轴常画 \textbf{FLOPs} 而不是参数量？（提示：Chinchilla 的核心结论是什么）
+\item
+  你拟合出的 \(c\)（常数项）为负，说明了什么？还能外推吗？
+\item
+  如果两个规模点用了不同的学习率，曲线还能一起拟合吗？为什么？
+\item
+  \textbf{【下注】} 你预测 d12 的 bpb 会比你拟合线的预测值偏高还是偏低？先写下答案再跑。
+\end{enumerate}
+
+\subsection{八、风险与提醒}\label{ux516bux98ceux9669ux4e0eux63d0ux9192}
+
+\begin{itemize}
+\tightlist
+\item
+  ⚠️ \textbf{不要为了''好看''调学习率}：每个点的超参策略必须写进 \texttt{证据/}，否则外推无意义。
+\item
+  ⚠️ 极小规模会出现''学习率不敏感/过于敏感''的异常区间 ------ 这本身就是很好的报告素材（no-go 不擦除）。
+\item
+  ⚠️ 本课题\textbf{不花 GPU}；如发现 CPU 太慢，优先''缩小语料/减步数''，不要上 Kaggle（配额留给课题04）。
+\end{itemize}
+
+\end{document}

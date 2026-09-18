@@ -245,6 +245,7 @@
 ]
 
 #pagebreak()
+
 = 对标教学资源清单（2026-09-17 核实）
 
 #block(width: 100%, above: 9pt, below: 9pt, inset: (left: 12pt, right: 8pt, y: 6pt), stroke: (left: 3pt + luma(180)), fill: luma(252))[
@@ -355,6 +356,7 @@
 #strong[分工原则]：对标名师负责"标准讲法"，我负责"你的卡点 + 判分 + 记忆归档"， #strong[任何一方都不替代你动手]（见《造轮子边界.md》）。
 
 #pagebreak()
+
 = 知行合一规程（本学科教学法核心）
 
 #block(width: 100%, above: 9pt, below: 9pt, inset: (left: 12pt, right: 8pt, y: 6pt), stroke: (left: 3pt + luma(180)), fill: luma(252))[
@@ -498,6 +500,7 @@
 - 什么时候讲 → 《实训路线图.md》"知识讲解锚点"列
 
 #pagebreak()
+
 = 实训路线图 · 16 周 × 11 课题 × 唐杰 7 条 × CS336 映射
 
 #block(width: 100%, above: 9pt, below: 9pt, inset: (left: 12pt, right: 8pt, y: 6pt), stroke: (left: 3pt + luma(180)), fill: luma(252))[
@@ -653,6 +656,7 @@
 - 结项报告 → #raw("论文精读/") 的论文写作规范；demo → #raw("人工智能基础与应用/") 的大论文素材
 
 #pagebreak()
+
 = 造轮子边界 · 谁写代码（本学科最高契约）
 
 #block(width: 100%, above: 9pt, below: 9pt, inset: (left: 12pt, right: 8pt, y: 6pt), stroke: (left: 3pt + luma(180)), fill: luma(252))[
@@ -745,6 +749,7 @@
 + 如果两边都不是 → 进协作区，先出方案再动手。
 
 #pagebreak()
+
 = AI 使用红线（本学科版）
 
 #block(width: 100%, above: 9pt, below: 9pt, inset: (left: 12pt, right: 8pt, y: 6pt), stroke: (left: 3pt + luma(180)), fill: luma(252))[
@@ -825,6 +830,7 @@ CS336：AI 只能用于低层次编程问题与高层次概念问题，不得直
 + 用户这一轮有没有"预测 → 验证"的环节？没有的话，我是不是又变成讲解器了？
 
 #pagebreak()
+
 = 算力与成本预算（零预算版）
 
 #block(width: 100%, above: 9pt, below: 9pt, inset: (left: 12pt, right: 8pt, y: 6pt), stroke: (left: 3pt + luma(180)), fill: luma(252))[
@@ -952,6 +958,7 @@ CS336：AI 只能用于低层次编程问题与高层次概念问题，不得直
 ]
 
 #pagebreak()
+
 = 判分与验收标准
 
 #block(width: 100%, above: 9pt, below: 9pt, inset: (left: 12pt, right: 8pt, y: 6pt), stroke: (left: 3pt + luma(180)), fill: luma(252))[
@@ -1049,6 +1056,7 @@ CS336：AI 只能用于低层次编程问题与高层次概念问题，不得直
 + 我的结论，#strong[最强的反方论点]是什么？写进报告了吗？
 
 #pagebreak()
+
 = 上游锁定清单（本学科只读依赖）
 
 #block(width: 100%, above: 9pt, below: 9pt, inset: (left: 12pt, right: 8pt, y: 6pt), stroke: (left: 3pt + luma(180)), fill: luma(252))[

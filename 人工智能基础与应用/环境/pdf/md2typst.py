@@ -130,6 +130,32 @@ MATH_CMD = {
     "Pr": "Pr", "textnormal": None,  # None 走 \\text 分支
 }
 
+# 防御性补充：以后讲义里出现这些命令时不会因为"没映射"而中断导出。
+# 原则不变——**没映射就直接报错**（绝不静默丢公式），这里只是把常见的一次补齐。
+MATH_CMD.update({
+    # 字体变体与特殊字母（字面 Unicode，实测在 typst 数学里可靠）
+    "ell": "ℓ", "hbar": "ℏ", "Re": "ℜ", "Im": "ℑ", "wp": "℘", "aleph": "ℵ",
+    "vartheta": "ϑ", "varphi": "ϕ", "varpi": "ϖ", "varrho": "ϱ", "varsigma": "ς",
+    "mho": "℧", "eth": "ð", "S": "§", "P": "¶", "dag": "†", "ddag": "‡",
+    # 符号
+    "degree": "°", "celsius": "℃", "angle": "∠", "measuredangle": "∡",
+    "triangle": "△", "square": "□", "blacksquare": "■", "surd": "√",
+    "checkmark": "✓", "pounds": "£", "euro": "€", "yen": "¥", "permil": "‰",
+    "prime": "′", "second": "″", "parallel": "∥", "nparallel": "∦",
+    "simeq": "≃", "cong": "≅", "ncong": "≇", "asymp": "≍", "doteq": "≐",
+    "lesssim": "≲", "gtrsim": "≳", "ll": "≪", "gg": "≫",
+    "iff": "⟺", "implies": "⟹", "gets": "←", "leadsto": "⇝",
+    "land": "and", "wedge": "and", "lor": "or", "vee": "or",
+    "lnot": "not", "neg": "not", "colon": "med",
+    # 函数名
+    "gcd": "gcd", "det": "det", "dim": "dim", "ker": "ker", "deg": "deg",
+    "bmod": "mod", "sup": "sup", "inf": "inf", "rank": "rank", "tr": "tr",
+    # 排版控制（无视觉影响，吞掉即可）
+    "displaystyle": "", "textstyle": "", "scriptstyle": "", "limits": "",
+    "nolimits": "", "big": "", "Big": "", "bigg": "", "Bigg": "",
+    "bigl": "", "bigr": "", "Bigl": "", "Bigr": "", "!" : "", " " : "thin",
+})
+
 MATH_BRACES = {"{": "brace.l", "}": "brace.r", "|": "bar.v", "#": "hash",
                "%": "percent", "$": "dollar", "&": "amp"}
 # typst 数学里可直接书写的字符
@@ -328,7 +354,7 @@ RE_HEAD = re.compile(r"^(#{1,6})\s+(.*)$")
 RE_HR = re.compile(r"^\s*([-*_])\s*(\1\s*){2,}$")
 RE_ULI = re.compile(r"^(\s*)([-*+])\s+(.*)$")
 RE_OLI = re.compile(r"^(\s*)(\d+)[.)]\s+(.*)$")
-RE_CODE = re.compile(r"^(\s*)```(\w*)\s*$")
+RE_CODE = re.compile(r"^(\s*)```([^\s`]*)\s*$")
 RE_QUOTE = re.compile(r"^>\s?(.*)$")
 RE_TABLE = re.compile(r"^\s*\|.*\|\s*$")
 
@@ -407,7 +433,7 @@ def convert(lines: list[str]) -> str:
             i += 1
             continue
 
-        # 代码块
+        # 代码块 / raw 块
         m = RE_CODE.match(line)
         if m:
             lang = m.group(2)
@@ -416,6 +442,12 @@ def convert(lines: list[str]) -> str:
             while i < n and not re.match(r"^\s*```\s*$", lines[i]):
                 buf.append(lines[i]); i += 1
             i += 1
+            if lang.startswith("{="):
+                # raw_attribute：只有 typst 的原样保留，别的格式（openxml/latex/docx）
+                # 在 typst 输出里直接丢弃，避免把 XML 当正文排进去
+                if "typst" in lang:
+                    out.append("\n".join(buf) + "\n")
+                continue
             out.append(code_block("\n".join(buf), lang))
             continue
 

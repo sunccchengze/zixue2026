@@ -1,0 +1,223 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+  chinese,
+  11pt,
+]{ctexart}
+\usepackage{xcolor}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Noto Serif SC}
+    \setCJKsansfont[]{Noto Sans SC}
+    \setCJKmonofont[]{DejaVu Sans Mono}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Noto Serif SC}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\ifLuaTeX
+\usepackage[bidi=basic,shorthands=off,provide=*]{babel}
+\else
+\usepackage[bidi=default,shorthands=off,provide=*]{babel}
+\fi
+\ifLuaTeX
+  \usepackage{selnolig} % disable illegal ligatures
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={课题04-0.1B端到端},
+  pdflang={zh-CN},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{课题04-0.1B端到端}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section{\texorpdfstring{课题04 开题简报 · 0.1B 端到端预训练（\textbf{首次上机}）}{课题04 开题简报 · 0.1B 端到端预训练（首次上机）}}\label{ux8bfeux989804-ux5f00ux9898ux7b80ux62a5-0.1b-ux7aefux5230ux7aefux9884ux8badux7ec3ux9996ux6b21ux4e0aux673a}
+
+\begin{quote}
+模块：\textbf{M4/M5} ｜ 周次：\textbf{W5--W6（10-12→10-25）} ｜ 算力：\textbf{T2 Kaggle 2×T4，计划 12--21 GPU·小时} 唐杰作业对应：\textbf{① 端到端训一个 0.1B} ｜ 判分来源：\textbf{自建}（loss/bpb 达标 + 采样可读性）+ \texttt{nanochat/core\_eval.py} 的 CORE 手写：复用课题01/02 的产物（tokenizer + 模型 + 优化器），本课题新增\textbf{数据管线与训练编排的判断}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{一、研究背景}\label{ux4e00ux7814ux7a76ux80ccux666f}
+
+``0.1B'' 是唐杰作业里的数字，也是\textbf{单卡/双卡免费算力下的上限}。参考点：nanochat 的 d12 约等于 GPT-1 量级 （官方讨论区原话：``d12 是我最喜欢的模型，它是 GPT-1 的大小，约 6 分钟训完''------那是在 8×H100 上）。 \textbf{本课题的核心不是刷指标，而是把''训练一次完整模型''的每个环节亲自走通并记账。}
+
+\subsection{二、研究问题（一句话）}\label{ux4e8cux7814ux7a76ux95eeux9898ux4e00ux53e5ux8bdd}
+
+\begin{quote}
+\textbf{在 2×T4、20 GPU·小时的预算内，我能不能从零训出一个''能生成连贯英文、并在 CORE 上有非零分''的 0.1B 模型？实测成本与估算差多少？}
+\end{quote}
+
+\subsection{三、攻关线索}\label{ux4e09ux653bux5173ux7ebfux7d22}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{数据}：TinyStories（全量）+ owt-sample 采样。\textbf{先算一遍}：词表大小 × 语料字节 → token 数 → 需要的步数
+\item
+  \textbf{规模选择}：nanochat 用单一旋钮 \texttt{-\/-depth}；在 T4 上 16GB 显存能放多深？（用 M0 的显存公式先估）
+\item
+  \textbf{精度}：\textbf{T4 是 SM75，没有 bf16} → 必须 fp16 + GradScaler（或用 nanochat 的 \texttt{NANOCHAT\_DTYPE=float16}）
+\item
+  \textbf{断点续训}：Kaggle 会话 9--12h 会断 → checkpoint 必须写 \texttt{/kaggle/working}（20GB 持久）
+\item
+  \textbf{超时自停}：脚本内置 wall-clock 上限，防止忘记关会话
+\item
+  \textbf{指标}：训练看 bpb（词表无关），最终跑 CORE（22 数据集合成，\texttt{core\_eval.py} 单文件）
+\end{enumerate}
+
+\subsection{四、里程碑}\label{ux56dbux91ccux7a0bux7891}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  M1 \textbf{实验卡获批}：写清假设/命令/预算上限/停止条件/成功判据（见《算力与成本预算.md》§五）
+\item[$\square$]
+  M2 \textbf{会话预检}：\texttt{nvidia-smi} 确认 2×T4（\textbf{若是 P100 立即重开会话}）
+\item[$\square$]
+  M3 \textbf{冒烟}：\texttt{-\/-depth=4}、100 步，确认能跑、能存、能续训（≤10 分钟）
+\item[$\square$]
+  M4 首次正式训练：双 T4 + DDP，跑到预算上限或 loss 平台
+\item[$\square$]
+  M5 续训一次（验证 checkpoint 真的可用 ------ 这一条最容易翻车）
+\item[$\square$]
+  M6 评测：bpb + CORE + \textbf{采样 20 条样本}（人工判断''是否连贯''）
+\item[$\square$]
+  M7 \textbf{成本账单}：实测耗时 vs 估算（M0 的 6ND + T4 折算），逐项解释偏差
+\item[$\square$]
+  M8 一页报告 + 知识卡（含''我最意外的三个现象''）
+\end{itemize}
+
+\subsection{五、交付物}\label{ux4e94ux4ea4ux4ed8ux7269}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+交付物
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+位置
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+验收
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+实验卡 & \texttt{证据/实验卡-NN.md} & 经用户确认 \\
+run.yaml + 日志 & \texttt{证据/} & 含 commit、配置、随机种子、耗时 \\
+曲线 & \texttt{证据/} & loss/bpb vs FLOPs 与 vs 时间 两张 \\
+采样样本 & \texttt{证据/样本.md} & ≥20 条，标注''通顺/不通顺'' \\
+\textbf{成本账单} & \texttt{报告.md} & 实测 vs 估算偏差 ≤ 2× 或给出解释 \\
+checkpoint & Kaggle 持久盘 & 不进程（体积原因）；只在 \texttt{证据/} 留哈希与路径 \\
+\end{longtable}
+}
+
+\subsection{六、讲课锚点}\label{ux516dux8bb2ux8bfeux951aux70b9}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{讲义}：\texttt{M4-训练.md}（W3 展开）
+\item
+  \textbf{对标}：\texttt{nanochat/README.md} 与 \texttt{runs/speedrun.sh}（读它怎么组织全流程）· CS336 lecture 05/13--14
+\item
+  \textbf{搭桥}：课题03 的 scaling 结论在这里第一次被''真跑''检验
+\end{itemize}
+
+\subsection{七、代码级提问示例}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95eeux793aux4f8b}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  双 T4 跑 d12，为何\textbf{不是} 2 倍加速？先预测扩展效率（50\%？80\%？），再测。
+\item
+  T4 上 fp16 与 fp32，谁更快？谁更稳？GradScaler 在解决什么？
+\item
+  你的 loss 在第 2000 步开始上升。按 M0 §五 的顺序，你的前三个动作是什么？
+\item
+  若把语料从 TinyStories 换成中文语料（词表不变），loss 会怎么变？\textbf{bpb 呢？}
+\end{enumerate}
+
+\subsection{八、风险与提醒}\label{ux516bux98ceux9669ux4e0eux63d0ux9192}
+
+\begin{itemize}
+\tightlist
+\item
+  🚨 \textbf{P100 陷阱}：本课题如果拿到 P100，训练慢 3--5 倍且后续课题05 直接不可用 → \textbf{宁可等 T4 时段}。
+\item
+  🚨 \textbf{配额}：本课题占全学期约 1/5 的配额，实验卡必须写实；\textbf{冒烟不通过不许开正式训练}。
+\item
+  ⚠️ 0.1B 在 T4 上大概率需要''降 batch + 梯度累积''，这会改变有效 batch size → \textbf{要写进 run.yaml}。
+\item
+  ⚠️ Kaggle 会话到期会杀进程：\textbf{每 500 步存一次}是硬要求。
+\end{itemize}
+
+\end{document}

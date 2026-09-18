@@ -1,0 +1,421 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+  chinese,
+  11pt,
+]{ctexart}
+\usepackage{xcolor}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Noto Serif SC}
+    \setCJKsansfont[]{Noto Sans SC}
+    \setCJKmonofont[]{DejaVu Sans Mono}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Noto Serif SC}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\ifLuaTeX
+\usepackage[bidi=basic,shorthands=off,provide=*]{babel}
+\else
+\usepackage[bidi=default,shorthands=off,provide=*]{babel}
+\fi
+\ifLuaTeX
+  \usepackage{selnolig} % disable illegal ligatures
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={课题01-BPE分词器},
+  pdflang={zh-CN},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{课题01-BPE分词器}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section{课题01 开题简报 · BPE 分词器}\label{ux8bfeux989801-ux5f00ux9898ux7b80ux62a5-bpe-ux5206ux8bcdux5668}
+
+\begin{quote}
+模块：\textbf{M2 分词与表示} ｜ 周次：\textbf{W1（09-14→09-20）} ｜ 算力：\textbf{T0 纯 CPU，0 GPU·小时} 唐杰作业对应：\textbf{① 从零写 Tokenizer} 的前半 ｜ 判分来源：\textbf{CS336 A1 \texttt{tests/test\_tokenizer.py} + \texttt{test\_train\_bpe.py}} 手写/代写：本课题\textbf{全部核心代码属手写区 R1}（见《造轮子边界.md》）
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{一、研究背景（这个问题历史上卡过谁）}\label{ux4e00ux7814ux7a76ux80ccux666fux8fd9ux4e2aux95eeux9898ux5386ux53f2ux4e0aux5361ux8fc7ux8c01}
+
+\begin{itemize}
+\tightlist
+\item
+  2017 年前的 NLP 用整词表，未登录词（OOV）是死穴；字符级建模又让序列变得极长。
+\item
+  BPE 从 2016（Sennrich 等）的\textbf{机器翻译子词切分}技术，被 GPT-2（2019）引入到\textbf{字节级}， 从此成为大模型的事实标准（GPT-2/3/4、LLaMA、Qwen、GLM 都是 BPE 系）。
+\item
+  关键洞察：\textbf{词表不是''词汇表''，而是一个可学习的压缩算法}------它同时决定了 ①模型的输入长度 ②嵌入层参数量 ③模型能见到的最小语义单元 ④多语言/代码/数学的公平性。
+\end{itemize}
+
+\subsection{二、研究问题（一句话，开放问题）}\label{ux4e8cux7814ux7a76ux95eeux9898ux4e00ux53e5ux8bddux5f00ux653eux95eeux9898}
+
+\begin{quote}
+\textbf{在固定词表预算下，如何设计一个训练-编码两阶段都正确、且对中文/英文/代码都公平的子词分词器？} ------并回答：为什么''字节起步''是零预算下唯一不会翻车的选择？
+\end{quote}
+
+\subsection{三、攻关线索（路标，不是答案）}\label{ux4e09ux653bux5173ux7ebfux7d22ux8defux6807ux4e0dux662fux7b54ux6848}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{压缩视角}：如果词表大小为 V，BPE 训练在最大化什么？把它写成''每一步减少多少 token 数''。
+\item
+  \textbf{字节起步的理由}：从 Unicode 字符起步会在哪些具体输入上崩？（想 3 个真实例子再往下走）
+\item
+  \textbf{训练算法}：朴素实现为什么是 O(n²)？哪些数据结构能把它压到近似线性？（提示方向：不要用字符串拼接）
+\item
+  \textbf{并列与终止}：最高频并列时怎么办？什么时候停止合并？特殊 token（\texttt{\textless{}\textbar{}endoftext\textbar{}\textgreater{}}）为什么不能参与合并？
+\item
+  \textbf{编码与解码}：encode 的时候，遇到未在 merge 表里的相邻对怎么处理？为什么必须保证 \texttt{decode(encode(x))\ ==\ x}（往返一致性）？
+\item
+  \textbf{多语言公平性}：同一段中文，字节级 BPE 的 token 数为什么比英文多？这对模型的''中文成本''意味着什么？
+\end{enumerate}
+
+\subsection{四、里程碑（可勾选，3--6 个）}\label{ux56dbux91ccux7a0bux7891ux53efux52feux900936-ux4e2a}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  \textbf{M1 手写 BPE 训练}：能从语料统计词频、迭代合并、输出 merge 表与词表，并\textbf{打印出前 10 个 merge 及其频次}
+\item[$\square$]
+  \textbf{M2 手写编码器}：支持特殊 token、未登录字节回退、往返一致性（自测 5 类边界：空串/单字节/中文/emoji/控制字符）
+\item[$\square$]
+  \textbf{M3 通过官方判分}：\texttt{test\_tokenizer.py} 与 \texttt{test\_train\_bpe.py} 全绿（原始输出贴 \texttt{判卷记录.md}）
+\item[$\square$]
+  \textbf{M4 压缩率对照}：在 TinyStories（英）与中文小语料上各训一个 32k 词表，出压缩率表 + 与你的下注对照
+\item[$\square$]
+  \textbf{M5 改坏实验（必做）}：①禁用 bytes 回退 ②不处理特殊 token ③停止条件改成''合并到只剩 1 个词'' ------每个先写\textbf{预测}，再跑，再记录现象
+\item[$\square$]
+  \textbf{M6 一页报告 + 知识卡}：报告按一页四段；知识卡 ≥3 张进 drill-ledger
+\end{itemize}
+
+\subsection{五、交付物要求}\label{ux4e94ux4ea4ux4ed8ux7269ux8981ux6c42}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+交付物
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+位置
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+验收
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+实现代码 & \texttt{手写/}（你写） & 通过 M3 \\
+判分原始输出 & \texttt{判卷记录.md} & 粘贴 \texttt{证据/judge-*.log} 原文（不许转述） \\
+证据 & \texttt{证据/} & \texttt{run.yaml}（commit/时间/命令）+ 日志 + 压缩率表 + 改坏实验记录 \\
+报告 & \texttt{报告.md} & 一页四段：问题-动机-方法-结果 \\
+知识卡 & \texttt{memory/drill-ledger/topics/} & ≥3 张（bytes 回退 / merge 规则 / 压缩率权衡） \\
+\end{longtable}
+}
+
+\subsection{\texorpdfstring{五之二、官方判分标准（2026-09-17 实跑探明，\textbf{先知道标准再动手}）}{五之二、官方判分标准（2026-09-17 实跑探明，先知道标准再动手）}}\label{ux4e94ux4e4bux4e8cux5b98ux65b9ux5224ux5206ux6807ux51c62026-09-17-ux5b9eux8dd1ux63a2ux660eux5148ux77e5ux9053ux6807ux51c6ux518dux52a8ux624b}
+
+判分器已接通：\texttt{环境/judge/judge.sh\ 01}。实跑探明 \textbf{28 个测试}（27 项 + 1 项 xfail），要求如下：
+
+\subsubsection{接口契约（你唯一需要遵守的外部形状）}\label{ux63a5ux53e3ux5951ux7ea6ux4f60ux552fux4e00ux9700ux8981ux9075ux5b88ux7684ux5916ux90e8ux5f62ux72b6}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 手写/bpe.py 必须提供：}
+\KeywordTok{def}\NormalTok{ train\_bpe(input\_path, vocab\_size, special\_tokens, }\OperatorTok{**}\NormalTok{kwargs) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{tuple}\NormalTok{[}\BuiltInTok{dict}\NormalTok{[}\BuiltInTok{int}\NormalTok{, }\BuiltInTok{bytes}\NormalTok{], }\BuiltInTok{list}\NormalTok{[}\BuiltInTok{tuple}\NormalTok{[}\BuiltInTok{bytes}\NormalTok{, }\BuiltInTok{bytes}\NormalTok{]]]}
+\KeywordTok{class}\NormalTok{ Tokenizer:}
+    \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{, vocab, merges, special\_tokens}\OperatorTok{=}\VariableTok{None}\NormalTok{): ...}
+    \KeywordTok{def}\NormalTok{ encode(}\VariableTok{self}\NormalTok{, text: }\BuiltInTok{str}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{list}\NormalTok{[}\BuiltInTok{int}\NormalTok{]: ...}
+    \KeywordTok{def}\NormalTok{ decode(}\VariableTok{self}\NormalTok{, ids: }\BuiltInTok{list}\NormalTok{[}\BuiltInTok{int}\NormalTok{]) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{str}\NormalTok{: ...}
+    \KeywordTok{def}\NormalTok{ encode\_iterable(}\VariableTok{self}\NormalTok{, iterable) }\OperatorTok{{-}\textgreater{}}\NormalTok{ Iterator[}\BuiltInTok{int}\NormalTok{]: ...   }\CommentTok{\# ← 隐藏要求，见下}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{三条硬门槛（都会挂人）}\label{ux4e09ux6761ux786cux95e8ux69dbux90fdux4f1aux6302ux4eba}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\#
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+测试
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+门槛
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+说明
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & \texttt{test\_train\_bpe\_speed} & corpus.en + vocab 500 \textbf{\textless{} 1.5 秒} & 官方参考 0.38s；``玩具实现''约 3s 会挂 \\
+2 & \texttt{test\_train\_bpe} & merges \textbf{逐项等于}参考 merges；vocab 键值集合一致 & 意味着预处理与\textbf{并列打破规则}都要与参考一致 \\
+3 & \texttt{test\_encode\_iterable\_memory\_usage} & 用 \texttt{encode\_iterable} 流式读 \textbf{5MB} 语料，额外内存 \textbf{≤ 1MB}（\texttt{RLIMIT\_AS} 实测） & \textbf{必须有真正的流式实现}，不能先 read() 全部 \\
+\end{longtable}
+}
+
+\subsubsection{一个官方''故意让分''的测试（别被骗）}\label{ux4e00ux4e2aux5b98ux65b9ux6545ux610fux8ba9ux5206ux7684ux6d4bux8bd5ux522bux88abux9a97}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{test\_encode\_memory\_usage} 被官方标记 \textbf{\texttt{xfail}}，理由原话： \emph{``Tokenizer.encode is expected to take more memory than allotted (1MB)''}。 → 也就是说：\textbf{\texttt{encode()} 超内存是允许的，\texttt{encode\_iterable()} 超内存是不允许的}。 这个 xfail 恰好是本课题''接口设计决定内存上界''的活教材（见知识地图 M5 的同类问题）。
+\end{itemize}
+
+\subsubsection{对齐口径的隐含要求}\label{ux5bf9ux9f50ux53e3ux5f84ux7684ux9690ux542bux8981ux6c42}
+
+\begin{itemize}
+\tightlist
+\item
+  与 \textbf{tiktoken 的 GPT-2} 逐 id 对齐 → 编码时必须\textbf{严格按 merges 的 rank 顺序}合并， 而不是''最长匹配优先''；且需处理 \texttt{allowed\_special} 与重叠特殊 token（\texttt{test\_overlapping\_special\_tokens}）。
+\item
+  往返一致性覆盖：空串 / 单字符 / Unicode / 多行 / 特殊 token 尾随换行 / 地址文本 / 德语 / TinyStories。
+\end{itemize}
+
+\subsection{六、开题批（开场直接发给用户，3--5 题）}\label{ux516dux5f00ux9898ux6279ux5f00ux573aux76f4ux63a5ux53d1ux7ed9ux7528ux623735-ux9898}
+
+\begin{quote}
+见 \texttt{../memory/HANDOFF.md} 的''课题01 开题批''五题（下注题 / 概念题 / 手算题 / 权衡题 / 工程题）。 \textbf{第 1 题（中文 token 倍数）必须先存档预测}，它是本学科第一条''预测→打脸''链路。
+\end{quote}
+
+\subsection{七、讲课锚点（知行合一的''讲''这一腿）}\label{ux4e03ux8bb2ux8bfeux951aux70b9ux77e5ux884cux5408ux4e00ux7684ux8bb2ux8fd9ux4e00ux817f}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{讲什么}：M2 的五个核心问题（压缩视角 → 字节起步 → 训练算法 → 编码与往返 → 多语言成本）
+\item
+  \textbf{对标材料}（三师制）：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    主线：\textbf{CS336 A1 handout} 的 tokenizer 章节（英文，规格权威）
+  \item
+    中文：\textbf{李沐 d2l ch14.6 子词嵌入}；或 \textbf{minimind 的 \texttt{train\_tokenizer.py} 中文注释}（只读，不得抄进手写区）
+  \item
+    补充：\textbf{HF LLM Course ch2}（``Implement BPE/WordPiece/Unigram from the ground up''）
+  \end{itemize}
+\item
+  \textbf{讲完必出代码级提问（3--5 道，示例）}：
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    把 merge 循环里''统计相邻对频次''改成''只统计出现次数 \textgreater1 的对''，词表会变得更好还是更差？预测并说明。
+  \item
+    你的 encode 如果按''最长匹配优先''而不是''按 merge 顺序''，往返一致性还成立吗？
+  \item
+    词表里如果混入一个\textbf{重复的 token}，哪一步会先崩溃？
+  \end{enumerate}
+\end{itemize}
+
+\subsection{\texorpdfstring{八、参考实现（\textbf{只准用于对照，不准抄}）}{八、参考实现（只准用于对照，不准抄）}}\label{ux516bux53c2ux8003ux5b9eux73b0ux53eaux51c6ux7528ux4e8eux5bf9ux7167ux4e0dux51c6ux6284}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{karpathy/nanochat} 的 \texttt{nanochat/tokenizer.py}（接口设计与特殊 token 处理）
+\item
+  \texttt{rasbt/LLMs-from-scratch} ch2 附带的 ``BPE From Scratch''
+\item
+  ⚠️ 纪律：GS=看接口与设计思路，\textbf{不看实现细节}；你的代码必须自己写。 判据：M5 的改坏实验能不能被你解释------抄来的人在这里一定卡住。
+\end{itemize}
+
+\newpage
+
+\section{判卷记录 · 课题01 BPE 分词器}\label{ux5224ux5377ux8bb0ux5f55-ux8bfeux989801-bpe-ux5206ux8bcdux5668}
+
+\begin{quote}
+判分器：\texttt{环境/judge/judge.sh\ 01}（CS336 官方 2026 测试，锁 commit \texttt{a158843b2010}，test\_*.py 未改一字） 归档规则：只贴\textbf{原始输出}，不做美化、不做转述（《判分与验收标准.md》§二-3）。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{L1 · 基线（2026-09-17 立科时实跑）}\label{l1-ux57faux7ebf2026-09-17-ux7acbux79d1ux65f6ux5b9eux8dd1}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+项
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+结果
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+命令 & \texttt{环境/judge/judge.sh\ 01} \\
+结果 & \textbf{27 failed, 1 xfailed} \\
+失败原因 & \textbf{全部同一原因}：\texttt{FileNotFoundError:\ 手写区还没有实现文件}（接线层主动抛出的友好提示） \\
+判分器状态 & ✅ 管线已验证可执行（28 个测试全部被收集并运行，非网络/环境错误） \\
+结论 & 这是\textbf{正确的初始状态}：判分器就位，只差 \texttt{手写/bpe.py} \\
+\end{longtable}
+}
+
+\textbf{当初实跑的关键片段}（完整输出会由脚本落到 \texttt{证据/judge-*.log}）：
+
+\begin{verbatim}
+FAILED tests/test_train_bpe.py::test_train_bpe_speed - FileNotFoundError
+FAILED tests/test_train_bpe.py::test_train_bpe - FileNotFoundError
+FAILED tests/test_train_bpe.py::test_train_bpe_special_tokens - FileNotFoundError
+FAILED tests/test_tokenizer.py::... （24 项，含 test_encode_iterable_memory_usage）
+======================== 27 failed, 1 xfailed in 3.67s =========================
+\end{verbatim}
+
+\begin{quote}
+注：\texttt{1\ xfailed} 不是缺陷------它是官方\textbf{故意标记}的 \texttt{test\_encode\_memory\_usage} （理由：``encode 预期会超过 1MB 配额''）。详见 \texttt{开题简报.md} §五之二。
+\end{quote}
+
+\subsection{L2 · 导师审稿意见}\label{l2-ux5bfcux5e08ux5ba1ux7a3fux610fux89c1}
+
+⏳ 待用户提交首次实现后填写（3--5 条：必考项 / 要记住 / 预告项）。
+
+\subsection{L3 · 费曼收口}\label{l3-ux8d39ux66fcux6536ux53e3}
+
+⬜ 未开始。收口动作：你对着''完全不懂分词的人''讲清 BPE，我装不懂连问三层 （Why → Why not → What if），再抽 1 次''改坏实验''复述。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{本课题的判分环境坑（已解决，记录备查）}\label{ux672cux8bfeux9898ux7684ux5224ux5206ux73afux5883ux5751ux5df2ux89e3ux51b3ux8bb0ux5f55ux5907ux67e5}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+坑
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+现象
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+处置
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+官方 conftest 需 Python ≥3.12 & 官方 \texttt{pyproject.toml}: \texttt{requires-python\ =\ "\textgreater{}=3.12,\textless{}3.14"}；conftest 用 PEP 695 泛型语法，3.11 无法解析 & 3.11 下自动改用\textbf{等价轻量 conftest}（同一 \texttt{snapshot} 夹具语义），并在日志头部如实声明；升到 3.12+ 后自动切回官方原文 \\
+tiktoken 需联网下载 GPT-2 词表 & 无外网时 \texttt{SSLError} 挂掉 12 项对齐测试 & 新增 \texttt{环境/judge/prefetch\_tiktoken.py}：用官方 fixture \textbf{离线构造} tiktoken 缓存（encoder.json 哈希与 tiktoken 内置期望一致，已验证 n\_vocab=50257） \\
+PyTorch CPU 专用源不可达 & \texttt{download.pytorch.org} SSL 被拦 & bootstrap 改为：默认不装 torch（课题01 不需要）；\texttt{-\/-with-torch} 时先试 CPU 源、失败退回 PyPI \\
+\end{longtable}
+}
+
+\end{document}

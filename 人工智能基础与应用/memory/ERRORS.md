@@ -83,3 +83,25 @@
 - **处置**：`md2typst.py` 内置三重验收 —— ①**公式逐条单独编译**（M0–M3 共 99 条去重）
   ②二/三级标题**齐备性核对**（含公式的标题只核对公式前那段中文）③页数/体积/`--preview N` 预览图人眼抽检。
 - **教训**：①排错先读 `e.diagnostic` 再二分；②**产物型工作必须配自动验收**，否则错误会以"看起来正常"的形式留下来。
+
+### E-13 环境里没有 LaTeX？——有，只是不在常规通道（2026-09-18 解决）
+- **事实**：`ctan.org` / `mirror.ctan.org` / `tug.org` / `yihui.org` / `conda` 全部不可达（curl 返回 000），
+  GitHub release 资产域断流（`gh api` 能读元数据但下载 EOF），PyPI 的 `tectonic` 是空壳包。
+  **唯一可用通道是 npm**：`glyphtex-engine@0.1.0` = Tectonic 编译的 wasm 版 XeTeX（3.4 MB）
+  + TeX Live 宏包树（1130 文件 / 150 个 sty/cls）+ 10 个可选宏包包。
+- **处置**：`环境/pdf/latex/`（转换器 `md到LaTeX.py` + 驱动 `编译LaTeX.mjs` + 批量 `导出LaTeX.py` + `bootstrap_latex.sh`）。
+- **教训**：**"装不上"往往是"通道不对"**。找不到官方源时要横向扫包管理器（npm/PyPI/crates.io），
+  而不是宣布做不到。
+
+### E-14 XeTeX 没有字符级字体回退（中文排版的真正难点）
+- **现象**：字形不在当前字体 → `Missing character`；数学字体缺 `.pfb` 物理字模 →
+  `xdvipdfmx: Cannot proceed without .vf or "physical" font` → **PDF 只有 15 字节**。
+- **六个必须记住的坑**（详见 `环境/pdf/latex/README.md`）：
+  1. `\def\zh{{\zhfont}}` 是错的（组内字体赋值随组结束）→ 必须 `\def\zh#1{{\zhfont #1}}`；
+  2. **CJK 的 catcode 是 11**：`\relax题` 会被读成一个控制字 → 胶水写成控制字宏 + 控制字后补空格；
+  3. `\lstinline` 遇汉字必炸（`\lst@arg ->判`）→ 含汉字行内代码改走 `\codezh{}`；
+  4. `listings` 的 `literate={⭐}{…}1` 会吞 ASCII → 用 `escapeinside={(*@}{@*)}`；
+  5. 数学区 `\[\text{总 FLOPs}\]` 的汉字要再包 `\zh{}`（`_math_cjk()`）；
+  6. 数学必须 `\usepackage{lmodern}`；ASCII 要 `[T1]{fontenc}`（否则 `< > |` 排成 `¡ ¿ —`）。
+- **教训**：**"能编译"≠"字都在"**。验收必须同时看：`status`、`缺字` 计数、PDF 文本层抽字，
+  三者齐了才算过（本仓三门禁：未覆盖字符即失败 / 缺字与错误计数 / 页数与汉字数核验）。

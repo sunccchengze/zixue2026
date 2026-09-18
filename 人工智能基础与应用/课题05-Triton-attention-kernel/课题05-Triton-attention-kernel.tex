@@ -1,0 +1,219 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+  chinese,
+  11pt,
+]{ctexart}
+\usepackage{xcolor}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Noto Serif SC}
+    \setCJKsansfont[]{Noto Sans SC}
+    \setCJKmonofont[]{DejaVu Sans Mono}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Noto Serif SC}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\ifLuaTeX
+\usepackage[bidi=basic,shorthands=off,provide=*]{babel}
+\else
+\usepackage[bidi=default,shorthands=off,provide=*]{babel}
+\fi
+\ifLuaTeX
+  \usepackage{selnolig} % disable illegal ligatures
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={课题05-Triton-attention-kernel},
+  pdflang={zh-CN},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{课题05-Triton-attention-kernel}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section{课题05 开题简报 · 手写 Triton attention kernel}\label{ux8bfeux989805-ux5f00ux9898ux7b80ux62a5-ux624bux5199-triton-attention-kernel}
+
+\begin{quote}
+模块：\textbf{M5} ｜ 周次：\textbf{W7--W8（10-26→11-08）} ｜ 算力：\textbf{T1 Kaggle 1×T4，计划 10 GPU·小时} 唐杰作业对应：\textbf{② 手写 Triton attention kernel，测多卡训练与推理增益} ｜ 判分来源：\textbf{CS336 A2}（正确性对齐）+ 自建性能对照 手写：\textbf{R5（kernel 本体：分块 + online softmax）}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{一、研究背景}\label{ux4e00ux7814ux7a76ux80ccux666f}
+
+朴素注意力要把 \(L\times L\) 的注意力矩阵\textbf{整个写进显存}：\(L=8192\) 时单头就是 64M 个元素。 FlashAttention（2022）的核心洞察：\textbf{根本不需要把矩阵写出来} ------ 分块计算、在线维护 softmax 的 最大值与归一化因子，就能得到数学上完全等价的结果。它把注意力的显存从 \(O(L^2)\) 降到 \(O(L)\)。
+
+Triton 让这件事对非 CUDA 专家也可做：用 Python 风格的 DSL 写''块级''程序。 \textbf{本课题的目标不是写出最快的 kernel，而是亲手经历''数值等价 + 显存下降 + 速度提升''这三件事的因果链。}
+
+\subsection{二、研究问题（一句话）}\label{ux4e8cux7814ux7a76ux95eeux9898ux4e00ux53e5ux8bdd}
+
+\begin{quote}
+\textbf{一个分块 + online softmax 的手写 kernel，能否在数值上等价于朴素实现，并把显存从 O(L²) 降到 O(L)、速度提升若干倍？提升来自哪里（算术减少？访存减少？）}
+\end{quote}
+
+\subsection{三、攻关线索}\label{ux4e09ux653bux5173ux7ebfux7d22}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{先量化瓶颈}：朴素实现在 L=2k/8k 时的显存、耗时（用 profiler 看是 compute-bound 还是 memory-bound）
+\item
+  \textbf{online softmax 的递推}：维护 running max \(m\) 与 running sum \(\ell\)， 新块的贡献要按 \(e^{m_{\text{old}}-m_{\text{new}}}\) 缩放 ------ \textbf{这正是 M0 §四 logsumexp 的应用}
+\item
+  \textbf{分块维度}：按 query 分块、沿 key 方向扫描 → 每个块只需常驻 SRAM
+\item
+  \textbf{数值容差}：与 PyTorch SDPA 对照，相对误差应在 1e-2\textasciitilde1e-3（fp16）；\textbf{先写容差，再判定}
+\item
+  \textbf{多卡/推理增益}：训练侧测吞吐（tokens/s），推理侧测 decode 显存与延迟 ------ 这是唐杰作业②要求的''增益''
+\end{enumerate}
+
+\subsection{四、里程碑}\label{ux56dbux91ccux7a0bux7891}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  M1 基线：朴素注意力的显存与耗时（L=2k/4k/8k 三点）
+\item[$\square$]
+  M2 \textbf{正确性}：手写 kernel 与 SDPA 的数值对照（max abs error 记录在案）
+\item[$\square$]
+  M3 \textbf{显存}：证明峰值显存随 L 近似线性（对比朴素实现的 O(L²)）
+\item[$\square$]
+  M4 \textbf{速度}：给出 speedup 曲线（含 L 与 block size 两个维度）
+\item[$\square$]
+  M5 \textbf{profiling}：用 profiler 说明''提升来自哪里''（访存 vs 算术，给出数字）
+\item[$\square$]
+  M6 \textbf{增益测量}：训练吞吐（tokens/s）与推理（融合进 attention 后）的实测对比
+\item[$\square$]
+  M7 一页报告 + 知识卡（online softmax 递推必须能徒手推）
+\end{itemize}
+
+\subsection{五、交付物}\label{ux4e94ux4ea4ux4ed8ux7269}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+交付物
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+位置
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+验收
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+kernel & \texttt{手写/}（你写） & M2 数值对照通过 \\
+三张图 & \texttt{证据/} & speedup / 显存 / profile（\textbf{坐标轴与硬件口径必须标注}） \\
+数值误差记录 & \texttt{证据/} & 含容差设定与依据 \\
+报告 & \texttt{报告.md} & 必须回答''提升来自哪里'' \\
+\end{longtable}
+}
+
+\subsection{六、讲课锚点}\label{ux516dux8bb2ux8bfeux951aux70b9}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{讲义}：\texttt{讲义/M5-推理.md}（W5 展开）中''GPU 内存层级与 Triton 编程模型''一节
+\item
+  \textbf{对标}：CS336 lecture 05--06（GPUs / Kernels \& Triton）+ A2 handout（\textbf{flash-attn 需两步安装}： \texttt{uv\ sync\ -\/-no-install-package\ flash-attn} 再 \texttt{uv\ sync}）· Triton 官方 FlashAttention 教程
+\item
+  \textbf{搭桥}：M0 §四 的 logsumexp ------ 你会亲手把它写进 kernel
+\end{itemize}
+
+\subsection{七、代码级提问示例}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95eeux793aux4f8b}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  online softmax 里，为什么新块要乘 \(e^{m_{\text{old}}-m_{\text{new}}}\)？不乘会怎样？
+\item
+  block size 从 64 增到 256：显存、速度、数值误差各往哪走？
+\item
+  为什么 L 很大时，朴素实现容易 OOM 而 kernel 不会？（用 \(O(L^2)\) vs \(O(L)\) 说清）
+\item
+  \textbf{【下注】} 你预测 speedup 在 L=2k 时是多少倍？先写，再测。
+\end{enumerate}
+
+\subsection{八、风险与提醒}\label{ux516bux98ceux9669ux4e0eux63d0ux9192}
+
+\begin{itemize}
+\tightlist
+\item
+  🚨 \textbf{P100 不可用于本课题}：Triton 要求计算能力 ≥7.0，P100 是 6.0 → \textbf{开跑前必须验明是 T4}。
+\item
+  ⚠️ 正确性优先于速度：\textbf{数值对照不过，速度数字一律不算数}。
+\item
+  ⚠️ 硬件口径陷阱：任何 speedup 数字必须写明''对比对象（PyTorch SDPA / 朴素实现）``与''硬件（T4）``， 否则曲线毫无意义（这一条写进报告硬要求）。
+\item
+  ⚠️ 若 T4 上 kernel 因共享内存不够而失败，\textbf{先降 block size，不要放弃}（这本身就是教学素材）。
+\end{itemize}
+
+\end{document}

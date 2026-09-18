@@ -1,0 +1,268 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{listings}
+\newcommand{\passthrough}[1]{#1}
+\lstset{defaultdialect=[5.3]Lua}
+\lstset{defaultdialect=[x86masm]Assembler}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+\ifLuaTeX
+\else
+\fi
+\ifLuaTeX
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% ═══ 由 环境/pdf/latex/md到LaTeX.py 生成 ═══
+% 中文字体：思源宋体（子集，SIL OFL 1.1）；拉丁/数学：Latin Modern（随 TeX Live 分发）
+% 编译：xelatex（本仓库自带 wasm 版 XeTeX 引擎，见 环境/pdf/latex/编译LaTeX.mjs）
+\usepackage[T1]{fontenc}      % 否则 ASCII 的 < > | 在 OT1 下排成 ¡ ¿ —
+\usepackage{lmodern}          % 必需：数学的物理字模（否则 xdvipdfmx 拒绝出 PDF）
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs,longtable,array,multirow}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+% 不用 hyperref：新版 hyperref 强制依赖 bookmark.sty，而 bundle 里没有。
+% 链接命令用降级定义，保证正文里的 \href / \url 不会报错。
+\providecommand{\href}[2]{#2}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\hypertarget}[2]{#2}
+\providecommand{\hyperlink}[2]{#2}
+\providecommand{\urlstyle}[1]{}
+\providecommand{\texorpdfstring}[2]{#1}   % hyperref 的命令，剥离后仍被模板/标题用到
+\providecommand{\phantomsection}{}
+\providecommand{\pdfstringdef}[2]{}
+\providecommand{\hypersetup}[1]{}
+
+% ── 三套字体：中文 / 符号 / emoji（按字符 cmap 自动选择）──
+\font\zhfont="[NotoSerifSC-Regular.ttf]:script=hani" at 10.5pt
+\font\symfont="[DejaVuSans.ttf]" at 10.5pt
+\font\emofont="[NotoEmoji-Regular.ttf]" at 10.5pt
+\font\zhmonofont="[NotoSansSC-Regular.ttf]" at 9pt
+% 用法：\zh{中文} / \sym{→} / \emo{🦙}
+% 注意：必须**带参数**。写成 \def\zh{{\zhfont}} 是错的——字体赋值只在小群里有效，
+% 那个小群随 \zh 立刻结束，于是中文仍然用拉丁字体排，报 Missing character。
+\def\zh#1{{\zhfont #1}}
+\def\sym#1{{\symfont #1}}
+\def\emo#1{{\emofont #1}}
+% 含汉字的行内代码：listings 的 \lstinline 遇到汉字必炸（`\lst@arg ->判`
+% 未定义控制字，catcode 设 12 也无效），所以直接自己排。
+\def\codezh#1{{\zhmonofont #1}}
+
+\def\zhglue{\hskip0pt plus .06em minus .01em}
+\linespread{1.12}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+% ── 代码块：等宽 + 中文字体（listings 默认字体不含汉字）──
+\lstset{
+  basicstyle=\zhmonofont,
+  breaklines=true,
+  breakatwhitespace=false,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  frame=single,
+  framesep=4pt,
+  rulecolor=\color{gray!45},
+  backgroundcolor=\color{gray!7},
+  xleftmargin=6pt,
+  extendedchars=true,
+  tabsize=2,
+  % 代码块里的 emoji：NotoSansSC 没有这些字形（listings 不做字符级回退）。
+  % 用 escapeinside 开口子，转换器把 emoji 逐字包成 (*@{\emo{⭐}}@*)。
+  % 试过 literate={⭐}{{\emofont ⭐}}1，会把 ASCII 字母也吞掉并报
+  % `Improper alphabetic constant`，不可用。
+  escapeinside={(*@}{@*)},
+}
+\renewcommand{\lstlistingname}{\zh{代\zhglue 码}}
+
+% ── 表格线宽（booktabs 风格）──
+\renewcommand{\arraystretch}{1.25}
+
+% ── 标题样式 ──
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.1em}{0.5em}
+\urlstyle{same}
+\hypersetup{
+  pdftitle={\zh{课\zhglue 题}05-Triton-attention-kernel},
+  pdflang={zh-CN},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{\zh{课\zhglue 题}05-Triton-attention-kernel}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section{\zh{课\zhglue 题}05 \zh{开\zhglue 题\zhglue 简\zhglue 报} \sym{·} \zh{手\zhglue 写} Triton attention kernel}\label{ux8bfeux989805-ux5f00ux9898ux7b80ux62a5-ux624bux5199-triton-attention-kernel}
+
+\begin{quote}
+\zh{模\zhglue 块\zhglue ：}\textbf{M5} \zh{｜} \zh{周\zhglue 次\zhglue ：}\textbf{W7--W8\zh{（}10-26\sym{→}11-08\zh{）}} \zh{｜} \zh{算\zhglue 力\zhglue ：}\textbf{T1 Kaggle 1\sym{×}T4\zh{，\zhglue 计\zhglue 划} 10 GPU\sym{·}\zh{小\zhglue 时}} \zh{唐\zhglue 杰\zhglue 作\zhglue 业\zhglue 对\zhglue 应\zhglue ：}\textbf{\sym{②} \zh{手\zhglue 写} Triton attention kernel\zh{，\zhglue 测\zhglue 多\zhglue 卡\zhglue 训\zhglue 练\zhglue 与\zhglue 推\zhglue 理\zhglue 增\zhglue 益}} \zh{｜} \zh{判\zhglue 分\zhglue 来\zhglue 源\zhglue ：}\textbf{CS336 A2}\zh{（\zhglue 正\zhglue 确\zhglue 性\zhglue 对\zhglue 齐\zhglue ）}+ \zh{自\zhglue 建\zhglue 性\zhglue 能\zhglue 对\zhglue 照} \zh{手\zhglue 写\zhglue ：}\textbf{R5\zh{（}kernel \zh{本\zhglue 体\zhglue ：\zhglue 分\zhglue 块} + online softmax\zh{）}}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\zh{一\zhglue 、\zhglue 研\zhglue 究\zhglue 背\zhglue 景}}\label{ux4e00ux7814ux7a76ux80ccux666f}
+
+\zh{朴\zhglue 素\zhglue 注\zhglue 意\zhglue 力\zhglue 要\zhglue 把} \(L\times L\) \zh{的\zhglue 注\zhglue 意\zhglue 力\zhglue 矩\zhglue 阵}\textbf{\zh{整\zhglue 个\zhglue 写\zhglue 进\zhglue 显\zhglue 存}}\zh{：}\(L=8192\) \zh{时\zhglue 单\zhglue 头\zhglue 就\zhglue 是} 64M \zh{个\zhglue 元\zhglue 素\zhglue 。} FlashAttention\zh{（}2022\zh{）\zhglue 的\zhglue 核\zhglue 心\zhglue 洞\zhglue 察\zhglue ：}\textbf{\zh{根\zhglue 本\zhglue 不\zhglue 需\zhglue 要\zhglue 把\zhglue 矩\zhglue 阵\zhglue 写\zhglue 出\zhglue 来}} ------ \zh{分\zhglue 块\zhglue 计\zhglue 算\zhglue 、\zhglue 在\zhglue 线\zhglue 维\zhglue 护} softmax \zh{的} \zh{最\zhglue 大\zhglue 值\zhglue 与\zhglue 归\zhglue 一\zhglue 化\zhglue 因\zhglue 子\zhglue ，\zhglue 就\zhglue 能\zhglue 得\zhglue 到\zhglue 数\zhglue 学\zhglue 上\zhglue 完\zhglue 全\zhglue 等\zhglue 价\zhglue 的\zhglue 结\zhglue 果\zhglue 。\zhglue 它\zhglue 把\zhglue 注\zhglue 意\zhglue 力\zhglue 的\zhglue 显\zhglue 存\zhglue 从} \(O(L^2)\) \zh{降\zhglue 到} \(O(L)\)\zh{。}
+
+Triton \zh{让\zhglue 这\zhglue 件\zhglue 事\zhglue 对\zhglue 非} CUDA \zh{专\zhglue 家\zhglue 也\zhglue 可\zhglue 做\zhglue ：\zhglue 用} Python \zh{风\zhglue 格\zhglue 的} DSL \zh{写}''\zh{块\zhglue 级}''\zh{程\zhglue 序\zhglue 。} \textbf{\zh{本\zhglue 课\zhglue 题\zhglue 的\zhglue 目\zhglue 标\zhglue 不\zhglue 是\zhglue 写\zhglue 出\zhglue 最\zhglue 快\zhglue 的} kernel\zh{，\zhglue 而\zhglue 是\zhglue 亲\zhglue 手\zhglue 经\zhglue 历}''\zh{数\zhglue 值\zhglue 等\zhglue 价} + \zh{显\zhglue 存\zhglue 下\zhglue 降} + \zh{速\zhglue 度\zhglue 提\zhglue 升}''\zh{这\zhglue 三\zhglue 件\zhglue 事\zhglue 的\zhglue 因\zhglue 果\zhglue 链\zhglue 。}}
+
+\subsection{\zh{二\zhglue 、\zhglue 研\zhglue 究\zhglue 问\zhglue 题\zhglue （\zhglue 一\zhglue 句\zhglue 话\zhglue ）}}\label{ux4e8cux7814ux7a76ux95eeux9898ux4e00ux53e5ux8bdd}
+
+\begin{quote}
+\textbf{\zh{一\zhglue 个\zhglue 分\zhglue 块} + online softmax \zh{的\zhglue 手\zhglue 写} kernel\zh{，\zhglue 能\zhglue 否\zhglue 在\zhglue 数\zhglue 值\zhglue 上\zhglue 等\zhglue 价\zhglue 于\zhglue 朴\zhglue 素\zhglue 实\zhglue 现\zhglue ，\zhglue 并\zhglue 把\zhglue 显\zhglue 存\zhglue 从} O(L\sym{²}) \zh{降\zhglue 到} O(L)\zh{、\zhglue 速\zhglue 度\zhglue 提\zhglue 升\zhglue 若\zhglue 干\zhglue 倍\zhglue ？\zhglue 提\zhglue 升\zhglue 来\zhglue 自\zhglue 哪\zhglue 里\zhglue （\zhglue 算\zhglue 术\zhglue 减\zhglue 少\zhglue ？\zhglue 访\zhglue 存\zhglue 减\zhglue 少\zhglue ？\zhglue ）}}
+\end{quote}
+
+\subsection{\zh{三\zhglue 、\zhglue 攻\zhglue 关\zhglue 线\zhglue 索}}\label{ux4e09ux653bux5173ux7ebfux7d22}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{\zh{先\zhglue 量\zhglue 化\zhglue 瓶\zhglue 颈}}\zh{：\zhglue 朴\zhglue 素\zhglue 实\zhglue 现\zhglue 在} L=2k/8k \zh{时\zhglue 的\zhglue 显\zhglue 存\zhglue 、\zhglue 耗\zhglue 时\zhglue （\zhglue 用} profiler \zh{看\zhglue 是} compute-bound \zh{还\zhglue 是} memory-bound\zh{）}
+\item
+  \textbf{online softmax \zh{的\zhglue 递\zhglue 推}}\zh{：\zhglue 维\zhglue 护} running max \(m\) \zh{与} running sum \(\ell\)\zh{，} \zh{新\zhglue 块\zhglue 的\zhglue 贡\zhglue 献\zhglue 要\zhglue 按} \(e^{m_{\text{old}}-m_{\text{new}}}\) \zh{缩\zhglue 放} ------ \textbf{\zh{这\zhglue 正\zhglue 是} M0 \sym{§}\zh{四} logsumexp \zh{的\zhglue 应\zhglue 用}}
+\item
+  \textbf{\zh{分\zhglue 块\zhglue 维\zhglue 度}}\zh{：\zhglue 按} query \zh{分\zhglue 块\zhglue 、\zhglue 沿} key \zh{方\zhglue 向\zhglue 扫\zhglue 描} \sym{→} \zh{每\zhglue 个\zhglue 块\zhglue 只\zhglue 需\zhglue 常\zhglue 驻} SRAM
+\item
+  \textbf{\zh{数\zhglue 值\zhglue 容\zhglue 差}}\zh{：\zhglue 与} PyTorch SDPA \zh{对\zhglue 照\zhglue ，\zhglue 相\zhglue 对\zhglue 误\zhglue 差\zhglue 应\zhglue 在} 1e-2\textasciitilde1e-3\zh{（}fp16\zh{）\zhglue ；}\textbf{\zh{先\zhglue 写\zhglue 容\zhglue 差\zhglue ，\zhglue 再\zhglue 判\zhglue 定}}
+\item
+  \textbf{\zh{多\zhglue 卡}/\zh{推\zhglue 理\zhglue 增\zhglue 益}}\zh{：\zhglue 训\zhglue 练\zhglue 侧\zhglue 测\zhglue 吞\zhglue 吐\zhglue （}tokens/s\zh{）\zhglue ，\zhglue 推\zhglue 理\zhglue 侧\zhglue 测} decode \zh{显\zhglue 存\zhglue 与\zhglue 延\zhglue 迟} ------ \zh{这\zhglue 是\zhglue 唐\zhglue 杰\zhglue 作\zhglue 业}\sym{②}\zh{要\zhglue 求\zhglue 的}''\zh{增\zhglue 益}''
+\end{enumerate}
+
+\subsection{\zh{四\zhglue 、\zhglue 里\zhglue 程\zhglue 碑}}\label{ux56dbux91ccux7a0bux7891}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  M1 \zh{基\zhglue 线\zhglue ：\zhglue 朴\zhglue 素\zhglue 注\zhglue 意\zhglue 力\zhglue 的\zhglue 显\zhglue 存\zhglue 与\zhglue 耗\zhglue 时\zhglue （}L=2k/4k/8k \zh{三\zhglue 点\zhglue ）}
+\item[$\square$]
+  M2 \textbf{\zh{正\zhglue 确\zhglue 性}}\zh{：\zhglue 手\zhglue 写} kernel \zh{与} SDPA \zh{的\zhglue 数\zhglue 值\zhglue 对\zhglue 照\zhglue （}max abs error \zh{记\zhglue 录\zhglue 在\zhglue 案\zhglue ）}
+\item[$\square$]
+  M3 \textbf{\zh{显\zhglue 存}}\zh{：\zhglue 证\zhglue 明\zhglue 峰\zhglue 值\zhglue 显\zhglue 存\zhglue 随} L \zh{近\zhglue 似\zhglue 线\zhglue 性\zhglue （\zhglue 对\zhglue 比\zhglue 朴\zhglue 素\zhglue 实\zhglue 现\zhglue 的} O(L\sym{²})\zh{）}
+\item[$\square$]
+  M4 \textbf{\zh{速\zhglue 度}}\zh{：\zhglue 给\zhglue 出} speedup \zh{曲\zhglue 线\zhglue （\zhglue 含} L \zh{与} block size \zh{两\zhglue 个\zhglue 维\zhglue 度\zhglue ）}
+\item[$\square$]
+  M5 \textbf{profiling}\zh{：\zhglue 用} profiler \zh{说\zhglue 明}''\zh{提\zhglue 升\zhglue 来\zhglue 自\zhglue 哪\zhglue 里}''\zh{（\zhglue 访\zhglue 存} vs \zh{算\zhglue 术\zhglue ，\zhglue 给\zhglue 出\zhglue 数\zhglue 字\zhglue ）}
+\item[$\square$]
+  M6 \textbf{\zh{增\zhglue 益\zhglue 测\zhglue 量}}\zh{：\zhglue 训\zhglue 练\zhglue 吞\zhglue 吐\zhglue （}tokens/s\zh{）\zhglue 与\zhglue 推\zhglue 理\zhglue （\zhglue 融\zhglue 合\zhglue 进} attention \zh{后\zhglue ）\zhglue 的\zhglue 实\zhglue 测\zhglue 对\zhglue 比}
+\item[$\square$]
+  M7 \zh{一\zhglue 页\zhglue 报\zhglue 告} + \zh{知\zhglue 识\zhglue 卡\zhglue （}online softmax \zh{递\zhglue 推\zhglue 必\zhglue 须\zhglue 能\zhglue 徒\zhglue 手\zhglue 推\zhglue ）}
+\end{itemize}
+
+\subsection{\zh{五\zhglue 、\zhglue 交\zhglue 付\zhglue 物}}\label{ux4e94ux4ea4ux4ed8ux7269}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\zh{交\zhglue 付\zhglue 物}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\zh{位\zhglue 置}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\zh{验\zhglue 收}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+kernel & \passthrough{\codezh{{\zh{手}}{\zh{写}}/}}\zh{（\zhglue 你\zhglue 写\zhglue ）} & M2 \zh{数\zhglue 值\zhglue 对\zhglue 照\zhglue 通\zhglue 过} \\
+\zh{三\zhglue 张\zhglue 图} & \passthrough{\codezh{{\zh{证}}{\zh{据}}/}} & speedup / \zh{显\zhglue 存} / profile\zh{（}\textbf{\zh{坐\zhglue 标\zhglue 轴\zhglue 与\zhglue 硬\zhglue 件\zhglue 口\zhglue 径\zhglue 必\zhglue 须\zhglue 标\zhglue 注}}\zh{）} \\
+\zh{数\zhglue 值\zhglue 误\zhglue 差\zhglue 记\zhglue 录} & \passthrough{\codezh{{\zh{证}}{\zh{据}}/}} & \zh{含\zhglue 容\zhglue 差\zhglue 设\zhglue 定\zhglue 与\zhglue 依\zhglue 据} \\
+\zh{报\zhglue 告} & \passthrough{\codezh{{\zh{报}}{\zh{告}}.md}} & \zh{必\zhglue 须\zhglue 回\zhglue 答}''\zh{提\zhglue 升\zhglue 来\zhglue 自\zhglue 哪\zhglue 里}'' \\
+\end{longtable}
+}
+
+\subsection{\zh{六\zhglue 、\zhglue 讲\zhglue 课\zhglue 锚\zhglue 点}}\label{ux516dux8bb2ux8bfeux951aux70b9}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\zh{讲\zhglue 义}}\zh{：}\passthrough{\codezh{{\zh{讲}}{\zh{义}}/M5-{\zh{推}}{\zh{理}}.md}}\zh{（}W5 \zh{展\zhglue 开\zhglue ）\zhglue 中}''GPU \zh{内\zhglue 存\zhglue 层\zhglue 级\zhglue 与} Triton \zh{编\zhglue 程\zhglue 模\zhglue 型}''\zh{一\zhglue 节}
+\item
+  \textbf{\zh{对\zhglue 标}}\zh{：}CS336 lecture 05--06\zh{（}GPUs / Kernels \& Triton\zh{）}+ A2 handout\zh{（}\textbf{flash-attn \zh{需\zhglue 两\zhglue 步\zhglue 安\zhglue 装}}\zh{：} \passthrough{\lstinline!uv sync --no-install-package flash-attn!} \zh{再} \passthrough{\lstinline!uv sync!}\zh{）}\sym{·} Triton \zh{官\zhglue 方} FlashAttention \zh{教\zhglue 程}
+\item
+  \textbf{\zh{搭\zhglue 桥}}\zh{：}M0 \sym{§}\zh{四} \zh{的} logsumexp ------ \zh{你\zhglue 会\zhglue 亲\zhglue 手\zhglue 把\zhglue 它\zhglue 写\zhglue 进} kernel
+\end{itemize}
+
+\subsection{\zh{七\zhglue 、\zhglue 代\zhglue 码\zhglue 级\zhglue 提\zhglue 问\zhglue 示\zhglue 例}}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95eeux793aux4f8b}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  online softmax \zh{里\zhglue ，\zhglue 为\zhglue 什\zhglue 么\zhglue 新\zhglue 块\zhglue 要\zhglue 乘} \(e^{m_{\text{old}}-m_{\text{new}}}\)\zh{？\zhglue 不\zhglue 乘\zhglue 会\zhglue 怎\zhglue 样\zhglue ？}
+\item
+  block size \zh{从} 64 \zh{增\zhglue 到} 256\zh{：\zhglue 显\zhglue 存\zhglue 、\zhglue 速\zhglue 度\zhglue 、\zhglue 数\zhglue 值\zhglue 误\zhglue 差\zhglue 各\zhglue 往\zhglue 哪\zhglue 走\zhglue ？}
+\item
+  \zh{为\zhglue 什\zhglue 么} L \zh{很\zhglue 大\zhglue 时\zhglue ，\zhglue 朴\zhglue 素\zhglue 实\zhglue 现\zhglue 容\zhglue 易} OOM \zh{而} kernel \zh{不\zhglue 会\zhglue ？\zhglue （\zhglue 用} \(O(L^2)\) vs \(O(L)\) \zh{说\zhglue 清\zhglue ）}
+\item
+  \textbf{\zh{【\zhglue 下\zhglue 注\zhglue 】}} \zh{你\zhglue 预\zhglue 测} speedup \zh{在} L=2k \zh{时\zhglue 是\zhglue 多\zhglue 少\zhglue 倍\zhglue ？\zhglue 先\zhglue 写\zhglue ，\zhglue 再\zhglue 测\zhglue 。}
+\end{enumerate}
+
+\subsection{\zh{八\zhglue 、\zhglue 风\zhglue 险\zhglue 与\zhglue 提\zhglue 醒}}\label{ux516bux98ceux9669ux4e0eux63d0ux9192}
+
+\begin{itemize}
+\tightlist
+\item
+  \emo{🚨} \textbf{P100 \zh{不\zhglue 可\zhglue 用\zhglue 于\zhglue 本\zhglue 课\zhglue 题}}\zh{：}Triton \zh{要\zhglue 求\zhglue 计\zhglue 算\zhglue 能\zhglue 力} \sym{≥}7.0\zh{，}P100 \zh{是} 6.0 \sym{→} \textbf{\zh{开\zhglue 跑\zhglue 前\zhglue 必\zhglue 须\zhglue 验\zhglue 明\zhglue 是} T4}\zh{。}
+\item
+  \sym{⚠️} \zh{正\zhglue 确\zhglue 性\zhglue 优\zhglue 先\zhglue 于\zhglue 速\zhglue 度\zhglue ：}\textbf{\zh{数\zhglue 值\zhglue 对\zhglue 照\zhglue 不\zhglue 过\zhglue ，\zhglue 速\zhglue 度\zhglue 数\zhglue 字\zhglue 一\zhglue 律\zhglue 不\zhglue 算\zhglue 数}}\zh{。}
+\item
+  \sym{⚠️} \zh{硬\zhglue 件\zhglue 口\zhglue 径\zhglue 陷\zhglue 阱\zhglue ：\zhglue 任\zhglue 何} speedup \zh{数\zhglue 字\zhglue 必\zhglue 须\zhglue 写\zhglue 明}''\zh{对\zhglue 比\zhglue 对\zhglue 象\zhglue （}PyTorch SDPA / \zh{朴\zhglue 素\zhglue 实\zhglue 现\zhglue ）}``\zh{与}''\zh{硬\zhglue 件\zhglue （}T4\zh{）}``\zh{，} \zh{否\zhglue 则\zhglue 曲\zhglue 线\zhglue 毫\zhglue 无\zhglue 意\zhglue 义\zhglue （\zhglue 这\zhglue 一\zhglue 条\zhglue 写\zhglue 进\zhglue 报\zhglue 告\zhglue 硬\zhglue 要\zhglue 求\zhglue ）\zhglue 。}
+\item
+  \sym{⚠️} \zh{若} T4 \zh{上} kernel \zh{因\zhglue 共\zhglue 享\zhglue 内\zhglue 存\zhglue 不\zhglue 够\zhglue 而\zhglue 失\zhglue 败\zhglue ，}\textbf{\zh{先\zhglue 降} block size\zh{，\zhglue 不\zhglue 要\zhglue 放\zhglue 弃}}\zh{（\zhglue 这\zhglue 本\zhglue 身\zhglue 就\zhglue 是\zhglue 教\zhglue 学\zhglue 素\zhglue 材\zhglue ）\zhglue 。}
+\end{itemize}
+
+\end{document}

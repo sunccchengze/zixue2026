@@ -1,0 +1,4397 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+  chinese,
+  11pt,
+]{ctexart}
+\usepackage{xcolor}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Noto Serif SC}
+    \setCJKsansfont[]{Noto Sans SC}
+    \setCJKmonofont[]{DejaVu Sans Mono}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Noto Serif SC}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\ifLuaTeX
+\usepackage[bidi=basic,shorthands=off,provide=*]{babel}
+\else
+\usepackage[bidi=default,shorthands=off,provide=*]{babel}
+\fi
+\ifLuaTeX
+  \usepackage{selnolig} % disable illegal ligatures
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={人工智能基础与应用-总集},
+  pdflang={zh-CN},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{人工智能基础与应用-总集}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section{人工智能基础与应用 I · 学科 README（课程轨 + 实训轨 双轨合一）}\label{ux4ebaux5de5ux667aux80fdux57faux7840ux4e0eux5e94ux7528-i-ux5b66ux79d1-readmeux8bfeux7a0bux8f68-ux5b9eux8badux8f68-ux53ccux8f68ux5408ux4e00}
+
+\begin{quote}
+2026-09-17 立（由''任务型轻工作台''升级为\textbf{双轨标准骨架}，升级条件由本 README 旧版预留）。 本文件夹同时承载三件事： \textbf{① 课程轨}------CORE100299 的课堂事务（考勤、随堂作业、大论文 70\%）； \textbf{② 实训轨}------把唐杰 2026 秋季作业清单（7 条）与 CS336 五份作业在\textbf{零预算}下走完的 11 个课题； \textbf{③ 知识轨}------大语言模型 M0--M9 全景知识地图，知行合一。
+
+两条轨共用一套 memory、一套证据规范、一套判分器------\textbf{同一份劳动产出两种成绩}（课程大论文 = 实训中期的技术报告）。
+\end{quote}
+
+\subsection{必读顺序（新会话照此开局，不许跳）}\label{ux5fc5ux8bfbux987aux5e8fux65b0ux4f1aux8bddux7167ux6b64ux5f00ux5c40ux4e0dux8bb8ux8df3}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  仓库根 \texttt{AGENTS.md}（回合级 commit+push 是全仓库最高优先级）
+\item
+  \texttt{\_开局指令-给新会话Agent.md}（本学科唯一入口）
+\item
+  \texttt{memory/HANDOFF.md}（现在卡在哪、下一句该问什么）
+\item
+  \texttt{章程与地图/造轮子边界.md}（⭐ 谁写代码------本学科最易出事故处）
+\item
+  \texttt{章程与地图/知行合一规程.md}（⭐ 什么叫''学过''）
+\item
+  其余按需：\texttt{知识地图-大模型全景.md}（学什么）/ \texttt{实训路线图.md}（何时学）/ \texttt{对标教学资源清单.md}（跟谁学）/ \texttt{算力与成本预算.md}（花多少）/ \texttt{判分与验收标准.md}（怎么算过）/ \texttt{AI使用红线.md}（我能不能写）/ \texttt{上游锁定清单.md}（依赖哪个版本）
+\end{enumerate}
+
+\subsection{课程档案（CORE100299，2026-09-16 首课）}\label{ux8bfeux7a0bux6863ux6848core1002992026-09-16-ux9996ux8bfe}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{推荐教材}：辛景民、武佳懿、郑南宁主编《人工智能概论》，清华大学出版社，2025
+\item
+  \textbf{考核}：课程大论文 \textbf{70\%} + 平时 \textbf{30\%}（随堂作业 + 考勤）；\textbf{无期末笔试}
+\item
+  \textbf{时间}：1--8 周，周三 9--10 节 + 周五 9--10 节，东1东-328（陈炜煌）
+\item
+  \textbf{大纲六板块}：绪论 / 搜索求解 / 知识表示 / 机器学习 / 智能体 / 大语言模型
+\item
+  详见 \texttt{资料原件/首课信息-20260916.md}
+\end{itemize}
+
+\subsection{目录地图}\label{ux76eeux5f55ux5730ux56fe}
+
+\begin{verbatim}
+人工智能基础与应用/
+├── README.md                    本文件（双轨导游图）
+├── _开局指令-给新会话Agent.md     唯一入口
+├── 章程与地图/                   本学科"宪法层"
+│   ├── 知识地图-大模型全景.md  ⭐  M0–M9：学什么（四件咬合：问题/对标/实验/证据）
+│   ├── 对标教学资源清单.md    ⭐  跟谁学（22 项已核实资源 + 8 条坑）
+│   ├── 知行合一规程.md        ⭐  什么叫学过（四件咬合 + 代码级提问 + 三条硬标准）
+│   ├── 实训路线图.md              何时学（16 周 × 11 课题 × 唐杰7条 × CS336 + 知识讲解锚点）
+│   ├── 造轮子边界.md          ⭐  谁写代码（手写 R1–R10 / 代写 B1–B8 / 协作 C1–C4）
+│   ├── AI使用红线.md              双轨制下 Agent 的红线与例外
+│   ├── 算力与成本预算.md      ⭐  零预算编排（Kaggle 30h/周 ×2×T4 + 实验卡制度 + 配额账本）
+│   ├── 判分与验收标准.md          三层判分 + 每课题通过证据
+│   └── 上游锁定清单.md        ⭐  repo + commit + 许可 + 只用哪些路径
+├── 讲义/                    ⭐私有  知识讲解主库（三师制中"我"那一腿）
+│   ├── pdf/                       📕 PDF 成品：全书 23 页 + 单讲分册（下载即可读）
+│   ├── README.md                  使用方法 + 讲义规范（8 件套）+ 展开状态表 + PDF 下载
+│   ├── M0-数学与机器学习地基.md     自动微分/熵与bpb/算力显存记账/数值稳定性/排查顺序
+│   ├── M1-从n-gram到Transformer.md n-gram/词向量/RNN/seq2seq+注意力/并行性
+│   ├── M2-分词与表示.md            压缩视角/字节起步/算法复杂度/编码回放/接口与内存
+│   ├── M3-Transformer内部机制.md   注意力与缩放/多头/GQA/RoPE/RMSNorm/SwiGLU/参数量/KV cache
+│   └── M4-M9-待展开大纲.md         M4–M9 骨架大纲 + 展开时机表
+├── 课程轨/                      课堂事务（本学科私有目录，已登记）
+│   ├── 课程进度.md               8 周 × 16 次课的进度锚点 + 作业/考勤台账
+│   └── 大论文/                   选题 → 提纲 → 初稿 → 终稿（70% 成绩）
+├── 资料原件/ 资料文本/           首课信息、活动留档、教材章节索引、讲义提取文本
+├── 环境/                  ⭐私有  脚手架区（已实跑验证）
+│   ├── bootstrap_cpu.sh          T0 环境（轻量档 9 秒；--with-torch 可选）
+│   ├── 预检.md                   会话门禁（P100 一票否决）+ 实验卡制度
+│   ├── judge/                    CS336 官方判分器接入（test_*.py 未改一字）+ tiktoken 离线词表
+│   ├── 归档/make_run.py          证据归档：run.yaml（commit/预测/预算/产物哈希）
+│   ├── 报告模板/                 一页四段（中文）+ NeurIPS 骨架（英文）
+│   └── pdf/                      📕 讲义排版链：md2typst.py + 一键脚本 + 字体（详见其 README）
+├── memory/                      记忆系统六件 + drill-ledger
+├── 知识卡/                       （可选，量大时启用）知识卡索引 → 见知行合一规程 §二
+└── 课题01-BPE分词器/ … 课题11-结项/   作战单元（**11 份开题简报已全部就位**）
+\end{verbatim}
+
+\textbf{私有目录登记}（依 \texttt{仓库使用手册.md} §二）：\texttt{课程轨/}、\texttt{环境/}、\texttt{知识卡/}，以及各课题下的 \texttt{手写/}、\texttt{脚手架/}、\texttt{证据/} 三个子目录，均为本学科私有约定，已在此登记。
+
+\subsection{课题单元形态}\label{ux8bfeux9898ux5355ux5143ux5f62ux6001}
+
+\begin{verbatim}
+课题NN-名称/
+├── 开题简报.md      背景 → 研究问题 → 攻关线索 → 里程碑 → 交付物
+├── 手写/            ⭐ 学习目标代码；Agent 只读禁写（见 造轮子边界.md）
+├── 脚手架/          ⭐ Agent 全权负责：编排/日志/绘图/判分/归档
+├── 证据/            ⭐ run.yaml + 日志 + 曲线 + 产物哈希 + 结论与反证（no-go 不擦除）
+├── 报告.md          一页四段（问题-动机-方法-结果）
+└── 判卷记录.md      自动判分结果 + 导师审稿 3–5 条 + 费曼收口记录
+\end{verbatim}
+
+\subsection{当前状态（只改这一行，细节进 memory）}\label{ux5f53ux524dux72b6ux6001ux53eaux6539ux8fd9ux4e00ux884cux7ec6ux8282ux8fdb-memory}
+
+🟢 \textbf{2026-09-17 可开课，教材已可下载}：三轨骨架 + 9 份章程 + 讲义库（M0/M1/M2/M3 全文 + M4--M9 大纲） + \textbf{11 份课题开题简报全部就位} + 判分器实跑接通 + 证据归档工具 + \textbf{讲义 PDF 全书 23 页 / 章程合订 28 页}； 下一步 = \textbf{课题01 开题（BPE 分词器，纯 CPU，0 算力）}，同步启动课程大论文选题。
+
+📕 \textbf{想读 PDF}：\texttt{讲义/pdf/大模型实训讲义-全书.pdf}（首选）· \texttt{章程与地图/pdf/章程与地图-全书.pdf}
+
+\subsection{一课两用（本学科最大红利）}\label{ux4e00ux8bfeux4e24ux7528ux672cux5b66ux79d1ux6700ux5927ux7ea2ux5229}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+课程要求
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+实训轨对应
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+复用方式
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+大论文 70\%（第 8 周结课前） & 课题01--05 的成果 & 大论文 = 实训前五课题的\textbf{中文技术报告}（选题可联动 \texttt{turbine-blade-ai-platform}） \\
+随堂作业 30\% & 每课题的判分记录 / 知识卡 & 直接取用，零额外劳动 \\
+六板块（搜索/知识表示/机器学习/智能体/LLM） & M0--M9 知识地图 & 见《知识地图》末尾的板块映射表 \\
+\end{longtable}
+}
+
+\subsection{与其它学科联动}\label{ux4e0eux5176ux5b83ux5b66ux79d1ux8054ux52a8}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{probability/}：RL 的期望/方差/条件期望地基已建成 → 讲 GRPO 时直接搭桥，不重讲
+\item
+  \texttt{论文精读/}：Chinchilla / DPO / GRPO / ReAct / SWE-agent 等论文走论文精读流程
+\item
+  \texttt{turbine-blade-ai-platform}（用户真实项目）：大论文与结项报告的应用案例来源
+\end{itemize}
+
+\newpage
+
+\section{讲义库 · 使用方法（三师制里的''我''那一腿）}\label{ux8bb2ux4e49ux5e93-ux4f7fux7528ux65b9ux6cd5ux4e09ux5e08ux5236ux91ccux7684ux6211ux90a3ux4e00ux817f}
+
+\begin{quote}
+立库 2026-09-17。\textbf{为什么要有这个库}：用户指出''实操性够强，但知识讲解偏少''。 《知识地图》回答''学什么''，《对标资源清单》回答''跟谁学''， \textbf{本库回答''此刻这一讲到底讲了什么''}------由我按你的水平写的\textbf{主讲义}。
+
+三者关系不是替代，是分工： - \textbf{对标名师}（Raschka / 李沐 / 李宏毅 / CS336）＝ 权威原始讲法，读它打地基 - \textbf{本库讲义} ＝ 为你量身写的浓缩主干 + 与代码的对应 + 常见误解（省你时间） - \textbf{我（对话里）} ＝ 只讲你卡住的那一层，出代码级提问，判你的理解
+\end{quote}
+
+\subsection{讲义规范（每讲必含 8 件）}\label{ux8bb2ux4e49ux89c4ux8303ux6bcfux8bb2ux5fc5ux542b-8-ux4ef6}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\#
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+部件
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+作用
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 本讲要回答的 3--5 个问题 & 带着问题读，读完能答才算过 \\
+2 & 主干讲解（≤150 字/概念块） & 一次讲透，不挤牙膏 \\
+3 & 公式/伪代码骨架 & 这是''手写区''的地图，\textbf{不是答案} \\
+4 & \textbf{在代码里长什么样} & 指向 \texttt{手写/} 或上游 nanochat 的\textbf{函数与接口}（不给行号、不给实现） \\
+5 & 常见误解（每条配一个反例） & 抄自历届踩坑与官方测试的隐含要求 \\
+6 & 能立刻跑的实验 & 讲完就跑，知行咬合点 \\
+7 & 代码级提问（3--5 道） & 改坏它/预测现象/给出诊断 \\
+8 & 记忆锚（隐喻 + 口诀 + 符号位置） & 进 drill-ledger \\
+\end{longtable}
+}
+
+\subsection{📕 下载 PDF（离线阅读 / 打印用）}\label{ux4e0bux8f7d-pdfux79bbux7ebfux9605ux8bfb-ux6253ux5370ux7528}
+
+不用看屏幕读 Markdown------\textbf{讲义已排成 PDF}，直接下载：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+下载这个
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+页数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+说明
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\texttt{讲义/pdf/大模型实训讲义-全书.pdf}} & 24 & ⭐ \textbf{首选}：封面 + 版权说明 + 目录 + M0--M3 + 大纲 \\
+\texttt{讲义/pdf/M0…M3.pdf} 等单讲分册 & 2--5 & 手机上读、单讲打印、发给同学 \\
+\texttt{章程与地图/pdf/章程与地图-全书.pdf} & 28 & 九份章程合订（学什么/跟谁学/什么叫学过/何时学/谁写代码） \\
+\end{longtable}
+}
+
+\textbf{排版与验收}：正文思源宋体、标题黑体、代码等宽；全书 24 页里 99 条去重公式已\textbf{逐条单独编译验证}过， 每讲章节也做了齐备性自检（防排版吞内容）。重生成与维护见 \texttt{环境/pdf/README.md}。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{cd}\NormalTok{ 人工智能基础与应用 }\KeywordTok{\&\&} \ExtensionTok{环境/pdf/生成讲义PDF.sh}        \CommentTok{\# 每讲 + 全书}
+\BuiltInTok{cd}\NormalTok{ 人工智能基础与应用 }\KeywordTok{\&\&} \ExtensionTok{环境/pdf/生成讲义PDF.sh} \AttributeTok{{-}{-}charter}   \CommentTok{\# 章程分册}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+铁律：\textbf{母版是这里的 \texttt{.md}，PDF 是派生物}。改了讲义必须重跑一次生成脚本。
+\end{quote}
+
+\subsection{目录与状态}\label{ux76eeux5f55ux4e0eux72b6ux6001}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+讲义
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+模块
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+对应课题/周次
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+状态
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+PDF
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{M0-数学与机器学习地基.md} & M0 & 贯穿，W1 起 & ✅ 已写 & ✅ 5 页 \\
+\texttt{M1-从n-gram到Transformer.md} & M1 & 课题02，W2 & ✅ 已写 & ✅ 4 页 \\
+\texttt{M2-分词与表示.md} & M2 & \textbf{课题01，W1（当前）} & ✅ 已写 & ✅ 5 页 \\
+\texttt{M3-Transformer内部机制.md} & M3 & 课题02，W2--W3 & ✅ 已写 & ✅ 5 页 \\
+\texttt{M4-M9-待展开大纲.md} & M4--M9 & W4--W16 & 🟡 大纲已就位，按周展开 & ✅ 4 页 \\
+\end{longtable}
+}
+
+\begin{quote}
+PDF 生成日期：2026-09-17（母版有改动就要重跑 \texttt{环境/pdf/生成讲义PDF.sh}）。
+\end{quote}
+
+\begin{quote}
+展开节奏：\textbf{每周讲之前，我把当周讲义写完整}（不留空讲义占位）；本文件表格同步更新状态。
+\end{quote}
+
+\subsection{使用流程（照做）}\label{ux4f7fux7528ux6d41ux7a0bux7167ux505a}
+
+\begin{verbatim}
+① 预习：读本讲"要回答的问题"（2 分钟）
+② 读对标材料对应章节（≤25 分钟，带着问题读）
+③ 读本库讲义（≤15 分钟，看主干与"代码里长什么样"）
+④ 合上讲义，用自己的话讲给我听 → 我专挑含糊处追问
+⑤ 进手写区（R 类任务）→ 跑判分
+⑥ 做"改坏实验"→ 先预测 → 再跑 → 修好
+⑦ 我出代码级提问，你作答 → 进 drill-ledger 建卡
+\end{verbatim}
+
+\textbf{纪律}：讲义里\textbf{不含可直接粘贴到 \texttt{手写/} 的实现}（见《造轮子边界.md》）。 讲义给的是''坐标系 + 陷阱 + 判据''，代码必须你自己长出来。
+
+\newpage
+
+\section{讲义 M0 · 数学与机器学习地基}\label{ux8bb2ux4e49-m0-ux6570ux5b66ux4e0eux673aux5668ux5b66ux4e60ux5730ux57fa}
+
+\begin{quote}
+对应：\textbf{贯穿全程，W1 起}｜前置讲义，不单独占周次，随用随补 对标材料：李沐 d2l ch2--ch5 + ch11（优化）· Karpathy micrograd 视频 · \texttt{probability/} 课题01--08（已建成，直接搭桥） \textbf{为什么先讲这个}：后面所有的''为什么训练崩了''\,``为什么显存不够''``为什么换分词器 loss 不能比''， 答案都在这一讲里。\textbf{它不是复习，是工具箱。}
+\end{quote}
+
+\subsection{〇、本讲要回答的 5 个问题}\label{ux672cux8bb2ux8981ux56deux7b54ux7684-5-ux4e2aux95eeux9898}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  梯度是怎么穿过 100 层网络的？为什么反向传播只要一遍？
+\item
+  交叉熵、困惑度、bpb 三者的关系是什么？为什么跨模型只能比 bpb？
+\item
+  训练一个 N 参数的模型，显存和算力到底怎么估？
+\item
+  为什么 softmax 要先减最大值？不这样做会怎样？
+\item
+  ``loss 不降''时，我该按什么顺序怀疑？
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{一、自动微分：为什么反向传播只要一遍}\label{ux4e00ux81eaux52a8ux5faeux5206ux4e3aux4ec0ux4e48ux53cdux5411ux4f20ux64adux53eaux8981ux4e00ux904d}
+
+\textbf{计算图}：把 \(f(x_1,\dots,x_n)\) 表示为有向无环图，每个节点是一次基本运算。 \textbf{链式法则}：若 \(y = f(g(x))\)，则 \(\frac{dy}{dx} = \frac{dy}{dg}\cdot\frac{dg}{dx}\)。
+
+两种方向的差别（这是本讲的\textbf{第一个关键直觉}）：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+模式
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+做法
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+成本
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+适合
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+前向模式 & 从输入往输出推导数 & 每个输入要一遍 → \textbf{n 遍} & 输入少、输出多 \\
+\textbf{反向模式} & 从输出往输入推导数 & \textbf{一遍}拿到全部输入的偏导 & \textbf{输入多、输出少 ← 我们的情况} \\
+\end{longtable}
+}
+
+我们的情况是''几亿个参数（输入多）→ 一个标量 loss（输出少）``， 所以\textbf{反向模式（就是我们说的反向传播）}是天选：\textbf{1 次前向 + 1 次反向 = 全部梯度}。
+
+\textbf{梯度累加的工程含义}：反向时每个节点把上游梯度\textbf{相加}。这解释了两个常见现象： ①同一个张量被用了两次（如权重共享），梯度会累加； ②既然梯度是''累加''的，就能\textbf{梯度累积}（gradient accumulation）------多个小批次的梯度加起来等价于大批次， 这是后来显存不够时的核心手段（课题04 会用到）。
+
+\textbf{在代码里长什么样}： - \texttt{手写/} 里会有一个 \texttt{Value} 类（或等价的张量自动微分），核心是 \texttt{.backward()}： 按\textbf{拓扑逆序}遍历，每个节点用局部导数乘上游梯度累加到父节点。 - 上游对照：\texttt{nanochat/optim.py} 里参数更新前的 \texttt{p.grad} 就是这一机制的产物；CS336 A1 的 \texttt{run\_gradient\_clipping} 则是\textbf{在使用}梯度（先要能算出来）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{二、信息量、交叉熵、困惑度、bpb（\textbf{跨分词器可比性}的根源）}{二、信息量、交叉熵、困惑度、bpb（跨分词器可比性的根源）}}\label{ux4e8cux4fe1ux606fux91cfux4ea4ux53c9ux71b5ux56f0ux60d1ux5ea6bpbux8de8ux5206ux8bcdux5668ux53efux6bd4ux6027ux7684ux6839ux6e90}
+
+\textbf{信息量}：一个概率为 \(p\) 的事件携带的信息是 \(-\log p\)（nats，底为 \(e\)；若底为 2 则单位是 bit）。
+
+\textbf{熵}：随机变量的平均信息量 \(H(p) = -\sum_x p(x)\log p(x)\)。 直觉：\textbf{``平均每个符号有多难猜''}。
+
+\textbf{交叉熵}：用模型分布 \(q\) 去编码真实分布 \(p\) 的代价 \[H(p,q) = -\sum_x p(x)\log q(x)\] 语言模型里 \(p\) 是''真实下一个 token''，\(q\) 是模型输出 ------ \textbf{这正好就是训练 loss}。
+
+\textbf{困惑度}：\(\mathrm{PPL} = \exp(H(p,q))\)（nats 为底时）。 直觉最有用的一句话：\textbf{``模型平均在多少个等概率选项里犯迷糊。''} PPL=10 相当于''平均 10 选 1''。
+
+\textbf{bpb（bits per byte）}： \[\mathrm{bpb} = \frac{H(p,q)\ \text{[nats]}}{\ln 2 \times \overline{\#\text{bytes per token}}}\] 分母是''平均每个 token 对应多少字节''。
+
+\begin{quote}
+\textbf{为什么必须用 bpb 跨模型比较}：交叉熵的单位是''每 token''，而 token 的大小随分词器变化------ 词表越大 token 越''大''，同样文本的 token 数越少，单 token 交叉熵天然越高。 \textbf{除以''每 token 字节数''就把记账单位统一到''每个字节''上，于是与分词器无关。} 这也解释了 M2 讲义的结论：换词表后 loss 不可比，bpb 可比。
+\end{quote}
+
+\textbf{在代码里长什么样}：\texttt{nanochat/loss\_eval.py} 专门做 bpb（而不是 loss）的评估； \texttt{nanochat/core\_eval.py} 则是另一类指标（CORE，由 22 个数据集的准确率合成）。 \textbf{你在课题01 的压缩率表，其实是在预演 bpb 的分母}------先感受''每 token 多少字节''。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{三、算力与显存记账（\textbf{估数量级}是核心能力）}{三、算力与显存记账（估数量级是核心能力）}}\label{ux4e09ux7b97ux529bux4e0eux663eux5b58ux8bb0ux8d26ux4f30ux6570ux91cfux7ea7ux662fux6838ux5fc3ux80fdux529b}
+
+\textbf{参数量}（Transformer 主项，细节见 M3）： - 每层注意力 \(4d^2\)（Q/K/V/O 四个 \(d\times d\)），MLP 约 \(8d^2\)（SwiGLU 的等价形式）→ \textbf{每层 ≈ \(12d^2\)} - 词嵌入 \(V\cdot d\)（权重共享时 1 份）
+
+\textbf{算力（训练）}：业界通用估算 \[\text{总 FLOPs} \approx 6 \times N \times D\] 其中 \(N\) 是\textbf{非嵌入参数量}，\(D\) 是训练 token 数。拆解：每个参数在前向贡献 2 FLOPs（乘+加）， 反向是前向的 2 倍 → 合计 6。注意力部分另有 \(12 L h q t\) 项（序列长度相关，短序列时可忽略）。 \textgreater{} Karpathy 在 nanochat 文档里给的就是这个公式，并特别注明''与 Chinchilla 略有 1\% 差异，因为不计嵌入与 softmax''。
+
+\textbf{显存（训练）}：粗算每参数 \textbar{} 项 \textbar{} 字节数 \textbar{} \textbar---\textbar---\textbar{} \textbar{} 参数（bf16） \textbar{} 2 \textbar{} \textbar{} 梯度（bf16） \textbar{} 2 \textbar{} \textbar{} Adam 一阶动量（fp32） \textbar{} 4 \textbar{} \textbar{} Adam 二阶动量（fp32） \textbar{} 4 \textbar{} \textbar{} \textbf{小计（不含激活、不含 fp32 主权重）} \textbar{} \textbf{≈ 12--16} \textbar{} \textbar{} 激活（随 batch × 序列长度增长，可用 checkpointing 换） \textbar{} 视配置 \textbar{}
+
+\textbf{练习式直觉}：0.1B 参数 × 16 字节 ≈ 1.6GB（优化器+梯度+权重）； 剩下的全是激活与临时张量 ------ \textbf{这就是为什么 16GB 的 T4 训 0.1B 要精打细算}（课题04 的真实约束）。
+
+\textbf{在代码里长什么样}：\texttt{nanochat/gpt.py} 里有 \texttt{estimate\_flops()} 与 \texttt{num\_scaling\_params()} 两个方法， 正是上面两段公式的代码化。\textbf{课题03 的 scaling law 就是靠这两个函数把''跑多大''换算成''花多少算力''的。}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{四、数值稳定性：softmax 与 logsumexp}\label{ux56dbux6570ux503cux7a33ux5b9aux6027softmax-ux4e0e-logsumexp}
+
+\textbf{问题}：\(\mathrm{softmax}(x)_i = e^{x_i}/\sum_j e^{x_j}\)。若某个 \(x_i = 1000\)，\(e^{1000}\) 直接溢出成 \texttt{inf}。
+
+\textbf{解法}：分子分母同乘 \(e^{-m}\)（\(m=\max_j x_j\)）： \[\mathrm{softmax}(x)_i = \frac{e^{x_i-m}}{\sum_j e^{x_j-m}}\] 数值上完全等价，但最大指数变成 \(e^0=1\)，永不溢出。\textbf{``减最大值''不是技巧，是恒等变形。}
+
+\textbf{logsumexp 技巧}：\(\log\sum_j e^{x_j} = m + \log\sum_j e^{x_j - m}\)， 这是所有''用 log 概率做加法''的算法（交叉熵、CTC、HMM、flash attention 的 online softmax）的共同基础。
+
+\textbf{为什么这很重要}：课题05 的 \textbf{online softmax} 就是''分块计算时如何边算边保持数值稳定''， 其思想内核与这里的减最大值完全一致------\textbf{你在 M0 学的东西，会在 Triton kernel 里原样再出现一次。}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{五、``loss 不降''的排查顺序（把知识变成动作）}\label{ux4e94loss-ux4e0dux964dux7684ux6392ux67e5ux987aux5e8fux628aux77e5ux8bc6ux53d8ux6210ux52a8ux4f5c}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{数据}：label 与输入错位了吗？分词是否正常（看打印出来的样本）？
+\item
+  \textbf{初始化}：全零/全同初始化会让对称性无法打破；检查 std 与层数是否匹配
+\item
+  \textbf{学习率}：太大 → loss 震荡/NaN；太小 → 曲线是平的。先用小数据\textbf{能否过拟合一条样本}自检
+\item
+  \textbf{形状与 mask}：mask 是否在 softmax 之前施加？是否广播到正确维度？
+\item
+  \textbf{数值}：是否出现 \texttt{inf/nan}？打开梯度范数监控
+\item
+  \textbf{数值精度}：bf16 在小模型/小梯度上可能不够（T4 没有 bf16，课题04 要用 fp16 + GradScaler）
+\end{enumerate}
+
+\begin{quote}
+这份顺序本身就是''知行合一''：\textbf{它会成为课题04 的排查清单}，而不是一段可背诵的文字。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{六、能立刻跑的实验}\label{ux516dux80fdux7acbux523bux8dd1ux7684ux5b9eux9a8c}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ① 手算 bpb 的换算（先自己推，再看输出对不对）}
+\ExtensionTok{环境/.venv/bin/python} \AttributeTok{{-}} \OperatorTok{\textless{}\textless{}\textquotesingle{}PY\textquotesingle{}}
+\StringTok{import math}
+\StringTok{\# 假设某模型：每 token 交叉熵 2.0 nats，平均每个 token 对应 4 个字节}
+\StringTok{loss\_nats, bytes\_per\_token = 2.0, 4.0}
+\StringTok{ppl = math.exp(loss\_nats)}
+\StringTok{bpb = loss\_nats / math.log(2) / bytes\_per\_token}
+\StringTok{print(f"loss=\{loss\_nats\} nats → PPL=\{ppl:.2f\}, bpb=\{bpb:.3f\}")}
+\StringTok{print("→ 再推一遍：若词表翻倍使 bytes/token 变成 6，bpb 会怎么变？loss 呢？")}
+\OperatorTok{PY}
+
+\CommentTok{\# ② 验证"减最大值"是恒等变形（含极端值）}
+\ExtensionTok{环境/.venv/bin/python} \AttributeTok{{-}} \OperatorTok{\textless{}\textless{}\textquotesingle{}PY\textquotesingle{}}
+\StringTok{import numpy as np}
+\StringTok{x = np.array([0.0, 1000.0, 1000.0])}
+\StringTok{naive = np.exp(x) / np.exp(x).sum()      \# 溢出}
+\StringTok{stable = np.exp(x {-} x.max()) / np.exp(x {-} x.max()).sum()}
+\StringTok{print("naive :", naive, " ← 溢出成 nan")}
+\StringTok{print("stable:", stable, " ← 正确")}
+\OperatorTok{PY}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{七、代码级提问（3--5 道）}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95ee35-ux9053}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{【推导】} 用 \(e^{-m}\) 的恒等变形，证明''减最大值''不改变 softmax 的输出（写出两步）。
+\item
+  \textbf{【估算】} 一个 0.1B 参数模型用 Adam 训练（bf16 参数 + fp32 优化器状态）： ①权重+梯度+优化器状态占多少 GB？②若 T4 只有 16GB，留给激活的预算是多少？
+\item
+  \textbf{【预测】} 训练中把 loss 从 fp32 计算改成 fp16 计算：训练会更快还是更慢？会出现什么新故障？ （提示：T4 无 bf16；GradScaler 是干什么的）
+\item
+  \textbf{【联系】} \texttt{probability/} 里学过的''期望''和这里的''交叉熵''是同一个东西的两种说法吗？ 试着用期望的符号把交叉熵写出来。
+\item
+  \textbf{【诊断】} 曲线在 400 步突然 NaN。按本讲 §五 的顺序，你会先看哪三个量？
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{八、记忆锚}\label{ux516bux8bb0ux5fc6ux951a}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{隐喻}：反向传播 = \textbf{``责任回溯''}------loss 是最终事故，每个参数按''它贡献了多少''分摊责任； 责任可以累加，所以梯度能攒（梯度累积）。
+\item
+  \textbf{口诀}：\textbf{``一遍反向、六倍算力、十六字节、先减最大值''} （反向传播一遍 / 6ND / 每参数约 16 字节 / softmax 稳定性）
+\item
+  \textbf{符号位置法}：把 \(\mathrm{bpb} = \dfrac{H}{\ln 2 \cdot B}\) 写在卡片中央， \textbf{分子 H 是''每 token 的惊讶''，分母 B 是''每 token 的字节''}， 中间一条分数线＝``把单位从 token 换成 byte''------这条线就是跨分词器比较的桥。
+\end{itemize}
+
+\newpage
+
+\section{讲义 M1 · 从 n-gram 到 Transformer}\label{ux8bb2ux4e49-m1-ux4ece-n-gram-ux5230-transformer}
+
+\begin{quote}
+对应课题：\textbf{课题02（W2）前半}｜模块：M1｜预计 1 个时段 对标材料：李沐 d2l ch8--ch10（RNN → 注意力）· CS336 lecture 01（概览）· 《Attention Is All You Need》原文（走论文精读） \textbf{为什么讲这段}：不理解 attention 之前的世界，就不知道它在解决什么问题------ 而''知道它在解决什么问题''，是你将来能判断''某个新架构值不值得看''的唯一依据。
+\end{quote}
+
+\subsection{〇、本讲要回答的 5 个问题}\label{ux672cux8bb2ux8981ux56deux7b54ux7684-5-ux4e2aux95eeux9898-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  n-gram 语言模型为什么必然失败？它的失败方式是什么？
+\item
+  困惑度（perplexity）为什么能当指标？它和 M0 的交叉熵什么关系？
+\item
+  RNN/LSTM 解决了什么，又为什么被淘汰？
+\item
+  seq2seq + attention（2014）与 Transformer（2017）的关键差别在哪？
+\item
+  为什么说''并行性''是 Transformer 取胜的主因，而不是''注意力更聪明''？
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{一、n-gram：用计数做语言模型}\label{ux4e00n-gramux7528ux8ba1ux6570ux505aux8bedux8a00ux6a21ux578b}
+
+\textbf{链式法则}：\(P(w_1\dots w_T) = \prod_t P(w_t \mid w_{<t})\)。 \textbf{n-gram 的近似}：只依赖前 \(n-1\) 个词，\(P(w_t\mid w_{t-n+1}\dots w_{t-1})\)，用\textbf{语料计数}估计： \[P(w_t\mid w_{t-1}) = \frac{c(w_{t-1}w_t)}{c(w_{t-1})}\]
+
+\textbf{两个死穴}（这就是''为什么历史必然翻篇''）： \textbar{} 死穴 \textbar{} 具体表现 \textbar{} \textbar---\textbar---\textbar{} \textbar{} \textbf{稀疏} \textbar{} 没见过的组合概率为 0 → 平滑（add-k / 回退 / Kneser-Ney）只是打补丁 \textbar{} \textbar{} \textbf{上下文太短} \textbar{} \(n=5\) 时也只能看 4 个词；而''这句话的主语是谁''可能要跨 50 个词 \textbar{}
+
+\textbf{评价指标}：困惑度 \(\mathrm{PPL}=\exp(-\frac{1}{T}\sum_t \log P(w_t\mid w_{<t}))\) ------ 正是 M0 里交叉熵取指数。\textbf{PPL 越低，模型对下一个词越不''惊讶''。} 这个指标一路沿用到今天（bpb 是它的分词器无关版本）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{二、词向量：从 one-hot 到分布式表示}\label{ux4e8cux8bcdux5411ux91cfux4ece-one-hot-ux5230ux5206ux5e03ux5f0fux8868ux793a}
+
+\textbf{one-hot 的问题}：任意两词的内积都是 0------``猫''和''狗''的距离与''猫''和''民主''一样远。语义无从谈起。
+
+\textbf{word2vec（skip-gram + 负采样）}：用一个''给定中心词预测上下文词''的浅层网络， 训练出的\textbf{中间层权重}就是词向量。结果是著名的\textbf{向量算术}：\(\vec{king}-\vec{man}+\vec{woman}\approx\vec{queen}\)。
+
+\textbf{关键转折}：人们发现''预测下一个词''这个任务逼着模型学出\textbf{语义结构}。 这正是后来 GPT 路线的思想雏形：\textbf{语言建模本身就是最好的自监督任务。}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{三、RNN / LSTM：把''历史''压进一个向量}\label{ux4e09rnn-lstmux628aux5386ux53f2ux538bux8fdbux4e00ux4e2aux5411ux91cf}
+
+\textbf{RNN}：\(h_t = \tanh(W_h h_{t-1} + W_x x_t)\)，用 \(h_{t-1}\) 携带历史。 \textbf{LSTM}：加门控（遗忘门、输入门、输出门）让信息可以''长期保留''。
+
+\textbf{为什么被淘汰（两个根因，都是工程性的）}：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{梯度消失/爆炸}：BPTT 要对时间展开求导，梯度是 \(\prod_t \frac{\partial h_t}{\partial h_{t-1}}\) 的连乘。 连乘里每个 Jacobian 的谱半径 \textless1 → 指数衰减；\textgreater1 → 爆炸。\textbf{这是结构性问题，不是调参能解决的。}
+\item
+  \textbf{无法并行}：\(h_t\) 依赖 \(h_{t-1}\)，\textbf{必须按时间顺序串行计算}。 GPU 有上万核心却只能一次算一步 ------ 训练吞吐被''时间''卡死。
+\end{enumerate}
+
+\begin{quote}
+\textbf{这是本讲最重要的一句话}：深度学习的历史不是''模型更聪明''的历史， 而是''\textbf{让更多算力能有效地作用于更多数据}''的历史。Transformer 赢在\textbf{能并行}。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{四、seq2seq 与注意力（2014）：注意力的真正起源}\label{ux56dbseq2seq-ux4e0eux6ce8ux610fux529b2014ux6ce8ux610fux529bux7684ux771fux6b63ux8d77ux6e90}
+
+\textbf{seq2seq 结构}：一个 RNN 把源句编码成一个\textbf{固定长度}向量，另一个 RNN 从它解码出目标句。
+
+\textbf{瓶颈}：整句信息被压进一个向量 ------ 句子越长，丢得越多。
+
+\textbf{Bahdanau 注意力（2014）的解法}：解码每一步时，\textbf{回头扫描编码器的所有隐状态}， 算出''当前该关注哪几个位置''，加权求和作为当前步的上下文。 → 这就是 \textbf{QKV 的雏形}（解码器状态＝Query，编码器隐状态＝Key/Value）。
+
+\textbf{关键历史结论}：\textbf{注意力最初是给 RNN 打补丁的}，不是 Transformer 的胜利品。 Transformer 的贡献是：\textbf{``既然注意力这么好用，那还要 RNN 干什么？''}------ 把 RNN 整个删掉，只用注意力 + 前馈层，于是\textbf{整段序列可以并行计算}。
+
+\textbf{路径长度对比}（理解''为什么更快''的关键）： \textbar{} 架构 \textbar{} 任意两位置的依赖路径 \textbar{} 并行性 \textbar{} \textbar---\textbar---\textbar---\textbar{} \textbar{} RNN \textbar{} \(O(L)\)（要穿过 L 步） \textbar{} ❌ 串行 \textbar{} \textbar{} \textbf{Transformer} \textbar{} \textbf{\(O(1)\)}（一步直达） \textbar{} ✅ 全并行 \textbar{}
+
+代价是注意力本身 \(O(L^2)\) 的计算量------这是''用算力换并行''的经典交易， 也是后来 flash attention、稀疏注意力、线性注意力等一整条研究线的起点。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{五、常见误解}\label{ux4e94ux5e38ux89c1ux8befux89e3}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+误解
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+更正
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+``注意力是 Transformer 发明的'' & 2014 年 Bahdanau 就用于 seq2seq；2017 只是\textbf{去掉 RNN} 并改成 self-attention \\
+``self-attention 与 attention 是两回事'' & 同一机制，只是 Q/K/V 都来自同一序列 \\
+``RNN 不行是因为效果差'' & 在长依赖上确实差，但\textbf{致命的并行性}才是被淘汰主因 \\
+``PPL 越低模型越强'' & 只在\textbf{同分词器、同数据}下可比（见 M2） \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{六、能立刻跑的实验}\label{ux516dux80fdux7acbux523bux8dd1ux7684ux5b9eux9a8c-1}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 用 n{-}gram 的视角感受"上下文长度"的代价：统计 bigram 的稀疏程度}
+\ExtensionTok{环境/.venv/bin/python} \AttributeTok{{-}} \OperatorTok{\textless{}\textless{}\textquotesingle{}PY\textquotesingle{}}
+\StringTok{import collections, re}
+\StringTok{text = open("上游/assignment1{-}basics/tests/fixtures/tinystories\_sample.txt", encoding="utf{-}8").read().lower()}
+\StringTok{words = re.findall(r"[a{-}z\textquotesingle{}]+", text)}
+\StringTok{uni = collections.Counter(words)}
+\StringTok{bi  = collections.Counter(zip(words, words[1:]))}
+\StringTok{print(f"词数=\{len(words)\}  不同词=\{len(uni)\}  不同的相邻词对=\{len(bi)\}")}
+\StringTok{print(f"→ 光是一个小语料，二元组就已经接近词数的 \{len(bi)/len(uni):.1f\} 倍；三/四元组的稀疏会爆掉")}
+\StringTok{print("→ 换成长度更大的语料，这个比值会继续上升（稀疏问题的定量感受）")}
+\OperatorTok{PY}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{七、代码级提问（3--5 道）}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95ee35-ux9053-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{【推导】} 为什么 BPTT 的梯度是 Jacobian 连乘？写出两步的式子，并说明''谱半径 \textless1 就衰减''的含义。
+\item
+  \textbf{【对比】} 用一句话说清：Transformer 相比 RNN，\textbf{用掉了什么、换来了什么}？
+\item
+  \textbf{【判断】} 如果有一天硬件变成''串行极快、并行极慢''，Transformer 还会是主流吗？说理由。
+\item
+  \textbf{【联系】} d2l 里 attention 的示意图和 M3 讲的 \(QK^\top\) 是一回事吗？把两者对应起来。
+\item
+  \textbf{【指标】} 你的 n-gram 模型 PPL=120，另一个模型 PPL=80，但用的是不同分词器。能说后者更强吗？
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{八、记忆锚}\label{ux516bux8bb0ux5fc6ux951a-1}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{隐喻}：RNN = \textbf{``传话游戏''}------一句话传到第 50 个人已经面目全非； 注意力 = \textbf{``所有人同时看着原始白板''}------谁离得远都不影响看清原文。
+\item
+  \textbf{口诀}：\textbf{``n-gram 死于稀疏、RNN 死于串行、注意力先治 RNN、Transformer 删掉串行''}
+\item
+  \textbf{符号位置法}：把 \(O(L)\) 与 \(O(1)\) 并排写在卡片上------ \textbf{左边是''要走 L 步''，右边是''一步直达''}；下面是代价 \(O(L^2)\)，提醒你注意力不是免费的。
+\end{itemize}
+
+\newpage
+
+\section{讲义 M2 · 分词与表示}\label{ux8bb2ux4e49-m2-ux5206ux8bcdux4e0eux8868ux793a}
+
+\begin{quote}
+对应课题：\textbf{课题01 BPE 分词器（W1）}｜模块：M2｜预计 2 个时段（3--5 小时） 对标材料：CS336 A1 handout（规格权威）· 李沐 d2l ch14.6 子词嵌入（中文）· HF LLM Course ch2 \textbf{读法}：先读下面的''要回答的问题''，再读对标材料，最后回来看本讲义主干。
+\end{quote}
+
+\subsection{〇、本讲要回答的 5 个问题}\label{ux672cux8bb2ux8981ux56deux7b54ux7684-5-ux4e2aux95eeux9898-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  BPE 训练究竟在优化什么？为什么说它''不是词汇表，而是压缩器''？
+\item
+  为什么必须从\textbf{字节}起步？代价是什么？
+\item
+  训练算法为什么容易写成 O(n²)？如何做到官方要求的 \textless1.5 秒？
+\item
+  编码时为什么必须''回放合并历史''，而不能''最长匹配优先''？
+\item
+  同一个模型，换分词器后 loss 不可比------那该用什么指标？
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{一、压缩视角：BPE 到底在做什么}\label{ux4e00ux538bux7f29ux89c6ux89d2bpe-ux5230ux5e95ux5728ux505aux4ec0ux4e48}
+
+\textbf{一句话}：给定词表预算 V，BPE 反复执行''找出当前出现次数最多的相邻 token 对 → 合并成一个新 token''。每合并一次，语料的总 token 数减少一点，直到词表填满 V。
+
+形式化：把语料看成一串字节 \(b_1 b_2 \dots b_n\)。定义当前切分下相邻对 \((x,y)\) 的频次 \(c(x,y)\)。每步选 \[(x^*, y^*) = \arg\max_{(x,y)} c(x,y)\] 把语料中所有该对合并为新 token \(xy\)，并把 \((x,y)\) 记入 merges 列表（顺序即''资历''）。
+
+\textbf{关键推论 A（压缩率）}：合并的收益可以直接量化------每合并一处，总 token 数减 1。所以''BPE 训练过程''就是''贪心压缩过程''，merges 列表本质是\textbf{一本压缩字典，且按收益从大到小排序}。
+
+\textbf{关键推论 B（为什么 loss 不可跨分词器比较）}：token 越少 → 每个 token 承载信息越多 → 单 token 的交叉熵必然更高。这是记账单位问题，不是模型好坏。所以跨分词器比较必须换成\textbf{与切分无关}的单位：bits-per-byte（bpb）。
+
+\begin{quote}
+\textbf{这条是新课标里最重要的一条}：nanochat 全程用 bpb 而不是 loss 来跨模型比较，课题03（scaling law）和课题08（RL 对照）都会回到这里。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{二、为什么必须字节起步（以及代价）}\label{ux4e8cux4e3aux4ec0ux4e48ux5fc5ux987bux5b57ux8282ux8d77ux6b65ux4ee5ux53caux4ee3ux4ef7}
+
+从 \textbf{Unicode 字符}起步的三个具体麻烦：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+麻烦
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+具体例子
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+后果
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+词表爆炸且长尾 & 仅 CJK 就有 9 万余字符，常用仅数千 & 大部分字符训练不充分，嵌入近乎随机 \\
+永远有未登录 & 新 emoji（每年新增）、生僻字、方言字 & 无兜底机制 → OOV，直接崩 \\
+失去字节级共享 & ``妈''与''吗''共享部首但完全不同字符 & 学不到字形/字节层面的结构 \\
+\end{longtable}
+}
+
+从\textbf{字节}起步：任何文本 → UTF-8 → 0--255 的字节序列 → 这 256 个 token 永远在词表里。 \textbf{所以字节级 BPE 永远不存在''无法表示的输入''，只可能被切得更碎。} 这就是''零风险''的含义。
+
+\textbf{代价（必须知道，因为它是第 1 题的答案关键）}： - 汉字 UTF-8 占 \textbf{3 字节}；英文常用词常被合并成 1 token，而中文常需 1.5--2 个 token 表示 1 个汉字 （取决于词表大小与语料配比）→ \textbf{中文的''每字成本''高于英文} - 序列变长 → 注意力计算量（O(L²)）上升 → 中文推理成本更高
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{三、训练算法：从 O(n²) 到官方要求的 \textless1.5 秒}\label{ux4e09ux8badux7ec3ux7b97ux6cd5ux4ece-onuxb2-ux5230ux5b98ux65b9ux8981ux6c42ux7684-1.5-ux79d2}
+
+\textbf{朴素想法的三个陷阱}（都会导致超时或超内存）：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{每步重扫全语料}统计相邻对 → O(V · n)，V=500、n≈百万级就是灾难
+\item
+  \textbf{用字符串做合并}（\texttt{text.replace("ab","ab\_new")}）→ 每次 O(n) 拷贝 + 无法区分''新合并的 token''与''原始字符''
+\item
+  \textbf{把语料整体读入内存再展开成 token 列表} → 5MB 语料 + 1MB 配额的内存测试必挂
+\end{enumerate}
+
+\textbf{正确方向的三个要点}（方向，不是实现）： - \textbf{词频级统计而非字符级}：同一种''词''（如 \texttt{the}）在语料里重复百万次，只需统计一次它的结构，再按词频加权 - \textbf{增量更新}：一次合并只影响''包含该对的相邻位置''，其余的对频次不变 → 只需局部更新 - \textbf{优先队列/堆}：快速取出当前最高频的对，而不是每步全量排序
+
+\begin{quote}
+官方参考实现 0.38 秒，``玩具实现''约 3 秒------\textbf{这 8 倍差距就在上面三点里}。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{四、编码：回放合并历史，而不是最长匹配}\label{ux56dbux7f16ux7801ux56deux653eux5408ux5e76ux5386ux53f2ux800cux4e0dux662fux6700ux957fux5339ux914d}
+
+编码时我们\textbf{没有语料统计}，只有 merges 列表（一个有序的''合并历史''）。正确做法：
+
+\begin{verbatim}
+把文本按 UTF-8 切成字节数组
+loop:
+    找出当前序列中所有相邻对里，在 merges 中"排名最靠前"（资历最老）的那一对
+    合并它
+    直到没有任何相邻对出现在 merges 中
+\end{verbatim}
+
+\textbf{为什么不是''最长匹配优先''？} 因为训练时每一次合并都遵循''最老优先''的规则； 若编码用另一套规则，同一个子串在不同上下文会被切成不同 token， \textbf{与 tiktoken/GPT-2 的逐 id 对齐测试必然失败}。BPE 的编码本质是\textbf{回放训练时的决策序列}。
+
+\textbf{特殊 token 是另一套优先级}：它们\textbf{不参与合并}，且在编码时\textbf{先于普通文本被匹配}。 注意两个官方测试点名的情况：\textbf{重叠}的特殊 token（如 \texttt{a} 与 \texttt{ab} 同时存在）与 \textbf{尾随换行}（\texttt{\textless{}\textbar{}endoftext\textbar{}\textgreater{}\textbackslash{}n}）------这类边界的处理顺序会直接决定对错。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{五、接口设计决定内存上界（\texttt{encode} vs \texttt{encode\_iterable}）}{五、接口设计决定内存上界（encode vs encode\_iterable）}}\label{ux4e94ux63a5ux53e3ux8bbeux8ba1ux51b3ux5b9aux5185ux5b58ux4e0aux754cencode-vs-encode_iterable}
+
+官方测试里有一个耐人寻味的设置：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+方法
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+官方态度
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{encode(text)} & 被 \texttt{xfail} 标记：\emph{``encode 预期会超过 1MB 配额''} ------ \textbf{超了也原谅} \\
+\texttt{encode\_iterable(iterable)} & 用 \texttt{RLIMIT\_AS} 硬限 1MB，读 5MB 语料 ------ \textbf{超了就失败} \\
+\end{longtable}
+}
+
+\textbf{为什么这不是双标}：接口的\textbf{输入形态}决定了它的内存下界。 \texttt{encode(str)} 的输入本身就是一整段字符串，它已经在内存里了------上界由输入决定，实现者无能为力。 \texttt{encode\_iterable(iterable)} 的契约是\textbf{流式}：输入是迭代器，实现就必须逐块处理、边读边 yield。 任何 \texttt{list(iterable)} / \texttt{"".join(iterable)} / 先聚合再编码的写法，都违背了接口语义。
+
+\begin{quote}
+这是\textbf{软件工程里最漂亮的一课}：接口不只是名字，它是\textbf{约束}。 同一个算法，换个接口，内存上界就从''输入大小''降到''块大小''。这个思想在课题05（KV cache）、 课题07（数据流式清洗）、课题10（长程 Agent 的记忆压缩）都会反复出现。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{六、词表大小的三方权衡（第 1、4 题的答案框架）}\label{ux516dux8bcdux8868ux5927ux5c0fux7684ux4e09ux65b9ux6743ux8861ux7b2c-14-ux9898ux7684ux7b54ux6848ux6846ux67b6}
+
+词表从 V 扩到 4V，同时影响三件事：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+受影响项
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+方向
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+机理
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+嵌入/输出层参数量 & ↑ 约 4 倍 & 参数 ∝ V·d（若权重共享则 1 份，否则 2 份） \\
+同文本序列长度 L & ↓ & 更多常见片段被合并 → token 数下降 \\
+每 token 的注意力计算 & ↓ 约 L² 下降 & 注意力是 O(L²·d) \\
+罕见 token 的训练充分度 & ↓ & 长尾 token 出现次数少，嵌入学不好 \\
+\end{longtable}
+}
+
+净效果\textbf{不是单调的}：太小 → 序列太长、算力烧在长度上；太大 → 参数浪费 + 长尾欠训练。 经验上 32k--128k 是常见区间（GPT-2 用 50257，现代模型多在 100k 量级，且对多语言友好）。
+
+\textbf{中文特例}：词表若中文覆盖不足，一个汉字可能被拆成 3 个字节 token， \textbf{中文成本直接翻 2--3 倍}------这是国产模型普遍重视中文词表预算的原因。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{七、常见误解（每条配反例）}\label{ux4e03ux5e38ux89c1ux8befux89e3ux6bcfux6761ux914dux53cdux4f8b}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+误解
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+反例
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+``一个 token 就是一个词'' & \texttt{▁transformer} 可能是 1 个 token，\texttt{妈} 可能是 3 个 token（UTF-8 三字节） \\
+``分词只是预处理，不影响模型能力'' & 词表决定序列长度 → 决定有效上下文与算力分配 → 直接影响能学到什么 \\
+``编码用最长匹配更聪明'' & 会与训练决策不一致 → 与 tiktoken 逐 id 对齐测试直接失败 \\
+``词表越大越好'' & 长尾 token 训练不足 + 嵌入层参数浪费；存在经验最优 \\
+``decode 一定无损'' & 只有在\textbf{完整 utf-8 序列}上才无损；单 token 解码可能是半个字符（\texttt{�}） \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{八、能立刻跑的实验（讲完就做，知行咬合点）}\label{ux516bux80fdux7acbux523bux8dd1ux7684ux5b9eux9a8cux8bb2ux5b8cux5c31ux505aux77e5ux884cux54acux5408ux70b9}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ① 跑判分基线（现在应当是 27 failed + 1 xfailed，全部因缺手写文件）}
+\ExtensionTok{环境/judge/judge.sh}\NormalTok{ 01 }\AttributeTok{{-}{-}quick}
+
+\CommentTok{\# ② 看官方参考 merges 长什么样（前 20 条）——体会"资历顺序"的直觉}
+\FunctionTok{head} \AttributeTok{{-}20}\NormalTok{ 上游/assignment1{-}basics/tests/fixtures/train{-}bpe{-}reference{-}merges.txt}
+
+\CommentTok{\# ③ 亲眼看字节：一个汉字到底占几个 token（用官方 fixture 的 GPT{-}2 词表）}
+\ExtensionTok{环境/.venv/bin/python} \AttributeTok{{-}} \OperatorTok{\textless{}\textless{}\textquotesingle{}PY\textquotesingle{}}
+\StringTok{import tiktoken, os}
+\StringTok{os.environ["TIKTOKEN\_CACHE\_DIR"] = "环境/tiktoken{-}cache"}
+\StringTok{enc = tiktoken.get\_encoding("gpt2")}
+\StringTok{for s in ["hello world", "你好", "你好，世界！", "🦙"]:}
+\StringTok{    ids = enc.encode(s)}
+\StringTok{    print(f"\{s!r:16\} → \{len(ids)\} 个 token  \{[enc.decode([i]) for i in ids]\}")}
+\StringTok{print("→ 汉字/emoji 被切成多个字节 token 的现象，一眼可见")}
+\OperatorTok{PY}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{九、代码级提问（3--5 道，先写预测再动手）}\label{ux4e5dux4ee3ux7801ux7ea7ux63d0ux95ee35-ux9053ux5148ux5199ux9884ux6d4bux518dux52a8ux624b}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{【改坏预测】} 把训练里''并列最高频时任意取一个''改成''取字节序最小的一对''， \texttt{test\_train\_bpe} 会过吗？\texttt{test\_train\_bpe\_speed} 呢？\textbf{先写预测和理由。}
+\item
+  \textbf{【诊断】} 你的实现通过了往返一致性测试，但 \texttt{test\_train\_bpe} 的 merges 比对失败。 请按顺序列出你会检查的 4 件事（提示方向：预处理、并列规则、特殊 token、词表初值）。
+\item
+  \textbf{【代价估算】} 同一句话，词表从 32k 换到 128k： ①嵌入参数量变几倍 ②序列长度大致变几成 ③\textbf{bpb 会变吗？为什么？}
+\item
+  \textbf{【接口】} 若把 \texttt{encode\_iterable} 写成''先 \texttt{list(iterable)} 再拼接''， 哪个测试会挂？\textbf{挂的形式是断言失败，还是进程被直接杀掉？}（想清楚 \texttt{RLIMIT\_AS} 的作用方式）
+\item
+  \textbf{【迁移】} 课题05 要写 KV cache，它会遇到和''\texttt{encode} vs \texttt{encode\_iterable}``\textbf{同构}的内存问题吗？ 说说你的类比。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{十、记忆锚}\label{ux5341ux8bb0ux5fc6ux951a}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{隐喻}：BPE = \textbf{``贪心的拼音缩写机''}------不停找最常一起出现的两段，把它们缩成一个新记号， 缩到最后词表满了；字典按先来后到排资历。
+\item
+  \textbf{口诀}：\textbf{``字节兜底、频次贪心、老手优先、流式省内存''}（对应：字节起步 / 训练目标 / 编码回放 / 接口约束）
+\item
+  \textbf{符号位置法}：\(V\)（词表）在上，撑着两件事：下面是 \textbf{参数量 ∝ V·d}，右边是 \textbf{序列长度 L ↓}； 三者写成一个三角形，随时能想起''扩词表 = 拿参数换长度''。
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{十一、本讲与后续的接口（预告）}\label{ux5341ux4e00ux672cux8bb2ux4e0eux540eux7eedux7684ux63a5ux53e3ux9884ux544a}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{M3}：序列长度 L 怎么进入注意力计算量（O(L²)）------词表选择的代价在这一讲兑现
+\item
+  \textbf{M4}：bpb 作为跨规模比较单位------scaling law 的纵轴
+\item
+  \textbf{M5}：\texttt{encode\_iterable} 的流式思想 → KV cache 的''不重算历史''
+\item
+  \textbf{课程板块}：本讲直接对应课程大纲的''大语言模型''入门，也是大论文''方法''章的第一段素材
+\end{itemize}
+
+\newpage
+
+\section{讲义 M3 · Transformer 内部机制}\label{ux8bb2ux4e49-m3-transformer-ux5185ux90e8ux673aux5236}
+
+\begin{quote}
+对应课题：\textbf{课题02 Transformer 骨架（W2--W3）}｜模块：M3｜预计 2--3 个时段 对标材料：CS336 lecture 03--04 + A1 handout（模型部分）· rasbt《LLMs-from-scratch》ch3--ch4（附录含 GQA/MLA/MoE） 这是全学科\textbf{最核心的一讲}：唐杰作业①的''从零写 Transformer''就落在这里。
+\end{quote}
+
+\subsection{〇、本讲要回答的 5 个问题}\label{ux672cux8bb2ux8981ux56deux7b54ux7684-5-ux4e2aux95eeux9898-3}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  注意力到底在算什么？为什么缩放因子是 \(1/\sqrt{d_k}\)？
+\item
+  为什么要多头？多头比单头强在哪、代价是什么？
+\item
+  RoPE 凭什么比可学习位置嵌入更能外推？
+\item
+  RMSNorm 凭什么能替代 LayerNorm？pre-norm 与 post-norm 差在哪？
+\item
+  一个 \(d\) 宽、\(L\) 层、词表 \(V\) 的 Transformer 有多少参数？KV cache 有多大？
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{一、注意力：加权检索 + 为什么缩放 \(1/\sqrt{d_k}\)}{一、注意力：加权检索 + 为什么缩放 1/\textbackslash sqrt\{d\_k\}}}\label{ux4e00ux6ce8ux610fux529bux52a0ux6743ux68c0ux7d22-ux4e3aux4ec0ux4e48ux7f29ux653e-1sqrtd_k}
+
+\textbf{计算式}（先记住形状，再看含义）： \[\mathrm{Attn}(Q,K,V) = \mathrm{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}} + M\right)V\] 其中 \(Q,K,V \in \mathbb{R}^{L\times d_k}\)，\(M\) 是因果掩码（下三角为 0、其余 \(-\infty\)）。
+
+\textbf{含义}：每个位置发出一个查询 \(q\)，去和所有位置的键 \(k\) 做\textbf{内积}（相似度）， softmax 归一化成权重，再对值 \(v\) 做加权平均。\textbf{它就是''按相似度检索并汇总''}。
+
+\textbf{为什么除以 \(\sqrt{d_k}\)}：设 \(q,k\) 各分量独立、均值 0 方差 1，则内积 \(q\cdot k = \sum_{i=1}^{d_k} q_i k_i\) 的 方差是 \(d_k\)（方差可加）。\(d_k\) 越大，内积的\textbf{取值范围越宽} → softmax 越容易''饱和'' （一个位置拿走几乎全部权重）→ 梯度趋近 0 → 训练不动。 除以 \(\sqrt{d_k}\) 把内积的方差重新拉回 1 量级。\textbf{这是''训练稳定性''的第一课。}
+
+\textbf{因果掩码}：语言模型不能看未来。做法是\textbf{在 softmax 之前}给未来位置加 \(-\infty\)（实现上常用 \(-10^9\) 之类的大负数， 而不是 0）------因为在 softmax 之后置零会\textbf{改变概率归一化}（等价于把已分配的概率丢掉，剩下的位置没有重新归一）。
+
+\textbf{在代码里长什么样}：\texttt{手写/} 里会有 \texttt{scaled\_dot\_product\_attention} 与 \texttt{multihead\_self\_attention}（含 causal 与 RoPE 两个变体）；上游对照 \texttt{nanochat/gpt.py} 的 \texttt{CausalSelfAttention}。\textbf{注意接口而非实现}：CS336 的 \texttt{tests/adapters.py} 规定了你要暴露的函数签名。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{二、多头：拆开看不同关系，但总算力不变}\label{ux4e8cux591aux5934ux62c6ux5f00ux770bux4e0dux540cux5173ux7cfbux4f46ux603bux7b97ux529bux4e0dux53d8}
+
+\textbf{做法}：把 \(d\) 维拆成 \(h\) 份、每份 \(d_k = d/h\)，各自独立做注意力，再拼回来过一个输出投影 \(W_O\)。
+
+\textbf{关键理解（常被误解）}：多头\textbf{不增加}注意力的总计算量------ 单个头用满 \(d\) 维时，\(QK^\top\) 是 \(L^2 d\)；\(h\) 个头各 \(d/h\) 维合计仍是 \(L^2 d\)。 多头的收益在于\textbf{归纳偏置}：不同的头可以在不同子空间里学不同的关系 （有的学''上一个词是谁''，有的学''括号配对''，有的学''句子边界''），比单一头更灵活。
+
+\textbf{变体（现代模型常用）}： \textbar{} 变体 \textbar{} 做法 \textbar{} 动机 \textbar{} \textbar---\textbar---\textbar---\textbar{} \textbar{} MQA \textbar{} 所有头\textbf{共享一份} K/V \textbar{} KV cache 减小 h 倍，但质量略降 \textbar{} \textbar{} \textbf{GQA} \textbar{} 头分组，组内共享 K/V（如 8 组） \textbar{} 折中：cache 减小、质量几乎不掉 ← 现代主流 \textbar{} \textbar{} MLA \textbar{} 把 K/V 压成低维潜变量再解压 \textbar{} 更激进，DeepSeek 系 \textbar{}
+
+\begin{quote}
+\textbf{为什么都在动 K/V}：推理时的瓶颈是 \textbf{KV cache 的显存}（见 §五）， 它随 \texttt{层数\ ×\ 序列长度\ ×\ 头数} 线性增长，与''生成速度''直接相关。这是''架构为推理服务''的典型例子。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{三、位置编码：从''贴标签''到''转角度''}\label{ux4e09ux4f4dux7f6eux7f16ux7801ux4eceux8d34ux6807ux7b7eux5230ux8f6cux89d2ux5ea6}
+
+\textbf{问题}：注意力的内积是\textbf{置换不变}的------把 token 顺序打乱，结果不变。所以必须注入位置信息。
+
+\textbf{三代方案}： \textbar{} 方案 \textbar{} 做法 \textbar{} 缺陷 \textbar{} \textbar---\textbar---\textbar---\textbar{} \textbar{} 可学习绝对嵌入 \textbar{} 学一个 \(L_{\max}\times d\) 的查表 \textbar{} \textbf{不能外推}：训练 2048，推理 4096 时后一半没学过 \textbar{} \textbar{} 正弦绝对编码（原论文） \textbar{} \(\sin/\cos\) 固定频率 \textbar{} 可外推性弱，实践中被 RoPE 取代 \textbar{} \textbar{} \textbf{RoPE（旋转位置编码）} \textbar{} 把 \(q,k\) 按\textbf{二维子空间}旋转角度 \(\theta\cdot m\) \textbar{} 内积只依赖\textbf{相对距离} \(m-n\)；外推性好 \textbar{}
+
+\textbf{RoPE 的核心恒等式}（这是它存在的全部理由）： \[\langle R_m q,\ R_n k\rangle = \langle q,\ R_{n-m} k\rangle\] 即：\textbf{在内积里只出现''位置差''}，绝对位置被''旋转''吸收掉了。 推导要点：旋转矩阵是正交阵，\(R_m^\top R_n = R_{n-m}\)。
+
+\textbf{频率分配}：第 \(i\) 对维度的角频率 \(\theta_i = 10000^{-2i/d}\)------ 低维（\(i\) 小）转得快（管近距离），高维转得慢（管远距离）。 \textbf{``10000''这个底数是''能覆盖多长上下文''的旋钮}，这就是所谓 YaRN / NTK 插值等长上下文外推技巧的入口。
+
+\textbf{在代码里长什么样}：\texttt{手写/} 的 \texttt{rope} 与前缀 \texttt{rope} 的多头注意力； CS336 有单独的 \texttt{run\_rope} 测试点。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{四、归一化与残差：让 100 层能训起来的两件套}\label{ux56dbux5f52ux4e00ux5316ux4e0eux6b8bux5deeux8ba9-100-ux5c42ux80fdux8badux8d77ux6765ux7684ux4e24ux4ef6ux5957}
+
+\textbf{LayerNorm}：对每个 token 的 \(d\) 维向量做 \((x-\mu)/\sqrt{\sigma^2+\epsilon}\)，再缩放和平移。 \textbf{RMSNorm}：只做 \(x/\sqrt{\mathrm{mean}(x^2)+\epsilon}\)，再乘一个可学缩放 \(g\)。 - 省掉了\textbf{减均值}与\textbf{平移}：更便宜（少一次归约、少一组参数） - 效果相当：真正起作用的是\textbf{尺度不变性}（分母归一化），而中心化贡献有限 - 现代模型（LLaMA/Qwen/GLM 系）默认 RMSNorm
+
+\textbf{残差连接}：\(x \leftarrow x + f(\mathrm{norm}(x))\)（pre-norm）。 \textbf{它防的是梯度消失}：反向传播时，加法的 Jacobian 是单位阵， 于是梯度有一条\textbf{恒等通路}可以直达浅层。没有它，几十层的网络基本训不动。
+
+\textbf{pre-norm vs post-norm}（原论文是 post-norm）： \textbar{} \textbar{} 形式 \textbar{} 性质 \textbar{} \textbar---\textbar---\textbar---\textbar{} \textbar{} post-norm \textbar{} \(\mathrm{norm}(x + f(x))\) \textbar{} 原版；深了需要小心 warmup，容易发散 \textbar{} \textbar{} \textbf{pre-norm} \textbar{} \(x + f(\mathrm{norm}(x))\) \textbar{} 训练稳，是现代默认；代价是''深度''的表示能力稍弱 \textbar{}
+
+\begin{quote}
+课题02 会做''去掉残差''的改坏实验：你会亲眼看到 loss 从''平稳下降''变成''几乎不动''。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{五、FFN、参数量与 KV cache（\textbf{把结构换算成资源}）}{五、FFN、参数量与 KV cache（把结构换算成资源）}}\label{ux4e94ffnux53c2ux6570ux91cfux4e0e-kv-cacheux628aux7ed3ux6784ux6362ux7b97ux6210ux8d44ux6e90}
+
+\textbf{FFN 的演化}：两层线性 + 激活。原版 \(d_{ff} = 4d\) 配 ReLU。 \textbf{SwiGLU} 用三个矩阵：\(\mathrm{Swish}(xW_1)\odot(xW_3)\) 再过 \(W_2\)； 为保持参数量不变，取 \(d_{ff} \approx \tfrac{8}{3}d\)（3 个矩阵 × 8/3 ≈ 4 个矩阵 × d 的等价参数量）。
+
+\textbf{单层参数量}（\(d\) 宽，标准 MHA）： - 注意力：\(W_Q,W_K,W_V,W_O\) 各 \(d\times d\) → \(4d^2\) - MLP（SwiGLU，\(d_{ff}=\tfrac{8}{3}d\)）：\(3\cdot d\cdot \tfrac{8}{3}d = 8d^2\) - 两处 RMSNorm 缩放：\(2d\)（可忽略） - \textbf{合计 ≈ \(12d^2\) 每层} → 全模型 ≈ \(12\,L\,d^2 + Vd\)（权重共享时）
+
+\textbf{验算习惯}：拿到任何模型的配置（如 \texttt{d=768,\ L=12,\ V=50257}）， 先心算 \(12\times12\times768^2 \approx 85\text{M}\)，加嵌入 \(50257\times768\approx39\text{M}\)（共享则算 1 份） ≈ 124M ------ \textbf{与 GPT-2 的 124M 吻合}。这种''能不能心算''是 M3 的验收标志之一。
+
+\textbf{KV cache 显存}（推理，重点）： \[\text{bytes} = 2 \times L_{\text{layers}} \times L_{\text{seq}} \times n_{kv} \times d_k \times \text{bytes/elem}\] （乘 2 是因为 K 和 V）。用 GQA 后 \(n_{kv}\) 从 \(h\) 降到组数， \textbf{cache 直接按比例缩小}------这就是 GQA 流行的真正原因。 课题05 会实测这个数字。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{六、常见误解（每条配反例）}\label{ux516dux5e38ux89c1ux8befux89e3ux6bcfux6761ux914dux53cdux4f8b}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+误解
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+反例 / 更正
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+``注意力=可解释的检索'' & 注意力权重高 ≠ 因果重要（已有大量反例）；它是\textbf{加权平均的权重}，别过度解读 \\
+``多头=多算'' & 总 FLOPs 不变（§二），只是分成子空间 \\
+``位置编码只是加个向量'' & RoPE 是\textbf{旋转 Q/K}，不是加到输入上；且它只影响内积的相位 \\
+``RMSNorm 是 LayerNorm 的近似'' & 它\textbf{省略}了中心化，不是近似；在很多模型上效果更好且更省 \\
+``参数量大就一定强'' & 同样算力下，参数与数据要按 scaling law 配比（课题03 的正题） \\
+``因果 mask 随便加个大负数就行'' & 必须\textbf{在 softmax 之前}；加在之后会破坏归一化 \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{七、能立刻跑的实验与改坏实验（课题02 的里程碑）}\label{ux4e03ux80fdux7acbux523bux8dd1ux7684ux5b9eux9a8cux4e0eux6539ux574fux5b9eux9a8cux8bfeux989802-ux7684ux91ccux7a0bux7891}
+
+\textbf{基础验证}（跑通即达里程碑 M1--M3）：
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{bash}\NormalTok{ 环境/bootstrap\_cpu.sh }\AttributeTok{{-}{-}with{-}torch}      \CommentTok{\# 课题02 起需要 torch}
+\ExtensionTok{环境/judge/judge.sh}\NormalTok{ 02 }\AttributeTok{{-}{-}quick}               \CommentTok{\# 形状与数值测试（判分器按需接入）}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{三组改坏实验（先写预测，再跑，再记录------这是本讲的核心作业）}：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\#
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+改哪里
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+先预测什么
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+预期观察（跑完记得回来对照）
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 去掉因果 mask（让所有位置互相可见） & \textbf{训练 loss 会大幅下降}，但采样出来的文本''语法很好、内容胡说'' & 典型''作弊''：loss 好看，能力为零 \\
+2 & RoPE 换成可学习绝对嵌入 & 训练集内正常，\textbf{超出训练长度立刻崩} & 外推性丧失；正是课程要''用实验看见''的性质 \\
+3 & 去掉残差连接 & 浅层（≤4 层）还能训，\textbf{深了就完全不收敛} & 梯度消失的实证 \\
+\end{longtable}
+}
+
+\begin{quote}
+\textbf{记录要求}：每条都要有''预测 → 现象 → 解释''三段，落进 \texttt{课题02/证据/}。预测错是资产，不是污点。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{八、代码级提问（3--5 道）}\label{ux516bux4ee3ux7801ux7ea7ux63d0ux95ee35-ux9053}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{【推导】} 用''方差可加''说明：\(q\cdot k\) 的方差是 \(d_k\)，并解释为何要除以 \(\sqrt{d_k}\) 而不是 \(d_k\)。
+\item
+  \textbf{【心算】} 配置 \(d=1024,\ L=24,\ V=100000\)，权重共享。估算参数量（结果用 G/M 表示），并拆出嵌入层占比。
+\item
+  \textbf{【改坏预测】} 把 causal mask 从''softmax 之前''挪到''softmax 之后''（对已归一化权重置零）， 训练会发生什么？给出两个可能的现象并说明理由。
+\item
+  \textbf{【联系】} 用 M0 的 logsumexp 解释：为什么 flash attention 的分块计算能保持数值稳定？
+\item
+  \textbf{【代价】} 序列长度从 2k 增到 32k：①注意力计算量变几倍 ②KV cache 变几倍 ③哪个先撞墙？
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{九、记忆锚}\label{ux4e5dux8bb0ux5fc6ux951a}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{隐喻}：注意力 = \textbf{``会议室里的自由讨论''}------每人（query）挑自己关心的话题（key）， 按关心程度（softmax 权重）听别人（value）说话；因果 mask = ``不许听后面发言的人''； 多头 = 同时开 h 个并行分会场；RoPE = 每个人的座位号刻在\textbf{朝向}上，所以只关心''相隔几个座位''。
+\item
+  \textbf{口诀}：\textbf{``缩放防饱和、掩码在软前、多头不减算、旋转只认距、残差是命脉、归一挑 RMS''}
+\item
+  \textbf{符号位置法}：\(\dfrac{QK^\top}{\sqrt{d_k}}\) ------ 把 \(\sqrt{d_k}\) 写在分数线下方， 心里念''\textbf{维度越高，内积越炸，除以根号拉回来}''。
+\end{itemize}
+
+\newpage
+
+\section{讲义 M4--M9 · 展开大纲（按周写完整版）}\label{ux8bb2ux4e49-m4m9-ux5c55ux5f00ux5927ux7eb2ux6309ux5468ux5199ux5b8cux6574ux7248}
+
+\begin{quote}
+说明：本文件是 M4--M9 的\textbf{骨架大纲}（核心问题 + 关键概念 + 必读 + 实验 + 坑）， \textbf{每周讲课前我会把当周讲义展开成完整版}（新增 \texttt{M4-训练.md} 等文件），不留空讲义占位。 这样做的理由：这些模块严重依赖课题04 起的\textbf{真实实验数据}，提前写死会出现''讲义与实测不符''。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{M4 · 训练：数据、优化、系统（W3--W9）}\label{m4-ux8badux7ec3ux6570ux636eux4f18ux5316ux7cfbux7edfw3w9}
+
+\textbf{要回答的问题}：为什么同一个模型有人训得动有人训崩？scaling law 怎么指导算力分配？多卡为什么不是线性加速？
+
+\textbf{关键概念}：预训练目标与数据配比 \textbar{} 过滤与去重 \textbar{} AdamW（解耦权重衰减的意义）\textbar{} Muon \textbar{} LR schedule（warmup + cosine）\textbar{} 梯度裁剪 \textbar{} 混合精度（bf16 vs fp16 vs fp32，GradScaler 何时必需）\textbar{} 梯度累积 \textbar{} DDP / FSDP / TP / PP \textbar{} Chinchilla 的 compute-optimal \textbar{} \texttt{-\/-target\_flops} 与''固定算力预算下的最优 (N, D)''
+
+\textbf{必读}：CS336 lecture 05--11 + A2/A3 handout · \texttt{nanochat/optim.py}、\texttt{base\_train.py}、\texttt{runs/scaling\_laws.sh} · d2l ch11--ch12
+
+\textbf{实验}：手写 AdamW 与调度 → 单卡固定算力下的 depth sweep（d4/d6/d8/d10）→ 拟合幂律 → \textbf{先写死外推预测} → 跑 d12 验证（打脸链路）
+
+\textbf{坑}：把''loss 不降''当数据问题（常是 LR/初始化/精度）\textbar{} 把 DDP 当免费加速（PCIe 下扩展效率可能只有 1.3--1.5×）\textbar{} T4 无 bf16（必须 fp16 + GradScaler）\textbar{} 显存不足先怀疑 batch 与精度，再怀疑硬件
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{M5 · 推理与部署（W5--W8）}\label{m5-ux63a8ux7406ux4e0eux90e8ux7f72w5w8}
+
+\textbf{要回答的问题}：为什么生成必须逐 token？KV cache 省了什么、代价是什么？量化掉多少点？吞吐与延迟的取舍？
+
+\textbf{关键概念}：自回归解码 \textbar{} \textbf{KV cache（显存公式见 M3 §五）} \textbar{} continuous batching \textbar{} PagedAttention \textbar{} 采样策略（temperature / top-p / top-k / repetition penalty）\textbar{} 量化（int8/int4/GPTQ/AWQ）\textbar{} 投机解码 \textbar{} 每 token 成本
+
+\textbf{必读}：\texttt{nanochat/engine.py}（KV cache 实现）+ \texttt{infer\_bench.py} · CS336 lecture 10 · rasbt《Reasoning》ch2
+
+\textbf{实验}：从零写带 KV cache 的生成 → 测有/无 cache 的耗时与显存 → 贪心 vs top-p 对照 → batch size 对吞吐的影响
+
+\textbf{坑}：以为''慢是因为模型大''（常是没批处理/没 cache）\textbar{} 以为量化无损 \textbar{} 忽略 prefill 与 decode 两个阶段特性完全不同（前者算力密集，后者显存带宽密集）
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{M6 · 后训练：从''会说话''到''会做事''（W10--W12）}\label{m6-ux540eux8badux7ec3ux4eceux4f1aux8bf4ux8bddux5230ux4f1aux505aux4e8bw10w12}
+
+\textbf{要回答的问题}：SFT / DPO / RLVR 各补什么能力？为什么 RLVR 提数学/代码却可能伤通用能力？reward hacking 长什么样？
+
+\textbf{关键概念}：指令微调与 chat template \textbar{} \textbf{损失掩码（只算 answer 部分）} \textbar{} 奖励模型 \textbar{} PPO 的四个模型 \textbar{} DPO 的隐式奖励（推导：为什么可以不要 reward model）\textbar{} \textbf{GRPO 的组内归一化优势} \textbar{} KL 正则 \textbar{} 拒绝采样 \textbar{} 蒸馏与合成数据 \textbar{} 过度优化（over-optimization）
+
+\textbf{必读}：CS336 A5（含 \texttt{tests/test\_grpo.py}、GSPO/MaxRL）· \textbf{rasbt《Reasoning from Scratch》ch3--ch8} · \textbf{Nathan Lambert《RLHF Book》}（免费在线，17 章）· \texttt{minimind/trainer/train\_grpo.py} · \texttt{nano-aha-moment}（单文件）
+
+\textbf{实验}：同基座做 SFT / DPO / GRPO 三变体 → 同一评测口径对照 → 手写 GRPO 损失并逐项注释 → \textbf{制造一次 reward hacking 并记录}
+
+\textbf{坑}：以为 DPO''更简单所以更好''\textbar{} 以为 RL 一定比 SFT 强 \textbar{} \textbf{把训练 reward 上升当能力提升}（不做 held-out 评测就是自欺）\textbar{} KL 系数设错导致模型''复读训练集答案''
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{M7 · 评测：把''感觉变好了''变成''确实变好了''（W9--W12）}\label{m7-ux8bc4ux6d4bux628aux611fux89c9ux53d8ux597dux4e86ux53d8ux6210ux786eux5b9eux53d8ux597dux4e86w9w12}
+
+\textbf{要回答的问题}：benchmark 分数可信吗？污染怎么判断？为什么必须固定口径？方差有多大？
+
+\textbf{关键概念}：bpb / PPL / CORE \textbar{} 下游基准（GSM8K / MATH-500 / MMLU / HumanEval）\textbar{} pass@k \textbar{} 评测污染 \textbar{} few-shot 与 prompt 敏感性 \textbar{} \textbf{方差与误差棒} \textbar{} LLM-as-judge 的偏置 \textbar{} 可验证奖励 vs 学习型奖励
+
+\textbf{必读}：\textbf{rasbt ch3（先建评测再上技术------全书教学法基石）} · \texttt{nanochat/core\_eval.py}（单文件 CORE）· CS336 lecture 12 · Berkeley Agentic AI MOOC 的 ``Agent Evaluation'' 讲
+
+\textbf{实验}：写一个数学题判定器（解析 + 数值比对 + 容错）→ 测它在 200 题上的准确率与\textbf{假阳性} → 给两个模型跑同一套评测并给误差棒
+
+\textbf{坑}：只看一个 benchmark 下结论 \textbar{} 忽略 prompt 格式造成的巨大差异 \textbar{} 把测试集当验证集反复调 \textbar{} 只报均值不报方差
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{M8 · 智能体：工具、记忆、harness、长程任务（W13--W14）}\label{m8-ux667aux80fdux4f53ux5de5ux5177ux8bb0ux5fc6harnessux957fux7a0bux4efbux52a1w13w14}
+
+\textbf{要回答的问题}：从''回答问题''到''完成任务''缺什么？为什么 harness 比模型本身更决定成败？self-judge 何时有效、何时自欺？
+
+\textbf{关键概念}：工具/函数调用 \textbar{} ReAct 循环（Thought-Action-Observation）\textbar{} \textbf{context engineering}（李宏毅与 Karpathy 都专讲）\textbar{} 记忆与压缩 \textbar{} harness 设计（沙箱、权限、反馈信号）\textbar{} 长程任务的误差累积 \textbar{} 多智能体 \textbar{} self-judge / self-refine 的边界 \textbar{} 可验证环境
+
+\textbf{必读}：李宏毅《Context Engineering》专讲 · Berkeley LLM Agents / Agentic AI MOOC（含 ``Post-Training Verifiable Agents''）· HF Agents Course（三框架 + 公开排行榜）· rasbt ch5（self-refinement）· \texttt{PrimeIntellect-ai/verifiers} · terminal-bench
+
+\textbf{实验}：手写最小 ReAct 循环（不用框架）→ 给两个工具（计算器 + 代码执行）→ 记录失败轨迹并分类 → 加 self-judge 做消融
+
+\textbf{坑}：以为瓶颈在模型智力（常在你的工具接口与反馈信号）\textbar{} 以为 self-judge 免费提升（\textbf{它会放大原有错误}）\textbar{} 上下文不做压缩导致长任务后段''忘记目标''
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{M9 · 前沿与安全（W15--W16 选题制）}\label{m9-ux524dux6cbfux4e0eux5b89ux5168w15w16-ux9009ux9898ux5236}
+
+\textbf{要回答的问题}：MoE / 长上下文 / 多模态改变了什么？对齐与安全是''加一层''还是''改训练目标''？``AI 训 AI''可行到什么程度？
+
+\textbf{关键概念}：MoE 稀疏激活（总参数 vs 激活参数）\textbar{} 长上下文外推 \textbar{} 多模态对齐 \textbar{} 可解释性 \textbar{} 红队与越狱 \textbar{} 幻觉的成因 \textbar{} 合成数据闭环 \textbar{} self-play \textbar{} 灾难性遗忘 \textbar{} 模型合并
+
+\textbf{必读}：CS336 lecture 04（MoE）· \texttt{opendilab/awesome-RLVR} · \texttt{LeapLabTHU/limit-of-RLVR} · 论文精读清单联动
+
+\textbf{实验（三选一）}：合成数据自训练一轮 / 拒绝采样提升数学 / self-play 生成题目 → 做最小闭环 + \textbf{明确写出这个方向的 no-go}
+
+\textbf{坑}：把''前沿''当必须立刻掌握（正确姿势是\textbf{保持索引能力 + 每季度更新一次本模块}）\textbar{} 只看结论不看评测口径 \textbar{} 把''能跑通''当成''有结论''
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{展开时机表}\label{ux5c55ux5f00ux65f6ux673aux8868}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+讲义文件 & 需要先有 & 预计展开时间 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{M4-训练.md} & 课题02 收口（能算 FLOPs/显存） & W3 \\
+\texttt{M5-推理.md} & 课题04 首轮训练成功（有模型可推理） & W5 \\
+\texttt{M7-评测.md} & 有第一个模型输出 & W9 \\
+\texttt{M6-后训练.md} & 课题07 数据管线 + 评测口径固定 & W10 \\
+\texttt{M8-智能体.md} & 有 SFT 后的模型 & W13 \\
+\texttt{M9-前沿.md} & 全部证据齐备 & W15 \\
+\end{longtable}
+}
+
+\newpage
+
+\section{知识地图 · 大语言模型全景（M0--M9）}\label{ux77e5ux8bc6ux5730ux56fe-ux5927ux8bedux8a00ux6a21ux578bux5168ux666fm0m9}
+
+\begin{quote}
+立图 2026-09-17。\textbf{本文件回答一个问题：要把大语言模型''彻底搞懂''，到底要懂哪些东西。} 每个模块都是''\textbf{四个咬合件}''：核心问题 → 对标材料 → 亲手实验 → 判分证据。 只讲不做 = 没学（见《知行合一规程.md》）；只做不讲 = 学歪。
+
+用法：模块不是线性章节，但\textbf{顺序有依赖}（M0→M1→M2→M3→M4→M5→M6→M7→M8→M9）。 每周讲哪个模块，见《实训路线图.md》的''知识讲解锚点''列。
+\end{quote}
+
+\subsection{判断''真的懂了''的三条硬标准（本学科通用）}\label{ux5224ux65adux771fux7684ux61c2ux4e86ux7684ux4e09ux6761ux786cux6807ux51c6ux672cux5b66ux79d1ux901aux7528}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{能讲清}：不用术语、用大白话讲给外行听，且能回答''为什么不是别的做法''。
+\item
+  \textbf{能指出代码位置}：说出这个概念在本仓 \texttt{手写/} 或上游 nanochat/CS336 里\textbf{具体是哪个函数、哪几行}。
+\item
+  \textbf{能改坏并修好}：故意改坏（去掉 mask、换掉归一化、打乱位置编码）→ \textbf{预测}现象 → 跑实验验证 → 修回。 （第 3 条是''知''与''行''的分界线；只会背定义的人在第三步一定翻车。）
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{M0 · 数学与机器学习地基}\label{m0-ux6570ux5b66ux4e0eux673aux5668ux5b66ux4e60ux5730ux57fa}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{核心问题}：梯度到底怎么传过 100 层？为什么归一化能让训练稳下来？交叉熵、困惑度、bpb 三者的关系是什么？参数量/FLOPs/显存怎么估？
+\item
+  \textbf{关键概念}：链式法则与计算图、雅可比、损失函数（MSE/交叉熵）、梯度下降族、正则化、数值稳定性、信息量与熵、复杂度记账（6ND 公式）
+\item
+  \textbf{对标}：李沐《动手学深度学习》ch2--ch5、ch11（优化算法）；Karpathy micrograd 视频；概率论课题01--08（已建成，直接搭桥）
+\item
+  \textbf{亲手实验}：手写 micrograd（标量自动微分，200 行内）→ 手写 MLP 在 MNIST 子集上训到 \textgreater95\%
+\item
+  \textbf{判分证据}：与 PyTorch autograd 的数值梯度对照表（误差 \textless{} 1e-6）+ 参数量/FLOPs 估算脚本实测偏差
+\item
+  \textbf{常见误解}：把 loss 当''正确率''；以为''梯度消失''是 bug 而不是结构性质；以为 d2l 的 MXNet 代码不用改
+\end{itemize}
+
+\subsection{M1 · 语言模型史与前 Transformer 时代}\label{m1-ux8bedux8a00ux6a21ux578bux53f2ux4e0eux524d-transformer-ux65f6ux4ee3}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{核心问题}：Transformer 解决了什么前人的痛点？为什么 attention 取代了 RNN？``语言模型''这个词 20 年里的含义变化？
+\item
+  \textbf{关键概念}：n-gram 与平滑、词袋、word2vec/GloVe、RNN/LSTM/GRU、seq2seq + 注意力、Bahdanau/Luong attention、并行化的动机
+\item
+  \textbf{对标}：李沐 d2l ch8--ch10（RNN → 注意力）；CS336 lecture 01（概览与分词）；《Attention Is All You Need》原文（入论文精读）
+\item
+  \textbf{亲手实验}：手写 bigram/trigram 语言模型算困惑度 → 手写一个最小 RNN LM → 对比同参数量的单层 Transformer
+\item
+  \textbf{判分证据}：三者在同一语料上的 bpb 对照表 + ``RNN 为什么慢''的显式计时（逐步 vs 并行）
+\item
+  \textbf{常见误解}：以为''注意力=Transformer''；以为 attention 是 2017 才发明的（其实 2014 就有）
+\end{itemize}
+
+\subsection{M2 · 分词与表示}\label{m2-ux5206ux8bcdux4e0eux8868ux793a}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{核心问题}：为什么不用字符？为什么不用整词？词表大小怎么权衡？中文/代码/数学符号怎么处理？
+\item
+  \textbf{关键概念}：BPE（训练循环、merge 规则、特殊 token、bytes 回退）、WordPiece、Unigram、词表大小 ↔ 序列长度 ↔ 参数量的三方权衡、压缩率
+\item
+  \textbf{对标}：CS336 A1 tokenizer 部分；nanochat \texttt{tokenizer.py}；HF LLM Course ch2（``Implement BPE/WordPiece/Unigram from the ground up''）
+\item
+  \textbf{亲手实验}：手写 BPE（训练 + 编码 + 流式编解码往返）→ 在 TinyStories 与中文语料上各训一个词表 → 测压缩率
+\item
+  \textbf{判分证据}：\texttt{tests/test\_tokenizer.py}、\texttt{test\_train\_bpe.py} 全绿 + 压缩率表（中英文分别）+ 往返一致性
+\item
+  \textbf{常见误解}：以为 token 就是''词''；忽略中文一个汉字可能被切成 2--3 个 byte token 导致实际序列变长
+\end{itemize}
+
+\subsection{M3 · Transformer 架构与内部机制}\label{m3-transformer-ux67b6ux6784ux4e0eux5185ux90e8ux673aux5236}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{核心问题}：attention 到底在算什么？为什么需要多头？位置编码为什么从正弦换成 RoPE？RMSNorm 凭什么比 LayerNorm 更常用？残差在防什么？
+\item
+  \textbf{关键概念}：QKV 与缩放点积、因果 mask、多头与 GQA/MQA、RoPE（含外推）、RMSNorm、pre-norm vs post-norm、FFN/SwiGLU、权重共享、初始化与 QK-norm、参数量分解
+\item
+  \textbf{对标}：CS336 lecture 03--04 + A1 model 部分；rasbt《LLMs-from-scratch》ch3--ch4（含 MoE/GQA/MLA/SWA 附录）；李宏毅 GenAI-ML；nanochat \texttt{gpt.py}
+\item
+  \textbf{亲手实验}：手写完整 Transformer 层（含 RoPE/RMSNorm/SwiGLU）→ 形状测试 → \textbf{改坏实验}：去掉因果 mask、把 RoPE 换成可学习位置嵌入、去掉残差，各跑一次看现象
+\item
+  \textbf{判分证据}：\texttt{tests/test\_model.py}、\texttt{test\_nn\_utils.py} 全绿 + 三组''改坏''实验的 loss 曲线与现象记录（进 \texttt{证据/}）
+\item
+  \textbf{常见误解}：以为 attention 是''可解释的检索''；以为参数越多越好；忽略 pre-norm 对稳定性的决定性作用
+\end{itemize}
+
+\subsection{M4 · 训练：数据、优化、系统}\label{m4-ux8badux7ec3ux6570ux636eux4f18ux5316ux7cfbux7edf}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{核心问题}：为什么同样的模型有人训得动有人训崩？Scaling law 怎么指导算力分配？多卡为什么不是线性加速？
+\item
+  \textbf{关键概念}：预训练目标与数据配比、去重与过滤、AdamW（解耦权重衰减）、Muon、LR schedule（warmup+cosine）、梯度裁剪、混合精度（bf16/fp16/fp32 与 GradScaler）、梯度累积、DDP/FSDP/TP/PP、通信开销与扩展效率、Chinchilla 与 compute-optimal、\texttt{-\/-target\_flops}
+\item
+  \textbf{对标}：CS336 A2/A3 + lecture 05--11；nanochat \texttt{optim.py}/\texttt{base\_train.py}/\texttt{runs/scaling\_laws.sh}；HF Ultra-Scale Playbook（分布式，待核）；李沐 d2l ch11--ch12
+\item
+  \textbf{亲手实验}：手写 AdamW 与 LR 调度 → 单卡固定算力下的 depth sweep（d4/d6/d8/d10）→ 拟合幂律外推 d12 → \textbf{用真实 d12 训练验证预测（打脸链路）} → 双卡 DDP 测扩展效率
+\item
+  \textbf{判分证据}：\texttt{tests/test\_optimizer.py} 全绿；sweep 原始数据 + 拟合图 + 外推预测存档（\textbf{预测先写死再跑}）；扩展效率曲线 + 通信占比
+\item
+  \textbf{常见误解}：以为''loss 不降就是数据问题''；把显存不足当成硬件不够（其实是批大小/精度/累积没调）；把 DDP 当免费加速
+\end{itemize}
+
+\subsection{M5 · 推理与部署}\label{m5-ux63a8ux7406ux4e0eux90e8ux7f72}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{核心问题}：为什么生成是逐个 token 的？KV cache 省了什么、代价是什么？量化会掉多少点？吞吐与延迟怎么权衡？
+\item
+  \textbf{关键概念}：自回归解码、KV cache、批处理与 continuous batching、PagedAttention、采样策略（temperature/top-p/top-k）、量化（int8/int4/GPTQ/AWQ）、投机解码、显存占用分解、token 成本
+\item
+  \textbf{对标}：nanochat \texttt{engine.py}（KV cache 实现）+ \texttt{infer\_bench.py}；CS336 lecture 10（Inference）；rasbt ch2（生成与 KV caching）
+\item
+  \textbf{亲手实验}：从零写 KV cache 的自回归生成 → 对比有无 cache 的耗时/显存 → 手写一个贪心 vs top-p 采样对照 → 测不同 batch size 的吞吐
+\item
+  \textbf{判分证据}：\texttt{tests/test\_engine.py} 全绿 + 延迟/吞吐/显存三张图 + ``cache 换来多少倍加速''的实测数字
+\item
+  \textbf{常见误解}：以为推理慢是因为''模型太大''（常是没批处理/没 cache）；以为量化无损
+\end{itemize}
+
+\subsection{M6 · 后训练：从''会说话''到''会做事''}\label{m6-ux540eux8badux7ec3ux4eceux4f1aux8bf4ux8bddux5230ux4f1aux505aux4e8b}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{核心问题}：SFT、DPO、RLVR 各自在补什么能力？为什么 RLVR 能提升数学/代码却可能伤害通用能力？reward hacking 长什么样？
+\item
+  \textbf{关键概念}：指令微调与 chat template、损失掩码（只算 answer 部分）、奖励模型、PPO、DPO 的隐式奖励、GRPO 的组内归一化优势、可验证奖励（verifiable reward）、拒绝采样、蒸馏、合成数据、KL 正则与过度优化
+\item
+  \textbf{对标}：CS336 A5（含 \texttt{test\_grpo.py}、GSPO/MaxRL）；\textbf{rasbt《Reasoning from Scratch》ch3--ch8}（先建评测→推理时扩展→self-refinement→GRPO→改进 GRPO→蒸馏）；Nathan Lambert《RLHF Book》（免费在线，17 章）；HF LLM Course ch11--12；minimind \texttt{train\_dpo/train\_grpo.py}；nano-aha-moment（单文件单卡）
+\item
+  \textbf{亲手实验}：同一基座上做 SFT / DPO / GRPO 三变体 → \textbf{同一评测口径}下对照 → 手写 GRPO 损失并逐项注释（advantage 从哪来、为什么要除标准差）→ 制造一次 reward hacking 并记录现象
+\item
+  \textbf{判分证据}：\texttt{tests/test\_grpo.py} 全绿 + 三方对照表（同基座/同评测/同种子策略）+ reward 曲线与失败样本分析
+\item
+  \textbf{常见误解}：以为 DPO 不用 reward model 就''更简单''；以为 RL 一定比 SFT 强；把训练 reward 上升当成能力提升（不做 held-out 评测就是自欺）
+\end{itemize}
+
+\subsection{M7 · 评测：把''感觉变好了''变成''确实变好了''}\label{m7-ux8bc4ux6d4bux628aux611fux89c9ux53d8ux597dux4e86ux53d8ux6210ux786eux5b9eux53d8ux597dux4e86}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{核心问题}：benchmark 分数可信吗？污染怎么判断？为什么必须固定口径？评测方差有多大？
+\item
+  \textbf{关键概念}：bpb / perplexity / CORE / 下游基准（GSM8K/MATH-500/MMLU/HumanEval）、pass@k、评测污染、few-shot 与 prompt 敏感性、方差与置信区间、LLM-as-judge 的偏置、可验证奖励 vs 学习型奖励
+\item
+  \textbf{对标}：\textbf{rasbt《Reasoning from Scratch》ch3（先建评测再上技术，全书教学法基石）}；nanochat \texttt{core\_eval.py}（单文件 CORE）；CS336 lecture 12；Berkeley Agentic AI MOOC ``Agent Evaluation''；lm-evaluation-harness
+\item
+  \textbf{亲手实验}：写一个''数学题判定器''（解析 + 数值比对 + 容错）→ 测它在 200 道题上的准确率与假阳性 → 给自己的两个模型跑同一套评测并给误差棒
+\item
+  \textbf{判分证据}：判定器的单测 + 假阳性/假阴性样例分析 + 带误差棒的对照表（\textbf{不许只报均值}）
+\item
+  \textbf{常见误解}：只看一个 benchmark 下结论；忽略 prompt 格式带来的巨大差异；把测试集当验证集反复调
+\end{itemize}
+
+\subsection{M8 · 智能体：工具、记忆、harness、长程任务}\label{m8-ux667aux80fdux4f53ux5de5ux5177ux8bb0ux5fc6harnessux957fux7a0bux4efbux52a1}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{核心问题}：LLM 从''回答问题''到''完成任务''缺什么？harness 为什么比模型本身更能决定成败？self-judge 什么时候有效、什么时候是自欺？
+\item
+  \textbf{关键概念}：工具调用/函数调用、ReAct 循环、context engineering（Karpathy/李宏毅都专讲）、记忆与压缩、harness 设计（沙箱、权限、反馈信号）、长程任务的误差累积、多智能体、self-judge / self-refine 的边界条件、可验证环境
+\item
+  \textbf{对标}：李宏毅 GenAI-ML《Context Engineering》专讲；Berkeley LLM Agents MOOC + Agentic AI MOOC（含 ``Post-Training Verifiable Agents''）；HF Agents Course（三大框架 + 排行榜）；rasbt《Reasoning from Scratch》ch5（self-refinement）；\texttt{PrimeIntellect-ai/verifiers}、terminal-bench、SWE-bench
+\item
+  \textbf{亲手实验}：手写最小 ReAct 循环（不用框架）→ 给它 2 个工具（计算器 + 代码执行）→ 记录失败轨迹分类 → 加 self-judge 再跑，做消融
+\item
+  \textbf{判分证据}：轨迹日志（成功/失败分类）+ self-judge 有无的成功率差 + ``什么时候 self-judge 有害''的案例
+\item
+  \textbf{常见误解}：以为 Agent 的瓶颈在模型智力（常在你的工具接口与反馈信号）；以为 self-judge 免费提升（它会放大原有错误）
+\end{itemize}
+
+\subsection{M9 · 前沿与安全（持续跟进区，不是一次性学完）}\label{m9-ux524dux6cbfux4e0eux5b89ux5168ux6301ux7eedux8ddfux8fdbux533aux4e0dux662fux4e00ux6b21ux6027ux5b66ux5b8c}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{核心问题}：MoE/长上下文/多模态改变了什么？对齐与安全是''加一层''还是''改训练目标''？持续学习与''AI 训 AI''可行到什么程度？
+\item
+  \textbf{关键概念}：MoE 稀疏激活、长上下文外推与记忆、多模态对齐、可解释性、红队与越狱、幻觉的成因、评测式安全保障、合成数据闭环、self-play、灾难性遗忘、模型合并
+\item
+  \textbf{对标}：CS336 lecture 04（MoE）+ 论文精读清单；Berkeley Agentic AI MOOC（安全与红队）；\texttt{opendilab/awesome-RLVR}；\texttt{LeapLabTHU/limit-of-RLVR}
+\item
+  \textbf{亲手实验（选题制）}：从''合成数据自训练一轮'' / ``拒绝采样提升数学'' / ``self-play 生成题目''三者中选一个，做最小闭环 + 反证
+\item
+  \textbf{判分证据}：小实验 + 明确写出''这个方向的 no-go 是什么''（负结果不许擦除）
+\item
+  \textbf{常见误解}：把''前沿''当成必须立刻掌握（正确姿势是保持索引能力 + 每季度更新一次本模块）
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{模块 ↔ 课题 ↔ 周次 对照}\label{ux6a21ux5757-ux8bfeux9898-ux5468ux6b21-ux5bf9ux7167}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+模块
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+主课题
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+周次
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+讲（对标）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+做（手写区）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+证（判分/证据）
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+M0 & 前置/贯穿 & W1 & d2l ch2--5 & micrograd + MLP & 数值梯度对照 \\
+M1 & 课题02 & W2 & d2l ch8--10 & bigram → RNN → Transformer & bpb 对照表 \\
+M2 & 课题01 & W1 & CS336 A1 + HF ch2 & 手写 BPE & pytest 全绿 + 压缩率 \\
+M3 & 课题02 & W2--W3 & CS336 lec03--04 + rasbt ch3--4 & 手写 Transformer & pytest + 改坏实验 \\
+M4 & 课题03/04/06 & W3--W9 & CS336 A2/A3 + nanochat & AdamW + sweep + DDP & 拟合图 + 扩展效率 \\
+M5 & 课题04/05 & W5--W8 & nanochat engine + CS336 lec10 & KV cache + Triton kernel & 三图 + 实测数字 \\
+M6 & 课题08 & W10--W12 & 理由书 ch3--8 + RLHF Book & SFT/DPO/GRPO 对照 & test\_grpo 全绿 + 对照表 \\
+M7 & 课题07/08 & W9--W12 & Reasoning ch3 + CS336 lec12 & 判定器 + 评测 & 假阳性分析 + 误差棒 \\
+M8 & 课题09/10 & W13--W14 & 李宏毅 Context Eng. + Agents MOOC & 最小 ReAct + self-judge & 轨迹分类 + 消融 \\
+M9 & 课题11（选题） & W15--W16 & 论文精读 + MOOC & 选题小实验 & no-go 记录 \\
+\end{longtable}
+}
+
+\subsection{与课程（CORE100299）六板块的映射}\label{ux4e0eux8bfeux7a0bcore100299ux516dux677fux5757ux7684ux6620ux5c04}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+课程板块
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+对应本图模块
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+课程大论文可用素材
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+绪论 & M1 & 语言模型史一页 \\
+搜索求解 & M8（Agent 的搜索/规划） & ReAct 与树搜索对照 \\
+知识表示 & M8（记忆/工具） & context engineering 案例 \\
+机器学习（监督/深度/强化/无监督） & M0/M3/M4/M6 & 预训练+后训练全链路 \\
+智能体 & M8 & 最小 ReAct + self-judge 消融 \\
+大语言模型 & M2--M7 & 0.1B 端到端 + scaling law \\
+\end{longtable}
+}
+
+\newpage
+
+\section{对标教学资源清单（2026-09-17 核实）}\label{ux5bf9ux6807ux6559ux5b66ux8d44ux6e90ux6e05ux53552026-09-17-ux6838ux5b9e}
+
+\begin{quote}
+目的：\textbf{给''讲''这条腿找最好的老师}。每个知识点都指定一份对标材料， 由导师讲解 + 你复述 + 你动手，形成''三师制''：\textbf{对标名师讲概念 / 我讲你的具体卡点 / 判分器讲对错}。
+
+核实纪律（承仓库铁律''引用任何数字先复现''）： 本表''核实''列标 ✅ 的，是我在 2026-09-17 当日通过 \texttt{gh\ api} 或官网页面\textbf{实际打开确认}的； 标 ⏳ 的表示尚未亲自核实，\textbf{不许作为唯一依据}，用前先核。 标 ⚠️ 的是已知坑（过时/收费/不可达）。
+\end{quote}
+
+\subsection{一、主线三件套（工程 + 判分，本学科骨架）}\label{ux4e00ux4e3bux7ebfux4e09ux4ef6ux5957ux5de5ux7a0b-ux5224ux5206ux672cux5b66ux79d1ux9aa8ux67b6}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\#
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+资源
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+类型
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+语言
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+覆盖模块
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+核实
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+为什么选它
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & \textbf{Stanford CS336}（\texttt{stanford-cs336/lectures} + \texttt{assignment1-basics}\ldots{}\texttt{assignment5-alignment}） & 课程 + 可执行判分器 & 英 & M2--M7 & ✅ commit 已锁 & 唯一把「从零写」做成\textbf{自动判分}的课程；2026 版 A5 已含 GRPO/GSPO/MaxRL \\
+2 & \textbf{karpathy/nanochat}（58,087⭐, MIT） & 全链路工程 & 英 & M2--M5, M7 & ✅ commit \texttt{92d63d4e8bb4} & 20 个文件覆盖 tokenizer→预训练→SFT→RL→评测→推理引擎→工具执行；单旋钮 \texttt{-\/-depth}；支持 CPU/MPS \\
+3 & \textbf{jingyaogong/minimind}（61,450⭐, Apache-2.0） & 中文全链路 + RL 脚本 & 中 & M2--M6 & ✅ & 中文文档 + \texttt{train\_grpo/ppo/dpo/agent.py}；单卡 3090 上''3 块钱 2 小时''；适合读代码学中文术语 \\
+\end{longtable}
+}
+
+\subsection{二、理论线的''对标名师''（补''讲''的深度）}\label{ux4e8cux7406ux8bbaux7ebfux7684ux5bf9ux6807ux540dux5e08ux8865ux8bb2ux7684ux6df1ux5ea6}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\#
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+资源
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+类型
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+语言
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+覆盖模块
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+核实
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+怎么用
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+4 & \textbf{rasbt《Build a Reasoning Model (From Scratch)》} + \texttt{rasbt/reasoning-from-scratch}（5,000+⭐, Apache-2.0） & 书 + 逐章 notebook & 英 & \textbf{M6/M7/M8} & ✅ & \textbf{教学法范本}：ch3 先建评测再上任何技术（``so every later improvement is measured rather than asserted''）；ch5 self-refinement；ch6 GRPO 从零；ch2--4 可 CPU 跑，只有 RL 章需要 GPU \\
+5 & \textbf{Nathan Lambert《Reinforcement Learning from Human Feedback》}（rlhfbook.com，免费在线，2026 版） & 书（免费） & 英 & \textbf{M6/M7} & ✅ & 后训练理论主线：指令微调/奖励模型/PPO/DPO/RLVR/拒绝采样/合成数据/过度优化/评测，17 章 \\
+6 & \textbf{李宏毅（台大）GenAI-ML 2025 Fall / 机器学习 2026 Spring} & 视频 + 讲义 PDF & \textbf{中} & M3/M6/M8 & ✅ 站点已核 & 中文讲得最清楚的一手：含《Context Engineering》专讲（Agent 时代的核心） \\
+7 & \textbf{李沐《动手学深度学习》(zh.d2l.ai，B站 236 集)} & 书 + 视频（免费） & \textbf{中} & M0/M1/M3/M5 & ✅ & ``不是通过幻灯片讲解，而是通过解读代码、动手调参跑实验来学习''------\textbf{中文知行合一的原典} \\
+8 & \textbf{rasbt《Build a Large Language Model (From Scratch)》} + \texttt{rasbt/LLMs-from-scratch}（105,140⭐，2026-09-17 仍在更新） & 书 + notebook & 英 & M2--M4, M6 & ✅ & 代码级最细；附录含 GQA/MLA/SWA/MoE/KV cache/FLOPs 分析/LoRA，正好是 M3/M5 的补充读物 \\
+9 & \textbf{HF LLM Course}（13 章，ch11--12 含 LoRA/SFT/GRPO） & 课程（免费） & 英 & M2/M6 & ✅ & 由 transformers/TRL 库作者写，ch8「调试训练流水线」是别处没有的 \\
+10 & \textbf{HF Agents Course}（4 units + 最终项目排行榜 + function-calling 微调 bonus） & 课程（免费，有证书） & 英 & \textbf{M8} & ✅ & 三个框架并学（smolagents/LlamaIndex/LangGraph），最后提交到公开排行榜------\textbf{自带客观验收} \\
+11 & \textbf{Berkeley LLM Agents MOOC / Agentic AI MOOC}（rdi.berkeley.edu、agenticai-learning.org） & 公开课录像 + slides & 英 & \textbf{M8/M9} & ✅ & 有一讲就叫 ``Post-Training Verifiable Agents''、一讲 ``Agent Evaluation''------正是唐杰作业⑤的前沿坐标 \\
+12 & \textbf{Karpathy《Neural Networks: Zero to Hero》}（micrograd/makemore/nanoGPT） & 视频 & 英 & M0/M1/M3 & ✅ 系列存在性已核 & 直觉地基；micrograd 是 M0 手写实验的模板（但\textbf{你要自己写}） \\
+13 & \textbf{3Blue1Brown 神经网络系列} & 动画视频 & 英（有中字） & M0/M3 & ⏳ & 视觉直觉；用来预热 attention/反向传播 \\
+14 & \textbf{HF Ultra-Scale Playbook} & 长文（免费） & 英 & M4 & ⏳ & 分布式训练（DDP/FSDP/TP/PP）的工程全景，W9 前核实 \\
+15 & \textbf{《大规模语言模型：从理论到实践》（复旦 张奇等）} & 书 & \textbf{中} & M2--M6 & ⏳ & 中文教材备选；与 minimind 配套读 \\
+\end{longtable}
+}
+
+\subsection{三、评测与环境类（M7/M8 的判分件）}\label{ux4e09ux8bc4ux6d4bux4e0eux73afux5883ux7c7bm7m8-ux7684ux5224ux5206ux4ef6}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\#
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+资源
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+覆盖
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+核实
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+用途
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+16 & \texttt{harbor-framework/terminal-bench}（+ 冻结版 \texttt{terminal-bench-1}） & M8 & ✅ & 长程 Agent 的连续基准（v2 新仓，v1 已冻结改名） \\
+17 & \texttt{SWE-bench/SWE-bench}、\texttt{SWE-bench/SWE-smith} & M7/M8 & ✅ & 代码任务评测 / 合成可验证环境 \\
+18 & GSM8K / MATH-500 & M7 & ✅（在 rasbt ch3 用作 verifier 对象） & 数学可验证奖励的标准件 \\
+19 & \texttt{PrimeIntellect-ai/verifiers}（4,626⭐, MIT） & M7/M8 & ✅ commit 已锁 & RL 环境 + 评测的抽象层，做课题09 的参照 \\
+20 & \texttt{EleutherAI/lm-evaluation-harness}、\texttt{UKGovernmentBEIS/inspect\_ai} & M7 & ✅ & 学术评测标准件 / harness 设计参考 \\
+21 & \texttt{walkinglabs/hands-on-modern-rl}（4,395⭐，中文） & M6 & ✅ & RL→RLVR→Agentic RL 中文教材，\textbf{实验标注 CPU/xGPU 且挂免费在线 Notebook} \\
+22 & \texttt{McGill-NLP/nano-aha-moment} & M6 & ✅ & 单文件单卡从零 GRPO（阅读用，不宜作依赖） \\
+\end{longtable}
+}
+
+\subsection{四、明确标注的坑（用前必读）}\label{ux56dbux660eux786eux6807ux6ce8ux7684ux5751ux7528ux524dux5fc5ux8bfb}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+资源
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+坑
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+CS336 \textbf{A3} & 需要 \texttt{A3\_API\_KEY} = 8 位学号，\textbf{非斯坦福在校生拿不到} → 本学科用自建 sweep 替代（课题03 已按此设计） \\
+CS336 \textbf{A2} & \texttt{flash-attn} 安装特殊：\texttt{uv\ sync\ -\/-no-install-package\ flash-attn} 再 \texttt{uv\ sync} \\
+CS336 \textbf{A5} & 2026 版换成 Olmo-2-1B @ GSM8K，且用 Modal 云函数 → 显存要求最高，放在 W12 且用双 T4 \\
+\textbf{Kaggle P100} & 若分配到 P100（SM60），\textbf{Triton 不可用}（需 CC≥7.0）→ 课题05 必须重开会话直到拿到 T4 \\
+\texttt{karpathy/nanoGPT}、\texttt{build-nanogpt}、\texttt{llm.c} & 已被 nanochat 取代或停滞，\textbf{只作历史读物} \\
+\texttt{karpathy/LLM101n} & \textbf{已归档（archived）}，且 Eureka Labs 至今未完整发布 → 只当索引，别当路线 \\
+HuggingFace \textbf{FineWeb} & 我用 \texttt{gh\ api} 查 \texttt{HuggingFaceFW/fineweb}、\texttt{huggingface/fineweb} 均 404 → \textbf{不要写这两个路径}，语料走 TinyStories / \texttt{stanford-cs336/owt-sample} / dolma \\
+\texttt{terminal-bench} & 已改名分仓（v1 → \texttt{terminal-bench-1}，v2 → 新仓），旧链接会 404 \\
+\end{longtable}
+}
+
+\subsection{五、三师制使用方法（每个知识点的标准动作）}\label{ux4e94ux4e09ux5e08ux5236ux4f7fux7528ux65b9ux6cd5ux6bcfux4e2aux77e5ux8bc6ux70b9ux7684ux6807ux51c6ux52a8ux4f5c}
+
+\begin{verbatim}
+① 先读对标材料的那一节（不超过 25 分钟，带着"我要回答哪 3 个问题"去读）
+② 合上材料，用自己的话讲给我听（我按 M0–M9 的"核心问题"追问，专挑你含糊的地方）
+③ 我讲你的卡点（只讲你卡住的那一层，不重讲整章）
+④ 上手写（手写区任务，最小可运行）
+⑤ 跑判分（pytest / 自建判定器）→ 出证据
+⑥ 改坏它 → 预测 → 验证 → 修好（第 3 条硬标准）
+\end{verbatim}
+
+\textbf{分工原则}：对标名师负责''标准讲法''，我负责''你的卡点 + 判分 + 记忆归档''， \textbf{任何一方都不替代你动手}（见《造轮子边界.md》）。
+
+\newpage
+
+\section{知行合一规程（本学科教学法核心）}\label{ux77e5ux884cux5408ux4e00ux89c4ux7a0bux672cux5b66ux79d1ux6559ux5b66ux6cd5ux6838ux5fc3}
+
+\begin{quote}
+立规 2026-09-17。缘起：用户指出''实操性够强，但知识讲解偏少''，并明确要求\textbf{把知行合一贯穿全流程}。 本规程定义：什么算''学过''，什么算''学会''，以及每一层怎么被强制咬合。
+
+一句话：\textbf{本学科没有''听懂了''这个状态，只有在代码里被验证过的''懂了''。}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{一、把''知行合一''变成可执行的四件咬合}\label{ux4e00ux628aux77e5ux884cux5408ux4e00ux53d8ux6210ux53efux6267ux884cux7684ux56dbux4ef6ux54acux5408}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+咬合件
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+名称
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+谁的活
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+不通过的后果
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+讲 & 导师讲 + 对标名师 & 我（≤20 分钟一块，≤150 字一个概念块） & 讲完必须立刻出''代码级提问'' \\
+做 & 手写区最小可运行 & 你 & 没跑起来 = 这一课不算上 \\
+证 & 判分器 / 实验证据 & 我搭台，你跑 & 无证据的结论一律不采纳 \\
+反 & 改坏实验 + 打脸记录 & 你预测，你验证 & 只会正确写法的人，遇到 bug 一定卡死 \\
+\end{longtable}
+}
+
+\textbf{四件缺一 → 本知识点标 🟡 未通过，不进 PROGRESS 的 ✅。}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{二、知识卡规范（每个知识点一张，落 \texttt{知识卡/} 或课题目录）}{二、知识卡规范（每个知识点一张，落 知识卡/ 或课题目录）}}\label{ux4e8cux77e5ux8bc6ux5361ux89c4ux8303ux6bcfux4e2aux77e5ux8bc6ux70b9ux4e00ux5f20ux843d-ux77e5ux8bc6ux5361-ux6216ux8bfeux9898ux76eeux5f55}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\# 知识卡 · \textless{}知识点名\textgreater{}（模块 M?）}
+\SpecialStringTok{{-} }\NormalTok{一句话定义：}
+\SpecialStringTok{{-} }\NormalTok{直觉（给别人讲会用的话）：}
+\SpecialStringTok{{-} }\NormalTok{公式/伪代码骨架（手写，不许贴代码）：}
+\SpecialStringTok{{-} }\NormalTok{对标出处：\textless{}材料名 + 章节\textgreater{}}
+\SpecialStringTok{{-} }\NormalTok{上手写实验：\textless{}文件路径 + 判分命令\textgreater{}}
+\SpecialStringTok{{-} }\NormalTok{判分证据：}\DataTypeTok{\textless{}}\KeywordTok{pytest}\OtherTok{ }\ErrorTok{名}\OtherTok{ }\ErrorTok{/}\OtherTok{ }\ErrorTok{图}\OtherTok{ }\ErrorTok{/}\OtherTok{ }\ErrorTok{数字}\DataTypeTok{\textgreater{}}
+\SpecialStringTok{{-} }\NormalTok{改坏实验：改哪里 → 你预测的现象 → 实测现象}
+\SpecialStringTok{{-} }\NormalTok{常见误解：}
+\SpecialStringTok{{-} }\NormalTok{记忆锚（隐喻+口诀+符号位置）：}
+\SpecialStringTok{{-} }\NormalTok{间隔重复卡号：}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+知识卡\textbf{由你口述、我整理}（你说我写），但''直觉''\,``改坏实验的预测''两栏必须是你自己的话。 若某栏你说不出来 → 这节课没上完。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{三、讲课节拍（每周两个时段，各 1.5--3h）}\label{ux4e09ux8bb2ux8bfeux8282ux62cdux6bcfux5468ux4e24ux4e2aux65f6ux6bb5ux5404-1.53h}
+
+\begin{verbatim}
+时段 A（理论）：讲（≤20min 一块）→ 你复述 → 我挑含糊处追问 → 你写知识卡 → 出代码级提问
+时段 B（实验）：读对标材料对应节 → 你写手写区 → 跑判分 → 记录证据 → 改坏实验 → 归档
+\end{verbatim}
+
+\textbf{硬纪律}： - 一次讲透，不挤牙膏（沿用你已定的节奏：你多讲、我多写；批量 3--5 个关键问题）。 - 每个概念块 ≤150 字，讲完必须配一个''\textbf{立刻能跑的最小实验}''。 - 讲课时\textbf{不许给手写区代码}（见《造轮子边界.md》）；给的是''该去哪里找、该测什么''。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{四、代码级提问（``知''与''行''的咬合点，本学科独创）}\label{ux56dbux4ee3ux7801ux7ea7ux63d0ux95eeux77e5ux4e0eux884cux7684ux54acux5408ux70b9ux672cux5b66ux79d1ux72ecux521b}
+
+每讲完一块，我出 \textbf{3--5 道代码级提问}，形式固定为''\textbf{改坏它 / 预测现象 / 给出诊断}''：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+类型
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+例子
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+改坏预测 & ``把 attention 的因果 mask 注释掉，loss 会怎样？训练 100 步内你会看到什么现象？'' \\
+放大器 & ``把 RoPE 换成可学习位置嵌入，在训练/外推两种场景下各自会怎么退化？'' \\
+诊断 & ``你观察到 loss 在第 400 步突然变 NaN，请按顺序列出你会检查的 5 个量。'' \\
+代价 & ``把词表从 32k 扩到 128k，参数量、序列长度、每 token 成本各变多少？（估数量级）'' \\
+反事实 & ``如果 DDP 改成 FSDP，同样的 batch，显存和速度分别会怎么动？为什么？'' \\
+\end{longtable}
+}
+
+\textbf{判分标准}：预测错不算失败（\textbf{预测错 + 跑实验打脸 = 最高质量的学习}）， 但''没有预测就跑''算失败，因为那等于放弃了知行之间的连接。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{五、``真的懂了''的三条硬标准（与《知识地图》一致，此处为验收动作）}\label{ux4e94ux771fux7684ux61c2ux4e86ux7684ux4e09ux6761ux786cux6807ux51c6ux4e0eux77e5ux8bc6ux5730ux56feux4e00ux81f4ux6b64ux5904ux4e3aux9a8cux6536ux52a8ux4f5c}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{能讲清} → 你对着外行话讲一遍，我专门装不懂追问三层（Why → Why not → What if）。
+\item
+  \textbf{能指出代码位置} → 你在我画出的 \texttt{手写/} 或上游代码里，\textbf{不搜索}直接指出对应函数/行号区间。
+\item
+  \textbf{能改坏并修好} → 我在你没看过的地方埋一个 bug（或你自己改坏），你在\textbf{不看不该看的代码}的前提下， 用实验定位并修好；修好过程必须留日志进 \texttt{证据/}。
+\end{enumerate}
+
+\begin{quote}
+三条全过才写 ✅；只过第 1 条 = 会考试，不会干活。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{六、反讲机制（费曼 + 红队）}\label{ux516dux53cdux8bb2ux673aux5236ux8d39ux66fc-ux7ea2ux961f}
+
+\begin{itemize}
+\tightlist
+\item
+  每模块收口：\textbf{你当老师，我当刺头学生}，我只问''为什么''，不纠正、只追问，直到你卡住或讲穿。
+\item
+  卡住的地方\textbf{就是下一个知识点的入口}，直接写进 \texttt{HANDOFF.md} 的''下一步''。
+\item
+  结项前：你来当评审，对着自己的报告做 3 条自我攻击（``这个结论最可能错在哪？''）， 与导师审稿意见并列存档 → 这就是唐杰作业⑦''问题/动机/方法/结果一项都不能糊''的本地化实现。
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{七、与其它章程的关系}\label{ux4e03ux4e0eux5176ux5b83ux7ae0ux7a0bux7684ux5173ux7cfb}
+
+\begin{itemize}
+\tightlist
+\item
+  谁写代码 → 《造轮子边界.md》（R1--R10 手写 / B1--B8 代写 / C 协作）
+\item
+  讲什么、讲多深 → 《知识地图-大模型全景.md》（M0--M9 四件咬合件）
+\item
+  用哪份材料讲 → 《对标教学资源清单.md》（三师制）
+\item
+  怎么算过 → 《判分与验收标准.md》（三层判分 + 每课题通过证据）
+\item
+  什么时候讲 → 《实训路线图.md》``知识讲解锚点''列
+\end{itemize}
+
+\newpage
+
+\section{实训路线图 · 16 周 × 11 课题 × 唐杰 7 条 × CS336 映射}\label{ux5b9eux8badux8defux7ebfux56fe-16-ux5468-11-ux8bfeux9898-ux5510ux6770-7-ux6761-cs336-ux6620ux5c04}
+
+\begin{quote}
+\textbf{2026-09-17 并入 \texttt{人工智能基础与应用/}（实训轨）}：本学科三轨合一------ \textbf{课程轨}（CORE100299 课堂事务，见 \texttt{../课程轨/课程进度.md}）、 \textbf{实训轨}（本文件 + 11 个课题）、\textbf{知识轨}（\texttt{知识地图-大模型全景.md} M0--M9）。 配套：《对标教学资源清单.md》（跟谁学）、《知行合一规程.md》（什么叫学过）、 《造轮子边界.md》（谁写代码）、《算力与成本预算.md》（花多少）、《判分与验收标准.md》（怎么算过）。
+
+立图 2026-09-17。基准：\textbf{第 1 教学周 = 2026-09-14}（与校历、与唐杰清华开课同周）。 节奏：16 周跟课（每周 5--6h，约 2 个学习时段）。预算：\textbf{零现金}，只用免费算力（见《算力与成本预算.md》）。
+\end{quote}
+
+\subsection{一、目标（一句话）}\label{ux4e00ux76eeux6807ux4e00ux53e5ux8bdd}
+
+\textbf{用零现金预算，把唐杰 2026 秋季作业清单一条不落地走完}，每一环都留下可复现证据、可执行判分与一页报告； 最终产出一份 NeurIPS 格式的英文技术报告 + 一个可现场 demo 的作品。
+
+\subsection{二、唐杰 7 条 ↔ 本学科课题 ↔ 判分来源（主映射表）}\label{ux4e8cux5510ux6770-7-ux6761-ux672cux5b66ux79d1ux8bfeux9898-ux5224ux5206ux6765ux6e90ux4e3bux6620ux5c04ux8868}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+唐杰作业条目
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+对应课题
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+官方规格 / 判分器
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+算力档
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+① 从零写 Tokenizer + Transformer，端到端训 0.1B & 课题01、02、04 & CS336 A1（\texttt{tests/}） & T0 → T2 \\
+② 手写 Triton attention kernel，测多卡训练/推理增益 & 课题05、06 & CS336 A2 & T1 / T2 \\
+③ raw dump 洗语料，拟合 scaling law 再外推 & 课题07、03 & CS336 A4 + A3（A3 需自建替代） & T0 / T1 \\
+④ 同一基座做 SFT / DPO / RLVR 对照 & 课题08 & CS336 A5（含 \texttt{tests/test\_grpo.py}） & T2 \\
+⑤ 可验证环境 + harness，训长程 Agent，鼓励 self-judge loop & 课题09、10 & 无官方判分器（前沿区）→ verifiers / terminal-bench 思路 & T2 \\
+⑥ 2--3 人组队，英文 NeurIPS 格式，W16 现场 demo & 课题11 & 本仓库报告协议 + LaTeX 模板 & --- \\
+⑦ 作业 40\% / 大项目 60\%；问题/动机/方法/结果一项都不能糊 & 全学科判分口径 & 《判分与验收标准.md》 & --- \\
+\end{longtable}
+}
+
+\subsection{三、16 周课表（周次 / 课题 / 交付物 / GPU 需求）}\label{ux4e0916-ux5468ux8bfeux8868ux5468ux6b21-ux8bfeux9898-ux4ea4ux4ed8ux7269-gpu-ux9700ux6c42}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+周
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+日期
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+课题
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+本周交付物（硬指标）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+GPU
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+W1 & 09-14→09-20 & 课题01 BPE 分词器 & 手写 BPE + \texttt{test\_tokenizer.py}/\texttt{test\_train\_bpe.py} 全绿 + 压缩率表 & 0 \\
+W2 & 09-21→09-27 & 课题02 Transformer 骨架 & attention/MLP/RoPE/RMSNorm 手写 + 形状与数值测试过 & 0 \\
+W3 & 09-28→10-04 & 课题02 收口（国庆周，减半） & 训练循环 + AdamW + 序列化测试过；loss 稳定下降曲线 & 0 \\
+W4 & 10-05→10-11 & 课题03 Scaling Law 预演 & 5 点小规模 sweep + 拟合 + 外推预测 + 打脸记录 & 0（CPU） \\
+W5 & 10-12→10-18 & 课题04 0.1B 端到端（上） & 数据管线 + 双 T4 冒烟 + 首轮训练启动（断点续训可用） & 6--9h（2×T4） \\
+W6 & 10-19→10-25 & 课题04 收口 & bpb/CORE 指标 + 采样样本 + 实测成本账单 vs 估算 & 6--12h（2×T4） \\
+W7 & 10-26→11-01 & 课题05 Triton kernel（上） & naive 实现 → 分块实现，正确性对齐 & 4h（1×T4） \\
+W8 & 11-02→11-08 & 课题05 收口 + 课题06 开题 & speedup / 显存 / profiling 三张图（含硬件口径声明） & 6h（2×T4） \\
+W9 & 11-09→11-15 & 课题06 多卡与分布式 & DDP vs FSDP 对照 + 扩展效率曲线 + 通信占比分析 & 8h（2×T4） \\
+W10 & 11-16→11-22 & 课题07 数据清洗与去重 & 过滤/去重规则 + 有无清洗的对照组 loss 对比 & 6h（1×T4） \\
+W11 & 11-23→11-29 & 课题08 SFT & SFT 基线 + 与基座对照 & 8h（2×T4） \\
+W12 & 11-30→12-06 & 课题08 DPO + RLVR & \textbf{SFT / DPO / GRPO 三方对照表}（同基座、同评测口径） & 10h（2×T4） \\
+W13 & 12-07→12-13 & 课题09 可验证环境 + harness & 1 个自建可验证环境 + rollout 成功率 + 判定逻辑单测 & 6h（2×T4） \\
+W14 & 12-14→12-20 & 课题10 长程 Agent + self-judge & 多步任务串联 + self-judge 有无的消融 & 8h（2×T4） \\
+W15 & 12-21→12-27 & 蓄水周 & 补跑欠账 + 英文报告初稿 & 4h（弹性） \\
+W16 & 12-28→01-03 & 课题11 结项 & NeurIPS 格式英文报告 + 现场 demo + 总复盘 & 4h（弹性） \\
+\end{longtable}
+}
+
+\textbf{GPU 总需求 ≈ 97 小时}，免费额度可用 \textbf{≈480 小时}（Kaggle 30h/周 × 16 周）→ 安全系数约 \textbf{5×}（见预算章程）。
+
+\subsubsection{附：知识讲解锚点（每周讲哪个模块------补上''讲''这条腿，2026-09-17 新增）}\label{ux9644ux77e5ux8bc6ux8bb2ux89e3ux951aux70b9ux6bcfux5468ux8bb2ux54eaux4e2aux6a21ux5757ux8865ux4e0aux8bb2ux8fd9ux6761ux817f2026-09-17-ux65b0ux589e}
+
+\begin{quote}
+每个知识点的''四件咬合''（讲/做/证/反）见《知行合一规程.md》；模块内容见《知识地图-大模型全景.md》； 对标材料见《对标教学资源清单.md》。
+\end{quote}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+周
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+讲解模块
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+本周要讲透的核心问题（≤5 个）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+配套材料
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+W1 & \textbf{M0 + M2} & 计算图与链式法则；熵/交叉熵/困惑度；BPE 为什么字节起步 & d2l ch2--5；CS336 A1 handout \\
+W2 & \textbf{M1 + M3（上）} & 从 n-gram 到 attention 的动机；attention 在算什么；为什么多头 & d2l ch8--10；CS336 lec01/03 \\
+W3 & \textbf{M3（下）} & RoPE vs 可学习位置；RMSNorm/pre-norm 为何关键；残差防什么 & CS336 lec03--04；rasbt ch3--4 \\
+W4 & \textbf{M4（上）} & 优化器与 LR 调度；混合精度；scaling law 如何指导算力分配 & CS336 lec09/11；nanochat \texttt{optim.py} \\
+W5 & \textbf{M4（下）+ M5（上）} & 数据配比与去重；吞吐/显存/FLOPs 记账 & CS336 lec05/13--14；nanochat \texttt{base\_train.py} \\
+W6 & \textbf{M5（下）} & KV cache 省了什么；采样策略；bpb/CORE 指标口径 & nanochat \texttt{engine.py}/\texttt{core\_eval.py}；CS336 lec10/12 \\
+W7 & \textbf{M5（续·kernel）} & GPU 内存层级；Triton 编程模型；flash attention 的分块与 online softmax & CS336 lec05--06；triton 官方教程 \\
+W8 & \textbf{M4（续·并行）} & DDP/FSDP/TP/PP 的取舍；为什么不是线性加速 & CS336 lec07--08；nanochat \texttt{optim.py} \\
+W9 & \textbf{M7（上）} & 评测口径、污染、方差、误差棒；``变好了''如何被证明 & rasbt ch3；CS336 lec12 \\
+W10 & \textbf{M7（下）+ M6（上）} & 过滤/去重的判定规则；指令微调与损失掩码 & CS336 A4；《RLHF Book》ch4 \\
+W11 & \textbf{M6（中）} & 偏好数据、奖励模型、DPO 的隐式奖励 & 《RLHF Book》ch5/8/11；CS336 A5 \\
+W12 & \textbf{M6（下）} & GRPO 的组内优势、KL 正则、reward hacking、过度优化 & rasbt ch6--7；《RLHF Book》ch6/7/14 \\
+W13 & \textbf{M8（上）} & 工具调用/ReAct/context engineering；harness 为什么决定成败 & 李宏毅《Context Engineering》；Agents MOOC \\
+W14 & \textbf{M8（下）} & 长程任务的误差累积；self-judge 何时有效、何时有害 & rasbt ch5；Berkeley Agentic AI MOOC \\
+W15--16 & \textbf{M9（选题）} & 前沿采样：MoE/长上下文/合成数据闭环；no-go 的写法 & 论文精读清单；awesome-RLVR \\
+\end{longtable}
+}
+
+\subsection{四、11 课题总表（手写要点 / 判分来源 / 通过证据）}\label{ux56db11-ux8bfeux9898ux603bux8868ux624bux5199ux8981ux70b9-ux5224ux5206ux6765ux6e90-ux901aux8fc7ux8bc1ux636e}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\#
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+课题
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+手写区核心（不可代写）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+判分来源
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+通过证据
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+01 & BPE 分词器 & merge 循环、特殊 token、bytes 回退、流式编码 & CS336 A1 \texttt{tests/test\_tokenizer.py}、\texttt{test\_train\_bpe.py} & pytest 全绿 + 压缩率表 \\
+02 & Transformer 骨架 & attention、RoPE、RMSNorm、SwiGLU、残差、初始化 & CS336 A1 \texttt{test\_model.py}、\texttt{test\_nn\_utils.py} & pytest 全绿 + 参数量核对 \\
+02b & 训练循环与优化器 & AdamW/Muon 更新式、LR schedule、梯度裁剪、精度管理 & CS336 A1 \texttt{test\_optimizer.py}、\texttt{test\_serialization.py} & pytest 全绿 + loss 曲线 \\
+03 & Scaling Law & 数据采集脚本口径、拟合、外推、\textbf{打脸记录} & 自建判分：预测 vs 实测偏差 & 5 点 sweep 数据 + 拟合图 + 外推预测存档 \\
+04 & 0.1B 端到端 & （复用 01/02 产物）预训练编排、断点续训判断 & 自建判分：loss/bpb 达标 + 采样可读 & bpb/CORE + 采样样本 + 成本账单 \\
+05 & Triton attention kernel & \textbf{kernel 本体}（分块、online softmax） & CS336 A2 + 正确性对齐参考实现 & 三图（speedup/显存/profile）+ 数值误差记录 \\
+06 & 多卡与分布式 & 并行策略选择、通信原语、扩展效率分析 & CS336 A2 分布式部分 + 自建 benchmark & 扩展效率曲线 + 通信占比 \\
+07 & 数据清洗与去重 & \textbf{过滤/去重规则的判定逻辑} & CS336 A4 + 自建消融 & 规则清单 + 对照组 loss 差 \\
+08 & SFT / DPO / RLVR & \textbf{损失函数与优势估计}（A/group norm/重要性比） & CS336 A5 \texttt{tests/test\_grpo.py} + 自建对照 & 三方对照表（同口径） \\
+09 & 可验证环境 & \textbf{判定逻辑（verifier/reward）} & 自建单测 + rollout 成功率 & 判定逻辑测试 + 成功率 + 失败样本分析 \\
+10 & 长程 Agent & \textbf{self-judge 协议设计} & 自建消融 & 有无 self-judge 的成功率差 + 案例 \\
+11 & 结项 & 报告骨架与结论判断 & 报告协议 + 导师审稿 & 英文报告 + demo \\
+\end{longtable}
+}
+
+\subsection{五、规模三档（零预算版）}\label{ux4e94ux89c4ux6a21ux4e09ux6863ux96f6ux9884ux7b97ux7248}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+档
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+硬件
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+模型规模
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+数据
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+用途
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{T0} & 沙箱 CPU（2 vCPU/3GB）或 Colab CPU & 1--10M & TinyStories 子集 / owt-sample 采样 & 课题01--03 的全部正确性与判分 \\
+\textbf{T1} & Kaggle 1×T4 16GB & 0.03--0.1B & TinyStories 全量 + 子集 & 课题05/07 的单卡实验 \\
+\textbf{T2} & Kaggle 2×T4（32GB 合计） & 0.1B & 同上 + 合成任务数据 & 课题04/06/08/09/10 \\
+\end{longtable}
+}
+
+\textbf{规模下探是主动取舍，不是妥协}：把''0.1B''从口号变成每次会话都能真跑的实验， 代价是学不到万卡级工程；收益是 16 周内全链路闭环。前沿规模直觉另走 \texttt{论文精读/} 补齐。
+
+\subsection{六、跨学科搭桥（讲课时主动用）}\label{ux516dux8de8ux5b66ux79d1ux642dux6865ux8bb2ux8bfeux65f6ux4e3bux52a8ux7528}
+
+\begin{itemize}
+\tightlist
+\item
+  RL 的目标函数 → \texttt{probability/} 的期望、方差、条件期望（REINFORCE = 用样本估期望）
+\item
+  语言模型的困惑度/交叉熵 → \texttt{probability/} 的信息量直觉
+\item
+  scaling law 的幂律拟合 → \texttt{probability/} 的最小二乘与回归
+\item
+  结项报告 → \texttt{论文精读/} 的论文写作规范；demo → \texttt{人工智能基础与应用/} 的大论文素材
+\end{itemize}
+
+\newpage
+
+\section{造轮子边界 · 谁写代码（本学科最高契约）}\label{ux9020ux8f6eux5b50ux8fb9ux754c-ux8c01ux5199ux4ee3ux7801ux672cux5b66ux79d1ux6700ux9ad8ux5951ux7ea6}
+
+\begin{quote}
+立约 2026-09-17，用户拍板口径：``\textbf{分层双轨}''。 本学科同时要求两件互相冲突的事：① 唐杰作业要求''不会动手、只会调 API 的先下去''； ② 你的时间是稀缺资源，16 周内跑完全链路。\textbf{解决办法不是折中，而是划死边界}： 学习目标必须你手写；非学习目标必须我代写。边界之下，任何一方越界都算事故。
+\end{quote}
+
+\subsection{一、三条铁律}\label{ux4e00ux4e09ux6761ux94c1ux5f8b}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{手写区（\texttt{课题NN/手写/}）：Agent 禁止写入任何文件。} 不得给代码、不得给伪代码、 不得把第三方实现（含 nanochat / CS336 参考实现 / GitHub 上的答案库）当答案指给你。 允许的动作只有五类：解释报错、解释概念、审查你已写的 diff、建议 sanity check / toy example / profiler 检查、指路官方文档与讲义。
+\item
+  \textbf{脚手架区（\texttt{课题NN/脚手架/}、\texttt{环境/}）：Agent 全权负责且必须主动完成}，不等你催。 这部分写一遍就够，重复劳动零学习收益。
+\item
+  \textbf{越界的正确姿势}：你说''给我看答案''→ 走提示阶梯（五级）→ 到第五级给答案后， \textbf{必须挂近迁移重考卡片}（隔 1--3 天、无提示、换场景再考）。给了答案不挂卡片 = 违规。
+\end{enumerate}
+
+\subsection{二、手写清单（学习目标，共 10 项）}\label{ux4e8cux624bux5199ux6e05ux5355ux5b66ux4e60ux76eeux6807ux5171-10-ux9879}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+编号
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+手写内容
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+为什么必须亲手写
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+R1 & BPE 训练与编码算法（merge 循环、特殊 token、bytes 回退、流式编码） & 分词决定了模型看到的世界；面试/科研高频 \\
+R2 & Transformer 全部组件（attention、RoPE、RMSNorm、SwiGLU、残差、初始化） & 梯度与形状直觉只从亲手写里长出来 \\
+R3 & 训练循环与优化器（AdamW/Muon 更新式、LR schedule、梯度裁剪、精度管理） & 训练不收敛时，只有写过的人会 debug \\
+R4 & 反向传播验证（gradient check、数值梯度对照） & 这是''我懂了''与''我能跑''的分界线 \\
+R5 & \textbf{Triton attention kernel 本体}（分块、online softmax） & 唐杰作业②的核心；性能直觉的唯一来源 \\
+R6 & Scaling law 拟合与外推（数据采集口径、拟合、预测、打脸记录） & 这是''科研判断力''的训练区，不能外包 \\
+R7 & SFT / DPO / RLVR 的\textbf{损失函数与优势估计}（含 group normalization、重要性比） & 后训练是 2026 的重心；抄公式等于没学 \\
+R8 & 数据过滤/去重的\textbf{判定规则}（启发式规则设计） & 数据决定上限；规则设计的品味靠自己做 \\
+R9 & 可验证环境的\textbf{判定逻辑}（verifier / reward function） & 唐杰作业⑤的技术核心 \\
+R10 & self-judge loop 的\textbf{协议设计}（何时判、判什么、如何防退化） & 唐杰课明确鼓励的方向；前沿无标准答案 \\
+\end{longtable}
+}
+
+\subsection{三、代写清单（脚手架，Agent 负责，共 8 项）}\label{ux4e09ux4ee3ux5199ux6e05ux5355ux811aux624bux67b6agent-ux8d1fux8d23ux5171-8-ux9879}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+编号
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+代写内容
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+交付形态
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+B1 & 环境与依赖（uv / CUDA / 镜像 / 引导脚本） & \texttt{环境/bootstrap*.sh} + \texttt{uv.lock} \\
+B2 & 数据下载/解压/分片/上传（含 Kaggle Dataset 打包） & \texttt{环境/数据/} 脚本 + 清单 \\
+B3 & 日志、曲线绘图、实验编排、\textbf{断点续训封装} & \texttt{课题NN/脚手架/} 脚本 \\
+B4 & 判分脚本（拉取 CS336 官方 \texttt{tests/} 并接入适配器） & \texttt{环境/judge/} + \texttt{judge.sh} \\
+B5 & 证据带自动归档（run.yaml / 日志 / 曲线 / 产物哈希） & \texttt{课题NN/证据/} 由脚本生成 \\
+B6 & 报告模板与排版（Markdown + LaTeX/NeurIPS 模板） & \texttt{环境/报告模板/} \\
+B7 & 配额与超时治理（会话预检、超时自停、配额账本） & \texttt{环境/预检.md} + 脚本 \\
+B8 & checkpoint 上传/下载与版本管理 & \texttt{课题NN/脚手架/ckpt\_*.sh} \\
+\end{longtable}
+}
+
+\subsection{四、协作区（一起定，你拍板）}\label{ux56dbux534fux4f5cux533aux4e00ux8d77ux5b9aux4f60ux62cdux677f}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+编号
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+事项
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+分工
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+C1 & 架构与底座选型、上游引入范围 & Agent 出方案与证据 → 你拍板 \\
+C2 & 超参搜索空间、指标口径（bpb / CORE / 通过率） & Agent 出方案 → 你定口径 \\
+C3 & 实验优先级与是否值得重跑 & Agent 给成本估算 → 你决定 \\
+C4 & 可验证环境的题目设计 & 你出设计意图 → Agent 评估可行性与成本 \\
+\end{longtable}
+}
+
+\subsection{五、违规示例（判例，会长大）}\label{ux4e94ux8fddux89c4ux793aux4f8bux5224ux4f8bux4f1aux957fux5927}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{E-01（预防性记录）}：Agent 往 \texttt{手写/} 里写入实现文件 ------ 即使内容正确也算违规， 必须改为''审查意见 + 测试建议''落到 \texttt{判卷记录.md}。
+\item
+  \textbf{E-02（预防性记录）}：Agent 说''你可以参考 nanochat 的 \texttt{flash\_attention.py} 第 30 行'' ------ 违规。 正确做法：说明该文件\textbf{在整体架构中的位置与接口契约}，指出官方 Triton 教程与 CS336 A2 handout 的对应章节。
+\item
+  \textbf{E-03（预防性记录）}：Agent 帮你把实验卡写好之后直接开始烧 GPU 时间 ------ 违规。 实验卡必须由你确认（哪怕只是回一句''跑''）。
+\end{itemize}
+
+\subsection{六、边界自检（每次动手前问一遍）}\label{ux516dux8fb9ux754cux81eaux68c0ux6bcfux6b21ux52a8ux624bux524dux95eeux4e00ux904d}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  我现在要写的这个文件，属于 R1--R10 还是 B1--B8？
+\item
+  如果是 R 类 → 我只能读、只能评论，不能写。
+\item
+  如果是 B 类 → 我必须写，且要写完整（不留 TODO 给用户）。
+\item
+  如果两边都不是 → 进协作区，先出方案再动手。
+\end{enumerate}
+
+\newpage
+
+\section{AI 使用红线（本学科版）}\label{ai-ux4f7fux7528ux7ea2ux7ebfux672cux5b66ux79d1ux7248}
+
+\begin{quote}
+改编自 \textbf{Stanford CS336 官方 \texttt{AGENTS.md}}（\texttt{stanford-cs336/assignment1-basics}，2026-09-17 读取原文）， 按用户的''\textbf{分层双轨}''口径改写。CS336 原文的立场是''Teaching Assistant, Not Solution Generator''， 本学科的立场是''\textbf{学习目标区=TA，基建区=工程师}''。
+\end{quote}
+
+\subsection{一、最高原则}\label{ux4e00ux6700ux9ad8ux539fux5219}
+
+\begin{quote}
+\textbf{学习目标（R1--R10）必须由用户亲手完成；非学习目标（B1--B8）必须由 Agent 完成。} 边界见《造轮子边界.md》。任何一端的越界都算事故，写进 \texttt{memory/ERRORS.md}。
+\end{quote}
+
+\subsection{二、手写区：Agent 应当做（SHOULD）}\label{ux4e8cux624bux5199ux533aagent-ux5e94ux5f53ux505ashould}
+
+\begin{itemize}
+\tightlist
+\item
+  解释概念：\textbf{只讲用户卡住的那一层}，不重讲整章；用一个反例或一个玩具例子收尾。
+\item
+  指路：指出对应讲义章节（CS336 / d2l / 李宏毅 / rasbt / RLHF Book 的\textbf{具体哪一节}）与官方文档。
+\item
+  审查用户代码：提 3--5 条意见，\textbf{指向''哪个不变量可能被破坏''\,``哪个边界情况没测''}，不直接给修好的代码。
+\item
+  帮助 debug：\textbf{问引导性问题}（``你检查过 mask 施加在 softmax 之前还是之后吗？''），而不是给修复。
+\item
+  解释报错：Python / PyTorch / CUDA / Triton / 分布式栈的报错含义与排查顺序。
+\item
+  建议验证手段：形状断言、玩具输入、profiler 检查、消融、梯度检查（数值对照）。
+\end{itemize}
+
+\subsection{三、手写区：Agent 禁止做（SHOULD NOT，照抄 CS336 并加严）}\label{ux4e09ux624bux5199ux533aagent-ux7981ux6b62ux505ashould-notux7167ux6284-cs336-ux5e76ux52a0ux4e25}
+
+\begin{itemize}
+\tightlist
+\item
+  ❌ 写任何 Python 或伪代码
+\item
+  ❌ 给出问题的解法或思路解法
+\item
+  ❌ 完成手写区里的 TODO
+\item
+  ❌ 编辑用户仓库里的手写区文件
+\item
+  ❌ 大段重构用户代码变成''成品答案''
+\item
+  ❌ 把作业要求直接翻译成可运行代码
+\item
+  ❌ 替用户实现核心组件（tokenizer、transformer 块、优化器、训练循环、Triton kernel、 分布式逻辑、scaling law 管线、数据过滤/去重、对齐/RL 方法）
+\item
+  ❌ \textbf{把第三方实现当答案指路}（CS336 原文：课程材料自包含）------本仓加严：包括 nanochat / minimind / GitHub 上的作业答案库。可以指出''该功能在架构中的\textbf{位置与接口契约}''，但不得指出''去抄哪几行''。
+\end{itemize}
+
+\subsection{四、脚手架区：Agent 应当做（且必须做完）}\label{ux56dbux811aux624bux67b6ux533aagent-ux5e94ux5f53ux505aux4e14ux5fc5ux987bux505aux5b8c}
+
+\begin{itemize}
+\tightlist
+\item
+  ✅ \texttt{环境/}：依赖锁、引导脚本、会话预检、报告模板、数据打包
+\item
+  ✅ \texttt{脚手架/}：实验编排、日志、曲线绘图、断点续训、checkpoint 管理、判分脚本、证据归档
+\item
+  ✅ \texttt{课程轨/}：课程进度台账、大论文模板与格式整理
+\item
+  ✅ \texttt{memory/}：HANDOFF / PROGRESS / ERRORS / LEARNINGS / MEMORY / drill-ledger 的维护
+\end{itemize}
+
+\textbf{判据}：脚手架代码里\textbf{不允许留 TODO 给用户}------那是把学习目标混进了基建。
+
+\subsection{五、例外与补偿（本学科特有，CS336 没有）}\label{ux4e94ux4f8bux5916ux4e0eux8865ux507fux672cux5b66ux79d1ux7279ux6709cs336-ux6ca1ux6709}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+情形
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+允许
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+补偿动作
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+用户明说''卡死了，给我看答案'' & 走提示阶梯五级，第 5 级给答案 & \textbf{必须}挂''近迁移重考''卡（隔 1--3 天、无提示、换场景复考） \\
+用户连续 2 轮在同一处打转 & 由我提议''降档''：给一个\textbf{更小的可跑通示例}（不是我写他的目标代码） & 记录到 \texttt{ERRORS.md}，下一课换讲法 \\
+环境/工具链阻塞（非学习目标） & 直接由我修好，不占用用户时间 & 记入 \texttt{证据/} 的环境变更 \\
+\end{longtable}
+}
+
+\subsection{六、教学法提示（照抄 CS336 的方法论，本学科已内化）}\label{ux516dux6559ux5b66ux6cd5ux63d0ux793aux7167ux6284-cs336-ux7684ux65b9ux6cd5ux8bbaux672cux5b66ux79d1ux5df2ux5185ux5316}
+
+用户求助时，按此顺序：①问澄清问题（试过什么/期望什么/发生了什么）→ ②引用讲义概念而非直接回答 → ③建议下一步而不是替他做 → ④审查代码并指出\textbf{可能 bug/缺失检查}的方向性提示 → ⑤解释''为什么''而不只是''怎么做'' → ⑥\textbf{优先用测试与不变量而非修复}。
+
+\subsection{七、学术诚信与''知行合一''的关系（本学科的立场）}\label{ux4e03ux5b66ux672fux8bdaux4fe1ux4e0eux77e5ux884cux5408ux4e00ux7684ux5173ux7cfbux672cux5b66ux79d1ux7684ux7acbux573a}
+
+CS336：AI 只能用于低层次编程问题与高层次概念问题，不得直接解题； ``我们强烈建议在完成作业时关掉 AI 自动补全（Cursor Tab / Copilot）------我们发现它让人更难深入内容。''
+
+\textbf{本学科采纳这条建议的一半}：动手写 R1--R10 时，\textbf{手写区文件的编辑器内 AI 自动补全也要关} （或在 \texttt{脚手架/} 里明确标注禁止生成手写区文件）。理由：本学科的验收标准是''\textbf{能改坏并修好}''------ 如果代码是补全出来的，你就没有能力在它坏掉时诊断它。
+
+\subsection{八、越界举报（自检清单，每轮自问）}\label{ux516bux8d8aux754cux4e3eux62a5ux81eaux68c0ux6e05ux5355ux6bcfux8f6eux81eaux95ee}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  我这一轮写的文件，属于 R 类还是 B 类？
+\item
+  我给的是''问题''还是''答案''？（给答案前是否走了阶梯、是否挂了重考卡？）
+\item
+  我有没有指路第三方实现？
+\item
+  用户这一轮有没有''预测 → 验证''的环节？没有的话，我是不是又变成讲解器了？
+\end{enumerate}
+
+\newpage
+
+\section{算力与成本预算（零预算版）}\label{ux7b97ux529bux4e0eux6210ux672cux9884ux7b97ux96f6ux9884ux7b97ux7248}
+
+\begin{quote}
+立规 2026-09-17。用户拍板：\textbf{零现金预算}，但要求\textbf{全量对标唐杰 7 条}（含多卡与长程 Agent）。 本文件证明这个组合可行，并定义它的代价与纪律。
+\end{quote}
+
+\subsection{一、免费资源池（2026-09-17 核实）}\label{ux4e00ux514dux8d39ux8d44ux6e90ux6c602026-09-17-ux6838ux5b9e}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+平台
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+免费额度
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+硬件
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+会话上限
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+持久存储
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+卡要求
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+角色
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Kaggle} & \textbf{30 GPU·小时/周}（每周重置） & \textbf{2×T4（32GB 合计）} 或 1×P100 & 9--12h（支持后台运行、每 5 分钟自动存档） & 20GB \texttt{/kaggle/working} & 无需 & \textbf{主战场}（唯一能做''多卡''的免费档） \\
+Google Colab 免费 & \textasciitilde15--30 GPU·h/周（未公布，随需求波动） & 1×T4 16GB & 12h，可能提前断 & Google Drive（易失） & 无需 & 备用（短实验、CPU 实验） \\
+沙箱 CPU（本仓） & 无限 & 2 vCPU / 3GB RAM & --- & 仓库（注意体积纪律） & 无需 & \textbf{T0 全部课题的正确性与判分} \\
+Lightning AI 免费档 & 约 15 credits/月 & T4/A10G 等 & \textasciitilde3--4h 重启 & 50GB & 无需 & 备用（额度与 GPU 型号\textbf{未核实}，用前先验） \\
+SageMaker Studio Lab & 4h/次、4h/24h & 1×T4 & 4h & 15GB & 需账号 & 极端备用 \\
+Modal & \$30/月免费额度（CS336 赞助商，B200 \$6.25/h ≈ 4.8h/月） & B200 & 按任务 & 卷 & 需国际支付/网络 & \textbf{可选升级}，非计划内 \\
+\end{longtable}
+}
+
+\textbf{结论}：16 周可用 \textbf{≈480 GPU·小时}（Kaggle 30h × 16 周），本学科计划只用 \textbf{≈97 小时} → \textbf{安全系数约 5×}。
+
+\subsection{二、三档规模（零预算下的能力边界）}\label{ux4e8cux4e09ux6863ux89c4ux6a21ux96f6ux9884ux7b97ux4e0bux7684ux80fdux529bux8fb9ux754c}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+档
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+硬件
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+模型规模
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+典型任务
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+单次时长
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{T0} & 沙箱 CPU / Colab CPU & 1--10M & 课题01--03 全部、判分器、知识卡实验 & 分钟级 \\
+\textbf{T1} & Kaggle 1×T4 16GB & 0.03--0.1B & 课题05 Triton bench、课题07 数据消融 & 1--4h \\
+\textbf{T2} & Kaggle 2×T4 32GB & 0.1B & 课题04 端到端、课题06 DDP、课题08 RL、课题09/10 Agent & 6--12h \\
+\end{longtable}
+}
+
+\subsection{\texorpdfstring{三、成本估算（\textbf{标记为估算，必须在课题04 用实测替换}）}{三、成本估算（标记为估算，必须在课题04 用实测替换）}}\label{ux4e09ux6210ux672cux4f30ux7b97ux6807ux8bb0ux4e3aux4f30ux7b97ux5fc5ux987bux5728ux8bfeux989804-ux7528ux5b9eux6d4bux66ffux6362}
+
+\begin{itemize}
+\tightlist
+\item
+  参考点（实测自 nanochat 公开文档）：\textbf{d12 ≈ GPT-1 量级 ≈ 0.1B}，在 8×H100 上约 \textbf{6 分钟}。
+\item
+  T4 是 \textbf{SM75，无 bf16}（nanochat 自动退化 fp32，需手动 fp16 + GradScaler 才能提速）； 等效算力约为 H100 的 1/15--1/25。
+\item
+  \textbf{估算}：单 T4 约 12--20h，双 T4 DDP 约 \textbf{7--12h}（扩展效率按 60--80\% 估）。
+\item
+  \textbf{执行方式}：拆成两个 9h 会话（Kaggle 会话上限 9--12h），中间用 \texttt{/kaggle/working} 的 checkpoint 续训。
+\item
+  ⚠️ 这个数字\textbf{不许照抄进报告}：课题04 结束后，用实测耗时替换，并在报告里写明''估算 vs 实测''的偏差。
+\end{itemize}
+
+\subsection{四、每周配额分配（16 周）}\label{ux56dbux6bcfux5468ux914dux989dux5206ux914d16-ux5468}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+周 & 课题 & 计划 GPU 用量 & 备注 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+W1--W4 & 课题01--03 & \textbf{0 h} & 纯 CPU，零消耗期（先把正确性做对） \\
+W5 & 课题04（上） & 6--9 h & 数据管线 + 双 T4 冒烟 + 首轮训练 \\
+W6 & 课题04（下） & 6--12 h & 收口 + 采样 + 成本账单 \\
+W7 & 课题05（上） & 4 h & 单 T4（\textbf{必须是 T4，P100 不可用}） \\
+W8 & 课题05（下）+ 课题06 开题 & 6 h & Triton bench 三图 \\
+W9 & 课题06 & 8 h & 双 T4 DDP/FSDP 对照 \\
+W10 & 课题07 & 6 h & 单 T4 数据消融 \\
+W11 & 课题08（SFT） & 8 h & 双 T4 \\
+W12 & 课题08（DPO+RLVR） & 10 h & 双 T4，最贵的一周 \\
+W13 & 课题09 & 6 h & 双 T4 rollout \\
+W14 & 课题10 & 8 h & 双 T4 \\
+W15--W16 & 蓄水/补跑/结项 & 4+4 h & 弹性 \\
+\textbf{合计} & & \textbf{≈97 h / 480 h} & 余量用于重跑与失败实验 \\
+\end{longtable}
+}
+
+\subsection{五、硬纪律（出过事故的领域）}\label{ux4e94ux786cux7eaaux5f8bux51faux8fc7ux4e8bux6545ux7684ux9886ux57df}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{实验卡制度}：上 GPU 前必须先写实验卡，经用户确认才开跑。模板：
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\#\#\# 实验卡 \#NN（课题NN / 模块 M?）}
+\SpecialStringTok{{-} }\NormalTok{假设（一句话，可被证伪）：}
+\SpecialStringTok{{-} }\NormalTok{命令（完整可复制）：}
+\SpecialStringTok{{-} }\NormalTok{预算上限：≤ ? GPU·小时（默认 3）}
+\SpecialStringTok{{-} }\NormalTok{停止条件：loss 不降 / 超过预算 / 出现 NaN → 立即停}
+\SpecialStringTok{{-} }\NormalTok{成功判据（跑之前先写死）：}
+\SpecialStringTok{{-} }\NormalTok{预期现象（**先写预测**，跑完对照——这是知行合一的咬合点）：}
+\SpecialStringTok{{-} }\NormalTok{产物归档：证据/run.yaml + 日志 + 曲线 + 哈希}
+\end{Highlighting}
+\end{Shaded}
+\item
+  \textbf{会话预检}（每次开 Kaggle 先跑）：\texttt{nvidia-smi} 看型号 → \textbf{T4 或 2×T4 才继续；P100 立即重开会话}（SM60，Triton 不可用，课题05 会在上面白烧配额）。
+\item
+  \textbf{断点续训是强制项}：Kaggle 会话随时可能断；每 N 步写 checkpoint 到 \texttt{/kaggle/working}（20GB 持久）。
+\item
+  \textbf{超时自停}：脚本内自带 wall-clock 上限（默认 3h），到点保存退出，不靠人盯。
+\item
+  \textbf{配额账本}：跑完立刻在 \texttt{memory/PROGRESS.md} 记：日期 / 平台 / GPU 型号 / 实际耗时 / 累计消耗 / 本周余量。
+\item
+  \textbf{不做无判据的实验}：没有''成功判据''就不许开跑------这是防止''烧配额摸鱼''的唯一有效办法。
+\end{enumerate}
+
+\subsection{六、可选升级路径（仅在零预算实在卡住时启动，需用户拍板）}\label{ux516dux53efux9009ux5347ux7ea7ux8defux5f84ux4ec5ux5728ux96f6ux9884ux7b97ux5b9eux5728ux5361ux4f4fux65f6ux542fux52a8ux9700ux7528ux6237ux62cdux677f}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+方案
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+价格（2026 公开比价，\textbf{下单前以平台现价为准}）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+何时值得
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+国内云 4090 按量 & ¥1.45--2.0/小时（AutoDL / 恒源云 / 智星云等） & 双 T4 跑不动 0.1B RL（W12）时；约 ¥30 可买 15h \\
+Modal 免费额度 & \$30/月（≈4.8h B200） & 需要 bf16 + 快迭代时（需国际支付） \\
+Colab Pro & 订阅制 & 不建议（免费档足够本学科用量） \\
+\end{longtable}
+}
+
+\begin{quote}
+诚实声明：本学科的设计前提是''\textbf{免费额度足够}''，依据是 §三 的估算与 §四 的配额表。 若课题04 实测发现双 T4 需要 \textgreater20h，则触发''规模下探一级''（d12 → d10，或语料减半）， \textbf{而不是}自动升级付费；升级必须由用户单独拍板。
+\end{quote}
+
+\newpage
+
+\section{判分与验收标准}\label{ux5224ux5206ux4e0eux9a8cux6536ux6807ux51c6}
+
+\begin{quote}
+立标 2026-09-17。继承仓库总纲 \texttt{skills/科研式学习导师/SKILL.md} §5a《命题与判卷纪律》， 并按本学科''可执行判分''的特性做加法。\textbf{与总纲冲突处，以本文件的更严条款为准。}
+\end{quote}
+
+\subsection{一、三层判分（每一层都必须留下原始输出）}\label{ux4e00ux4e09ux5c42ux5224ux5206ux6bcfux4e00ux5c42ux90fdux5fc5ux987bux7559ux4e0bux539fux59cbux8f93ux51fa}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+层
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+谁判
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+判据
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+归档
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{L1 自动判分} & 判分器（pytest / 自建 script） & 通过 / 失败 / 覆盖率 / 指标数字 & \texttt{判卷记录.md} 贴\textbf{原始输出}（不许转述） \\
+\textbf{L2 导师审稿} & 我 & 3--5 条：必考项 / 要记住 / 预告项（含''哪里可能在自欺''） & \texttt{判卷记录.md} \\
+\textbf{L3 费曼收口} & 你讲 + 我追问 & 三条硬标准（讲清 / 指代码 / 改坏修好） & \texttt{判卷记录.md} + \texttt{知识卡} \\
+\end{longtable}
+}
+
+\textbf{L1 不通过 → 不进 L2/L3}；L3 不通过 → 课题不标 ✅，写进 HANDOFF 的''下一句''。
+
+\subsection{二、通用红线（继承总纲 + 本学科加严）}\label{ux4e8cux901aux7528ux7ea2ux7ebfux7ee7ux627fux603bux7eb2-ux672cux5b66ux79d1ux52a0ux4e25}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{结果对 ≠ 满分}：本学科分数按''证据链''给，逻辑链完整才满分（总纲 §5a 第 5 条）。
+\item
+  \textbf{没有预测的实验不算实验}：跑之前必须先写''预期现象''（见实验卡），否则 L1 直接判不合格。
+\item
+  \textbf{无证据的结论不采纳}：曲线要原始日志/repro 命令；截图要能追溯到 run.yaml。
+\item
+  \textbf{no-go 不擦除}：失败的实验、被推翻的假设全部留在 \texttt{证据/}，并在报告里如实呈现。
+\item
+  \textbf{口径统一}：跨模型比较必须同数据集、同 token 化、同评测脚本；指标优先用\textbf{词表无关}的 bpb。
+\item
+  \textbf{不许自创指标}：新增指标必须给出定义 + 为什么已有的不管用 + 与已有指标的相关性。
+\item
+  \textbf{误差棒是必填项}：任何''变好了''的结论都要给多次运行的范围（至少 2 个种子）。
+\item
+  \textbf{不许把测试集当验证集反复调}（M7 常见自欺）。
+\item
+  \textbf{掌握的定义}（总纲 §5a 第 8 条原文）：当次对 + \textbf{隔 1--3 天无提示再对} + 能讲清为什么。
+\item
+  \textbf{宣布''通过''必须附证据引用}：哪份判分输出、哪个数字、哪些 leech 已清零。
+\end{enumerate}
+
+\subsection{三、每课题的''通过证据''清单（缺一不可）}\label{ux4e09ux6bcfux8bfeux9898ux7684ux901aux8fc7ux8bc1ux636eux6e05ux5355ux7f3aux4e00ux4e0dux53ef}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\#
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+课题
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+L1 自动判分
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+L2 审稿关注
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+L3 收口动作
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+额外证据
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+01 & BPE 分词器 & \texttt{test\_tokenizer.py} + \texttt{test\_train\_bpe.py} 全绿 & 边界：空串、单字节、中文、emoji、往返 & 手写一段中文的编码过程并解释 & 压缩率表（中/英）+ 往返一致性 \\
+02 & Transformer 骨架 & \texttt{test\_model.py}、\texttt{test\_nn\_utils.py} 全绿 & 形状/初始化/数值稳定性 & 白板上画出一次前向的数据流 & \textbf{三组改坏实验}（去 mask / 换位置编码 / 去残差）曲线 \\
+03 & Scaling Law & 自建：拟合优度 + 外推误差 & 数据点是否同口径、是否外推过远 & 复述''为什么用幂律而不是线性'' & 5 点 sweep 原始数据 + \textbf{预测先写死再跑}的记录 \\
+04 & 0.1B 端到端 & 自建：loss/bpb 达标 + 采样可读性 & 是否过拟合/是否记住了测试集 & 讲清''这个模型会什么、不会什么'' & 采样样本 + \textbf{实测成本 vs 估算偏差} \\
+05 & Triton kernel & CS336 A2 正确性对齐（误差 \textless{} 容差） & 数值稳定性、边界 block、dtype & 讲清 online softmax 为什么必要 & speedup/显存/profile 三图 + \textbf{硬件口径声明} \\
+06 & 多卡与分布式 & 扩展效率数据 + 梯度一致性检查 & 通信占比是否解释得通 & 讲清''为什么不是 2 倍'' & 扩展曲线 + 通信时间分解 \\
+07 & 数据清洗去重 & 自建：规则单测 + 对照组 & 规则是否过严（伤数据）或过松 & 讲清每条规则的代价 & 规则清单 + 有/无清洗的对照 \\
+08 & SFT/DPO/RLVR & \texttt{test\_grpo.py} 全绿 + 三方对照 & 是否 reward hacking、是否能力回退 & 逐项解释 GRPO 损失每一项 & 三方对照表（同口径）+ 失败样本分析 \\
+09 & 可验证环境 & 判定逻辑单测 + rollout 脚本 & 假阳性/假阴性样例 & 讲清''什么算完成''的判定 & 成功率 + 失败轨迹分类 \\
+10 & 长程 Agent & 消融数据 + 轨迹日志 & self-judge 是否在放大错误 & 讲清''什么时候 self-judge 有害'' & 有无 self-judge 的成功率差 \\
+11 & 结项 & 报告格式审查（NeurIPS）+ demo 可运行 & 结论是否超出证据范围 & 自我攻击 3 条 + 现场答疑 & 英文报告 + demo + 总复盘 \\
+\end{longtable}
+}
+
+\subsection{四、成绩口径（对齐唐杰作业的 40\% / 60\%）}\label{ux56dbux6210ux7ee9ux53e3ux5f84ux5bf9ux9f50ux5510ux6770ux4f5cux4e1aux7684-40-60}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+项
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+权重
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+内容
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+判据
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+平时作业 & \textbf{40\%} & 课题01--09 的 L1+L2+L3 & 每课题等权，未过者按比例扣 \\
+大项目 & \textbf{60\%} & 课题04+08+10+11 构成的整机（端到端模型 + 对照实验 + Agent 尾巴 + 报告） & \textbf{问题、动机、方法、结果一项都不能糊}（唐杰原话） \\
+\end{longtable}
+}
+
+\begin{quote}
+注意：课程轨（CORE100299）的成绩由\textbf{老师}给，本表只用来自我标定； 但\textbf{课程大论文（70\%）直接取用实训轨 W8 前的成果}，所以两份成绩是同一份劳动的两个出口。
+\end{quote}
+
+\subsection{五、自欺自查清单（结项前必过）}\label{ux4e94ux81eaux6b3aux81eaux67e5ux6e05ux5355ux7ed3ux9879ux524dux5fc5ux8fc7}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  我报的每个数字，\textbf{能在 \texttt{证据/} 里找到原始日志}吗？
+\item
+  我的''变好了''，有没有可能是评测口径变了 / 提示词变了 / 只挑了好种子？
+\item
+  我有没有把\textbf{训练集上的表现}当成了能力？
+\item
+  我写下的每个''因为\ldots 所以\ldots``，有没有\textbf{反事实检验}（去掉这个因素会怎样）？
+\item
+  我的图，\textbf{坐标轴和误差棒}都标了吗？有没有截断坐标轴让差距显得很大？
+\item
+  我的结论，\textbf{最强的反方论点}是什么？写进报告了吗？
+\end{enumerate}
+
+\newpage
+
+\section{上游锁定清单（本学科只读依赖）}\label{ux4e0aux6e38ux9501ux5b9aux6e05ux5355ux672cux5b66ux79d1ux53eaux8bfbux4f9dux8d56}
+
+\begin{quote}
+立单 2026-09-17。纪律：\textbf{只记 commit + 用途 + 只引哪些路径}，不整仓复制（仓库有体积上限）。 换机器恢复的方式写在''复现命令''里。\textbf{引入日期一律记当日，半年后重审一次}。
+\end{quote}
+
+\subsection{一、骨架依赖（必须锁，判分与训练都靠它）}\label{ux4e00ux9aa8ux67b6ux4f9dux8d56ux5fc5ux987bux9501ux5224ux5206ux4e0eux8badux7ec3ux90fdux9760ux5b83}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+仓库
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+commit
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+引入日
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+许可
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+用途
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+只用哪些路径
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{stanford-cs336/assignment1-basics} & \texttt{a158843b2010} & 2026-09-17 & MIT & 课题01/02 判分器 + handout & \texttt{tests/}、\texttt{cs336\_basics/}（仅接口）、PDF \\
+\texttt{stanford-cs336/assignment2-systems} & \texttt{ca8bc81a59b7} & 2026-09-17 & MIT & 课题05/06 判分器 & \texttt{tests/}、\texttt{cs336\_systems/}（空壳）、PDF \\
+\texttt{stanford-cs336/assignment3-scaling} & \texttt{03e9372992e9} & 2026-09-17 & MIT & 课题03 规格参考（\textbf{API 不可用，只读设计}） & PDF、\texttt{cs336\_scaling/} \\
+\texttt{stanford-cs336/assignment4-data} & \texttt{0555bea66369} & 2026-09-17 & MIT & 课题07 过滤/去重规格 & \texttt{tests/}、\texttt{configs/}、PDF \\
+\texttt{stanford-cs336/assignment5-alignment} & \texttt{c2734a263087} & 2026-09-17 & ⚠️ 未声明（用前确认） & 课题08 判分器（\texttt{tests/test\_grpo.py}） & \texttt{tests/}、\texttt{data/}、PDF \\
+\texttt{stanford-cs336/lectures} & \texttt{de53a9f979a6} & 2026-09-17 & ⚠️ 未声明 & 讲义（\texttt{lecture\_01.py}\ldots{}\texttt{lecture\_17.py}、PDF） & 全仓可读（文本量小） \\
+\texttt{karpathy/nanochat} & \texttt{92d63d4e8bb4} & 2026-09-17 & MIT & 课题04/05/06 的工程底座与对照实现 & \texttt{nanochat/}、\texttt{scripts/}、\texttt{runs/}、\texttt{tasks/}、\texttt{tests/} \\
+\end{longtable}
+}
+
+\textbf{复现命令（换机器照抄）}：
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mkdir} \AttributeTok{{-}p}\NormalTok{ 上游 }\KeywordTok{\&\&} \BuiltInTok{cd}\NormalTok{ 上游}
+\ControlFlowTok{for}\NormalTok{ r }\KeywordTok{in}\NormalTok{ stanford{-}cs336/assignment1{-}basics stanford{-}cs336/assignment2{-}systems }\DataTypeTok{\textbackslash{}}
+\NormalTok{         stanford{-}cs336/assignment5{-}alignment karpathy/nanochat}\KeywordTok{;} \ControlFlowTok{do}
+  \VariableTok{n}\OperatorTok{=}\VariableTok{$(}\FunctionTok{basename} \VariableTok{$r)}\KeywordTok{;} \FunctionTok{git}\NormalTok{ clone }\AttributeTok{{-}{-}depth}\NormalTok{ 1 https://github.com/}\VariableTok{$r} \VariableTok{$n}
+\ControlFlowTok{done}
+\BuiltInTok{cd}\NormalTok{ assignment1{-}basics }\KeywordTok{\&\&} \FunctionTok{git}\NormalTok{ fetch }\AttributeTok{{-}{-}depth}\NormalTok{ 1 origin a158843b2010 }\KeywordTok{\&\&} \FunctionTok{git}\NormalTok{ checkout a158843b2010}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{二、知识线依赖（只读，不入仓）}\label{ux4e8cux77e5ux8bc6ux7ebfux4f9dux8d56ux53eaux8bfbux4e0dux5165ux4ed3}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+仓库 / 站点
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+commit / 版本
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+引入日
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+许可
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+对标模块
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+用法
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{rasbt/reasoning-from-scratch} & \texttt{b2e0841ee8be} & 2026-09-17 & Apache-2.0 & M6/M7/M8 & \textbf{教学法范本}（ch3 先建评测）；ch2--4 可 CPU 跑 \\
+\texttt{rasbt/LLMs-from-scratch} & \texttt{ace7c08802b5} & 2026-09-17 & 见仓库（NOASSERTION） & M2--M4 & 代码级最细的对照读物（附录 GQA/MoE/KV cache） \\
+\texttt{huggingface/agents-course} & \texttt{b3946b1d09d2} & 2026-09-17 & Apache-2.0 & M8 & Agent 三框架 + 最终项目排行榜 \\
+\texttt{harbor-framework/terminal-bench} & \texttt{7a337a834bff} & 2026-09-17 & Apache-2.0 & M8 & 长程 Agent 基准（v2；v1 已冻结为 \texttt{terminal-bench-1}） \\
+\texttt{PrimeIntellect-ai/verifiers} & \texttt{ff3b8dc551ba} & 2026-09-17 & MIT & M7/M8 & 可验证环境抽象（课题09 参照，不引入代码） \\
+\texttt{jingyaogong/minimind} & \texttt{7a9137d2e902} & 2026-09-17 & Apache-2.0 & M2--M6 & 中文术语与 RL 脚本对照（读，不抄进手写区） \\
+\texttt{walkinglabs/hands-on-modern-rl} & \texttt{9f6e429c6894} & 2026-09-17 & ⚠️ NOASSERTION & M6 & 中文 RL→RLVR 教材（含免费在线 Notebook） \\
+\texttt{McGill-NLP/nano-aha-moment} & \texttt{5314e6f8fc60} & 2026-09-17 & MIT & M6 & 单文件 GRPO（阅读；已停更，不作依赖） \\
+\texttt{THUDM/slime} & \texttt{4c193f1f3750} & 2026-09-17 & Apache-2.0 & M8/M9 & 智谱自家 Agentic RL 基建（W14 后的进阶读物） \\
+\texttt{KellerJordan/modded-nanogpt} & \texttt{ecbb586296d3} & 2026-09-17 & MIT & M4 & 单卡 speedrun 思路；\textbf{注意其验证指标口径争议} \\
+\texttt{datajuicer/data-juicer} & \texttt{1e9720d01610} & 2026-09-17 & Apache-2.0 & M4/M7 & 课题07 数据清洗的规则参考 \\
+\texttt{d2l-ai/d2l-zh} & \texttt{e6b18ccea714}（2023-08-18） & 2026-09-17 & Apache-2.0 & M0/M1/M3/M5 & 中文地基读物；⚠️ \textbf{仓库 2023 后基本停更}，内容仍有效但别等更新 \\
+\end{longtable}
+}
+
+\subsection{三、许可与合规注意}\label{ux4e09ux8bb8ux53efux4e0eux5408ux89c4ux6ce8ux610f}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \texttt{stanford-cs336/assignment5-alignment} 与 \texttt{lectures} 仓库\textbf{未声明 SPDX 许可}： \textbf{只做本地学习与对照，不复制进本仓、不再分发}。
+\item
+  \texttt{walkinglabs/hands-on-modern-rl} 为 NOASSERTION：同样只读、不复制。
+\item
+  所有上游代码\textbf{一律不进本仓 git}（体积 + 许可双理由）；本仓只保留 commit 记录与引用的路径清单。
+\item
+  数据：只用 TinyStories（公开）、\texttt{stanford-cs336/owt-sample}（课程公开样本）、以及自己清洗的小语料； ⚠️ 不要引用 \texttt{HuggingFaceFW/fineweb} / \texttt{huggingface/fineweb}（2026-09-17 实测均 404）。
+\end{enumerate}
+
+\subsection{四、重审机制}\label{ux56dbux91cdux5ba1ux673aux5236}
+
+\begin{itemize}
+\tightlist
+\item
+  每学期期初（下一次：2027-02）重跑一遍 \texttt{gh\ api} 检查：上游是否改名/归档/换许可；
+\item
+  CS336 每年改 handout（A5 已从 Qwen-2.5-Math 换为 Olmo-2-1B，新增 GSPO/MaxRL）， \textbf{重审时必须重新读 CHANGELOG}，否则会拿着旧讲义做新作业。
+\end{itemize}
+
+\newpage
+
+\section{课题01 开题简报 · BPE 分词器}\label{ux8bfeux989801-ux5f00ux9898ux7b80ux62a5-bpe-ux5206ux8bcdux5668}
+
+\begin{quote}
+模块：\textbf{M2 分词与表示} ｜ 周次：\textbf{W1（09-14→09-20）} ｜ 算力：\textbf{T0 纯 CPU，0 GPU·小时} 唐杰作业对应：\textbf{① 从零写 Tokenizer} 的前半 ｜ 判分来源：\textbf{CS336 A1 \texttt{tests/test\_tokenizer.py} + \texttt{test\_train\_bpe.py}} 手写/代写：本课题\textbf{全部核心代码属手写区 R1}（见《造轮子边界.md》）
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{一、研究背景（这个问题历史上卡过谁）}\label{ux4e00ux7814ux7a76ux80ccux666fux8fd9ux4e2aux95eeux9898ux5386ux53f2ux4e0aux5361ux8fc7ux8c01}
+
+\begin{itemize}
+\tightlist
+\item
+  2017 年前的 NLP 用整词表，未登录词（OOV）是死穴；字符级建模又让序列变得极长。
+\item
+  BPE 从 2016（Sennrich 等）的\textbf{机器翻译子词切分}技术，被 GPT-2（2019）引入到\textbf{字节级}， 从此成为大模型的事实标准（GPT-2/3/4、LLaMA、Qwen、GLM 都是 BPE 系）。
+\item
+  关键洞察：\textbf{词表不是''词汇表''，而是一个可学习的压缩算法}------它同时决定了 ①模型的输入长度 ②嵌入层参数量 ③模型能见到的最小语义单元 ④多语言/代码/数学的公平性。
+\end{itemize}
+
+\subsection{二、研究问题（一句话，开放问题）}\label{ux4e8cux7814ux7a76ux95eeux9898ux4e00ux53e5ux8bddux5f00ux653eux95eeux9898}
+
+\begin{quote}
+\textbf{在固定词表预算下，如何设计一个训练-编码两阶段都正确、且对中文/英文/代码都公平的子词分词器？} ------并回答：为什么''字节起步''是零预算下唯一不会翻车的选择？
+\end{quote}
+
+\subsection{三、攻关线索（路标，不是答案）}\label{ux4e09ux653bux5173ux7ebfux7d22ux8defux6807ux4e0dux662fux7b54ux6848}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{压缩视角}：如果词表大小为 V，BPE 训练在最大化什么？把它写成''每一步减少多少 token 数''。
+\item
+  \textbf{字节起步的理由}：从 Unicode 字符起步会在哪些具体输入上崩？（想 3 个真实例子再往下走）
+\item
+  \textbf{训练算法}：朴素实现为什么是 O(n²)？哪些数据结构能把它压到近似线性？（提示方向：不要用字符串拼接）
+\item
+  \textbf{并列与终止}：最高频并列时怎么办？什么时候停止合并？特殊 token（\texttt{\textless{}\textbar{}endoftext\textbar{}\textgreater{}}）为什么不能参与合并？
+\item
+  \textbf{编码与解码}：encode 的时候，遇到未在 merge 表里的相邻对怎么处理？为什么必须保证 \texttt{decode(encode(x))\ ==\ x}（往返一致性）？
+\item
+  \textbf{多语言公平性}：同一段中文，字节级 BPE 的 token 数为什么比英文多？这对模型的''中文成本''意味着什么？
+\end{enumerate}
+
+\subsection{四、里程碑（可勾选，3--6 个）}\label{ux56dbux91ccux7a0bux7891ux53efux52feux900936-ux4e2a}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  \textbf{M1 手写 BPE 训练}：能从语料统计词频、迭代合并、输出 merge 表与词表，并\textbf{打印出前 10 个 merge 及其频次}
+\item[$\square$]
+  \textbf{M2 手写编码器}：支持特殊 token、未登录字节回退、往返一致性（自测 5 类边界：空串/单字节/中文/emoji/控制字符）
+\item[$\square$]
+  \textbf{M3 通过官方判分}：\texttt{test\_tokenizer.py} 与 \texttt{test\_train\_bpe.py} 全绿（原始输出贴 \texttt{判卷记录.md}）
+\item[$\square$]
+  \textbf{M4 压缩率对照}：在 TinyStories（英）与中文小语料上各训一个 32k 词表，出压缩率表 + 与你的下注对照
+\item[$\square$]
+  \textbf{M5 改坏实验（必做）}：①禁用 bytes 回退 ②不处理特殊 token ③停止条件改成''合并到只剩 1 个词'' ------每个先写\textbf{预测}，再跑，再记录现象
+\item[$\square$]
+  \textbf{M6 一页报告 + 知识卡}：报告按一页四段；知识卡 ≥3 张进 drill-ledger
+\end{itemize}
+
+\subsection{五、交付物要求}\label{ux4e94ux4ea4ux4ed8ux7269ux8981ux6c42}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+交付物
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+位置
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+验收
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+实现代码 & \texttt{手写/}（你写） & 通过 M3 \\
+判分原始输出 & \texttt{判卷记录.md} & 粘贴 \texttt{证据/judge-*.log} 原文（不许转述） \\
+证据 & \texttt{证据/} & \texttt{run.yaml}（commit/时间/命令）+ 日志 + 压缩率表 + 改坏实验记录 \\
+报告 & \texttt{报告.md} & 一页四段：问题-动机-方法-结果 \\
+知识卡 & \texttt{memory/drill-ledger/topics/} & ≥3 张（bytes 回退 / merge 规则 / 压缩率权衡） \\
+\end{longtable}
+}
+
+\subsection{\texorpdfstring{五之二、官方判分标准（2026-09-17 实跑探明，\textbf{先知道标准再动手}）}{五之二、官方判分标准（2026-09-17 实跑探明，先知道标准再动手）}}\label{ux4e94ux4e4bux4e8cux5b98ux65b9ux5224ux5206ux6807ux51c62026-09-17-ux5b9eux8dd1ux63a2ux660eux5148ux77e5ux9053ux6807ux51c6ux518dux52a8ux624b}
+
+判分器已接通：\texttt{环境/judge/judge.sh\ 01}。实跑探明 \textbf{28 个测试}（27 项 + 1 项 xfail），要求如下：
+
+\subsubsection{接口契约（你唯一需要遵守的外部形状）}\label{ux63a5ux53e3ux5951ux7ea6ux4f60ux552fux4e00ux9700ux8981ux9075ux5b88ux7684ux5916ux90e8ux5f62ux72b6}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 手写/bpe.py 必须提供：}
+\KeywordTok{def}\NormalTok{ train\_bpe(input\_path, vocab\_size, special\_tokens, }\OperatorTok{**}\NormalTok{kwargs) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{tuple}\NormalTok{[}\BuiltInTok{dict}\NormalTok{[}\BuiltInTok{int}\NormalTok{, }\BuiltInTok{bytes}\NormalTok{], }\BuiltInTok{list}\NormalTok{[}\BuiltInTok{tuple}\NormalTok{[}\BuiltInTok{bytes}\NormalTok{, }\BuiltInTok{bytes}\NormalTok{]]]}
+\KeywordTok{class}\NormalTok{ Tokenizer:}
+    \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{, vocab, merges, special\_tokens}\OperatorTok{=}\VariableTok{None}\NormalTok{): ...}
+    \KeywordTok{def}\NormalTok{ encode(}\VariableTok{self}\NormalTok{, text: }\BuiltInTok{str}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{list}\NormalTok{[}\BuiltInTok{int}\NormalTok{]: ...}
+    \KeywordTok{def}\NormalTok{ decode(}\VariableTok{self}\NormalTok{, ids: }\BuiltInTok{list}\NormalTok{[}\BuiltInTok{int}\NormalTok{]) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{str}\NormalTok{: ...}
+    \KeywordTok{def}\NormalTok{ encode\_iterable(}\VariableTok{self}\NormalTok{, iterable) }\OperatorTok{{-}\textgreater{}}\NormalTok{ Iterator[}\BuiltInTok{int}\NormalTok{]: ...   }\CommentTok{\# ← 隐藏要求，见下}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{三条硬门槛（都会挂人）}\label{ux4e09ux6761ux786cux95e8ux69dbux90fdux4f1aux6302ux4eba}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\#
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+测试
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+门槛
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+说明
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & \texttt{test\_train\_bpe\_speed} & corpus.en + vocab 500 \textbf{\textless{} 1.5 秒} & 官方参考 0.38s；``玩具实现''约 3s 会挂 \\
+2 & \texttt{test\_train\_bpe} & merges \textbf{逐项等于}参考 merges；vocab 键值集合一致 & 意味着预处理与\textbf{并列打破规则}都要与参考一致 \\
+3 & \texttt{test\_encode\_iterable\_memory\_usage} & 用 \texttt{encode\_iterable} 流式读 \textbf{5MB} 语料，额外内存 \textbf{≤ 1MB}（\texttt{RLIMIT\_AS} 实测） & \textbf{必须有真正的流式实现}，不能先 read() 全部 \\
+\end{longtable}
+}
+
+\subsubsection{一个官方''故意让分''的测试（别被骗）}\label{ux4e00ux4e2aux5b98ux65b9ux6545ux610fux8ba9ux5206ux7684ux6d4bux8bd5ux522bux88abux9a97}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{test\_encode\_memory\_usage} 被官方标记 \textbf{\texttt{xfail}}，理由原话： \emph{``Tokenizer.encode is expected to take more memory than allotted (1MB)''}。 → 也就是说：\textbf{\texttt{encode()} 超内存是允许的，\texttt{encode\_iterable()} 超内存是不允许的}。 这个 xfail 恰好是本课题''接口设计决定内存上界''的活教材（见知识地图 M5 的同类问题）。
+\end{itemize}
+
+\subsubsection{对齐口径的隐含要求}\label{ux5bf9ux9f50ux53e3ux5f84ux7684ux9690ux542bux8981ux6c42}
+
+\begin{itemize}
+\tightlist
+\item
+  与 \textbf{tiktoken 的 GPT-2} 逐 id 对齐 → 编码时必须\textbf{严格按 merges 的 rank 顺序}合并， 而不是''最长匹配优先''；且需处理 \texttt{allowed\_special} 与重叠特殊 token（\texttt{test\_overlapping\_special\_tokens}）。
+\item
+  往返一致性覆盖：空串 / 单字符 / Unicode / 多行 / 特殊 token 尾随换行 / 地址文本 / 德语 / TinyStories。
+\end{itemize}
+
+\subsection{六、开题批（开场直接发给用户，3--5 题）}\label{ux516dux5f00ux9898ux6279ux5f00ux573aux76f4ux63a5ux53d1ux7ed9ux7528ux623735-ux9898}
+
+\begin{quote}
+见 \texttt{../memory/HANDOFF.md} 的''课题01 开题批''五题（下注题 / 概念题 / 手算题 / 权衡题 / 工程题）。 \textbf{第 1 题（中文 token 倍数）必须先存档预测}，它是本学科第一条''预测→打脸''链路。
+\end{quote}
+
+\subsection{七、讲课锚点（知行合一的''讲''这一腿）}\label{ux4e03ux8bb2ux8bfeux951aux70b9ux77e5ux884cux5408ux4e00ux7684ux8bb2ux8fd9ux4e00ux817f}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{讲什么}：M2 的五个核心问题（压缩视角 → 字节起步 → 训练算法 → 编码与往返 → 多语言成本）
+\item
+  \textbf{对标材料}（三师制）：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    主线：\textbf{CS336 A1 handout} 的 tokenizer 章节（英文，规格权威）
+  \item
+    中文：\textbf{李沐 d2l ch14.6 子词嵌入}；或 \textbf{minimind 的 \texttt{train\_tokenizer.py} 中文注释}（只读，不得抄进手写区）
+  \item
+    补充：\textbf{HF LLM Course ch2}（``Implement BPE/WordPiece/Unigram from the ground up''）
+  \end{itemize}
+\item
+  \textbf{讲完必出代码级提问（3--5 道，示例）}：
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    把 merge 循环里''统计相邻对频次''改成''只统计出现次数 \textgreater1 的对''，词表会变得更好还是更差？预测并说明。
+  \item
+    你的 encode 如果按''最长匹配优先''而不是''按 merge 顺序''，往返一致性还成立吗？
+  \item
+    词表里如果混入一个\textbf{重复的 token}，哪一步会先崩溃？
+  \end{enumerate}
+\end{itemize}
+
+\subsection{\texorpdfstring{八、参考实现（\textbf{只准用于对照，不准抄}）}{八、参考实现（只准用于对照，不准抄）}}\label{ux516bux53c2ux8003ux5b9eux73b0ux53eaux51c6ux7528ux4e8eux5bf9ux7167ux4e0dux51c6ux6284}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{karpathy/nanochat} 的 \texttt{nanochat/tokenizer.py}（接口设计与特殊 token 处理）
+\item
+  \texttt{rasbt/LLMs-from-scratch} ch2 附带的 ``BPE From Scratch''
+\item
+  ⚠️ 纪律：GS=看接口与设计思路，\textbf{不看实现细节}；你的代码必须自己写。 判据：M5 的改坏实验能不能被你解释------抄来的人在这里一定卡住。
+\end{itemize}
+
+\newpage
+
+\section{判卷记录 · 课题01 BPE 分词器}\label{ux5224ux5377ux8bb0ux5f55-ux8bfeux989801-bpe-ux5206ux8bcdux5668}
+
+\begin{quote}
+判分器：\texttt{环境/judge/judge.sh\ 01}（CS336 官方 2026 测试，锁 commit \texttt{a158843b2010}，test\_*.py 未改一字） 归档规则：只贴\textbf{原始输出}，不做美化、不做转述（《判分与验收标准.md》§二-3）。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{L1 · 基线（2026-09-17 立科时实跑）}\label{l1-ux57faux7ebf2026-09-17-ux7acbux79d1ux65f6ux5b9eux8dd1}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+项
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+结果
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+命令 & \texttt{环境/judge/judge.sh\ 01} \\
+结果 & \textbf{27 failed, 1 xfailed} \\
+失败原因 & \textbf{全部同一原因}：\texttt{FileNotFoundError:\ 手写区还没有实现文件}（接线层主动抛出的友好提示） \\
+判分器状态 & ✅ 管线已验证可执行（28 个测试全部被收集并运行，非网络/环境错误） \\
+结论 & 这是\textbf{正确的初始状态}：判分器就位，只差 \texttt{手写/bpe.py} \\
+\end{longtable}
+}
+
+\textbf{当初实跑的关键片段}（完整输出会由脚本落到 \texttt{证据/judge-*.log}）：
+
+\begin{verbatim}
+FAILED tests/test_train_bpe.py::test_train_bpe_speed - FileNotFoundError
+FAILED tests/test_train_bpe.py::test_train_bpe - FileNotFoundError
+FAILED tests/test_train_bpe.py::test_train_bpe_special_tokens - FileNotFoundError
+FAILED tests/test_tokenizer.py::... （24 项，含 test_encode_iterable_memory_usage）
+======================== 27 failed, 1 xfailed in 3.67s =========================
+\end{verbatim}
+
+\begin{quote}
+注：\texttt{1\ xfailed} 不是缺陷------它是官方\textbf{故意标记}的 \texttt{test\_encode\_memory\_usage} （理由：``encode 预期会超过 1MB 配额''）。详见 \texttt{开题简报.md} §五之二。
+\end{quote}
+
+\subsection{L2 · 导师审稿意见}\label{l2-ux5bfcux5e08ux5ba1ux7a3fux610fux89c1}
+
+⏳ 待用户提交首次实现后填写（3--5 条：必考项 / 要记住 / 预告项）。
+
+\subsection{L3 · 费曼收口}\label{l3-ux8d39ux66fcux6536ux53e3}
+
+⬜ 未开始。收口动作：你对着''完全不懂分词的人''讲清 BPE，我装不懂连问三层 （Why → Why not → What if），再抽 1 次''改坏实验''复述。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{本课题的判分环境坑（已解决，记录备查）}\label{ux672cux8bfeux9898ux7684ux5224ux5206ux73afux5883ux5751ux5df2ux89e3ux51b3ux8bb0ux5f55ux5907ux67e5}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+坑
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+现象
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+处置
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+官方 conftest 需 Python ≥3.12 & 官方 \texttt{pyproject.toml}: \texttt{requires-python\ =\ "\textgreater{}=3.12,\textless{}3.14"}；conftest 用 PEP 695 泛型语法，3.11 无法解析 & 3.11 下自动改用\textbf{等价轻量 conftest}（同一 \texttt{snapshot} 夹具语义），并在日志头部如实声明；升到 3.12+ 后自动切回官方原文 \\
+tiktoken 需联网下载 GPT-2 词表 & 无外网时 \texttt{SSLError} 挂掉 12 项对齐测试 & 新增 \texttt{环境/judge/prefetch\_tiktoken.py}：用官方 fixture \textbf{离线构造} tiktoken 缓存（encoder.json 哈希与 tiktoken 内置期望一致，已验证 n\_vocab=50257） \\
+PyTorch CPU 专用源不可达 & \texttt{download.pytorch.org} SSL 被拦 & bootstrap 改为：默认不装 torch（课题01 不需要）；\texttt{-\/-with-torch} 时先试 CPU 源、失败退回 PyPI \\
+\end{longtable}
+}
+
+\newpage
+
+\section{课题02 开题简报 · Transformer 骨架与训练循环}\label{ux8bfeux989802-ux5f00ux9898ux7b80ux62a5-transformer-ux9aa8ux67b6ux4e0eux8badux7ec3ux5faaux73af}
+
+\begin{quote}
+模块：\textbf{M0/M1/M3} ｜ 周次：\textbf{W2--W3（09-21→10-04）} ｜ 算力：\textbf{T0 纯 CPU，0 GPU·小时} 唐杰作业对应：\textbf{① 从零写 Transformer} 的后半 ｜ 判分来源：\textbf{CS336 A1 \texttt{tests/test\_model.py}、\texttt{test\_nn\_utils.py}、\texttt{test\_optimizer.py}、\texttt{test\_serialization.py}} 手写：\textbf{R2（Transformer 全部组件）+ R3（训练循环与优化器）+ R4（反向传播验证）}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{一、研究背景}\label{ux4e00ux7814ux7a76ux80ccux666f}
+
+2017 年《Attention Is All You Need》删掉 RNN，用自注意力 + 前馈层实现 \textbf{O(1) 依赖路径 + 全并行}。 此后所有主流大模型都是它的变体，但\textbf{细节已经换了一轮}：正弦位置编码 → RoPE；LayerNorm → RMSNorm； post-norm → pre-norm；ReLU MLP → SwiGLU；MHA → GQA。\textbf{本课题要求你把现代版写出来，而不是复刻 2017 版。}
+
+\subsection{二、研究问题（一句话）}\label{ux4e8cux7814ux7a76ux95eeux9898ux4e00ux53e5ux8bdd}
+
+\begin{quote}
+\textbf{一个''能从零训起来''的现代 Transformer 层，最少需要哪几个组件？每个组件去掉之后，训练会以什么方式失败？}
+\end{quote}
+
+\subsection{三、攻关线索}\label{ux4e09ux653bux5173ux7ebfux7d22}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{形状先行}：写下每一步的张量形状（含 batch、序列、头数），\textbf{先能在纸上跑通}，再写代码。
+\item
+  \textbf{注意力的三个动作}：投影出 Q/K/V → 缩放点积 + 因果掩码 → softmax 加权求和并输出投影。哪一步最容易错？为什么？
+\item
+  \textbf{位置信息}：RoPE 为什么是''旋转 Q/K''而不是''加到输入上''？（讲义 M3 §三给了恒等式）
+\item
+  \textbf{归一化与残差}：为什么 pre-norm 比 post-norm 好训？残差提供了什么''通路''？
+\item
+  \textbf{优化器}：AdamW 里''解耦权重衰减''解耦的是什么？为什么它比 L2 正则更常用？
+\item
+  \textbf{稳定性}：梯度裁剪在什么情况下救命？fp16 vs bf16 的差别如何影响 loss 曲线？
+\end{enumerate}
+
+\subsection{四、里程碑}\label{ux56dbux91ccux7a0bux7891}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  M1 手写全部组件：注意力（含因果 mask 与 RoPE）、RMSNorm、SwiGLU FFN、残差堆叠、初始化
+\item[$\square$]
+  M2 形状与数值判分通过：\texttt{test\_model.py} / \texttt{test\_nn\_utils.py} 全绿
+\item[$\square$]
+  M3 手写训练循环 + AdamW + LR 调度 + 梯度裁剪 → \texttt{test\_optimizer.py} / \texttt{test\_serialization.py} 全绿
+\item[$\square$]
+  M4 端到端：\textbf{CPU 上训一个极小模型（d4--d8），loss 稳定下降}，并保存/加载 checkpoint 续训成功
+\item[$\square$]
+  M5 \textbf{R4 反向传播验证}：与 PyTorch autograd 的数值梯度对照（相对误差 \textless{} 1e-6）
+\item[$\square$]
+  M6 \textbf{三组改坏实验}（去 mask / 换位置编码 / 去残差）：每组先写预测，再跑，再记录
+\item[$\square$]
+  M7 一页报告 + 知识卡 ≥3 张
+\end{itemize}
+
+\subsection{五、交付物}\label{ux4e94ux4ea4ux4ed8ux7269}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+交付物 & 位置 & 验收 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+实现 & \texttt{手写/}（你写） & M2/M3 判分全绿 \\
+判分输出 & \texttt{判卷记录.md} & \texttt{证据/judge-*.log} 原文 \\
+改坏实验记录 & \texttt{证据/改坏实验.md} & 预测→现象→解释 三段齐全 \\
+loss 曲线 & \texttt{证据/} & 训练日志 + 图（含坐标轴与步数） \\
+报告 & \texttt{报告.md} & 一页四段 \\
+\end{longtable}
+}
+
+\subsection{六、讲课锚点（讲义 M3 + 对标）}\label{ux516dux8bb2ux8bfeux951aux70b9ux8bb2ux4e49-m3-ux5bf9ux6807}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{讲义}：\texttt{讲义/M3-Transformer内部机制.md}（主干）+ \texttt{讲义/M0-数学与机器学习地基.md}（§一 自动微分、§五 排查顺序）
+\item
+  \textbf{对标}：CS336 lecture 03--04 · rasbt ch3--ch4 · 李沐 d2l ch10--ch11
+\item
+  \textbf{必备工具链}：\texttt{bash\ 环境/bootstrap\_cpu.sh\ -\/-with-torch}（本课题起需要 torch）
+\end{itemize}
+
+\subsection{七、代码级提问示例（讲课中出，先预测后验证）}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95eeux793aux4f8bux8bb2ux8bfeux4e2dux51faux5148ux9884ux6d4bux540eux9a8cux8bc1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  把因果 mask 从 softmax \textbf{之前}挪到\textbf{之后}，训练现象会怎样？
+\item
+  去掉残差后，4 层还能训、12 层完全不动------请用梯度路径解释。
+\item
+  你把 RoPE 的最大频率底数从 10000 改成 100：短文训练会受影响吗？长上下文外推呢？
+\item
+  AdamW 的 \texttt{weight\_decay} 若改成''直接加到梯度上''（即 L2），在大学习率下会出现什么差异？
+\end{enumerate}
+
+\subsection{八、风险与提醒}\label{ux516bux98ceux9669ux4e0eux63d0ux9192}
+
+\begin{itemize}
+\tightlist
+\item
+  ⚠️ \textbf{CPU 训练极慢}：本课题\textbf{只要能训起来、loss 下降}即可，不追求指标（真训练在课题04）。
+\item
+  ⚠️ 形状错误是最高频故障：\textbf{先写形状注释再写实现}，可省一半时间。
+\item
+  ⚠️ 判分器需要 torch；\texttt{bootstrap\ -\/-with-torch} 首次约 555MB（沙箱网络受限时可能失败，届时改用 Kaggle CPU 会话）。
+\end{itemize}
+
+\newpage
+
+\section{课题03 开题简报 · Scaling Law 预演与打脸链路}\label{ux8bfeux989803-ux5f00ux9898ux7b80ux62a5-scaling-law-ux9884ux6f14ux4e0eux6253ux8138ux94feux8def}
+
+\begin{quote}
+模块：\textbf{M4} ｜ 周次：\textbf{W4（10-05→10-11）} ｜ 算力：\textbf{T0 纯 CPU（极小规模 sweep）} 唐杰作业对应：\textbf{③ 拟合 scaling law 再外推} ｜ 判分来源：\textbf{无官方判分器}（CS336 A3 需 8 位学号 API key，不可得）→ \textbf{自建判分：预测 vs 实测的偏差} 手写：\textbf{R6（拟合与外推）}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{一、研究背景}\label{ux4e00ux7814ux7a76ux80ccux666f-1}
+
+Kaplan 等（2020）与 Chinchilla（2022）发现：loss 随参数量 \(N\) 与数据量 \(D\) 呈\textbf{幂律下降}， 且存在一个\textbf{算力最优配比}。这条规律是''为什么敢花几千万训一次大模型''的全部依据。 但初学者最常见的错误是：\textbf{把外推当预言}，不做回溯验证就把曲线画到天上去。
+
+本课题的核心不是''拟合出一条漂亮的线''，而是\textbf{建立''预测 → 验证 → 承认偏差''的科研习惯}。 这也是本学科''预测---打脸日志''（\texttt{memory/MEMORY.md}）的主要产地。
+
+\subsection{二、研究问题（一句话）}\label{ux4e8cux7814ux7a76ux95eeux9898ux4e00ux53e5ux8bdd-1}
+
+\begin{quote}
+\textbf{在极小规模（我的 CPU 能承受的范围内）跑 4--5 个点，能否外推出更大模型的 loss？外推误差有多大、什么时候会崩？}
+\end{quote}
+
+\subsection{三、攻关线索}\label{ux4e09ux653bux5173ux7ebfux7d22-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{口径}：横轴用什么？参数量 \(N\)？token 数 \(D\)？（提示：固定预算时，\(N\) 与 \(D\) 不能同时变）
+\item
+  \textbf{记账}：用 M0 的 \(6ND\) 估算每一次跑的算力，\textbf{确保不同点是在''同样算力预算''下比较}（否则曲线无意义）
+\item
+  \textbf{拟合}：幂律 \(L = aN^{-\alpha} + c\) 的形式里，那个常数项 \(c\) 代表什么？它会不会让外推失效？
+\item
+  \textbf{外推}：拟合完先\textbf{把预测写死在文件里}（带日期），再去跑验证点 ------ 顺序不能反
+\item
+  \textbf{偏差来源}：小规模数据是否''无限数据区''？学习率是否随规模重新调过？\textbf{这些都是外推失准的技术原因}
+\end{enumerate}
+
+\subsection{四、里程碑}\label{ux56dbux91ccux7a0bux7891-1}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  M1 设计 sweep：4--5 个规模点（如 d4/d6/d8/d10），预算固定、口径统一
+\item[$\square$]
+  M2 跑完 sweep，记录每个点的最终 loss/bpb 与耗时（CPU 上即可，分钟级）
+\item[$\square$]
+  M3 拟合幂律并画图（含数据点、拟合线、坐标轴标注）
+\item[$\square$]
+  M4 \textbf{先写死外推预测}（例如 d12 的 bpb 预测值 + 置信区间），归档到 \texttt{证据/}
+\item[$\square$]
+  M5 跑验证点，计算偏差，并\textbf{解释偏差的方向与原因}
+\item[$\square$]
+  M6 一页报告：包含''预测 vs 实测''对照表（\textbf{这一条是验收硬指标}）
+\end{itemize}
+
+\subsection{五、交付物}\label{ux4e94ux4ea4ux4ed8ux7269-1}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+交付物
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+位置
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+验收
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+sweep 原始数据 & \texttt{证据/sweep.csv} & 含配置、loss、耗时、算力估算 \\
+拟合脚本与图 & \texttt{脚手架/} + \texttt{证据/} & 图有坐标轴、有拟合优度 \\
+\textbf{外推预测存档} & \texttt{证据/预测-\textless{}日期\textgreater{}.md} & 跑验证点\textbf{之前}的文件时间戳 \\
+报告 & \texttt{报告.md} & 预测 vs 实测对照表 \\
+\end{longtable}
+}
+
+\subsection{六、讲课锚点}\label{ux516dux8bb2ux8bfeux951aux70b9}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{讲义}：\texttt{讲义/M4-M9-待展开大纲.md} 的 M4 部分（W3 展开为完整版 \texttt{M4-训练.md}）
+\item
+  \textbf{对标}：CS336 lecture 09/11（scaling laws）· \texttt{nanochat/runs/scaling\_laws.sh} 与其 miniseries 文档 · d2l 的线性回归/最小二乘（拟合的数学基础）
+\item
+  \textbf{搭桥}：\texttt{probability/} 的方差与回归 ------ 拟合优度、残差分析直接可用
+\end{itemize}
+
+\subsection{七、代码级提问示例}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95eeux793aux4f8b}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  为什么横轴常画 \textbf{FLOPs} 而不是参数量？（提示：Chinchilla 的核心结论是什么）
+\item
+  你拟合出的 \(c\)（常数项）为负，说明了什么？还能外推吗？
+\item
+  如果两个规模点用了不同的学习率，曲线还能一起拟合吗？为什么？
+\item
+  \textbf{【下注】} 你预测 d12 的 bpb 会比你拟合线的预测值偏高还是偏低？先写下答案再跑。
+\end{enumerate}
+
+\subsection{八、风险与提醒}\label{ux516bux98ceux9669ux4e0eux63d0ux9192-1}
+
+\begin{itemize}
+\tightlist
+\item
+  ⚠️ \textbf{不要为了''好看''调学习率}：每个点的超参策略必须写进 \texttt{证据/}，否则外推无意义。
+\item
+  ⚠️ 极小规模会出现''学习率不敏感/过于敏感''的异常区间 ------ 这本身就是很好的报告素材（no-go 不擦除）。
+\item
+  ⚠️ 本课题\textbf{不花 GPU}；如发现 CPU 太慢，优先''缩小语料/减步数''，不要上 Kaggle（配额留给课题04）。
+\end{itemize}
+
+\newpage
+
+\section{\texorpdfstring{课题04 开题简报 · 0.1B 端到端预训练（\textbf{首次上机}）}{课题04 开题简报 · 0.1B 端到端预训练（首次上机）}}\label{ux8bfeux989804-ux5f00ux9898ux7b80ux62a5-0.1b-ux7aefux5230ux7aefux9884ux8badux7ec3ux9996ux6b21ux4e0aux673a}
+
+\begin{quote}
+模块：\textbf{M4/M5} ｜ 周次：\textbf{W5--W6（10-12→10-25）} ｜ 算力：\textbf{T2 Kaggle 2×T4，计划 12--21 GPU·小时} 唐杰作业对应：\textbf{① 端到端训一个 0.1B} ｜ 判分来源：\textbf{自建}（loss/bpb 达标 + 采样可读性）+ \texttt{nanochat/core\_eval.py} 的 CORE 手写：复用课题01/02 的产物（tokenizer + 模型 + 优化器），本课题新增\textbf{数据管线与训练编排的判断}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{一、研究背景}\label{ux4e00ux7814ux7a76ux80ccux666f-2}
+
+``0.1B'' 是唐杰作业里的数字，也是\textbf{单卡/双卡免费算力下的上限}。参考点：nanochat 的 d12 约等于 GPT-1 量级 （官方讨论区原话：``d12 是我最喜欢的模型，它是 GPT-1 的大小，约 6 分钟训完''------那是在 8×H100 上）。 \textbf{本课题的核心不是刷指标，而是把''训练一次完整模型''的每个环节亲自走通并记账。}
+
+\subsection{二、研究问题（一句话）}\label{ux4e8cux7814ux7a76ux95eeux9898ux4e00ux53e5ux8bdd-2}
+
+\begin{quote}
+\textbf{在 2×T4、20 GPU·小时的预算内，我能不能从零训出一个''能生成连贯英文、并在 CORE 上有非零分''的 0.1B 模型？实测成本与估算差多少？}
+\end{quote}
+
+\subsection{三、攻关线索}\label{ux4e09ux653bux5173ux7ebfux7d22-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{数据}：TinyStories（全量）+ owt-sample 采样。\textbf{先算一遍}：词表大小 × 语料字节 → token 数 → 需要的步数
+\item
+  \textbf{规模选择}：nanochat 用单一旋钮 \texttt{-\/-depth}；在 T4 上 16GB 显存能放多深？（用 M0 的显存公式先估）
+\item
+  \textbf{精度}：\textbf{T4 是 SM75，没有 bf16} → 必须 fp16 + GradScaler（或用 nanochat 的 \texttt{NANOCHAT\_DTYPE=float16}）
+\item
+  \textbf{断点续训}：Kaggle 会话 9--12h 会断 → checkpoint 必须写 \texttt{/kaggle/working}（20GB 持久）
+\item
+  \textbf{超时自停}：脚本内置 wall-clock 上限，防止忘记关会话
+\item
+  \textbf{指标}：训练看 bpb（词表无关），最终跑 CORE（22 数据集合成，\texttt{core\_eval.py} 单文件）
+\end{enumerate}
+
+\subsection{四、里程碑}\label{ux56dbux91ccux7a0bux7891-2}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  M1 \textbf{实验卡获批}：写清假设/命令/预算上限/停止条件/成功判据（见《算力与成本预算.md》§五）
+\item[$\square$]
+  M2 \textbf{会话预检}：\texttt{nvidia-smi} 确认 2×T4（\textbf{若是 P100 立即重开会话}）
+\item[$\square$]
+  M3 \textbf{冒烟}：\texttt{-\/-depth=4}、100 步，确认能跑、能存、能续训（≤10 分钟）
+\item[$\square$]
+  M4 首次正式训练：双 T4 + DDP，跑到预算上限或 loss 平台
+\item[$\square$]
+  M5 续训一次（验证 checkpoint 真的可用 ------ 这一条最容易翻车）
+\item[$\square$]
+  M6 评测：bpb + CORE + \textbf{采样 20 条样本}（人工判断''是否连贯''）
+\item[$\square$]
+  M7 \textbf{成本账单}：实测耗时 vs 估算（M0 的 6ND + T4 折算），逐项解释偏差
+\item[$\square$]
+  M8 一页报告 + 知识卡（含''我最意外的三个现象''）
+\end{itemize}
+
+\subsection{五、交付物}\label{ux4e94ux4ea4ux4ed8ux7269-2}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+交付物
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+位置
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+验收
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+实验卡 & \texttt{证据/实验卡-NN.md} & 经用户确认 \\
+run.yaml + 日志 & \texttt{证据/} & 含 commit、配置、随机种子、耗时 \\
+曲线 & \texttt{证据/} & loss/bpb vs FLOPs 与 vs 时间 两张 \\
+采样样本 & \texttt{证据/样本.md} & ≥20 条，标注''通顺/不通顺'' \\
+\textbf{成本账单} & \texttt{报告.md} & 实测 vs 估算偏差 ≤ 2× 或给出解释 \\
+checkpoint & Kaggle 持久盘 & 不进程（体积原因）；只在 \texttt{证据/} 留哈希与路径 \\
+\end{longtable}
+}
+
+\subsection{六、讲课锚点}\label{ux516dux8bb2ux8bfeux951aux70b9-1}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{讲义}：\texttt{M4-训练.md}（W3 展开）
+\item
+  \textbf{对标}：\texttt{nanochat/README.md} 与 \texttt{runs/speedrun.sh}（读它怎么组织全流程）· CS336 lecture 05/13--14
+\item
+  \textbf{搭桥}：课题03 的 scaling 结论在这里第一次被''真跑''检验
+\end{itemize}
+
+\subsection{七、代码级提问示例}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95eeux793aux4f8b-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  双 T4 跑 d12，为何\textbf{不是} 2 倍加速？先预测扩展效率（50\%？80\%？），再测。
+\item
+  T4 上 fp16 与 fp32，谁更快？谁更稳？GradScaler 在解决什么？
+\item
+  你的 loss 在第 2000 步开始上升。按 M0 §五 的顺序，你的前三个动作是什么？
+\item
+  若把语料从 TinyStories 换成中文语料（词表不变），loss 会怎么变？\textbf{bpb 呢？}
+\end{enumerate}
+
+\subsection{八、风险与提醒}\label{ux516bux98ceux9669ux4e0eux63d0ux9192-2}
+
+\begin{itemize}
+\tightlist
+\item
+  🚨 \textbf{P100 陷阱}：本课题如果拿到 P100，训练慢 3--5 倍且后续课题05 直接不可用 → \textbf{宁可等 T4 时段}。
+\item
+  🚨 \textbf{配额}：本课题占全学期约 1/5 的配额，实验卡必须写实；\textbf{冒烟不通过不许开正式训练}。
+\item
+  ⚠️ 0.1B 在 T4 上大概率需要''降 batch + 梯度累积''，这会改变有效 batch size → \textbf{要写进 run.yaml}。
+\item
+  ⚠️ Kaggle 会话到期会杀进程：\textbf{每 500 步存一次}是硬要求。
+\end{itemize}
+
+\newpage
+
+\section{课题05 开题简报 · 手写 Triton attention kernel}\label{ux8bfeux989805-ux5f00ux9898ux7b80ux62a5-ux624bux5199-triton-attention-kernel}
+
+\begin{quote}
+模块：\textbf{M5} ｜ 周次：\textbf{W7--W8（10-26→11-08）} ｜ 算力：\textbf{T1 Kaggle 1×T4，计划 10 GPU·小时} 唐杰作业对应：\textbf{② 手写 Triton attention kernel，测多卡训练与推理增益} ｜ 判分来源：\textbf{CS336 A2}（正确性对齐）+ 自建性能对照 手写：\textbf{R5（kernel 本体：分块 + online softmax）}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{一、研究背景}\label{ux4e00ux7814ux7a76ux80ccux666f-3}
+
+朴素注意力要把 \(L\times L\) 的注意力矩阵\textbf{整个写进显存}：\(L=8192\) 时单头就是 64M 个元素。 FlashAttention（2022）的核心洞察：\textbf{根本不需要把矩阵写出来} ------ 分块计算、在线维护 softmax 的 最大值与归一化因子，就能得到数学上完全等价的结果。它把注意力的显存从 \(O(L^2)\) 降到 \(O(L)\)。
+
+Triton 让这件事对非 CUDA 专家也可做：用 Python 风格的 DSL 写''块级''程序。 \textbf{本课题的目标不是写出最快的 kernel，而是亲手经历''数值等价 + 显存下降 + 速度提升''这三件事的因果链。}
+
+\subsection{二、研究问题（一句话）}\label{ux4e8cux7814ux7a76ux95eeux9898ux4e00ux53e5ux8bdd-3}
+
+\begin{quote}
+\textbf{一个分块 + online softmax 的手写 kernel，能否在数值上等价于朴素实现，并把显存从 O(L²) 降到 O(L)、速度提升若干倍？提升来自哪里（算术减少？访存减少？）}
+\end{quote}
+
+\subsection{三、攻关线索}\label{ux4e09ux653bux5173ux7ebfux7d22-3}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{先量化瓶颈}：朴素实现在 L=2k/8k 时的显存、耗时（用 profiler 看是 compute-bound 还是 memory-bound）
+\item
+  \textbf{online softmax 的递推}：维护 running max \(m\) 与 running sum \(\ell\)， 新块的贡献要按 \(e^{m_{\text{old}}-m_{\text{new}}}\) 缩放 ------ \textbf{这正是 M0 §四 logsumexp 的应用}
+\item
+  \textbf{分块维度}：按 query 分块、沿 key 方向扫描 → 每个块只需常驻 SRAM
+\item
+  \textbf{数值容差}：与 PyTorch SDPA 对照，相对误差应在 1e-2\textasciitilde1e-3（fp16）；\textbf{先写容差，再判定}
+\item
+  \textbf{多卡/推理增益}：训练侧测吞吐（tokens/s），推理侧测 decode 显存与延迟 ------ 这是唐杰作业②要求的''增益''
+\end{enumerate}
+
+\subsection{四、里程碑}\label{ux56dbux91ccux7a0bux7891-3}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  M1 基线：朴素注意力的显存与耗时（L=2k/4k/8k 三点）
+\item[$\square$]
+  M2 \textbf{正确性}：手写 kernel 与 SDPA 的数值对照（max abs error 记录在案）
+\item[$\square$]
+  M3 \textbf{显存}：证明峰值显存随 L 近似线性（对比朴素实现的 O(L²)）
+\item[$\square$]
+  M4 \textbf{速度}：给出 speedup 曲线（含 L 与 block size 两个维度）
+\item[$\square$]
+  M5 \textbf{profiling}：用 profiler 说明''提升来自哪里''（访存 vs 算术，给出数字）
+\item[$\square$]
+  M6 \textbf{增益测量}：训练吞吐（tokens/s）与推理（融合进 attention 后）的实测对比
+\item[$\square$]
+  M7 一页报告 + 知识卡（online softmax 递推必须能徒手推）
+\end{itemize}
+
+\subsection{五、交付物}\label{ux4e94ux4ea4ux4ed8ux7269-3}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+交付物
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+位置
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+验收
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+kernel & \texttt{手写/}（你写） & M2 数值对照通过 \\
+三张图 & \texttt{证据/} & speedup / 显存 / profile（\textbf{坐标轴与硬件口径必须标注}） \\
+数值误差记录 & \texttt{证据/} & 含容差设定与依据 \\
+报告 & \texttt{报告.md} & 必须回答''提升来自哪里'' \\
+\end{longtable}
+}
+
+\subsection{六、讲课锚点}\label{ux516dux8bb2ux8bfeux951aux70b9-2}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{讲义}：\texttt{讲义/M5-推理.md}（W5 展开）中''GPU 内存层级与 Triton 编程模型''一节
+\item
+  \textbf{对标}：CS336 lecture 05--06（GPUs / Kernels \& Triton）+ A2 handout（\textbf{flash-attn 需两步安装}： \texttt{uv\ sync\ -\/-no-install-package\ flash-attn} 再 \texttt{uv\ sync}）· Triton 官方 FlashAttention 教程
+\item
+  \textbf{搭桥}：M0 §四 的 logsumexp ------ 你会亲手把它写进 kernel
+\end{itemize}
+
+\subsection{七、代码级提问示例}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95eeux793aux4f8b-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  online softmax 里，为什么新块要乘 \(e^{m_{\text{old}}-m_{\text{new}}}\)？不乘会怎样？
+\item
+  block size 从 64 增到 256：显存、速度、数值误差各往哪走？
+\item
+  为什么 L 很大时，朴素实现容易 OOM 而 kernel 不会？（用 \(O(L^2)\) vs \(O(L)\) 说清）
+\item
+  \textbf{【下注】} 你预测 speedup 在 L=2k 时是多少倍？先写，再测。
+\end{enumerate}
+
+\subsection{八、风险与提醒}\label{ux516bux98ceux9669ux4e0eux63d0ux9192-3}
+
+\begin{itemize}
+\tightlist
+\item
+  🚨 \textbf{P100 不可用于本课题}：Triton 要求计算能力 ≥7.0，P100 是 6.0 → \textbf{开跑前必须验明是 T4}。
+\item
+  ⚠️ 正确性优先于速度：\textbf{数值对照不过，速度数字一律不算数}。
+\item
+  ⚠️ 硬件口径陷阱：任何 speedup 数字必须写明''对比对象（PyTorch SDPA / 朴素实现）``与''硬件（T4）``， 否则曲线毫无意义（这一条写进报告硬要求）。
+\item
+  ⚠️ 若 T4 上 kernel 因共享内存不够而失败，\textbf{先降 block size，不要放弃}（这本身就是教学素材）。
+\end{itemize}
+
+\newpage
+
+\section{课题06 开题简报 · 多卡与分布式训练}\label{ux8bfeux989806-ux5f00ux9898ux7b80ux62a5-ux591aux5361ux4e0eux5206ux5e03ux5f0fux8badux7ec3}
+
+\begin{quote}
+模块：\textbf{M4} ｜ 周次：\textbf{W9（11-09→11-15）} ｜ 算力：\textbf{T2 Kaggle 2×T4，计划 8 GPU·小时} 唐杰作业对应：\textbf{② 的''多卡训练增益''部分} ｜ 判分来源：\textbf{CS336 A2 分布式部分 + 自建 benchmark} 手写：\textbf{R3 的延伸（并行策略选择与通信原语判断）}
+\end{quote}
+
+\subsection{一、研究背景}\label{ux4e00ux7814ux7a76ux80ccux666f-4}
+
+数据并行（DDP）把同一模型复制到每张卡、各自算一个微批、再\textbf{同步梯度}； 当模型放不下单卡时，才有 FSDP/ZeRO（切分参数、梯度、优化器状态）、张量并行（切层内矩阵）、流水线并行（切层）。 \textbf{Kaggle 免费档给的是 2×T4，且走 PCIe 而非 NVLink} ------ 这恰好是''观察通信成为瓶颈''的最佳实验台。
+
+\subsection{二、研究问题}\label{ux4e8cux7814ux7a76ux95eeux9898}
+
+\begin{quote}
+\textbf{在弱互联（PCIe）的 2×T4 上，DDP 的扩展效率是多少？瓶颈是计算还是通信？FSDP 在什么规模才开始划算？}
+\end{quote}
+
+\subsection{三、攻关线索}\label{ux4e09ux653bux5173ux7ebfux7d22-4}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{先对齐正确性}：DDP 后的梯度应与单卡（同等效批大小）\textbf{数值一致}，先验证再谈性能
+\item
+  \textbf{批大小语义}：2 卡 × 每卡 batch = 等效批大小；若显存受限要\textbf{同步调整学习率}（线性/平方根缩放）
+\item
+  \textbf{计时口径}：\texttt{step\ time} 要区分''纯计算时间''与''含 all-reduce 的时间''；用 \texttt{torch.profiler} 或手写计时
+\item
+  \textbf{扩展效率}：\(E = \dfrac{T_1}{2\,T_2}\)。\textbf{先预测}（PCIe 下 0.6--0.8？）再测
+\item
+  \textbf{通信占比}：梯度同步量与参数量成正比（\(2N\) 字节/步，all-reduce 近似）；序列长/批小时通信占比更高
+\item
+  \textbf{FSDP 的代价}：切分带来额外通信（all-gather + reduce-scatter），\textbf{小模型上往往更慢}
+\end{enumerate}
+
+\subsection{四、里程碑}\label{ux56dbux91ccux7a0bux7891-4}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  M1 DDP 梯度一致性验证（与单卡同等效批）→ 记录最大误差
+\item[$\square$]
+  M2 单卡 vs 双卡 的 \texttt{step\ time}、\texttt{tokens/s} 对照（同模型、同等效批）
+\item[$\square$]
+  M3 \textbf{扩展效率曲线}（至少 3 个配置点：不同 batch/序列长度）
+\item[$\square$]
+  M4 \textbf{通信占比分解}：计算 / all-reduce / 数据加载 三段计时
+\item[$\square$]
+  M5 一次 FSDP 实验并解释''为什么（不）划算''
+\item[$\square$]
+  M6 \textbf{先写预测再实测}：预测扩展效率，跑完对照（进 \texttt{memory/MEMORY.md} 打脸日志）
+\item[$\square$]
+  M7 一页报告
+\end{itemize}
+
+\subsection{五、交付物}\label{ux4e94ux4ea4ux4ed8ux7269-4}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+交付物 & 位置 & 验收 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+分布式脚本 & \texttt{手写/} 或 \texttt{脚手架/}（按 B3 分类） & 可复跑 \\
+计时原始数据 & \texttt{证据/bench.csv} & 含每配置 3 次重复 \\
+扩展效率曲线 & \texttt{证据/} & 标注硬件（2×T4 PCIe）与对比基准 \\
+报告 & \texttt{报告.md} & 解释''为什么不是 2 倍'' \\
+\end{longtable}
+}
+
+\subsection{六、讲课锚点}\label{ux516dux8bb2ux8bfeux951aux70b9-3}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{讲义}：\texttt{M4-训练.md}（W3 展开）中并行一节
+\item
+  \textbf{对标}：CS336 lecture 07--08（Parallelism）· \texttt{nanochat/optim.py}（分布式优化器实现）· HF Ultra-Scale Playbook（用前先核）
+\item
+  \textbf{搭桥}：M0 的''梯度累加''→ DDP 就是\textbf{跨卡的梯度累加}
+\end{itemize}
+
+\subsection{七、代码级提问示例}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95eeux793aux4f8b-3}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  2×T4 上 DDP 只快了 1.4 倍，列出三个最可能的原因。
+\item
+  把每卡 batch 减半、用梯度累积补回等效批，通信量会怎么变？
+\item
+  什么情况下 FSDP 会\textbf{比 DDP 慢}？（用通信量解释）
+\item
+  all-reduce 的通信量是多少字节/步？用参数量 \(N\) 表示。
+\end{enumerate}
+
+\subsection{八、风险与提醒}\label{ux516bux98ceux9669ux4e0eux63d0ux9192-4}
+
+\begin{itemize}
+\tightlist
+\item
+  ⚠️ Kaggle 双 T4 会话\textbf{不稳定}（可能只给一张）：预检时确认 \texttt{torch.cuda.device\_count()==2}。
+\item
+  ⚠️ 不要在本课题纠缠''调到最快''------\textbf{目标是理解扩展效率的成因}，配额要留给课题08。
+\end{itemize}
+
+\newpage
+
+\section{课题07 开题简报 · 数据清洗与去重}\label{ux8bfeux989807-ux5f00ux9898ux7b80ux62a5-ux6570ux636eux6e05ux6d17ux4e0eux53bbux91cd}
+
+\begin{quote}
+模块：\textbf{M7/M4} ｜ 周次：\textbf{W10（11-16→11-22）} ｜ 算力：\textbf{T1 Kaggle 1×T4，计划 6 GPU·小时} 唐杰作业对应：\textbf{③ 从 raw dump 洗语料} ｜ 判分来源：\textbf{CS336 A4}（过滤/去重规格）+ 自建消融 手写：\textbf{R8（过滤/去重的判定规则设计）}
+\end{quote}
+
+\subsection{一、研究背景}\label{ux4e00ux7814ux7a76ux80ccux666f-5}
+
+``数据决定上限''已是共识：C4/FineWeb/Dolma 等工作的主要贡献\textbf{不是模型而是数据管线}。 典型手段：语言识别、质量启发式（重复度、符号比、平均行长）、有毒内容过滤、\textbf{近似去重（MinHash/LSH）}。 最有教学价值的现象：\textbf{清洗规则过严会伤害模型}（把有价值的长尾数据也删了）。
+
+\subsection{二、研究问题}\label{ux4e8cux7814ux7a76ux95eeux9898-1}
+
+\begin{quote}
+\textbf{在固定算力下，``清洗 + 去重''能把同样规模模型的下游表现提升多少？每条规则的收益与代价各是多少？}
+\end{quote}
+
+\subsection{三、攻关线索}\label{ux4e09ux653bux5173ux7ebfux7d22-5}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{基线优先}：先训一个''未清洗''的基线（可与课题04 的结果复用）------ \textbf{没有对照就无法声称''清洗有效''}
+\item
+  \textbf{规则设计}：至少三条可解释规则（如：短行比例、符号-词比、n-gram 重复率），每条要能说清''它在拦什么''
+\item
+  \textbf{去重量级}：精确去重（哈希）与近似去重（MinHash + LSH）的成本差异；文档级 vs 段落级
+\item
+  \textbf{消融}：逐条关掉规则各跑一次（小规模即可），得''每条规则的边际贡献''表
+\item
+  \textbf{口径}：所有对照必须\textbf{同 token 预算、同分词器、同评测}（否则结论无效）
+\item
+  \textbf{常用工具对照}：\texttt{datajuicer/data-juicer}（Apache-2.0，活跃）与 \texttt{allenai/dolma} 的规则集可作参考
+\end{enumerate}
+
+\subsection{四、里程碑}\label{ux56dbux91ccux7a0bux7891-5}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  M1 数据来源与规模确定（用 owt-sample / TinyStories 扩样，或小规模 CC 采样）
+\item[$\square$]
+  M2 手写 3 条启发式规则 + 1 个去重算法（精确哈希起步，有余力再上 MinHash）
+\item[$\square$]
+  M3 规则单元测试（\textbf{含假阳性样例}：被误删的好数据长什么样）
+\item[$\square$]
+  M4 训练对照：未清洗 vs 全部清洗 vs 逐条消融（≥4 组跑）
+\item[$\square$]
+  M5 结果表：每组的下游指标 + \textbf{数据保留率}（这是被忽略的关键列）
+\item[$\square$]
+  M6 一页报告：必须回答''哪条规则最值钱、哪条可能有害''
+\end{itemize}
+
+\subsection{五、交付物}\label{ux4e94ux4ea4ux4ed8ux7269-5}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+交付物 & 位置 & 验收 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+过滤/去重实现 & \texttt{手写/} & M3 单测通过 \\
+规则清单与理由 & \texttt{报告.md} & 每条规则说明''拦什么、代价是什么'' \\
+对照实验数据 & \texttt{证据/对照.csv} & 含保留率与指标 \\
+假阳性样例 & \texttt{证据/} & ≥5 条被误删的好数据 \\
+\end{longtable}
+}
+
+\subsection{六、讲课锚点}\label{ux516dux8bb2ux8bfeux951aux70b9-4}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{讲义}：\texttt{M7-评测.md}（W9 展开）中''数据质量与评测的关系''
+\item
+  \textbf{对标}：CS336 lecture 13--14（Data）+ A4 handout · \texttt{datajuicer/data-juicer} 规则文档 · Dolma 论文
+\item
+  \textbf{搭桥}：概率论的\textbf{采样与分布} ------ 过滤本质是''改变训练分布''，会引入选择偏差
+\end{itemize}
+
+\subsection{七、代码级提问示例}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95eeux793aux4f8b-4}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  过滤掉''短行''能提分，但会不会系统性删掉对话/代码类数据？怎么检测这种偏差？
+\item
+  精确去重 vs 近似去重：各自漏掉什么、误杀什么？
+\item
+  数据保留率从 90\% 降到 50\%，你如何判断''这是提纯还是阉割''？
+\item
+  \textbf{【下注】} 预测''全部清洗''相对''未清洗''的提升幅度，先写再测。
+\end{enumerate}
+
+\subsection{八、风险与提醒}\label{ux516bux98ceux9669ux4e0eux63d0ux9192-5}
+
+\begin{itemize}
+\tightlist
+\item
+  ⚠️ 磁盘：本课题可能涉及较大语料，\textbf{大文件绝不进 git}（见学科 \texttt{.gitignore}）。
+\item
+  ⚠️ 不要一开始就上 MinHash 集群版：\textbf{先精确去重跑通闭环}，再考虑近似。
+\item
+  ⚠️ 4 组对照训练会吃掉配额：\textbf{用小模型 + 短序列}，保证口径一致即可。
+\end{itemize}
+
+\newpage
+
+\section{课题08 开题简报 · SFT / DPO / RLVR 三方对照}\label{ux8bfeux989808-ux5f00ux9898ux7b80ux62a5-sft-dpo-rlvr-ux4e09ux65b9ux5bf9ux7167}
+
+\begin{quote}
+模块：\textbf{M6/M7} ｜ 周次：\textbf{W11--W12（11-23→12-06）} ｜ 算力：\textbf{T2 Kaggle 2×T4，计划 18 GPU·小时（全学期最贵）} 唐杰作业对应：\textbf{④ 同一基座上把 SFT、DPO、RLVR 做对照} ｜ 判分来源：\textbf{CS336 A5 \texttt{tests/test\_grpo.py}} + 自建三方对照 手写：\textbf{R7（损失函数与优势估计）}
+\end{quote}
+
+\subsection{一、研究背景}\label{ux4e00ux7814ux7a76ux80ccux666f-6}
+
+预训练给''知识''，后训练给''行为''。三条主流路线： \textbar{} 方法 \textbar{} 需要什么 \textbar{} 优化什么 \textbar{} \textbar---\textbar---\textbar---\textbar{} \textbar{} \textbf{SFT} \textbar{} (指令, 回答) 对 \textbar{} 最大似然（只对回答部分算 loss） \textbar{} \textbar{} \textbf{DPO} \textbar{} (指令, 好回答, 坏回答) 偏好对 \textbar{} 隐式奖励差（无需显式 reward model） \textbar{} \textbar{} \textbf{RLVR} \textbar{} 可判对错的答案 + 验证器 \textbar{} 期望可验证奖励（GRPO 用组内相对优势） \textbar{}
+
+\textbf{本课题的教学价值极高}：它是课程大纲''机器学习（强化学习）``与唐杰作业④的交点， 也是''知识讲解''最能发挥的地方------\textbf{GRPO 的每一项都能在概率论里找到根}（期望、方差、条件期望）。
+
+\subsection{二、研究问题}\label{ux4e8cux7814ux7a76ux95eeux9898-2}
+
+\begin{quote}
+\textbf{同一个基座、同一套评测，SFT / DPO / RLVR 各自把什么能力提升了、把什么能力损害了？训练奖励的上升，有多少是真的能力提升？}
+\end{quote}
+
+\subsection{三、攻关线索}\label{ux4e09ux653bux5173ux7ebfux7d22-6}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{基座与数据}：基座用课题04 的模型（或 0.1B 级开源小模型）；任务是\textbf{可验证}的（数学题/格式约束/单元测试）
+\item
+  \textbf{SFT 的损失掩码}：\textbf{只对回答部分算 loss}，指令部分不算 ------ 这是个高频错误点
+\item
+  \textbf{DPO 的推导}：为什么 \(\sigma(\beta \log\frac{\pi(y_w)}{\pi_{ref}(y_w)} - \beta\log\frac{\pi(y_l)}{\pi_{ref}(y_l)})\) 能等价于''隐式奖励''？
+\item
+  \textbf{GRPO 的四步}：采样一组输出 \(G\) 个 → 打分 → \textbf{组内归一化得优势} \(A_i = \frac{r_i - \mathrm{mean}(r)}{\mathrm{std}(r)}\) → 加权策略梯度 + KL 惩罚
+\item
+  \textbf{KL 惩罚的作用}：防止策略跑离参考模型太远（对应 RLHF Book 的''过度优化''章）
+\item
+  \textbf{评测口径}：\textbf{训练奖励 ≠ 能力}。必须在 held-out 题集上评，并且给误差棒
+\item
+  \textbf{制造一次 reward hacking}：例如让模型学到''输出格式对了但答案是瞎猜''，记录现象（这是本课题最好的素材）
+\end{enumerate}
+
+\subsection{四、里程碑}\label{ux56dbux91ccux7a0bux7891-6}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  M1 SFT 基线（含损失掩码正确性验证：打印一条样本的 mask）
+\item[$\square$]
+  M2 DPO 跑通 + 与 SFT 的对照（held-out）
+\item[$\square$]
+  M3 手写 GRPO 损失并\textbf{逐项注释}（优势从哪来、为什么要除标准差）
+\item[$\square$]
+  M4 \texttt{tests/test\_grpo.py} 通过（判分器接入后）
+\item[$\square$]
+  M5 \textbf{三方对照表}（同基座、同评测、同种子策略，带误差棒）
+\item[$\square$]
+  M6 \textbf{reward hacking 实验}：故意设计一个''可被钻空子''的奖励，观察并记录
+\item[$\square$]
+  M7 一页报告 + 知识卡（GRPO 递推必须能徒手推）
+\end{itemize}
+
+\subsection{五、交付物}\label{ux4e94ux4ea4ux4ed8ux7269-6}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+交付物 & 位置 & 验收 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+三个训练脚本 & \texttt{手写/}（损失与优势估计属 R7） & 可复跑 \\
+判分输出 & \texttt{判卷记录.md} & \texttt{test\_grpo.py} 原文 \\
+对照表 & \texttt{证据/} & 含误差棒与评测口径说明 \\
+reward hacking 记录 & \texttt{证据/} & 现象 + 机制解释 \\
+报告 & \texttt{报告.md} & ``能力提升 vs 训练奖励''必须分开讨论 \\
+\end{longtable}
+}
+
+\subsection{六、讲课锚点}\label{ux516dux8bb2ux8bfeux951aux70b9-5}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{讲义}：\texttt{M6-后训练.md}（W10 展开）
+\item
+  \textbf{对标}：\textbf{rasbt《Reasoning from Scratch》ch3（先建评测）+ ch6--ch7（GRPO）} · \textbf{《RLHF Book》ch4/6/8/14} · CS336 A5 + lecture 15--17 · \texttt{minimind/trainer/train\_grpo.py}（中文工程实现）· \texttt{nano-aha-moment}（单文件）
+\item
+  \textbf{搭桥（重点）}：\texttt{probability/} 的\textbf{期望、方差、条件期望}------GRPO 的优势归一化就是''标准化''， KL 惩罚就是''分布差异''，REINFORCE 就是''用样本均值估期望''
+\end{itemize}
+
+\subsection{七、代码级提问示例}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95eeux793aux4f8b-5}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  为什么 SFT 只对回答部分算 loss？若指令部分也算，会发生什么？
+\item
+  GRPO 里为什么要除以组内标准差？如果一组所有奖励\textbf{完全相同}，优势是多少？这时梯度会怎样？
+\item
+  DPO 不需要 reward model，那它的''奖励''藏在哪？（用对数比写出来）
+\item
+  训练奖励从 0.3 涨到 0.8，held-out 准确率却从 40\% 掉到 35\%。列出三个可能原因。
+\item
+  \textbf{【下注】} 预测三方在 held-out 上的排序，先写再测。
+\end{enumerate}
+
+\subsection{八、风险与提醒}\label{ux516bux98ceux9669ux4e0eux63d0ux9192-6}
+
+\begin{itemize}
+\tightlist
+\item
+  🚨 \textbf{最贵的一周}：18 GPU·小时是全学期 1/5，\textbf{三个方法各只跑一次正式实验}，其余用小规模调试。
+\item
+  🚨 \textbf{不做 held-out 评测就等于自欺}：训练奖励必须与独立评测同时报（写进报告硬要求）。
+\item
+  ⚠️ A5 官方仓库\textbf{未声明 SPDX 许可} → 只做本地学习对照，不复制进仓（见《上游锁定清单》§三）。
+\item
+  ⚠️ Kaggle 会话上限 9--12h：RL 训练务必支持\textbf{断点续训}，否则一次会话跑不完。
+\end{itemize}
+
+\newpage
+
+\section{课题09 开题简报 · 可验证环境 + harness}\label{ux8bfeux989809-ux5f00ux9898ux7b80ux62a5-ux53efux9a8cux8bc1ux73afux5883-harness}
+
+\begin{quote}
+模块：\textbf{M7/M8} ｜ 周次：\textbf{W13（12-07→12-13）} ｜ 算力：\textbf{T2 Kaggle 2×T4，计划 6 GPU·小时} 唐杰作业对应：\textbf{⑤ 搭可验证环境 + harness} ｜ 判分来源：\textbf{自建}（判定逻辑单测 + rollout 成功率） 手写：\textbf{R9（判定逻辑 / verifier）}
+\end{quote}
+
+\subsection{一、研究背景}\label{ux4e00ux7814ux7a76ux80ccux666f-7}
+
+2026 年的关键词是''\textbf{可验证奖励}''：与其训练一个会拍马屁的奖励模型，不如\textbf{造一个能判定对错的环境}。 CS336 没有这一环，Berkeley Agentic AI MOOC 专门有一讲叫 ``Post-Training Verifiable Agents''， \texttt{PrimeIntellect-ai/verifiers} 把它抽象成库。唐杰作业⑤要求''搭可验证环境 + harness''正是这个方向。
+
+\textbf{``可验证''的三要素}：①任务是可判定的（不是主观好坏）②环境能给出稳定反馈 ③harness 能重复运行并复现。
+
+\subsection{二、研究问题}\label{ux4e8cux7814ux7a76ux95eeux9898-3}
+
+\begin{quote}
+\textbf{我能为一个小模型设计一个''可自动判定''的任务环境吗？判定逻辑的假阳性/假阴性有多高？模型在这个环境里的成功率是多少？}
+\end{quote}
+
+\subsection{三、攻关线索}\label{ux4e09ux653bux5173ux7ebfux7d22-7}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{选题}：从三个里选一个（按成本从低到高）
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ①\textbf{数学题解答}（用数值比对 + 容错；MATH-500 风格）
+  \item
+    ②\textbf{函数补全}（隐藏单元测试；本质是迷你 HumanEval）
+  \item
+    ③\textbf{格式约束生成}（如严格 JSON / 表格填充，规则判定）
+  \end{itemize}
+\item
+  \textbf{判定逻辑的三大坑}：等价但不相同（\texttt{1/2} vs \texttt{0.5}）、解析失败当错、\textbf{边界用例漏判}
+\item
+  \textbf{假阳性检测}：人为构造''错误但能骗过判定器''的答案 → 测出\textbf{假阳性率}（这是质量的核心指标）
+\item
+  \textbf{harness 设计}：任务装载 → 模型生成 → 判定 → 记录轨迹 → 复现（固定种子）
+\item
+  \textbf{可重复性}：同一批任务跑两次，成功率波动多大？（\textbf{误差棒思维}，M7 讲过）
+\item
+  \textbf{对照}：可验证奖励 vs 规则弱判定（如只看格式），用同一模型比成功率差异
+\end{enumerate}
+
+\subsection{四、里程碑}\label{ux56dbux91ccux7a0bux7891-7}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  M1 选定任务类型，写 30--100 道题的\textbf{题集}（含标准答案与判定规则）
+\item[$\square$]
+  M2 \textbf{判定逻辑单测}：等价形式、边界、异常输入（≥10 个用例）
+\item[$\square$]
+  M3 \textbf{假阳性实验}：构造 10 个''错误但可能蒙混''的答案，测出漏判率
+\item[$\square$]
+  M4 harness 跑通：给基座模型跑一遍，得成功率 + 失败样本
+\item[$\square$]
+  M5 失败分类：把失败归成 3--5 类（格式错 / 计算错 / 中途放弃 / 判定器误杀）
+\item[$\square$]
+  M6 一页报告：\textbf{判定器质量 + 模型表现 两个都要报}
+\end{itemize}
+
+\subsection{五、交付物}\label{ux4e94ux4ea4ux4ed8ux7269-7}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+交付物 & 位置 & 验收 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+题集与判定器 & \texttt{手写/}（判定逻辑 R9） & M2 单测通过 \\
+harness 脚本 & \texttt{脚手架/}（B3） & 固定种子可复跑 \\
+失败样本 & \texttt{证据/} & ≥20 条，分类标注 \\
+假阳性报告 & \texttt{报告.md} & 含漏判率与典型案例 \\
+\end{longtable}
+}
+
+\subsection{六、讲课锚点}\label{ux516dux8bb2ux8bfeux951aux70b9-6}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{讲义}：\texttt{M8-智能体.md}（W13 展开）
+\item
+  \textbf{对标}：Berkeley Agentic AI MOOC 的 ``Post-Training Verifiable Agents'' 与 ``Agent Evaluation'' 讲 · \texttt{PrimeIntellect-ai/verifiers}（\textbf{只读概念，不引入代码}）· \texttt{harbor-framework/terminal-bench} 的任务设计思路 · \textbf{rasbt ch3}（评测器设计：解析 + verifier + 基准式检查）
+\end{itemize}
+
+\subsection{七、代码级提问示例}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95eeux793aux4f8b-6}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  你的判定器把 \texttt{1/2} 判错、把 \texttt{0.50} 判对------这属于哪一类错误？如何系统性避免？
+\item
+  假阳性率高会导致 RL 训练出现什么后果？（联系课题08 的 reward hacking）
+\item
+  同一批任务两次运行成功率差 8\%。你会先怀疑模型还是 harness？怎么验证？
+\item
+  为什么''用 LLM 当裁判''在可验证任务上通常是\textbf{退步}？
+\end{enumerate}
+
+\subsection{八、风险与提醒}\label{ux516bux98ceux9669ux4e0eux63d0ux9192-7}
+
+\begin{itemize}
+\tightlist
+\item
+  ⚠️ \textbf{判定器本身也要被评测}：只报模型成功率不报判定器质量，是不完整的实验。
+\item
+  ⚠️ 题集不要抄公开 benchmark（污染问题），\textbf{自己出题 + 自己判定}才是本课题的价值。
+\item
+  ⚠️ 配额有限：优先''题集质量高、任务简单''，不要一上来做代码执行沙箱（那是课题10 的事）。
+\end{itemize}
+
+\newpage
+
+\section{课题10 开题简报 · 长程 Agent 与 self-judge}\label{ux8bfeux989810-ux5f00ux9898ux7b80ux62a5-ux957fux7a0b-agent-ux4e0e-self-judge}
+
+\begin{quote}
+模块：\textbf{M8} ｜ 周次：\textbf{W14（12-14→12-20）} ｜ 算力：\textbf{T2 Kaggle 2×T4，计划 8 GPU·小时} 唐杰作业对应：\textbf{⑤ 训长程 Agent，鼓励 self-judge loop} ｜ 判分来源：\textbf{自建}（消融实验 + 轨迹日志） 手写：\textbf{R10（self-judge 协议设计）}
+\end{quote}
+
+\subsection{一、研究背景}\label{ux4e00ux7814ux7a76ux80ccux666f-8}
+
+从''回答问题''到''完成任务''的跨越，靠的是 \textbf{harness（外壳）}：工具调用、上下文管理、失败重试、自我评估。 Karpathy 与李宏毅都专讲 \textbf{context engineering}；nanochat 里 \texttt{execution.py} 就是一个最小的''能执行代码的 Agent 外壳''。 本课题的落点是\textbf{长程任务}：多步串联后误差累积，以及\textbf{self-judge（自我评判）到底有没有用}。
+
+\subsection{二、研究问题}\label{ux4e8cux7814ux7a76ux95eeux9898-4}
+
+\begin{quote}
+\textbf{多步任务中，失败主要来自模型能力还是来自 harness 设计？加上 self-judge loop 后成功率提升多少------还是反而下降？}
+\end{quote}
+
+\subsection{三、攻关线索}\label{ux4e09ux653bux5173ux7ebfux7d22-8}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{最小 ReAct}：不用任何框架，手写 \texttt{Thought\ →\ Action\ →\ Observation} 循环（三四十行就能跑）
+\item
+  \textbf{工具设计}：先给两个工具（计算器 / 受限代码执行）。\textbf{工具接口的清晰度往往比模型智力更决定成败}
+\item
+  \textbf{长程任务构造}：把课题09 的题改造成''需要 3--5 步''的复合任务（如：先算 → 再验 → 再格式化）
+\item
+  \textbf{失败分类}：格式错 / 工具调错 / 目标漂移（忘了原始要求）/ 循环打转 / 提前放弃
+\item
+  \textbf{self-judge 的两种形态}：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{自评重试}：模型给自己打分，低于阈值就重做（rasbt ch5 的 self-refinement）
+  \item
+    \textbf{自评过滤}：生成多个候选，自己挑最好的（best-of-N 的变体）
+  \end{itemize}
+\item
+  \textbf{关键实验（消融）}：同样的任务集，三组对照 = 无 self-judge / 自评重试 / 自评过滤
+\item
+  \textbf{警惕}：self-judge \textbf{会放大原有错误}（模型判不出自己错在哪，反而确信）→ 必须留失败案例
+\end{enumerate}
+
+\subsection{四、里程碑}\label{ux56dbux91ccux7a0bux7891-8}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  M1 手写最小 ReAct 循环（无框架），跑通单步任务
+\item[$\square$]
+  M2 加入第二个工具 + 多步任务集（≥30 个任务）
+\item[$\square$]
+  M3 \textbf{轨迹记录规范}：每步的 thought/action/observation 落盘（可复现）
+\item[$\square$]
+  M4 基线成功率 + \textbf{失败五分类}（每类给 2 个真实案例）
+\item[$\square$]
+  M5 \textbf{self-judge 消融}：三组对照，给出成功率差与误差棒
+\item[$\square$]
+  M6 \textbf{反例收集}：找出 ≥3 个''self-judge 导致更差''的案例并解释机制
+\item[$\square$]
+  M7 一页报告 + 知识卡
+\end{itemize}
+
+\subsection{五、交付物}\label{ux4e94ux4ea4ux4ed8ux7269-8}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+交付物 & 位置 & 验收 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+ReAct 循环 & \texttt{手写/} & 可跑通多步任务 \\
+self-judge 协议 & \texttt{手写/}（R10） & 有明确的判定时机与阈值设计说明 \\
+轨迹日志 & \texttt{证据/trajectories/} & 每任务一份，含步数与结果 \\
+消融数据 & \texttt{证据/} & 三组成功率 + 误差棒 \\
+报告 & \texttt{报告.md} & 必须回答''何时 self-judge 有害'' \\
+\end{longtable}
+}
+
+\subsection{六、讲课锚点}\label{ux516dux8bb2ux8bfeux951aux70b9-7}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{讲义}：\texttt{M8-智能体.md}（W13 展开）
+\item
+  \textbf{对标}：\textbf{李宏毅《Context Engineering》专讲}（Agent 时代的关键技术）· Berkeley LLM Agents MOOC（ReAct 原始论文那讲）· HF Agents Course（三框架对照 + 观测性/评测 bonus unit）· \textbf{rasbt ch5（self-refinement）} · \texttt{nanochat/execution.py}+\texttt{tests/test\_execution.py}（\textbf{沙箱执行的最小实现}，可读接口不可抄实现）
+\item
+  \textbf{搭桥}：M5 的 KV cache（长上下文的显存代价）→ 为什么长程 Agent 必须做\textbf{上下文压缩}
+\end{itemize}
+
+\subsection{七、代码级提问示例}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95eeux793aux4f8b-7}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  长程任务失败率随步数指数上升。\textbf{分解}：是每步错误率问题，还是错误会累积传播？
+\item
+  self-judge 什么时候\textbf{一定}无效？（提示：当模型无法区分''看起来对''和''真的对''时）
+\item
+  上下文压缩（截断/摘要）会引入什么新失败模式？
+\item
+  为什么''工具返回值要结构化''能显著提升成功率？（从 token 分布角度解释）
+\item
+  \textbf{【下注】} 预测 self-judge 在简单任务 vs 困难任务上的效果差异，先写再测。
+\end{enumerate}
+
+\subsection{八、风险与提醒}\label{ux516bux98ceux9669ux4e0eux63d0ux9192-8}
+
+\begin{itemize}
+\tightlist
+\item
+  🚨 \textbf{不要用框架起步}：手写一遍 ReAct 再去看 LangGraph/smolagents，否则学不到 harness 的本质。
+\item
+  ⚠️ self-judge 会显著增加 token 消耗与时间 → 算力预算要写进实验卡。
+\item
+  ⚠️ 轨迹日志可能很大 → 只保留结构化摘要（thought 截断 + 结果），避免污染仓库体积。
+\end{itemize}
+
+\newpage
+
+\section{课题11 开题简报 · 结项（NeurIPS 报告 + 现场 demo）}\label{ux8bfeux989811-ux5f00ux9898ux7b80ux62a5-ux7ed3ux9879neurips-ux62a5ux544a-ux73b0ux573a-demo}
+
+\begin{quote}
+模块：\textbf{M9} ｜ 周次：\textbf{W15--W16（12-21→2027-01-03）} ｜ 算力：\textbf{弹性 ≤4 GPU·小时} 唐杰作业对应：\textbf{⑥ 英文 NeurIPS 格式 + W16 现场 demo}、\textbf{⑦ 作业 40\% / 大项目 60\%} ｜ 判分来源：\textbf{报告协议 + 导师审稿 + 自我攻击}
+\end{quote}
+
+\subsection{一、研究背景}\label{ux4e00ux7814ux7a76ux80ccux666f-9}
+
+唐杰的原话是''\textbf{问题、动机、方法、结果，一项都不能糊}''。 这恰好也是本学科九份章程反复强调的：\textbf{没有证据的结论不采纳、no-go 不擦除、误差棒必填}。 结项不是''写一篇总结''，而是\textbf{把 11 个课题的证据链组装成一份可被审稿的作品}。
+
+\subsection{二、研究问题（结项版）}\label{ux4e8cux7814ux7a76ux95eeux9898ux7ed3ux9879ux7248}
+
+\begin{quote}
+\textbf{我能不能用一份英文技术报告 + 一个可运行的 demo，证明我独立完成了大模型全链路，并且知道自己的结论在哪里不成立？}
+\end{quote}
+
+\subsection{三、攻关线索}\label{ux4e09ux653bux5173ux7ebfux7d22-9}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{报告骨架}（NeurIPS 风格，8--10 页）：Abstract / Introduction / Related Work / Method / Experiments / Results / Discussion \& Limitations / Conclusion
+\item
+  \textbf{只写有证据的结论}：每个数字都能指回 \texttt{证据/} 中的原始日志
+\item
+  \textbf{Limitations 必须诚实}：规模受限（0.1B vs 前沿）、算力受限（免费档）、评测口径的局限
+\item
+  \textbf{Demo 设计}：现场演示要\textbf{可在 3 分钟内跑完}（预生成 checkpoint，不现场训练）
+\item
+  \textbf{自我攻击 3 条}：主动写出''我的结论最可能错在哪''
+\item
+  \textbf{一稿多用}：这份报告同时作为课程大论文（70\%）与唐杰作业⑦的交付物
+\end{enumerate}
+
+\subsection{四、里程碑}\label{ux56dbux91ccux7a0bux7891-9}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  M1 证据清点：11 个课题的 \texttt{证据/} 全部齐备，缺的补齐（这是一次''审计''）
+\item[$\square$]
+  M2 英文报告初稿（Abstract + Method + Experiments 先写）
+\item[$\square$]
+  M3 图表规范化：所有图有坐标轴、单位、误差棒、样本数
+\item[$\square$]
+  M4 \textbf{自我攻击 3 条} + 导师审稿 3--5 条 → 修订
+\item[$\square$]
+  M5 Demo 准备：脚本 + 预生成模型 + 3 分钟演练
+\item[$\square$]
+  M6 总复盘：写进 \texttt{memory/LEARNINGS.md}（哪些讲法有效、哪些坑最贵）
+\item[$\square$]
+  M7 课程大论文定稿并提交（署名直填：孙承泽 / 2253710052 / 能动强基2501）
+\end{itemize}
+
+\subsection{五、交付物}\label{ux4e94ux4ea4ux4ed8ux7269-9}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+交付物 & 位置 & 验收 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+英文报告 & \texttt{课题11-结项/report-en.md}（+ PDF） & 格式合规、结论有据 \\
+中文大论文 & \texttt{课程轨/大论文/} & 课程要求格式 \\
+Demo & \texttt{课题11-结项/脚手架/demo.sh} & 3 分钟内可跑 \\
+复盘 & \texttt{memory/LEARNINGS.md} + \texttt{HANDOFF.md} & 可被下一任直接接续 \\
+\end{longtable}
+}
+
+\subsection{六、讲课锚点}\label{ux516dux8bb2ux8bfeux951aux70b9-8}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{讲义}：\texttt{M9-前沿.md}（W15 展开）
+\item
+  \textbf{对标}：\textbf{rasbt ch3 的''先建评测''精神}贯穿全文 · CS336 报告规范 · \texttt{论文精读/} 的英文写作规范
+\item
+  \textbf{搭桥}：\texttt{turbine-blade-ai-platform}（应用章节）；\texttt{人工智能基础与应用/课程轨/大论文}（一稿两用）
+\end{itemize}
+
+\subsection{七、自检清单（结项前必过，抄自《判分与验收标准》§五）}\label{ux4e03ux81eaux68c0ux6e05ux5355ux7ed3ux9879ux524dux5fc5ux8fc7ux6284ux81eaux5224ux5206ux4e0eux9a8cux6536ux6807ux51c6ux4e94}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  每个数字都能在 \texttt{证据/} 找到原始日志吗？
+\item
+  ``变好了''有没有可能是口径变了 / 只挑了好种子？
+\item
+  有没有把\textbf{训练集表现}当能力？
+\item
+  每个''因为\ldots 所以\ldots``有没有反事实检验？
+\item
+  图表的坐标轴与误差棒都标了吗？
+\item
+  我写下的最强反方论点是什么？
+\end{enumerate}
+
+\subsection{八、风险与提醒}\label{ux516bux98ceux9669ux4e0eux63d0ux9192-9}
+
+\begin{itemize}
+\tightlist
+\item
+  ⚠️ 报告最易犯的错是\textbf{夸大}：规模受限就要说受限，这反而是可信度来源。
+\item
+  ⚠️ 不要为了''好看''删掉 no-go 记录------用户明确要求''负结果不许擦除''。
+\item
+  ⚠️ W16 现场 demo 必须有\textbf{失败预案}（预生成结果 + 录屏），不依赖现场网络与算力。
+\end{itemize}
+
+\end{document}

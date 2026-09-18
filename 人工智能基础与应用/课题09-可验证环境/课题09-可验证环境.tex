@@ -1,0 +1,214 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+  chinese,
+  11pt,
+]{ctexart}
+\usepackage{xcolor}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Noto Serif SC}
+    \setCJKsansfont[]{Noto Sans SC}
+    \setCJKmonofont[]{DejaVu Sans Mono}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Noto Serif SC}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\ifLuaTeX
+\usepackage[bidi=basic,shorthands=off,provide=*]{babel}
+\else
+\usepackage[bidi=default,shorthands=off,provide=*]{babel}
+\fi
+\ifLuaTeX
+  \usepackage{selnolig} % disable illegal ligatures
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={课题09-可验证环境},
+  pdflang={zh-CN},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{课题09-可验证环境}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section{课题09 开题简报 · 可验证环境 + harness}\label{ux8bfeux989809-ux5f00ux9898ux7b80ux62a5-ux53efux9a8cux8bc1ux73afux5883-harness}
+
+\begin{quote}
+模块：\textbf{M7/M8} ｜ 周次：\textbf{W13（12-07→12-13）} ｜ 算力：\textbf{T2 Kaggle 2×T4，计划 6 GPU·小时} 唐杰作业对应：\textbf{⑤ 搭可验证环境 + harness} ｜ 判分来源：\textbf{自建}（判定逻辑单测 + rollout 成功率） 手写：\textbf{R9（判定逻辑 / verifier）}
+\end{quote}
+
+\subsection{一、研究背景}\label{ux4e00ux7814ux7a76ux80ccux666f}
+
+2026 年的关键词是''\textbf{可验证奖励}''：与其训练一个会拍马屁的奖励模型，不如\textbf{造一个能判定对错的环境}。 CS336 没有这一环，Berkeley Agentic AI MOOC 专门有一讲叫 ``Post-Training Verifiable Agents''， \texttt{PrimeIntellect-ai/verifiers} 把它抽象成库。唐杰作业⑤要求''搭可验证环境 + harness''正是这个方向。
+
+\textbf{``可验证''的三要素}：①任务是可判定的（不是主观好坏）②环境能给出稳定反馈 ③harness 能重复运行并复现。
+
+\subsection{二、研究问题}\label{ux4e8cux7814ux7a76ux95eeux9898}
+
+\begin{quote}
+\textbf{我能为一个小模型设计一个''可自动判定''的任务环境吗？判定逻辑的假阳性/假阴性有多高？模型在这个环境里的成功率是多少？}
+\end{quote}
+
+\subsection{三、攻关线索}\label{ux4e09ux653bux5173ux7ebfux7d22}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{选题}：从三个里选一个（按成本从低到高）
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ①\textbf{数学题解答}（用数值比对 + 容错；MATH-500 风格）
+  \item
+    ②\textbf{函数补全}（隐藏单元测试；本质是迷你 HumanEval）
+  \item
+    ③\textbf{格式约束生成}（如严格 JSON / 表格填充，规则判定）
+  \end{itemize}
+\item
+  \textbf{判定逻辑的三大坑}：等价但不相同（\texttt{1/2} vs \texttt{0.5}）、解析失败当错、\textbf{边界用例漏判}
+\item
+  \textbf{假阳性检测}：人为构造''错误但能骗过判定器''的答案 → 测出\textbf{假阳性率}（这是质量的核心指标）
+\item
+  \textbf{harness 设计}：任务装载 → 模型生成 → 判定 → 记录轨迹 → 复现（固定种子）
+\item
+  \textbf{可重复性}：同一批任务跑两次，成功率波动多大？（\textbf{误差棒思维}，M7 讲过）
+\item
+  \textbf{对照}：可验证奖励 vs 规则弱判定（如只看格式），用同一模型比成功率差异
+\end{enumerate}
+
+\subsection{四、里程碑}\label{ux56dbux91ccux7a0bux7891}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  M1 选定任务类型，写 30--100 道题的\textbf{题集}（含标准答案与判定规则）
+\item[$\square$]
+  M2 \textbf{判定逻辑单测}：等价形式、边界、异常输入（≥10 个用例）
+\item[$\square$]
+  M3 \textbf{假阳性实验}：构造 10 个''错误但可能蒙混''的答案，测出漏判率
+\item[$\square$]
+  M4 harness 跑通：给基座模型跑一遍，得成功率 + 失败样本
+\item[$\square$]
+  M5 失败分类：把失败归成 3--5 类（格式错 / 计算错 / 中途放弃 / 判定器误杀）
+\item[$\square$]
+  M6 一页报告：\textbf{判定器质量 + 模型表现 两个都要报}
+\end{itemize}
+
+\subsection{五、交付物}\label{ux4e94ux4ea4ux4ed8ux7269}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+交付物 & 位置 & 验收 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+题集与判定器 & \texttt{手写/}（判定逻辑 R9） & M2 单测通过 \\
+harness 脚本 & \texttt{脚手架/}（B3） & 固定种子可复跑 \\
+失败样本 & \texttt{证据/} & ≥20 条，分类标注 \\
+假阳性报告 & \texttt{报告.md} & 含漏判率与典型案例 \\
+\end{longtable}
+}
+
+\subsection{六、讲课锚点}\label{ux516dux8bb2ux8bfeux951aux70b9}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{讲义}：\texttt{M8-智能体.md}（W13 展开）
+\item
+  \textbf{对标}：Berkeley Agentic AI MOOC 的 ``Post-Training Verifiable Agents'' 与 ``Agent Evaluation'' 讲 · \texttt{PrimeIntellect-ai/verifiers}（\textbf{只读概念，不引入代码}）· \texttt{harbor-framework/terminal-bench} 的任务设计思路 · \textbf{rasbt ch3}（评测器设计：解析 + verifier + 基准式检查）
+\end{itemize}
+
+\subsection{七、代码级提问示例}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95eeux793aux4f8b}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  你的判定器把 \texttt{1/2} 判错、把 \texttt{0.50} 判对------这属于哪一类错误？如何系统性避免？
+\item
+  假阳性率高会导致 RL 训练出现什么后果？（联系课题08 的 reward hacking）
+\item
+  同一批任务两次运行成功率差 8\%。你会先怀疑模型还是 harness？怎么验证？
+\item
+  为什么''用 LLM 当裁判''在可验证任务上通常是\textbf{退步}？
+\end{enumerate}
+
+\subsection{八、风险与提醒}\label{ux516bux98ceux9669ux4e0eux63d0ux9192}
+
+\begin{itemize}
+\tightlist
+\item
+  ⚠️ \textbf{判定器本身也要被评测}：只报模型成功率不报判定器质量，是不完整的实验。
+\item
+  ⚠️ 题集不要抄公开 benchmark（污染问题），\textbf{自己出题 + 自己判定}才是本课题的价值。
+\item
+  ⚠️ 配额有限：优先''题集质量高、任务简单''，不要一上来做代码执行沙箱（那是课题10 的事）。
+\end{itemize}
+
+\end{document}

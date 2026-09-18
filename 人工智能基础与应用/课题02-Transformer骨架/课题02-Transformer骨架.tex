@@ -1,0 +1,209 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+  chinese,
+  11pt,
+]{ctexart}
+\usepackage{xcolor}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Noto Serif SC}
+    \setCJKsansfont[]{Noto Sans SC}
+    \setCJKmonofont[]{DejaVu Sans Mono}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Noto Serif SC}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\ifLuaTeX
+\usepackage[bidi=basic,shorthands=off,provide=*]{babel}
+\else
+\usepackage[bidi=default,shorthands=off,provide=*]{babel}
+\fi
+\ifLuaTeX
+  \usepackage{selnolig} % disable illegal ligatures
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={课题02-Transformer骨架},
+  pdflang={zh-CN},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{课题02-Transformer骨架}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section{课题02 开题简报 · Transformer 骨架与训练循环}\label{ux8bfeux989802-ux5f00ux9898ux7b80ux62a5-transformer-ux9aa8ux67b6ux4e0eux8badux7ec3ux5faaux73af}
+
+\begin{quote}
+模块：\textbf{M0/M1/M3} ｜ 周次：\textbf{W2--W3（09-21→10-04）} ｜ 算力：\textbf{T0 纯 CPU，0 GPU·小时} 唐杰作业对应：\textbf{① 从零写 Transformer} 的后半 ｜ 判分来源：\textbf{CS336 A1 \texttt{tests/test\_model.py}、\texttt{test\_nn\_utils.py}、\texttt{test\_optimizer.py}、\texttt{test\_serialization.py}} 手写：\textbf{R2（Transformer 全部组件）+ R3（训练循环与优化器）+ R4（反向传播验证）}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{一、研究背景}\label{ux4e00ux7814ux7a76ux80ccux666f}
+
+2017 年《Attention Is All You Need》删掉 RNN，用自注意力 + 前馈层实现 \textbf{O(1) 依赖路径 + 全并行}。 此后所有主流大模型都是它的变体，但\textbf{细节已经换了一轮}：正弦位置编码 → RoPE；LayerNorm → RMSNorm； post-norm → pre-norm；ReLU MLP → SwiGLU；MHA → GQA。\textbf{本课题要求你把现代版写出来，而不是复刻 2017 版。}
+
+\subsection{二、研究问题（一句话）}\label{ux4e8cux7814ux7a76ux95eeux9898ux4e00ux53e5ux8bdd}
+
+\begin{quote}
+\textbf{一个''能从零训起来''的现代 Transformer 层，最少需要哪几个组件？每个组件去掉之后，训练会以什么方式失败？}
+\end{quote}
+
+\subsection{三、攻关线索}\label{ux4e09ux653bux5173ux7ebfux7d22}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{形状先行}：写下每一步的张量形状（含 batch、序列、头数），\textbf{先能在纸上跑通}，再写代码。
+\item
+  \textbf{注意力的三个动作}：投影出 Q/K/V → 缩放点积 + 因果掩码 → softmax 加权求和并输出投影。哪一步最容易错？为什么？
+\item
+  \textbf{位置信息}：RoPE 为什么是''旋转 Q/K''而不是''加到输入上''？（讲义 M3 §三给了恒等式）
+\item
+  \textbf{归一化与残差}：为什么 pre-norm 比 post-norm 好训？残差提供了什么''通路''？
+\item
+  \textbf{优化器}：AdamW 里''解耦权重衰减''解耦的是什么？为什么它比 L2 正则更常用？
+\item
+  \textbf{稳定性}：梯度裁剪在什么情况下救命？fp16 vs bf16 的差别如何影响 loss 曲线？
+\end{enumerate}
+
+\subsection{四、里程碑}\label{ux56dbux91ccux7a0bux7891}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  M1 手写全部组件：注意力（含因果 mask 与 RoPE）、RMSNorm、SwiGLU FFN、残差堆叠、初始化
+\item[$\square$]
+  M2 形状与数值判分通过：\texttt{test\_model.py} / \texttt{test\_nn\_utils.py} 全绿
+\item[$\square$]
+  M3 手写训练循环 + AdamW + LR 调度 + 梯度裁剪 → \texttt{test\_optimizer.py} / \texttt{test\_serialization.py} 全绿
+\item[$\square$]
+  M4 端到端：\textbf{CPU 上训一个极小模型（d4--d8），loss 稳定下降}，并保存/加载 checkpoint 续训成功
+\item[$\square$]
+  M5 \textbf{R4 反向传播验证}：与 PyTorch autograd 的数值梯度对照（相对误差 \textless{} 1e-6）
+\item[$\square$]
+  M6 \textbf{三组改坏实验}（去 mask / 换位置编码 / 去残差）：每组先写预测，再跑，再记录
+\item[$\square$]
+  M7 一页报告 + 知识卡 ≥3 张
+\end{itemize}
+
+\subsection{五、交付物}\label{ux4e94ux4ea4ux4ed8ux7269}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+交付物 & 位置 & 验收 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+实现 & \texttt{手写/}（你写） & M2/M3 判分全绿 \\
+判分输出 & \texttt{判卷记录.md} & \texttt{证据/judge-*.log} 原文 \\
+改坏实验记录 & \texttt{证据/改坏实验.md} & 预测→现象→解释 三段齐全 \\
+loss 曲线 & \texttt{证据/} & 训练日志 + 图（含坐标轴与步数） \\
+报告 & \texttt{报告.md} & 一页四段 \\
+\end{longtable}
+}
+
+\subsection{六、讲课锚点（讲义 M3 + 对标）}\label{ux516dux8bb2ux8bfeux951aux70b9ux8bb2ux4e49-m3-ux5bf9ux6807}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{讲义}：\texttt{讲义/M3-Transformer内部机制.md}（主干）+ \texttt{讲义/M0-数学与机器学习地基.md}（§一 自动微分、§五 排查顺序）
+\item
+  \textbf{对标}：CS336 lecture 03--04 · rasbt ch3--ch4 · 李沐 d2l ch10--ch11
+\item
+  \textbf{必备工具链}：\texttt{bash\ 环境/bootstrap\_cpu.sh\ -\/-with-torch}（本课题起需要 torch）
+\end{itemize}
+
+\subsection{七、代码级提问示例（讲课中出，先预测后验证）}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95eeux793aux4f8bux8bb2ux8bfeux4e2dux51faux5148ux9884ux6d4bux540eux9a8cux8bc1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  把因果 mask 从 softmax \textbf{之前}挪到\textbf{之后}，训练现象会怎样？
+\item
+  去掉残差后，4 层还能训、12 层完全不动------请用梯度路径解释。
+\item
+  你把 RoPE 的最大频率底数从 10000 改成 100：短文训练会受影响吗？长上下文外推呢？
+\item
+  AdamW 的 \texttt{weight\_decay} 若改成''直接加到梯度上''（即 L2），在大学习率下会出现什么差异？
+\end{enumerate}
+
+\subsection{八、风险与提醒}\label{ux516bux98ceux9669ux4e0eux63d0ux9192}
+
+\begin{itemize}
+\tightlist
+\item
+  ⚠️ \textbf{CPU 训练极慢}：本课题\textbf{只要能训起来、loss 下降}即可，不追求指标（真训练在课题04）。
+\item
+  ⚠️ 形状错误是最高频故障：\textbf{先写形状注释再写实现}，可省一半时间。
+\item
+  ⚠️ 判分器需要 torch；\texttt{bootstrap\ -\/-with-torch} 首次约 555MB（沙箱网络受限时可能失败，届时改用 Kaggle CPU 会话）。
+\end{itemize}
+
+\end{document}

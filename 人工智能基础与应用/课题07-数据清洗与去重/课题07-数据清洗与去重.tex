@@ -1,0 +1,204 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+  chinese,
+  11pt,
+]{ctexart}
+\usepackage{xcolor}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Noto Serif SC}
+    \setCJKsansfont[]{Noto Sans SC}
+    \setCJKmonofont[]{DejaVu Sans Mono}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Noto Serif SC}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\ifLuaTeX
+\usepackage[bidi=basic,shorthands=off,provide=*]{babel}
+\else
+\usepackage[bidi=default,shorthands=off,provide=*]{babel}
+\fi
+\ifLuaTeX
+  \usepackage{selnolig} % disable illegal ligatures
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={课题07-数据清洗与去重},
+  pdflang={zh-CN},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{课题07-数据清洗与去重}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section{课题07 开题简报 · 数据清洗与去重}\label{ux8bfeux989807-ux5f00ux9898ux7b80ux62a5-ux6570ux636eux6e05ux6d17ux4e0eux53bbux91cd}
+
+\begin{quote}
+模块：\textbf{M7/M4} ｜ 周次：\textbf{W10（11-16→11-22）} ｜ 算力：\textbf{T1 Kaggle 1×T4，计划 6 GPU·小时} 唐杰作业对应：\textbf{③ 从 raw dump 洗语料} ｜ 判分来源：\textbf{CS336 A4}（过滤/去重规格）+ 自建消融 手写：\textbf{R8（过滤/去重的判定规则设计）}
+\end{quote}
+
+\subsection{一、研究背景}\label{ux4e00ux7814ux7a76ux80ccux666f}
+
+``数据决定上限''已是共识：C4/FineWeb/Dolma 等工作的主要贡献\textbf{不是模型而是数据管线}。 典型手段：语言识别、质量启发式（重复度、符号比、平均行长）、有毒内容过滤、\textbf{近似去重（MinHash/LSH）}。 最有教学价值的现象：\textbf{清洗规则过严会伤害模型}（把有价值的长尾数据也删了）。
+
+\subsection{二、研究问题}\label{ux4e8cux7814ux7a76ux95eeux9898}
+
+\begin{quote}
+\textbf{在固定算力下，``清洗 + 去重''能把同样规模模型的下游表现提升多少？每条规则的收益与代价各是多少？}
+\end{quote}
+
+\subsection{三、攻关线索}\label{ux4e09ux653bux5173ux7ebfux7d22}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{基线优先}：先训一个''未清洗''的基线（可与课题04 的结果复用）------ \textbf{没有对照就无法声称''清洗有效''}
+\item
+  \textbf{规则设计}：至少三条可解释规则（如：短行比例、符号-词比、n-gram 重复率），每条要能说清''它在拦什么''
+\item
+  \textbf{去重量级}：精确去重（哈希）与近似去重（MinHash + LSH）的成本差异；文档级 vs 段落级
+\item
+  \textbf{消融}：逐条关掉规则各跑一次（小规模即可），得''每条规则的边际贡献''表
+\item
+  \textbf{口径}：所有对照必须\textbf{同 token 预算、同分词器、同评测}（否则结论无效）
+\item
+  \textbf{常用工具对照}：\texttt{datajuicer/data-juicer}（Apache-2.0，活跃）与 \texttt{allenai/dolma} 的规则集可作参考
+\end{enumerate}
+
+\subsection{四、里程碑}\label{ux56dbux91ccux7a0bux7891}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  M1 数据来源与规模确定（用 owt-sample / TinyStories 扩样，或小规模 CC 采样）
+\item[$\square$]
+  M2 手写 3 条启发式规则 + 1 个去重算法（精确哈希起步，有余力再上 MinHash）
+\item[$\square$]
+  M3 规则单元测试（\textbf{含假阳性样例}：被误删的好数据长什么样）
+\item[$\square$]
+  M4 训练对照：未清洗 vs 全部清洗 vs 逐条消融（≥4 组跑）
+\item[$\square$]
+  M5 结果表：每组的下游指标 + \textbf{数据保留率}（这是被忽略的关键列）
+\item[$\square$]
+  M6 一页报告：必须回答''哪条规则最值钱、哪条可能有害''
+\end{itemize}
+
+\subsection{五、交付物}\label{ux4e94ux4ea4ux4ed8ux7269}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+交付物 & 位置 & 验收 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+过滤/去重实现 & \texttt{手写/} & M3 单测通过 \\
+规则清单与理由 & \texttt{报告.md} & 每条规则说明''拦什么、代价是什么'' \\
+对照实验数据 & \texttt{证据/对照.csv} & 含保留率与指标 \\
+假阳性样例 & \texttt{证据/} & ≥5 条被误删的好数据 \\
+\end{longtable}
+}
+
+\subsection{六、讲课锚点}\label{ux516dux8bb2ux8bfeux951aux70b9}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{讲义}：\texttt{M7-评测.md}（W9 展开）中''数据质量与评测的关系''
+\item
+  \textbf{对标}：CS336 lecture 13--14（Data）+ A4 handout · \texttt{datajuicer/data-juicer} 规则文档 · Dolma 论文
+\item
+  \textbf{搭桥}：概率论的\textbf{采样与分布} ------ 过滤本质是''改变训练分布''，会引入选择偏差
+\end{itemize}
+
+\subsection{七、代码级提问示例}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95eeux793aux4f8b}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  过滤掉''短行''能提分，但会不会系统性删掉对话/代码类数据？怎么检测这种偏差？
+\item
+  精确去重 vs 近似去重：各自漏掉什么、误杀什么？
+\item
+  数据保留率从 90\% 降到 50\%，你如何判断''这是提纯还是阉割''？
+\item
+  \textbf{【下注】} 预测''全部清洗''相对''未清洗''的提升幅度，先写再测。
+\end{enumerate}
+
+\subsection{八、风险与提醒}\label{ux516bux98ceux9669ux4e0eux63d0ux9192}
+
+\begin{itemize}
+\tightlist
+\item
+  ⚠️ 磁盘：本课题可能涉及较大语料，\textbf{大文件绝不进 git}（见学科 \texttt{.gitignore}）。
+\item
+  ⚠️ 不要一开始就上 MinHash 集群版：\textbf{先精确去重跑通闭环}，再考虑近似。
+\item
+  ⚠️ 4 组对照训练会吃掉配额：\textbf{用小模型 + 短序列}，保证口径一致即可。
+\end{itemize}
+
+\end{document}
