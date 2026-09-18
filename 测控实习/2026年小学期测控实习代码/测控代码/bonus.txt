@@ -1,0 +1,159 @@
+/* 本图形需使用示波器xy模式（与大物实验中李萨如图显示模式相同）  */
+
+#include <windows.h>
+#include <iostream>
+#include <conio.h>
+#include <cmath>
+#include "winio.h"
+
+#pragma comment(lib, "winio.lib")
+
+using namespace std;
+
+const unsigned short BASE = 0x3F40;
+const double PI = 3.141592653589793;
+
+// 同时输出X、Y坐标
+void AO_OutputXY(double x, double y)
+{
+	if (x < 0) x = 0;
+	if (x > 10) x = 10;
+	if (y < 0) y = 0;
+	if (y > 10) y = 10;
+
+	unsigned short dx =
+		(unsigned short)(x / 10.0 * 4095.0 + 0.5);
+
+	unsigned short dy =
+		(unsigned short)(y / 10.0 * 4095.0 + 0.5);
+
+	// AO0：X轴
+	SetPortVal(BASE + 10, dx & 0xFF, 1);
+	SetPortVal(BASE + 11, (dx >> 8) & 0x0F, 1);
+
+	// AO1：Y轴
+	SetPortVal(BASE + 12, dy & 0xFF, 1);
+	SetPortVal(BASE + 13, (dy >> 8) & 0x0F, 1);
+}
+
+// 绘制一只眼睛
+void DrawEye(double centerX, double centerY,
+	double radius, double angle)
+{
+	const int EYE_POINT_COUNT = 180;
+
+	// 外圆
+	for (int i = 0; i <= EYE_POINT_COUNT; i++)
+	{
+		double t = 2.0 * PI * i / EYE_POINT_COUNT;
+
+		double x = centerX + radius * cos(t);
+		double y = centerY + radius * sin(t);
+
+		AO_OutputXY(x, y);
+	}
+
+	// 内部万花筒图案
+	for (int i = 0; i <= EYE_POINT_COUNT; i++)
+	{
+		double t = 2.0 * PI * i / EYE_POINT_COUNT;
+
+		double r =
+			0.30 +
+			0.65 * pow(fabs(cos(3.0 * t)), 1.4);
+
+		double x = r * cos(t);
+		double y = r * sin(t);
+
+		// 旋转变换
+		double xr =
+			x * cos(angle) -
+			y * sin(angle);
+
+		double yr =
+			x * sin(angle) +
+			y * cos(angle);
+
+		AO_OutputXY(
+			centerX + radius * xr,
+			centerY + radius * yr
+			);
+	}
+}
+
+// 绘制嘴巴弧线
+void DrawMouth()
+{
+	const int MOUTH_POINT_COUNT = 120;
+
+	/*
+	t的范围为-1～1。
+
+	x控制嘴巴宽度；
+	t*t产生浅弧线；
+	0.08*t使嘴巴略微倾斜。
+	*/
+	for (int i = 0; i <= MOUTH_POINT_COUNT; i++)
+	{
+		double t =
+			-1.0 +
+			2.0 * i / MOUTH_POINT_COUNT;
+
+		double x = 5.0 + 1.65 * t;
+
+		double y =
+			2.8 +
+			0.22 * t * t +
+			0.08 * t;
+
+		AO_OutputXY(x, y);
+	}
+}
+
+int main()
+{
+	if (!InitializeWinIo())
+	{
+		cout << "InitializeWinIo失败！" << endl;
+		return 1;
+	}
+
+	// AO0、AO1都采用内部10V参考
+	SetPortVal(BASE + 14, 0x05, 1);
+
+	cout << "AO0连接CH1，AO1连接CH2。" << endl;
+	cout << "示波器切换到XY模式。" << endl;
+	cout << "按任意键停止。" << endl;
+
+	double angle = 0;
+
+	while (!_kbhit())
+	{
+		// 重复描画眼睛，让图形更亮
+		for (int i = 0; i < 2; i++)
+		{
+			DrawEye(1, 5.3, 1, angle);
+			DrawEye(9, 5.3, 1, -angle);
+		}
+
+		// 多描画几次嘴巴，使弧线更加明显
+		for (int i = 0; i < 4; i++)
+		{
+			DrawMouth();
+		}
+
+		angle += 0.025;
+
+		if (angle >= 2.0 * PI)
+		{
+			angle -= 2.0 * PI;
+		}
+	}
+
+	_getch();
+
+	AO_OutputXY(0, 0);
+	ShutdownWinIo();
+
+	return 0;
+}

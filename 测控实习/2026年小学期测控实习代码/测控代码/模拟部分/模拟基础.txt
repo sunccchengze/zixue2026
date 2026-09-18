@@ -1,0 +1,147 @@
+#include <iostream>
+#include <windows.h>
+#include <conio.h>
+#include "winio.h"
+using namespace std;
+
+#pragma comment(lib, "winio.lib")
+
+// 函数声明
+bool DA_Output(int channel, float voltage);   // 电压范围 0~10V
+bool AD_Input(int channel, float &voltage);   // 电压范围 ±10V
+
+int main()
+{
+	if (!InitializeWinIo()) {
+		cout << "Error In InitializeWinIo!" << endl;
+		return 1;
+	}
+
+	unsigned short BASE_ADDRESS = 0x3F40;
+
+	// ---- A/D 初始化（双极性 ±10V） ----
+	SetPortVal(BASE_ADDRESS + 9, 0, 1);   // Clear FIFO
+	SetPortVal(BASE_ADDRESS + 4, 0, 1);   // Start channel 0
+	SetPortVal(BASE_ADDRESS + 5, 0, 1);   // Stop channel 0
+
+	// 设置增益寄存器：双极性 ±10V，增益0.5，单端
+	// B/U=0, S/D=0, G2=1,G1=0,G0=0  => 0x04
+	SetPortVal(BASE_ADDRESS + 2, 0x04, 1);
+
+	char c;
+	float setVolt, readVolt;
+
+	while (1) {
+		system("cls");
+		cout << "请设定 AO 输出电压 (范围 0 ~ 10V)：";
+		cin >> setVolt;
+		if (setVolt < 0)   setVolt = 0;
+		if (setVolt > 10)  setVolt = 10;
+
+		// D/A 输出（0~10V）
+		if (!DA_Output(0, setVolt)) {
+			cout << "D/A 输出失败！" << endl;
+			break;
+		}
+
+		// A/D 采集（通道0，±10V）
+		if (!AD_Input(0, readVolt)) {
+			cout << "A/D 采集失败！" << endl;
+			break;
+		}
+
+		// 计算误差
+		float absErr = setVolt - readVolt;
+		if (absErr < 0) absErr = -absErr;
+		float relErr = (setVolt == 0.0f) ? 0.0f : (absErr / setVolt * 100.0f);
+
+		cout << "\n设定电压 : " << setVolt << " V" << endl;
+		cout << "采集电压 : " << readVolt << " V" << endl;
+		cout << "绝对误差 : " << absErr << " V" << endl;
+		cout << "相对误差 : " << relErr << " %" << endl;
+
+		cout << "\n按 'n' 继续，其他键退出..." << endl;
+		c = _getch();
+		if (c != 'n' && c != 'N') break;
+	}
+
+	// 退出前清零 AO
+	DA_Output(0, 0.0f);
+	ShutdownWinIo();
+	return 0;
+}
+
+// D/A 输出（单极性 0~10V，参考10V）
+bool DA_Output(int channel, float voltage)
+{
+	if (channel < 0 || channel > 1) return false;
+	if (voltage < 0.0f || voltage > 10.0f) return false;
+
+	unsigned short BASE_ADDRESS = 0x3F40;
+	int AOPort;
+	int LByte, HByte;
+	unsigned short outData;
+
+	// 设置内部参考电压为 10V
+	unsigned char refCtrl = 0;
+	if (channel == 0)
+		refCtrl |= 0x01;   // DA0_5/10 = 1 (10V)
+	else
+		refCtrl |= 0x04;   // DA1_5/10 = 1 (10V)
+	SetPortVal(BASE_ADDRESS + 14, refCtrl, 1);
+
+	// 计算 12 位 DAC 码值（0~10V）
+	outData = (unsigned short)(voltage / 10.0f * 0xFFF);
+	if (outData > 0xFFF) outData = 0xFFF;
+
+	LByte = outData & 0xFF;
+	HByte = (outData >> 8) & 0x0F;
+
+	AOPort = 10 + channel * 2;
+	SetPortVal(BASE_ADDRESS + AOPort, LByte, 1);
+	SetPortVal(BASE_ADDRESS + AOPort + 1, HByte, 1);
+
+	return true;
+}
+
+// A/D 采集（双极性 ±10V）
+bool AD_Input(int channel, float &voltage)
+{
+	unsigned short BASE_ADDRESS = 0x3F40;
+	unsigned char ucStatus = 1;
+	DWORD *p = new DWORD;
+	unsigned short adData;
+
+	// 设置起始和结束通道
+	SetPortVal(BASE_ADDRESS + 4, channel, 1);
+	SetPortVal(BASE_ADDRESS + 5, channel, 1);
+
+	// 软件触发（控制寄存器 0x01，写 BASE+0）
+	SetPortVal(BASE_ADDRESS + 6, 0x01, 1);
+	SetPortVal(BASE_ADDRESS + 0, 0, 1);
+
+	// 等待转换完成（轮询状态寄存器 bit0）
+	int timeout = 10000;   
+	while (ucStatus == 1 && timeout--) {
+		GetPortVal(BASE_ADDRESS + 7, p, 1);
+		ucStatus = (*p) & 0x01;
+		Sleep(1);
+	}
+	delete p;
+
+	if (timeout == 0) {
+		voltage = 0.0f;
+		return false;
+	}
+
+	// 读取 2 字节 AD 数据
+	DWORD *pData = new DWORD;
+	GetPortVal(BASE_ADDRESS + 0, pData, 2);
+	adData = (*pData) & 0x0FFF;
+	delete pData;
+
+	// 换算为电压（双极性 ±10V）
+	voltage = 20.0f * adData / 4095.0f - 10.0f;
+
+	return true;
+}

@@ -1,0 +1,327 @@
+// 数字量输入例
+
+#include <windows.h>
+#include <iostream>
+#include <conio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <iomanip>
+#include "winio.h"
+
+#pragma comment(lib, "winio.lib")
+
+using namespace std;
+
+unsigned short BASE = 0x3F40;
+int iPort = 16;
+
+// 控制台中显示负载的行号
+const SHORT LOAD_DISPLAY_LINE = 1;
+
+// 读取端口
+DWORD Read()
+{
+	DWORD data = 0;
+
+	if (!GetPortVal(BASE + iPort, &data, 1))
+	{
+		return 0xFF;
+	}
+
+	return data & 0xFF;
+}
+
+// 写入端口
+void Write(DWORD data)
+{
+	SetPortVal(BASE + iPort, data, 1);
+}
+
+// 获取系统负载
+int GetLoad(DWORD DI_data)
+{
+	/*
+		光电对管3～6对应bit2～bit5。
+
+		输入低电平有效，因此对提取出的4位数据取反。
+		结果范围为0～15。
+	*/
+	return 15 - static_cast<int>((DI_data >> 2) & 0x0F);
+}
+
+// 在控制台指定位置显示负载，不再清屏
+void ShowLoad(int load, bool forceRefresh = false)
+{
+	static int lastLoad = -1;
+	static DWORD lastRefreshTime = 0;
+
+	DWORD currentTime = GetTickCount();
+
+	/*
+		负载发生变化时立即刷新。
+
+		如果负载没有变化，则每100毫秒刷新一次，
+		避免频繁操作控制台。
+	*/
+	if (!forceRefresh &&
+		load == lastLoad &&
+		currentTime - lastRefreshTime < 100)
+	{
+		return;
+	}
+
+	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	if (consoleHandle == INVALID_HANDLE_VALUE)
+	{
+		return;
+	}
+
+	COORD position;
+	position.X = 0;
+	position.Y = LOAD_DISPLAY_LINE;
+
+	SetConsoleCursorPosition(consoleHandle, position);
+
+	/*
+		后面的空格用于覆盖上一次显示的旧内容，
+		防止字符残留。
+	*/
+	cout << "当前系统负载为："
+		 << setw(2)
+		 << load
+		 << "        "
+		 << flush;
+
+	lastLoad = load;
+	lastRefreshTime = currentTime;
+}
+
+// 显示系统停止状态
+void ShowStopped()
+{
+	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	if (consoleHandle == INVALID_HANDLE_VALUE)
+	{
+		return;
+	}
+
+	COORD position;
+	position.X = 0;
+	position.Y = LOAD_DISPLAY_LINE;
+
+	SetConsoleCursorPosition(consoleHandle, position);
+
+	cout << "当前系统状态：已停止        " << flush;
+}
+
+// 急停检测
+int EmergeStop(int* Start)
+{
+	DWORD DI_data = Read();
+
+	// 光电对管8对应bit7，低电平有效
+	if ((DI_data & 0x80) == 0)
+	{
+		*Start = 0;
+		Write(0);
+		ShowStopped();
+
+		return 0;
+	}
+
+	return 1;
+}
+
+int main()
+{
+	if (!InitializeWinIo())
+	{
+		cout << "Error In InitializeWinIo" << endl;
+		return 1;
+	}
+
+	cout << "请按任意按键退出" << endl;
+	cout << "当前系统状态：已停止" << endl;
+	cout << endl;
+
+	DWORD DI_data;
+	int Start = 0;
+
+	Write(0);
+
+	while (!_kbhit())
+	{
+		DI_data = Read();
+
+		/*
+			光电对管1：启动开关
+			bit0，低电平有效
+		*/
+		if ((DI_data & 0x01) == 0 && Start == 0)
+		{
+			Start = 1;
+
+			// 启动顺序：M3 → M2 → M1
+			Write(4);
+			Sleep(500);
+
+			Write(6);
+			Sleep(500);
+
+			Write(7);
+
+			// 启动后立即显示当前负载
+			DI_data = Read();
+			ShowLoad(GetLoad(DI_data), true);
+		}
+
+		DI_data = Read();
+
+		/*
+			光电对管2：关闭/停车开关
+			bit1，低电平有效
+		*/
+		if ((DI_data & 0x02) == 0 && Start == 1)
+		{
+			Start = 0;
+
+			// 停车顺序：M1 → M2 → M3
+			Write(6);
+			Sleep(500);
+
+			Write(4);
+			Sleep(500);
+
+			Write(0);
+
+			ShowStopped();
+		}
+
+		DI_data = Read();
+		int load = GetLoad(DI_data);
+
+		if (Start == 1)
+		{
+			/*
+				只更新负载所在的控制台行，
+				不再使用system("cls")。
+			*/
+			ShowLoad(load);
+		}
+
+		if (Start == 1 && load <= 10)
+		{
+			/*
+				LED1～LED3表示三个电机运行；
+				LED4表示系统运行正常。
+
+				15 = 0000 1111
+			*/
+			Write(15);
+		}
+		else if (Start == 1 && load <= 13)
+		{
+			/*
+				LED1～LED3表示三个电机运行；
+				LED5表示负载警告。
+
+				23 = 0001 0111
+			*/
+			Write(23);
+		}
+		else if (Start == 1)
+		{
+			/*
+				LED1～LED3表示三个电机运行；
+				LED6表示错误报警。
+
+				39 = 0010 0111
+			*/
+			Write(39);
+
+			// 使用毫秒计时，避免time()秒级计时不精确
+			DWORD alarmStartTime = GetTickCount();
+
+			int recovered = 0;
+			int emergency = 0;
+
+			// 错误报警后等待3秒
+			while (GetTickCount() - alarmStartTime < 3000)
+			{
+				DI_data = Read();
+				load = GetLoad(DI_data);
+
+				// 更新负载显示
+				ShowLoad(load);
+
+				// 3秒内负载降低到13及以下，恢复系统
+				if (load <= 13)
+				{
+					recovered = 1;
+					break;
+				}
+
+				// 3秒等待期间检查急停
+				if (EmergeStop(&Start) == 0)
+				{
+					emergency = 1;
+					break;
+				}
+
+				/*
+					每20毫秒读取一次，刷新速度足够快，
+					同时避免CPU占用过高。
+				*/
+				Sleep(20);
+			}
+
+			// 急停后退出程序主循环
+			if (emergency == 1)
+			{
+				break;
+			}
+
+			// 3秒后负载仍然大于13，停止系统
+			if (recovered == 0)
+			{
+				Write(0);
+				Start = 0;
+
+				ShowStopped();
+			}
+		}
+
+		// 每轮循环末尾检查急停
+		if (EmergeStop(&Start) == 0)
+		{
+			break;
+		}
+
+		/*
+			控制主循环频率，大约每10毫秒循环一次。
+			避免程序占满一个CPU核心。
+		*/
+		Sleep(10);
+	}
+
+	Write(0);
+	ShutdownWinIo();
+
+	// 将光标移动到下面，避免退出信息覆盖负载显示
+	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	if (consoleHandle != INVALID_HANDLE_VALUE)
+	{
+		COORD position;
+		position.X = 0;
+		position.Y = 3;
+
+		SetConsoleCursorPosition(consoleHandle, position);
+	}
+
+	cout << "程序已退出。" << endl;
+
+	return 0;
+}

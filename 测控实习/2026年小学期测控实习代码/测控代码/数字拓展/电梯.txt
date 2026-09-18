@@ -1,0 +1,248 @@
+#include <windows.h>
+#include <iostream>
+#include <conio.h>
+#include "winio.h"
+#pragma comment(lib, "winio.lib")
+
+using namespace std;
+
+const unsigned short BASE = 0x3F40;
+const int PORT = 16;
+
+#define BIT_CALL1 0
+#define BIT_CALL2 1
+#define BIT_FLOOR1 2
+#define BIT_FLOOR2 3
+#define BIT_CLOSE 4
+#define BIT_OPEN 5
+
+#define BIT_LED1 0
+#define BIT_LED2 1
+#define BIT_LED_OPEN 2
+#define BIT_LED_CLOSE 3
+#define BIT_LED_UP 4
+#define BIT_LED_DOWN 5
+
+int currentFloor = 1;
+
+void SetOutput(unsigned char out) {
+    if (currentFloor == 1)
+        out |= (1 << BIT_LED1);
+    else
+        out |= (1 << BIT_LED2);
+    SetPortVal(BASE + PORT, out, 1);
+}
+
+void OpenDoor() {
+    unsigned char out = 0;
+    out |= (1 << BIT_LED_OPEN);
+    out &= ~(1 << BIT_LED_CLOSE);
+    SetOutput(out);
+    cout << "门开" << endl;
+}
+
+void CloseDoor() {
+    unsigned char out = 0;
+    out |= (1 << BIT_LED_CLOSE);
+    out &= ~(1 << BIT_LED_OPEN);
+    SetOutput(out);
+    cout << "门关" << endl;
+}
+
+
+void WaitForClose() {
+    DWORD start = GetTickCount();
+    DWORD prevInput;
+    GetPortVal(BASE + PORT, &prevInput, 1);
+    unsigned char last = (unsigned char)(prevInput & 0xFF);
+
+    cout << "等待关门，剩余: 5s" << endl;
+
+    while (GetTickCount() - start < 5000) {
+        DWORD nowVal;
+        GetPortVal(BASE + PORT, &nowVal, 1);
+        unsigned char now = (unsigned char)(nowVal & 0xFF);
+
+        // 检测下降沿
+        bool closeFall = (last & (1 << BIT_CLOSE)) && !(now & (1 << BIT_CLOSE));
+        bool openFall  = (last & (1 << BIT_OPEN)) && !(now & (1 << BIT_OPEN));
+
+        if (closeFall) {
+            cout << "关门按钮按下" << endl;
+            break;   // 退出循环，随后执行关门
+        }
+
+        if (openFall) {
+            cout << "开门按钮按下，重新计时" << endl;
+            OpenDoor();                 // 确保门开
+            start = GetTickCount();     // 重置5秒倒计时
+            // 重置显示提示
+            cout << "等待关门，剩余: 5s" << endl;
+        }
+
+        last = now;
+
+        // 每秒刷新剩余秒数
+        DWORD elapsed = GetTickCount() - start;
+        int remainSec = (5000 - elapsed) / 1000;
+        if (remainSec >= 0 && elapsed % 1000 < 50) {
+            cout << "\r等待关门，剩余: " << remainSec << "s   " << flush;
+        }
+
+        Sleep(50);
+    }
+    cout << "\r关门动作...        " << endl;
+    CloseDoor();
+    Sleep(500);
+}
+void RunToOtherFloor() {
+    int target = (currentFloor == 1) ? 2 : 1;
+    cout << "电梯运行到 " << target << " 楼..." << endl;
+
+    unsigned char out = 0;
+    out |= (1 << BIT_LED_CLOSE);   // 门关灯常亮
+
+    DWORD startTime = GetTickCount();
+    DWORD lastBlink = GetTickCount();
+    bool blink = false;
+
+    while (1) {
+        DWORD inVal;
+        GetPortVal(BASE + PORT, &inVal, 1);
+        unsigned char input = (unsigned char)(inVal & 0xFF);
+
+        // 检测平层传感器（0 表示到达）
+        bool reached = false;
+        if (target == 2) {
+            if ((input & (1 << BIT_FLOOR2)) == 0) reached = true;
+        } else {
+            if ((input & (1 << BIT_FLOOR1)) == 0) reached = true;
+        }
+
+        if (reached) break;
+
+        // 方向灯闪烁（周期 200ms）
+        if (GetTickCount() - lastBlink >= 200) {
+            blink = !blink;
+            lastBlink = GetTickCount();
+        }
+
+        unsigned char temp = out;
+        if (target == 2) {
+            if (blink) temp |= (1 << BIT_LED_UP);
+            else temp &= ~(1 << BIT_LED_UP);
+        } else {
+            if (blink) temp |= (1 << BIT_LED_DOWN);
+            else temp &= ~(1 << BIT_LED_DOWN);
+        }
+        SetPortVal(BASE + PORT, temp, 1);
+
+        // 显示运行状态（每秒）
+        DWORD elapsed = GetTickCount() - startTime;
+        if (elapsed % 1000 < 50) {
+            cout << "\r" << (target == 2 ? "上行" : "下行") << "中，已运行 " << elapsed/1000 << "s   " << flush;
+        }
+
+        Sleep(50);
+    }
+
+    currentFloor = target;
+    out &= ~((1 << BIT_LED_UP) | (1 << BIT_LED_DOWN));
+    SetOutput(out);
+    cout << "\r到达 " << currentFloor << " 楼，耗时 " << (GetTickCount() - startTime)/1000 << "s   " << endl;
+}
+
+void WaitForOut() {
+    OpenDoor();
+    DWORD start = GetTickCount();
+    DWORD prevInput;
+    GetPortVal(BASE + PORT, &prevInput, 1);
+    unsigned char last = (unsigned char)(prevInput & 0xFF);
+
+    cout << "等待人出去，剩余: 10s" << endl;
+
+    while (GetTickCount() - start < 10000) {
+        DWORD nowVal;
+        GetPortVal(BASE + PORT, &nowVal, 1);
+        unsigned char now = (unsigned char)(nowVal & 0xFF);
+
+        bool closeFall = (last & (1 << BIT_CLOSE)) && !(now & (1 << BIT_CLOSE));
+        bool openFall  = (last & (1 << BIT_OPEN)) && !(now & (1 << BIT_OPEN));
+
+        if (closeFall) {
+            cout << "关门按钮按下，立即关门" << endl;
+            break;
+        }
+
+        if (openFall) {
+            cout << "开门按钮按下，重置10秒计时" << endl;
+            start = GetTickCount();   // 重置10秒倒计时
+            // 可选：重新显示提示
+            cout << "等待人出去，剩余: 10s" << endl;
+        }
+
+        last = now;
+
+        DWORD elapsed = GetTickCount() - start;
+        int remainSec = (10000 - elapsed) / 1000;
+        if (remainSec >= 0 && elapsed % 1000 < 50) {
+            cout << "\r等待人出去，剩余: " << remainSec << "s   " << flush;
+        }
+
+        Sleep(50);
+    }
+    cout << "\r关门...               " << endl;
+    CloseDoor();
+}
+
+void main() {
+    if (!InitializeWinIo()) {
+        cout << "WinIO 初始化失败！" << endl;
+        exit(1);
+    }
+
+    cout << "两层电梯控制系统" << endl;
+    cout << "按任意键退出..." << endl;
+
+    currentFloor = 1;
+    CloseDoor();
+
+    DWORD lastInputVal;
+    GetPortVal(BASE + PORT, &lastInputVal, 1);
+    unsigned char lastInput = (unsigned char)(lastInputVal & 0xFF);
+
+    while (!_kbhit()) {
+        DWORD nowVal;
+        GetPortVal(BASE + PORT, &nowVal, 1);
+        unsigned char now = (unsigned char)(nowVal & 0xFF);
+        unsigned char changed = now ^ lastInput;
+        unsigned char fall = changed & (~now);
+
+        bool call1 = (fall & (1 << BIT_CALL1)) != 0;
+        bool call2 = (fall & (1 << BIT_CALL2)) != 0;
+
+        if (call1 || call2) {
+            int callFloor = call1 ? 1 : 2;
+            if (callFloor == currentFloor) {
+                OpenDoor();
+                WaitForClose();
+                RunToOtherFloor();
+                WaitForOut();
+            } else {
+                RunToOtherFloor();
+                OpenDoor();
+                WaitForClose();
+                RunToOtherFloor();
+                WaitForOut();
+            }
+        }
+
+        lastInput = now;
+        Sleep(20);
+    }
+
+    _getch();
+    SetPortVal(BASE + PORT, 0, 1);
+    ShutdownWinIo();
+    cout << "程序退出。" << endl;
+}

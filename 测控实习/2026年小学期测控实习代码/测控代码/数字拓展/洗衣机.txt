@@ -1,0 +1,573 @@
+#include <windows.h>
+#include <iostream>
+#include <conio.h>
+#include <stdlib.h>
+#include <time.h>
+#include "winio.h"
+
+#pragma comment(lib, "winio.lib")
+
+using namespace std;
+
+unsigned short BASE = 0x3F40;
+int iPort = 16;
+
+// 读取一个字节的数字输入数据
+int ReadPort()
+{
+	DWORD value = 0;
+
+	if (!GetPortVal(BASE + iPort, &value, 1))
+	{
+		cout << "读取端口失败！" << endl;
+		return 0xFF;
+	}
+
+	return static_cast<int>(value & 0xFF);
+}
+
+// 向数字输出端口写入一个字节
+void WritePort(int value)
+{
+	if (!SetPortVal(BASE + iPort, value, 1))
+	{
+		cout << "写入端口失败！" << endl;
+	}
+}
+
+// 电源检测：运行过程中按电源键返回1
+int PowerCatching()
+{
+	// bit0对应电源键，低电平有效
+	if ((ReadPort() & 0x01) == 0)
+	{
+		// 等待电源键松开
+		while ((ReadPort() & 0x01) == 0)
+		{
+			Sleep(10);
+		}
+
+		return 1;
+	}
+
+	return 0;
+}
+
+// 暂停状态下检查电源键
+// 如果按下电源键，则立即关机并返回true
+bool CheckPowerDuringPause(int& Start)
+{
+	if (PowerCatching() == 1)
+	{
+		Start = 0;
+		WritePort(0);
+		cout << "关机" << endl;
+		return true;
+	}
+
+	return false;
+}
+
+// 暂停检测
+// Start使用引用传递，以便暂停期间可以直接修改开关状态
+// 返回暂停持续的秒数
+int StopCatching(int& Start)
+{
+	if (Start == 0)
+	{
+		return 0;
+	}
+
+	// bit1对应启动/暂停键，低电平有效
+	if ((ReadPort() & 0x02) == 0)
+	{
+		time_t pauseTime = time(NULL);
+
+		// 等待第一次暂停键松开
+		while ((ReadPort() & 0x02) == 0)
+		{
+			// 等待松开期间也检查电源键
+			if (CheckPowerDuringPause(Start))
+			{
+				return static_cast<int>(time(NULL) - pauseTime);
+			}
+
+			Sleep(10);
+		}
+
+		cout << "暂停" << endl;
+
+		// bit6点亮，表示暂停
+		WritePort(64);
+
+		// 等待再次按下启动/暂停键
+		while ((ReadPort() & 0x02) != 0)
+		{
+			// 暂停期间检查电源键
+			if (CheckPowerDuringPause(Start))
+			{
+				return static_cast<int>(time(NULL) - pauseTime);
+			}
+
+			Sleep(10);
+		}
+
+		// 等待再次按下后松开
+		while ((ReadPort() & 0x02) == 0)
+		{
+			// 等待松开期间也检查电源键
+			if (CheckPowerDuringPause(Start))
+			{
+				return static_cast<int>(time(NULL) - pauseTime);
+			}
+
+			Sleep(10);
+		}
+
+		// 如果暂停期间没有关机，则恢复运行
+		if (Start == 1)
+		{
+			cout << "继续" << endl;
+			WritePort(0);
+		}
+
+		return static_cast<int>(time(NULL) - pauseTime);
+	}
+
+	return 0;
+}
+
+// 固定时间闪烁状态
+// k == 1：浸泡
+// k == 2：排水
+int WorkingState_1(int t, int outputValue, int Start, int k)
+{
+	if (Start == 0)
+	{
+		return Start;
+	}
+
+	if (k == 1)
+	{
+		cout << "开始浸泡" << endl;
+	}
+	else if (k == 2)
+	{
+		cout << "开始排水" << endl;
+	}
+
+	time_t startTime = time(NULL);
+
+	while (Start == 1 && time(NULL) - startTime < t)
+	{
+		// 暂停多久，就把开始时间向后补偿多久
+		int pauseSeconds = StopCatching(Start);
+		startTime += pauseSeconds;
+
+		// 暂停期间按下电源键，立即退出当前状态
+		if (Start == 0)
+		{
+			break;
+		}
+
+		WritePort(outputValue);
+		Sleep(30);
+
+		WritePort(0);
+		Sleep(30);
+
+		// 正常运行期间检查电源键
+		if (PowerCatching() == 1)
+		{
+			Start = 0;
+			WritePort(0);
+			cout << "关机" << endl;
+			break;
+		}
+	}
+
+	WritePort(0);
+
+	if (Start == 0)
+	{
+		return Start;
+	}
+
+	if (k == 1)
+	{
+		cout << "浸泡结束" << endl;
+	}
+	else if (k == 2)
+	{
+		cout << "排水结束" << endl;
+	}
+
+	return Start;
+}
+
+// 液位传感器控制状态
+// outputValue：输出控制值
+// k == 1：注水
+// k == 2：排水
+int WorkingState_2(int outputValue, int Start, int k)
+{
+	if (Start == 0)
+	{
+		return Start;
+	}
+
+	if (k == 1)
+	{
+		cout << "开始注水" << endl;
+	}
+	else if (k == 2)
+	{
+		cout << "开始排水" << endl;
+	}
+	else
+	{
+		cout << "液位控制模式错误！" << endl;
+		return Start;
+	}
+
+	while (Start == 1)
+	{
+		int inputData = ReadPort();
+
+		/*
+		液位传感器对应bit2，低电平有效。
+
+		bit2 == 0：
+		液位传感器有效。
+
+		bit2 == 1：
+		液位传感器无效。
+		*/
+		bool levelSensorActive = (inputData & 0x04) == 0;
+
+		if (k == 1)
+		{
+			// 注水时，传感器有效后结束注水
+			if (levelSensorActive)
+			{
+				break;
+			}
+		}
+		else if (k == 2)
+		{
+			// 保留当前能够正常工作的排水判断逻辑
+			if (levelSensorActive)
+			{
+				break;
+			}
+		}
+
+		// 检查暂停
+		StopCatching(Start);
+
+		// 暂停期间按下电源键，立即退出
+		if (Start == 0)
+		{
+			break;
+		}
+
+		// 工作状态闪烁
+		WritePort(outputValue);
+		Sleep(30);
+
+		WritePort(0);
+		Sleep(30);
+
+		// 正常运行期间检查电源键
+		if (PowerCatching() == 1)
+		{
+			Start = 0;
+			WritePort(0);
+			cout << "关机" << endl;
+			break;
+		}
+	}
+
+	WritePort(0);
+
+	if (Start == 0)
+	{
+		return Start;
+	}
+
+	if (k == 1)
+	{
+		cout << "注水结束" << endl;
+	}
+	else if (k == 2)
+	{
+		cout << "排水结束" << endl;
+	}
+
+	return Start;
+}
+
+// 顺序点亮状态
+// k == 1：洗涤
+// k == 2：漂洗
+// k == 3：脱水
+int WorkingState_3(int t, int f, int Start, int k)
+{
+	if (Start == 0)
+	{
+		return Start;
+	}
+
+	if (k == 1)
+	{
+		cout << "开始洗涤" << endl;
+	}
+	else if (k == 2)
+	{
+		cout << "开始漂洗" << endl;
+	}
+	else if (k == 3)
+	{
+		cout << "开始脱水" << endl;
+	}
+
+	time_t startTime = time(NULL);
+
+	int i;
+	int outputValue = 1;
+
+	while (Start == 1 && time(NULL) - startTime < t)
+	{
+		for (i = 1; i < 9; i++)
+		{
+			// 暂停时间不计入工作时间
+			int pauseSeconds = StopCatching(Start);
+			startTime += pauseSeconds;
+
+			// 暂停期间按下电源键，立即退出
+			if (Start == 0)
+			{
+				break;
+			}
+
+			WritePort(outputValue);
+
+			// 输出值依次为1、2、4、8、16、32、64、128
+			outputValue = outputValue * 2;
+
+			Sleep(f);
+
+			// 正常运行期间检查电源键
+			if (PowerCatching() == 1)
+			{
+				Start = 0;
+				WritePort(0);
+				cout << "关机" << endl;
+				break;
+			}
+
+			// 如果规定时间已经结束，提前退出内层循环
+			if (time(NULL) - startTime >= t)
+			{
+				break;
+			}
+		}
+
+		// 重新从bit0开始顺序点亮
+		outputValue = 1;
+	}
+
+	WritePort(0);
+
+	if (Start == 0)
+	{
+		return Start;
+	}
+
+	if (k == 1)
+	{
+		cout << "洗涤结束" << endl;
+	}
+	else if (k == 2)
+	{
+		cout << "漂洗结束" << endl;
+	}
+	else if (k == 3)
+	{
+		cout << "脱水结束" << endl;
+	}
+
+	return Start;
+}
+
+int main(void)
+{
+	if (!InitializeWinIo())
+	{
+		cout << "Error In InitializeWinIo!" << endl;
+		return 1;
+	}
+
+	cout << "Press any key to quit!" << endl;
+
+	int DI_data;
+	int Start = 0;
+
+	// 程序启动时关闭全部输出
+	WritePort(0);
+
+	while (!_kbhit())
+	{
+		DI_data = ReadPort();
+
+		// 光电对管1：电源开关，bit0，低电平有效
+		if ((DI_data & 0x01) == 0)
+		{
+			// 等待电源键松开
+			while ((ReadPort() & 0x01) == 0)
+			{
+				Sleep(10);
+			}
+
+			// 在开机和关机状态之间切换
+			Start = (Start + 1) % 2;
+
+			if (Start == 1)
+			{
+				cout << "开机" << endl;
+
+				// 开机但还未开始工作，bit7点亮
+				WritePort(128);
+			}
+			else
+			{
+				cout << "关机" << endl;
+				WritePort(0);
+			}
+		}
+
+		// 光电对管2：启动/暂停键，bit1，低电平有效
+		if (Start == 1 && (ReadPort() & 0x02) == 0)
+		{
+			// 等待启动键松开
+			while ((ReadPort() & 0x02) == 0)
+			{
+				// 等待启动键松开期间也允许关机
+				if ((ReadPort() & 0x01) == 0)
+				{
+					while ((ReadPort() & 0x01) == 0)
+					{
+						Sleep(10);
+					}
+
+					Start = 0;
+					WritePort(0);
+					cout << "关机" << endl;
+					break;
+				}
+
+				Sleep(10);
+			}
+
+			if (Start == 0)
+			{
+				continue;
+			}
+
+			// 第一次注水
+			Start = WorkingState_2(
+				1,      // bit0表示注水工作
+				Start,
+				1       // 1表示注水模式
+				);
+
+			// 浸泡5秒
+			Start = WorkingState_1(
+				5,
+				2,      // bit1表示浸泡状态
+				Start,
+				1       // 1表示浸泡
+				);
+
+			// 洗涤5秒
+			Start = WorkingState_3(
+				5,
+				60,
+				Start,
+				1       // 1表示洗涤
+				);
+
+			// 使用液位传感器排水
+			Start = WorkingState_2(
+				4,      // bit2表示排水工作
+				Start,
+				2       // 2表示排水模式
+				);
+
+			// 执行两次脱水、注水、漂洗、排水
+			for (int i = 0; i < 2; i++)
+			{
+				// 脱水3秒
+				Start = WorkingState_3(
+					3,
+					20,
+					Start,
+					3
+					);
+
+				// 使用液位传感器注水
+				Start = WorkingState_2(
+					1,
+					Start,
+					1
+					);
+
+				// 漂洗4秒
+				Start = WorkingState_3(
+					4,
+					60,
+					Start,
+					2
+					);
+
+				// 使用液位传感器排水
+				Start = WorkingState_2(
+					4,
+					Start,
+					2
+					);
+			}
+
+			// 最后脱水3秒
+			Start = WorkingState_3(
+				3,
+				20,
+				Start,
+				3
+				);
+
+			if (Start == 0)
+			{
+				WritePort(0);
+			}
+			else
+			{
+				cout << "洗衣完成" << endl;
+
+				// bit5点亮，表示洗衣完成
+				WritePort(32);
+			}
+		}
+
+		Sleep(10);
+	}
+
+	_getch();
+
+	// 退出前关闭所有输出
+	WritePort(0);
+
+	ShutdownWinIo();
+
+	return 0;
+}

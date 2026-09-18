@@ -1,0 +1,136 @@
+// RotatingHeart.cpp
+// AO0 -> 示波器X轴
+// AO1 -> 示波器Y轴
+// 示波器切换到XY显示模式
+
+#include <windows.h>
+#include <iostream>
+#include <conio.h>
+#include <cmath>
+#include "winio.h"
+
+#pragma comment(lib, "winio.lib")
+
+using namespace std;
+
+const unsigned short BASE = 0x3F40;
+const double PI = 3.14159265358979323846;
+
+const int DIANSHU = 240;          // 爱心曲线点数
+const int REPEAT = 2;            // 每个角度重复描画次数
+const double ROTATE_STEP = 0.025;// 每次旋转角度
+
+// 同时向AO0和AO1输出电压
+void AO_OutputXY(double xVoltage, double yVoltage)
+{
+	if (xVoltage < 0) xVoltage = 0;
+	if (xVoltage > 10) xVoltage = 10;
+	if (yVoltage < 0) yVoltage = 0;
+	if (yVoltage > 10) yVoltage = 10;
+
+	unsigned short xData =
+		(unsigned short)(xVoltage / 10.0 * 4095.0 + 0.5);
+
+	unsigned short yData =
+		(unsigned short)(yVoltage / 10.0 * 4095.0 + 0.5);
+
+	// 先写两个通道的低8位
+	SetPortVal(BASE + 10, xData & 0xFF, 1);
+	SetPortVal(BASE + 12, yData & 0xFF, 1);
+
+	// 再写两个通道的高4位
+	SetPortVal(BASE + 11, (xData >> 8) & 0x0F, 1);
+	SetPortVal(BASE + 13, (yData >> 8) & 0x0F, 1);
+}
+
+// 输出旋转爱心
+void RotatingHeart()
+{
+	double angle = 0;
+
+	cout << "正在显示旋转爱心，按任意键停止。\n";
+
+	while (!_kbhit())
+	{
+		double cosA = cos(angle);
+		double sinA = sin(angle);
+
+		// 同一角度重复描画，使图形更亮
+		for (int repeat = 0; repeat < REPEAT; repeat++)
+		{
+			for (int i = 0; i <= DIANSHU; i++)
+			{
+				if (_kbhit())
+					break;
+
+				double t = 2.0 * PI * i / DIANSHU;
+				double s = sin(t);
+
+				// 经典爱心参数方程
+				double x = 16.0 * s * s * s;
+				double y =
+					13.0 * cos(t)
+					- 5.0 * cos(2.0 * t)
+					- 2.0 * cos(3.0 * t)
+					- cos(4.0 * t);
+
+				// 除以17，将坐标缩放到约-1～1
+				x /= 17.0;
+				y /= 17.0;
+
+				// 二维旋转
+				double xr = x * cosA - y * sinA;
+				double yr = x * sinA + y * cosA;
+
+				// 转换成0～10V，以5V为图形中心
+				double xVoltage = 5.0 + 4.0 * xr;
+				double yVoltage = 5.0 + 4.0 * yr;
+
+				AO_OutputXY(xVoltage, yVoltage);
+			}
+		}
+
+		angle += ROTATE_STEP;
+
+		if (angle >= 2.0 * PI)
+			angle -= 2.0 * PI;
+	}
+
+	_getch();
+
+	// 停止后输出清零
+	AO_OutputXY(0, 0);
+
+	cout << "旋转爱心已停止。\n";
+}
+
+int main()
+{
+	if (!InitializeWinIo())
+	{
+		cout << "InitializeWinIo失败！\n";
+		return 1;
+	}
+
+	/*
+	BASE+14：
+	bit0=1：AO0内部10V参考
+	bit2=1：AO1内部10V参考
+
+	0000 0101 = 0x05
+	*/
+	SetPortVal(BASE + 14, 0x05, 1);
+
+	AO_OutputXY(0, 0);
+
+	cout << "AO0连接示波器CH1（X轴）\n";
+	cout << "AO1连接示波器CH2（Y轴）\n";
+	cout << "AOGND连接示波器地线\n\n";
+
+	RotatingHeart();
+
+	AO_OutputXY(0, 0);
+	ShutdownWinIo();
+
+	return 0;
+}

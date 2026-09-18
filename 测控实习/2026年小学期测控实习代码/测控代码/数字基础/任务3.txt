@@ -1,0 +1,71 @@
+// 数字量输入例
+#include <windows.h>
+#include <iostream>
+
+#include "winio.h"
+#include <conio.h>
+
+#pragma comment(lib,"winio.lib")
+using namespace std;
+
+
+void main(void)
+{
+	int z = 20;
+	unsigned short BASE_ADDRESS = 0x3F40;
+	int iPort = 16;
+	// 初始化WinIO 
+	if (!InitializeWinIo())
+	{
+		cout << "Error In InitializeWinIo!" << endl;
+		//exit(1);
+	}
+
+	//数字量输入
+	DWORD data;
+	int remaining = z;
+	int prev_in = 0, prev_out = 0;
+	int cur_in, cur_out;
+
+
+	while (!_kbhit())
+	{
+		GetPortVal(BASE_ADDRESS + iPort, &data, 1);
+		cur_in = (data >> 0) & 1;
+		cur_out = (data >> 1) & 1;
+		if (prev_in == 1 && cur_in == 0)
+		{
+			if (remaining > 0)
+			{
+				remaining--;
+			}
+			else
+			{
+				cout << "车库已满" << endl;
+			}
+
+		}
+		if (prev_out == 1 && cur_out == 0)
+		{
+			if (remaining < z)
+			{
+				remaining++;
+			}
+			else
+			{
+				cout << "车库已空" << endl;
+			}
+
+		}
+		prev_in = cur_in;
+		prev_out = cur_out;
+		int  bcd = (remaining / 10) * 16 + (remaining % 10);
+		SetPortVal(BASE_ADDRESS + iPort, bcd, 1);
+		Sleep(20);
+	}
+	_getch();
+	SetPortVal(BASE_ADDRESS + iPort, 0, 1);
+
+	ShutdownWinIo();		//关闭WinIO	
+
+}

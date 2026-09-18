@@ -1,0 +1,75 @@
+#include <windows.h>
+#include <iostream>
+#include <conio.h>
+#include <iomanip>
+#include "winio.h"
+#pragma comment(lib, "winio.lib")
+
+using namespace std;
+
+const unsigned short BASE = 0x3F40; const int PORT = 16;
+
+const int LAMP_COUNT = 6;
+const unsigned long TIMEOUT = 5 * 1000;
+const int LOOP_INTERVAL = 20;
+
+void main(void) {
+	if (!InitializeWinIo()) {
+		cout << "Error In InitializeWinIo!" << endl;
+		exit(1);
+	}
+
+	cout << "楼梯照明系统（5秒定时）" << endl;
+	cout << "按任意键退出..." << endl;
+
+	unsigned long expireTime[LAMP_COUNT] = { 0 };
+	unsigned char output = 0x00;
+	DWORD lastPrint = GetTickCount();
+
+	while (!_kbhit()) {
+		DWORD inVal;
+		GetPortVal(BASE + PORT, &inVal, 1);
+		unsigned char input = (unsigned char)(inVal & 0xFF);
+
+		for (int i = 0; i < LAMP_COUNT; i++) {
+			if ((input & (1 << i)) == 0) {
+				expireTime[i] = GetTickCount() + TIMEOUT;
+				int doBit = 7 - i;
+				output |= (1 << doBit);
+			}
+		}
+
+		DWORD now = GetTickCount();
+		for (int i = 0; i < LAMP_COUNT; i++) {
+			if (expireTime[i] > 0 && now >= expireTime[i]) {
+				int doBit = 7 - i;
+				output &= ~(1 << doBit);
+				expireTime[i] = 0;
+			}
+		}
+
+		SetPortVal(BASE + PORT, output, 1);
+
+		if (now - lastPrint >= 1000) {
+			cout << "\r";
+			for (int i = 0; i < LAMP_COUNT; i++) {
+				if (expireTime[i] > 0) {
+					long sec = (expireTime[i] - now) / 1000;
+					if (sec < 0) sec = 0;
+					cout << "L" << (i + 1) << ":" << sec << "s ";
+				}
+				else {
+					cout << "L" << (i + 1) << ":灭 ";
+				}
+			}
+			cout << "   " << flush;
+			lastPrint = now;
+		}
+
+		Sleep(LOOP_INTERVAL);
+	}
+
+	_getch();
+	SetPortVal(BASE + PORT, 0, 1);
+	ShutdownWinIo();
+}

@@ -1,0 +1,202 @@
+#include <windows.h>
+#include <iostream>
+#include <conio.h>
+#include <cmath>
+#include "winio.h"
+
+#pragma comment(lib, "winio.lib")
+
+using namespace std;
+
+const unsigned short BASE = 0x3F40;
+const double PI = 3.141592653589793;
+const double MAX_UPDATE_RATE = 100000.0; // 最大目标更新率：10万点/秒
+
+// AO0输出0～10V
+void AO_Output(double voltage)
+{
+	if (voltage < 0) voltage = 0;
+	if (voltage > 10) voltage = 10;
+
+	unsigned short data =
+		(unsigned short)(voltage / 10.0 * 4095.0 + 0.5);
+
+	SetPortVal(BASE + 10, data & 0xFF, 1);
+	SetPortVal(BASE + 11, (data >> 8) & 0x0F, 1);
+}
+
+// 返回-1～1的归一化波形
+double GetWave(int type, double phase)
+{
+	if (type == 1)
+		return sin(2.0 * PI * phase);               // 正弦波
+
+	if (type == 2)
+		return 1.0 - 4.0 * fabs(phase - 0.5);       // 三角波
+
+	if (type == 3)
+		return phase < 0.5 ? 1.0 : -1.0;            // 方波
+
+	return 0;
+}
+
+// 根据频率自动确定每周期采样点
+int GetSamples(int type, double frequency)
+{
+	if (type == 3)
+		return 2; // 方波每周期只需要高、低两个点
+
+	int samples = (int)(MAX_UPDATE_RATE / frequency);
+
+	if (samples > 200) samples = 200;
+	if (samples < 10)  samples = 10;
+
+	return samples;
+}
+
+// 等待到指定的高精度时刻
+bool WaitUntil(double target, LARGE_INTEGER timerFrequency)
+{
+	while (true)
+	{
+		LARGE_INTEGER now;
+		QueryPerformanceCounter(&now);
+
+		double remaining =
+			target - (double)now.QuadPart;
+
+		if (remaining <= 0)
+			return true;
+
+		double remainingMs =
+			remaining * 1000.0 /
+			(double)timerFrequency.QuadPart;
+
+		// 低频时避免一直占用CPU
+		if (remainingMs > 2.0)
+		{
+			if (_kbhit())
+				return false;
+
+			Sleep(1);
+		}
+		else
+		{
+			YieldProcessor();
+		}
+	}
+}
+
+// 连续输出波形
+void OutputWave(int type, double frequency,
+	double vpp, double offset)
+{
+	int samples = GetSamples(type, frequency);
+	double updateRate = frequency * samples;
+
+	LARGE_INTEGER timerFrequency;
+	LARGE_INTEGER startTime;
+
+	QueryPerformanceFrequency(&timerFrequency);
+	QueryPerformanceCounter(&startTime);
+
+	double ticksPerSample =
+		(double)timerFrequency.QuadPart / updateRate;
+
+	double nextTime = (double)startTime.QuadPart;
+
+	int index = 0;
+	int keyCounter = 0;
+	int keyInterval = (int)(updateRate / 20.0);
+
+	if (keyInterval < 1)
+		keyInterval = 1;
+
+	cout << "\n正在输出波形，按任意键停止。\n";
+	cout << "设定频率：" << frequency << " Hz\n";
+	cout << "每周期点数：" << samples << "\n";
+	cout << "目标更新率：" << updateRate << " 点/秒\n";
+
+	while (true)
+	{
+		double phase = (double)index / samples;
+
+		double voltage =
+			offset +
+			vpp / 2.0 * GetWave(type, phase);
+
+		AO_Output(voltage);
+
+		index++;
+		if (index >= samples)
+			index = 0;
+
+		// 大约每50ms检查一次键盘
+		keyCounter++;
+
+		if (keyCounter >= keyInterval)
+		{
+			keyCounter = 0;
+
+			if (_kbhit())
+				break;
+		}
+
+		nextTime += ticksPerSample;
+
+		if (!WaitUntil(nextTime, timerFrequency))
+			break;
+	}
+
+	if (_kbhit())
+		_getch();
+
+	AO_Output(0);
+	cout << "波形输出已停止。\n";
+}
+
+int main()
+{
+	if (!InitializeWinIo())
+	{
+		cout << "InitializeWinIo失败！\n";
+		return 1;
+	}
+
+	// AO0使用内部10V参考
+	SetPortVal(BASE + 14, 0x01, 1);
+	AO_Output(0);
+
+	while (true)
+	{
+		int type;
+		double frequency, vpp, offset;
+
+		cout << "\n========================\n";
+		cout << "1. 正弦波\n";
+		cout << "2. 三角波\n";
+		cout << "3. 方波\n";
+		cout << "0. 退出\n";
+		cout << "请选择：";
+		cin >> type;
+
+		if (type == 0)
+			break;
+
+		cout << "频率Hz（最高10000）：";
+		cin >> frequency;
+
+		cout << "峰峰值Vpp：";
+		cin >> vpp;
+
+		cout << "直流偏置V：";
+		cin >> offset;
+
+		OutputWave(type, frequency, vpp, offset);
+	}
+
+	AO_Output(0);
+	ShutdownWinIo();
+
+	return 0;
+}

@@ -1,0 +1,113 @@
+#include<windows.h>
+#include<iostream>
+#include<conio.h>
+#include<stdlib.h>
+#include"winio.h"
+#pragma comment(lib,"winio.lib")
+using namespace std;
+
+int main(void)
+{
+	unsigned short BASE = 0x3F40;
+	int iPort = 16;
+	if (!InitializeWinIo())
+	{
+		cout << "Error In InitializeWinIo!" << endl;
+		exit(1);
+	}
+	cout << "工业包装流水线模拟程序" << endl;
+	cout << "装箱传感器(bit0)：遮挡一次松开后装入一件产品，每箱6件" << endl;
+	cout << "打包传感器(bit1)：遮挡一次松开后完成一次打包动作，每箱6次" << endl;
+	cout << "规则：先装箱(满6件) -> 再打包(满6次) -> 完成一箱，循环往复" << endl;
+	cout << "Press any key to quit!" << endl;
+
+	int DI_data;
+	int box_count = 0;       // 当前箱内产品数(0~6)
+	int pack_count = 0;      // 当前箱已完成打包动作数(0~6)
+	int total_boxes = 0;     // 已完成包装箱总数
+
+	SetPortVal(BASE + iPort, 0, 1);
+
+	while (!_kbhit())
+	{
+		DWORD p = 0;
+		GetPortVal(BASE + iPort, &p, 1);
+		DI_data = p;
+
+		// 低2位状态编码：3=空闲, 2=装箱传感器遮挡中, 1=打包传感器遮挡中
+		if (DI_data % 4 != 3){
+			int last = (DI_data % 4);
+			while (1){
+				GetPortVal(BASE + iPort, &p, 1);
+				DI_data = p;
+				int now = (DI_data % 4);
+				if (now == last){
+					if (_kbhit()){
+						break;
+					}
+					continue;
+				}
+				// 装箱传感器：遮挡后松开(2→3)，装入1件产品
+				if (last == 2 && now == 3){
+					if (box_count < 6){
+						box_count++;
+						// LED显示当前装箱进度(点亮box_count个LED)
+						int a, b = 1, DO_data = 0;
+						for (a = 0; a < box_count; a++)
+						{
+							DO_data = DO_data + b;
+							b = b * 2;
+						}
+						SetPortVal(BASE + iPort, DO_data, 1);
+						cout << "装箱：" << box_count << "/6 件" << endl;
+
+						if (box_count >= 6){
+							cout << ">>> 装箱完成，请开始打包！" << endl;
+							// 全亮闪烁提示装箱完成
+							SetPortVal(BASE + iPort, 255, 1);
+							Sleep(300);
+							SetPortVal(BASE + iPort, 0, 1);
+						}
+					}
+				}
+				// 打包传感器：遮挡后松开(1→3)，完成1次包装动作
+				else if (last == 1 && now == 3){
+					if (box_count >= 6 && pack_count < 6){
+						pack_count++;
+						// 打包动作：流水灯效果
+						int a, b = 1, DO_data = 0;
+						for (a = 0; a < 8; a++)
+						{
+							DO_data = DO_data + b;
+							SetPortVal(BASE + iPort, DO_data, 1);
+							b = b * 2;
+							Sleep(50);
+						}
+						cout << "打包：" << pack_count << "/6 次动作" << endl;
+
+						if (pack_count >= 6){
+							total_boxes++;
+							cout << "====== 第" << total_boxes << "箱包装完成！======" << endl;
+							// 装箱、打包计数器归零，准备下一箱
+							box_count = 0;
+							pack_count = 0;
+						}
+						SetPortVal(BASE + iPort, 0, 1);
+					}
+					else if (box_count < 6){
+						cout << "提示：请先完成装箱（当前" << box_count << "/6），再执行打包！" << endl;
+					}
+				}
+
+				last = now;
+				if (now == 3){
+					break;
+				}
+			}
+		}
+	}
+	SetPortVal(BASE + iPort, 0, 1);
+	ShutdownWinIo();
+
+	return 0;
+}

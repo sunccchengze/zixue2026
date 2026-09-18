@@ -1,0 +1,55 @@
+// 数字量输入例
+
+#include <windows.h>
+#include <iostream>
+
+#include "winio.h"
+#include <conio.h>
+
+#pragma comment(lib,"winio.lib")
+using namespace std;
+
+
+
+
+unsigned char fanzhuan(unsigned char x)
+{
+	unsigned char result = 0;
+	for (int i = 0; i < 8; i++)
+	{
+		result = (result << 1) | (x & 1);
+		x >>= 1;
+	}
+	return result;
+}
+
+
+void main(void)
+{
+	unsigned short BASE_ADDRESS = 0x3F40;
+	int iPort=16;
+
+// 初始化WinIO 
+	
+	if (!InitializeWinIo())
+	{
+		cout<<"Error In InitializeWinIo!"<<endl;
+		//exit(1);
+	}
+
+
+	DWORD data;
+
+   while(!_kbhit())
+   {
+	 GetPortVal(BASE_ADDRESS + iPort,&data,1);
+	 unsigned char r = fanzhuan((unsigned char)data);
+	 SetPortVal(BASE_ADDRESS + iPort, r, 1);
+	 Sleep(20);
+   }
+   _getch();
+   SetPortVal(BASE_ADDRESS + iPort, 0, 1);
+    ShutdownWinIo();		//关闭WinIO	
+	
+}
+
