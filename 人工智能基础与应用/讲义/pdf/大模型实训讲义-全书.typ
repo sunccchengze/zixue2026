@@ -69,7 +69,7 @@
     #v(1.0cm)
     #text(size: 11pt, fill: luma(70))[孙承泽 · 能动强基2501 · 西安交通大学]
     #v(0.25cm)
-    #text(size: 9.5pt, fill: luma(130))[2026-09-17 生成　·　版本 v1.0]
+    #text(size: 9.5pt, fill: luma(130))[2026-09-18 生成　·　版本 v1.0]
   ]
   #v(4.4cm)
   #align(center)[
@@ -141,7 +141,11 @@
 ]
 ]
 
-#strong[排版与验收]：正文思源宋体、标题黑体、代码等宽；全书 24 页里 99 条去重公式已#strong[逐条单独编译验证]过， 每讲章节也做了齐备性自检（防排版吞内容）。重生成与维护见 #raw("环境/pdf/README.md")。
+#strong[排版与验收]：正文思源宋体、标题黑体、代码等宽；全书 24 页里 99 条去重公式已#strong[逐条单独编译验证]过， 每讲章节也做了齐备性自检（防排版吞内容）。
+
+#strong[LaTeX 版]（同一份内容的真 LaTeX 排印，可拿去 Overleaf/本机继续改）： #raw("讲义/pdf/大模型实训讲义-全书-LaTeX版.pdf") + #raw(".tex")（15 份 LaTeX 产物全部零缺字零错误，见 #raw("环境/pdf/latex/README.md")）。
+
+重生成与维护见 #raw("环境/pdf/README.md")；LaTeX 通道见 #raw("环境/pdf/latex/README.md")。
 
 #block(width: 100%, above: 9pt, below: 9pt, inset: (x: 10pt, y: 8pt), radius: (right: 4pt), fill: luma(248), stroke: (left: 2.5pt + luma(165)))[
   #raw("cd 人工智能基础与应用 && 环境/pdf/生成讲义PDF.sh        # 每讲 + 全书

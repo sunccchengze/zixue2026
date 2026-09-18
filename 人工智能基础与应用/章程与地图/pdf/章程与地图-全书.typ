@@ -69,7 +69,7 @@
     #v(1.0cm)
     #text(size: 11pt, fill: luma(70))[孙承泽 · 能动强基2501 · 西安交通大学]
     #v(0.25cm)
-    #text(size: 9.5pt, fill: luma(130))[2026-09-17 生成　·　版本 v1.0]
+    #text(size: 9.5pt, fill: luma(130))[2026-09-18 生成　·　版本 v1.0]
   ]
   #v(4.4cm)
   #align(center)[
