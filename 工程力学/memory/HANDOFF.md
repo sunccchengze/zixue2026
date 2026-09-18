@@ -199,3 +199,15 @@
 
 - **新会话第一件事**：`git fetch origin && git reset --hard origin/main`；本学科工作区曾出现 21 份 PDF 被快照
   搬运损坏（打不开、文本层为空），已从 git 恢复。**提交前抽检二进制产物可读性**（详见 ERRORS.md 运维判例）。
+
+### 运维判例（2026-09-18）· 浅克隆导致 merge 报 "unrelated histories"
+
+- 现象：`git merge origin/main` 报 `fatal: refusing to merge unrelated histories`，
+  且 `git merge-base` 找不到共同祖先——但两分支明明同根。
+- 根因：沙箱重置后 `.git/shallow` 出现（边界含 main 的 tip 与基点），main 的 tip
+  在本地被当作无父根的独立根提交，祖先链被切断。
+- 解法：`git fetch --unshallow origin`（shallow 文件消失、`2f2ce24^` 恢复为 b1a38a8）
+  后 merge 立即成功。**新会话若再撞 unrelated histories，先查 `.git/shallow` 再 unshallow，
+  不要 --allow-unrelated-histories，更不要 force push。**
+- 同轮修复：`scripts/git-sync.py` 原硬编码旧 session 分支（arena/01a02459），
+  已改为自动取当前分支 + arena/ 白名单守卫（main/master 拒绝同步）。
