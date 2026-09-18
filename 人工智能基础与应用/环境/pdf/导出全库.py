@@ -353,6 +353,8 @@ def verify_existing() -> int:
             note("核验PDF", p, False, str(exc))
             bad += 1
     for p in sorted(SUBJECT.rglob("*.docx")):
+        if "templates" in p.parts:
+            continue           # reference.docx 是样式模板（空壳），不是产物，别当内容不合规
         try:
             with zipfile.ZipFile(p) as z:
                 xml = z.read("word/document.xml").decode("utf-8", "ignore")
