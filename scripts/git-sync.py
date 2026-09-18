@@ -21,7 +21,12 @@ git-sync.py — 工程力学 session 一键同步（提交 + 推送 + 校验）
 """
 import subprocess, sys, os
 
-BR = "arena/01a02459-zixue2026"
+# 分支不再硬编码（2026-09-18 修复：原值 arena/01a02459 为旧 session 分支，
+# 新会话跑必撞 SYNC-ERROR；改为自动取当前分支 + 白名单守卫）
+BR = subprocess.run(('git', 'rev-parse', '--abbrev-ref', 'HEAD'),
+                    capture_output=True, text=True).stdout.strip()
+if BR in ('main', 'master') or not BR.startswith('arena/'):
+    print(f"SYNC-ERROR: 当前分支 {BR} 不是 arena/ 会话分支，拒绝同步"); sys.exit(1)
 MSG = sys.argv[1] if len(sys.argv) > 1 else "工程力学：进度更新"
 
 def run(*a, check=True, data=False):
