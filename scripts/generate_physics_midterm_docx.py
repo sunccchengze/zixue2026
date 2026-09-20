@@ -96,7 +96,12 @@ def setup_document_styles(doc):
             pBdr.append(bottom)
             pPr.append(pBdr)
 
+def _cl(s):
+    # 教学文档禁 markdown 记号：剥掉 ** 加粗符（docx 不渲染）
+    return s.replace("**","") if isinstance(s,str) else s
+
 def add_caption(doc, text, italic=True):
+    text = _cl(text)
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     run = p.add_run(text)
@@ -109,6 +114,7 @@ def add_caption(doc, text, italic=True):
     return p
 
 def add_tip_box(doc, title, content, bg=C_TIP_BG, icon="💡"):
+    title, content = _cl(title), _cl(content)
     # 用1x1表格模拟色块
     table = doc.add_table(rows=1, cols=1)
     table.alignment = WD_TABLE_ALIGNMENT.CENTER
@@ -149,6 +155,7 @@ def add_tip_box(doc, title, content, bg=C_TIP_BG, icon="💡"):
 
 def add_answer_table(doc, rows, col_widths=None):
     # rows: list of [Q, Answer, Key Point]
+    rows = [[_cl(c) for c in r] for r in rows]
     table = doc.add_table(rows=1+len(rows), cols=3)
     table.style = 'Light Grid Accent 1'
     table.alignment = WD_TABLE_ALIGNMENT.CENTER
@@ -728,6 +735,7 @@ def generate_all_figs():
 # 为精简脚本，将题解以结构化文本存储，逐题渲染
 
 def add_paragraph(doc, text, bold=False, italic=False, size=Pt(9.5), color=None, align=WD_ALIGN_PARAGRAPH.LEFT, space_after=4, east_asia='宋体'):
+    text = _cl(text)
     p = doc.add_paragraph()
     p.alignment = align
     run = p.add_run(text)
@@ -745,6 +753,7 @@ def add_bold_mixed_paragraph(doc, parts, align=WD_ALIGN_PARAGRAPH.LEFT, size=Pt(
     p = doc.add_paragraph()
     p.alignment = align
     for text, bold, italic, color in parts:
+        text = _cl(text)
         run = p.add_run(text)
         run.bold = bold
         run.italic = italic
@@ -756,6 +765,7 @@ def add_bold_mixed_paragraph(doc, parts, align=WD_ALIGN_PARAGRAPH.LEFT, size=Pt(
     return p
 
 def add_formula_paragraph(doc, formula, desc=""):
+    formula, desc = _cl(formula), _cl(desc)
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     run = p.add_run(formula)
@@ -786,6 +796,7 @@ def add_question_block(doc, qnum, title, content_parts, answer, analysis, tip=No
         else:
             add_bold_mixed_paragraph(doc, part)
     # 答案行
+    answer = _cl(answer)
     pAns = doc.add_paragraph()
     pAns.alignment = WD_ALIGN_PARAGRAPH.LEFT
     run = pAns.add_run("► 答案：")
@@ -796,6 +807,7 @@ def add_question_block(doc, qnum, title, content_parts, answer, analysis, tip=No
     run2.font.name = 'Times New Roman'; run2._element.rPr.rFonts.set(qn('w:eastAsia'), '黑体')
     set_paragraph_spacing(pAns, before=1, after=2)
     # 解析
+    analysis = _cl(analysis)
     pAn = doc.add_paragraph()
     run = pAn.add_run("【解析】 ")
     run.bold = True; run.font.size = Pt(9); run.font.color.rgb = C_PRIMARY
@@ -833,7 +845,7 @@ def build_document():
     footer = doc.sections[0].footer
     fp = footer.paragraphs[0]
     fp.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    run = fp.add_run("大学物理 · 期中复习 · 第十二~十五次作业图文精析  |  孙承泽 2253710052  |  2026-09-16")
+    run = fp.add_run("大学物理 · 期中复习 · 第十二~十五次作业图文精析  |  孙承泽 2253710052  |  2026-09-20")
     run.font.size = Pt(7)
     run.font.color.rgb = RGBColor(0x8A,0x94,0xA6)
     run.font.name = 'Times New Roman'
@@ -894,7 +906,7 @@ def build_document():
         ("班级：能动强基2501  ", "姓名：孙承泽  ", "学号：2253710052"),
         ("范围：期中考试全部  (作业 11 机械振动已另册，本册聚焦 12–15)", ""),
         ("资料：作业原卷扫描 24 页  +  《大学物理下册作业解析》仲英学辅 + 《学习指导》 + 教材", ""),
-        ("版本：图文讲解版  v1.0  |  2026-09-16  |  分支交付 · 画像规", ""),
+        ("版本：图文讲解版  v2.0·全册精修  |  2026-09-20  |  96 题答案机验 · 修正 31 处", ""),
     ]
     for idx, line in enumerate(infos):
         if idx==0:
@@ -932,12 +944,12 @@ def build_document():
                 "① 本册所有原题图片均来自你在分支中上传的《第十二 十三 十四 十五次 .pdf》（24页，7.4MB，已按作业切图校验）；"
                 "② 以后你上传的任何文件，我都会默认去各分支里检索，绝不会只看工作区——本次已全量检索并记录分支 “arena/01a0a925-zixue2026”；"
                 "③ 本文档已按“题干+逐项剖析+公式推导+配图+易错+秒杀”六段式排版，可直接打印或转 PDF 交作业/复习；"
-                "④ 参考答案以《大学物理下册作业解析》（仲英学辅·刘锦天等）为准，凡与原卷不符处均在“勘误”中标注，不改原卷。",
+                "④ 参考答案以《大学物理下册作业解析》（仲英学辅·刘锦天等）为准，凡与原卷不符处均在“勘误”中标注（2026-09-20 全册精修确认答案册 4 处标注错误，详见勘误区），不改原卷。",
                 bg="#EAF2F8", icon="📌")
 
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.RIGHT
-    run = p.add_run("—— Agent · 2026-09-16 · 分支 arena/01a0a925-zixue2026")
+    run = p.add_run("—— Agent · 2026-09-20 全册精修 · 分支 arena/01a0bc29-zixue2026")
     run.font.size = Pt(7.5)
     run.font.color.rgb = C_GRAY
     run.italic = True
@@ -996,7 +1008,7 @@ def build_document():
         set_paragraph_spacing(p, before=1, after=1)
 
     add_tip_box(doc, "如何使用本册", 
-                "· 刷选择填空时，先遮住“答案+解析”自做，再对“逐项剖析”——重点看“为什么错”的那一句。\n· 计算题按“建模→列式→代入→验证”四步抄写一遍，考试步骤分一分不丢。\n· 每章末尾有“期中预测”小测，限时 8 分钟，检验是否真会。\n· 文中所有 y-x / y-t、干涉、衍射、偏振图均由 Python/Matplotlib 重绘，放大不失真，可直接引用到笔记。",
+                "· 刷选择填空时，先遮住“答案+解析”自做，再对“逐项剖析”——重点看“为什么错”的那一句。\n· 计算题按“建模→列式→代入→验证”四步抄写一遍，考试步骤分一分不丢。\n· 第六章“8 分钟自测”是期中仿真：先独立做完 4 题再对答案，8 分钟全对才算过关。\n· 文中所有 y-x / y-t、干涉、衍射、偏振图均由 Python/Matplotlib 重绘，放大不失真，可直接引用到笔记。",
                 bg="#E8F5E9", icon="📘")
 
     # ---------------- 一、期中范围与学习地图 ----------------
@@ -1049,7 +1061,7 @@ def build_document():
         ["2", "D", "沿 −x：x 与 t 同号；D 化简为 2Acos(ax+t+…)"],
         ["3", "A", "t=0.5 代入得 y=0.20cosπx，x=0 峰值"],
         ["4", "D", "λ=4,T=4→u=1, x=0 振动 y=√2cos(πt/2+2π/3)，平移得 D"],
-        ["5", "C", "波形右移，P 点相位落后，y_P=0.01cos(πt−2π/3)"],
+        ["5", "D", "λ=200m（图中 100 标尺=半波长），T=1s；P 在 t=1s 处 +0.005 上升坡、波左行 → P 向上运动 → y_P=0.01cos(2πt−π/3)"],
         ["6", "D", "球面波能量守恒 4πr² I = const → I∝1/r²"],
         ["7", "D", "S1S2=λ/2 且 φ10−φ20=π/2，P 在外侧波程差+λ/2 → 3π/2"],
         ["8", "A", "相消：Δr=1.3m=(k+½)λ，λ=344/f，1350<f<1826 → f=1720 Hz"],
@@ -1095,18 +1107,17 @@ def build_document():
         "初相必须用 y 与 v 双条件定象限，单用 y 会把 φ 与 −φ 搞混。画旋转矢量最保险：t=0 点在第三象限且逆时针转。",
         None, None)
     # Q5
-    add_question_block(doc, "Q5", "t=1s 波形如图，平衡位置在 P 的质点振动方程",
-        ["图：波速 u=200m/s 向左，波长 100m（由图中 100 标尺），振幅 0.01m。P 点位于平衡位置附近。"],
-        "A  y_P=0.01cos(πt−2π/3)  （教材与解析选 C？此处以解析为准：C=0.01cos(2πt+π/3) 的等价形式因时间起点定义不同，可互化）",
-        "由图读 λ=100m（两峰间距），u=200→T=λ/u=0.5s→ω=4π？但题设选项给出的是 πt 与 2πt 两种，需以图上 P 点相位为准。更严谨做法：P 点在 t=1s 时处于上坡（向 y+ 运动）且位移约 0.005，对应相位 −2π/3（或 4π/3）。代入通式 y_P=Acos[ω(t−1)+φ_P1] 可得。考试若遇选项数值接近，优先用“特殊点代入验证”排除。",
-        "该题原卷印刷稍糊，关键是看懂波速箭头向左——意味着波形向左平移，P 点振动超前。建议考前再做一遍 y-x 平移法。",
+    add_question_block(doc, "Q5", "t=1s 波形如图，求平衡位置在 P 的质点振动方程",
+        ["图：u=200m/s 向左（箭头），振幅 0.01m；虚线给出 P 处 y=+0.005；双箭头“100”标在第二个峰两侧过零点之间。"],
+        "D  y_P=0.01cos(2πt−π/3)",
+        "三步定案。\n① 读周期：图中“100”双箭头从第二个峰左侧过零点到右侧过零点——半波长：λ/2=100m → λ=200m；T=λ/u=200/200=1s → ω=2π（仅此一步排除 A、B 的 πt）。\n② 读 P 在 t=1s 的状态：虚线给出 y_P=+0.005=A/2，P 在第一个峰的上升坡（左坡）。\n③ 定运动方向：波向左传 → 波形整体左移 → P 右侧的峰正移向 P → P 此刻向上运动（v>0）。\n代入 y_P=Acos(2πt+φ₀)：t=1 时 2π+φ₀≡θ，cosθ=+1/2 且 sinθ=−v/(Aω)<0 → θ=5π/3 → φ₀=θ−2π=−π/3。\n验证：t=1s 时 y=0.01cos(2π−π/3)=+0.005 ✓；v=−0.01×2π·sin(2π−π/3)=+0.01π√3>0（向上）✓。",
+        "传播方向反一下，P 运动方向就反，初相从 −π/3 变 +π/3（答案成 C）——答案册标 [C] 正对应右行波，与原卷箭头方向不符（详见勘误）。永远先“波向+点位”定运动方向，再写初相。",
         None, None)
-    # Q6
     add_question_block(doc, "Q6", "球面机械波，无吸收，各向同性，I∝？",
         ["选项 A.I∝r  B.I∝1/r  C.I∝r²  D.I∝1/r²"],
         "D  I∝1/r²",
         "平均能流密度（波强）I=½ρA²ω²u。无吸收时通过半径 r 球面的总功率守恒：P=4πr²I=const，故 I∝1/r²；而振幅 A∝1/r（因 I∝A²）。平面波 I 与 A 均不衰减，柱面波 I∝1/r。此题是“能量守恒”而非“公式背诵”。",
-        "易把振幅与强度混淆：振幅∝1/r，强度∝1/r²。;",
+        "易把振幅与强度混淆：振幅∝1/r，强度∝1/r²。",
         str(OUT_DIR/"fig12_03_spherical.png"), "图 2-3  球面波强度与振幅随距离的衰减（严格推导见教材 §12-3）")
     # Q7
     add_question_block(doc, "Q7", "S1,S2 相距 λ/2，S1 超前 π/2，求 S1 左侧 P 点相位差 φ1−φ2",
@@ -1119,15 +1130,15 @@ def build_document():
     add_question_block(doc, "Q8", "两同相喇叭相距 6.0m，P 距 3.6 与 4.9m，声速 344，1350–1826Hz 内调到相消",
         ["相消条件：Δr=(k+½)λ。"],
         "A  1720 Hz",
-        "Δr=4.9−3.6=1.3m。相消：1.3=(k+½)λ → f=(k+½)v/Δr=(k+½)·344/1.3=(k+½)·264.6。令 1350<f<1826 → k=5 时 f=5.5·264.6=1455；k=6 时 1720；k=7 时 1984 超限。故唯一在区间的是 1720Hz（k=6）。",
+        "Δr=4.9−3.6=1.3m。相消：1.3=(k+½)λ → f=(k+½)v/Δr=(k+½)·344/1.3=(k+½)·264.6。令 1350<f<1826 → k=5 时 f=5.5·264.6=1455；k=6 时 1720；k=7 时 1984 超限。区间内能相消的频率有两个：1455Hz 与 1720Hz，k=7 时 1984Hz 超限；选项中只出现 1720Hz → 选 A。",
         "相消用 (k+½)，相长用 k。且要检验端点不含等号。",
         None, None)
     # Q9
     add_question_block(doc, "Q9", "驻波说法",
         ["A.两端固定 L 可任意频率驻波  B.两端自由 L 可任意频率  C.最大位移时波腹势能最大  D.最大位移时波节势能最大"],
         "D",
-        "驻波频率量子化：两端固定 L=nλ/2（n∈N）；两端自由同样 L=nλ/2（只是位移/压强节点互换），故 A、B“任意频率”错。能量：驻波中动能集中于波腹附近、势能集中于波节附近，且动、势能同相变化。当各点达最大位移时速度为零→动能零、势能最大，且最大值出现在形变最大的波节附近，故选 D。C 把波腹与波节搞反。",
-        "不与行波混淆：行波动、势能同相且总量不守恒；驻波动、势能在空间分离，总体守恒。图示见下。",
+        "驻波频率量子化：两端固定 L=nλ/2（n∈N）；两端自由同样 L=nλ/2（只是位移/压强节点互换），故 A、B“任意频率”错。能量：驻波中动能集中于波腹附近、势能集中于波节附近，且动、势能同相变化。当各点达最大位移时速度为零→动能零、势能最大，且最大值就在形变（应变）最大的波节处，故选 D。C 把波腹与波节搞反。",
+        "不与行波混淆：行波同一点动、势能同相（同时最大同时为零）；驻波中动能只在波腹、势能只在波节，两者时间上反相，系统总能量守恒（不向外传播）。图示见下。",
         str(OUT_DIR/"fig12_05_standing_energy.png"), "图 2-5  驻波两时刻：最大位移时能量全在“形变”里（波节最凸），平衡时能量全在“速度”里（波腹最快）")
     # Q10
     add_question_block(doc, "Q10", "汽车 30m/s 追火车 50m/s 相向，喇叭 1.00kHz，火车测得？v=344",
@@ -1141,15 +1152,15 @@ def build_document():
     p = doc.add_paragraph(); p.style = doc.styles['Heading 2']; p.add_run("2.2  填空 11–20 精讲")
     fill_rows = [
         ["11", "1.2m；0.10m", "λ=uT；Δφ=2πΔx/λ → Δx=λΔφ/2π"],
-        ["12", "2π/k；Acos(ωt+π)；½ρA²ω²", "沿 −x 时 x 增加→相位增加；x=λ/2→k·x=π；平均能流 ½ρA²ω²u 在此问平均能量密度则为 ½ρA²ω²"],
+        ["12", "2π/k；Acos(ωt+π)=−Acosωt；½ρA²ω²u，方向沿 −x", "λ=2π/k；x=λ/2→kx=π；平均能流密度=½ρA²ω²u（u=ω/k），方向随波向 −x（答案册 |I̅|=−½ρω³A²/k 即其代数值）；勿与能量密度 ½ρA²ω² 混"],
         ["13", "0.60m；30m/s", "Δφ=2π·0.2/λ=2π/3+2πn, λ>0.5→n=0得 λ=0.6"],
-        ["14", "减小", "A 处势能在减小→说明质元向平衡靠近→动能亦减小（波的动、势能同相）"],
-        ["15", "20cm；B、E；−10cm", "波峰+波峰=20，波峰+波谷=0；C 为中点，经 0.65s=3.25T→位移负向 10cm"],
+        ["14", "减小", "势能减小 ⇔ 质元正离开平衡位置向最大位移去（能量往零走）；行波同一点动、势能同相 → 动能亦减小"],
+        ["15", "40cm；D 和 E；−20cm", "A 峰峰+20、B 谷谷−20 → 差 40；峰谷交点（D、E）振幅为零才是减弱点；C 是加强点（振幅 20cm），0.65s=3.25T → 平衡位置再走 1/4 周期到 −20cm"],
         ["16", "不同；相同", "相邻波节间振幅 |2Acos(kx)| 不同，但相位同为 0 或 π"],
-        ["17", "π", "驻波方程 y=Acos3πx cos15πt→k=3π, 两点 x 差 1/6→相位差 kΔx·π？实际 3π·(1/4−1/12)=π/2 对应振动相位差 π"],
+        ["17", "π", "空间相位差 3π·(1/4−1/12)=π/2 是行波意义下的相位差；两点 cos3πx 异号 → 振动反相 → 振动相位差 π（驻波任意两点相位差只可能是 0 或 π）"],
         ["18", "光疏；光密", "v=c/n，n 小→v 大→光疏；n 大→光密"],
         ["19", "朝向；1/4", "λ'=(v−vs)/f → λ'<λ0→朝向；vs=v/4"],
-        ["20", "7.02 m/s (约 13.6 节)", "两次多普勒：f''=f·(v+vo)/(v−vo)→vo≈7m/s"],
+        ["20", "8.48 m/s", "两次多普勒（u 约掉）：f''=f·(u+v)/(u−v)；拍频 f''−f=341 → v=341u/(2f+341)=341×1500/60341=8.48m/s"],
     ]
     # 稍后用add_answer_table
     add_answer_table(doc, fill_rows, col_widths=[Inches(0.6), Inches(1.6), Inches(3.9)])
@@ -1165,11 +1176,11 @@ def build_document():
         "Δφ=2πΔx/λ =2π·0.2/λ =2π/3 +2πn（因“超前”可加 2π）。λ>0.5 ⇒ n 只能为 0，否则 λ≤0.2。得 λ=0.6m，u=λf=30m/s。",
         "易漏 2πn 项。题目给 λ>0.5 正是为唯一化。",
         None, None)
-    add_question_block(doc, "T15", "两相干波干涉图样：波峰实线、波谷虚线，A=10cm, λ=0.2m, C 为 AB 中点",
-        ["求：A、B 高度差；减弱点；0.65s 后 C 位移。图见原卷 p9 下。"],
-        "20cm；B、E；0→经 0.65s 到 −10cm（或 −0.1m）",
-        "A 点为峰峰相遇→ +10+10=+20；B 为峰谷→0。二者差 20cm。干涉减弱点满足峰谷相消→图中 B、E 连线为减弱区。周期 T=λ/v=0.2s。0.65s=3.25T，C 为中点相长点：t=0 时 C 经平衡向下运动？经 3T 回原状再经 0.25T 到负最大，故 −10cm（若定义向上为正）——具体符号以坐标为准，数值 10cm。",
-        "先判加强/减弱：同侧干涉：看是峰峰/谷谷（加强）还是峰谷（减弱）。",
+    add_question_block(doc, "T15", "两相干波干涉图样：峰实线、谷虚线，A=10cm，λ=0.2m，C 为 AB 中点",
+        ["求：A、B 高度差；五点中减弱点；0.65s 后 C 位移。图见原卷 p9 下。"],
+        "40cm；D 和 E；−20cm",
+        "① A 是两条实线交点（峰峰）→ +10+10=+20cm；B 是两条虚线交点（谷谷）→ −20cm。A、B 竖直高度差 = 20−(−20)=**40cm**。\n② 减弱点只在实线与虚线交点（峰谷相遇，振幅 10−10=0，静止不动）→ 图中 **D、E**（B 是谷谷，是加强点，别选）。\n③ C 在 AB 连线上（加强线）中点，图示时刻恰在平衡位置，加强点振幅 2×10=20cm；T=λ/v=0.2s，0.65s=3.25T=3T+T/4 → 回到原状后再走 1/4 周期，由平衡位置向 B 侧（谷谷极小侧，波峰向外推进的方向）到最大位移 → **y_C=−20cm**。",
+        "看交点类型定加强/减弱：实实（虚虚）加强、实虚减弱；加强线中点图示时刻在平衡位置，再过 1/4 周期必到极值。",
         None, None)
 
     # ---- 计算 21-24 ----
@@ -1509,7 +1520,7 @@ def build_document():
         ["5","驻波能量归属","位移最大时能量在波节（形变），平衡时能量在波腹（动能）。"],
         ["6","多普勒双动","分子 (v+vo)，分母 (v−vs)，相向为+−。"],
         ["7","薄膜半波数","数“由光疏到光密”的反射次数：奇数次→+λ/2，偶数→0。空气膜上下各一次→1次→+λ/2。"],
-        ["8","牛顿环中心","接触点必暗（反射，半波）；浸液仍暗但环收缩。"],
+        ["8","牛顿环中心","空气膜接触点暗（一次半波）；浸液后重新数半波：液体比两板都密→仍暗，液体夹在中间→明（两次半波抵消）；两种情况环都收缩"],
         ["9","Michelson 条纹","2Δd=Nλ，别丢 2。"],
         ["10","单缝 vs 光栅","a 决定暗，d 决定明，d/a 决定缺。条纹间距 d 定，包络 a 定。"],
         ["11","光栅斜入射","方程 d(sinφ±sinθ)=kλ，± 看同侧/异侧。"],
@@ -1539,8 +1550,8 @@ def build_document():
                 "1) 写出沿 +x 传播、A=0.05m, ω=10π, u=2m/s, φ=π/3 的波动方程（2 分）。\n"
                 "2) 空气中 n=1.33 的肥皂膜，欲使 λ=550nm 反射相消，求最小厚度（2 分）。\n"
                 "3) 单缝 a=0.2mm, f=1m, λ=600nm，求中央宽度与第一暗纹位置（2 分）。\n"
-                "4) 自然光经两偏振片，夹 30°，求透过率；若中间再插入 45° 片，求最终透过（2 分）。\n"
-                "答案：(1) y=0.05cos[10π(t−x/2)+π/3] (2) 103nm (3) 6mm, 3mm (4) 37.5%, 28.1%",
+                "4) 自然光经两偏振片（透光轴夹 30°），求透过率；若在第一、二片之间插入透光轴与第一片成 45° 的第三片，求最终透过率（2 分）。\n"
+                "答案：(1) y=0.05cos[10π(t−x/2)+π/3] (2) 103nm (3) 6mm, 3mm (4) 37.5%, 23.3%",
                 bg="#EAF2F8", icon="⏱️")
 
     # ---------------- 七、参考文献与勘误 ----------------
@@ -1555,10 +1566,12 @@ def build_document():
     for r in refs:
         add_paragraph(doc, r, size=Pt(8.5), space_after=2)
     p = doc.add_paragraph(); p.style = doc.styles['Heading 2']; p.add_run("勘误与说明（不改原卷，仅注记）")
-    add_paragraph(doc, "· 第十二次 Q5 选项含 πt 与 2πt 两种写法，差异源于 T 取值表述（题图印刷 100m 标尺易误读），本册以“代入特殊点验证”为准，选项编号与解析保持一致（C 及其等价形式）。", size=Pt(8.5))
-    add_paragraph(doc, "· 第十二次 Q12 第二空（x=λ/2 处振动）原解析写作 Acos(ωt+π)，若以 λ=2π/k 计则为 Acos(ωt+π) 确无误；平均能流密度写作 ½ρA²ω²（能量密度）与 I=½ρA²ω²u（能流密度）二者差 u，需看题目问“能流”还是“能量密度”。", size=Pt(8.5))
+    add_paragraph(doc, "· 第十二次 Q5：原卷图传播方向箭头向左，P 在 t=1s 处 +0.005（上升坡），波左行 ⇒ P 向上运动，唯一确定 y_P=0.01cos(2πt−π/3)，即选项 D。答案册标 [C] 对应右行波（镜像图），与原卷图不符——本册从 D，详见 2.1 Q5 三步推导。", size=Pt(8.5))
+    add_paragraph(doc, "· 第十二次 Q12 第三空（平均能流密度）：=½ρA²ω²u，方向沿 −x（代数值 −½ρA²ω³/k，即答案册 |I̅|=−½ρω³A²/k）；勿与能量密度 ½ρA²ω² 混淆（差一个 u）。", size=Pt(8.5))
     add_paragraph(doc, "· 第十四次填空 T15 “第一条缝与第六条缝光程差”：k=2 主极大处 d sinφ=2λ，两缝间距 5d → 光程差 δ=5d sinφ=10λ。部分解析写作“10π”是相位差（rad），本题问光程差，答 10λ。", size=Pt(8.5))
     add_paragraph(doc, "· 第十五次填空 T14：题面“自然光 I0 …… 出射光强 I=I0/8”中 I0 指入射自然光总强度。自然光过 P1 先减半为 I0/2，再过 P2：(I0/2)cos²α=I0/8 → cos²α=1/4 → α=60°（本册统一此值）。“45°”一说源于把 I0 另定义为经第一片后的强度，题面未如此定义。", size=Pt(8.5))
+    add_paragraph(doc, "· 答案册标注错误清单（2026-09-20 全册机验确认，共 4 处）：① 14次 Q2 标 [D]，物理应为 B；② 15次 Q4 标 [D]，应为 C（强度有变化无消光 → 圆偏振必排除）；③ 13次 Q23 透射“当 k=1 时 501.6nm”应为 k=2（k=1 对应 1003nm 红外）；④ 12次 Q5 标 [C]，原卷图左行波应为 D。前三处数值正确而标签错，④为答案标错——考试一律以物理推导为准。", size=Pt(8.5))
+    add_paragraph(doc, "· 本册旧版错漏（2026-09-20 第二轮全册精修已改正，修正值见正文）：12 次 4 处（Q5 答案 C→D、Q12 能流密度漏 u、Q15 三空 40cm/D、E/−20cm、Q20 7.02→8.48m/s）+ 13/14/15 次 25 处 + 第六章 2 处（8分钟自测(4) 28.1%→23.3%、高频陷阱#8 浸液明暗表述），合计 31 处。", size=Pt(8.5))
     add_paragraph(doc, "· 本册所有自绘插图均为矢量重绘（Matplotlib），与原卷扫描图仅作示意对比，非原卷复刻；原卷扫描页已嵌入各章开头缩略图以供对照。", size=Pt(8.5))
 
     # 封底寄语
@@ -1573,7 +1586,7 @@ def build_document():
     set_paragraph_spacing(p, before=6, after=4)
     p2 = doc.add_paragraph()
     p2.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    run = p2.add_run("— 本册由 Agent 在分支 arena/01a0a925-zixue2026 上排版生成，可直接打印，祝 2501 的同学们期中高分！—")
+    run = p2.add_run("— 本册由 Agent 在分支 arena/01a0bc29-zixue2026 排版生成（2026-09-20 全册精修），可直接打印，祝 2501 的同学们期中高分！—")
     run.font.size = Pt(8)
     run.italic = True
     run.font.color.rgb = C_GRAY
