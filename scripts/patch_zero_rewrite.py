@@ -189,7 +189,7 @@ def insert_zero_box_after_q(doc, q_keyword, title, content, fig_path=None, fig_c
     # Simpler: insert after the next paragraph that contains "易错/秒杀" or after the analysis paragraph.
     # Find the paragraph that is the analysis (contains "【解析】") that belongs to this Q
     # Walk forward from target until we hit next Heading
-    idx = next((i for i, pp in enumerate(doc.paragraphs) if pp is target), -1)
+    idx = next((i for i, pp in enumerate(doc.paragraphs) if pp._p is target._p), -1)
     if idx==-1:
         print(f"NOT FOUND idx for {q_keyword}")
         return
@@ -394,7 +394,7 @@ insert_zero_box_after_q(doc, "Q1  夫琅", "Q1 为什么透镜上移条纹跟着
     "1. 单缝中央始终在透镜主光轴和屏的交点。透镜上移→主光轴上移→中央跟着上移。\n"
     "2. 缝变窄→中央宽度 2fλ/b 变宽。两件事独立，一宽一移，选A。")
 
-insert_zero_box_after_q(doc, "Q1  两偏振", "Q1 & Q4 偏振片怎么判有无消光？",
+insert_zero_box_after_q(doc, "两正交偏振片", "Q1 & Q4 偏振片怎么判有无消光？",
     "1. 线偏振过偏振片，转到90°必消光。\n"
     "2. 没消光→一定不是线偏振，可能是部分偏振、椭圆、圆。\n"
     "3. 两正交偏振片间转180°：从90°→0°亮→90°暗，亮度先增后减到0。")
