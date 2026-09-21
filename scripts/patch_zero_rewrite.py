@@ -156,7 +156,7 @@ chapter_intros = {
     "二、第十二次": "本章起点：先把 y=Acos[ω(t - x/u)+φ] 抄5遍，再记住 u=λf=ω/k。后面10道选择全是它的变形。",
     "三、第十三次": "本章起点：干涉就看光程差。先画两束光谁比谁多走了2nd，再数半波。薄膜、劈尖、牛顿环、迈克尔逊全一样。",
     "四、第十四次": "本章起点：a管暗(dark)，d管明(bright)，d/a管缺。中央宽=2fλ/a，记住这一个，后面全推。",
-    "五、第十五次": "本章起点：偏振就是投影。自然光先减半，马吕斯用cos²，布儒斯特定律 iB=arctan，波片看Δn·d。",
+    "五、第十五次": "本章起点：偏振就是投影。自然光先减半，马吕斯用cos²，布儒斯特定律 i_B=arctan(n₂/n₁)，波片看Δn·d。",
 }
 for p in list(doc.paragraphs):
     for key, intro in chapter_intros.items():
@@ -189,7 +189,7 @@ def insert_zero_box_after_q(doc, q_keyword, title, content, fig_path=None, fig_c
     # Simpler: insert after the next paragraph that contains "易错/秒杀" or after the analysis paragraph.
     # Find the paragraph that is the analysis (contains "【解析】") that belongs to this Q
     # Walk forward from target until we hit next Heading
-    idx = next((i for i, pp in enumerate(doc.paragraphs) if pp is target), -1)
+    idx = next((i for i, pp in enumerate(doc.paragraphs) if pp._p is target._p), -1)
     if idx==-1:
         print(f"NOT FOUND idx for {q_keyword}")
         return
@@ -353,7 +353,7 @@ def insert_zero_box_after_q(doc, q_keyword, title, content, fig_path=None, fig_c
 insert_zero_box_after_q(doc, "Q2  沿 x 负向", "Q2 为什么同号向左？",
     "1. 先忘掉公式，看人浪：你在操场第0排先站起来，第5排的人要等波跑过去才站。\n"
     "2. 设你在 x=0 处看到 y=Acos(ωt)，那么在 x 处的点看到的是你 x/u 秒以前的样子：y=Acos[ω(t - x/u)]。\n"
-    "3. 如果波往左边跑，x是负的，-x/u 就变 +，所以变成 y=Acos[ω(t + x/u)]。\n"
+    "3. 如果波往左跑：x 处的振动是右边一点的重复（右边的点先振动）→ 时间项变成“提前 x/u” → y=Acos[ω(t + x/u)]。\n"
     "4. 检验：让波峰不动，令相位=0 → ωt ± kx =0 → x = ∓(ω/k)t。+t -kx 解出来 x往右，+t +kx 解出来 x往左。\n"
     "5. 回代选项：A、B 都是 +t -x（异号向右），C 是两个 cos 相乘（节点不动，不是行波），D 两项都是 +t +x（同号向左）→ 选D。",
     fig_path=Q2_FIG, fig_caption="图 Q2-零基础：上排 +x 波峰随时间右移，下排 -x 波峰左移；同号左、异号右，一看就懂")
@@ -394,7 +394,7 @@ insert_zero_box_after_q(doc, "Q1  夫琅", "Q1 为什么透镜上移条纹跟着
     "1. 单缝中央始终在透镜主光轴和屏的交点。透镜上移→主光轴上移→中央跟着上移。\n"
     "2. 缝变窄→中央宽度 2fλ/b 变宽。两件事独立，一宽一移，选A。")
 
-insert_zero_box_after_q(doc, "Q1  两偏振", "Q1 & Q4 偏振片怎么判有无消光？",
+insert_zero_box_after_q(doc, "两正交偏振片", "Q1 & Q4 偏振片怎么判有无消光？",
     "1. 线偏振过偏振片，转到90°必消光。\n"
     "2. 没消光→一定不是线偏振，可能是部分偏振、椭圆、圆。\n"
     "3. 两正交偏振片间转180°：从90°→0°亮→90°暗，亮度先增后减到0。")
