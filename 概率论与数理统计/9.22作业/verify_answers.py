@@ -2,6 +2,16 @@
 from fractions import Fraction as F
 from itertools import product, combinations
 from math import comb
+# 1(6)：独立生成全部“连续2件次品或查满4件即停”的终止序列
+terminal=set()
+def inspect(prefix=''):
+    if prefix.endswith('次次') or len(prefix)==4:
+        terminal.add(prefix); return
+    inspect(prefix+'正'); inspect(prefix+'次')
+inspect()
+expected={'次次','正次次','正正正正','正正正次','正正次正','正正次次',
+          '正次正正','正次正次','次正正正','次正正次','次正次正','次正次次'}
+assert terminal==expected and len(terminal)==12
 # 5：真值表验证化简结果 Ω 与 ∅
 for A,B in product([False,True], repeat=2):
     e1=(A and B) or (A and not B) or not A
@@ -31,4 +41,4 @@ assert sum((F(4,20)*F(9,10),F(8,20)*F(7,10),F(7,20)*F(5,10),F(1,20)*F(2,10)))==F
 good=F(4,9)*F(4,5)+F(3,9)*F(3,5)+F(2,9)*F(7,10)
 assert good==F(32,45) and (F(3,9)*F(3,5))/good==F(9,32)
 assert 1-F(1,5)*F(1,3)*F(1,4)==F(59,60)
-print('PASS：题5、7、9、15、19、21、25、27、29、31、37的独立穷举/精确分数复核全部通过。')
+print('PASS：题1(6)、5、7、9、15、19、21、25、27、29、31、37的独立穷举/精确分数复核全部通过。')
