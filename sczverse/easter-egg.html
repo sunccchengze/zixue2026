@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>🥚 承泽的隐藏彩蛋</title>
+<style>
+body{margin:0;background:#000;color:#fff;font-family:monospace;display:flex;align-items:center;justify-content:center;height:100vh;overflow:hidden}
+canvas{position:fixed;inset:0}
+#msg{position:relative;z-index:10;text-align:center;max-width:600px;padding:20px;background:rgba(0,0,0,0.7);border-radius:20px;border:1px solid #7c5cff}
+h1{font-size:32px;color:#7c5cff}
+</style></head><body>
+<canvas id="c"></canvas>
+<div id="msg">
+<h1>🎉 你找到了隐藏宇宙！</h1>
+<p>孙承泽，2253710052，能动强基2501</p>
+<p>你触发了 <b>Konami Code</b> 超燃模式！</p>
+<p>这里是涡轮叶片的最终形态——<br>74维设计空间的Pareto前沿，正在为你闪耀</p>
+<p style="margin-top:20px;font-size:12px;opacity:0.6">R²=0.96 · NSGA-II 200代 · MC Dropout UQ<br>你的 turbine-blade-ai-platform 正在深空为你加速</p>
+<button onclick="location.href='index.html'" style="margin-top:20px;padding:10px 20px;border-radius:20px;border:1px solid #7c5cff;background:rgba(124,92,255,0.2);color:white;cursor:pointer">返回主宇宙</button>
+</div>
+<script>
+const c=document.getElementById('c'),ctx=c.getContext('2d');
+function resize(){c.width=innerWidth;c.height=innerHeight}resize();addEventListener('resize',resize);
+let t=0;function loop(){t+=0.01;ctx.fillStyle='rgba(0,0,0,0.05)';ctx.fillRect(0,0,c.width,c.height);
+for(let i=0;i<100;i++){const a=i*0.1+t, r=100+i*3; const x=c.width/2+Math.cos(a)*r, y=c.height/2+Math.sin(a)*r*0.6;
+ctx.fillStyle=`hsl(${(i*3+t*50)%360},100%,60%)`;ctx.beginPath();ctx.arc(x,y,2,0,Math.PI*2);ctx.fill();}requestAnimationFrame(loop);}loop();
+</script>
+</body></html>

@@ -1,0 +1,1 @@
+export function start(c){ import('./index.js').then(m=>{}); }

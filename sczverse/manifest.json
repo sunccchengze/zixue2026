@@ -1,0 +1,18 @@
+{
+  "core": {"files": 9, "desc": "核心引擎 · 路由 · 状态 · 音频 · 粒子"},
+  "styles": {"files": 7, "desc": "视觉样式 · 宇宙 · 星系 · 小鹰 · 涡轮 · 禅意 · 游戏"},
+  "data": {"files": 4, "desc": "学科数据 · 涡轮数据 · 小鹰皮肤 · 成就"},
+  "galaxies": {"files": 40, "desc": "10学科星系各4文件：index/visual/data/shader"},
+  "games": {"files": 84, "desc": "21个游乐场各4文件：概率/力学/复变/物理/化学/禅意等"},
+  "turbine": {"files": 16, "desc": "涡轮引擎 + 15个叶片剖面"},
+  "nienie": {"files": 13, "desc": "小鹰伙伴 + 12个皮肤变体"},
+  "zen": {"files": 16, "desc": "禅意花园 + 15个枯山水 + 名言"},
+  "energy": {"files": 10, "desc": "热力学循环可视化"},
+  "utils": {"files": 10, "desc": "数学工具库"},
+  "components": {"files": 20, "desc": "通用组件 · 证书 · 课表 · 弹窗"},
+  "universe": {"files": 5, "desc": "宇宙 · 星场 · 流体 · 星云 · Three.js"},
+  "shaders": {"files": 8, "desc": "GLSL 着色器"},
+  "stories": {"files": 20, "desc": "20章承泽宇宙编年史"},
+  "assets": {"files": 10, "desc": "星系数据"},
+  "root": {"files": 4, "desc": "入口HTML + 彩蛋 + 概览"}
+}

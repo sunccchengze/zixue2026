@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>SCZVERSE · 承泽宇宙</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌌</text></svg>">
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<link rel="stylesheet" href="src/styles/main.css">
+<link rel="stylesheet" href="src/styles/universe.css">
+<link rel="stylesheet" href="src/styles/galaxies.css">
+<link rel="stylesheet" href="src/styles/nienie.css">
+<link rel="stylesheet" href="src/styles/turbine.css">
+<link rel="stylesheet" href="src/styles/zen.css">
+<link rel="stylesheet" href="src/styles/games.css">
+</head>
+<body>
+<div id="loading">
+  <div class="loading-core">
+    <div class="loading-ring"></div>
+    <div class="loading-text">正在折叠时空<br><span id="loading-sub">组装承泽宇宙...</span></div>
+    <div class="loading-progress"><div id="loading-bar"></div></div>
+  </div>
+</div>
+
+<canvas id="bg-canvas"></canvas>
+<canvas id="star-canvas"></canvas>
+<canvas id="fluid-canvas"></canvas>
+
+<div id="ui-layer">
+  <header id="header">
+    <div class="logo">SCZVERSE<span>·承泽宇宙</span></div>
+    <div class="meta">2253710052 · 能动强基2501 · 10学科并行 · 涡轮AI · 捏捏小鹰</div>
+    <div class="controls">
+      <button id="btn-map">🗺️ 星图</button>
+      <button id="btn-nienie">🦅 小鹰</button>
+      <button id="btn-turbine">🌀 涡轮</button>
+      <button id="btn-zen">☯️ 禅</button>
+      <button id="btn-sound">🔊</button>
+    </div>
+  </header>
+
+  <div id="center-star">
+    <div class="center-glow"></div>
+    <div class="center-core">泽</div>
+    <div class="center-orbit orbit-1"></div>
+    <div class="center-orbit orbit-2"></div>
+    <div class="center-orbit orbit-3"></div>
+    <div class="center-label">孙承泽 · SCZ<br><small>点击进入深空</small></div>
+  </div>
+
+  <div id="galaxy-ring"></div>
+  <div id="tooltip"></div>
+  <div id="modal" class="hidden"><div id="modal-content"></div><button id="modal-close">✕</button></div>
+  <div id="nienie-container" class="hidden"></div>
+  <div id="hud">
+    <div class="hud-item">📚 已探索 <span id="hud-explored">0</span>/10 星系</div>
+    <div class="hud-item">🌀 涡轮推力 <span id="hud-thrust">0</span> N</div>
+    <div class="hud-item">🦅 小鹰心情 <span id="hud-mood">😊</span></div>
+    <div class="hud-item">☯️ 禅定 <span id="hud-zen">0</span>%</div>
+  </div>
+  <div id="konami-hint">↑↑↓↓←→←→BA 解锁隐藏涡轮超燃模式</div>
+</div>
+
+<div id="game-layer" class="hidden"></div>
+
+<script type="module" src="src/core/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+
+.turbine-stage{width:100%;height:400px;position:relative;background:radial-gradient(ellipse at center,#0a1a2a 0%,#05070f 70%);border-radius:16px;overflow:hidden}
+.blade{position:absolute;left:50%;top:50%;width:4px;height:120px;background:linear-gradient(180deg,#00f5ff,#7c5cff);transform-origin:bottom center;border-radius:2px;box-shadow:0 0 10px currentColor}
+.blade::after{content:'';position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:20px;height:20px;background:currentColor;border-radius:50% 50% 50% 50% / 60% 60% 40% 40%}
+.turbine-hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:40px;height:40px;background:radial-gradient(circle,#fff,#888);border-radius:50%;box-shadow:0 0 20px rgba(0,245,255,0.6);z-index:2}
+.flow-line{position:absolute;height:2px;background:linear-gradient(90deg,transparent,#00f5ff,transparent);animation:flow 2s linear infinite}
+@keyframes flow{from{transform:translateX(-100%)}to{transform:translateX(400%)}}

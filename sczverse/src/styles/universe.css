@@ -1,0 +1,7 @@
+
+/* Universe specific */
+.starfield{position:fixed;inset:0}
+.nebula{position:absolute;border-radius:50%;filter:blur(40px);mix-blend-mode:screen;opacity:0.5;animation:nebulaFloat 20s ease-in-out infinite}
+@keyframes nebulaFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(20px,-20px) scale(1.1)}}
+.constellation{position:absolute;width:2px;height:2px;background:white;border-radius:50%;box-shadow:0 0 6px white}
+.constellation-line{position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transform-origin:left}

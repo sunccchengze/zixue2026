@@ -1,0 +1,7 @@
+
+.game-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;cursor:pointer;transition:all 0.3s}
+.game-card:hover{transform:translateY(-4px) scale(1.02);border-color:var(--accent2);box-shadow:0 10px 40px rgba(0,245,255,0.2)}
+.game-canvas{width:100%;aspect-ratio:16/9;background:#0a0a14;border-radius:12px;margin:12px 0}
+.game-controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.game-controls button{background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--fg);padding:6px 14px;border-radius:20px;font-size:12px;cursor:pointer}
+.game-controls button:hover{background:var(--accent);color:white}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SCZVERSE 概览 · 文件地图</title>
+<style>
+body{margin:0;background:#05070f;color:#e6e8f0;font-family:monospace;padding:20px}
+h1{color:#7c5cff} .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:20px}
+.card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:16px}
+.card b{color:#00f5ff}
+a{color:#7c5cff;text-decoration:none}
+a:hover{text-decoration:underline}
+</style></head><body>
+<h1>🌌 SCZVERSE 文件地图 · 265+ 文件</h1>
+<p>为孙承泽 (2253710052) 定制 · 能动强基2501 · 2026-09-23</p>
+<p><a href="index.html">← 返回主宇宙</a> · <a href="easter-egg.html">🥚 隐藏彩蛋</a></p>
+<div class="grid" id="grid"></div>
+<script>
+fetch('manifest.json').then(r=>r.json()).then(m=>{
+  const g=document.getElementById('grid');
+  for(const [k,v] of Object.entries(m)){
+    const d=document.createElement('div'); d.className='card';
+    d.innerHTML=`<b>${k}</b><br><small>${v.desc}</small><br><span style="opacity:0.5">${v.files} 文件</span>`;
+    g.appendChild(d);
+  }
+}).catch(()=>{
+  document.getElementById('grid').innerHTML='<div class="card">直接打开 index.html 开始探索！<br><br>包含：<br>• 10大学科星系<br>• 20个物理游乐场<br>• 涡轮引擎<br>• 捏捏小鹰<br>• 禅意花园<br>• 270+文件</div>';
+});
+</script>
+</body></html>
