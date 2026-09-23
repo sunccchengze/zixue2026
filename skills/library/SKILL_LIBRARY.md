@@ -18,6 +18,7 @@
 | 技能 | 路径 | 用途 | 何时调用 |
 |---|---|---|---|
 | 科研式学习导师（本仓库自产总纲） | `skills/科研式学习导师/SKILL.md` | 课题制教学全流程（批量提问/打脸链路/记忆系统/大师团/报告协议） | **所有学科主引擎，永远优先** |
+| 大物实验预习报告工作流（自产） | `skills/大物实验预习报告/SKILL.md` | 给教室号/实验名即自动产出两部分预习报告（≤400 字原理 + 3–5 思考题，只依第三版课本） | 用户上传下次大物实验课的教室/实验名时 |
 | DeepTutor（教学法） | `skills/library/DeepTutor/SKILL.md` | 交互式学习平台的教学设计（deep_solve/deep_question/visualize 等能力的设计思路） | 设计"深解/出题/可视化"类教学环节时借鉴其能力划分 |
 | DeepTutor 内置文档技能 | `skills/library/DeepTutor/builtin-pdf.md` `builtin-docx.md` `builtin-pptx.md` | PDF/docx/pptx 的**读取、批注、编辑方法论** | 处理学科资料（讲义/真题/课件）时 |
 | PDF 处理 | `skills/library/pdf-handling/SKILL.md` | 通用 PDF 读写合并方法论 | 同上，资料预处理 |
