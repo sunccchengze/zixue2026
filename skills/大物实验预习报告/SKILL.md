@@ -8,10 +8,10 @@
 1. **内容唯一来源 = 第三版课本**：《大学物理实验（第三版）》高博 主编，ISBN 978-7-04-061177-9。**不搜网、不引外部说明书/讲义、不编造课本不存在的任何参数与数据**。旧 `大物实验预习/大物实验讲义.pdf` 与 `提示词-初版.txt` 均已废弃（后者被本 SKILL 版式取代：5 节→2 部分、LaTeX→单行 Unicode）。
 2. **版式两部分**：一、实验原理简述（正文 **≤400 汉字**，公式不计）；二、预习思考题与解答（**3–5 道**）。多一节、超一字都不可。
 3. **公式禁用 LaTeX**（`$$ \frac \sqrt \theta` 等一律不用——md2docx 转换会竖排散架）。单行纯文本 Unicode 排版，编号照课本，如 `J d²θ/dt² = −kθ − b dθ/dt + M₀cos ωt　(2.10.1)`。
-4. **git 纪律**：
-   - **永远不许 `git add -A`**。只 `git add <本回合改动的显式路径>`。
-   - 提交前必须 `git status --short` 目视：若出现意料之外的 `D`/`M`/`R`（尤其 Bin 大文件），先 `git checkout <基线commit> -- <路径>` 恢复，禁止把快照丢失当成用户删除提交。
-   - 只推 `arena/01a0c7cf-zixue2026`；沙箱重置后先 `git fetch origin "arena/01a0c7cf-zixue2026:refs/remotes/origin/mybranch" && git reset --mixed origin/mybranch` 接回，**永不 force push、不动 main、不 merge/close PR**。
+4. **git 纪律**（服从 AGENTS.md v2.0 回合级保存）：
+   - 允许 `git add -A`，但**提交前必须 `git status --short` 逐条目视**：出现意料之外的 `D`/`M`/`R`（尤其 Bin 大文件）先 `git checkout <基线commit> -- <路径>` 恢复，禁止把快照丢失当成用户删除提交（判例：2026-09-23 误删 123 文件）。
+   - 推送两步：`git push origin arena/01a0c7cf-zixue2026` 后**快进推 main**：`git push origin arena/01a0c7cf-zixue2026:main`（先 `git merge-base --is-ancestor origin/main HEAD` 校验 FF-OK；不可 FF 就停下报告用户）。
+   - 沙箱重置后先 `git fetch origin "arena/01a0c7cf-zixue2026:refs/remotes/origin/mybranch" && git reset --mixed origin/mybranch` 接回（分支被删时直接 `git reset --hard origin/main` 重建并 push 恢复分支）；**永不 -f 强推、从不 merge/close PR**。
    - commit 作者：`sunccchengze <sunccchengze@users.noreply.github.com>`。
 5. **大文件不随快照持久**（>~128MB 总量上限）：扫描 PDF 会在沙箱重置后从工作区消失，但 git（origin）里有。每回合开工先核对：`git ls-tree --name-only HEAD -- <目录>` vs `ls <目录>`；缺了就 `git checkout HEAD -- <路径>` 恢复，见判例（2026-09-23 曾因 add -A 误删 123 个文件，已恢复于 6a719c5）。
 
@@ -36,7 +36,7 @@
 - 位置：`大物实验预习/大学物理实验 第三版_1-348/（已压缩）大学物理实验 第三版_1-348_<范围>.pdf`（7 册：1-50/51-100/101-150/151-200/201-250/251-300/301-348）。
 - **无文字层、无可用目录 → 禁止全文检索/get_toc**，只能渲染成图视觉读。
 - 工具：`/home/user/.venv`（无则 `python3 -m venv /home/user/.venv && /home/user/.venv/bin/pip install -q pymupdf`），~110 dpi 渲染目标页 PNG 后 `read_file` 读图。
-- 页码换算**自校准**：先渲染该册 PDF 第 0 页，读出其印刷页码 p₀ → 该册 印刷页 = p₀ + idx（idx 为 0 基页索引）。实测两例：1-50 册 印刷页=PDF页(1基)−5；101-150 册 印刷页=idx+96。其余册用前必校准。
+- 页码换算**自校准**：先渲染该册 PDF 第 0 页，读出其印刷页码 p₀ → 该册 印刷页 = p₀ + idx（idx 为 0 基页索引）。实测三例：1-50 册 印刷页=PDF页(1基)−5；101-150 册 印刷页=idx+96；151-200 册 印刷页=idx+146（2026-09-23 测）。其余册用前必校准。注意：书首目录仅一页（止于 2.15/164），2.16 及之后的实验直接扫对应册定位（如 2.16 在印刷 172–176）。
 
 ## §3 提取清单（逐条抄录，含原编号）
 
