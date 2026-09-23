@@ -14,7 +14,7 @@ probability（概率论与数理统计）/
 ├── memory/                  ← 记忆系统（HANDOFF 永远最新；通用判例继承段在 ERRORS.md）
 ├── 学习通测验/               ← 学习通八章章节测验：逐章题面誊录+参考答案（作业01–08，2026-09-21）
 ├── 大师天团/               ← 四位概率学家思维视角
-├── skills-toolkit/           ← 记忆系统模板副本
+├── skills-toolkit/           ← 学科技能库（含 probability-homework-pack 作业PDF自动制作）
 └── 课题01–08/
 
 ```
