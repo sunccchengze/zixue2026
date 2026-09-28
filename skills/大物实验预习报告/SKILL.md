@@ -6,12 +6,12 @@
 ## §0 红线纪律（违反即返工）
 
 1. **内容唯一来源 = 第三版课本**：《大学物理实验（第三版）》高博 主编，ISBN 978-7-04-061177-9。**不搜网、不引外部说明书/讲义、不编造课本不存在的任何参数与数据**。旧 `大物实验预习/大物实验讲义.pdf` 与 `提示词-初版.txt` 均已废弃（后者被本 SKILL 版式取代：5 节→2 部分、LaTeX→单行 Unicode）。
-2. **版式两部分**：一、实验原理简述（正文 **≤400 汉字**，公式不计）；二、预习思考题与解答（**3–5 道**）。多一节、超一字都不可。
+2. **版式两部分**：一、实验原理简述（正文 **≤400 汉字**，公式不计）；二、预习思考题与解答（**3–5 道**）。多一节、超一字都不可。思考题讲解须图文并茂；优先将课本对应图紧邻相关解答，不能配无关图或引入课本外材料。
 3. **公式禁用 LaTeX**（`$$ \frac \sqrt \theta` 等一律不用——md2docx 转换会竖排散架）。单行纯文本 Unicode 排版，编号照课本，如 `J d²θ/dt² = −kθ − b dθ/dt + M₀cos ωt　(2.10.1)`。
 4. **git 纪律**（服从 AGENTS.md v2.0 回合级保存）：
    - 允许 `git add -A`，但**提交前必须 `git status --short` 逐条目视**：出现意料之外的 `D`/`M`/`R`（尤其 Bin 大文件）先 `git checkout <基线commit> -- <路径>` 恢复，禁止把快照丢失当成用户删除提交（判例：2026-09-23 误删 123 文件）。
-   - 推送两步：`git push origin arena/01a0c7cf-zixue2026` 后**快进推 main**：`git push origin arena/01a0c7cf-zixue2026:main`（先 `git merge-base --is-ancestor origin/main HEAD` 校验 FF-OK；不可 FF 就停下报告用户）。
-   - 沙箱重置后先 `git fetch origin "arena/01a0c7cf-zixue2026:refs/remotes/origin/mybranch" && git reset --mixed origin/mybranch` 接回（分支被删时直接 `git reset --hard origin/main` 重建并 push 恢复分支）；**永不 -f 强推、从不 merge/close PR**。
+   - 推送两步：`git push origin <当前会话分支>` 后**快进推 main**：`git push origin <当前会话分支>:main`（先 `git merge-base --is-ancestor origin/main HEAD` 校验 FF-OK；不可 FF 就停下报告用户）。分支名必须取平台指定的当前分支，不得沿用旧会话的分支名。
+   - 沙箱重置后按平台指定的当前分支从 origin 接回工作；如远端分支缺失或分叉，先检查并报告，不要自行切换分支、硬重置 main 或强推；**永不 -f 强推、从不 merge/close PR**。
    - commit 作者：`sunccchengze <sunccchengze@users.noreply.github.com>`。
 5. **大文件不随快照持久**（>~128MB 总量上限）：扫描 PDF 会在沙箱重置后从工作区消失，但 git（origin）里有。每回合开工先核对：`git ls-tree --name-only HEAD -- <目录>` vs `ls <目录>`；缺了就 `git checkout HEAD -- <路径>` 恢复，见判例（2026-09-23 曾因 add -A 误删 123 个文件，已恢复于 6a719c5）。
 
@@ -70,11 +70,12 @@
 2. 思考题数 3–5。
 3. `grep -c '\\\\frac\|\\\\sqrt\|\\\\theta\|\$\$' <报告>` = 0。
 4. `python3 scripts/md2docx.py <报告> /tmp/chk.docx` 转换 OK，且抽查每条公式在 docx 中单行成串。
-5. `大物实验预习/README.md` 登记表补一行。
+5. 如有配图，核对其与相邻题解相关、路径有效；检查 DOCX ZIP 完整，图片媒体文件和关系均已嵌入。
+6. `大物实验预习/README.md` 登记表补一行。
 
 ## §6 收口
 
-`git add <报告.md> <README.md> [<转录.md>]`（显式路径）→ commit → `git push origin arena/01a0c7cf-zixue2026` → 向用户报 commit 哈希 + present 报告文件。回复从简，用户厌恶长篇。
+`git add <报告.md> <README.md> [<转录.md>]`（显式路径）→ commit → `git push origin <当前会话分支>` → 校验后快进推 main → 向用户报 commit 哈希 + present 报告文件。回复从简，用户厌恶长篇。
 
 ## §7 判例簿（本 SKILL 的立法依据）
 
@@ -82,3 +83,4 @@
 - 纠正②：不许搜资料/编课本外内容（§0.1）。
 - 纠正③：LaTeX 转换散架 → 单行 Unicode（§0.3、§4）。
 - 事故①：沙箱重置 + `git add -A` 误删 123 个用户大文件（第三版扫描、人工智能导论、测控实训、概率论教材、学习观目录、化学实验 docx），6a719c5 恢复 → §0.4、§0.5。
+- 纠正④：B303 完成后只宣布“下一篇是 B304”便结束，用户指出这是停步。用户要求继续时，必须在同一回合实际完成下一篇交付；仅指出下一项不算完成。

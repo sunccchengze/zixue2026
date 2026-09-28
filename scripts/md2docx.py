@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # md→docx 迷你转换器（无第三方依赖，stdlib zipfile 直写 OOXML）
-import re, sys, zipfile
+import os, re, struct, sys, zipfile
 
 esc = lambda s: s.replace('&','&amp;').replace('<','&lt;').replace('>','&gt;')
 
@@ -38,10 +38,43 @@ def table(rows):
     xml.append('</w:tbl>')
     return ''.join(xml)
 
-def md_to_body(md):
+def image_paragraph(alt, rel_id, index, cx, cy):
+    alt = esc(alt).replace('"', '&quot;')
+    return (
+        '<w:p><w:r><w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0">'
+        f'<wp:extent cx="{cx}" cy="{cy}"/><wp:effectExtent l="0" t="0" r="0" b="0"/>'
+        f'<wp:docPr id="{index}" name="Image {index}" descr="{alt}"/>'
+        '<wp:cNvGraphicFramePr><a:graphicFrameLocks noChangeAspect="1"/></wp:cNvGraphicFramePr>'
+        '<a:graphic><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">'
+        '<pic:pic><pic:nvPicPr>'
+        f'<pic:cNvPr id="{index}" name="Image {index}.png"/><pic:cNvPicPr/></pic:nvPicPr>'
+        f'<pic:blipFill><a:blip r:embed="{rel_id}"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill>'
+        f'<pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="{cx}" cy="{cy}"/></a:xfrm>'
+        '<a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr>'
+        '</pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r></w:p>'
+    )
+
+def md_to_body(md, base_dir='.', media=None):
+    if media is None: media = []
     lines = md.split('\n'); out = []; i = 0
     while i < len(lines):
         ln = lines[i].rstrip()
+        if m := re.fullmatch(r'!\[([^\]]*)\]\(([^)]+)\)', ln.strip()):
+            alt, image_path = m.groups()
+            image_file = os.path.join(base_dir, image_path)
+            with open(image_file, 'rb') as f:
+                data = f.read()
+            if data[:8] != b'\x89PNG\r\n\x1a\n' or len(data) < 24:
+                raise ValueError(f'Only PNG images are supported: {image_file}')
+            width, height = struct.unpack('>II', data[16:24])
+            index = len(media) + 1
+            rel_id = f'rId{index}'
+            target = f'image{index}.png'
+            cx = min(width * 9525, 5_500_000)  # cap to the page's usable width
+            cy = int(cx * height / width)
+            media.append((rel_id, target, data))
+            out.append(image_paragraph(alt, rel_id, index, cx, cy))
+            i += 1; continue
         if ln.startswith('|'):
             rows = []
             while i < len(lines) and lines[i].strip().startswith('|'):
@@ -67,16 +100,25 @@ def md_to_body(md):
 
 def make_docx(md_path, docx_path):
     md = open(md_path, encoding='utf-8').read()
-    body = md_to_body(md)
+    media = []
+    body = md_to_body(md, os.path.dirname(os.path.abspath(md_path)), media)
     doc = DOC_TPL.replace('%%BODY%%', body)
     with zipfile.ZipFile(docx_path, 'w', zipfile.ZIP_DEFLATED) as z:
         z.writestr('[Content_Types].xml', CT); z.writestr('_rels/.rels', RELS)
         z.writestr('word/document.xml', doc); z.writestr('word/styles.xml', STYLES)
+        if media:
+            rels = ['<?xml version="1.0" encoding="UTF-8" standalone="yes"?>',
+                    '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">']
+            for rel_id, target, data in media:
+                rels.append(f'<Relationship Id="{rel_id}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/{target}"/>')
+                z.writestr(f'word/media/{target}', data)
+            rels.append('</Relationships>')
+            z.writestr('word/_rels/document.xml.rels', ''.join(rels))
 
-CT = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>'
+CT = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>'
 RELS = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>'
 STYLES = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/><w:rPr><w:rFonts w:eastAsia="宋体" w:ascii="Times New Roman" w:hAnsi="Times New Roman"/><w:sz w:val="21"/></w:rPr></w:style><w:style w:type="paragraph" w:styleId="Heading1"><w:name w:val="heading 1"/><w:basedOn w:val="Normal"/><w:pPr><w:spacing w:before="240" w:after="120"/></w:pPr><w:rPr><w:b/><w:sz w:val="32"/></w:rPr></w:style><w:style w:type="paragraph" w:styleId="Heading2"><w:name w:val="heading 2"/><w:basedOn w:val="Normal"/><w:pPr><w:spacing w:before="200" w:after="100"/></w:pPr><w:rPr><w:b/><w:sz w:val="26"/></w:rPr></w:style><w:style w:type="paragraph" w:styleId="Heading3"><w:name w:val="heading 3"/><w:basedOn w:val="Normal"/><w:pPr><w:spacing w:before="160" w:after="80"/></w:pPr><w:rPr><w:b/><w:sz w:val="23"/></w:rPr></w:style></w:styles>'
-DOC_TPL = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>%%BODY%%<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:bottom="1134" w:left="1418" w:right="1418"/></w:sectPr></w:body></w:document>'
+DOC_TPL = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><w:body>%%BODY%%<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:bottom="1134" w:left="1418" w:right="1418"/></w:sectPr></w:body></w:document>'
 
 if __name__ == '__main__':
     src, dst = sys.argv[1], sys.argv[2]
