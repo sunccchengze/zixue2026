@@ -234,3 +234,9 @@
 
 - 若用户读完 V4 仍嫌某节不够细：让他指到具体小节名，按同一模板加厚（不要退回罗列）。
 - 若用户开始做题：收第十二次 24 题手写照进入判卷流程；判卷时若错在概念层，直接把对应精讲小节指给他回看。
+
+## 2026-09-29 · main 快进同步（V4 归档）
+
+- 按仓库根 `AGENTS.md` 回合级保存第 5 步，把工作分支 `arena/01a0eafb-zixue2026` 纯快进推送到 `main`（不经 PR、不强推）。
+- 校验：`merge-base --is-ancestor origin/main HEAD` 通过后才推；推完 `git ls-remote --heads origin main arena/01a0eafb-zixue2026` 两 ref 同点。
+- 本轮合并进 main 的提交：`dcce666 大物期中解析升 V4：四次作业知识框架整段重写为零基础精讲` 及其账本补记。
