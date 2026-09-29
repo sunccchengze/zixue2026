@@ -12,6 +12,7 @@ from content12 import S12
 from content13 import S13
 from content14 import S14
 from content15 import S15
+from 知识精讲_v4 import DEEP_FRAMEWORK
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, '大学物理期中考试范围详解（第十二~十五次作业）.docx')
@@ -102,16 +103,46 @@ def question(doc, num, stem, answer, explain, calc=False):
         else:
             para(doc, ln, size=10.5, after=3, indent=0.55)
 
-def build_session(doc, S, idx):
+BLOCK_STYLE = {
+    'key':  ('结论要点　', 'FFF2CC', RGBColor(0x9C, 0x57, 0x00)),
+    'warn': ('易错提醒　', 'FCE4D6', RGBColor(0xC0, 0x00, 0x00)),
+    'note': ('口诀 · 对应题目　', 'E2EFDA', RGBColor(0x37, 0x7D, 0x22)),
+}
+
+
+def strip_md(text):
+    """把 **粗体** 标记去掉（本文件不做富文本，只保证文字干净）。"""
+    import re as _re
+    return _re.sub(r'\*\*(.+?)\*\*', r'\1', str(text)).replace('**', '')
+
+
+def render_block(doc, kind, text):
+    if kind == 'h':
+        para(doc, text, size=11, bold=True, cn='黑体', before=6, after=3,
+             color=ACCENT)
+    elif kind == 'p':
+        para(doc, strip_md(text), size=10.5, after=3, indent=0.3)
+    elif kind == 'b':
+        para(doc, '· ' + strip_md(text), size=10.5, after=2, indent=0.55)
+    elif kind == 'f':
+        para(doc, strip_md(text), size=11, bold=True, after=4,
+             align=WD_ALIGN_PARAGRAPH.CENTER, color=ACCENT)
+    elif kind in BLOCK_STYLE:
+        label, fill, color = BLOCK_STYLE[kind]
+        mixed(doc, [(label, True, color), (strip_md(text), False, None)],
+              size=10.5, after=3, indent=0.3, fill=fill)
+
+
+def build_session(doc, S, idx, num):
     doc.add_page_break()
     heading(doc, f'第{idx}部分　{S["title"]}', 1)
     para(doc, '考点范围：' + S['topic'], size=10.5, after=6, color=GRAY, align=WD_ALIGN_PARAGRAPH.CENTER)
-    # 知识框架
-    heading(doc, '〇、知识框架（先读这页，再看逐题解析）', 2)
-    for title, points in S['framework']:
+    # 知识精讲（零基础版，与 V4 图文精析共用同一份底稿）
+    heading(doc, '〇、知识精讲（零基础版：先建立物理图像，再看逐题解析）', 2)
+    for title, blocks in DEEP_FRAMEWORK[num]:
         heading(doc, title, 3)
-        for pt in points:
-            p = para(doc, '· ' + pt, size=10.5, after=2, indent=0.3)
+        for kind, text in blocks:
+            render_block(doc, kind, text)
     for fname, cap in S['imgs']:
         image(doc, fname, cap)
     # 逐题
@@ -214,9 +245,9 @@ def main():
     heading(doc, '使用说明', 2)
     for t in [
         '本册覆盖期中考试全部范围：第十二次（机械波）、第十三次（波动光学 1·干涉）、第十四次（波动光学 2·衍射与光栅）、第十五次（波动光学 3·偏振），共 96 题。',
-        '每个部分先给"知识框架"（本部分要背的公式与判据，含配图），再逐题给出【参考答案】（黄色底纹）与【详解】（建模依据 → 分步代入 → 常见陷阱）。',
+        '每个部分先给"知识精讲（零基础版）"——从物理图像讲起，逐条拆概念、推公式、给易错提醒（黄框＝必须背的结论，橙框＝易错提醒，绿框＝口诀与对应题号），再逐题给出【参考答案】（黄色底纹）与【详解】（建模依据 → 分步代入 → 常见陷阱）。',
         '选择题的详解会逐项排除错误选项；计算题给出完整推导；填空题给出每空的来源公式。',
-        '复习路线建议：① 先背知识框架 → ② 合上答案重做计算题 21~24 与每部分的最后两道选择 → ③ 用本册末尾的答案速查表自测全部 96 题 → ④ 错题回看对应详解。']:
+        '复习路线建议：① 先读知识精讲 → ② 合上答案重做计算题 21~24 与每部分的最后两道选择 → ③ 用本册末尾的答案速查表自测全部 96 题 → ④ 错题回看对应详解。']:
         para(doc, '· ' + t, size=10.5, after=3)
 
     for S in (S12, S13, S14, S15):
@@ -224,8 +255,8 @@ def main():
         quick_table(doc, S)
 
     # ===== 四大部分 =====
-    for idx, S in zip(['一', '二', '三', '四'], (S12, S13, S14, S15)):
-        build_session(doc, S, idx)
+    for idx, num, S in zip(['一', '二', '三', '四'], (12, 13, 14, 15), (S12, S13, S14, S15)):
+        build_session(doc, S, idx, num)
 
     doc.save(OUT)
     print('OK', OUT)
