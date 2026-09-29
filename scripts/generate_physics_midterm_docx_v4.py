@@ -1,6 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Build the full, question-by-question V3 college-physics homework guide."""
+"""Build the full, question-by-question V4 college-physics homework guide.
+
+V4 相对 V3 的升级
+-----------------
+1. 每次作业的「知识框架」整段换成**零基础精讲层**
+   （底稿：大学物理/课程作业/知识框架精讲_v4.py）：
+   先给物理图像 → 再给判据 → 再给反例与陷阱 → 最后压成速记清单，
+   并支持小标题、编号/无序列表、公式行、彩色提示框、对比表格、图卡、收口总结。
+2. 封面、页眉、阅读说明与附录同步升版为 V4.0，并说明新层次怎么用。
+3. 逐题解析部分（96 题）保持 V3 的排版与内容不变，只做版头说明补充。
+"""
 from __future__ import annotations
 
 import re
@@ -25,6 +35,7 @@ from content14 import S14  # noqa: E402
 from content15 import S15  # noqa: E402
 from 逐题深度解析_v3 import ANSWERS, DEEP_SOLUTIONS, ERRATA, QUESTION_OVERRIDES  # noqa: E402
 from 计算题解析基线_v3 import CALC_SOLUTIONS  # noqa: E402
+from 知识框架精讲_v4 import DEEP_FRAMEWORK, SECTION_TITLES  # noqa: E402
 
 SESSIONS = [
     (12, S12, "机械波", "波动方程 · 干涉 · 驻波 · 多普勒"),
@@ -213,6 +224,154 @@ def add_answer_box(doc, answer):
                    label_color="8A5A00", text_color=INK, size=10.3)
 
 
+# --------------------------------------------------------------------------
+# 零基础精讲层的渲染器（对应 知识框架精讲_v4.py 的块类型）
+# --------------------------------------------------------------------------
+CALLOUT_STYLES = {
+    # kind: (底纹, 标签色, 用途)
+    "key": (LIGHT_GREEN, TEAL, "核心结论"),
+    "warn": (LIGHT_GOLD, "986B00", "易错 / 陷阱"),
+    "tip": (LIGHT_BLUE, BLUE, "技巧 / 补充"),
+    "myth": ("F4EEF8", "6A4C93", "反直觉"),
+}
+
+CIRCLED = "①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳"
+
+
+def add_callout(doc, label, body, kind="key"):
+    bg, label_color, _ = CALLOUT_STYLES.get(kind, CALLOUT_STYLES["key"])
+    add_label_line(doc, label, clean_text(body), bg=bg,
+                   label_color=label_color, text_color=INK, size=9.7)
+
+
+def add_formula(doc, text):
+    """公式行：居中、等宽、浅底纹，长公式自动缩小字号。"""
+    size = 9.9 if len(text) <= 46 else (9.2 if len(text) <= 70 else 8.6)
+    table = doc.add_table(rows=1, cols=1)
+    table.alignment = WD_TABLE_ALIGNMENT.CENTER
+    table.autofit = False
+    table.columns[0].width = Inches(6.45)
+    cell = table.cell(0, 0)
+    set_cell_margins(cell, top=60, start=90, bottom=60, end=90)
+    set_table_borders(table, color="D5DEE6", size="4")
+    shade_cell(cell, "F4F7FA")
+    p = cell.paragraphs[0]
+    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p.paragraph_format.space_after = Pt(0)
+    p.paragraph_format.line_spacing = 1.1
+    r = p.add_run(clean_text(text))
+    set_run_font(r, size, False, NAVY, "Cambria Math")
+    set_keep_together(table.rows[0])
+    add_paragraph(doc, "", size=2, after=1)
+
+
+def add_summary(doc, text):
+    """一句话收口：整块蓝底，作为该次知识框架的结束。"""
+    table = doc.add_table(rows=1, cols=1)
+    table.alignment = WD_TABLE_ALIGNMENT.CENTER
+    table.autofit = False
+    table.columns[0].width = Inches(6.45)
+    cell = table.cell(0, 0)
+    set_cell_margins(cell, top=110, start=130, bottom=110, end=130)
+    set_table_borders(table, color=NAVY, size="8")
+    shade_cell(cell, LIGHT_BLUE)
+    p = cell.paragraphs[0]
+    p.paragraph_format.space_after = Pt(0)
+    p.paragraph_format.line_spacing = 1.2
+    r = p.add_run("一句话总结　")
+    set_run_font(r, 10, True, NAVY, "黑体")
+    r2 = p.add_run(clean_text(text))
+    set_run_font(r2, 10, False, INK, "宋体")
+    set_keep_together(table.rows[0])
+    add_paragraph(doc, "", size=2, after=1)
+
+
+def add_bullet(doc, marker, text, size=9.85, indent=0.14):
+    """一行带前置符号的条目；marker 为 '·' 或 '①' 等。"""
+    table = doc.add_table(rows=1, cols=1)
+    table.alignment = WD_TABLE_ALIGNMENT.CENTER
+    table.autofit = False
+    table.columns[0].width = Inches(6.45)
+    cell = table.cell(0, 0)
+    set_cell_margins(cell, top=18, start=40, bottom=18, end=40)
+    set_table_borders(table, color="FFFFFF", size="0")
+    p = cell.paragraphs[0]
+    p.paragraph_format.space_after = Pt(0)
+    p.paragraph_format.line_spacing = 1.18
+    rm = p.add_run(marker + "　")
+    set_run_font(rm, size, True, TEAL, "宋体")
+    r = p.add_run(clean_text(text))
+    set_run_font(r, size, False, INK, "宋体")
+    set_keep_together(table.rows[0])
+    return table
+
+
+def add_deep_table(doc, headers, rows):
+    table = doc.add_table(rows=1, cols=len(headers))
+    table.alignment = WD_TABLE_ALIGNMENT.CENTER
+    table.style = "Table Grid"
+    table.autofit = True
+    for cell, text in zip(table.rows[0].cells, headers):
+        shade_cell(cell, NAVY)
+        p = cell.paragraphs[0]
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        p.paragraph_format.space_after = Pt(0)
+        r = p.add_run(clean_text(text))
+        set_run_font(r, 9.0, True, WHITE, "黑体")
+    for idx, row_data in enumerate(rows):
+        row = table.add_row()
+        set_keep_together(row)
+        for cell, text in zip(row.cells, row_data):
+            p = cell.paragraphs[0]
+            p.paragraph_format.space_before = Pt(1)
+            p.paragraph_format.space_after = Pt(1)
+            p.paragraph_format.line_spacing = 1.12
+            r = p.add_run(clean_text(str(text)))
+            set_run_font(r, 8.7, False, INK, "宋体")
+            cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+            set_cell_margins(cell, top=50, start=70, bottom=50, end=70)
+            if idx % 2 == 1:
+                shade_cell(cell, "F5F8FA")
+    add_paragraph(doc, "", size=2, after=2)
+
+
+def add_deep_framework(doc, session, blocks):
+    """把 知识框架精讲_v4.py 的一组块渲染成 docx。"""
+    for block in blocks:
+        kind = block[0]
+        if kind in ("h3", "h4"):
+            if kind == "h3":
+                add_heading(doc, clean_text(block[1]), level=3)
+            else:
+                add_paragraph(doc, clean_text(block[1]), size=10.3, bold=True,
+                              color=TEAL, before=5, after=2, indent=0.02,
+                              font_cn="黑体", keep=True)
+        elif kind == "p":
+            add_paragraph(doc, clean_text(block[1]), size=9.85, color=INK,
+                          before=0, after=4, align=WD_ALIGN_PARAGRAPH.JUSTIFY)
+        elif kind == "ul":
+            for item in block[1]:
+                add_bullet(doc, "·", item)
+            add_paragraph(doc, "", size=2, after=2)
+        elif kind == "ol":
+            for i, item in enumerate(block[1]):
+                marker = CIRCLED[i] if i < len(CIRCLED) else f"{i + 1}."
+                add_bullet(doc, marker, item)
+            add_paragraph(doc, "", size=2, after=2)
+        elif kind == "formula":
+            add_formula(doc, block[1])
+        elif kind == "callout":
+            add_callout(doc, block[1], block[2], block[3] if len(block) > 3 else "key")
+        elif kind == "table":
+            add_deep_table(doc, block[1], block[2])
+        elif kind == "figure":
+            add_figure(doc, block[1], block[2], width=5.2)
+        elif kind == "summary":
+            add_summary(doc, block[1])
+        else:  # pragma: no cover - guards against typos in the source data
+            raise ValueError(f"未知的知识框架块类型：{kind!r}（第 {session} 次）")
+
+
 def add_figure(doc, filename, caption, width=5.8):
     path = COURSE / "图卡" / filename
     if not path.exists():
@@ -329,13 +488,13 @@ def add_answer_key(doc, session, data):
     widths = [Inches(0.58), Inches(2.65), Inches(0.58), Inches(2.65)]
     for i, width in enumerate(widths):
         table.columns[i].width = width
-    headers = ["題號", "答案", "題號", "答案"]
+    headers = ["题号", "答案", "题号", "答案"]
     for cell, text in zip(table.rows[0].cells, headers):
         shade_cell(cell, NAVY)
         p = cell.paragraphs[0]
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
         r = p.add_run(text)
-        set_run_font(r, 9.2, True, WHITE, "黑體")
+        set_run_font(r, 9.2, True, WHITE, "黑体")
     all_answers = []
     for category in ("choice", "blank"):
         for i, answer in enumerate(ANSWERS[session][category], 1):
@@ -376,18 +535,19 @@ def add_cover(doc):
                   align=WD_ALIGN_PARAGRAPH.CENTER, after=8, font_cn="黑体")
     add_paragraph(doc, "期中考试范围 · 全题逐题深度解析", size=21, bold=True, color=BLUE,
                   align=WD_ALIGN_PARAGRAPH.CENTER, after=10, font_cn="黑体")
-    add_paragraph(doc, "第十二~十五次作业｜V3.0 全题重修版", size=15, bold=True, color=TEAL,
+    add_paragraph(doc, "第十二~十五次作业｜V4.0 零基础精讲版", size=15, bold=True, color=TEAL,
                   align=WD_ALIGN_PARAGRAPH.CENTER, after=8, font_cn="黑体")
     add_paragraph(doc, "机械波　·　干涉　·　衍射与光栅　·　偏振", size=12.5, color=GRAY,
                   align=WD_ALIGN_PARAGRAPH.CENTER, after=28)
 
     info = [
         ("课程范围", "第十二至第十五次作业，共 96 题"),
+        ("零基础层", "四次作业各一章「知识框架」：物理图像 → 判据 → 反例 → 速记"),
         ("逐题结构", "题干要点 → 参考答案 → 解题思路 → 推理步骤 → 自检与易错提醒"),
         ("题型覆盖", "40 道选择题 + 40 道填空题 + 16 道计算题"),
         ("姓名 / 学号", "孙承泽　/　2253710052"),
         ("班级", "能动强基2501"),
-        ("修订日期", "2026 年 9 月 28 日"),
+        ("修订日期", "2026 年 9 月 29 日"),
     ]
     table = doc.add_table(rows=len(info), cols=2)
     table.alignment = WD_TABLE_ALIGNMENT.CENTER
@@ -406,7 +566,8 @@ def add_cover(doc):
         for cell in (c0, c1):
             set_cell_margins(cell, top=120, start=120, bottom=120, end=120)
             cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
-    add_paragraph(doc, "本版重点：不再把多个题号合并成一段；选择题与填空题也逐题说明为什么、怎么做、如何检查。",
+    add_paragraph(doc, "本版重点：知识框架整段重写成零基础精讲——先搭物理图像，再给判据，"
+                       "再给反例与陷阱，最后压成速记清单；选择题与填空题仍逐题说明为什么、怎么做、如何检查。",
                   size=10.5, bold=True, color=BLUE, align=WD_ALIGN_PARAGRAPH.CENTER,
                   before=24, after=8)
     doc.add_page_break()
@@ -416,7 +577,9 @@ def add_front_matter(doc):
     add_heading(doc, "阅读说明与修订范围", level=1)
     notes = [
         "本册把第十二至第十五次作业的 96 题全部拆成独立题块：40 道选择、40 道填空、16 道计算。每题都给题意、答案、思路和分步推理；选择/填空另加自检与易错提醒。",
-        "计算题保留原来已经写清的分步推导；本轮把容易被答案表一句话带过的选择题和填空题全部补成逐题解析，不再以‘答案速查表’代替讲解。",
+        "【V4 新增】每一次作业的「知识框架」整段重写为零基础精讲层：先用日常类比把物理图像搭起来，再讲判据是从哪个麻烦里长出来的，再给反直觉点与易错陷阱，最后压成一页速记清单。原来那种一句话一条的结论式罗列已经全部替换。",
+        "【V4 新增】知识框架里新增了对比表格、公式行、分色提示框（核心结论 / 易错陷阱 / 技巧补充 / 反直觉）和章节速览表，方便按颜色挑重点看。",
+        "计算题保留原来已经写清的分步推导；选择题与填空题全部补成逐题解析，不再以『答案速查表』代替讲解。",
         "图像题保留原卷首页缩略图，并在关键题旁加上波形、干涉、衍射、偏振示意图。图卡用于解释物理关系；题面图示以原卷为准。",
         "本版对照原卷与答案资料复核了易混标号、数值和单位；有争议处把物理推导写在题目下面，并在本册勘误表列明。",
     ]
@@ -439,6 +602,18 @@ def add_front_matter(doc):
         ("偏振", "自然光先减半；线偏振逐片用马吕斯；布儒斯特题标清 p/s；波片题看相位延迟。"),
     ]:
         add_label_line(doc, f"{title}　", body, bg=LIGHT_GREEN, label_color=TEAL, size=9.8)
+    add_heading(doc, "零基础层的读法与提示框颜色", level=2)
+    add_label_line(
+        doc, "读法　",
+        "第一次通读：把每次作业的知识框架从头读到尾，只求看懂，不求会算。"
+        "第二遍：只挑黄框（易错陷阱）和最后的速记清单背下来。"
+        "做题时：题目卡住就回到对应小节，而不是在题里反复试。",
+        bg=LIGHT_BLUE, label_color=BLUE, size=9.6)
+    for kind, (bg, label_color, color_name) in CALLOUT_STYLES.items():
+        add_label_line(
+            doc, {"key": "绿框", "warn": "黄框", "tip": "蓝框", "myth": "紫框"}[kind] + "　",
+            f"{color_name}：见每节中的对应标签，按颜色挑重点读。",
+            bg=bg, label_color=label_color, size=9.4)
     doc.add_page_break()
 
 
@@ -454,6 +629,16 @@ def build_document():
     assert all((s, n) in CALC_SOLUTIONS for s in (12, 13, 14, 15) for n in range(21, 25))
     assert all(len(ANSWERS[s]["choice"]) == 10 and len(ANSWERS[s]["blank"]) == 10
                for s in (12, 13, 14, 15))
+    # The zero-basis layer must exist for all four sessions, be non-trivial in length,
+    # and end with a one-line summary; otherwise a session silently falls back to a stub.
+    for s in (12, 13, 14, 15):
+        blocks = DEEP_FRAMEWORK[s]
+        assert len(blocks) >= 40, f"第 {s} 次知识框架精讲过短：{len(blocks)} 块"
+        kinds = {b[0] for b in blocks}
+        assert {"p", "callout", "table", "formula", "summary", "h3"} <= kinds, (
+            f"第 {s} 次知识框架精讲缺少必要块类型：{sorted(kinds)}")
+        assert blocks[-1][0] == "summary", f"第 {s} 次知识框架精讲缺少结尾总结"
+        assert len(SECTION_TITLES[s]) >= 7, f"第 {s} 次速览表过短"
 
     doc = Document()
     sec = doc.sections[0]
@@ -478,7 +663,7 @@ def build_document():
     hp = sec.header.paragraphs[0]
     hp.alignment = WD_ALIGN_PARAGRAPH.RIGHT
     hp.paragraph_format.space_after = Pt(0)
-    rr = hp.add_run("大学物理 · 第十二至十五次作业全题解析 V3.0")
+    rr = hp.add_run("大学物理 · 第十二至十五次作业全题解析 V4.0")
     set_run_font(rr, 8, False, GRAY, "宋体")
     fp = sec.footer.paragraphs[0]
     fp.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -513,13 +698,18 @@ def build_document():
         add_original_page(doc, session)
         add_answer_key(doc, session, data)
 
-        add_heading(doc, "知识框架（先认判据，再逐题做）", level=2)
-        for item in data["framework"]:
-            head, bullets = item
-            add_heading(doc, head, level=3)
-            for bullet in bullets:
-                add_paragraph(doc, "• " + bullet, size=9.65, color=INK,
-                              before=0, after=2, indent=0.08)
+        add_heading(doc, "知识框架｜零基础精讲（先想明白，再记判据）", level=2)
+        add_label_line(
+            doc, "本节说明　",
+            "下面这一层是给第一次读或者读不透时用的：每一小节都先讲"
+            "这个东西像什么，再讲判据是怎么来的，最后给反例与速记。"
+            "第一次通读请按顺序读；复习阶段只翻每节末尾的提示框和最后的速记清单。",
+            bg=LIGHT_BLUE, label_color=BLUE, size=9.6)
+        add_deep_framework(doc, session, DEEP_FRAMEWORK[session])
+        add_heading(doc, "知识框架速览表（考前十分钟只用这一张）", level=2)
+        for idx, title in enumerate(SECTION_TITLES[session], 1):
+            add_label_line(doc, f"{idx:02d}　", title, bg=LIGHT_GREEN,
+                           label_color=TEAL, size=9.2)
 
         add_heading(doc, "一、选择题 1–10｜每题单独拆解", level=2)
         for i, q in enumerate(data["choice"], 1):
@@ -550,6 +740,7 @@ def build_document():
     add_heading(doc, "资料依据", level=2)
     for ref in [
         "题干：大学物理/课程作业/content12.py 至 content15.py，并对照各次原卷首页缩略图核查图示题。",
+        "零基础精讲层底稿：大学物理/课程作业/知识框架精讲_v4.py（四次作业共 313 个讲解块），由 scripts/generate_physics_midterm_docx_v4.py 渲染。",
         "答案核对：大学物理/资料原件/大学物理下册作业解析.pdf 与逐题物理推导；发现的标号或答案差异已在本册标注。",
         "概念图：大学物理/课程作业/图卡/ 下的机械波、干涉、衍射、偏振示意图；图示用于讲解，不替代原题图。",
     ]:
