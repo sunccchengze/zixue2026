@@ -127,6 +127,31 @@ def main() -> int:
             if chars < 4000:
                 errors.append(f"第 {session} 次精讲字数过少（{chars}）")
 
+    # 7) docx 与 markdown 口径一致（两个渲染后端必须讲同一件事）
+    md_path = ROOT / "大学物理" / "期中复习" / "12-15次作业·知识精讲（零基础版）.md"
+    if not md_path.exists():
+        errors.append(f"缺少 Markdown 精讲文件：{md_path}")
+    else:
+        md = md_path.read_text(encoding="utf-8")
+        stale = ROOT / "大学物理" / "课程作业" / "知识精讲_v4.py"
+        if stale.exists():
+            errors.append("存在被取代的旧底稿 知识精讲_v4.py（应只有 知识框架精讲_v4.py）")
+        for session, blocks in DEEP_FRAMEWORK.items():
+            for block in blocks:
+                if block[0] not in ("h3", "summary", "formula"):
+                    continue
+                probe = str(block[1]).strip()      # md 保留 ** 标记，按原样比对
+                if len(probe) < 6:
+                    continue
+                if probe not in md:
+                    errors.append(f"md 未收录第 {session} 次的「{probe[:24]}」")
+                    break
+        # 勘误表必须在两个后端都留痕
+        for must in ("同类间距 λ/2", "λ/(2n)"):
+            if must not in md:
+                errors.append(f"md 缺少勘误关键串：{must}")
+        print(f"  Markdown 精讲：{md_path.name}（{md.count(chr(10)) + 1} 行）")
+
     print(f"文件：{DOCX.name}（{DOCX.stat().st_size / 1024:.0f} KB，"
           f"{len(media)} 张图，{len(doc.paragraphs)} 段，{len(doc.tables)} 表）")
     print(f"题号块 {n_heading} 个；参考答案 {n_answer} 处；解题思路 {n_solution} 处；"
