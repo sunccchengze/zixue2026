@@ -13,6 +13,12 @@ answer=(root/'作业02-第二版第二章AB偶数题-参考答案.md').read_text
 ids=[f'A{i}' for i in range(2,27,2)]+['B2','B4','B6']
 assert re.findall(r'^### ([AB]\d+)$',question,re.M)==ids
 assert re.findall(r'^### ([AB]\d+)$',answer,re.M)==ids
+# 43页扫描件和逐页OCR须有一一对应的页标；OCR仅作搜索、不作公式原题。
+source=pymupdf.open(root.parent/'资料原件/概率论与数理统计-第二版-课后题.pdf')
+ocr_text=(root.parent/'资料文本/概率论与数理统计-第二版-课后题-OCR.md').read_text()
+assert len(source)==43
+assert [int(x) for x in re.findall(r'^## PDF 第 (\d+) 页$',ocr_text,re.M)]==list(range(1,len(source)+1))
+assert '第5章习题页' in ocr_text
 
 def near(a,b,tol=1e-9):assert isclose(a,b,rel_tol=tol,abs_tol=tol),(a,b)
 # A2: 径向CDF微分积分 + 面积比
@@ -116,4 +122,6 @@ for kind in ('答题卷','完整解析'):
  else:
   for id in ids:assert re.search(rf'(?m)^{id}\n',text),id
  for s in ('-1','^2','B4'):assert s in text,(kind,s)
-print('PASS 16/16: independently checked supports/normalization, transformations, B2 convolution, B4 CDF, B6 tails, PDFs')
+ if kind=='答题卷': assert 'Y=floor(X)+1' in text  # CID字体不可静默吞掉取整符号
+ else: assert 'Y=k 等价于 k-1≤X<k' in text
+print('PASS 16/16: PDF与43页OCR齐全；支持集/归一、分布变换、B2卷积、B4分布函数、B6尾概率已独立校验')
