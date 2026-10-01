@@ -117,6 +117,10 @@ allowed-tools: "Read Write Edit Glob Grep Bash WebFetch"
 - 字体可能缺失的空集、全集符号，必要时写“空集”“全集”；
 - 不使用源码式、难读的 LaTeX 字符串充当最终排版；
 - 公式较长时分行，不让自动换行破坏结构。
+- **真公式排版硬门禁（2026-10-01 用户问责立规）**：PDF 中一切数学必须真排版——叠式分式、根号、求和/积分号、分段花括号、表格线、上下标；
+  禁止 `(a)/(b)`、`X^2`、`Y_1`、`Bin(...)`、`Pois`、`C(n,k)` 一类纯文本回退出现在成品里（判例：10.13 作业初版 latex_plain 回退被用户判"不是给人看的"）。
+  实现参照 `10.13作业/build_pdfs.py`：mathtext 渲染公式图为 300dpi 透明 PNG 内联；cases/array 解析为真表格+矢量花括号；
+  行内公式高于行高者自动升格为独立居中行；reportlab CJK 与内联图冲突处已装补丁（cjkFragSplit 空 frag 原子化 + autoLeading='max'）。
 
 ## 七、PDF 构建与成品验收
 
