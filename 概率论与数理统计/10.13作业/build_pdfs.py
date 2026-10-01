@@ -101,7 +101,8 @@ def read_question_blocks():
 
 # Print-friendly question sheet. Selected tasks are grouped to preserve hand-writing space.
 blocks=dict(read_question_blocks())
-groups=[['A2','A4','A6'],['A8','A10'],['A12','A14'],['A16','A18'],['A20'],['A22'],['A24','A26'],['B2'],['B4','B6']]
+# 用户硬性要求（2026-10-01 复核重申）：答题纸严格 4 页 A4。16 题按书写量均摊到 4 页。
+groups=[['A2','A4','A6','A8'],['A10','A12','A14','A16'],['A18','A20','A22','A24'],['A26','B2','B4','B6']]
 qs=[Paragraph('《概率论与数理统计（第二版）》第二章作业',h1),
     Paragraph('姓名：孙承泽　　学号：2253710052　　班级：能动强基2501',small),
     Paragraph('截止日期：10月13日　｜　习题2 A、B两部分偶数号',h2),
@@ -112,11 +113,23 @@ for gi,group in enumerate(groups):
         body=blocks[label]
         # Question statements in Markdown contain display-math delimiters; PDF uses readable plain notation.
         qs.append(Paragraph(rich_text(f'**{label}**　{body.replace(chr(10)," ")}'),h3))
-        line_count={'A2':7,'A4':7,'A6':7,'A8':9,'A10':8,'A12':7,'A14':8,'A16':9,'A18':10,'A20':8,'A22':11,'A24':9,'A26':8,'B2':11,'B4':11,'B6':8}[label]
-        blank=Table([[''] for _ in range(line_count)],colWidths=[176*mm],rowHeights=[5.8*mm]*line_count)
+        line_count={'A2':6,'A4':6,'A6':6,'A8':7,'A10':8,'A12':8,'A14':8,'A16':8,'A18':8,'A20':7,'A22':10,'A24':7,'A26':7,'B2':9,'B4':8,'B6':7}[label]
+        blank=Table([[''] for _ in range(line_count)],colWidths=[176*mm],rowHeights=[5.6*mm]*line_count)
         blank.setStyle(TableStyle([('LINEBELOW',(0,0),(-1,-1),.28,colors.HexColor('#b7b7b7'))]))
         qs += [blank,Spacer(1,3*mm)]
 SimpleDocTemplate(str(QPDF),pagesize=A4,rightMargin=17*mm,leftMargin=17*mm,topMargin=13*mm,bottomMargin=13*mm).build(qs,onFirstPage=footer,onLaterPages=footer)
+
+def _page_count(path):
+    try:
+        import pymupdf
+        with pymupdf.open(str(path)) as d:
+            return d.page_count
+    except Exception:
+        return len(re.findall(rb'/Type\s*/Page[^s]', Path(path).read_bytes()))
+
+NP=_page_count(QPDF)
+print(f'[gate] 答题纸页数={NP}（用户硬性要求：严格4页）')
+assert NP==4, f'答题纸页数门禁失败：实际{NP}页 != 4页'
 
 # Markdown-to-PDF layout for full worked solutions.
 def build_answer_story():

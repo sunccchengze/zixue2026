@@ -59,9 +59,23 @@ assert pushforward([-3,0,1,0,-3,-8]) == {-3:F(11,30),0:F(13,30),1:F(1,6),-8:F(1,
 # cos(πx/4) image grouping: -2,2 ->0; -1,1 ->√2/2; 3 ->-√2/2; 0 ->1
 assert pushforward([0,'s',1,'s',0,'m']) == {0:F(11,30),'s':F(13,30),1:F(1,6),'m':F(1,30)}
 
-# A24: CDF check independently gives P(e^{-λX}≤y)=y on (0,1)
+# A24(1): Y=X^3（2026-10-01 复核确认原题为三次方）：变换密度与分布函数求导互证，且换元归一化
+from math import log
+lam=1.7
+fY=lambda y: lam/(3*y**(2/3))*exp(-lam*y**(1/3))
+FY=lambda y: 1-exp(-lam*y**(1/3))
+for y in (0.05,0.3,1.0,4.0,9.0):
+    h=1e-6
+    assert abs((FY(y+h)-FY(y-h))/(2*h)-fY(y))<1e-6
+xs=[i*12/4000 for i in range(4001)]            # ∫f_Y(y)dy 换元 y=x^3 后对 x 的梯形积分
+g=[fY(x**3)*3*x*x if x>0 else lam for x in xs]
+trap=(g[0]/2+sum(g[1:-1])+g[-1]/2)*(12/4000)
+assert abs(trap-1)<1e-4, trap
+for x in (0.2,0.7,1.5,3.0):                    # 换元恒等式 f_Y(x^3)·3x^2 = f_X(x)
+    assert abs(fY(x**3)*3*x*x-lam*exp(-lam*x))<1e-12
+# A24(2): CDF check independently gives P(e^{-λX}≤y)=y on (0,1)
 for y in (0.1,0.25,0.5,0.9):
-    cdf=exp(-1*(-__import__('math').log(y)))
+    cdf=exp(-1*(-log(y)))
     assert abs(cdf-y)<1e-14
 
 # A26: fold both normal tails; integrates to total normal mass
