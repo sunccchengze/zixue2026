@@ -20,8 +20,9 @@
 - **1-4 为受力图题**，书后无第1章答案，按约束/二力杆/绳张力/作用反作用独立给出，不声称官方核对。
   关键判读：(a) AB、BC 均二力杆，P 在销钉B；(b) 轮H 动滑轮 2T=P、T=P/2，轮D 定滑轮受三段绳；
   (c) 斜杆 EB 二力杆，B 处辊轴反力竖直。
-- **运维**：沙箱 .venv 与 /opt/fonts 又被平台重置 → 重建 venv（pymupdf/python-docx/pillow/matplotlib/numpy）；
-  fonts 仅有 DejaVu（CJK 缺失），预览 PDF 汉字方框（仅版面核验用），docx 用宋体/黑体正常。
+- **运维**：沙箱 .venv 与 /opt/fonts 又被平台重置 → 重建 venv（pymupdf/python-docx/pillow/matplotlib/numpy）。
+  **预览方框已修复（2026-10-02，用户发图指出"框框"）**：`scripts/docx_preview_pdf.py` 新增 `_ensure_fonts()`，
+  缺中文字体时自动抽 PyMuPDF 内置 CJK（china-ss/Droid Sans Fallback）落盘渲染；四批预览已重生成，中文正常。
 - **复核（2026-10-02 用户问"答案都对吗"）**：3-6 用独立向量法（整体 ΣF+ΣM_A 最小二乘）重算，
   残差 0，与教材答案页逐位一致；1-4 高分辨率重读题图确认几何/二力杆/绳段，无官方数值可对（书后无第1章答案）。
 - **整理（2026-10-02，两轮）**：① 09-18 批散落根级文件归并入 `2026-09-18-作业/`。② 按用户"每个日期只留一个文件夹"
