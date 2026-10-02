@@ -34,8 +34,13 @@ CJK = None
 class Force:
     point: np.ndarray
     vector: np.ndarray
-    symbol: str
+    symbol: str  # 内部的大小/分量名称，允许在物理上等大的各力之间复用。
     color: str = REACTION
+    display: str | None = None  # 图面须注明作用点、作用对象或绳段。
+
+    @property
+    def label(self):
+        return self.display or self.symbol
 
 
 @dataclass
@@ -48,8 +53,8 @@ class Body:
     ropes: list[list[tuple[float, float]]] = field(default_factory=list)
 
 
-def force(point, vector, symbol, color=REACTION):
-    return Force(np.asarray(point, dtype=float), np.asarray(vector, dtype=float), symbol, color)
+def force(point, vector, symbol, color=REACTION, display=None):
+    return Force(np.asarray(point, dtype=float), np.asarray(vector, dtype=float), symbol, color, display)
 
 
 def unit(p, q):
@@ -57,8 +62,10 @@ def unit(p, q):
     return v / np.linalg.norm(v)
 
 
-def components(point, vector, x, y):
-    return [force(point, (vector[0], 0), x), force(point, (0, vector[1]), y)]
+def components(point, vector, x, y, display=None):
+    dx, dy = display or (x, y)
+    return [force(point, (vector[0], 0), x, display=dx),
+            force(point, (0, vector[1]), y, display=dy)]
 
 
 def models_14(p=2.0):
@@ -70,11 +77,14 @@ def models_14(p=2.0):
     n, m = np.linalg.solve(np.column_stack((n_ab, n_bc)), (0, p))
     ab, bc = n * n_ab, m * n_bc
     bodies["a-ab"] = Body("(a) 杆 AB · 二力杆", {"A": A, "B": B},
-                           [force(A, ab, "N_{AB}"), force(B, -ab, "N_{AB}")], [[A, B]])
+                           [force(A, ab, "N_{AB}", display="N_{AB,A}"),
+                            force(B, -ab, "N_{AB}", display="N_{AB,B}")], [[A, B]])
     bodies["a-bc"] = Body("(a) 杆 BC · 二力杆", {"B": B, "C": C},
-                           [force(B, -bc, "N_{BC}"), force(C, bc, "N_{BC}")], [[B, C]])
+                           [force(B, -bc, "N_{BC}", display="N_{BC,B}"),
+                            force(C, bc, "N_{BC}", display="N_{BC,C}")], [[B, C]])
     bodies["a-pin"] = Body("(a) 销钉 B", {"B": B},
-                            [force(B, ab, "N_{AB}"), force(B, bc, "N_{BC}"),
+                            [force(B, ab, "N_{AB}", display=r"N_{AB\to B}"),
+                             force(B, bc, "N_{BC}", display=r"N_{BC\to B}"),
                              force(B, (0, -p), "P", LOAD)])
     bodies["a-whole"] = Body("(a) 整体 · 只画外力", {"A": A, "B": B, "C": C},
                               [force(A, ab, "R_A"), force(C, bc, "R_C"),
@@ -94,20 +104,20 @@ def models_14(p=2.0):
     bodies["b-ab"] = Body("(b) 杆 AB", {"A": A, "E": E, "B": B},
                            components(A, on_a, "A_x", "A_y")
                            + components(B, on_ab, "B_x", "B_y")
-                           + [force(E, (t, 0), "T", LOAD)], [[A, B]])
+                           + [force(E, (t, 0), "T", LOAD, display="T_E")], [[A, B]])
     bodies["b-cd"] = Body("(b) 杆 CD", {"C": C, "B": B, "D": D},
                            components(C, on_c, "C_x", "C_y")
-                           + components(B, -on_ab, "B_x", "B_y")
+                           + components(B, -on_ab, "B_x", "B_y", display=("B'_x", "B'_y"))
                            + components(D, on_d, "D_x", "D_y"), [[C, D]])
     bodies["b-h"] = Body("(b) 动滑轮 H", {"H": H},
-                          [force((H[0] - rh, H[1]), (0, t), "T", LOAD),
-                           force((H[0] + rh, H[1]), (0, t), "T", LOAD),
-                           force(H, (0, -p), "P", LOAD)], circles=[(H, rh)])
+                          [force((H[0] - rh, H[1]), (0, t), "T", LOAD, display="T_{H,L}"),
+                           force((H[0] + rh, H[1]), (0, t), "T", LOAD, display="T_{H,R}"),
+                           force(H, (0, -p), "P", LOAD, display="Q_H")], circles=[(H, rh)])
     bodies["b-d"] = Body("(b) 销钉与轮 D", {"D": D},
-                          components(D, -on_d, "D_x", "D_y")
-                          + [force((D[0], D[1] + r), (-t, 0), "T", LOAD),
-                             force((D[0] + r, D[1]), (0, -t), "T", LOAD),
-                             force(D, (0, -t), "T", LOAD)], circles=[(D, r)])
+                          components(D, -on_d, "D_x", "D_y", display=("D'_x", "D'_y"))
+                          + [force((D[0], D[1] + r), (-t, 0), "T", LOAD, display="T_{D,h}"),
+                             force((D[0] + r, D[1]), (0, -t), "T", LOAD, display="T_{D,r}"),
+                             force(D, (0, -t), "T", LOAD, display="T_{D,0}")], circles=[(D, r)])
     weight = (H[0], H[1] - 1.1)
     weight_box = [(weight[0] - .25, weight[1] - .2), (weight[0] + .25, weight[1] - .2),
                   (weight[0] + .25, weight[1] + .2), (weight[0] - .25, weight[1] + .2),
@@ -130,14 +140,15 @@ def models_14(p=2.0):
     nb = (D[0] * d_on_ce[1] + B[0] * eb_on_ce[1]) / B[0]
     a = d_on_ce + eb_on_ce - (0, nb)
     c_top, c_right = (C[0], C[1] + r), (C[0] + r, C[1])
-    rope_forces = [force(c_top, (-p, 0), "T", LOAD), force(c_right, (0, -p), "P", LOAD)]
+    rope_forces = [force(c_top, (-p, 0), "T", LOAD, display="T_h"),
+                   force(c_right, (0, -p), "P", LOAD, display="T_v")]
     bodies["c-ab"] = Body("(c) 杆 AB 与销钉 B", {"A": A, "D": D, "B": B},
                            components(A, a, "A_x", "A_y")
                            + components(D, -d_on_ce, "D_x", "D_y")
-                           + [force(B, (0, nb), "N_B"), force(B, -eb_on_ce, "F_{EB}", LINK)], [[A, B]])
+                           + [force(B, (0, nb), "N_B"), force(B, -eb_on_ce, "F_{EB}", LINK, display="F_{EB,B}")], [[A, B]])
     bodies["c-ce"] = Body("(c) 杆 CE 与滑轮", {"E": E, "D": D, "C": C},
-                           components(D, d_on_ce, "D_x", "D_y")
-                           + [force(E, eb_on_ce, "F_{EB}", LINK)] + rope_forces,
+                           components(D, d_on_ce, "D_x", "D_y", display=("D'_x", "D'_y"))
+                           + [force(E, eb_on_ce, "F_{EB}", LINK, display="F_{EB,E}")] + rope_forces,
                            [[E, C]], [(C, r)])
     bodies["c-whole"] = Body("(c) 整体 · D/EB力不画", {"A": A, "D": D, "B": B, "E": E, "C": C},
                               components(A, a, "A_x", "A_y") + [force(B, (0, nb), "N_B")]
@@ -247,7 +258,7 @@ def plot_body(ax, body):
                 bbox=dict(facecolor="white", edgecolor="none", pad=.1), zorder=8)
         extents.extend((point, (point[0] + 2 * dx, point[1] + 2 * dy)))
     for load in body.forces:
-        end, pos = arrow(ax, load.point, load.vector, f"${load.symbol}$", load.color)
+        end, pos = arrow(ax, load.point, load.vector, f"${load.label}$", load.color)
         extents.extend((load.point, end, pos))
     points = np.asarray(extents)
     lo, hi = points.min(axis=0), points.max(axis=0)
@@ -263,13 +274,13 @@ def save_group(bodies, group, shape, figsize):
         plot_body(ax, body)
     for ax in axes[len(selected):]:
         ax.axis("off")
-        chinese(ax, .08, .82, "动滑轮 H：2T = P", 15, transform=ax.transAxes)
-        chinese(ax, .08, .63, "轮 D：顶部、右侧、轴心各一项 T", 12, transform=ax.transAxes)
-        chinese(ax, .08, .44, "B、D两侧的同名分量等大反向", 12, transform=ax.transAxes)
+        chinese(ax, .08, .82, "动滑轮 H：2T = QH = P", 15, transform=ax.transAxes)
+        chinese(ax, .08, .63, "T的下标区分绳段；理想绳各段大小相等", 12, transform=ax.transAxes)
+        chinese(ax, .08, .44, "B、D连接另一侧用撇号；对应力反向", 12, transform=ax.transAxes)
         chinese(ax, .08, .25, "整体只保留 A、C 支反力和 P", 12, transform=ax.transAxes)
     fig.suptitle(f"习题 1-4（{group}）· 指定物体的完整受力图", fontproperties=CJK, fontsize=21, y=.98)
     fig.text(.04, .045, "红：支座/铰链反力   蓝：外载/绳张力   紫：二力杆传力；箭头长短不表示力大小。", fontproperties=CJK, fontsize=11)
-    fig.text(.04, .01, "铰链分量采用图示正向；同名内部力在两物体上等大反向。示意图无题设尺寸，不按比例。", fontproperties=CJK, fontsize=10)
+    fig.text(.04, .01, "下标注明作用点/绳段；撇号区分铰链另一侧。相等的是大小，不是同一个力。示意几何不按比例。", fontproperties=CJK, fontsize=10)
     fig.subplots_adjust(left=.025, right=.975, top=.87, bottom=.14, wspace=.20, hspace=.30)
     fig.savefig(OUT / f"解答-1-4-{group}.png", dpi=180)
     plt.close(fig)

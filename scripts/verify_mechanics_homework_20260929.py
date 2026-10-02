@@ -74,6 +74,10 @@ def verify_14():
         for key, symbols in expected.items():
             body = bodies[key]
             assert Counter(load.symbol for load in body.forces) == Counter(symbols), key
+            # 每个分离体的可见标注必须区分作用点/对象，不能因共享大小名称而重名。
+            labels = [load.label for load in body.forces]
+            assert all(not any(ord(char) < 32 for char in label) for label in labels), labels
+            assert len(labels) == len(set(labels)), (key, labels)
             check_balance(body.forces)
             for load in body.forces:
                 # 铰链的x/y分量必须水平/竖直，不能用两项斜箭头或一项合力替代。
@@ -81,6 +85,13 @@ def verify_14():
                     assert load.vector[1] == 0
                 if load.symbol.endswith("_y"):
                     assert load.vector[0] == 0
+        assert [f.label for f in bodies["a-ab"].forces] == ["N_{AB,A}", "N_{AB,B}"]
+        assert [f.label for f in bodies["a-bc"].forces] == ["N_{BC,B}", "N_{BC,C}"]
+        for key in ("b-cd", "b-d", "c-ce"):
+            assert any("'" in f.label for f in bodies[key].forces), key
+        assert pick(bodies["b-h"], "P").label == "Q_H"
+        assert pick(bodies["c-ce"], "T").label == "T_h"
+        assert pick(bodies["c-ce"], "P").label == "T_v"
         for key, symbol in (("a-ab", "N_{AB}"), ("a-bc", "N_{BC}")):
             first, second = bodies[key].forces
             opposite(first, second)
@@ -109,7 +120,7 @@ def verify_14():
                 if np.linalg.norm(r) > 1e-10:
                     assert np.isclose(np.linalg.norm(r), radius)
                     assert abs(np.dot(r, load.vector)) < 1e-9 * p
-    print("PASS：120组×12个分离体/整体，外力清单、正交分量、绳切线、内部力反向及三个矩心平衡")
+    print("PASS：120组×12个分离体/整体，可见标注无重名、外力清单、正交分量、绳切线、内力反向及三个矩心平衡")
 
 
 def solve_36(p, arm_f, arm_p, yc, yb, yd):
