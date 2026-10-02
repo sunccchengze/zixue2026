@@ -75,7 +75,7 @@ def verify_artifacts():
     for i, j in [(29, 32), (30, 33)]:
         assert book[i].get_text() == original[j].get_text()
         assert book[i].get_pixmap(dpi=120).samples == original[j].get_pixmap(dpi=120).samples
-    path = OUT / '2026-09-22-工程力学作业单（1-2）.docx'
+    path = OUT / '2026-09-22-作业/工程力学作业单（1-2）.docx'
     with zipfile.ZipFile(path) as z:
         assert z.testzip() is None
     doc = Document(path)
