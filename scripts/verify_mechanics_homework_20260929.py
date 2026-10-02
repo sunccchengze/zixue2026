@@ -66,6 +66,19 @@ def verify_14():
         "c-ce": ["D_x", "D_y", "F_{EB}", "T", "P"],
         "c-whole": ["A_x", "A_y", "N_B", "T", "P"],
     }
+    # 这是本批按教材实例选定的记法，不把“所有不同力必须加撇/所有标签必须唯一”当物理定律。
+    visual = {
+        "a-ab": ["F_A", "F_{AB}"], "a-bc": ["F_{BC}", "F_C"],
+        "a-pin": ["F'_{AB}", "F'_{BC}", "P"], "a-whole": ["F_A", "F_C", "P"],
+        "b-ab": ["F_{Ax}", "F_{Ay}", "F_{Bx}", "F_{By}", "F_T"],
+        "b-cd": ["F_{Cx}", "F_{Cy}", "F'_{Bx}", "F'_{By}", "F_{Dx}", "F_{Dy}"],
+        "b-h": ["F_{T1}", "F_{T2}", "P"],
+        "b-d": ["F'_{Dx}", "F'_{Dy}", "F'_T", "F'_{T2}", "F'_{T1}"],
+        "b-whole": ["F_{Ax}", "F_{Ay}", "F_{Cx}", "F_{Cy}", "P"],
+        "c-ab": ["F_{Ax}", "F_{Ay}", "F_{Dx}", "F_{Dy}", "F_{NB}", "F_B"],
+        "c-ce": ["F'_{Dx}", "F'_{Dy}", "F_E", "F_{T1}", "F_{T2}"],
+        "c-whole": ["F_{Ax}", "F_{Ay}", "F_{NB}", "F_{T1}", "F_{T2}"],
+    }
     rng = random.Random(20260929)
     for _ in range(120):
         p = rng.uniform(1, 4000)
@@ -74,10 +87,10 @@ def verify_14():
         for key, symbols in expected.items():
             body = bodies[key]
             assert Counter(load.symbol for load in body.forces) == Counter(symbols), key
-            # 每个分离体的可见标注必须区分作用点/对象，不能因共享大小名称而重名。
+            # 核对图面与本批已定义的符号表，而不是凭“我能定义”宣称教师一定认可。
             labels = [load.label for load in body.forces]
             assert all(not any(ord(char) < 32 for char in label) for label in labels), labels
-            assert len(labels) == len(set(labels)), (key, labels)
+            assert labels == visual[key], (key, labels)
             check_balance(body.forces)
             for load in body.forces:
                 # 铰链的x/y分量必须水平/竖直，不能用两项斜箭头或一项合力替代。
@@ -85,13 +98,6 @@ def verify_14():
                     assert load.vector[1] == 0
                 if load.symbol.endswith("_y"):
                     assert load.vector[0] == 0
-        assert [f.label for f in bodies["a-ab"].forces] == ["N_{AB,A}", "N_{AB,B}"]
-        assert [f.label for f in bodies["a-bc"].forces] == ["N_{BC,B}", "N_{BC,C}"]
-        for key in ("b-cd", "b-d", "c-ce"):
-            assert any("'" in f.label for f in bodies[key].forces), key
-        assert pick(bodies["b-h"], "P").label == "Q_H"
-        assert pick(bodies["c-ce"], "T").label == "T_h"
-        assert pick(bodies["c-ce"], "P").label == "T_v"
         for key, symbol in (("a-ab", "N_{AB}"), ("a-bc", "N_{BC}")):
             first, second = bodies[key].forces
             opposite(first, second)
@@ -120,7 +126,7 @@ def verify_14():
                 if np.linalg.norm(r) > 1e-10:
                     assert np.isclose(np.linalg.norm(r), radius)
                     assert abs(np.dot(r, load.vector)) < 1e-9 * p
-    print("PASS：120组×12个分离体/整体，可见标注无重名、外力清单、正交分量、绳切线、内力反向及三个矩心平衡")
+    print("PASS：120组×12个分离体/整体，教材风格符号表、外力清单、正交分量、绳切线、内力反向及三个矩心平衡")
 
 
 def solve_36(p, arm_f, arm_p, yc, yb, yd):
@@ -171,7 +177,8 @@ class Images(HTMLParser):
 def verify_artifacts():
     expected = {
         "参考答案.md": ["图/题1-4.png", "图/解答-1-4-a.png", "图/解答-1-4-b.png",
-                    "图/解答-1-4-c.png", "图/题3-6.png", "图/解答-3-6.png"],
+                    "图/解答-1-4-c.png", "图/题3-6.png", "图/解答-3-6.png",
+                    "图/教材标注依据-例1-2.png", "图/教材标注依据-例1-5.png"],
         "题面.md": ["图/题1-4.png", "图/题3-6.png"],
     }
     markdown = MarkdownIt("commonmark")
@@ -189,7 +196,7 @@ def verify_artifacts():
         with Image.open(path) as image:
             assert image.width >= 300 and image.height >= 200, path
             image.verify()
-    print("PASS：答案HTML实际包含6个img、题面包含2个img；全部相对路径存在且PNG可解码")
+    print("PASS：答案HTML实际包含8个img（含2张教材原页依据）、题面包含2个img；全部相对路径存在且PNG可解码")
 
     # 双源查页，明确区分1-based页码与0-based索引。
     with pymupdf.open(ROOT / "工程力学/框架版教材/工程力学（框架汇编版）.pdf") as book, \
@@ -202,6 +209,21 @@ def verify_artifacts():
         answer = book[288].get_text().split("3-6", 1)[1].split("3-7", 1)[0]
         for value in ("800N", "320N", "480N", "1120N"):
             assert value in answer
+    # 标注“证据”必须就是PDF裁片：不接受重绘的示意图冒充原书。
+    with pymupdf.open(ROOT / "工程力学/框架版教材/工程力学（框架汇编版）.pdf") as book, \
+         pymupdf.open(ROOT / "工程力学/资料原件/工程力学（第三版）_1-130.pdf") as original:
+        for frame, source, box, filename in [
+            (25, 28, (52, 245, 483, 556), "教材标注依据-例1-2.png"),
+            (27, 30, (52, 69, 483, 382), "教材标注依据-例1-5.png"),
+        ]:
+            a, b = book[frame - 1], original[source - 1]
+            assert a.get_text() == b.get_text()
+            assert a.get_pixmap(dpi=72).samples == b.get_pixmap(dpi=72).samples
+            cropped = a.get_pixmap(dpi=220, clip=pymupdf.Rect(box))
+            saved = pymupdf.Pixmap(str(OUT / "图" / filename))
+            assert (cropped.width, cropped.height, cropped.n) == (saved.width, saved.height, saved.n)
+            assert cropped.samples == saved.samples
+    print("PASS：标注依据确为教材20/22页原图裁片，双源及220dpi像素逐位一致；不等于教师评分确认")
     spec_text = (OUT / "作业单.json").read_text()
     assert "PDF31" in spec_text and "PDF78" in spec_text
     print("PASS：1-4/3-6的框架版31/78页与原件34/81页像素/文本相同；答案位于框架版289页")

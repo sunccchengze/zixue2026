@@ -7,6 +7,7 @@
 先检验受力模型再绘图。1-4没有官方答案、也没有尺寸数据；图中几何仅为示意，
 验算采用自选示意尺寸，不冒充题设。箭头长度不表示力大小。中文字体从PyMuPDF
 内置CJK提取到忽略目录，不依赖沙箱里的系统字体。旧日期目录脚本保留为入口。
+1-4标注遵循本教材例1-2/1-5：力用F及点/杆下标，另一侧对应反向力用撇号。
 """
 from __future__ import annotations
 
@@ -63,7 +64,11 @@ def unit(p, q):
 
 
 def components(point, vector, x, y, display=None):
-    dx, dy = display or (x, y)
+    # 本教材第1章使用F_Ax、F_Ay等记号；不把解释性长后缀当成课程标准。
+    def textbook_component(symbol):
+        point, axis = symbol.rsplit("_", 1)
+        return f"F_{{{point}{axis}}}"
+    dx, dy = display or (textbook_component(x), textbook_component(y))
     return [force(point, (vector[0], 0), x, display=dx),
             force(point, (0, vector[1]), y, display=dy)]
 
@@ -77,17 +82,17 @@ def models_14(p=2.0):
     n, m = np.linalg.solve(np.column_stack((n_ab, n_bc)), (0, p))
     ab, bc = n * n_ab, m * n_bc
     bodies["a-ab"] = Body("(a) 杆 AB · 二力杆", {"A": A, "B": B},
-                           [force(A, ab, "N_{AB}", display="N_{AB,A}"),
-                            force(B, -ab, "N_{AB}", display="N_{AB,B}")], [[A, B]])
+                           [force(A, ab, "N_{AB}", display="F_A"),
+                            force(B, -ab, "N_{AB}", display="F_{AB}")], [[A, B]])
     bodies["a-bc"] = Body("(a) 杆 BC · 二力杆", {"B": B, "C": C},
-                           [force(B, -bc, "N_{BC}", display="N_{BC,B}"),
-                            force(C, bc, "N_{BC}", display="N_{BC,C}")], [[B, C]])
+                           [force(B, -bc, "N_{BC}", display="F_{BC}"),
+                            force(C, bc, "N_{BC}", display="F_C")], [[B, C]])
     bodies["a-pin"] = Body("(a) 销钉 B", {"B": B},
-                            [force(B, ab, "N_{AB}", display=r"N_{AB\to B}"),
-                             force(B, bc, "N_{BC}", display=r"N_{BC\to B}"),
+                            [force(B, ab, "N_{AB}", display="F'_{AB}"),
+                             force(B, bc, "N_{BC}", display="F'_{BC}"),
                              force(B, (0, -p), "P", LOAD)])
     bodies["a-whole"] = Body("(a) 整体 · 只画外力", {"A": A, "B": B, "C": C},
-                              [force(A, ab, "R_A"), force(C, bc, "R_C"),
+                              [force(A, ab, "R_A", display="F_A"), force(C, bc, "R_C", display="F_C"),
                                force(B, (0, -p), "P", LOAD)], [[A, B], [B, C]])
 
     # (b) E与轮D顶部切线同高，绳另一端系于D轴，H左右各一条竖直绳。
@@ -104,20 +109,20 @@ def models_14(p=2.0):
     bodies["b-ab"] = Body("(b) 杆 AB", {"A": A, "E": E, "B": B},
                            components(A, on_a, "A_x", "A_y")
                            + components(B, on_ab, "B_x", "B_y")
-                           + [force(E, (t, 0), "T", LOAD, display="T_E")], [[A, B]])
+                           + [force(E, (t, 0), "T", LOAD, display="F_T")], [[A, B]])
     bodies["b-cd"] = Body("(b) 杆 CD", {"C": C, "B": B, "D": D},
                            components(C, on_c, "C_x", "C_y")
-                           + components(B, -on_ab, "B_x", "B_y", display=("B'_x", "B'_y"))
+                           + components(B, -on_ab, "B_x", "B_y", display=("F'_{Bx}", "F'_{By}"))
                            + components(D, on_d, "D_x", "D_y"), [[C, D]])
     bodies["b-h"] = Body("(b) 动滑轮 H", {"H": H},
-                          [force((H[0] - rh, H[1]), (0, t), "T", LOAD, display="T_{H,L}"),
-                           force((H[0] + rh, H[1]), (0, t), "T", LOAD, display="T_{H,R}"),
-                           force(H, (0, -p), "P", LOAD, display="Q_H")], circles=[(H, rh)])
+                          [force((H[0] - rh, H[1]), (0, t), "T", LOAD, display="F_{T1}"),
+                           force((H[0] + rh, H[1]), (0, t), "T", LOAD, display="F_{T2}"),
+                           force(H, (0, -p), "P", LOAD, display="P")], circles=[(H, rh)])
     bodies["b-d"] = Body("(b) 销钉与轮 D", {"D": D},
-                          components(D, -on_d, "D_x", "D_y", display=("D'_x", "D'_y"))
-                          + [force((D[0], D[1] + r), (-t, 0), "T", LOAD, display="T_{D,h}"),
-                             force((D[0] + r, D[1]), (0, -t), "T", LOAD, display="T_{D,r}"),
-                             force(D, (0, -t), "T", LOAD, display="T_{D,0}")], circles=[(D, r)])
+                          components(D, -on_d, "D_x", "D_y", display=("F'_{Dx}", "F'_{Dy}"))
+                          + [force((D[0], D[1] + r), (-t, 0), "T", LOAD, display="F'_T"),
+                             force((D[0] + r, D[1]), (0, -t), "T", LOAD, display="F'_{T2}"),
+                             force(D, (0, -t), "T", LOAD, display="F'_{T1}")], circles=[(D, r)])
     weight = (H[0], H[1] - 1.1)
     weight_box = [(weight[0] - .25, weight[1] - .2), (weight[0] + .25, weight[1] - .2),
                   (weight[0] + .25, weight[1] + .2), (weight[0] - .25, weight[1] + .2),
@@ -140,18 +145,18 @@ def models_14(p=2.0):
     nb = (D[0] * d_on_ce[1] + B[0] * eb_on_ce[1]) / B[0]
     a = d_on_ce + eb_on_ce - (0, nb)
     c_top, c_right = (C[0], C[1] + r), (C[0] + r, C[1])
-    rope_forces = [force(c_top, (-p, 0), "T", LOAD, display="T_h"),
-                   force(c_right, (0, -p), "P", LOAD, display="T_v")]
+    rope_forces = [force(c_top, (-p, 0), "T", LOAD, display="F_{T1}"),
+                   force(c_right, (0, -p), "P", LOAD, display="F_{T2}")]
     bodies["c-ab"] = Body("(c) 杆 AB 与销钉 B", {"A": A, "D": D, "B": B},
                            components(A, a, "A_x", "A_y")
                            + components(D, -d_on_ce, "D_x", "D_y")
-                           + [force(B, (0, nb), "N_B"), force(B, -eb_on_ce, "F_{EB}", LINK, display="F_{EB,B}")], [[A, B]])
+                           + [force(B, (0, nb), "N_B", display="F_{NB}"), force(B, -eb_on_ce, "F_{EB}", LINK, display="F_B")], [[A, B]])
     bodies["c-ce"] = Body("(c) 杆 CE 与滑轮", {"E": E, "D": D, "C": C},
-                           components(D, d_on_ce, "D_x", "D_y", display=("D'_x", "D'_y"))
-                           + [force(E, eb_on_ce, "F_{EB}", LINK, display="F_{EB,E}")] + rope_forces,
+                           components(D, d_on_ce, "D_x", "D_y", display=("F'_{Dx}", "F'_{Dy}"))
+                           + [force(E, eb_on_ce, "F_{EB}", LINK, display="F_E")] + rope_forces,
                            [[E, C]], [(C, r)])
     bodies["c-whole"] = Body("(c) 整体 · D/EB力不画", {"A": A, "D": D, "B": B, "E": E, "C": C},
-                              components(A, a, "A_x", "A_y") + [force(B, (0, nb), "N_B")]
+                              components(A, a, "A_x", "A_y") + [force(B, (0, nb), "N_B", display="F_{NB}")]
                               + rope_forces, [[A, B], [E, C], [E, B]], [(C, r)])
     return bodies
 
@@ -274,16 +279,34 @@ def save_group(bodies, group, shape, figsize):
         plot_body(ax, body)
     for ax in axes[len(selected):]:
         ax.axis("off")
-        chinese(ax, .08, .82, "动滑轮 H：2T = QH = P", 15, transform=ax.transAxes)
-        chinese(ax, .08, .63, "T的下标区分绳段；理想绳各段大小相等", 12, transform=ax.transAxes)
-        chinese(ax, .08, .44, "B、D连接另一侧用撇号；对应力反向", 12, transform=ax.transAxes)
+        chinese(ax, .08, .82, "动滑轮 H：FT1 + FT2 = P", 15, transform=ax.transAxes)
+        chinese(ax, .08, .63, "同一理想绳：各段张力大小相等", 12, transform=ax.transAxes)
+        chinese(ax, .08, .44, "对应反向传力加撇号；参考教材例1-2/1-5", 12, transform=ax.transAxes)
         chinese(ax, .08, .25, "整体只保留 A、C 支反力和 P", 12, transform=ax.transAxes)
     fig.suptitle(f"习题 1-4（{group}）· 指定物体的完整受力图", fontproperties=CJK, fontsize=21, y=.98)
     fig.text(.04, .045, "红：支座/铰链反力   蓝：外载/绳张力   紫：二力杆传力；箭头长短不表示力大小。", fontproperties=CJK, fontsize=11)
-    fig.text(.04, .01, "下标注明作用点/绳段；撇号区分铰链另一侧。相等的是大小，不是同一个力。示意几何不按比例。", fontproperties=CJK, fontsize=10)
+    fig.text(.04, .01, "按教材惯例用F及点/杆下标；撇号区分对应反向力。符号定义见参考答案，几何不按比例。", fontproperties=CJK, fontsize=10)
     fig.subplots_adjust(left=.025, right=.975, top=.87, bottom=.14, wspace=.20, hspace=.30)
     fig.savefig(OUT / f"解答-1-4-{group}.png", dpi=180)
     plt.close(fig)
+
+
+NOTATION_SOURCES = (
+    (25, 28, (52, 245, 483, 556), "教材标注依据-例1-2.png"),
+    (27, 30, (52, 69, 483, 382), "教材标注依据-例1-5.png"),
+)
+
+
+def crop_notation_evidence():
+    """原书实际裁图而非重绘；框架/原件双源核对。页码均1-based。"""
+    with pymupdf.open(ROOT / "工程力学/框架版教材/工程力学（框架汇编版）.pdf") as book, \
+         pymupdf.open(ROOT / "工程力学/资料原件/工程力学（第三版）_1-130.pdf") as original:
+        for frame_page, original_page, box, name in NOTATION_SOURCES:
+            page, source = book[frame_page - 1], original[original_page - 1]
+            assert page.get_text() == source.get_text()
+            assert page.get_pixmap(dpi=72).samples == source.get_pixmap(dpi=72).samples
+            page.get_pixmap(dpi=220, clip=pymupdf.Rect(box)).save(OUT / name)
+    print("saved：教材标注依据两张原页裁图，框架/原件双源文本与像素一致")
 
 
 def draw_14():
@@ -373,6 +396,7 @@ def main(questions=("1-4", "3-6")):
     self_check()
     prepare()
     if "1-4" in questions:
+        crop_notation_evidence()
         draw_14()
     if "3-6" in questions:
         draw_36()
