@@ -1,0 +1,77 @@
+[
+ {
+  "url": "https://edu-image.nosdn.127.net/component-pdf-reader-images-web-prev_cur_d632f7a5d6bbba8b8684f0bcc644e6fb.ico",
+  "type": "image",
+  "method": "GET",
+  "status": 200,
+  "req_body": null,
+  "resp_text": null,
+  "content_type": "image/x-icon;charset=UTF-8"
+ },
+ {
+  "url": "https://edu-image.nosdn.127.net/component-pdf-reader-images-web-sprite_38f6e566c7118d66bb24b7cd4ea1f118.png",
+  "type": "image",
+  "method": "GET",
+  "status": 200,
+  "req_body": null,
+  "resp_text": null,
+  "content_type": "image/png;charset=UTF-8"
+ },
+ {
+  "url": "https://edu-image.nosdn.127.net/component-pdf-reader-images-buffering_04eed3bc0591209bcf6d291d99939f89.png",
+  "type": "image",
+  "method": "GET",
+  "status": 200,
+  "req_body": null,
+  "resp_text": null,
+  "content_type": "image/png;charset=UTF-8"
+ },
+ {
+  "url": "https://eds-doc.nos-jd.163yun.com/watermark_439a3300aaa64c4d96dc310fae2a139b.pdf?&download=%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E7%A8%8B-%E7%AE%80%E4%BB%8B.pdf",
+  "type": "xhr",
+  "method": "GET",
+  "status": 200,
+  "req_body": null,
+  "resp_text": null,
+  "content_type": "application/octet-stream;charset=UTF-8"
+ },
+ {
+  "url": "https://edu-image.nosdn.127.net/component-pdf-reader-images-web-next_cur_8831c54940bde1bbf2a26d5a32d3eef4.ico",
+  "type": "image",
+  "method": "GET",
+  "status": 200,
+  "req_body": null,
+  "resp_text": null,
+  "content_type": "image/x-icon;charset=UTF-8"
+ },
+ {
+  "url": "https://www.icourse163.org/dwr/call/plaincall/CourseBean.getLessonUnitLearnVo.dwr",
+  "type": "xhr",
+  "method": "POST",
+  "status": 200,
+  "req_body": "callCount=1\nscriptSessionId=${scriptSessionId}190\nhttpSessionId=9778371d40004721a72a7f3cbd0f4603\nc0-scriptName=CourseBean\nc0-methodName=getLessonUnitLearnVo\nc0-id=0\nc0-param0=number:480000001503442\nc0-param1=number:3\nc0-param2=number:0\nc0-param3=number:1272016334\nbatchId=1791205592552",
+  "resp_text": "//#DWR-INSERT\n//#DWR-REPLY\ndwr.engine._remoteHandleCallback('1791205592552','0',{contentId:null,contentType:null,duration:null,hdMp4Url:null,htmlContent:null,htmlUrl:null,id:null,learnedPosition:2,origSrtUrl:null,paper:null,parsedSrtUrl:null,post:null,randomKey:null,sdMp4Url:null,shdMp4Url:null,srtKeys:null,textOrigUrl:\"http://eds-doc.nos-jd.163yun.com/watermark_439a3300aaa64c4d96dc310fae2a139b.pdf?&download=%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E7%A8%8B-%E7%AE%80%E4%BB%8B.pdf\",textPageWhRatio:1.78,textPages:null,textUrl:\"http://eds-doc.nos-jd.163yun.com/watermark_439a3300aaa64c4d96dc310fae2a139b.pdf?&download=%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E7%A8%8B-%E7%AE%80%E4%BB%8B.pdf\",type:null,unitId:null,videoHDUrl:null,videoId:null,videoImgUrl:null,videoLearnTime:0,videoSHDUrl:null,videoUrl:null,videoVo:null});\n",
+  "resp_size": 837,
+  "content_type": "text/javascript;charset=UTF-8"
+ },
+ {
+  "url": "https://cst.stu.126.net/u/js/cms/pdf.js?1530862868615",
+  "type": "script",
+  "method": "GET",
+  "status": 200,
+  "req_body": null,
+  "resp_text": "(function webpackUniversalModuleDefinition(root,factory){if(typeof exports==='object'&&typeof module==='object')module.exports=factory();else if(typeof define==='function'&&define.amd)define(\"pdfjs-dist/build/pdf\",[],factory);else if(typeof exports==='object')exports[\"pdfjs-dist/build/pdf\"]=factory();else root[\"pdfjs-dist/build/pdf\"]=root.pdfjsDistBuildPdf=factory()})(this,function(){return(function(modules){var installedModules={};function __w_pdfjs_require__(moduleId){if(installedModules[moduleId])return installedModules[moduleId].exports;var module=installedModules[moduleId]={i:moduleId,l:false,exports:{}};modules[moduleId].call(module.exports,module,module.exports,__w_pdfjs_require__);module.l=true;return module.exports}__w_pdfjs_require__.m=modules;__w_pdfjs_require__.c=installedModules;__w_pdfjs_require__.i=function(value){return value};__w_pdfjs_require__.d=function(exports,name,getter){if(!__w_pdfjs_require__.o(exports,name)){Object.defineProperty(exports,name,{configurable:false,enumerable:true,get:getter})}};__w_pdfjs_require__.n=function(module){var getter=module&&module.__esModule?function getDefault(){return module['default']}:function getModuleExports(){return module};__w_pdfjs_require__.d(getter,'a',getter);return getter};__w_pdfjs_require__.o=function(object,property){return Object.prototype.hasOwnProperty.call(object,property)};__w_pdfjs_require__.p=\"\";return __w_pdfjs_require__(__w_pdfjs_require__.s=14)})([(function(module,exports,__w_pdfjs_require__){\"use strict\";(function(global){var compatibility=__w_pdfjs_require__(13);var globalScope=typeof window!=='undefined'?window:typeof global!=='undefined'?global:typeof self!=='undefined'?self:undefined;var FONT_IDENTITY_MATRIX=[0.001,0,0,0.001,0,0];var TextRenderingMode={FILL:0,STROKE:1,FILL_STROKE:2,INVISIBLE:3,FILL_ADD_TO_PATH:4,STROKE_ADD_TO_PATH:5,FILL_STROKE_ADD_TO_PATH:6,ADD_TO_PATH:7,FILL_STROKE_MASK:3,ADD_TO_PATH_FLAG:4};var ImageKind={GRAYSCALE_1BPP:1,RGB_24BPP:2,RGBA_32BPP:3};var AnnotationType={TEXT:1,LINK:2,FREETEXT:3,LINE:4,SQUARE:5,CIRCLE:6,POLYGON:7,POLYLINE:8,HIGHLIGHT:9,UNDERLINE:10,SQUIGGLY:11,STRIKEOUT:12,STAMP:13,CARET:14,INK:15,POPUP:16,FILEATTACHMENT:17,SOUND:18,MOVIE:19,WIDGET:20,SCREEN:21,PRINTERMARK:22,TRAPNET:23,WATERMARK:24,THREED:25,REDACT:26};var AnnotationFlag={INVISIBLE:0x01,HIDDEN:0x02,PRINT:0x04,NOZOOM:0x08,NOROTATE:0x10,NOVIEW:0x20,READONLY:0x40,LOCKED:0x80,TOGGLENOVIEW:0x100,LOCKEDCONTENTS:0x200};var AnnotationFieldFlag={READONLY:0x0000001,REQUIRED:0x0000002,NOEXPORT:0x0000004,MULTILINE:0x0001000,PASSWORD:0x0002000,NOTOGGLETOOFF:0x0004000,RADIO:0x0008000,PUSHBUTTON:0x0010000,COMBO:0x0020000,EDIT:0x0040000,SORT:0x0080000,FILESELECT:0x0100000,MULTISELECT:0x0200000,DONOTSPELLCHECK:0x0400000,DONOTSCROLL:0x0800000,COMB:0x1000000,RICHTEXT:0x2000000,RADIOSINUNISON:0x2000000,COMMITONSELCHANGE:0x4000000};var AnnotationBorderStyleType={SOLID:1,DASHED:2,BEVELED:3,INSET:4,UNDERLINE:5};var StreamType={UNKNOWN:0,FLATE:1,LZW:2,DCT:3,JPX:4,JBIG:5,A85:6,AHX:7,CCF:8,RL:9};var FontType={UNKNOWN:0,TYPE1:1,TYPE1C:2,CIDFONTTYPE0:3,CIDFONTTYPE0C:4,TRUETYPE:5,CIDFONTTYPE2:6,TYPE3:7,OPENTYPE:8,TYPE0:9,MMTYPE1:10};var VERBOSITY_LEVELS={errors:0,warnings:1,infos:5};var CMapCompressionType={NONE:0,BINARY:1,STREAM:2};var OPS={dependency:1,setLineWidth:2,setLineCap:3,setLineJoin:4,setMiterLimit:5,setDash:6,setRenderingIntent:7,setFlatness:8,setGState:9,save:10,restore:11,transform:12,moveTo:13,lineTo:14,curveTo:15,curveTo2:16,curveTo3:17,closePath:18,rectangle:19,stroke:20,closeStroke:21,fill:22,eoFill:23,fillStroke:24,eoFillStroke:25,closeFillStroke:26,closeEOFillStroke:27,endPath:28,clip:29,eoClip:30,beginText:31,endText:32,setCharSpacing:33,setWordSpacing:34,setHScale:35,setLeading:36,setFont:37,setTextRenderingMode:38,setTextRise:39,moveText:40,setLeadingMoveText:41,setTextMatrix:42,nextLine:43,showText:44,showSpacedText:45,nextLineShowText:46,nextLineSetSpacingShowText:47,setCharWidth:48,setCharWidthAndBounds:49,setStrokeColorSpace:50,setFillColorSpace:51,setStrokeColor:52,setStrokeColorN:53,setFillColor:54,setFillColorN:55,setStrokeGray:56,setFillGray:57,setStrokeRGBColor:58,setFillRGBColor:59,setStrokeCMYKColor:60,setFillCMYKColor:61,shadingFill:62,beginInlineImage:63,beginImageData:64,endInlineImage:65,paintXObject:66,markPoint:67,markPointProps:68,beginMarkedContent:69,beginMarkedContentProps:70,endMarkedContent:71,beginCompat:72,endCompat:73,paintFormXObjectBegin:74,paintFormXObjectEnd:75,beginGroup:76,endGroup:77,beginAnnotations:78,endAnnotations:79,beginAnnotation:80,endAnnotation:81,paintJpegXObject:82,paintImageMaskXObject:83,paintImageMaskXObjectGroup:84,paintImageXObject:85,paintInlineImageXObject:86,paintInlineImageXObjectGroup:87,paintImageXObjectRepeat:88,paintImageMaskXObjectRepeat:89,paintSolidColorImageMask:90,constructPath:91};var verbosity=VERBOSITY_LEVELS.warnings;function setVerbosityLevel(level){verbosity=level}function getVerbosityLevel(){return verbosity}function info(msg){if(verbosity>=VERBOSITY_LEVELS.infos)",
+  "resp_size": 249205,
+  "content_type": "application/javascript; charset=utf-8"
+ },
+ {
+  "url": "https://cst.stu.126.net/u/js/cms/pdf.worker.js??1530862838366",
+  "type": "other",
+  "method": "GET",
+  "status": 200,
+  "req_body": null,
+  "resp_text": "(function webpackUniversalModuleDefinition(root,factory){if(typeof exports==='object'&&typeof module==='object')module.exports=factory();else if(typeof define==='function'&&define.amd)define(\"pdfjs-dist/build/pdf.worker\",[],factory);else if(typeof exports==='object')exports[\"pdfjs-dist/build/pdf.worker\"]=factory();else root[\"pdfjs-dist/build/pdf.worker\"]=root.pdfjsDistBuildPdfWorker=factory()})(this,function(){return(function(modules){var installedModules={};function __w_pdfjs_require__(moduleId){if(installedModules[moduleId])return installedModules[moduleId].exports;var module=installedModules[moduleId]={i:moduleId,l:false,exports:{}};modules[moduleId].call(module.exports,module,module.exports,__w_pdfjs_require__);module.l=true;return module.exports}__w_pdfjs_require__.m=modules;__w_pdfjs_require__.c=installedModules;__w_pdfjs_require__.i=function(value){return value};__w_pdfjs_require__.d=function(exports,name,getter){if(!__w_pdfjs_require__.o(exports,name)){Object.defineProperty(exports,name,{configurable:false,enumerable:true,get:getter})}};__w_pdfjs_require__.n=function(module){var getter=module&&module.__esModule?function getDefault(){return module['default']}:function getModuleExports(){return module};__w_pdfjs_require__.d(getter,'a',getter);return getter};__w_pdfjs_require__.o=function(object,property){return Object.prototype.hasOwnProperty.call(object,property)};__w_pdfjs_require__.p=\"\";return __w_pdfjs_require__(__w_pdfjs_require__.s=37)})([(function(module,exports,__w_pdfjs_require__){\"use strict\";(function(global){var compatibility=__w_pdfjs_require__(36);var globalScope=typeof window!=='undefined'?window:typeof global!=='undefined'?global:typeof self!=='undefined'?self:undefined;var FONT_IDENTITY_MATRIX=[0.001,0,0,0.001,0,0];var TextRenderingMode={FILL:0,STROKE:1,FILL_STROKE:2,INVISIBLE:3,FILL_ADD_TO_PATH:4,STROKE_ADD_TO_PATH:5,FILL_STROKE_ADD_TO_PATH:6,ADD_TO_PATH:7,FILL_STROKE_MASK:3,ADD_TO_PATH_FLAG:4};var ImageKind={GRAYSCALE_1BPP:1,RGB_24BPP:2,RGBA_32BPP:3};var AnnotationType={TEXT:1,LINK:2,FREETEXT:3,LINE:4,SQUARE:5,CIRCLE:6,POLYGON:7,POLYLINE:8,HIGHLIGHT:9,UNDERLINE:10,SQUIGGLY:11,STRIKEOUT:12,STAMP:13,CARET:14,INK:15,POPUP:16,FILEATTACHMENT:17,SOUND:18,MOVIE:19,WIDGET:20,SCREEN:21,PRINTERMARK:22,TRAPNET:23,WATERMARK:24,THREED:25,REDACT:26};var AnnotationFlag={INVISIBLE:0x01,HIDDEN:0x02,PRINT:0x04,NOZOOM:0x08,NOROTATE:0x10,NOVIEW:0x20,READONLY:0x40,LOCKED:0x80,TOGGLENOVIEW:0x100,LOCKEDCONTENTS:0x200};var AnnotationFieldFlag={READONLY:0x0000001,REQUIRED:0x0000002,NOEXPORT:0x0000004,MULTILINE:0x0001000,PASSWORD:0x0002000,NOTOGGLETOOFF:0x0004000,RADIO:0x0008000,PUSHBUTTON:0x0010000,COMBO:0x0020000,EDIT:0x0040000,SORT:0x0080000,FILESELECT:0x0100000,MULTISELECT:0x0200000,DONOTSPELLCHECK:0x0400000,DONOTSCROLL:0x0800000,COMB:0x1000000,RICHTEXT:0x2000000,RADIOSINUNISON:0x2000000,COMMITONSELCHANGE:0x4000000};var AnnotationBorderStyleType={SOLID:1,DASHED:2,BEVELED:3,INSET:4,UNDERLINE:5};var StreamType={UNKNOWN:0,FLATE:1,LZW:2,DCT:3,JPX:4,JBIG:5,A85:6,AHX:7,CCF:8,RL:9};var FontType={UNKNOWN:0,TYPE1:1,TYPE1C:2,CIDFONTTYPE0:3,CIDFONTTYPE0C:4,TRUETYPE:5,CIDFONTTYPE2:6,TYPE3:7,OPENTYPE:8,TYPE0:9,MMTYPE1:10};var VERBOSITY_LEVELS={errors:0,warnings:1,infos:5};var CMapCompressionType={NONE:0,BINARY:1,STREAM:2};var OPS={dependency:1,setLineWidth:2,setLineCap:3,setLineJoin:4,setMiterLimit:5,setDash:6,setRenderingIntent:7,setFlatness:8,setGState:9,save:10,restore:11,transform:12,moveTo:13,lineTo:14,curveTo:15,curveTo2:16,curveTo3:17,closePath:18,rectangle:19,stroke:20,closeStroke:21,fill:22,eoFill:23,fillStroke:24,eoFillStroke:25,closeFillStroke:26,closeEOFillStroke:27,endPath:28,clip:29,eoClip:30,beginText:31,endText:32,setCharSpacing:33,setWordSpacing:34,setHScale:35,setLeading:36,setFont:37,setTextRenderingMode:38,setTextRise:39,moveText:40,setLeadingMoveText:41,setTextMatrix:42,nextLine:43,showText:44,showSpacedText:45,nextLineShowText:46,nextLineSetSpacingShowText:47,setCharWidth:48,setCharWidthAndBounds:49,setStrokeColorSpace:50,setFillColorSpace:51,setStrokeColor:52,setStrokeColorN:53,setFillColor:54,setFillColorN:55,setStrokeGray:56,setFillGray:57,setStrokeRGBColor:58,setFillRGBColor:59,setStrokeCMYKColor:60,setFillCMYKColor:61,shadingFill:62,beginInlineImage:63,beginImageData:64,endInlineImage:65,paintXObject:66,markPoint:67,markPointProps:68,beginMarkedContent:69,beginMarkedContentProps:70,endMarkedContent:71,beginCompat:72,endCompat:73,paintFormXObjectBegin:74,paintFormXObjectEnd:75,beginGroup:76,endGroup:77,beginAnnotations:78,endAnnotations:79,beginAnnotation:80,endAnnotation:81,paintJpegXObject:82,paintImageMaskXObject:83,paintImageMaskXObjectGroup:84,paintImageXObject:85,paintInlineImageXObject:86,paintInlineImageXObjectGroup:87,paintImageXObjectRepeat:88,paintImageMaskXObjectRepeat:89,paintSolidColorImageMask:90,constructPath:91};var verbosity=VERBOSITY_LEVELS.warnings;function setVerbosityLevel(level){verbosity=level}function getVerbosityLevel(){return verbosity}function info(msg){if(verbosi",
+  "resp_size": 930880,
+  "content_type": "application/javascript; charset=utf-8"
+ }
+]

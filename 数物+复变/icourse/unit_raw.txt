@@ -1,0 +1,3 @@
+//#DWR-INSERT
+//#DWR-REPLY
+dwr.engine._remoteHandleCallback('121825','0',{contentId:null,contentType:null,duration:null,hdMp4Url:null,htmlContent:null,htmlUrl:null,id:null,learnedPosition:2,origSrtUrl:null,paper:null,parsedSrtUrl:null,post:null,randomKey:null,sdMp4Url:null,shdMp4Url:null,srtKeys:null,textOrigUrl:"",textPageWhRatio:null,textPages:0,textUrl:"",type:null,unitId:null,videoHDUrl:null,videoId:null,videoImgUrl:null,videoLearnTime:0,videoSHDUrl:null,videoUrl:null,videoVo:null});

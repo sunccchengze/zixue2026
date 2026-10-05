@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>理论力学 · 练习题（第1轮）</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e1117;--bg2:#161b22;--bg3:#1c2230;--line:#2a3140;--fg:#e6edf3;--fg2:#9aa7b8;--fg3:#6e7d92;
+--acc:#2f6fed;--pur:#7c5cff;--grn:#00a86b;--org:#e8590c;--red:#e5484d;--yel:#d9a300;}
+body{background:var(--bg);color:var(--fg);
+font:15px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;padding:0 0 80px}
+header{padding:26px 30px;background:linear-gradient(100deg,#161b22,#1a2338 55%,#20182e);border-bottom:1px solid var(--line)}
+h1{font-size:22px;font-weight:700;margin-bottom:8px}
+h1 .em{background:linear-gradient(92deg,#4d8bff,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tip{font-size:13px;color:var(--fg2);line-height:1.9}
+.tip b{color:#f0c33c}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 6px}
+.fbtn{background:var(--bg2);border:1px solid var(--line);color:var(--fg2);padding:6px 14px;border-radius:20px;
+font-size:12.5px;cursor:pointer;font-family:inherit}
+.fbtn:hover{color:var(--fg);border-color:#3a4456}
+.fbtn.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.pb{background:var(--bg2);border:1px solid var(--line);border-radius:13px;margin:18px 0;overflow:hidden}
+.pb.hide{display:none}
+.ph{padding:15px 22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;cursor:pointer;
+border-bottom:1px solid transparent;background:linear-gradient(96deg,rgba(47,111,237,.07),transparent)}
+.pb.open .ph{border-bottom-color:var(--line);background:rgba(47,111,237,.1)}
+.num{width:30px;height:30px;flex:none;border-radius:8px;background:var(--bg3);border:1px solid var(--line);
+display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#8fb8ff}
+.pt{flex:1;font-weight:650;font-size:16px}
+.chev{color:var(--fg3);font-size:10px;transition:.18s}
+.pb.open .chev{transform:rotate(90deg)}
+.badge{font-size:11px;padding:2px 9px;border-radius:20px;border:1px solid;font-weight:600;white-space:nowrap}
+.b-ch{color:#5aa9ff;border-color:#25507d;background:rgba(47,111,237,.12)}
+.b-d1{color:#3ddb9b;border-color:#1d6b4f;background:rgba(0,168,107,.12)}
+.b-d2{color:#f0c33c;border-color:#7a6416;background:rgba(217,163,0,.12)}
+.b-d3{color:#ff7b7f;border-color:#7d2b2e;background:rgba(229,72,77,.12)}
+.pbody{display:none;padding:20px 22px 22px}
+.pb.open .pbody{display:block}
+.fig{background:#fbfaf7;border-radius:9px;padding:12px;margin-bottom:16px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.given{font-size:14px;line-height:1.95;color:#dbe4ee;background:var(--bg);border-left:3px solid var(--acc);
+border-radius:8px;padding:12px 16px;margin-bottom:14px}
+.ask{font-size:14.5px;font-weight:650;color:#ffd479;margin-bottom:14px}
+details{margin-top:12px;border:1px solid var(--line);border-radius:9px;background:var(--bg);overflow:hidden}
+details summary{padding:10px 15px;cursor:pointer;font-size:13px;color:var(--fg2);user-select:none;
+list-style:none;display:flex;align-items:center;gap:8px}
+details summary::-webkit-details-marker{display:none}
+details summary:hover{background:#1b2231;color:var(--fg)}
+details[open] summary{color:var(--fg);border-bottom:1px solid var(--line)}
+details .in{padding:14px 17px;font-size:14px;line-height:1.95;color:#dbe4ee}
+details.h1 summary{color:#7fb3ff}
+details.h2 summary{color:#c4a5ff}
+details.ans summary{color:#3ddb9b;font-weight:650}
+details.ans{border-color:rgba(0,168,107,.32);background:rgba(0,168,107,.045)}
+details.ans .in{color:#d7f5e6}
+.mf{font-family:"Cambria Math",Georgia,serif;font-size:16px;line-height:2.05;background:var(--bg2);
+border:1px solid var(--line);border-left:3px solid var(--pur);border-radius:8px;padding:11px 15px;margin:9px 0;
+color:#e8e2ff;overflow-x:auto}
+.mf sub{font-size:.68em}.mf sup{font-size:.68em}
+.k{color:#ffd479;font-weight:700}
+.ok{color:#3ddb9b;font-weight:700}
+.no{color:#ff7b7f;font-weight:700}
+.stp{margin:11px 0;padding-left:16px;border-left:2px solid #2b3342}
+.stp b{color:#8fb8ff;display:block;margin-bottom:3px;font-size:13px;letter-spacing:.4px}
+.warn{background:rgba(229,72,77,.09);border:1px solid rgba(229,72,77,.3);border-radius:8px;
+padding:11px 15px;margin:11px 0;font-size:13.5px;color:#ffd0d1}
+.warn b{color:#ff9a9d}
+.note2{background:rgba(217,163,0,.08);border:1px solid rgba(217,163,0,.28);border-radius:8px;
+padding:11px 15px;margin:11px 0;font-size:13.5px;color:#ffe9a8}
+footer{max-width:1000px;margin:34px auto 0;padding:18px 22px;border-top:1px solid var(--line);
+font-size:12.5px;color:var(--fg3);line-height:1.9}
+</style>
+</head>
+<body>
+
+<!-- 全局箭头标记 -->
+<svg width="0" height="0" style="position:absolute">
+<defs>
+<marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="3.2" orient="auto">
+<path d="M0,0 L8,3.2 L0,6.4 z" fill="#c0392b"/></marker>
+<marker id="ab" markerWidth="9" markerHeight="9" refX="8" refY="3.2" orient="auto">
+<path d="M0,0 L8,3.2 L0,6.4 z" fill="#1e5eb8"/></marker>
+<marker id="ag" markerWidth="9" markerHeight="9" refX="8" refY="3.2" orient="auto">
+<path d="M0,0 L8,3.2 L0,6.4 z" fill="#0f8a58"/></marker>
+<marker id="ak" markerWidth="9" markerHeight="9" refX="8" refY="3.2" orient="auto">
+<path d="M0,0 L8,3.2 L0,6.4 z" fill="#333"/></marker>
+</defs>
+</svg>
+
+<header>
+<div class="wrap">
+<h1><span class="em">理论力学</span> · 练习题（第 1 轮）</h1>
+<div class="tip">
+覆盖<b>已发布的 5 章</b>：几何静力学 / 运动学基础 / 点的复合运动 / 碰撞专题，共 11 题。<br>
+每道题配 <b>3 层提示</b>（层层递进，卡住再点开一层）与<b>完整详解</b>。<br>
+<b>建议用法</b>：先自己在纸上做 → 卡住点提示 1 → 还卡点提示 2 → 做完再对答案。<br>
+把你的答案发给我，我会逐题批改、指出思路漏洞。
+</div>
+</div>
+</header>
+
+<div class="wrap">
+<div class="filters">
+<button class="fbtn on" data-f="all">全部 11 题</button>
+<button class="fbtn" data-f="静力学">静力学 (6)</button>
+<button class="fbtn" data-f="运动学">运动学 (3)</button>
+<button class="fbtn" data-f="复合运动">点的复合运动 (2)</button>
+<button class="fbtn" data-f="碰撞">碰撞 (1)</button>
+<button class="fbtn" data-f="d3">只练难题 ★★★</button>
+</div>
+<div id="list"></div>
+</div>
+
+<footer>
+题目为原创编写，数据经过验算；图示为示意简图，尺寸比例不代表真实比例。<br>
+题后「出处」标注对应讲义 PDF，做完可回看老师原题思路对照。
+</footer>
+
+<script>
+const P = [
+
+/* ============ 1 ============ */
+{ch:"静力学",d:1,t:"二力杆识别 + 平面力系平衡",
+fig:`<svg viewBox="0 0 420 210" width="420">
+<rect x="40" y="150" width="12" height="40" fill="#555"/>
+<path d="M46,40 L46,150" stroke="#888" stroke-width="7"/>
+<path d="M40,150 L58,150" stroke="#888" stroke-width="3"/>
+<path d="M35,152 L46,140 L57,152" fill="none" stroke="#888" stroke-width="2"/>
+<rect x="46" y="146" width="330" height="8" fill="#4a5568"/>
+<circle cx="46" cy="150" r="5.5" fill="#2f6fed"/>
+<circle cx="310" cy="150" r="5.5" fill="#2f6fed"/>
+<path d="M310,150 L46,40" stroke="#0f8a58" stroke-width="4"/>
+<text x="150" y="86" font-size="13" fill="#0f8a58" font-weight="700" transform="rotate(-22 150 86)">杆 BC（二力杆）</text>
+<circle cx="250" cy="150" r="4" fill="#333"/>
+<path d="M250,150 L250,188" stroke="#c0392b" stroke-width="2.5" marker-end="url(#ar)"/>
+<text x="256" y="182" font-size="13" fill="#c0392b" font-weight="700">P = 10 kN</text>
+<path d="M46,150 L46,150" />
+<text x="20" y="200" font-size="13" fill="#333" font-weight="700">A</text>
+<text x="305" y="200" font-size="13" fill="#333" font-weight="700">B</text>
+<text x="52" y="34" font-size="13" fill="#333" font-weight="700">C</text>
+<path d="M46,196 L310,196" stroke="#666" stroke-width="1"/>
+<path d="M46,192 L46,200 M310,192 L310,200" stroke="#666" stroke-width="1"/>
+<text x="150" y="194" font-size="12" fill="#666">4 m</text>
+<path d="M382,40 L382,150" stroke="#666" stroke-width="1"/>
+<path d="M378,40 L386,40 M378,150 L386,150" stroke="#666" stroke-width="1"/>
+<text x="388" y="98" font-size="12" fill="#666">3 m</text>
+<path d="M46,206 L250,206" stroke="#666" stroke-width="1"/>
+<path d="M46,202 L46,210 M250,202 L250,210" stroke="#666" stroke-width="1"/>
+<text x="130" y="204" font-size="12" fill="#666">3 m</text>
+</svg>`,
+given:"水平梁 AB 长 4 m，A 为固定铰支座；B 端由<b>二力杆</b> BC 拉住，C 点在 A 点正上方 3 m 处的墙上。梁上距 A 点 3 m 处挂重物 P = 10 kN。梁与杆自重不计。",
+ask:"求杆 BC 的内力，以及 A 处约束力。",
+h1:"先把 BC 识别为<b>二力杆</b>——它对梁的作用力沿什么方向？",
+h2:"BC 的方向向量：从 B(4, 0) 指向 C(0, 3)，即 (−4, 3)，长度 5。所以杆力 F 的分量为 F<sub>x</sub> = −4F/5，F<sub>y</sub> = 3F/5（先<b>假设为拉力</b>，算负即为压力）。",
+h3:"对 A 点取矩 ΣM<sub>A</sub> = 0 可直接解出 F（A 处两个反力都不过 A，矩为零）。求出 F 后再用 ΣF<sub>x</sub> = 0、ΣF<sub>y</sub> = 0 解 A<sub>x</sub>、A<sub>y</sub>。",
+ans:`<div class="stp"><b>① 判断二力杆</b>BC 两端铰接、中间无载荷、自重不计 → <b>二力杆</b>，力沿 BC 轴线。</div>
+<div class="mf">方向：B(4,0) → C(0,3)，向量 (−4, 3)，|BC| = 5<br>设杆受<b>拉</b>（对梁的力指向 C）：F<sub>x</sub> = −4F/5，F<sub>y</sub> = +3F/5</div>
+<div class="stp"><b>② 对 A 取矩</b>
+<div class="mf">ΣM<sub>A</sub> = 0：　4·(3F/5) − 3·P = 0<br>12F/5 = 30　⇒　F = <span class="k">12.5 kN</span>（正 → 确为<b>拉力</b>）</div>
+</div>
+<div class="stp"><b>③ 投影求 A 处反力</b>
+<div class="mf">ΣF<sub>x</sub> = 0：A<sub>x</sub> − 4F/5 = 0　⇒　A<sub>x</sub> = <span class="k">10 kN</span>（→）<br>ΣF<sub>y</sub> = 0：A<sub>y</sub> + 3F/5 − 10 = 0　⇒　A<sub>y</sub> = <span class="k">2.5 kN</span>（↑）</div>
+</div>
+<div class="warn"><b>易错：</b>忘记判断二力杆，会把 B 处当成两个未知正交分力，导致 3 个方程解 4 个未知量而卡死。<b>看到「两端铰接、中间无载荷的直杆」就条件反射：这是二力杆。</b></div>
+<div class="note2">出处：1.1静力学基础.pdf（推论·三力平衡汇交）、1.3.1常见约束及其约束力.pdf</div>`},
+
+/* ============ 2 ============ */
+{ch:"静力学",d:2,t:"空间力系简化 · 主矢主矩与最终结果判别",
+fig:`<svg viewBox="0 0 420 230" width="420">
+<path d="M120,90 L230,60 L230,170 L120,200 z" fill="#eef2f7" stroke="#94a3b8"/>
+<path d="M230,60 L330,80 L330,180 L230,170 z" fill="#e2e8f0" stroke="#94a3b8"/>
+<path d="M120,90 L220,110 L330,80 M220,110 L220,210 L120,200 M220,210 L330,180" fill="none" stroke="#94a3b8"/>
+<circle cx="120" cy="200" r="4.5" fill="#2f6fed"/><text x="100" y="218" font-size="13" fill="#2f6fed" font-weight="700">O</text>
+<path d="M120,200 L60,200" stroke="#666" stroke-width="1.2"/><text x="30" y="204" font-size="12" fill="#666">x</text>
+<path d="M120,200 L120,230" stroke="#666" stroke-width="1.2"/><text x="124" y="228" font-size="12" fill="#666">y</text>
+<path d="M120,200 L96,178" stroke="#666" stroke-width="1.2"/><text x="76" y="172" font-size="12" fill="#666">z</text>
+<path d="M120,90 L175,72" stroke="#c0392b" stroke-width="2.6" marker-end="url(#ar)"/>
+<text x="176" y="66" font-size="13" fill="#c0392b" font-weight="700">F₁ = 100 i N</text>
+<path d="M230,60 L288,72" stroke="#1e5eb8" stroke-width="2.6" marker-end="url(#ab)"/>
+<text x="288" y="60" font-size="13" fill="#1e5eb8" font-weight="700">F₂ = 100 j N</text>
+<circle cx="310" cy="120" r="16" fill="none" stroke="#0f8a58" stroke-width="2.6" marker-end="url(#ag)"/>
+<text x="256" y="140" font-size="13" fill="#0f8a58" font-weight="700">M = 20 k N·m</text>
+<text x="128" y="104" font-size="12" fill="#666">A(0, 0.3, 0)</text>
+<text x="238" y="52" font-size="12" fill="#666">B(0, 0, 0.4)</text>
+</svg>`,
+given:"如图，力 F<sub>1</sub> = 100 i N 作用于 A(0, 0.3, 0) m；力 F<sub>2</sub> = 100 j N 作用于 B(0, 0, 0.4) m；另有一自由力偶 M = 20 k N·m。",
+ask:"求该力系向 O 点简化的主矢 F<sub>R</sub>′ 与主矩 M<sub>O</sub>，并判断力系的<b>最简合成结果</b>属于哪一种。",
+h1:"主矢就是力的矢量和；主矩 = 各力对 O 之矩的矢量和 <b>再加上</b> 自由力偶 M（力偶是自由矢量，直接相加）。",
+h2:"用行列式算叉乘：r<sub>A</sub> × F<sub>1</sub> 和 r<sub>B</sub> × F<sub>2</sub>。",
+h3:"判断结果的<b>唯一判据</b>：算 F<sub>R</sub>′ · M<sub>O</sub>。等于 0 → 合力；不等于 0 → 力螺旋。",
+ans:`<div class="stp"><b>① 主矢</b>
+<div class="mf">F<sub>R</sub>′ = F<sub>1</sub> + F<sub>2</sub> = <span class="k">100 i + 100 j</span> (N)　（与简化中心无关）</div></div>
+<div class="stp"><b>② 主矩</b>
+<div class="mf">r<sub>A</sub> × F<sub>1</sub> = (0, 0.3, 0) × (100, 0, 0) = (0, 0, −30)<br>r<sub>B</sub> × F<sub>2</sub> = (0, 0, 0.4) × (0, 100, 0) = (−40, 0, 0)<br>M<sub>O</sub> = (−40, 0, −30) + (0, 0, 20) = <span class="k">(−40, 0, −10)</span> N·m</div></div>
+<div class="stp"><b>③ 判别</b>
+<div class="mf">F<sub>R</sub>′ · M<sub>O</sub> = 100(−40) + 100(0) + 0(−10) = <span class="k">−4000 ≠ 0</span><br>⇒ F<sub>R</sub>′ ≠ 0、M<sub>O</sub> ≠ 0 且二者<b>不垂直</b> ⇒ 最简结果为 <span class="k">力螺旋</span></div></div>
+<div class="warn"><b>两个高频失分点：</b><br>① 漏掉自由力偶 M，或把力偶当成对某点之矩再算一次。力偶矩是<b>自由矢量</b>，直接加进去即可。<br>② 只判断「F<sub>R</sub>′ ≠ 0 且 M<sub>O</sub> ≠ 0」就下结论说合力——<b>必须看点积</b>！<br>补充：F<sub>R</sub>′ · M<sub>O</sub> &lt; 0 ⇒ 力矢与力偶矩<b>反向</b> ⇒ 这是<b>左手螺旋</b>。</div>
+<div class="note2">出处：1.2.4空间任意力系的简化.pdf · 16 页</div>`},
+
+/* ============ 3 ============ */
+{ch:"静力学",d:1,t:"外伸梁 · 分布载荷 + 集中力偶",
+fig:`<svg viewBox="0 0 460 200" width="460">
+<rect x="60" y="96" width="380" height="9" fill="#4a5568"/>
+<path d="M60,105 L52,118 L68,118 z" fill="#7c8a9c"/>
+<path d="M52,118 L68,118" stroke="#333" stroke-width="3"/>
+<path d="M46,120 L58,114 L70,114 L82,120" fill="none" stroke="#333" stroke-width="1.6"/>
+<path d="M330,105 L330,116 M324,116 L336,116" stroke="#333" stroke-width="2"/>
+<circle cx="330" cy="121" r="5" fill="#7c8a9c"/>
+<text x="52" y="140" font-size="13" fill="#333" font-weight="700">A</text>
+<text x="322" y="142" font-size="13" fill="#333" font-weight="700">D</text>
+<text x="432" y="92" font-size="13" fill="#333" font-weight="700">B</text>
+<path d="M60,80 L440,80" stroke="#1e5eb8" stroke-width="1.6"/>
+<path d="M60,74 L60,86 M120,74 L120,86 M180,74 L180,86 M240,74 L240,86 M300,74 L300,86 M360,74 L360,86 M420,74 L420,86" stroke="#1e5eb8" stroke-width="1.2"/>
+<path d="M60,80 L60,96 M105,80 L105,96 M150,80 L150,96 M195,80 L195,96 M240,80 L240,96 M285,80 L285,96 M330,80 L330,96 M375,80 L375,96 M420,80 L420,96 M440,80 L440,96" stroke="#1e5eb8" stroke-width="2" marker-end="url(#ab)"/>
+<text x="215" y="68" font-size="13" fill="#1e5eb8" font-weight="700">q = 2 kN/m（全长 6 m）</text>
+<path d="M450,105 A16,16 0 1,1 452,131" fill="none" stroke="#c0392b" stroke-width="2.4" marker-end="url(#ar)"/>
+<text x="392" y="160" font-size="13" fill="#c0392b" font-weight="700">M = 8 kN·m（顺时针）</text>
+<path d="M60,158 L330,158" stroke="#666" stroke-width="1"/>
+<path d="M60,154 L60,162 M330,154 L330,162" stroke="#666" stroke-width="1"/>
+<text x="180" y="156" font-size="12" fill="#666">4 m</text>
+<path d="M330,172 L440,172" stroke="#666" stroke-width="1"/>
+<path d="M330,168 L330,176 M440,168 L440,176" stroke="#666" stroke-width="1"/>
+<text x="374" y="170" font-size="12" fill="#666">2 m</text>
+</svg>`,
+given:"梁 AB 长 6 m，A 为固定铰支座，D 为辊轴支座（距 A 为 4 m）。全梁受均布载荷 q = 2 kN/m，B 端另受一顺时针力偶 M = 8 kN·m。",
+ask:"求 A、D 两处的约束力。",
+h1:"先把分布载荷等效成集中力：大小 = ？ 作用点 = ？",
+h2:"均布载荷合力 Q = q·L = 12 kN，作用在梁的<b>中点</b>（距 A 为 3 m）。",
+h3:"三个方程：ΣF<sub>x</sub> = 0、ΣM<sub>A</sub> = 0（先解 D）、ΣF<sub>y</sub> = 0。注意力偶的符号——顺时针取负还是取正要<b>自始至终统一</b>。",
+ans:`<div class="stp"><b>① 等效分布载荷</b>
+<div class="mf">Q = q·L = 2 × 6 = <span class="k">12 kN</span>（↓），作用于距 A 为 3 m 处（载荷矩形形心）</div></div>
+<div class="stp"><b>② 平衡方程</b>（取逆时针为正）
+<div class="mf">ΣF<sub>x</sub> = 0：　A<sub>x</sub> = <span class="k">0</span><br>ΣM<sub>A</sub> = 0：　4·D<sub>y</sub> − 12×3 − 8 = 0　⇒　D<sub>y</sub> = <span class="k">11 kN</span>（↑）<br>ΣF<sub>y</sub> = 0：　A<sub>y</sub> + 11 − 12 = 0　⇒　A<sub>y</sub> = <span class="k">1 kN</span>（↑）</div></div>
+<div class="stp"><b>③ 校核</b>
+<div class="mf">ΣM<sub>B</sub> = −1×6 + 11×2 + 12×3 − 8 = −6 + 22 + 36 − 8 = 44 ≠ 0 ?</div>
+<div class="warn">注意校核时<b>不要重复计算力偶</b>：上式把 Q 的矩算错位置了。正确校核应换个矩心重算：
+<div class="mf">ΣM<sub>D</sub> = −A<sub>y</sub>×4 + 12×(4−3) − 8 = −4 + 12 − 8 = <span class="ok">0 ✓</span></div></div></div>
+<div class="warn"><b>要点：</b>力偶是<b>自由矢量</b>，对任意点之矩都等于它本身，取矩时<b>照抄、不乘力臂</b>。这是分布载荷之外第二个高频失分点。</div>
+<div class="note2">出处：1.4.1平面力系的平衡方程.pdf · 13 页（例题 2 同型）</div>`},
+
+/* ============ 4 ============ */
+{ch:"静力学",d:2,t:"桁架 · 零杆判定 + 节点法/截面法",
+fig:`<svg viewBox="0 0 420 200" width="420">
+<circle cx="60" cy="150" r="5" fill="#2f6fed"/>
+<circle cx="210" cy="150" r="5" fill="#888"/>
+<circle cx="360" cy="150" r="5" fill="#7c8a9c"/>
+<circle cx="210" cy="60" r="5" fill="#888"/>
+<path d="M60,150 L360,150" stroke="#4a5568" stroke-width="4"/>
+<path d="M60,150 L210,60 L360,150" fill="none" stroke="#4a5568" stroke-width="4"/>
+<path d="M210,150 L210,60" stroke="#4a5568" stroke-width="4"/>
+<path d="M60,150 L48,162 L72,162 z" fill="#7c8a9c"/>
+<path d="M48,162 L72,162" stroke="#333" stroke-width="3"/>
+<path d="M42,164 L54,158 L66,158 L78,164" fill="none" stroke="#333" stroke-width="1.6"/>
+<path d="M360,150 L360,162 M354,162 L366,162" stroke="#333" stroke-width="2"/>
+<circle cx="360" cy="165" r="5" fill="#7c8a9c"/>
+<path d="M210,60 L210,30" stroke="#c0392b" stroke-width="2.6" marker-end="url(#ar)"/>
+<text x="218" y="28" font-size="13" fill="#c0392b" font-weight="700">P = 20 kN</text>
+<text x="46" y="182" font-size="13" fill="#333" font-weight="700">A</text>
+<text x="200" y="182" font-size="13" fill="#333" font-weight="700">C</text>
+<text x="352" y="184" font-size="13" fill="#333" font-weight="700">B</text>
+<text x="198" y="52" font-size="13" fill="#333" font-weight="700">D</text>
+<path d="M60,192 L210,192" stroke="#666" stroke-width="1"/>
+<path d="M60,188 L60,196 M210,188 L210,196" stroke="#666" stroke-width="1"/><text x="124" y="190" font-size="12" fill="#666">3 m</text>
+<path d="M210,192 L360,192" stroke="#666" stroke-width="1"/>
+<path d="M210,188 L210,196 M360,188 L360,196" stroke="#666" stroke-width="1"/><text x="272" y="190" font-size="12" fill="#666">3 m</text>
+<path d="M182,60 L182,150" stroke="#666" stroke-width="1"/>
+<path d="M178,60 L186,60 M178,150 L186,150" stroke="#666" stroke-width="1"/><text x="150" y="108" font-size="12" fill="#666">3 m</text>
+</svg>`,
+given:"平面桁架如图：下弦 A–C–B，上弦节点 D 在 C 正上方 3 m，杆件为 AC、CB、AD、DB、CD。A 为固定铰、B 为辊轴支座，节点 D 受竖直向下载荷 P = 20 kN。",
+ask:"(1) 先指出哪根是<b>零杆</b>并说明理由；(2) 求杆 AD 与杆 AC 的内力（标明拉/压）。",
+h1:"先验证静定性：m = 5，n = 4，是否满足 m = 2n − 3？",
+h2:"看节点 C：它连着 AC、CB（<b>共线</b>）和 CD 三根杆，且节点 C 上<b>没有</b>主动力。套用零杆判定情形 2。",
+h3:"CD = 0 后，节点 D 只剩两根<b>对称</b>的斜杆 AD、DB，由 ΣF<sub>x</sub> = 0 知二者相等，再由 ΣF<sub>y</sub> = 0 解出。最后取节点 A 求 AC。",
+ans:`<div class="stp"><b>① 静定判定</b><div class="mf">m = 5，n = 4，2n − 3 = 5 = m ⇒ <span class="ok">静定</span>，可解。</div></div>
+<div class="stp"><b>② 零杆</b><div class="mf">节点 C：AC 与 CB <b>共线（平行）</b>，节点上无主动力 ⇒ 第三杆 <span class="k">F<sub>CD</sub> = 0</span>（零杆）</div></div>
+<div class="stp"><b>③ 支座反力</b>（整体，对称）<div class="mf">A<sub>x</sub> = 0，　A<sub>y</sub> = B<sub>y</sub> = <span class="k">10 kN</span>（↑）</div></div>
+<div class="stp"><b>④ 节点 D</b>　斜杆方向余弦：cos = 3/√18 = 1/√2
+<div class="mf">ΣF<sub>x</sub> = 0：−F<sub>AD</sub>/√2 + F<sub>DB</sub>/√2 = 0　⇒　F<sub>AD</sub> = F<sub>DB</sub> = F<br>ΣF<sub>y</sub> = 0：−F/√2 − F/√2 − F<sub>CD</sub> − 20 = 0<br>　　−√2·F − 0 = 20　⇒　F = <span class="k">−14.1 kN</span>（负 ⇒ <b>受压</b>）</div></div>
+<div class="stp"><b>⑤ 节点 A</b>　AD 对节点 A 的力 = F·(1/√2, 1/√2) = (−10, −10) kN
+<div class="mf">ΣF<sub>y</sub> = 0：10 − 10 = 0 ✓（校核）<br>ΣF<sub>x</sub> = 0：F<sub>AC</sub> − 10 = 0　⇒　F<sub>AC</sub> = <span class="k">+10 kN</span>（<b>受拉</b>）</div></div>
+<div class="warn"><b>答案汇总：</b>CD = <span class="no">0（零杆）</span>；AD = DB = <span class="no">14.1 kN 压</span>；AC = CB = <span class="ok">10 kN 拉</span>。<br>
+<b>关键习惯：</b>拿到桁架先扫一遍零杆，往往能省掉一半计算。零杆判定只有两条，务必背熟。</div>
+<div class="note2">出处：1.4.4平面桁架内力计算.pdf · 16 页</div>`},
+
+/* ============ 5 ============ */
+{ch:"静力学",d:2,t:"摩擦 · 平衡范围（双向临界）",
+fig:`<svg viewBox="0 0 400 210" width="400">
+<path d="M40,170 L340,40 L340,50 L40,180 z" fill="#cbd5e0" stroke="#64748b" stroke-width="1.5"/>
+<path d="M40,180 L340,50" stroke="#475569" stroke-width="2"/>
+<rect x="150" y="95" width="62" height="42" transform="rotate(-22.6 181 116)" fill="#4a5568" stroke="#2d3748" stroke-width="2"/>
+<g transform="rotate(-22.6 181 116)">
+<path d="M212,116 L268,116" stroke="#c0392b" stroke-width="2.6" marker-end="url(#ar)"/>
+<text x="216" y="108" font-size="14" fill="#c0392b" font-weight="700">F</text>
+<path d="M181,116 L181,164" stroke="#1e5eb8" stroke-width="2.6" marker-end="url(#ab)"/>
+<text x="186" y="158" font-size="14" fill="#1e5eb8" font-weight="700">W</text>
+</g>
+<path d="M40,180 L100,180" stroke="#666" stroke-width="1.2"/>
+<path d="M40,180 L108,155" stroke="#666" stroke-width="1" stroke-dasharray="4 3"/>
+<path d="M70,180 A30,30 0 0,0 84,164" fill="none" stroke="#666" stroke-width="1"/>
+<text x="112" y="152" font-size="14" fill="#666" font-weight="700">α = 30°</text>
+</svg>`,
+given:"物块重 W = 100 N，置于倾角 α = 30° 的斜面上，静摩擦系数 μ = 0.3。沿斜面<b>向上</b>施加力 F。",
+ask:"(1) 若撤去 F，物块能否<b>自锁</b>（保持静止）？(2) 求使物块保持平衡时 F 的<b>范围</b>。",
+h1:"自锁判据是 μ 与 tan α 的比较——谁大谁自锁？",
+h2:"不自锁会下滑。于是 F 太小时物块<b>向下滑</b>（摩擦力沿斜面向上）；F 太大时物块<b>向上滑</b>（摩擦力沿斜面向下）。两个临界分别对应 F<sub>min</sub> 与 F<sub>max</sub>。",
+h3:"下滑临界：F + μN = W sin α；上滑临界：F = W sin α + μN。其中 N = W cos α。",
+ans:`<div class="stp"><b>① 自锁判定</b>
+<div class="mf">tan α = tan 30° = 0.577　&gt;　μ = 0.3<br>⇒ 摩擦角 φ = arctan 0.3 = 16.7° &lt; α = 30°，<span class="no">不自锁</span>，撤去 F 后物块会下滑。</div></div>
+<div class="stp"><b>② 法向力</b><div class="mf">N = W cos 30° = 100 × 0.866 = <span class="k">86.6 N</span>　⇒　F<sub>max</sub><sup>摩擦</sup> = μN = 0.3 × 86.6 = <span class="k">26.0 N</span><br>下滑力：W sin 30° = <span class="k">50 N</span></div></div>
+<div class="stp"><b>③ 下滑临界（F 最小）</b>
+<div class="mf">F<sub>min</sub> + μN = W sin α　⇒　F<sub>min</sub> = 50 − 26.0 = <span class="k">24.0 N</span></div></div>
+<div class="stp"><b>④ 上滑临界（F 最大）</b>
+<div class="mf">F<sub>max</sub> = W sin α + μN = 50 + 26.0 = <span class="k">76.0 N</span></div></div>
+<div class="mf">⇒ 平衡范围：<span class="k">24.0 N ≤ F ≤ 76.0 N</span></div>
+<div class="warn"><b>核心区别（本章最易混）：</b><br>
+· <b>非临界</b>问题：摩擦力方向<b>可以假设</b>，由平衡方程定大小，算完验证 F<sub>s</sub> ≤ μN。<br>
+· <b>临界</b>问题：摩擦力方向<b>必须与真实运动趋势相反，不可假设</b>，并补 F<sub>max</sub> = μN。<br>
+本题是临界问题，两端分别对应两个<b>相反</b>的摩擦力方向。</div>
+<div class="note2">出处：1.4.5摩擦与自锁.pdf · 23 页、1.4.6考虑摩擦的平衡问题.pdf · 12 页</div>`},
+
+/* ============ 6 ============ */
+{ch:"静力学",d:3,t:"滚动摩阻 · 先滚还是先滑",
+fig:`<svg viewBox="0 0 380 200" width="380">
+<circle cx="180" cy="120" r="58" fill="#e9eef4" stroke="#4a5568" stroke-width="2.5"/>
+<circle cx="180" cy="120" r="5" fill="#4a5568"/>
+<path d="M180,120 L180,62" stroke="#4a5568" stroke-width="2"/>
+<rect x="20" y="178" width="340" height="10" fill="#94a3b8"/>
+<path d="M20,178 L360,178" stroke="#475569" stroke-width="2"/>
+<path d="M180,120 L180,120" />
+<path d="M180,62 L272,62" stroke="#c0392b" stroke-width="2.8" marker-end="url(#ar)"/>
+<text x="232" y="54" font-size="14" fill="#c0392b" font-weight="700">F<sub>P</sub></text>
+<path d="M180,120 L180,182" stroke="#1e5eb8" stroke-width="2.4" marker-end="url(#ab)"/>
+<text x="186" y="172" font-size="14" fill="#1e5eb8" font-weight="700">W</text>
+<path d="M180,178 L180,182" stroke="#0f8a58" stroke-width="2"/>
+<path d="M124,120 L236,120" stroke="#666" stroke-width="1"/>
+<text x="176" y="116" font-size="12" fill="#666">R</text>
+<path d="M180,140 L236,140" stroke="#666" stroke-width="1" stroke-dasharray="3 2"/>
+<text x="222" y="136" font-size="12" fill="#666">r</text>
+<text x="330" y="150" font-size="13" fill="#666">δ = 0.005 m</text>
+</svg>`,
+given:"匀质轮子重 W = 300 N，半径 R = 0.4 m，与地面间滚动摩阻系数 δ = 0.005 m，静摩擦系数 f<sub>s</sub> = 0.2。在轮心处施加水平拉力 F<sub>P</sub>。",
+ask:"(1) 轮子是先<b>滚动</b>还是先<b>滑动</b>？(2) 拉动轮子的最小水平力是多少？",
+h1:"分别算出<b>纯滚动临界</b>所需的力和<b>纯滑动临界</b>所需的力，比大小——谁小谁先发生。",
+h2:"滚动临界：对接触点取矩，F<sub>P</sub>·R = M<sub>r,max</sub> = δ·F<sub>N</sub>。滑动临界：F<sub>P</sub> = f<sub>s</sub>·F<sub>N</sub>。",
+h3:"F<sub>N</sub> = W = 300 N（水平拉力不产生竖直分量）。",
+ans:`<div class="stp"><b>① 法向力</b><div class="mf">F<sub>N</sub> = W = <span class="k">300 N</span></div></div>
+<div class="stp"><b>② 滚动临界</b>（对接触点 A 取矩）
+<div class="mf">ΣM<sub>A</sub> = 0：F<sub>P</sub>·R = M<sub>r,max</sub> = δ·F<sub>N</sub><br>F<sub>P</sub> = δW/R = 0.005 × 300 / 0.4 = <span class="k">3.75 N</span></div></div>
+<div class="stp"><b>③ 滑动临界</b>
+<div class="mf">F<sub>P</sub> = f<sub>s</sub>·F<sub>N</sub> = 0.2 × 300 = <span class="k">60 N</span></div></div>
+<div class="stp"><b>④ 比较</b>
+<div class="mf">3.75 N ≪ 60 N ⇒ <span class="ok">先滚动</span>，最小拉力 F<sub>P,min</sub> = <span class="k">3.75 N</span></div>
+判据（纯滚动条件）：δ/R = 0.0125 &lt; f<sub>s</sub> = 0.2 ✓</div>
+<div class="warn"><b>三个必记点：</b><br>
+① 滚动摩阻是<b>力偶</b>不是力，量纲是 N·m；δ 具有<b>长度量纲</b>（这是它与 μ 的本质区别）。<br>
+②  lectures 里的经典矛盾——「ΣF<sub>x</sub> ≠ 0 圆轮却平衡」——正是靠<b>滚动摩阻力偶</b>补上 ΣM = 0 解决的。<br>
+③ 拉动重物的<b>省力做法</b>：让它滚（δ/R 很小）而不是滑。</div>
+<div class="note2">出处：1.4.5摩擦与自锁.pdf · 23 页（例：匀质轮子三种运动趋势判断）</div>`},
+
+/* ============ 7 ============ */
+{ch:"运动学",d:1,t:"点的运动 · 自然坐标（切向/法向加速度）",
+fig:`<svg viewBox="0 0 400 180" width="400">
+<path d="M40,140 Q150,30 360,110" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="6 4"/>
+<circle cx="205" cy="60" r="7" fill="#2f6fed"/>
+<text x="216" y="56" font-size="14" fill="#2f6fed" font-weight="700">M</text>
+<path d="M205,60 L268,22" stroke="#c0392b" stroke-width="2.6" marker-end="url(#ar)"/>
+<text x="248" y="18" font-size="13" fill="#c0392b" font-weight="700">v（切向）</text>
+<path d="M205,60 L200,10" stroke="#1e5eb8" stroke-width="2.4" marker-end="url(#ab)"/>
+<text x="176" y="12" font-size="13" fill="#1e5eb8" font-weight="700">a<sub>n</sub>（指向曲率中心）</text>
+<path d="M205,60 L152,40" stroke="#0f8a58" stroke-width="2.4" marker-end="url(#ag)"/>
+<text x="106" y="38" font-size="13" fill="#0f8a58" font-weight="700">a<sub>τ</sub></text>
+<text x="150" y="112" font-size="13" fill="#666">ρ = 5 m（该处曲率半径）</text>
+</svg>`,
+given:"点 M 沿已知曲线轨迹运动，弧坐标运动方程 s = 4t − 0.5t² (m, s)。在 t = 2 s 时，轨迹在该处的曲率半径 ρ = 5 m。",
+ask:"求 t = 2 s 时：(1) 速度 v；(2) 切向加速度 a<sub>τ</sub>，并判断是在加速还是减速；(3) 法向加速度 a<sub>n</sub> 与全加速度大小 a。",
+h1:"自然坐标法：v = ds/dt，a<sub>τ</sub> = dv/dt，a<sub>n</sub> = v²/ρ。三件事，三步求导。",
+h2:"先求 v(t) = 4 − t，再对 t 求导得 a<sub>τ</sub>（是<b>标量</b>导数，注意符号）。 ",
+h3:"加速还是减速，看 <b>v 与 a<sub>τ</sub> 是否同号</b>：同号加速，异号减速。",
+ans:`<div class="stp"><b>① 速度</b>
+<div class="mf">v = ds/dt = 4 − t　⇒　t = 2 s：v = <span class="k">2 m/s</span></div></div>
+<div class="stp"><b>② 切向加速度</b>
+<div class="mf">a<sub>τ</sub> = dv/dt = <span class="k">−1 m/s²</span><br>v = +2 &gt; 0 而 a<sub>τ</sub> = −1 &lt; 0，<b>异号</b> ⇒ <span class="no">在减速</span></div></div>
+<div class="stp"><b>③ 法向加速度与全加速度</b>
+<div class="mf">a<sub>n</sub> = v²/ρ = 4/5 = <span class="k">0.8 m/s²</span><br>a = √(a<sub>τ</sub>² + a<sub>n</sub>²) = √(1 + 0.64) = <span class="k">1.28 m/s²</span></div></div>
+<div class="warn"><b>两个必记结论：</b><br>
+① a<sub>τ</sub> 反映速度<b>大小</b>的变化率，a<sub>n</sub> 反映速度<b>方向</b>的变化率。<br>
+② <b>匀速</b>曲线运动（v 为常数）：a<sub>τ</sub> = 0 但 a<sub>n</sub> = v²/ρ ≠ 0，<b>加速度不为零</b>。<br>
+③ a<sub>τ</sub> 是 v 的<b>代数量</b>导数带符号，不要取绝对值——符号正是「加速/减速」的判据。</div>
+<div class="note2">出处：2.1运动学基础-点的运动.pdf · 17 页</div>`},
+
+/* ============ 8 ============ */
+{ch:"运动学",d:1,t:"定轴转动 · 轮系传动比",
+fig:`<svg viewBox="0 0 520 160" width="520">
+<circle cx="70" cy="80" r="26" fill="#e9eef4" stroke="#2f6fed" stroke-width="2.5"/>
+<circle cx="70" cy="80" r="4" fill="#2f6fed"/>
+<circle cx="150" cy="80" r="52" fill="#e9eef4" stroke="#1e5eb8" stroke-width="2.5"/>
+<circle cx="150" cy="80" r="4" fill="#1e5eb8"/>
+<circle cx="330" cy="80" r="30" fill="#e9eef4" stroke="#0f8a58" stroke-width="2.5"/>
+<circle cx="330" cy="80" r="4" fill="#0f8a58"/>
+<circle cx="430" cy="80" r="58" fill="#e9eef4" stroke="#7c5cff" stroke-width="2.5"/>
+<circle cx="430" cy="80" r="4" fill="#7c5cff"/>
+<path d="M150,80 L330,80" stroke="#94a3b8" stroke-width="4"/>
+<text x="60" y="128" font-size="13" fill="#2f6fed" font-weight="700">z₁ = 20</text>
+<text x="128" y="148" font-size="13" fill="#1e5eb8" font-weight="700">z₂ = 60</text>
+<text x="316" y="124" font-size="13" fill="#0f8a58" font-weight="700">z₃ = 25</text>
+<text x="404" y="152" font-size="13" fill="#7c5cff" font-weight="700">z₄ = 75</text>
+<text x="46" y="30" font-size="12" fill="#666">电机 n₁ = 1440 r/min</text>
+<text x="196" y="66" font-size="12" fill="#666">同轴</text>
+<text x="470" y="30" font-size="12" fill="#666">输出</text>
+<path d="M70,54 A26,26 0 1,1 74,54" fill="none" stroke="#c0392b" stroke-width="2.4" marker-end="url(#ar)"/>
+</svg>`,
+given:"两级定轴轮系：齿轮 1 与 2 啮合（z₁ = 20，z₂ = 60），齿轮 2 与 3 <b>同轴固连</b>，齿轮 3 与 4 啮合（z₃ = 25，z₄ = 75）。电机驱动齿轮 1，转速 n₁ = 1440 r/min。",
+ask:"(1) 求总传动比 i₁₄ 与输出轴转速 n₄。(2) 若电机轴角加速度 α₁ = 6 rad/s²，求输出轴角加速度 α₄。",
+h1:"传动比按齿数<b>反比</b>：i₁₂ = z₂/z₁。注意「同轴」意味着 ω₂ = ω₃。",
+h2:"总传动比 = 各级传动比<b>相乘</b>：i₁₄ = i₁₂ · i₃₄。",
+h3:"同轴固连不改变角速度，只传递；所以 ω₃ = ω₂。角加速度同样满足 α₄ = α₁ / i₁₄。",
+ans:`<div class="stp"><b>① 各级传动比</b>
+<div class="mf">i₁₂ = z₂/z₁ = 60/20 = <span class="k">3</span>　　i₃₄ = z₄/z₃ = 75/25 = <span class="k">3</span></div></div>
+<div class="stp"><b>② 总传动比与输出转速</b>
+<div class="mf">i₁₄ = i₁₂ × i₃₄ = 3 × 3 = <span class="k">9</span><br>n₄ = n₁ / i₁₄ = 1440 / 9 = <span class="k">160 r/min</span></div>
+（注意：齿轮 2、3 <b>同轴</b>，ω₂ = ω₃，不贡献传动比）</div>
+<div class="stp"><b>③ 角加速度</b>
+<div class="mf">α₄ = α₁ / i₁₄ = 6 / 9 = <span class="k">0.667 rad/s²</span></div></div>
+<div class="warn"><b>易错：</b><br>
+① 传动比与齿数成<b>反比</b>（齿多转得慢），不是正比。<br>
+② <b>同轴</b>齿轮角速度相同、<b>啮合</b>齿轮线速度相同（无滑动）——这两个条件别搞混。<br>
+③ 外啮合两级 ⇒ 输入与输出<b>同向</b>（每级反向一次，两级抵消）；若只有一级则反向。</div>
+<div class="note2">出处：2.2运动学基础-刚体的运动.pdf · 14 页（轮系传动比）</div>`},
+
+/* ============ 9 ============ */
+{ch:"复合运动",d:2,t:"速度合成定理（套筒—摇杆）",
+fig:`<svg viewBox="0 0 400 250" width="400">
+<circle cx="80" cy="180" r="5" fill="#2f6fed"/><text x="60" y="204" font-size="13" fill="#2f6fed" font-weight="700">O₁</text>
+<circle cx="240" cy="180" r="5" fill="#2f6fed"/><text x="232" y="204" font-size="13" fill="#2f6fed" font-weight="700">O₂</text>
+<path d="M80,180 L80,90" stroke="#4a5568" stroke-width="5"/>
+<circle cx="80" cy="90" r="6" fill="#c0392b"/>
+<path d="M240,180 L370,60" stroke="#0f8a58" stroke-width="6" opacity=".85"/>
+<text x="330" y="52" font-size="13" fill="#0f8a58" font-weight="700">摇杆 O₂B</text>
+<path d="M80,90 L240,180" stroke="#666" stroke-width="1" stroke-dasharray="4 3"/>
+<path d="M80,180 L240,180" stroke="#666" stroke-width="1"/>
+<text x="140" y="176" font-size="12" fill="#666">l = 0.4 m</text>
+<text x="44" y="140" font-size="12" fill="#666">r = 0.3 m</text>
+<path d="M80,90 L20,90" stroke="#c0392b" stroke-width="2.6" marker-end="url(#ar)"/>
+<text x="14" y="80" font-size="13" fill="#c0392b" font-weight="700">v<sub>a</sub></text>
+<path d="M80,90 A40,40 0 0,1 66,64" fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#ar)"/>
+<text x="76" y="46" font-size="13" fill="#c0392b" font-weight="700">ω₁ = 2 rad/s</text>
+<text x="66" y="104" font-size="14" fill="#c0392b" font-weight="700">A（套筒）</text>
+</svg>`,
+given:"曲柄 O₁A 长 r = 0.3 m，以匀角速度 ω₁ = 2 rad/s 逆时针转动。套筒 A 套在摇杆 O₂B 上并可沿杆滑动，O₁O₂ = l = 0.4 m。图示瞬时 <b>O₁A ⊥ O₁O₂</b>（A 在 O₁ 正上方）。",
+ask:"选好动点与动系，求此瞬时摇杆 O₂B 的角速度 ω₂。",
+h1:"动点取<b>套筒 A</b>，动系<b>固连在摇杆 O₂B</b> 上。三种运动分别是什么？",
+h2:"绝对运动 = 以 O₁ 为圆心的圆周（v<sub>a</sub> = ω₁r，方向 ⊥ O₁A，水平）；相对运动 = 沿 O₂B <b>直线滑动</b>；牵连运动 = 摇杆绕 O₂ 定轴转动。先算出 O₂A 的长度。",
+h3:"O₂A = √(0.4² + 0.3²) = 0.5 m。把 v<sub>a</sub> = v<sub>e</sub> + v<sub>r</sub> 投影到 <b>⊥O₂A 方向</b>，v<sub>r</sub> 就没有分量了，可直接解出 v<sub>e</sub>。",
+ans:`<div class="stp"><b>① 运动分析</b>
+<div class="mf">动点：套筒 A　动系：固连摇杆 O₂B<br>绝对：以 O₁ 为圆心、r 的圆周 → v<sub>a</sub> = ω₁r = 2 × 0.3 = <span class="k">0.6 m/s</span>，方向 ⊥ O₁A（此时为<b>水平向左</b>）<br>相对：沿 O₂B 滑动　牵连：绕 O₂ 定轴转动</div></div>
+<div class="stp"><b>② 几何</b>
+<div class="mf">O₂A = √(0.4² + 0.3²) = <span class="k">0.5 m</span><br>单位向量 u（沿 O₂A）= (−0.8, 0.6)；⊥u 方向 n = (−0.6, −0.8)</div></div>
+<div class="stp"><b>③ 速度合成，投影到 n 方向</b>
+<div class="mf">v<sub>a</sub> = v<sub>e</sub> + v<sub>r</sub>，其中 v<sub>r</sub> ∥ u ⇒ 在 n 方向无分量<br>v<sub>a</sub>·n = v<sub>e</sub><br>(−0.6, 0)·(−0.6, −0.8) = 0.36 ⇒ v<sub>e</sub> = <span class="k">0.36 m/s</span><br>ω₂ = v<sub>e</sub> / O₂A = 0.36 / 0.5 = <span class="k">0.72 rad/s</span>（逆时针）</div></div>
+<div class="warn"><b>解题定式（平面复合运动）：</b><br>
+① 动点、动系<b>必须在两个不同刚体</b>上；要让相对运动<b>看得见轨迹</b>（这里是沿杆的直线）。<br>
+② 速度合成定理 <b>v<sub>a</sub> = v<sub>e</sub> + v<sub>r</sub> 对任何运动都成立</b>，不存在「平动才成立」的限制。<br>
+③ 平面问题只有<b>两个</b>投影方程，一次最多解两个未知量。<br>
+④ 投影时优先选<b>垂直于某个未知量</b>的方向，可以消元。</div>
+<div class="note2">出处：3.2点复合运动-速度分析.pdf · 11 页（同型例题）</div>`},
+
+/* ============ 10 ============ */
+{ch:"复合运动",d:3,t:"加速度合成 + 科氏加速度（承上题）",
+fig:`<svg viewBox="0 0 400 250" width="400">
+<circle cx="80" cy="180" r="5" fill="#2f6fed"/><text x="60" y="204" font-size="13" fill="#2f6fed" font-weight="700">O₁</text>
+<circle cx="240" cy="180" r="5" fill="#2f6fed"/><text x="232" y="204" font-size="13" fill="#2f6fed" font-weight="700">O₂</text>
+<path d="M80,180 L80,90" stroke="#4a5568" stroke-width="5"/>
+<circle cx="80" cy="90" r="6" fill="#c0392b"/>
+<path d="M240,180 L370,60" stroke="#0f8a58" stroke-width="6" opacity=".85"/>
+<path d="M80,90 L240,180" stroke="#666" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="66" y="104" font-size="14" fill="#c0392b" font-weight="700">A</text>
+<path d="M80,90 L80,146" stroke="#1e5eb8" stroke-width="2.4" marker-end="url(#ab)"/>
+<text x="86" y="130" font-size="13" fill="#1e5eb8" font-weight="700">a<sub>a</sub>=ω₁²r</text>
+<path d="M130,140 L172,166" stroke="#7c5cff" stroke-width="2.4" marker-end="url(#ar)"/>
+<text x="120" y="158" font-size="13" fill="#7c5cff" font-weight="700">a<sub>c</sub></text>
+<text x="240" y="30" font-size="12.5" fill="#666">ω₁ = 2 rad/s（匀速）</text>
+<text x="240" y="48" font-size="12.5" fill="#666">r = 0.3 m　l = 0.4 m</text>
+</svg>`,
+given:"机构与第 9 题相同（r = 0.3 m，l = 0.4 m，ω₁ = 2 rad/s <b>匀速</b>，即 α₁ = 0），仍取 O₁A ⊥ O₁O₂ 的瞬时。第 9 题已求得 ω₂ = 0.72 rad/s，v<sub>r</sub> = 0.48 m/s。",
+ask:"求此瞬时摇杆 O₂B 的角加速度 α₂。<b>注意：必须先判断有没有科氏加速度。</b>",
+h1:"先回答：动系（摇杆）是<b>平动</b>还是<b>转动</b>？这决定 a<sub>c</sub> 是否为零。",
+h2:"摇杆绕 O₂ 定轴<b>转动</b> ⇒ <b>有</b>科氏加速度 a<sub>c</sub> = 2ω<sub>e</sub> × v<sub>r</sub>，大小 = 2 × 0.72 × 0.48 = 0.691 m/s²。方向：<b>把 v<sub>r</sub> 顺着 ω₂ 的转向转 90°</b>。",
+h3:"列 a<sub>a</sub> = a<sub>e</sub><sup>τ</sup> + a<sub>e</sub><sup>n</sup> + a<sub>r</sub> + a<sub>c</sub>。a<sub>r</sub> 大小未知、方向沿杆（u 方向）。<b>投影到 ⊥u（即 n）方向</b>可消去 a<sub>r</sub> 和 a<sub>e</sub><sup>n</sup>。",
+ans:`<div class="stp"><b>① 判断是否有科氏加速度</b>
+<div class="mf">动系（摇杆）绕 O₂ <b>定轴转动</b>，ω<sub>e</sub> = ω₂ = 0.72 rad/s ≠ 0<br>⇒ <span class="no">必须有科氏加速度</span>（若漏掉，结果必然错）</div></div>
+<div class="stp"><b>② 各项加速度</b>
+<div class="mf">a<sub>a</sub> = ω₁²r = 4 × 0.3 = <span class="k">1.2 m/s²</span>，方向 A → O₁（竖直向下）<br>a<sub>e</sub><sup>n</sup> = ω₂²·O₂A = 0.72² × 0.5 = 0.259 m/s²，方向 A → O₂（沿 −u）<br>a<sub>e</sub><sup>τ</sup> = α₂ × 0.5，方向 ⊥ O₂A（沿 n）<br>a<sub>c</sub> = 2ω<sub>e</sub>v<sub>r</sub> = 2 × 0.72 × 0.48 = <span class="k">0.691 m/s²</span><br>a<sub>r</sub>：大小未知，沿 u</div></div>
+<div class="stp"><b>③ 投影到 n = (−0.6, −0.8) 方向</b>（⊥ u，可消去 a<sub>r</sub> 与 a<sub>e</sub><sup>n</sup>）
+<div class="mf">a<sub>a</sub>·n = (0, −1.2)·(−0.6, −0.8) = <span class="k">+0.96</span><br>a<sub>e</sub><sup>τ</sup>·n = 0.5α₂<br>a<sub>e</sub><sup>n</sup>·n = 0（a<sub>e</sub><sup>n</sup> 沿 u）<br>a<sub>r</sub>·n = 0（a<sub>r</sub> 沿 u）<br>a<sub>c</sub>·n = <span class="k">+0.691</span><br>⇒ 0.96 = 0.5α₂ + 0.691　⇒　α₂ = <span class="k">0.538 rad/s²</span>（逆时针，与 ω₂ 同向 ⇒ 摇杆在加速）</div></div>
+<div class="warn"><b>本题三个致命陷阱：</b><br>
+① <b>漏掉科氏项</b>——这是本章第一大失分点。判断口诀：<b>动系一转，科氏必现</b>。<br>
+② <b>科氏方向判反</b>。操作法：把 v<sub>r</sub> 顺着 ω<sub>e</sub> 的转向<b>转 90°</b>。务必用叉乘 a<sub>c</sub> = 2ω<sub>e</sub> × v<sub>r</sub> 复核。<br>
+③ <b>a<sub>e</sub><sup>n</sup> 的指向搞反</b>——它始终由 A <b>指向</b> O₂（指向圆心），不是背离。<br>
+④ 补充：动系若是<b>曲线平动</b>，ω<sub>e</sub> 仍为 0，<b>同样没有</b>科氏加速度。</div>
+<div class="note2">出处：3.3.1加速度分析.pdf · 20 页、3.3.2科氏加速度分析.pdf · 17 页（刨床急回机构同型）</div>`},
+
+/* ============ 11 ============ */
+{ch:"碰撞",d:2,t:"恢复系数 · 碰后速度与动能损失",
+fig:`<svg viewBox="0 0 420 150" width="420">
+<circle cx="110" cy="75" r="26" fill="#e9eef4" stroke="#2f6fed" stroke-width="2.5"/>
+<text x="99" y="82" font-size="14" fill="#2f6fed" font-weight="700">m₁=2</text>
+<circle cx="300" cy="75" r="34" fill="#e9eef4" stroke="#7c5cff" stroke-width="2.5"/>
+<text x="283" y="82" font-size="14" fill="#7c5cff" font-weight="700">m₂=4</text>
+<path d="M20,75 L70,75" stroke="#c0392b" stroke-width="2.8" marker-end="url(#ar)"/>
+<text x="16" y="62" font-size="14" fill="#c0392b" font-weight="700">v₁ = 6 m/s</text>
+<text x="290" y="126" font-size="13" fill="#666">静止 v₂ = 0</text>
+<path d="M360,30 L360,120" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="368" y="60" font-size="12.5" fill="#666">碰撞法线 n</text>
+<text x="368" y="78" font-size="12.5" fill="#666">(沿连线)</text>
+<text x="150" y="140" font-size="14" fill="#e8590c" font-weight="700">恢复系数 e = 0.6</text>
+</svg>`,
+given:"球 A 质量 m₁ = 2 kg，以 v₁ = 6 m/s 沿两球连心线撞击静止的球 B（m₂ = 4 kg，v₂ = 0）。恢复系数 e = 0.6。碰撞力远大于平常力，忽略一切平常力冲量。",
+ask:"(1) 求碰后两球速度 u₁、u₂。(2) 求碰撞中损失的动能 ΔT（并用公式交叉验证）。",
+h1:"两个方程：① 系统<b>法向动量守恒</b>；② 恢复系数定义 e = （分离速度）/（接近速度）。",
+h2:"m₁v₁ + m₂v₂ = m₁u₁ + m₂u₂；e = (u₂ − u₁)/(v₁ − v₂)。",
+h3:"用通用公式：u₁ = [(m₁ − e·m₂)v₁ + m₂(1+e)v₂]/(m₁+m₂)，u₂ = [m₁(1+e)v₁ + (m₂ − e·m₁)v₂]/(m₁+m₂)。再用 ΔT = (1−e²)·m₁m₂/[2(m₁+m₂)]·(v₁−v₂)² 验证。",
+ans:`<div class="stp"><b>① 动量守恒</b>
+<div class="mf">m₁v₁ + m₂v₂ = m₁u₁ + m₂u₂：　2×6 + 0 = 2u₁ + 4u₂　⇒　<span class="k">u₁ + 2u₂ = 6</span>　…(a)</div></div>
+<div class="stp"><b>② 恢复系数</b>
+<div class="mf">e = (u₂ − u₁)/(v₁ − v₂) = 0.6　⇒　<span class="k">u₂ − u₁ = 3.6</span>　…(b)</div></div>
+<div class="stp"><b>③ 联立</b>
+<div class="mf">(a)+(b)：3u₂ = 9.6 ⇒ u₂ = <span class="k">3.2 m/s</span>（← 沿原方向前进）<br>u₁ = 3.2 − 3.6 = <span class="k">−0.4 m/s</span>（← <b>负号表示被反弹</b>，反向 0.4 m/s）</div></div>
+<div class="stp"><b>④ 动能损失</b>
+<div class="mf">T₁ = ½m₁v₁² = ½×2×36 = <span class="k">36 J</span><br>T₂ = ½×2×(0.4)² + ½×4×(3.2)² = 0.16 + 20.48 = <span class="k">20.64 J</span><br>ΔT = 36 − 20.64 = <span class="k">15.36 J</span>（损失约 <b>42.7%</b>）</div></div>
+<div class="stp"><b>⑤ 公式交叉验证</b>
+<div class="mf">ΔT = (1−e²)·m₁m₂/[2(m₁+m₂)]·(v₁−v₂)²<br>　 = (1−0.36)×8/(2×6)×36 = 0.64 × 24 = <span class="ok">15.36 J ✓</span></div>
+塑性极限检验：e = 0 时 ΔT = m₂/(m₁+m₂)·T₁ = (4/6)×36 = 24 J（本例 e=0.6 &lt; 1，损失 15.36 &lt; 24 ✓）</div>
+<div class="warn"><b>必记结论：</b><br>
+① e = 1 完全弹性（动能无损失）；e = 0 塑性（<b>碰后共速</b>，动能损失最大）。<br>
+② 动能损失<b>随 e² 减小而增大</b>：(1 − e²)。<br>
+③ 工程含义：<b>打桩</b>要损失小 ⇒ 用<b>大质量、低速度</b>的锤；<b>锻压</b>要损失大（让能量用于变形）⇒ 砧座质量远大于锻件。</div>
+<div class="note2">出处：碰撞.pdf · 14 页</div>`},
+
+];
+
+const DC={1:'b-d1',2:'b-d2',3:'b-d3'};
+const DL={1:'★☆☆ 基础',2:'★★☆ 提高',3:'★★★ 挑战'};
+const list=document.getElementById('list');
+
+P.forEach((p,i)=>{
+  const el=document.createElement('div');
+  el.className='pb';
+  el.dataset.ch=p.ch; el.dataset.d=p.d;
+  el.innerHTML=`
+  <div class="ph" onclick="this.parentNode.classList.toggle('open')">
+    <div class="num">${i+1}</div>
+    <div class="pt">${p.t}</div>
+    <span class="badge b-ch">${p.ch}</span>
+    <span class="badge ${DC[p.d]}">${DL[p.d]}</span>
+    <span class="chev">▶</span>
+  </div>
+  <div class="pbody">
+    ${p.fig?`<div class="fig">${p.fig}</div>`:''}
+    <div class="given"><b>已知：</b>${p.given}</div>
+    <div class="ask">✎ 求：${p.ask}</div>
+    <details class="h1"><summary>💡 提示 1（先想 3 分钟再看）</summary><div class="in">${p.h1}</div></details>
+    <details class="h2"><summary>💡 提示 2（再想想）</summary><div class="in">${p.h2}</div></details>
+    <details class="h2"><summary>💡 提示 3（关键一步）</summary><div class="in">${p.h3}</div></details>
+    <details class="ans"><summary>✅ 答案与详解（做完再看）</summary><div class="in">${p.ans}</div></details>
+  </div>`;
+  list.appendChild(el);
+});
+
+document.querySelectorAll('.fbtn').forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    const f=b.dataset.f;
+    [...list.children].forEach((c,i)=>{
+      const ok = f==='all' ? true
+               : f==='d3'  ? P[i].d===3
+               : P[i].ch.indexOf(f)>=0;
+      c.classList.toggle('hide',!ok);
+    });
+  };
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+ "id": 1461946452,
+ "bigPhoto": "https://nos.netease.com/edu-image/4802d6c034844ad6b160f36a2c5ef878.png",
+ "mode": 0,
+ "supportAiLessonPlan": "0",
+ "supportFastQuiz": "",
+ "graphId": "",
+ "questionGraphId": "",
+ "skillGraphId": "",
+ "timeToFreeze": "5184000000",
+ "startTime": "1639620000000",
+ "endTime": "1672500600000",
+ "price": "0",
+ "certified": 0,
+ "chargeableCert": "1",
+ "closeVisableStatus": "0",
+ "mocVipType": "0",
+ "guideVisiblePosition": "",
+ "studyVipFlag": 0,
+ "supportAiCapabilityFlag": 0
+}

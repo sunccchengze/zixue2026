@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>四人小组 · 汇报执行包（丁 / 甲 / 乙 / 丙）</title>
+<style>
+  :root{--ink:#1a2233;--muted:#5b6b82;--line:#e2e8f0;--bg:#f6f8fb;--brand:#1f4e79;--brand2:#2d7dd2;--accent:#e8f1fb;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.75;font-size:16px;}
+  .wrap{max-width:1040px;margin:0 auto;padding:34px 20px 90px;}
+  header{background:linear-gradient(135deg,#1f4e79,#2d7dd2);color:#fff;border-radius:16px;padding:28px 32px;margin-bottom:24px;}
+  header h1{margin:0 0 6px;font-size:24px;}
+  header p{margin:3px 0;opacity:.93;font-size:14.5px;}
+  h2{font-size:21px;margin:38px 0 12px;padding-left:12px;border-left:5px solid var(--brand2);}
+  h3{font-size:18px;margin:26px 0 6px;}
+  h4{font-size:15.5px;margin:16px 0 6px;color:var(--brand);}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 3px rgba(20,40,80,.05);}
+  table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;font-size:14.5px;box-shadow:0 1px 3px rgba(20,40,80,.05);}
+  th{background:var(--brand);color:#fff;text-align:left;padding:11px 12px;font-weight:600;font-size:13.5px;}
+  td{padding:11px 12px;border-top:1px solid var(--line);vertical-align:top;}
+  tr:nth-child(even) td{background:#fbfcfd;}
+  .tag{display:inline-block;padding:2px 9px;border-radius:20px;font-size:12.5px;font-weight:600;margin:2px 3px 2px 0;}
+  .t-g{background:#e3f6ec;color:#0f7a52;} .t-b{background:#e8f1fb;color:#1f4e79;}
+  .t-y{background:#fdf3dc;color:#96690a;} .t-r{background:#fde8e6;color:#a8322a;} .t-n{background:#eceff3;color:#4a5768;}
+  code{background:#eef2f7;padding:1px 6px;border-radius:5px;font-size:13.5px;color:#1f4e79;}
+  .script{background:#fbfcfe;border:1px solid var(--line);border-left:4px solid var(--brand2);border-radius:0 10px 10px 0;
+    padding:15px 20px;margin:10px 0;font-size:15px;line-height:1.85;}
+  .anchor{background:#1f4e79;color:#e8f1fb;border-radius:10px;padding:14px 18px;font-family:ui-monospace,Menlo,Consolas,monospace;
+    font-size:13px;line-height:1.95;white-space:pre-wrap;margin:10px 0;}
+  .key{background:#fff3bf;padding:0 4px;border-radius:3px;font-weight:700;}
+  .num{font-variant-numeric:tabular-nums;font-weight:700;color:#b3411b;}
+  ul,ol{margin:8px 0;padding-left:22px;} li{margin:5px 0;}
+  .warn{background:#fff8e6;border:1px solid #f0d69a;border-radius:12px;padding:14px 20px;margin:14px 0;font-size:15px;}
+  .warn b{color:#8a6100;}
+  .good{background:#eefaf3;border:1px solid #b7e4cd;border-radius:12px;padding:14px 20px;margin:14px 0;font-size:15px;}
+  .good b{color:#0f7a52;}
+  .role{border-radius:16px;padding:22px 26px;margin:18px 0;color:#fff;}
+  .r1{background:linear-gradient(135deg,#3d6b98,#5b8fc4);}
+  .r2{background:linear-gradient(135deg,#2f7d63,#4aa383);}
+  .r3{background:linear-gradient(135deg,#8a5a1c,#c08a3a);}
+  .r4{background:linear-gradient(135deg,#7a3350,#b05a80);}
+  .role h3{margin:0 0 4px;color:#fff;font-size:20px;}
+  .role .sub{opacity:.95;font-size:14px;margin-bottom:14px;}
+  .role .card{color:var(--ink);}
+  .split{display:flex;gap:14px;flex-wrap:wrap;}
+  .split>div{flex:1 1 290px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;}
+  .small{font-size:13.5px;color:var(--muted);}
+  .chk{list-style:none;padding-left:0;}
+  .chk li{padding-left:26px;position:relative;}
+  .chk li:before{content:"☐";position:absolute;left:0;font-size:17px;color:var(--brand2);}
+  footer{margin-top:44px;font-size:13px;color:var(--muted);text-align:center;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>四人小组 · 汇报执行包</h1>
+  <p>论文：Wang et al., <i>Can Masks Be Reused After Hot Water Decontamination During the COVID-19 Pandemic?</i>, <i>Engineering</i> 6(10): 1115–1121, 2020</p>
+  <p>组员：<b>丁 · 甲 · 乙 · 丙</b> ｜ 全英文 · 每人一段 · 基本脱稿 · 预计 13–14 分钟</p>
+  <p>框架：<b>工程鉴定评审（Qualification Review）</b>——这套"家用口罩复用流程"，能不能通过验收？</p>
+</header>
+
+<h2>一、分工总表</h2>
+<table>
+  <tr>
+    <th style="width:80px">段</th><th style="width:78px">人选</th><th style="width:110px">职责</th>
+    <th style="width:64px">时长</th><th style="width:70px">PPT</th><th style="width:56px">难度</th><th>核心内容</th><th style="width:150px">认领 AWL 词</th>
+  </tr>
+  <tr>
+    <td><b>P1</b></td><td><b>甲</b></td><td>开场 · 立问题</td><td>2.5–3′</td><td>1–3</td>
+    <td><span class="tag t-g">易</span></td>
+    <td>口罩荒（日产 800 万 vs 14 亿人）→ 论文身份 → 3 天录用 → <b>抛出三问</b></td>
+    <td>method, approach, evidence, resources, period</td>
+  </tr>
+  <tr>
+    <td><b>P2</b></td><td><b>乙</b></td><td>流程本身</td><td>3–3.5′</td><td>4–6</td>
+    <td><span class="tag t-g">易</span></td>
+    <td>56 ℃/30 min 的来历 → 三种容器温度曲线 → 与设备法对比 → <b>电荷再生 60% vs 90%</b></td>
+    <td>procedure, process, achieve, capacity, potential, region</td>
+  </tr>
+  <tr>
+    <td><b>P3</b></td><td><b>丙</b></td><td>滤得住吗</td><td>3.5–4′</td><td>7–10</td>
+    <td><span class="tag t-y">较难</span></td>
+    <td>三层结构 → <b>五大过滤机制</b> → TSI 8130 → BFE/PFE 数字 → <b>10 个循环</b> → 高压灭菌</td>
+    <td>layer, mechanism, equipment, exceed, significant, cycle, index</td>
+  </tr>
+  <tr>
+    <td><b>P4</b></td><td><b>丁</b></td><td>真实使用 + 验收</td><td>4–4.5′</td><td>11–12</td>
+    <td><span class="tag t-y">中</span></td>
+    <td>防水/SEM → 佩戴 8 h → 皮脂才是真凶 → 闰土 12.25 万只 → <b>验收结论 + 四条未证明 + 一处矛盾 + 工程收尾</b></td>
+    <td>individual, retained, demonstrate, conclusion, implications, whereas, design</td>
+  </tr>
+</table>
+<p class="small">总时长约 <b>13–14 分钟</b>。P4 最长但有意为之——那是全场唯一体现"批判性阅读"的段落，也是打分差距最大的地方。</p>
+
+<div class="warn">
+  <b>这是默认分配，按各自特长对调完全没问题。</b>互换时注意三点：
+  ① <b>P3 专业词最多</b>（polypropylene / melt-blown / autoclave / PFE / BFE），换人后要提前 3 天开始练发音；
+  ② <b>P1 最长于"稳"</b>，开场一慌全组跟着慌，选口语最稳、最不容易紧张的人；
+  ③ <b>P4 需要判断力和临场感</b>，而且要背最长的收尾句，适合最敢说、最有想法的人。
+</div>
+
+<h2>二、四张角色卡</h2>
+<p class="small">每张卡含：完整英文稿 + 锚点卡 + 必背首尾句 + 认领词汇 + 发音雷区。每人也有独立文件，可直接发到各自手机上：<code>roles/P1-setup.md</code> · <code>P2-procedure.md</code> · <code>P3-filtration.md</code> · <code>P4-verdict.md</code></p>
+
+<!-- P1 -->
+<div class="role r1">
+  <h3>P1 · 开场 · 立问题 —— 甲</h3>
+  <div class="sub">2.5–3 分钟 ｜ PPT 第 1–3 页 ｜ 难度 ★☆☆☆☆ ｜ 这一段的价值：把全场骨架立住</div>
+  <div class="card">
+    <h4 style="margin-top:0">完整英文稿（约 300 词）</h4>
+    <div class="script">
+Good morning, everyone. We are Group [X]. I'm [Name], and today we'd like to talk about a very ordinary object — a disposable face mask — and one very practical question: <span class="key">can you reuse it?</span><br><br>
+In early 2020, this was not a small question. According to China's Ministry of Industry and Information Technology, the country's total mask production was only <b>8 million a day</b> on the 23rd of January 2020 — for a population of over <span class="num">1.4 billion</span>. The gap between supply and demand was enormous. So the question became urgent: <b>is there a way to make one mask last longer — safely?</b><br><br>
+The paper we chose is called <i>Can Masks Be Reused After Hot Water Decontamination During the COVID-19 Pandemic?</i> It was published in 2020 in <b>Engineering</b>, the official journal of the Chinese Academy of Engineering. The first author is Dan Wang, from Beijing University of Chemical Technology.<br><br>
+One detail I'd like to point out: the paper was <b>received on the 26th of May 2020, and accepted three days later</b>. A three-day review is extremely unusual. That tells you how urgent this problem was at the time.<br><br>
+The <span class="key">method</span> they propose is called "hot water decontamination plus charge regeneration." In plain English: <b>soak the mask in hot water, then dry it with a hair dryer.</b> No chemicals, no special machines — you can do it in your kitchen.<br><br>
+Now, this paper is essentially a <span class="key">qualification test</span>. Before you approve any reuse method, you have to answer three questions. <b>One: does it kill the virus? Two: does the mask still filter? Three: does it survive real use?</b><br><br>
+My teammate [Name] will start with the procedure itself.
+    </div>
+    <h4>锚点卡（抄到 A6 卡片，字号要大）</h4>
+    <div class="anchor">1.  8 million / day  ←→  1.4 billion
+2.  Engineering · CAE · 2020 · Dan Wang
+3.  received 26 May  →  accepted 3 days later
+4.  soak in hot water  +  hair dryer
+5.  =  a qualification test
+6.  THREE QUESTIONS:  Kill? / Filter? / Survive?</div>
+    <h4>必背两句</h4>
+    <ul>
+      <li>首句：<code>Good morning, everyone. We are Group [X]. I'm [Name], and today we'd like to talk about a very ordinary object — a disposable face mask.</code></li>
+      <li>尾句（交接）：<code>My teammate [Name] will start with the procedure itself.</code></li>
+    </ul>
+    <h4>认领 AWL 词（5 个）</h4>
+    <p><span class="tag t-b">method</span><span class="tag t-b">approach</span><span class="tag t-b">evidence</span><span class="tag t-b">resources</span><span class="tag t-b">period</span><br>
+    <span class="small">稿中已用到 method / approach / evidence；自己再加一处 resources 或 period（如 "medical resources were stretched"）。</span></p>
+    <h4>发音雷区</h4>
+    <p class="small"><b>resources</b> /rɪˈsɔːsɪz/（重音在第二音节，不是 RE-sources）· <b>method</b> /ˈmeθəd/（θ 咬舌）· <b>approach</b> /əˈprəʊtʃ/ · <b>evidence</b> /ˈevɪdəns/ · <b>1.4 billion</b> = one point four billion · <b>the 26th of May</b>（th 咬舌）</p>
+    <h4>时间</h4>
+    <p class="small">目标 2′30″。超 3′10″ 就砍"三日录用"那段，<b>不要加速</b>。第 3 页"三问"要放慢、逐个念清。</p>
+  </div>
+</div>
+
+<!-- P2 -->
+<div class="role r2">
+  <h3>P2 · 流程本身 —— 乙</h3>
+  <div class="sub">3–3.5 分钟 ｜ PPT 第 4–6 页 ｜ 难度 ★★☆☆☆ ｜ 这一段的价值：全场叙事性最强，有反转</div>
+  <div class="card">
+    <h4 style="margin-top:0">完整英文稿（约 380 词）</h4>
+    <div class="script">
+Thank you. So let's start with the <span class="key">procedure</span> itself.<br><br>
+The decontamination part is surprisingly simple. You pour boiling water into a container, put the mask in, and leave it for <b>30 minutes</b>. The target is a water temperature above <b>56 degrees Celsius for 30 minutes</b>. That number comes from the National Health Commission of China: at that temperature the envelope protein of the virus <b>denatures</b>, and the virus loses its ability to infect.<br><br>
+The researchers tested three everyday containers: <b>an aluminium basin, a plastic lunch box, and a stainless-steel thermos</b>. They measured the water temperature over time. Freshly boiled water was about <b>90 degrees</b>. After 30 minutes, the basin and the lunch box were still around <b>60 degrees</b>, and the thermos was still <b>85 degrees</b>. So the temperature requirement is easy to meet at home, with things you already own.<br><br>
+They also compared this with other methods — UV light, organic solvents, hydrogen peroxide vapour. All of those work, but they need <span class="key">equipment</span>. Hot water needs a pot.<br><br>
+There's a nice bonus. Under a 365-nanometre UV lamp, a mask worn for four hours shows fluorescent spots — those are wastes from the mouth and respiratory tract. After the hot-water treatment, the spots are gone, and so is the smell. So the method also cleans the mask.<br><br>
+Now, the clever part. Hot water kills the virus, <b>but it also destroys the static electricity</b> in the mask — and that static charge is what makes the mask work. So it has to be put back. The researchers measured this. If you simply let the mask air-dry for <b>10 hours</b>, the static electricity recovers to about <b>60 percent</b> of a new mask. But if you dry it with an ordinary hair dryer for <b>10 minutes</b>, it recovers to about <b>90 percent</b> — and much faster, which also prevents bacteria from growing inside a wet mask.<br><br>
+So the full recipe is: <span class="key">hot water, 56 degrees, 30 minutes; hair dryer, 10 minutes</span>. Next, [Name] will ask the real question: does the mask still filter?
+    </div>
+    <h4>锚点卡</h4>
+    <div class="anchor">1.  56°C · 30 min · protein denatures
+2.  basin / lunch box / thermos
+3.  90°  →  60° / 60° / 85°
+4.  UV & solvents need EQUIPMENT — hot water needs a pot
+5.  UV lamp: spots gone, smell gone
+6.  air-dry 10 h = 60%   VS   hair dryer 10 min = 90%
+7.  RECIPE:  56° · 30 min  +  10 min dryer</div>
+    <h4>必背两句</h4>
+    <ul>
+      <li>首句：<code>Thank you. So let's start with the procedure itself.</code></li>
+      <li>尾句（交接）：<code>Next, [Name] will ask the real question: does the mask still filter?</code></li>
+    </ul>
+    <h4>认领 AWL 词（6 个）</h4>
+    <p><span class="tag t-b">procedure</span><span class="tag t-b">process</span><span class="tag t-b">achieve</span><span class="tag t-b">capacity</span><span class="tag t-b">potential</span><span class="tag t-b">region</span></p>
+    <h4>发音雷区（这一段是全场发音高地，务必练）</h4>
+    <p class="small"><b>decontamination</b> /ˌdiːkənˌtæmɪˈneɪʃən/（6 音节，重音在 na，练 5 遍）· <b>denature</b> /diːˈneɪtʃə/ · <b>electrostatic</b> /ɪˌlektrəˈstætɪk/ · <b>aluminium</b> /ˌæljəˈmɪniəm/ · <b>hydrogen peroxide</b> · <b>vapour</b> /ˈveɪpə/ · 温度念 <b>56 degrees Celsius</b>（不要漏 s）</p>
+    <h4>时间</h4>
+    <p class="small">目标 3′20″。超 3′50″ 就砍"UV 灯荧光斑点"那段，<b>保留温度曲线和吹风机对比</b>。讲第 6 页一定要指着图说 60% vs 90%。</p>
+  </div>
+</div>
+
+<!-- P3 -->
+<div class="role r3">
+  <h3>P3 · 滤得住吗 —— 丙</h3>
+  <div class="sub">3.5–4 分钟 ｜ PPT 第 7–10 页 ｜ 难度 ★★★★☆ ｜ 这一段的价值：全场唯一的技术硬核</div>
+  <div class="card">
+    <h4 style="margin-top:0">完整英文稿（约 380 词）</h4>
+    <div class="script">
+Thank you. So — <b>does it still filter?</b><br><br>
+First, a quick look at what a mask actually is. A typical mask has <b>three layers</b>. The outer layer is waterproof; the inner layer absorbs your breath moisture. The middle layer — the one that does the real work — is a <b>polypropylene melt-blown</b> fabric. It is 100 to 1000 micrometres thick, made of fibres just 1 to 10 micrometres across.<br><br>
+Now, how does it catch particles? There are <span class="key">five mechanisms</span>: Brownian diffusion, entrapment, inertial collision, gravity sedimentation, and <b>electrostatic adsorption</b>. That last one is the key. It is the only mechanism that can capture nano-sized particles <b>while keeping the mask easy to breathe through</b>. And it is exactly the one that hot water destroys — which is why the hair-dryer step matters so much.<br><br>
+So how did they test it? With a TSI 8130 instrument, using sodium chloride aerosol — particles about 0.075 micrometres across. They tested at two different flow rates: <b>30 litres per minute</b> for medical and surgical masks, and <b>85 litres per minute</b> for KN95 masks, following the Chinese national standards.<br><br>
+The results. For <b>bacterial filtration efficiency, or BFE</b>, the standard requires no less than 95 percent — and the regenerated masks stayed above it.<br><br>
+For <b>particle filtration efficiency, or PFE</b>, KN95 masks must stay above 95 percent — and they did. For surgical masks, the standard only requires 30 percent; the regenerated ones averaged <b>92.3 percent</b>.<br><br>
+And the durability question — this is the one I find most interesting. They ran five brands of masks through <span class="key">10 full cycles</span> of soaking and drying. Filtration performance barely changed. They even pushed further: KN95 masks put in an autoclave at <b>121 degrees for 30 minutes</b> still held <b>99.2 percent</b> and <b>96.6 percent</b>.<br><br>
+So the answer to question two is yes. But lab tests are one thing — real wear is another. [Name] will take that.
+    </div>
+    <h4>锚点卡</h4>
+    <div class="anchor">1.  3 layers · melt-blown · fibres 1–10 µm
+2.  FIVE mechanisms → electrostatic adsorption = THE KEY
+3.  TSI 8130 · NaCl · 0.075 µm
+4.  30 L/min (medical)  VS  85 L/min (KN95)
+5.  BFE >95%  |  PFE: KN95 >95%  |  surgical 92.3% (bar = 30%)
+6.  10 CYCLES → barely changed
+7.  autoclave 121°C 30 min → 99.2% / 96.6%</div>
+    <h4>必背两句</h4>
+    <ul>
+      <li>首句：<code>Thank you. So — does it still filter?</code></li>
+      <li>尾句（交接）：<code>But lab tests are one thing — real wear is another. [Name] will take that.</code></li>
+    </ul>
+    <h4>认领 AWL 词（7 个）</h4>
+    <p><span class="tag t-b">layer</span><span class="tag t-b">mechanism</span><span class="tag t-b">equipment</span><span class="tag t-b">exceed</span><span class="tag t-b">significant</span><span class="tag t-b">cycle</span><span class="tag t-b">index</span></p>
+    <div class="good" style="margin:10px 0">
+      <b>必加的一句（30 秒，理工科身份牌）：</b>讲第 10 页时说——
+      <code>Ten cycles — essentially a fatigue-life test for a disposable mask.</code>
+    </div>
+    <h4>发音雷区（全场最多，提前 3 天开始练）</h4>
+    <p class="small"><b>polypropylene</b> /ˌpɒliˈprəʊpɪliːn/ · <b>melt-blown</b> · <b>filtration</b> /fɪlˈtreɪʃən/ · <b>efficiency</b> /ɪˈfɪʃənsi/ · <b>aerosol</b> /ˈeərəsɒl/ · <b>sodium chloride</b> · <b>micrometre</b> /ˈmaɪkrəʊˌmiːtə/ · <b>sedimentation</b> · <b>autoclave</b> /ˈɔːtəkleɪv/ · <b>Brownian</b> · 缩写逐字母念：<b>P-F-E</b> / <b>B-F-E</b> / <b>K-N ninety-five</b> · <b>0.075</b> = zero point zero seven five</p>
+    <h4>时间</h4>
+    <p class="small">目标 3′40″。超 4′20″ 就砍"autoclave 121 ℃"那句（保留 10 cycles）。第 8 页五大机制<b>宁可慢，不要含糊</b>；念不清就只念三个 + 强调 electrostatic adsorption。</p>
+  </div>
+</div>
+
+<!-- P4 -->
+<div class="role r4">
+  <h3>P4 · 真实使用 + 验收结论 —— 丁</h3>
+  <div class="sub">4–4.5 分钟 ｜ PPT 第 11–12 页 ｜ 难度 ★★★☆☆ ｜ 这一段的价值：全场唯一体现"批判性阅读"的两分钟</div>
+  <div class="card">
+    <h4 style="margin-top:0">完整英文稿（约 520 词）</h4>
+    <div class="script">
+Thank you. Lab tests are clean. Real life is not. So the authors ran two more checks.<br><br>
+<b>First: waterproofing.</b> The outer layer has to repel droplets. They used a vacuum filtration test: pour <b>100 millilitres</b> of water onto the mask from 20 centimetres, within 20 seconds, then apply vacuum for 3 minutes, and see whether water comes through. <b>After 10 cycles, no seepage at all.</b> And under the scanning electron microscope, the fibres looked the same as new — no breakage, no fracturing.<br><br>
+<b>Second: actual wear.</b> People wore masks for <b>8 hours</b>, and then the masks were treated. For surgical masks, based on <b>15 samples</b>, filtration efficiency dropped by <b>0.5 to 12 percent</b> — and the paper is honest that this varies between people, and even for the same person on different days. But all <b>10 KN95 samples</b> stayed above <b>95 percent</b>.<br><br>
+They also found <b>why</b> performance changes. Using a fluorescent penetrant test, they showed that <span class="key">dirt and oil from your skin</span> get onto the fibres and change how wettable they are. That is the real degradation mechanism — not the hot water.<br><br>
+<b>Did anyone actually use it?</b> Yes. A company called <b>Zhejiang Runtu</b>, with over 4,000 employees, ran short of masks when workers returned in February 2020. Their engineers independently verified the method and made it company policy. Between the 20th of February and the 30th of March, mask use dropped from <b>one mask per person per day to one mask every three days</b> — saving <b>122,500 masks</b> in about five weeks.<br><br>
+So the method works in the field. Now let me give you our verdict.<br><br>
+<b>What the paper proves:</b> hot water plus a hair dryer keeps the filtration performance of disposable, surgical and KN95 masks essentially intact for <span class="key">up to 10 cycles</span> — and it was deployed at scale, with real, measurable savings.<br><br>
+<b>What it does not prove — and this matters.</b> They did <b>not measure virus killing directly</b>; the "56 degrees for 30 minutes" rule is taken from the official Chinese guidance. They tested <b>NaCl particles, not the actual virus</b>. They only tested <b>six products</b> in total. And <b>fit and seal</b> — how well the mask sits on your face — was never tested. A mask that filters well but leaks at the edges protects nobody.<br><br>
+We also found <b>one inconsistency</b>. In Section 3.5, the KN95 masks worn for 8 hours were treated with <b>hot water</b>. But in the Conclusions, the same result is described as treatment with <b>pressurised steam at 121 degrees</b>. Two different treatments. It does not change the main conclusion — but it shows that even published papers need careful reading.<br><br>
+<b>One last point on the standard.</b> For surgical masks, the required PFE is only <b>30 percent</b>. So "92.3 percent" sounds impressive partly because the bar is low. A good reviewer always asks: <b>impressive compared to what?</b><br><br>
+<b>Why we chose this paper.</b> We are engineering students. This is not a discovery — it is a <span class="key">qualification campaign</span>: set the acceptance criteria, run to N cycles, inspect, then release. That is exactly what we do to turbine blades and filters. And in an emergency, the best engineering is often not the most advanced — it is the kind that works with <b>a pot of hot water and a hair dryer</b>.<br><br>
+Thank you.
+    </div>
+    <h4>锚点卡</h4>
+    <div class="anchor">1.  100 mL · 20 s · no seepage · SEM: fibres intact
+2.  8 h wear → −0.5 ~ 12% (15 samples) | KN95: all >95% (10)
+3.  skin oil is the REAL culprit (not hot water)
+4.  Runtu · 4,000 staff · 1/day → 1 per 3 days · 122,500 masks
+         ↓ pivot
+5.  PROVEN: 10 cycles, deployed at scale
+6.  NOT PROVEN: no virus test / NaCl ≠ virus / 6 products / no fit test
+7.  INCONSISTENCY: §3.5 hot water VS §4 steam 121°C  +  bar = 30%
+8.  CLOSING: qualification campaign → turbine blades → pot + hair dryer</div>
+    <h4>必背两句</h4>
+    <ul>
+      <li>首句：<code>Thank you. Lab tests are clean. Real life is not.</code></li>
+      <li>尾句（全场收尾，一字不能改）：<code>And in an emergency, the best engineering is often not the most advanced — it is the kind that works with a pot of hot water and a hair dryer.</code></li>
+    </ul>
+    <h4>认领 AWL 词（7 个）</h4>
+    <p><span class="tag t-b">individual</span><span class="tag t-b">retained</span><span class="tag t-b">demonstrate</span><span class="tag t-b">conclusion</span><span class="tag t-b">implications</span><span class="tag t-b">whereas</span><span class="tag t-b">design</span><br>
+    <span class="small">⚠️ 原文 <code>whereas</code> 那句正好支撑你"标准门槛只有 30%"的批判点，<b>建议直接背下原句</b>。</span></p>
+    <h4>发音雷区</h4>
+    <p class="small"><b>seepage</b> /ˈsiːpɪdʒ/ · <b>penetrant</b> /ˈpenɪtrənt/ · <b>wettability</b> /ˌwetəˈbɪləti/（不会念就说 "how easily water spreads on the fibres"）· <b>implications</b> · <b>whereas</b> /weərˈæz/（别念成 where is）· <b>122,500</b> = one hundred <b>and</b> twenty-two thousand five hundred · <b>§3.5</b> = section three point five</p>
+    <h4>时间</h4>
+    <p class="small">目标 4′10″。<b>超时按此顺序砍</b>：① 荧光渗透检测那句 ② 闰土的具体日期 ③ <b>批判内容一条都不能砍</b>。第 12 页 "Not Proven" 要放慢、一条一条数。</p>
+  </div>
+</div>
+
+<h2>三、PPT 分工（12 页）</h2>
+<table>
+  <tr><th style="width:52px">页</th><th style="width:88px">负责人</th><th style="width:210px">标题</th><th>内容（每页 ≤20 词）</th></tr>
+  <tr><td>1</td><td>甲</td><td>Can a Disposable Mask Be Reused?</td><td>论文全名 + 作者 + <i>Engineering</i> 2020 + 组名四人</td></tr>
+  <tr><td>2</td><td>甲</td><td>Why This Matters</td><td>8 million/day ←→ 1.4 billion（只放这两个数字）</td></tr>
+  <tr><td>3</td><td>甲</td><td>Our Three Questions</td><td><b>全场骨架页</b>：Kill? / Filter? / Survive?</td></tr>
+  <tr><td>4</td><td>乙</td><td>The Procedure</td><td>56 ℃ · 30 min · hair dryer 10 min（两步流程）</td></tr>
+  <tr><td>5</td><td>乙</td><td>Does the Water Stay Hot Enough?</td><td>三容器柱状图：90 → 60 / 60 / 85 ℃</td></tr>
+  <tr><td>6</td><td>乙</td><td>The Hidden Problem: Static Charge</td><td>自然晾干 10 h = 60% vs 吹风机 10 min = 90%</td></tr>
+  <tr><td>7</td><td>丙</td><td>What's Inside a Mask</td><td>三层剖面 + 熔喷纤维 SEM 图</td></tr>
+  <tr><td>8</td><td>丙</td><td>Five Filtration Mechanisms</td><td>五个机制名称（指着念，很有分量）</td></tr>
+  <tr><td>9</td><td>丙</td><td>Test Results vs Standards</td><td>表：BFE ≥95%（实测 &gt;95%）；KN95 PFE ≥95%；外科 ≥30%（实测 92.3%）</td></tr>
+  <tr><td>10</td><td>丙</td><td>After 10 Cycles</td><td>五品牌 10 循环前后柱状图 + <b>右上角循环计数器角标</b></td></tr>
+  <tr><td>11</td><td>丁</td><td>Real Wear &amp; Real Factory</td><td>8 h 数据 + 闰土：1 只/天 → 1 只/3 天，<b>122,500</b></td></tr>
+  <tr><td>12</td><td>丁</td><td>Verdict: Approved — With Limits</td><td>左栏 Passed / 右栏 <b>Not Proven</b>（4 条）</td></tr>
+</table>
+<p class="small"><b>统稿要求</b>：四人各自做完自己的页，统一交给<b>一个人</b>合版、统一字体配色和编号（建议：丁）。避免拼贴感。</p>
+
+<h2>四、14 天并行时间表（汇报 × AWL）</h2>
+<table>
+  <tr><th style="width:74px">阶段</th><th>汇报</th><th>AWL</th><th>四人协同动作</th></tr>
+  <tr>
+    <td><b>D1–D3</b></td>
+    <td>四人各通读论文一遍；定下分工（见第一节）</td>
+    <td>每人先只背<b>自己那 5–7 个词</b></td>
+    <td><b>边读边在自己的 PDF 上圈出自己认领的词</b>——读一遍论文 = 复习一遍单词</td>
+  </tr>
+  <tr>
+    <td><b>D4–D7</b></td>
+    <td>每人把英文稿改成自己说得顺的话，控制在 4–6 句</td>
+    <td>推进 <code>awl-in-paper.md</code> 的 B 组</td>
+    <td><b>写稿时刻意塞进认领词汇</b>：每人每段至少用 5 个 AWL 词</td>
+  </tr>
+  <tr>
+    <td><b>D8–D9</b></td>
+    <td>各做各的页；交给丁合版</td>
+    <td>B 组继续</td>
+    <td><b>数字核验</b>：PPT 上每个数字逐一对照 PDF 页码</td>
+  </tr>
+  <tr>
+    <td><b>D10–D11</b></td>
+    <td><b>第一次连排</b>（照稿读 2 遍，站着、计时）</td>
+    <td>—</td>
+    <td>第一次合版 PPT 定稿；计时员报时，超出即删内容</td>
+  </tr>
+  <tr>
+    <td><b>D12</b></td>
+    <td><b>第二次彩排</b>：只看锚点卡讲 3 遍</td>
+    <td>A 组 24 词过一轮</td>
+    <td>录一次音，每人回听自己的一段，找出卡壳的词</td>
+  </tr>
+  <tr>
+    <td><b>D13</b></td>
+    <td><b>第三次彩排</b>：全脱稿、全真模拟 2 遍</td>
+    <td>81 词全过一轮（遮中文回忆）</td>
+    <td>交接句连 3 遍；确认计时员手势</td>
+  </tr>
+  <tr>
+    <td><b>D14</b></td>
+    <td>上台</td>
+    <td>不再背新词</td>
+    <td>见下方"上台前 5 分钟清单"</td>
+  </tr>
+</table>
+<div class="good">
+  <b>省时原理：</b>单独做这两件事约 22 小时，合并后约 <b>13 小时</b>。省下的来自三处——① 论文原句直接当单词例句，省掉另找例句；② 写稿时强制用 AWL 词，把"背"变成"用"；③ 25 个认领词里有十几个是你汇报时<b>必然要说出口</b>的（method, procedure, cycle, mechanism, equipment, evidence…），讲三遍就永久记住了。
+</div>
+
+<h2>五、非演讲岗位（四个人各兼一个）</h2>
+<div class="split">
+  <div><b>丁</b><br>PPT 统稿人 —— 收齐四人的页，统一模板、配色、编号。<b>只有你能改最终版</b>。</div>
+  <div><b>丙</b><br>数字核验员 —— PPT 上每个数字逐一对照 PDF 原文页码。汇报翻车 90% 出在数字。</div>
+  <div><b>乙</b><br>计时员 —— 每次彩排报时；正式汇报时坐前排用手势提醒（竖 1 指 = 还剩 1 分钟）。</div>
+  <div><b>甲</b><br>词汇表负责人 —— 把 <code>awl-in-paper.md</code> 按段落切给每个人，D13 组织一次互考。</div>
+</div>
+
+<h2>六、上台前 5 分钟清单</h2>
+<div class="card">
+  <ul class="chk">
+    <li>PDF 版 PPT 已存 U 盘 <b>且</b> 已发群（双保险）</li>
+    <li>四人手上各有自己的 A6 锚点卡（大字，1 米外能看清）</li>
+    <li>每人的<b>第一句和最后一句</b>已逐字背熟</li>
+    <li>三句交接句已连过一遍：阮→刘 "My teammate... will start with the procedure itself." / 刘→翟 "...does the mask still filter?" / 翟→孙 "...[Name] will take that."</li>
+    <li>计时员（乙）坐前排，手势已约定</li>
+    <li>四人齐读一遍数字卡：<b>8 million / 1.4 billion / 56 · 30 / 90→60·60·85 / 60% vs 90% / 92.3 / 99.2 / 96.6 / 0.5–12 / 122,500</b></li>
+    <li>站位顺序确认：阮 → 刘 → 翟 → 孙</li>
+    <li>最后一句工程收尾确认保留：<i>"...the best engineering is often not the most advanced — it is the kind that works with a pot of hot water and a hair dryer."</i></li>
+  </ul>
+</div>
+
+<h2>七、文件索引</h2>
+<table>
+  <tr><th style="width:250px">文件</th><th>用途</th></tr>
+  <tr><td><code>four-person-kit.html</code></td><td><b>本文件</b>：四人分工总表 + 四张完整角色卡 + PPT 分工 + 时间表</td></tr>
+  <tr><td><code>roles/P1-setup.md</code></td><td>甲 —— 可直接发手机</td></tr>
+  <tr><td><code>roles/P2-procedure.md</code></td><td>乙 —— 可直接发手机</td></tr>
+  <tr><td><code>roles/P3-filtration.md</code></td><td>丙 —— 可直接发手机</td></tr>
+  <tr><td><code>roles/P4-verdict.md</code></td><td>丁 —— 可直接发手机</td></tr>
+  <tr><td><code>awl-in-paper.md</code></td><td>AWL × 论文双效词表（81 词 + 论文原句）</td></tr>
+  <tr><td><code>paper-selection-guide.html</code></td><td>最初的 8 篇论文对比（留档，已不需要）</td></tr>
+  <tr><td><code>papers/Wang2020_...pdf</code></td><td>论文正本 7 页</td></tr>
+</table>
+
+<footer>
+  论文：Wang et al. (2020) <i>Engineering</i> 6(10): 1115–1121 · DOI 10.1016/j.eng.2020.05.016<br>
+  所有数字与批判点均已对照原文 PDF 逐条核对；AWL 编号对应你的《AWL 自学词汇手册》Sublist。
+</footer>
+
+</div>
+</body>
+</html>

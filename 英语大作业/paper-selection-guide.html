@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学术论文阅读与汇报 · 选题指南（燃气轮机/航空发动机方向）</title>
+<style>
+  :root{
+    --ink:#1a2233; --muted:#5b6b82; --line:#e2e8f0; --bg:#f6f8fb;
+    --brand:#1f4e79; --brand2:#2d7dd2; --accent:#e8f1fb;
+    --good:#0f8a5f; --mid:#c98a12; --warn:#c0392b;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       line-height:1.75;font-size:16px;}
+  .wrap{max-width:1000px;margin:0 auto;padding:40px 24px 80px;}
+  header{background:linear-gradient(135deg,#1f4e79,#2d7dd2);color:#fff;border-radius:16px;padding:32px 34px;margin-bottom:28px;}
+  header h1{margin:0 0 8px;font-size:26px;letter-spacing:.5px;}
+  header p{margin:4px 0;opacity:.92;font-size:14.5px;}
+  h2{font-size:21px;margin:38px 0 14px;padding-left:12px;border-left:5px solid var(--brand2);}
+  h3{font-size:17px;margin:22px 0 8px;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:18px;
+        box-shadow:0 1px 3px rgba(20,40,80,.05);}
+  .notice{background:#fff8e6;border:1px solid #f0d69a;border-radius:12px;padding:16px 20px;margin:18px 0;font-size:15px;}
+  .notice b{color:#8a6100;}
+  table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;
+        box-shadow:0 1px 3px rgba(20,40,80,.05);font-size:14.5px;}
+  th{background:var(--brand);color:#fff;text-align:left;padding:12px 12px;font-weight:600;font-size:14px;}
+  td{padding:12px;border-top:1px solid var(--line);vertical-align:top;}
+  tr:nth-child(even) td{background:#fbfcfd;}
+  .rank{display:inline-block;width:26px;height:26px;line-height:26px;text-align:center;border-radius:50%;
+        background:var(--brand2);color:#fff;font-weight:700;font-size:14px;}
+  .tag{display:inline-block;padding:2px 9px;border-radius:20px;font-size:12.5px;margin:2px 4px 2px 0;font-weight:600;}
+  .t-easy{background:#e3f6ec;color:#0f7a52;}
+  .t-mid{background:#fdf3dc;color:#96690a;}
+  .t-hard{background:#fde8e6;color:#a8322a;}
+  .t-eng{background:#e8f1fb;color:#1f4e79;}
+  .t-info{background:#eceff3;color:#4a5768;}
+  .meta{font-size:14px;color:var(--muted);margin:6px 0 12px;}
+  .meta b{color:var(--ink);font-weight:600;}
+  .bars{margin:10px 0 4px;}
+  .bar{display:flex;align-items:center;gap:8px;font-size:13px;margin:4px 0;}
+  .bar .lb{width:96px;color:var(--muted);flex:none;}
+  .bar .track{flex:1;height:8px;background:#eef1f5;border-radius:6px;overflow:hidden;}
+  .bar .fill{height:100%;border-radius:6px;background:var(--brand2);}
+  .bar .fill.g{background:#0f8a5f;} .bar .fill.y{background:#c98a12;} .bar .fill.r{background:#c0392b;}
+  ul{margin:8px 0 8px 0;padding-left:22px;}
+  li{margin:5px 0;}
+  .kv{font-size:14.5px;}
+  .kv p{margin:6px 0;}
+  code{background:#eef2f7;padding:1px 6px;border-radius:5px;font-size:13.5px;color:#1f4e79;}
+  .verdict{background:var(--accent);border-left:4px solid var(--brand2);border-radius:0 10px 10px 0;padding:12px 16px;margin-top:12px;font-size:15px;}
+  .verdict b{color:var(--brand);}
+  .two{display:flex;gap:16px;flex-wrap:wrap;}
+  .two>div{flex:1 1 300px;}
+  .pill{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;}
+  footer{margin-top:40px;font-size:13px;color:var(--muted);text-align:center;}
+  .small{font-size:13.5px;color:var(--muted);}
+  .gold{border:2px solid #f0c14b;box-shadow:0 2px 10px rgba(240,193,75,.25);}
+  .ribbon{display:inline-block;background:#f0c14b;color:#4a3600;font-size:12px;font-weight:700;
+          padding:3px 10px;border-radius:6px;margin-left:8px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>学术论文阅读 · 选题指南</h1>
+  <p>面向：燃气轮机 / 航空发动机方向本科生 · 英语课 Research Presentation（2026 AC04）</p>
+  <p>已识别并核实清单中的 8 篇论文（第 1–8 行），按"适合理工科本科生读 + 好讲"排序</p>
+</header>
+
+<div class="notice">
+  <b>⚠️ 需要你补一句：</b>你发来的截图里，表格第 <b>9–12 行</b> 的标题部分分辨率太低（原始文字只有约 8 像素高），我用 OCR 放大 3–30 倍、多种二值化都只能认出序号 "9 / 10 / 11 / 12"，标题读不出来。麻烦你把那几行的 <b>论文标题 + 期刊</b> 打字发我（或重新拍一张清晰的），我立刻按同样标准补上分析。下面的内容覆盖前 8 篇。
+</div>
+
+<h2>一、先给结论：总览对比表</h2>
+
+<table>
+  <tr>
+    <th style="width:38px">#</th><th>论文（简称）</th><th>期刊 / 年份</th><th>篇幅</th>
+    <th>语言难度</th><th>工程亲和度</th><th>演讲吸引力</th><th>一句话点评</th>
+  </tr>
+  <tr>
+    <td><span class="rank">1</span></td><td><b>口罩热水消毒再利用</b></td><td>Engineering 2020</td><td>7 页</td>
+    <td><span class="tag t-easy">易</span></td><td><span class="tag t-eng">★★★★★</span></td><td>★★★★★</td>
+    <td>工科生的最优解：真实验、有图、能现场演示</td>
+  </tr>
+  <tr>
+    <td><span class="rank">2</span></td><td><b>业主节能改造动机调查</b></td><td>J. Architectural Eng. (ASCE) 2018</td><td>10 页</td>
+    <td><span class="tag t-easy">易</span></td><td><span class="tag t-eng">★★★★☆</span></td><td>★★★★☆</td>
+    <td>能源系统 + 统计检验，和你的专业最能聊上话</td>
+  </tr>
+  <tr>
+    <td><span class="rank">3</span></td><td><b>问题解决式教学对大一新生的影响</b></td><td>Social Sciences &amp; Humanities Open 2019</td><td>7 页</td>
+    <td><span class="tag t-easy">最易</span></td><td><span class="tag t-eng">★★☆☆☆</span></td><td>★★★☆☆</td>
+    <td>最安全：短、简单、讲的就是"学生怎么学"</td>
+  </tr>
+  <tr>
+    <td><span class="rank">4</span></td><td><b>不诚实行为的性别差异</b></td><td>Frontiers in Psychology 2021</td><td>12 页</td>
+    <td><span class="tag t-easy">易</span></td><td><span class="tag t-eng">★★☆☆☆</span></td><td>★★★★☆</td>
+    <td>现场互动神器（掷骰子实验），但话题偏敏感</td>
+  </tr>
+  <tr>
+    <td><span class="rank">5</span></td><td><b>关系还是公平？微信群投票</b></td><td>Journal of Business Ethics 2020</td><td>25 页</td>
+    <td><span class="tag t-mid">中</span></td><td><span class="tag t-eng">★☆☆☆☆</span></td><td>★★★★★</td>
+    <td>全场最有共鸣，但 25 页是最大阅读量</td>
+  </tr>
+  <tr>
+    <td><span class="rank">6</span></td><td><b>生物质基可锻造材料的闭环回收</b></td><td>Science China Materials 2020</td><td>8 页</td>
+    <td><span class="tag t-hard">难</span></td><td><span class="tag t-eng">★★★★☆</span></td><td>★★☆☆☆</td>
+    <td>技术含量最高，但化学词汇是硬门槛</td>
+  </tr>
+  <tr>
+    <td><span class="rank">7</span></td><td><b>老年人名人语义记忆分析</b></td><td>Experimental Aging Research 2019</td><td>20 页</td>
+    <td><span class="tag t-mid">中</span></td><td><span class="tag t-eng">★☆☆☆☆</span></td><td>★★☆☆☆</td>
+    <td>学术英语写作范本，但题材对你偏冷</td>
+  </tr>
+  <tr>
+    <td><span class="rank">8</span></td><td><b>疫情对心理健康的影响</b></td><td>Current Research in Behavioral Sciences 2021</td><td>12 页</td>
+    <td><span class="tag t-easy">最易</span></td><td><span class="tag t-eng">★★☆☆☆</span></td><td>★★★☆☆</td>
+    <td>英语最简单，但样本仅 350 人、方法偏弱，适合当"批判性阅读"练习</td>
+  </tr>
+</table>
+
+<p class="small">说明："语言难度"指词汇 + 句法 + 背景知识的综合门槛；"工程亲和度"指思维方式与你（热机/动力/材料/实验测试背景）的契合度；"演讲吸引力"指听众（同学 + 英语老师）的投入程度。</p>
+
+<h2>二、逐篇详解</h2>
+
+<!-- 3 -->
+<div class="card gold">
+  <h3><span class="rank">1</span> Can Masks Be Reused After Hot Water Decontamination During the COVID-19 Pandemic?<span class="ribbon">首推</span></h3>
+  <p class="meta"><b>作者：</b>Dan Wang, Bao-Chang Sun, Jie-Xin Wang, …, Guang-Wen Chu, Jian-Feng Chen（北京化工大学等）<br>
+  <b>期刊：</b><i>Engineering</i>（中国工程院院刊，Elsevier）2020, 6(10): 1115–1121<br>
+  <b>DOI：</b>10.1016/j.eng.2020.05.016 · <b>开放获取（PMC7320690，可直接下载）</b></p>
+
+  <p><b>它到底做了什么：</b>口罩不够用了怎么办？作者提出一个"家用级"方案——把用过的口罩泡在 56 ℃ 以上的热水里 30 分钟（灭活病毒），再用电吹风吹 10 分钟，给熔喷层<b>重新充上静电</b>，恢复过滤能力。这就是"热水消毒 + 电荷再生"法。他们测了一次性医用口罩、医用外科口罩、KN95 三类，反复处理 <b>10 个循环</b>，测了颗粒过滤效率（PFE）、防水性、并用 SEM 看微观结构有没有被弄坏。最后在浙江闰土股份有限公司落地：人均用口罩从"一天一个"降到"三天一个"，2020 年 2 月 20 日到 3 月 30 日省下 12.25 万只口罩。</p>
+
+  <p><b>语言：</b>典型的工科实验论文写法——短句多、被动语态规范、术语具体。生词集中在材料/测试类：<i>melt-blown（熔喷）</i>、<i>polypropylene（聚丙烯）</i>、<i>electrostatic charge（静电荷）</i>、<i>particulate filtration efficiency（颗粒过滤效率）</i>、<i>SEM / microstructure</i>、<i>charge regeneration</i>。这些词你查一次就终身受用，而且<b>几乎每个都有实物或图片对应</b>，理解成本极低。</p>
+
+  <div class="bars">
+    <div class="bar"><span class="lb">语言难度</span><span class="track"><span class="fill g" style="width:32%"></span></span><span>低</span></div>
+    <div class="bar"><span class="lb">工程亲和度</span><span class="track"><span class="fill g" style="width:95%"></span></span><span>极高</span></div>
+    <div class="bar"><span class="lb">演讲吸引力</span><span class="track"><span class="fill g" style="width:96%"></span></span><span>极高</span></div>
+    <div class="bar"><span class="lb">Q&amp;A 风险</span><span class="track"><span class="fill g" style="width:22%"></span></span><span>低</span></div>
+  </div>
+
+  <div class="verdict">
+    <b>为什么最适合你：</b>① 全清单里唯一一篇<b>硬工程</b>论文，思维方式（设对照组、做循环试验、看性能衰减、跑 SEM、定标准）跟你做实验课的套路完全一样；② 只有 7 页，是第二短的；③ 图多（实物照、SEM、柱状图），做 PPT 几乎不用自己画图；④ <b>可以现场演示</b>——带一个口罩和一把电吹风上台，全场就记住你了；⑤ 结论接地气，老师问"所以呢"，你有"省了 12.25 万只口罩"这种硬数字。<b>风险：</b>几乎没有，唯一是 COVID 话题略"过时"，但你可以把落点放在"应急物资复用 / 绿色低碳"上。
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="card">
+  <h3><span class="rank">2</span> Survey of Homeowners' Motivations for the Adoption of Energy Efficiency Measures: Evaluating a Holistic Energy Assessment Program</h3>
+  <p class="meta"><b>作者：</b>Kevin J. Ketchman, David R. Riley, Vikas Khanna, Melissa M. Bilec（匹兹堡大学土木与环境工程系）<br>
+  <b>期刊：</b><i>Journal of Architectural Engineering</i>（ASCE）2018, 24(4): 04018024<br>
+  <b>DOI：</b>10.1061/(ASCE)AE.1943-5568.0000310</p>
+
+  <p><b>它到底做了什么：</b>想让住户做节能改造，光发补贴（rebate）没用，因为障碍是多方面的。美国"国家能源领导力军团"(NELC) 项目换了个思路：先把住户按消费行为<b>分群（segmentation）</b>，再定制化地推建议。作者对 2012–2015 年参加该项目的住户做问卷，测三件事：推荐措施的<b>实际采纳率</b>、住户认为什么在激励他们、以及他们自己又做了哪些改造。统计上用了两样本假设检验和卡方独立性检验。核心发现：<b>"觉得自己不会装"这个认知障碍，跟"省钱""更舒服"一样重要</b>——很多人不是不想省，是觉得自己动手能力不行；此外围护结构（envelope）改造与预算、时间、信息量、优先级显著相关（p &lt; 0.05）。</p>
+
+  <p><b>语言：</b>工程 + 社科的混合体，ASCE 的文风非常规整（IMRaD 结构清楚）。术语包括：<i>demand-side energy reduction</i>、<i>envelope（建筑围护结构）</i>、<i>HVAC</i>、<i>adoption rate</i>、<i>segmentation</i>、<i>two-sample hypothesis test</i>、<i>chi-square test of independence</i>、<i>statistically indistinguishable</i>。</p>
+
+  <div class="bars">
+    <div class="bar"><span class="lb">语言难度</span><span class="track"><span class="fill g" style="width:38%"></span></span><span>偏低</span></div>
+    <div class="bar"><span class="lb">工程亲和度</span><span class="track"><span class="fill g" style="width:82%"></span></span><span>高</span></div>
+    <div class="bar"><span class="lb">演讲吸引力</span><span class="track"><span class="fill y" style="width:70%"></span></span><span>中高</span></div>
+    <div class="bar"><span class="lb">Q&amp;A 风险</span><span class="track"><span class="fill y" style="width:45%"></span></span><span>中</span></div>
+  </div>
+
+  <div class="verdict">
+    <b>为什么推荐：</b>① 它是<b>唯一一篇能和你专业直接对话</b>的：需求侧节能、HVAC、能源改造的经济性评估——你可以很自然地把话题接到燃气轮机的分布式能源 / 冷热电三联供（CCHP）/ 建筑能耗系统上，展示专业视角；② 统计方法（假设检验、卡方）你大二概率统计就学过，能真看懂 p 值，不是"念"论文；③ 结论反直觉（"不是钱的问题，是技能自信的问题"），有记忆点。<br>
+    <b>风险：</b>美国住宅政策和 NELC 项目背景需要额外查一点资料，否则听众会跟不上；数据表比较多，PPT 要会挑。
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="card">
+  <h3><span class="rank">3</span> Analyzing the Effects of the Problem Solving Approach to the Performance and Attitude of First Year University Students</h3>
+  <p class="meta"><b>作者：</b>Eduard M. Albay（菲律宾 Don Mariano Marcos Memorial State University）<br>
+  <b>期刊：</b><i>Social Sciences &amp; Humanities Open</i>（Elsevier）2019, 1(1): 100006<br>
+  <b>DOI：</b>10.1016/j.ssaho.2019.100006 · 开放获取</p>
+
+  <p><b>它到底做了什么：</b>教大学代数（College Algebra）时，别先讲方法再做题，而是<b>直接扔问题给学生，让他们在解决问题的过程中自己长出概念</b>（teaching through problem solving）。作者用了真实验设计：把 20 对大一学生（心理学班 vs 计算机班）按 <b>智商分数和入学数学成绩配对</b>，实验组用问题解决法 + 合作策略（jigsaw 拼图式、结构化问题解决、引导式合作、聚焦列举等），对照组用传统教学，前测—后测对比。结果：实验组平均增分 <b>7.70</b>，对照组只有 2.75；对代数的态度从中性（均值 3.19）转为正面（4.07），p = 0.000。</p>
+
+  <p><b>语言：</b>全清单最简单的一篇。教育学论文，句子短、逻辑线性。术语：<i>true experimental design</i>、<i>pretest–posttest</i>、<i>matched pairs</i>、<i>mean gain score</i>、<i>attitude scale</i>、<i>weighted mean</i>、<i>metacognition（元认知）</i>、<i>heuristics</i>。</p>
+
+  <div class="bars">
+    <div class="bar"><span class="lb">语言难度</span><span class="track"><span class="fill g" style="width:22%"></span></span><span>最低</span></div>
+    <div class="bar"><span class="lb">工程亲和度</span><span class="track"><span class="fill y" style="width:35%"></span></span><span>低</span></div>
+    <div class="bar"><span class="lb">演讲吸引力</span><span class="track"><span class="fill y" style="width:65%"></span></span><span>中高</span></div>
+    <div class="bar"><span class="lb">Q&amp;A 风险</span><span class="track"><span class="fill g" style="width:25%"></span></span><span>低</span></div>
+  </div>
+
+  <div class="verdict">
+    <b>适合谁：</b>如果你的首要目标是<b>"别翻车、稳稳拿分、把精力留给专业课"</b>，选它。7 页、词汇简单、实验设计一句话说得清。<br>
+    <b>隐藏优势：</b>这篇讲的是"人是怎么学会解决问题的"，你完全可以结合自身，对比"工科的问题解决训练（比如拆一个压气机级、做一次热力循环计算）和数学课堂的问题解决有什么异同"——这种个人化延伸最能拿高分。<br>
+    <b>风险：</b>样本只有 20 对、单一学校、单一课程，外推性弱，被追问时要老实承认。
+  </div>
+</div>
+
+<!-- 1 -->
+<div class="card">
+  <h3><span class="rank">4</span> Gender Differences in Individual Dishonesty Profiles</h3>
+  <p class="meta"><b>作者：</b>Adrián Muñoz García, Beatriz Gil-Gómez de Liaño, David Pascual-Ezama（马德里自治大学 / 康普顿斯大学）<br>
+  <b>期刊：</b><i>Frontiers in Psychology</i> 2021, 12: 728115<br>
+  <b>DOI：</b>10.3389/fpsyg.2021.728115 · 开放获取</p>
+
+  <p><b>它到底做了什么：</b>2002 名美国被试（1004 女 / 998 男）在 MTurk 上做一个<b>掷骰子报数</b>任务——报的数字越大拿的钱越多，但没人能核对，所以你可以撒谎。作者由此识别出 <b>六种不同的"不诚实画像"</b>。关键结果：<b>在"会亏钱"的情境下，男女一样不诚实；但在"能赚钱"的情境下，差异出现了</b>——女性更容易在小奖励面前收手，男性则会为了更大的奖励把谎撒得更远。报最高奖励（5）的比例：男性 36%，女性 30%；完全不干活直接拿钱的男性比例也显著更高。实践含义：低金额激励下（例如虚报工时），女性更不容易造假。</p>
+
+  <p><b>语言：</b>行为经济学 + 心理学。难度中等偏易，句子较长。术语：<i>dishonesty profile</i>、<i>incentive</i>、<i>loss domain / gain domain</i>、<i>MTurk (crowdsourcing platform)</i>、<i>chi-square / ANOVA</i>、<i>conformist</i>、<i>maximize the reward</i>。</p>
+
+  <div class="bars">
+    <div class="bar"><span class="lb">语言难度</span><span class="track"><span class="fill y" style="width:45%"></span></span><span>中等</span></div>
+    <div class="bar"><span class="lb">工程亲和度</span><span class="track"><span class="fill y" style="width:30%"></span></span><span>低</span></div>
+    <div class="bar"><span class="lb">演讲吸引力</span><span class="track"><span class="fill g" style="width:90%"></span></span><span>很高</span></div>
+    <div class="bar"><span class="lb">Q&amp;A 风险</span><span class="track"><span class="fill y" style="width:55%"></span></span><span>中</span></div>
+  </div>
+
+  <div class="verdict">
+    <b>亮点：</b>实验设计简单到可以<b>当场在教室里复刻</b>（发一个"自己报点数"的小互动），是天然的破冰；结论有争议性，容易带出讨论，老师一般喜欢这种"会互动"的报告。<br>
+    <b>风险：</b>① 性别差异是敏感话题，措辞必须严格贴着数据说（"在本实验条件下""相关性不等于因果"），否则容易被怼；② 在线样本代表性问题（作者自己都承认需要线下实验验证）——这既是软肋，也是你展示批判性思维的地方；③ 统计部分（六种画像的聚类）略绕，要花时间吃透。
+  </div>
+</div>
+
+<!-- 7 -->
+<div class="card">
+  <h3><span class="rank">5</span> Guanxi or Justice? An Empirical Study of WeChat Voting</h3>
+  <p class="meta"><b>作者：</b>Yanju Zhou, Yi Yu, Xiaohong Chen, Xiongwei Zhou<br>
+  <b>期刊：</b><i>Journal of Business Ethics</i>（Springer）2020, 164(1): 201–225<br>
+  <b>DOI：</b>10.1007/s10551-018-4053-5</p>
+
+  <p><b>它到底做了什么：</b>微信拉票到底靠"关系"还是靠"公平"？作者连做三个子研究：<b>研究一</b>（656 人）：超过 90% 的微信用户参与过微信投票，动机主要是"关系"；<b>研究二</b>（731 人）：区分三种关系动机——<i>mien-tzu</i>（面子）、<i>reciprocity</i>（互惠）、<i>intimacy</i>（亲密）——与公平动机（<i>belief in a just world</i>，公正世界信念），发现<b>人的行为偏离自己的本意</b>（嘴上说看公平，手上还是投关系）；<b>研究三</b>（676 人）：用 <b>logistic regression（逻辑回归）</b>建模投票者特征，发现男性反而表现出更多"共情"、更容易因互惠和亲密而投票；年长者重情感，学生群体更看重为未来积累人脉。商业结论：不当的微信拉票不但帮不上营销，还会损害企业声誉和客户忠诚度。</p>
+
+  <p><b>语言：</b>商科伦理 + 中国文化概念。难度中等，句子偏长，但叙事性强。术语：<i>guanxi</i>、<i>mien-tzu</i>、<i>reciprocity</i>、<i>belief in a just world</i>、<i>logistic regression</i>、<i>canvassing</i>、<i>customer loyalty</i>。</p>
+
+  <div class="bars">
+    <div class="bar"><span class="lb">语言难度</span><span class="track"><span class="fill y" style="width:55%"></span></span><span>中等</span></div>
+    <div class="bar"><span class="lb">工程亲和度</span><span class="track"><span class="fill y" style="width:18%"></span></span><span>很低</span></div>
+    <div class="bar"><span class="lb">演讲吸引力</span><span class="track"><span class="fill g" style="width:95%"></span></span><span>极高</span></div>
+    <div class="bar"><span class="lb">Q&amp;A 风险</span><span class="track"><span class="fill y" style="width:50%"></span></span><span>中</span></div>
+  </div>
+
+  <div class="verdict">
+    <b>亮点：</b>① 全场最有共鸣的题材——每个中国学生都被拉过票，笑点和讨论点自带；② <b>你天然是"文化专家"</b>：向英语课堂解释"关系/面子/人情"是什么，是你相对其他选题最大的主场优势，讲起来会自信很多；③ 有 logistic regression 这个量化方法，能体现"我不只是讲故事"。<br>
+    <b>风险：</b><b>25 页，是清单里最长的</b>，三个子研究要全部理清，阅读量约为口罩那篇的 3 倍。而且结论涉及性别/年龄差异，同样要小心措辞。
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="card">
+  <h3><span class="rank">6</span> Production and Closed-Loop Recycling of Biomass-Based Malleable Materials</h3>
+  <p class="meta"><b>作者：</b>Zhiping Su, Yiming Hu, Xiye Yang, Rong Long, Yinghua Jin, Xiaohui Wang, Wei Zhang<br>
+  <b>期刊：</b><i>SCIENCE CHINA Materials</i> 2020, 63(10): 2071–2078<br>
+  <b>DOI：</b>10.1007/s40843-020-1349-5</p>
+
+  <p><b>它到底做了什么：</b>用木头粉（<b>不分离组分</b>的生物质废弃物）直接和"共价自适应网络"（CANs，也就是类玻璃高分子 vitrimer 那类动态交联网络）复合，通过<b>热压成型</b>一步得到连续材料。木粉含量最高可达 <b>70%</b>，材料还能修复（repairable）、再加工（reprocessible）、<b>闭环完全回收</b>（closed-loop recyclability）。回收后拉伸模量、弯曲模量、拉伸强度、弯曲强度的保持率分别约为 140%、87%、92%、98%。</p>
+
+  <p><b>语言：</b>全清单词汇门槛最高。高分子/化学类术语密集：<i>covalent adaptable networks (CANs)</i>、<i>vitrimer / dynamic covalent bond</i>、<i>transesterification</i>、<i>compression molding</i>、<i>tensile / flexural modulus</i>、<i>glass transition temperature (T&lt;sub&gt;g&lt;/sub&gt;)</i>、<i>DMA / DSC</i>。</p>
+
+  <div class="bars">
+    <div class="bar"><span class="lb">语言难度</span><span class="track"><span class="fill r" style="width:85%"></span></span><span>高</span></div>
+    <div class="bar"><span class="lb">工程亲和度</span><span class="track"><span class="fill g" style="width:72%"></span></span><span>较高</span></div>
+    <div class="bar"><span class="lb">演讲吸引力</span><span class="track"><span class="fill y" style="width:42%"></span></span><span>中低</span></div>
+    <div class="bar"><span class="lb">Q&amp;A 风险</span><span class="track"><span class="fill r" style="width:78%"></span></span><span>高</span></div>
+  </div>
+
+  <div class="verdict">
+    <b>适合谁：</b>如果你化学/材料基础不错，并且想挑战一篇"真正的技术论文"，这篇的含金量最高——可修复、可闭环回收的动态网络本身就是材料学前沿。<br>
+    <b>风险：</b>① 词汇量大且抽象，读起来是硬啃；② 听众（非材料专业同学）很难跟上，你要花大量力气做科普；③ Q&amp;A 很容易被问到反应机理、T&lt;sub&gt;g&lt;/sub&gt; 表征这些你不熟悉的地方。<b>除非你对材料有真实兴趣，否则不建议作为第一选择。</b>
+  </div>
+</div>
+
+<!-- 8 -->
+<div class="card">
+  <h3><span class="rank">7</span> An Analysis of Famous Person Semantic Memory in Aging</h3>
+  <p class="meta"><b>作者：</b>Aurélie Pistono, Thomas Busigny, Mélanie Jucla, Amélie Cabirol, Anne-Lucie Dinnat, Jérémie Pariente, Emmanuel J. Barbeau（法国图卢兹大学神经影像中心等）<br>
+  <b>期刊：</b><i>Experimental Aging Research</i> 2019, 45(1): 74–93<br>
+  <b>DOI：</b>10.1080/0361073X.2018.1560118</p>
+
+  <p><b>它到底做了什么：</b>大多数记忆随年龄衰退，但<b>语义记忆（semantic memory，比如"知道爱因斯坦是物理学家"这类知识）</b>相对稳定——问题是"稳定"的到底是信息量，还是信息之间的<b>组织方式</b>？作者让三个年龄段（20–30、40–50、60–70 岁，各 15 人，共 45 人）对 <b>144 位名人</b>做词语联想：听到名字，说出脑海里第一个词。他们新提出了一套五分类体系（主观类、上位-一般、上位-具体、意象、活动），发现 <b>90% 以上的回答都能归进这五类</b>。老年组在错误率和反应时上和年轻人没差别（说明任务完成得很好），但联想更不精确、更少依赖视觉意象；中年组给出的联想最精确。</p>
+
+  <p><b>语言：</b>认知神经科学。写作质量<b>是八篇里最好的</b>（母语作者、期刊把关严），逻辑严密，是学习学术英语句法的优秀范本。术语：<i>semantic memory / episodic memory</i>、<i>word association task</i>、<i>taxonomy</i>、<i>superordinate</i>、<i>reaction time</i>、<i>aging</i>。</p>
+
+  <div class="bars">
+    <div class="bar"><span class="lb">语言难度</span><span class="track"><span class="fill y" style="width:58%"></span></span><span>中高</span></div>
+    <div class="bar"><span class="lb">工程亲和度</span><span class="track"><span class="fill y" style="width:15%"></span></span><span>很低</span></div>
+    <div class="bar"><span class="lb">演讲吸引力</span><span class="track"><span class="fill y" style="width:38%"></span></span><span>中低</span></div>
+    <div class="bar"><span class="lb">Q&amp;A 风险</span><span class="track"><span class="fill y" style="width:52%"></span></span><span>中</span></div>
+  </div>
+
+  <div class="verdict">
+    <b>亮点：</b>如果你的隐藏目标是<b>"提升学术英语读写能力"</b>，这篇的语言范本价值最高；而且"名人联想"这个任务本身有点好玩，可以现场让听众试两个名字。<br>
+    <b>风险：</b>① 20 页、n=45 人、结论偏细微（"联想的精确度下降但错误率不变"），讲不好会显得平淡；② 题材与你的专业毫无交集，很难注入个人热情；③ 认知心理学的概念链条较长，需要读两遍。
+  </div>
+</div>
+
+<!-- 5 -->
+<div class="card">
+  <h3><span class="rank">8</span> Impact of COVID-19 on Mental Health: A Quantitative Analysis of Anxiety and Depression Based on Regular Life and Internet Use</h3>
+  <p class="meta"><b>作者：</b>Md. Mosfikur Rahman, Mohd. Saifuzzaman, Akash Ahmed, Mahfuja Ferdousi Mahin, Syeda Farjana Shetu（孟加拉国）<br>
+  <b>期刊：</b><i>Current Research in Behavioral Sciences</i>（Elsevier）2021, 2: 100037<br>
+  <b>DOI：</b>10.1016/j.crbeha.2021.100037 · 开放获取</p>
+
+  <p><b>它到底做了什么：</b>疫情期间在孟加拉国做线上问卷，<b>仅 350 人</b>（且大多数人是在校学生），用描述性统计和数据可视化分析日常生活与互联网使用对焦虑、抑郁的影响。主要数字：约 <b>92% 的人每天上网</b>；总体 <b>42.78%</b> 的人处于抑郁状态（男 37.2%，女 49.8%）；<b>15.1%</b> 的受访者有过自杀念头。作者自己也列出了局限：样本小、只有会上网的人能填、职业分布严重偏斜。</p>
+
+  <p><b>语言：</b>八篇里<b>生词最少、句子最短</b>的一篇，读起来最不费力。但要注意：它的英文存在不少非母语写作痕迹（时态、冠词、搭配），<b>不宜当作写作范本模仿</b>。</p>
+
+  <div class="bars">
+    <div class="bar"><span class="lb">语言难度</span><span class="track"><span class="fill g" style="width:20%"></span></span><span>最低</span></div>
+    <div class="bar"><span class="lb">工程亲和度</span><span class="track"><span class="fill y" style="width:22%"></span></span><span>低</span></div>
+    <div class="bar"><span class="lb">演讲吸引力</span><span class="track"><span class="fill y" style="width:62%"></span></span><span>中等</span></div>
+    <div class="bar"><span class="lb">Q&amp;A 风险</span><span class="track"><span class="fill r" style="width:72%"></span></span><span>较高</span></div>
+  </div>
+
+  <div class="verdict">
+    <b>我的建议：</b>把它当作<b>训练材料而不是汇报材料</b>——用它练"批判性阅读"再合适不过：样本量够不够？便利抽样（convenience sampling）外推得了吗？"抑郁比例"是用什么量表测的？相关能当因果吗？如果你真想选它做汇报，最聪明的做法是<b>把报告做成"方法学批评"（methodological critique）</b>：复述结论 5 分钟，剩下时间讲它哪里站不住脚、应该怎么改。这样反而能拿高分。<br>
+    <b>风险：</b>如果不加批判地平铺直叙，很容易被老师问"350 人你怎么敢说 42.78% 的人抑郁？"而答不上来。
+  </div>
+</div>
+
+<h2>三、三种情境下的最终建议</h2>
+<div class="two">
+  <div class="pill">
+    <h3 style="margin-top:0">🏆 想要"专业对口 + 好讲 + 出彩"</h3>
+    <p>选 <b>第 3 篇《口罩热水消毒再利用》</b>。7 页、硬工科、图多、能现场演示、结论有硬数字。备胎是第 2 篇《业主节能改造动机》，它更能体现你的能源系统视角。</p>
+  </div>
+  <div class="pill">
+    <h3 style="margin-top:0">🛡️ 想要"最稳、最低风险"</h3>
+    <p>选 <b>第 6 篇《问题解决式教学》</b> 或 <b>第 1 篇《不诚实行为的性别差异》</b>。前者 7 页最易读，后者互动性最强。两篇都能在一周内吃透。</p>
+  </div>
+  <div class="pill">
+    <h3 style="margin-top:0">🔥 想要"全场最有共鸣"</h3>
+    <p>选 <b>第 7 篇《关系还是公平？微信投票》</b>。你是文化 insider，这是别人拿不走的优势；代价是 25 页的阅读量，建议提前 3 周开始。</p>
+  </div>
+  <div class="pill">
+    <h3 style="margin-top:0">🎓 想要"真正提升学术英语"</h3>
+    <p>选 <b>第 8 篇《老年人名人语义记忆》</b> 当精读范本（写作质量最高），同时用 <b>第 5 篇《疫情心理健康》</b> 练批判性阅读。一正一反，效果最好。</p>
+  </div>
+</div>
+
+<h2>四、附赠：读论文的实操方法（三遍法）</h2>
+<div class="card">
+  <p><b>第一遍（20 分钟，摸清地形）：</b>读标题 → 摘要 → 结论 → 扫一遍所有图表的标题和图注，<b>不要读正文</b>。目标是回答三个问题：它研究什么问题？用了什么方法？结论是什么？如果这三问答不出，这篇不适合你，换一篇。</p>
+  <p><b>第二遍（1–2 小时，抓主干）：</b>按顺序读 Introduction（只看最后一段的研究目标和假设）→ Results（对照图表看数字）→ Discussion（看作者怎么解释、怎么承认局限）。<b>跳过 Methods</b>，除非你需要复现实验。</p>
+  <p><b>第三遍（按需，挖细节）：</b>精读 Methods 和你需要引用的具体段落，同时把生词按"专业术语 / 学术套话 / 普通难词"分三栏记下来——只有第一类值得背。</p>
+  <p><b>读的时候手上始终拿一张纸</b>，写这五个问题的答案：① 研究空白（gap）是什么？② 他们怎么做（设计 + 样本量）？③ 主要数字结果？④ 作者声称的贡献？⑤ <b>你觉得的弱点？</b> 第五问是汇报时 Q&amp;A 的护身符。</p>
+</div>
+
+<h2>五、汇报时的高分英语句型</h2>
+<div class="card">
+  <ul>
+    <li><b>开场定位：</b><code>This paper, published in [journal] in [year], investigates whether / how …</code></li>
+    <li><b>讲研究空白：</b><code>Previous work has largely overlooked … / However, little is known about …</code></li>
+    <li><b>讲方法（最常用）：</b><code>The authors conducted a survey of N participants / carried out … tests on … samples.</code></li>
+    <li><b>讲数字：</b><code>The filtration efficiency remained above 95% even after 10 cycles.</code></li>
+    <li><b>讲图表（务必指着说）：</b><code>As shown in Figure 3, … / The bar chart on the left compares …</code></li>
+    <li><b>讲局限（老师最爱听）：</b><code>One caveat is that the sample was relatively small (n = 350), so the findings may not generalise to …</code></li>
+    <li><b>讲自己的评价：</b><code>What I find most convincing is … / I'm less persuaded by …, because …</code></li>
+    <li><b>收尾：</b><code>To sum up, the key takeaway is that … In the context of [your major], this matters because …</code></li>
+  </ul>
+  <p class="small">提示：理工科学生汇报的最大加分项不是英语多流利，而是<b>你能解释"这个数字是怎么来的"</b>。哪怕句型简单，只要能指着图说清横轴纵轴和趋势，老师就会给高分。</p>
+</div>
+
+<h2>六、如何把任意一篇和你的专业挂钩（加分技巧）</h2>
+<div class="card">
+  <p>英语课老师通常很吃"学生用自己的专业视角读一篇跨界论文"这一套。给你几个可以直接用的连接点：</p>
+  <ul>
+    <li><b>口罩那篇 → </b>讲熔喷纤维的静电驻极与过滤效率衰减，可以类比燃气轮机进气过滤系统（air intake filtration）的压降与效率权衡，以及"循环次数 = 疲劳寿命"的性能退化思路。</li>
+    <li><b>节能改造那篇 → </b>直接接分布式能源：楼宇冷热电三联供（CCHP）中燃气轮机的余热利用，就是"需求侧节能"的供给侧镜像。</li>
+    <li><b>教学那篇 → </b>讲工程教育：从"先讲公式再做题"到"先给一个失效的涡轮叶片再倒推为什么"，正是问题导向学习（PBL）。</li>
+    <li><b>不诚实那篇 → </b>讲工程伦理：试验数据造假、报告修饰，是燃气轮机行业真实存在的合规问题（可提排放数据、适航审定数据的真实性）。</li>
+    <li><b>材料那篇 → </b>对比思路："生物质的闭环回收 vs 高温合金叶片的修复与再制造（repair &amp; remanufacturing）"——两者本质都是延长材料寿命、降低全生命周期成本。</li>
+  </ul>
+</div>
+
+<footer>
+  本指南基于清单截图中可识别的 8 篇论文整理，文献信息（作者、期刊、卷期、DOI）均已核对至出版方页面。<br>
+  第 9–12 行因截图分辨率不足未能识别，补齐后我可以立即追加分析。
+</footer>
+
+</div>
+</body>
+</html>

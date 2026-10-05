@@ -1,0 +1,594 @@
+
+===== PAGE 1 =====
+Research
+Coronavirus Disease 2019—Article
+Can Masks Be Reused After Hot Water Decontamination During the
+COVID-19 Pandemic?
+Dan Wang a, Bao-Chang Sun a, Jie-Xin Wang a, Yun-Yun Zhou b, Zhuo-Wei Chen b, Yan Fang b, Wei-Hua Yue c,
+Si-Min Liu c, Ke-Yang Liu c, Xiao-Fei Zeng a, Guang-Wen Chu a, Jian-Feng Chen a,⇑
+a State Key Laboratory of Organic–Inorganic Composites, Beijing University of Chemical Technology, Beijing 100029, China
+b Beijing Municipal Institute of Labour Protection, Beijing 100054, China
+c Beijing Institute of Medical Device Testing, Beijing 101111, China
+article info
+Article history:
+Received 26 May 2020
+Accepted 29 May 2020
+Available online 27 June 2020
+Keywords:
+Masks
+Reusable
+COVID-19
+Decontamination
+Green development concept
+abstract
+Masks have become one of the most indispensable pieces of personal protective equipment and are
+important strategic products during the coronavirus disease 2019 (COVID-19) pandemic. Due to the huge
+mask demand–supply gap all over the world, the development of user-friendly technologies and methods
+is urgently needed to effectively extend the service time of masks. In this article, we report a very simple
+approach for the decontamination of masks for multiple reuse during the COVID-19 pandemic. Used
+masks were soaked in hot water at a temperature greater than 56 °C for 30 min, based on a recommended
+method to kill COVID-19 virus by the National Health Commission of the People’s Republic of China. The
+masks were then dried using an ordinary household hair dryer to recharge the masks with electrostatic
+charge to recover their filtration function (the so-called ‘‘hot water decontamination + charge regenera-
+tion” method). Three kinds of typical masks (disposable medical masks, surgical masks, and KN95-grade
+masks) were treated and tested. The filtration efficiencies of the regenerated masks were almost main-
+tained and met the requirements of the respective standards. These findings should have important
+implications for the reuse of polypropylene masks during the COVID-19 pandemic. The performance evo-
+lution of masks during human wear was further studied, and a company (Zhejiang Runtu Co., Ltd.)
+applied this method to enable their workers to extend the use of masks. Mask use at the company was
+reduced from one mask per day per person to one mask every three days per person, and 122 500 masks
+were saved during the period from 20 February to 30 March 2020. Furthermore, a new method for detec-
+tion of faulty masks based on the penetrant inspection of fluorescent nanoparticles was established,
+which may provide scientific guidance and technical methods for the future development of reusable
+masks, structural optimization, and the formulation of comprehensive performance evaluation standards.
+/C2112020 THE AUTHORS. Published by Elsevier LTD on behalf of Chinese Academy of Engineering and
+Higher Education Press Limited Company. This is an open access article under the CC BY-NC-ND license
+(http://creativecommons.org/licenses/by-nc-nd/4.0/).
+1. Introduction
+During the coronavirus disease 2019 (COVID-19) pandemic in
+2020, masks have become one of the most indispensable pieces of
+personal protective equipment. On 20 January 2020, Prof.
+Nan-Shan Zhong, the head of the high-level expert group appointed
+by the National Health Commission of the People’s Republic of
+China to fight the novel coronavirus, emphasized the importance
+of wearing masks in an interview with China Central Television
+[1]. On 22 January 2020, the spokesperson of the National Health
+Commission in the State Council Information Office of the People’s
+Republic of China advocated the ‘‘mask civilization” and pointed
+out that ‘‘wearing masks is not only for the protection of ourselves,
+but also for the protection of others” [2]. However, according to the
+data publicly reported by the Ministry of Industry and Information
+Technology of the People’s Republic of China, the production of
+masks in China was only 8 million per day on 23 January 2020
+and reached 10 million per day by 2 February 2020. Given China’s
+population of over 1.4 billion people, the huge mask demand–
+supply gap is obvious. According to Technical guidance on the
+selection and use of masks for different population to prevent novel
+coronavirus, which was released by the National Health
+https://doi.org/10.1016/j.eng.2020.05.016
+2095-8099//C2112020 THE AUTHORS. Published by Elsevier LTD on behalf of Chinese Academy of Engineering and Higher Education Press Limited Company.
+This is an open access article under the CC BY-NC-ND license ( http://creativecommons.org/licenses/by-nc-nd/4.0/).
+⇑ Corresponding author.
+E-mail address: chenjf@mail.buct.edu.cn (J.-F. Chen).
+Engineering 6 (2020) 1115–1121
+Contents lists available at ScienceDirect
+Engineering
+journal homepage: www.elsevier.com/locate/eng
+
+===== PAGE 2 =====
+Commission of the People’s Republic of China on 4 February 2020,
+people in supermarkets, shopping malls, airports, subways, indoor
+offices, and other low-risk places are recommended to wear dispos-
+able medical masks or surgical masks to prevent the spread of the
+COVID-19 virus [3]. As a result, medical masks, which were origi-
+nally designed for use in clinics and hospitals, are now widely used
+and appear in stations, airports, markets, parks, and other public
+places. The technical guideline also indicated that during the
+COVID-19 pandemic, the use of masks may be appropriately
+extended (including the duration of single use and times of
+repeated use) if it is safe to do so. In particular, people in low-risk
+places are recommended to reuse masks. However, the existing
+national standards and local standards for masks mainly focus on
+the performance of disposable masks, and there are no specific
+requirements or instructions on mask performance for multiple
+uses, including the duration of a single use, disinfection methods,
+and the number of times a mask can safely be reused. How can
+masks be efficiently sanitized for multiple uses during the COVID-
+19 pandemic? Are masks damaged during decontamination treat-
+ment? How many times can masks be decontaminated by appropri-
+ate methods? In fact, there is no scientific theory or experi- mental
+data support to answer these questions. During the mask shortage,
+most people—including front-line medical staff—have been sponta-
+neously reusing masks several times, which eases the tension
+between supply and demand to a certain extent; however, this
+practice might also increase these people’s risk of exposure. There-
+fore, user-friendly technologies and methods are urgently needed
+to effectively extend the service time of masks.
+Masks, including disposable medical masks, surgical masks,
+medical protective masks, and dust masks, are usually made of
+non-woven polypropylene fabric with electrostatic properties that
+enhance particle capture. The electrostatic charge keeps airborne
+particles out by drawing them onto the fiber surfaces, much like
+iron filings are drawn onto a magnet. The spaces between the
+fibers of the mask at the microscale are much larger than the sizes
+of bacterial viruses and respiratory aerosols/droplets, so masks are
+not able to block particles at the nanoscale by means of mechanical
+filtration. Therefore, the electrostatic charge on the fibers plays an
+important role in intercepting virus particles with diameters of
+100 nm and aerosols/droplets containing bacterial viruses. In the
+process of using the mask, elimination of the electrostatic charge
+layer occurs along with the deposition of bacteria viruses and haze
+(water vapor) onto the electrostatic layers, which causes a decline
+in filtration efficiency and even invalidation of the protective per-
+formance of the mask. Therefore, during the COVID-19 pandemic, if
+people are driven by necessity to extend the use of masks that
+were originally designed and marketed as disposable masks, there
+are two points to consider: first, user-friendly decontamination to
+kill possible COVID-19 viruses on the used masks; and, second, effi-
+ciently controlled charge regeneration of masks to maintain mask
+performance for reuse. On 14 February 2020, the ScienceNet web-
+site reported a preliminary ‘‘regeneration treatment” approach
+toward the reuse of disposable masks developed by our group at
+Beijing University of Chemical Technology [4]. Advice was given
+to soak used medical masks in hot water at a temperature greater
+than 56 °C (typically 60–80 °C) for 30 min for decontamination.
+Ordinary household appliances such as a hair dryer, electric fan,
+or electronic igniter would then be used to dry the masks and
+recharge them with electrostatic charge. Successful regeneration
+of a mask could be confirmed by sprinkling the mask with small
+scraps of paper at home, without the need for special professional
+instruments [4]. According to official guidance from Prevention and
+control program of COVID-19 (4th edition) released by the National
+Health Commission of the People’s Republic of China on 6 February
+2020 [5], this temperature (> 56 °C) and time (30 min) are efficient
+for killing the COVID-19 virus. The charge-regeneration procedure
+aims to infuse the filter with electrostatic charge, which is the key
+contributor to a mask’s high level of filtration.
+In this article, we summarize our experimental results and
+evaluations on three kinds of typical masks (disposable medical
+masks, surgical masks, KN95-grade masks) treated by the
+so-called ‘‘hot water decontamination + charge regeneration”
+approach. The evolution of static electricity on the masks is
+revealed. The microstructures of the masks were studied by scan-
+ning electron microscope (SEM) and the waterproof properties
+were assessed by the hydrostatic pressure method. The filterability
+of the masks was tested according to respective national standards
+and local standards. The performance of the KN95-grade masks in
+121 °C steam for 30 min, which is a well-accepted approach for
+killing almost all pathogens, was also investigated. Furthermore,
+a method based on fluorescent nanoparticle penetrant inspection
+was proposed for the detection of inner defects in used masks, in
+order to provide necessary data for the development of reusable
+masks, structural optimization, and evaluation standards.
+2. Materials and methods
+2.1. Samples
+Three types of disposable masks were tested: disposable medi-
+cal masks (CHTC Jiahua Non-woven Co., Ltd., China), disposable
+surgical masks (from three locations: ESound Medical Device Co.,
+Ltd., Anbang Medical Supplies Co., Ltd., and Yubei Medical Supplies
+Co., Ltd., China), and KN95-grade masks (the 3M 9502 and KF94
+masks from the Republic of Korea). These masks are referred to
+herein as ‘‘JH,” ‘‘YX,” ‘‘AB,” ‘‘YB,” ‘‘3M,” and ‘‘KF,” respectively.
+2.2. Hot water decontamination and charge regeneration
+Three kinds of containers, including a household aluminum
+basin, a polypropylene plastic lunch box, and a stainless steel ther-
+mos cup, were used in the experiments. In a typical procedure,
+boiling water was directly poured into the container at room tem-
+perature. The volume of water exceeded 80% of the total capacity
+of the container and the temperature was measured by a ther-
+mometer. The mask was immersed in the water by placing a heav-
+ier object on top of it, such as a spoon. The container was then
+closed and the mask was left to soak in the hot water for 30 min.
+After that, the container was opened and the mask was removed
+from the hot water. The liquid on the mask was slightly shaken
+off and the mask was placed on the surface of dry insulating mate-
+rial, such as wooden, plastic tables, and bed sheets. The mask was
+then dried with a standard hair dryer for 10 min.
+2.3. Static electricity test
+A hand-held electrostatic field meter (FMX-004; Simco, Japan)
+was used to test the electrostatic charge of mask. The mask to be
+tested was hung on an insulation component at least 5 m away
+from other instruments with static electricity in order to avoid
+interference from other static electricity fields. Before measure-
+ment, the researcher washed his or her hands with water to
+remove static electricity from the hands. The probe was gradually
+moved closer to the measurement position on the mask until the
+two laser dots from the electrostatic field meter coincided. The
+value of the instrument readings was recorded.
+2.4. Waterproof test
+Waterproof testing of the masks was performed by a Buchner
+funnel procedure. To summarize, the mask was placed at the
+1116 D. Wang et al. / Engineering 6 (2020) 1115–1121
+===== PAGE 3 =====
+bottom of the bowl, with the outer surface of the mask facing
+upward. A hose pipe was used to attach the filter flask sidearm
+onto the vacuum aspirator. A vacuum aspirator operating at 30
+L·min-1 was used for the suction of liquids, through the filter
+paper. A total of 100 mL water was then poured onto the surface
+of mask within 20 s from a height of 20 cm. The pumping filtration
+was maintained for 3 min and the flask was watched to see if water
+dropped down. Then the water was removed from the Buchner
+funnel, and the vacuum suction system was turned off. The
+inner surface of the mask was then observed to determine the
+wettability/waterproofness of the mask.
+2.5. Filterability test
+The filtration efficiency of the samples for sodium chloride
+(NaCl) particles was measured by using TSI 8130 equipment (TSI
+Incorporated, USA). The particle size distribution of the NaCl aero-
+sol for the specified test conditions was the median diameter of the
+number of particles at (0.075 ± 0.020) lm. The geometric standard
+deviation did not exceed 1.86 and the concentration did not exceed
+200 mg ·m-3. The detection system had a device to neutralize the
+charged particles. To test the KN95-grade masks, the gas flow rate
+was stabilized to (85 ± 4) L ·min-1, while to test the disposable
+medical masks and surgical masks, the gas flow rate was stabilized
+to (30 ± 2) L ·min-1, and the cross-sectional area of the air flow was
+100 cm 2.
+3. Results and discussion
+3.1. Decontamination of masks
+It has been well accepted that the COVID-19 virus can be killed
+after being maintained at over 56 °C for 30 min [5]. Due to thermal
+activation, the envelope protein of the virus will denature and the
+virus will lose its infectious ability. Therefore, high-temperature
+treatment is an effective way to kill the virus. In our work, we pro-
+posed the hot water method for mask decontamination; that is,
+killing the potential COVID-19 virus on a used mask by keeping
+the mask in hot water at greater than 56 °C for 30 min
+[5]. Fig. 1(a) shows the three types of containers used in our experi-
+ments: a household aluminum basin, a polypropylene plastic
+lunch box, and a stainless steel thermos cup. When boiling water
+was first poured into the container at a room temperature of
+20 °C, the temperature of the water was measured at around
+90 °C, and decreased as time passed. After 30 min, the tempera-
+tures of the water in the covered aluminum basin and in the
+polypropylene plastic lunch box were both around 60 °C, and the
+temperature of the water in the stainless steel thermos cup was
+85 °C( Fig. 1(b)). Thus, the hot water approach for mask decontami-
+nation is easy to achieve at home. Compared with other proposed
+decontamination methods for masks, such as organic solvent,
+ultraviolet (UV) radiation, and hydrogen peroxide steam, hot water
+decontamination is more suitable for people to perform at home
+without the use of additional solvents or high-tech equipment. In
+addition, this approach has the advantage of cleaning the mask
+to some degree. Fig. 1 (c) shows a typical used mask that has been
+worn for 4 h. Although the used mask looks as good as new, some
+fluorescent spots were clearly observed under a 365 nm UV lamp.
+The fluorescence signal was generated by wastes from the oral
+cavity and respiratory tract of the user. These wastes were
+adsorbed on the masks, making the masks smell bad. After decon-
+tamination of the used mask in hot water, followed by drying treat-
+ment, no fluorescent spots were observed on the masks under the
+UV lamp ( Fig. 1 (d)) and there was no bad smell from the masks.
+3.2. Variation of electrostatic quantity
+Typical masks are composed of three layers of non-woven fabric
+(Fig. 2(a)). The outer layer is a waterproof non-woven fabric that is
+used to isolate the liquid sprayed by others, and the inner layer is a
+common non-woven fabric that absorbs the moisture released by
+the wearer. The filter layer in the middle, which is composed of a
+polypropylene melt-blown non-woven fabric treated with electret,
+serves as a barrier against germs. In typical masks, the melt-blown
+filter layer is 100–1000 lm thick and is composed of polypropy-
+lene microfibers with diameters in the range of 1–10 lm
+(Figs. 2 (b) and (c)). The filtering mechanism of a typical mask
+involves Brownian diffusion, entrapment, inertial collision, gravity
+sedimentation, and electrostatic adsorption. Among these factors,
+electrostatic adsorption is critical for masks to capture nano-
+sized particles in order to achieve high filterability while maintain-
+ing low gas resistance. During mask decontamination in hot water,
+the static electricity disappears. To reuse a mask, the microfibers of
+the melt-blown filter layers must be recharged with static electrici-
+ty to capture nanoparticles. After naturally air-drying masks for
+10 h in our experiment, the static electricity of the surgical masks
+was recovered to 60% of the level of new masks ( Fig. 2 (d)), due to
+Fig. 1. (a) Three types of containers used in our experiments: a household aluminum basin, a polypropylene plastic lunch box, and a stainless steel thermos cu p; (b) the
+temperature of freshly boiled water when first poured into the containers and then after 30 min; (c) photographs of a typical used mask under daylight an d under 365 nm UV
+lamp excitation, as well as (d) the same mask after decontamination in hot water.
+D. Wang et al. / Engineering 6 (2020) 1115–1121 1117
+===== PAGE 4 =====
+micro-friction of the microfibers caused by the air flow of the dry-
+ing process. However, when a more effective method was used—
+that is, drying the mask with a standard hair dryer for 10 min—
+the static electricity of the surgical mask was recovered to 90% of
+the level of a new mask ( Fig. 2 (e)). These results indicate that the
+electrostatic charge attenuation velocity of a regenerated mask is
+similar as that of a new mask. Therefore, it is feasible and effective
+to recharge a mask with static electricity. Compared with natural
+air-dry processing, the use of a standard hair dryer removes the
+moisture from a wet mask more quickly and recharges the mask
+with static electricity more efficiently. This method is particularly
+suitable for rapid charge regeneration of masks in humid regions
+or during humid weather. In addition, allowing a mask to air-dry
+naturally over a long period of time allows the potential growth
+of a large amount of bacteria and microorganisms. In contrast,
+rapidly regenerating the charge after a mask has been decontami-
+nated in hot water prevents the growth of bacteria inside the mask.
+3.3. Waterproof property and microstructure analysis
+As mentioned above, the outer layer of a mask is usually made
+of a waterproof non-woven fabric to isolate the liquid sprayed by
+others. Therefore, a mask’s waterproof property is a key factor
+for ensuring the mask’s performance in blocking the microorgan-
+isms in liquid droplets. Using a hydrostatic testing method
+(Fig. 3(a)), we demonstrated that the regenerated masks presented
+good water resistance. Even after masks had been repeatedly trea-
+ted for 10 cycles of decontamination (soaking in hot water for
+30 min) and charge regeneration (drying with a hair dryer for
+10 min), they still maintained a good waterproof property; that
+is, no water seepage was observed in the inner layers of the masks
+(Fig. 3 (b)). These results indicate that decontamination and
+regeneration processing over 10 cycles did not damage the struc-
+ture of the polypropylene fibers. As seen in the SEM images, the
+microstructures of the regenerated masks were similar to those
+of new masks, and no significant fiber breakage or fracturing was
+observed in either the outer layers ( Fig. 3 (c)) or the filter layers
+(Fig. 3 (d)).
+3.4. Effects of decontamination on mask filterability
+As typical personal protective equipment, masks are used to
+block microorganisms, droplets, pollen, and other particles. Thus,
+filterability is one of the most important indexes of a mask. In
+our experiments, the filterability of three typical mask types (dis-
+posable medical masks, surgical masks, KN95-grade masks) was
+tested after hot water decontamination and charge-regeneration
+treatments, following the rules of the respective national standards
+or industrial standards in China. To summarize, the regenerated
+masks were treated by soaking in hot water at 56 °C for 30 min
+and were then dried using a standard hair dryer for 10 min. A bac-
+terial filtration efficiency (BFE) test determines the filtration effi-
+ciency by comparing the bacterial control counts with the test
+article effluent counts, and is a key performance indicator for both
+disposable medical masks and surgical masks. According to the
+standards for a single-use medical face mask (YY/T 0969–2013)
+and a surgical mask (YY 0469–2011), the BFE of these masks
+should be no less than 95%. Fig. 4 shows the BFE values of a
+regenerated disposable medical mask (JH) and a regenerated
+surgical mask (YB) in our experiments, which are higher than
+95% ( Fig. 4 (a)). A particle filtration efficiency (PFE) test evaluates
+the nonviable particle retention or filtration efficiency of filter
+media and other filtration devices at sub-micron levels. The stan-
+dards for single-use medical face masks (YY/T 0969–2013) have no
+requirement for PFE, whereas the standards for surgical masks (YY
+0469–2011) state that the PFE should be no less than 30% under
+specific conditions. In our experiments, we found that most of
+the regenerated surgical masks had a PFE much higher than 30%,
+with an average value of 92.3%. For KN95-grade masks, the PFE
+should be no less than 95% under specific conditions, according
+to the Chinese national standard GB 2626–2019. In our experi-
+ment, the KN95-grade masks (3M and KF) retained a PFE greater
+than 95% ( Fig. 4 (b)). In order to investigate the effects of the
+regeneration treatment on the properties of the masks, we pre-
+pared samples of five different brands of masks (JH, AB, YX, 3M,
+Fig. 2. (a) Photographs of the triple-layer structure of a typical surgical mask; (b) an
+SEM cross-section image revealing the microstructures of the three layers of a
+typical surgical mask; (c) an SEM image of the melt-blown fibers of the filter layer;
+(d) the electrostatic capacity of the filter layers of new masks and of recharged
+masks that have been naturally air-dried for 10 h; (e) the electrostatic capacity of
+the filter layers of new masks and of recharged masks that have been dried using a
+standard hair dryer for 10 min.
+Fig. 3. (a) Schematic illustration for testing the waterproof property of masks;
+(b) photographs of the inner layer of the mask after testing; (c) SEM image of the
+outer layer of the mask; (d) SEM image of the filter layer of the mask.
+1118 D. Wang et al. / Engineering 6 (2020) 1115–1121
+===== PAGE 5 =====
+and KF) that were treated by hot water decontamination and
+charge-regeneration processing for 10 cycles. As shown in
+Fig. 4 (c), regeneration processing over 10 cycles had little effect
+on the filtration properties. Furthermore, we extended our investi-
+gations to decontamination treatment at a higher temperature. The
+KN95-grade masks (3M and KF) were placed in an autoclave, cov-
+ered with a clean piece of cloth to avoid damage from heavy turbu-
+lence. Steam sterilization is the most widely available and
+dependable method for disinfection and sterilization in healthcare
+facilities, and most hospitals and many clinics already have the
+necessary materials on hand to sterilize surgical equipment. In
+our experiments, the masks were treated by pressurized steam at
+121 °C for 30 min. The average PFE of the 3M 1860 masks after
+steam sterilization was measured to be 99.2% and that of the
+KF94 masks was 96.6% ( Fig. 4 (d)). According to the experimental
+results, the regenerated masks was still at a relatively high level;
+therefore, the regenerated masks should have a significant effect
+on blocking microorganisms, droplets, pollen, and other particles.
+3.5. Effects of actual service processing
+In order to study the influence of actual service processing on
+masks, we examined mask samples that had been worn for 8 h
+by participants. For surgical masks, the effects of wearing varied
+among individuals and for the same individuals at different times.
+After being worn for 8 h, followed by hot water decontamination
+and charge regeneration, the PFE values of the surgical masks
+decreased by 0.5%–12% in our experiments, based on the testing
+of 15 samples. However, all of the tested KN95-grade masks (10
+samples) that had been worn for 8 h, followed by hot water decon-
+tamination and charge regeneration, were able to retain filtration
+efficiencies greater than 95%. It was observed that the waterproof
+property of masks that were worn might change, as a result of
+the adsorption of dirt and oil from the participants’ skin. Fig. 5 (a)
+shows droplets on the surface of the outer layer of a typical dispos-
+able medical mask under daylight and under a 365 nm UV lamp,
+respectively. Under UV excitation, the droplets of water lacked
+brightness but the fluorescent nanodispersion droplets exhibited
+a bright blue emission due to the fluorescence of the carbon nano-
+dots. After removing the droplets, no significant marks of the fluo-
+rescent nanoparticles were observed ( Fig. 5 (b)), indicating the
+excellent resistance to wetting of the outer layer of the mask. How-
+ever, if the wettability of the masks was enhanced by potential
+interfacial reactions between dirt/oil and the fibers, a spontaneous
+infiltration process could be promoted. In this work, we developed
+a fluorescent liquid penetrant test based on fluorescent nanodis-
+persion for investigating masks. To summarize, water-dispersible
+carbon nanodots [6] were sprayed onto the surface of the outer
+layer of the mask, and the liquid drops were then allowed to
+remain for 30 min while the penetrant was sinking into the mask.
+After that, the excess liquid on the surface of the outer layer of the
+mask was removed, and the inner layer of the mask was inspected
+under the irradiation of a hand-held UV lamp with emission at
+365 nm. As shown in Fig. 5 (c), no significant fluorescence signal
+of the nanodots was observed when testing new masks. However,
+the fluorescent nanoparticles penetrated into the surface defects of
+a mask that was damaged by oil, with the fluorescence signal
+mainly being concentrated in the ‘‘damaged area,” where the
+hydrophobicity of the fibers changed. These findings may aid in
+the development of new materials and design strategies for reusa-
+ble masks.
+3.6. Practical application
+A Chinese company named Zhejiang Runtu Co., Ltd., which is a
+large-scale stock enterprise with over 4000 staff members engaged
+in producing and selling disperse dyes, reactive dyes, chemical
+intermediates, and so forth, faced a shortage of masks in mid-
+February 2020, when the workers resumed work. To carry out sci-
+entific and orderly prevention and control work in accordance with
+the law, the workers needed to wear masks during the COVID-19
+pandemic. However, it was difficult to obtain enough mask sup-
+plies in China from February to March 2020. Scientific and techni-
+cal engineers at Runtu learned about our technology, which had
+been reported by ScienceNet [4], and independently verified the
+engineering feasibility of the hot water decontamination and
+Fig. 4. (a) BFE results of a regenerated disposable medical mask (JH) and a regenerated surgical mask (YB). (b) PFE results of regenerated KN95-grade masks. ( c) PFE results of
+new and regenerated masks after 10 regeneration cycles. The PFE of new and regenerated disposable medical masks (JH) and surgical masks (AB and YX) was tested according
+to the Chinese industrial standard YY 0469–2011, using a gas flow rate of 30 L ∙min-1. The PFE of new and regenerated KN95-grade masks (3M and KF) was tested according to
+the Chinese national standard GB 2626–2019, using a gas flow rate of 85 L ∙min-1. (d) The PFE of KN95-grade masks after decontamination with pressurized steam at 121 °C
+for 30 min, followed by charge regeneration.
+D. Wang et al. / Engineering 6 (2020) 1115–1121 1119
+===== PAGE 6 =====
+charge-regeneration method. The company then required their
+workers to apply the hot water decontamination and charge-
+regeneration method in order to safely and effectively reuse their
+masks. Between 20 February and 30 March 2020, mask usage at
+Runtu was reduced from one mask per day per person to one mask
+every three days per person, and 122 500 masks were saved by this
+company during the COVID-19 pandemic in China [7,8].
+4. Conclusions
+Masks have been recommended as a powerful tool to tackle the
+COVID-19 pandemic. In many countries around the world, people
+are not allowed into public places or on public transportation with-
+out wearing masks [9]. Growing evidence is demonstrating the
+benefits of wearing masks in preventing the transmission of
+human coronaviruses and influenza viruses from symptomatic
+individuals [10]. However, the limited productivity and scarce
+resources cannot meet the ever-increasing demand for masks.
+Meanwhile, pollution caused by waste masks is having an adverse
+effect on the economic development of society and on the ecologi-
+cal environment. Therefore, the development of user-friendly
+methods to effectively extend the service time of masks is urgently
+needed. Our group proposed a specifically designed method for
+household use to extend the use of disposable masks in mid-
+February 2020. In this article, we summarize our experimental
+results and evaluations on three typical kinds of mask (disposable
+medical masks, surgical masks, and KN95-grade masks) treated by
+the so-called ‘‘hot water decontamination + charge regeneration”
+approach. We provide solid evidence that the essential perfor-
+mance of the masks was maintained after decontamination for
+up to 10 cycles. It should be noted that several other technical solu-
+tions for N95 respirators have been reported very recently. For
+example, researchers at the University of Nebraska Medical Center
+built towers of UV bulbs to kill viruses on masks, while Bioquell
+Inc. manufactured hydrogen peroxide vapor generators for the
+decontamination of N95 masks for multiple use [11]. Scientists at
+4C Air, Inc. and at Stanford University have reported that heat
+(/C2085 °C) under various levels of humidity ( /C20100% relative humid-
+ity) is a promising, nondestructive method for the preservation of
+the filtration properties in N95-grade respirators, since they have
+found that UV light can potentially impact the material strength
+and subsequent sealing of masks [12].
+Compared with approaches that use ‘‘high-tech” equipment
+such as UV radiation towers, hydrogen peroxide vapor generators,
+or constant-temperature cabinets, our work provides a simpler and
+more convenient method for the decontamination of masks during
+the COVID-19 pandemic. By soaking the masks in hot water at
+greater than 56 °C for 30 min, viruses are killed and the dirt on
+the surface of the masks is removed. After the mask is dried with
+a standard hair dryer for 10 min, the static electricity of the surgi-
+cal mask can be recovered to 90% of the level of a new mask.
+According to tests on three typical kinds of masks (disposable
+medical masks, surgical masks, and KN95-grade masks), all of the
+regenerated masks retained a similar waterproof property,
+microstructure, and filterability in comparison with the respective
+new masks. For the KN95-grade masks with good quality, we
+found that the masks retained a PFE greater than 95% after being
+treated in pressurized steam at 121 °C for 30 min. These results
+demonstrate that the regenerated masks should have a significant
+effect in blocking microorganisms, droplets, pollen, and other par-
+ticles. We also studied the influence of actual service processing on
+masks. For surgical masks, the effects of wearing vary among indi-
+viduals and for the same individual at different times. After being
+worn for 8 h, followed by hot water decontamination and charge
+regeneration, the PFE values of surgical masks decreased by
+0.5%–12% in our experiments on 15 samples. However, all tested
+samples of KN95-grade masks that had been worn for 8 h, followed
+by pressurized steam at 121 °C for 30 min and charge regeneration,
+were able to retain filtration efficiencies greater than 95%. A fluo-
+rescent liquid penetrant test based on fluorescent nanodispersion
+for investigating masks was carried out, and revealed that the
+adsorption of dirt and oil from participants’ skin was partly respon-
+sible for changes in the wettability and filterability of polypropy-
+lene masks. Many researchers have made great efforts regarding
+the reuse of masks, and have conducted active and beneficial
+exploration. Some industry associations have issued related stan-
+dards to ensure the quality and life of masks for multiple
+reuses, including the standards for reusable civil masks
+(T/BJFX 0001–2020) and for reusable daily protective masks
+(T/CSTM 00387–2020) that have been released by industry associ-
+ations in China. Many productions of reusable masks are coming
+onto the market [13]. We hope that this short communication arti-
+cle can contribute to alleviating the panic over mask shortage and
+to promoting new methods for the detection of mask damage
+zones and the optimal design of reusable masks.
+Acknowledgements
+We are grateful for financial support from the National Key
+Research and Development Program of China (2020YFC0844800).
+Fig. 5. Photographs of the outer layer of (a) a typical disposable medical mask with
+liquid droplets of water and fluorescent nanodispersion on the surface and (b) the
+same mask after removing the droplets. The inner layer of (c) a new mask and (d) a
+mask with a patch of oil after fluorescent liquid penetrant testing. The photographs
+in the left column were taken under daylight, while the photographs in the right
+column were taken under 365 nm UV light.
+1120 D. Wang et al. / Engineering 6 (2020) 1115–1121
+===== PAGE 7 =====
+Compliance with ethics guidelines
+Dan Wang, Bao-Chang Sun, Jie-Xin Wang, Yun-Yun Zhou, Zhuo-
+Wei Chen, Yan Fang, Wei-Hua Yue, Si-Min Liu, Ke-Yang Liu, Xiao-
+Fei Zeng, Guang-Wen Chu, and Jian-Feng Chen declare that they
+have no conflict of interest or financial conflicts to disclose.
+References
+[1] [How is the COVID-19 going?] [video]. Beijing: China Central Television; 2020
+Jan 20 [cited 2020 May 1]. Available from: http://tv.cctv.com/2020/01/20/
+VIDECRZF7PWXb80z86QyB0db200120.shtml. Chinese.
+[2] Qu T, Wang BY. [The National Health Commission of the People’s Republic of
+China suggested wearing a mask to promote ‘‘mask civilization”] [Internet].
+Beijing: XinhuaNet; 2020 Jan 22 [cited 2020 May 1]. Available from: http://
+www.xinhuanet.com/2020-01/22/c_1125493839.htm. Chinese.
+[3] [Joint Prevention and Control Mechanism of the State Council: technical
+guidance on the selection and use of masks for different population to prevent
+novel coronavirus] [Internet]. Beijing: Joint Prevention and Control Mechanism
+of the State Council in Response to the Novel Coronavirus Pneumonia; 2020
+Feb 4 [cited 2020 May 1]. Available from: http://www.gov.cn/xinwen/2020-
+02/05/content_5474774.htm. Chinese.
+[4] Cheng W. [Can’t buy mask? It can be reused after regeneration treatment!]
+[Internet]. Beijing: ScienceNet; 2020 Feb 14 [cited 2020 May 1]. Available
+from: http://news.sciencenet.cn/htmlnews/2020/2/435754.shtm. Chinese.
+[5] National Health Commission of the People’s Republic of China. [Prevention and
+control program of COVID-19 (4th edition)]. Beijing: General Office of National
+Health Commission of the People’s Republic of China; 2020 Feb 6 [cited 2020
+May 1]. Available from: http://www.nhc.gov.cn/jkj/s3577/202002/573340613
+ab243b3a7f61df260551dd4/files/c791e5a7ea5149f680fdcb34dac0f54e.pdf .
+Chinese.
+[6] Wang D, Wang Z, Zhan Q, Pu Y, Wang JX, Foster NR, et al. Facile and scalable
+preparation of fluorescent carbon dots for multifunctional applications.
+Engineering 2017;3(3):402–8 .
+[7] Cheng W. [Technology of reuse of masks helps to fight against virus] [Internet].
+Beijing: ScienceNet; 2020 Apr 28 [cited 2020 May 1]. Available from: http://
+news.sciencenet.cn/htmlnews/2020/4/439043.shtm. Chinese.
+[8] Liu Y. Charge regeneration to make full use of each mask [Internet]. Beijing:
+Science and Technology Daily; 2020 Apr 29 [cited 2020 May 1]. Available from:
+http://digitalpaper.stdaily.com/http _www.kjrb.com/kjrb/ html/2020-04/29/
+content_444079.htm. Chinese.
+[9] Feng S, Shen C, Xia N, Song W, Fan M, Cowling BJ. Rational use of face masks in
+the COVID-19 pandemic. Lancet Respir Med 2020;8(5):434–6 .
+[10] Leung NHL, Chu DKW, Shiu EYC, Chan KH, McDevitt JJ, Hau BJP, et al.
+Respiratory virus shedding in exhaled breath and efficacy of face masks. Nat
+Med 2020;26:676–80 .
+[11] Mackenzie D. Reuse of N95 Masks. Engineering 2020;6(6):593–6.
+[12] Liao L, Xiao W, Zhao M, Yu X, Wang H, Wang Q, et al. Can N95 respirators be
+reused after disinfection? How many times? ACS Nano 2020;14(5):
+6348–56.
+[13] Zhang Z, Xing Y. New reusable face masks in production [Internet]. Beijing:
+China Daily; 2020 Mar 2 [cited 2020 May 1]. Available from: https://www.
+chinadailyhk.com/article/122864.
+D. Wang et al. / Engineering 6 (2020) 1115–1121 1121

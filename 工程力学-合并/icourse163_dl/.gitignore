@@ -1,0 +1,34 @@
+# ⚠️ 登录凭证 —— 绝不能提交
+cookies.txt
+spoc_cookies.txt
+*cookies*.txt
+*.cookie
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 抓取过程中的临时文件
+captured.json
+captured2.json
+_shot*.png
+_s1.png
+_s2.png
+core.js
+course.html
+learn.html
+t[0-9].py
+probe.py
+sniff*.py
+quiz_*.py
+
+# 可选：讲义 PDF 受版权保护，若使用公开仓库请取消下面这行注释
+# downloads/

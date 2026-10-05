@@ -1,0 +1,6 @@
+//edu-cms.nosdn.127.net/topics/js/mooc_moment_afb34315eef15ca86723c56885e6127f.js
+//webzj.netstatic.net/webzj_cdn101/message4.js
+//acstatic-dun.126.net/tool.min.js
+//edu-cms.nosdn.127.net/topics/js/hubble_mooc_DATracker.sync.1.6.11_74e3f0b40aa94f8006a013c7db9ac1b1.js
+//edu-cms.nosdn.127.net/topics/js/regular_mooc_855ddae161eaf47db272efc166066966.js
+//mc.stu.126.net/pub/s/pt_learn_learn_6e3b0e16d81262f09701055fbc40a3f6.js
