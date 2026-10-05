@@ -1,3 +1,4 @@
+from archive_safety import archive_url, safe_record
 import json, time
 from playwright.sync_api import sync_playwright
 from common import COOKIE, TERM_ID, COURSE_PATH
@@ -12,7 +13,7 @@ recs = []
 
 def interesting(req):
     if req.resource_type in ('xhr', 'fetch', 'media', 'document', 'other'):
-        u = req.url
+        u = archive_url(req.url)
         if not any(x in u for x in ['.css', '.png', '.jpg', '.gif', '.ico', '.woff', 'hubble', 'DATracker', 'log.']):
             return True
     return False
@@ -24,7 +25,7 @@ def on_request(req):
             body = req.post_data
         except Exception:
             pass
-        recs.append({'type': req.resource_type, 'method': req.method, 'url': req.url, 'body': body})
+        recs.append({'type': req.resource_type, 'method': req.method, 'url': archive_url(req.url)})
 
 with sync_playwright() as p:
     b = p.chromium.launch(headless=True, args=['--no-sandbox'])

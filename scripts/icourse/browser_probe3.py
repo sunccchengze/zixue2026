@@ -1,3 +1,4 @@
+from archive_safety import archive_url, safe_record
 import json, time
 from playwright.sync_api import sync_playwright
 from common import COOKIE, TERM_ID, COURSE_PATH
@@ -19,7 +20,7 @@ with sync_playwright() as p:
 
     def on_response(resp):
         req = resp.request
-        u = req.url
+        u = archive_url(req.url)
         keep = ('getLessonUnitLearnVo' in u or '.pdf' in u.lower() or 'pdf' in u.lower()
                 or 'resource' in u.lower() or '.dwr' in u)
         if not keep:
@@ -38,10 +39,10 @@ with sync_playwright() as p:
                 rec['resp_size'] = len(body)
                 rec['content_type'] = ct
             except Exception as e:
-                rec['resp_err'] = str(e)
+                rec['resp_err'] = type(e).__name__
         else:
             rec['content_type'] = ct
-        records.append(rec)
+        records.append(safe_record(rec))
 
     pg.on('response', on_response)
     pg.goto(f'https://www.icourse163.org/learn/{COURSE_PATH}?tid={TERM_ID}#/learn/content', timeout=120000, wait_until='commit')

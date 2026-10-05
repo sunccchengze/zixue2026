@@ -1,3 +1,4 @@
+from archive_safety import archive_url, safe_record
 import json, re, time
 from playwright.sync_api import sync_playwright
 from common import COOKIE, TERM_ID, COURSE_PATH
@@ -11,7 +12,7 @@ for part in COOKIE.split('; '):
 reqs = []
 
 def on_request(req):
-    u = req.url
+    u = archive_url(req.url)
     if any(x in u for x in ['.rpc', '.dwr', 'pdf', 'Pdf', '.pdf', 'nos', 'resource', 'token', 'doc']):
         reqs.append((req.resource_type, req.method, u))
 

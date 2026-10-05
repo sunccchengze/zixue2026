@@ -9,6 +9,9 @@ icourse163 课件(PDF)批量下载器  —  西安交通大学《理论力学》
     python3 dl.py --types 3,4     # 指定 contentType (1视频 2测验 3PDF 4附件 5富文本)
 """
 import json, os, re, sys, time, csv, argparse, urllib.parse
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "scripts/icourse"))
+from archive_safety import archive_url
 import requests
 
 COURSE_ID   = "1002985009"
@@ -100,12 +103,13 @@ def pdf_link(c, unit, tries=3):
     return None, None
 
 
-def unique_path(path):
-    if not os.path.exists(path):
+def unique_path(path, reserved):
+    """Disambiguate same-run names, not files retained from an earlier run."""
+    if path not in reserved:
         return path
     root, ext = os.path.splitext(path)
     i = 2
-    while os.path.exists(f"{root} ({i}){ext}"):
+    while f"{root} ({i}){ext}" in reserved:
         i += 1
     return f"{root} ({i}){ext}"
 
@@ -129,8 +133,8 @@ def main():
     print(f"登录身份: {nick}")
 
     term = get_tree(c)
-    json.dump(term, open(os.path.join(HERE, "term_tree.json"), "w", encoding="utf-8"),
-              ensure_ascii=False, indent=1)
+    with open(os.path.join(HERE, "term_tree.json"), "w", encoding="utf-8") as stream:
+        json.dump(term, stream, ensure_ascii=False, indent=1)
 
     targets = []
     for ci, ch in enumerate(term.get("chapters") or [], 1):
@@ -144,6 +148,7 @@ def main():
     print(f"目录: {len(term.get('chapters') or [])} 章, 命中文档 {len(targets)} 个\n")
 
     rows, ok, fail, skipped = [], 0, [], 0
+    reserved = set()
     for i, (cname, lname, ui, u) in enumerate(targets, 1):
         url, srv_name = pdf_link(c, u)
         if not url:
@@ -156,41 +161,47 @@ def main():
         if not fname.lower().endswith(".pdf"):
             fname += ".pdf"
         rel = os.path.join(COURSE_NAME, cname, lname, fname)
-        dest = unique_path(os.path.join(OUT, rel))
+        dest = unique_path(os.path.join(OUT, rel), reserved)
+        reserved.add(dest)
+        rel = os.path.relpath(dest, OUT)
 
         if not args.overwrite and os.path.exists(dest) and os.path.getsize(dest) > 1024:
             skipped += 1
-            rows.append([rel, url, "已存在"])
+            rows.append([rel, archive_url(url), "已存在"])
             print(f"[{i}/{len(targets)}] = 跳过(已存在) {fname}")
             continue
 
         if args.list_only:
-            rows.append([rel, url, "未下载"]); print(f"[{i}/{len(targets)}] {rel}"); continue
+            rows.append([rel, archive_url(url), "未下载"]); print(f"[{i}/{len(targets)}] {rel}"); continue
 
         try:
             os.makedirs(os.path.dirname(dest), exist_ok=True)
             with c.s.get(url, headers={"User-Agent": UA, "Referer": BASE + "/"},
                          stream=True, timeout=300) as r:
                 r.raise_for_status()
-                with open(dest, "wb") as f:
+                with open(dest + ".part", "wb") as f:
                     for chunk in r.iter_content(1 << 16):
                         if chunk:
                             f.write(chunk)
-            size = os.path.getsize(dest)
-            head = open(dest, "rb").read(5)
-            if head[:4] != b"%PDF":
-                os.remove(dest)
+            size = os.path.getsize(dest + ".part")
+            with open(dest + ".part", "rb") as f:
+                head = f.read(5)
+            if head != b"%PDF-":
+                os.remove(dest + ".part")
                 raise RuntimeError(f"不是PDF文件 (magic={head!r})")
+            os.replace(dest + ".part", dest)
             ok += 1
-            rows.append([rel, url, "OK"])
+            rows.append([rel, archive_url(url), "OK"])
             print(f"[{i}/{len(targets)}] OK {size/1024/1024:6.2f} MB  {fname}")
         except Exception as e:
-            fail.append((cname, lname, fname, str(e)))
-            rows.append([rel, url, f"失败:{e}"])
-            print(f"[{i}/{len(targets)}] X 失败 {fname}: {e}")
+            if os.path.exists(dest + ".part"):
+                os.remove(dest + ".part")
+            fail.append((cname, lname, fname, type(e).__name__))
+            rows.append([rel, archive_url(url), f"失败:{type(e).__name__}"])
+            print(f"[{i}/{len(targets)}] X 失败 {fname}: {type(e).__name__}")
 
     with open(os.path.join(HERE, "manifest.csv"), "w", newline="", encoding="utf-8-sig") as f:
-        w = csv.writer(f); w.writerow(["相对路径", "下载直链(带签名,会过期)", "状态"])
+        w = csv.writer(f); w.writerow(["相对路径", "来源URL（已移除签名；下载时须重新授权获取）", "状态"])
         w.writerows(rows)
 
     print(f"\n完成 {ok} / 共 {len(targets)}，跳过 {skipped}，失败 {len(fail)}")

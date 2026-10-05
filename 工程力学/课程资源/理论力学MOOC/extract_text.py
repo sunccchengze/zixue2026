@@ -1,30 +1,56 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""把下载的所有 PDF 抽成结构化文本库 corpus.json"""
-import os, glob, json, re
-from pypdf import PdfReader
+"""Extract downloaded course PDFs, preserving course/chapter/lesson metadata.
 
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "downloads")
-corpus = []
-for pdf in sorted(glob.glob(os.path.join(OUT, "**", "*.pdf"), recursive=True)):
-    rel = os.path.relpath(pdf, OUT)
-    parts = rel.split(os.sep)
-    chap, les, fname = (parts + ["", "", ""])[:3]
-    r = PdfReader(pdf)
-    pages = []
-    for i, p in enumerate(r.pages, 1):
-        t = p.extract_text() or ""
-        t = re.sub(r"[ \t]+", " ", t)
-        t = re.sub(r"\n{3,}", "\n\n", t).strip()
-        if t:
-            pages.append({"page": i, "text": t})
-    corpus.append({
-        "file": rel, "chapter": chap, "lesson": les, "name": fname,
-        "n_pages": len(r.pages), "pages": pages,
-        "text": "\n".join(f"[p{p['page']}] {p['text']}" for p in pages),
-    })
-    print(f"{len(r.pages):3d}页 {len(corpus[-1]['text']):6d}字  {rel}")
+Run from any cwd. Dependency: pypdf. Output defaults next to this script.
+"""
+from pathlib import Path
+import argparse
+import json
+import re
 
-json.dump(corpus, open("corpus.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-print(f"\n合计 {len(corpus)} 个文档, {sum(c['n_pages'] for c in corpus)} 页, "
-      f"{sum(len(c['text']) for c in corpus)} 字符 -> corpus.json")
+HERE = Path(__file__).resolve().parent
+
+
+def course_metadata(relative):
+    parts = Path(relative).parts
+    if len(parts) < 3:
+        raise ValueError('Expected [course/]chapter/lesson/file.pdf')
+    return {
+        'course': '/'.join(parts[:-3]),
+        'chapter': parts[-3],
+        'lesson': parts[-2],
+        'name': parts[-1],
+    }
+
+
+def extract_corpus(source, output):
+    from pypdf import PdfReader
+    corpus = []
+    for pdf in sorted(source.rglob('*.pdf')):
+        relative = pdf.relative_to(source)
+        reader = PdfReader(pdf)
+        pages = []
+        for i, page in enumerate(reader.pages, 1):
+            text = re.sub(r'[ \t]+', ' ', page.extract_text() or '')
+            text = re.sub(r'\n{3,}', '\n\n', text).strip()
+            if text:
+                pages.append({'page': i, 'text': text})
+        corpus.append({
+            'file': relative.as_posix(), **course_metadata(relative),
+            'n_pages': len(reader.pages), 'pages': pages,
+            'text': '\n'.join(f"[p{p['page']}] {p['text']}" for p in pages),
+        })
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with output.open('w', encoding='utf-8') as stream:
+        json.dump(corpus, stream, ensure_ascii=False, indent=1)
+        stream.write('\n')
+    return corpus
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--source', type=Path, default=HERE / 'downloads')
+    parser.add_argument('--output', type=Path, default=HERE / 'corpus.json')
+    args = parser.parse_args()
+    records = extract_corpus(args.source, args.output)
+    print(f'{len(records)} documents; {sum(r["n_pages"] for r in records)} pages -> {args.output}')
