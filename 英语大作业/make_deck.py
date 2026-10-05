@@ -1,3 +1,5 @@
+from pathlib import Path
+PROJECT = Path(__file__).resolve().parent
 # -*- coding: utf-8 -*-
 """13-slide deck v2 — varied layouts, sharp corners, visible gradients,
 oversized type, layered/bleeding imagery."""
@@ -9,8 +11,8 @@ from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 import animations
 
 AR = W / H
-M  = "/home/user/build/masks"
-F  = "/home/user/build/figs"
+M  = str(PROJECT / "build/masks")
+F  = str(PROJECT / "build/figs")
 os.makedirs(M, exist_ok=True); os.makedirs(F, exist_ok=True)
 TOTAL = 13
 
@@ -418,7 +420,7 @@ para(tf, "T H A N K   Y O U", 15, WHITE, bold=True, first=True)
 hair(s, 12.34, 1.42, 4.60, AMBER, 1.1, vertical=True, alpha=150)
 footer(s, 13, TOTAL, "丁", AMBER)
 
-out = "/home/user/Mask-Reuse-Qualification-Review.pptx"
+out = str(PROJECT / "build/Mask-Reuse-Qualification-Review.pptx")
 n_anim = animations.animate_presentation(prs)
 prs.save(out)
 print(f"animated {n_anim} objects")

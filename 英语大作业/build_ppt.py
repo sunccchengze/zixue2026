@@ -1,3 +1,5 @@
+from pathlib import Path
+PROJECT = Path(__file__).resolve().parent
 # -*- coding: utf-8 -*-
 """Deck engine v2 — editorial style: sharp corners, real gradients, layered images,
 oversized type, one dominant accent colour per slide."""
@@ -32,9 +34,9 @@ MUTED  = (163, 186, 208)
 DIM    = (112, 141, 168)
 HAIR   = (72, 104, 134)
 
-IMG  = "/home/user/ppt_images"
-FIGH = "/home/user/papers/figures/hires"
-TMP  = "/home/user/build/tmp"
+IMG  = str(PROJECT / "ppt_images")
+FIGH = str(PROJECT / "papers/figures/hires")
+TMP  = str(PROJECT / "build/tmp")
 os.makedirs(TMP, exist_ok=True)
 
 # ============================================================ imaging
