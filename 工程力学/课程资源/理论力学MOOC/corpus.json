@@ -1,0 +1,1564 @@
+[
+ {
+  "file": "理论力学/01 绪论/01 绪论/绪论.pdf",
+  "chapter": "01 绪论",
+  "lesson": "01 绪论",
+  "name": "绪论.pdf",
+  "n_pages": 14,
+  "pages": [
+   {
+    "page": 1,
+    "text": "绪 论 \n航天航空学院 \n力学实验教学国家示范中心 \n主讲人 伍晓红"
+   },
+   {
+    "page": 4,
+    "text": "理论力学研究作用在物体上的力与运动之间的关系。 \n什么是理论力学？ \n物体在空间的位\n形随时间的变化 \n力学是沟通自然科学基础理论与工程技术实践的桥梁。 \n1687年，牛顿， 《自然哲学的数学原理》 \n力学的发展 \n1788年，拉格朗日,《分析力学》 \n1834年，哈密顿, 哈密顿体系 \n材料力学 流体力学 固体力学 非线性动力学"
+   },
+   {
+    "page": 5,
+    "text": "从 实 践出 发，\n经过抽象化 、 综合 、\n归纳 、 建 立 公 理，\n再 应 用 数 学 演 绎 和\n逻 辑 推 理 而 得 到 定\n理 和 结 论， 形成理\n论 体 系， 然后 再通\n过 实 践 来 验 证 理 论\n的正确性。 \n理论力学的研究方法"
+   },
+   {
+    "page": 7,
+    "text": " 航天航空技术 \n力学的应用"
+   },
+   {
+    "page": 8,
+    "text": "环球金\n融中心 \n上海中心 \n金茂大厦 \n 建筑和桥梁 \n苏通大桥"
+   },
+   {
+    "page": 9,
+    "text": " 机械工程 \n机器蛇 \n机器人"
+   },
+   {
+    "page": 10,
+    "text": "长江三峡工程 \n 大型水利工程设施 \n  海洋钻井平台"
+   },
+   {
+    "page": 11,
+    "text": "芯片中的力学问题 \n 硬盘驱动器 \n 计算机工程"
+   },
+   {
+    "page": 12,
+    "text": "理论力学研究内容 \n● 静力学：研究力系的简化、合成与力系的平衡条件； \n● 运动学：用几何的观点研究物体的运动规律； \n （不涉及运动变化的原因---力） \n● 动力学：研究力与运动的关系。 \n 这三部分内容既有独立的工程实用意义，同时相互之间有密\n切关系。"
+   },
+   {
+    "page": 13,
+    "text": "理论力学是各工科专业的第一门技术基础课。 \n• 培养获取新知识的能力 \n• 培养提出（或发现）问题的能力 \n• 培养解决问题的能力 \n• 培养创新意识（新思想、新方法） \n• 为后续课程打下必要的基础 \n学习理论力学的意义"
+   },
+   {
+    "page": 14,
+    "text": "几点要求 \n•准确理解基本概念； \n•灵活运用基本定理、公式； \n•学会基本方法； \n•一定量的习题训练； \n•积极思维，刻苦钻研"
+   }
+  ],
+  "text": "[p1] 绪 论 \n航天航空学院 \n力学实验教学国家示范中心 \n主讲人 伍晓红\n[p4] 理论力学研究作用在物体上的力与运动之间的关系。 \n什么是理论力学？ \n物体在空间的位\n形随时间的变化 \n力学是沟通自然科学基础理论与工程技术实践的桥梁。 \n1687年，牛顿， 《自然哲学的数学原理》 \n力学的发展 \n1788年，拉格朗日,《分析力学》 \n1834年，哈密顿, 哈密顿体系 \n材料力学 流体力学 固体力学 非线性动力学\n[p5] 从 实 践出 发，\n经过抽象化 、 综合 、\n归纳 、 建 立 公 理，\n再 应 用 数 学 演 绎 和\n逻 辑 推 理 而 得 到 定\n理 和 结 论， 形成理\n论 体 系， 然后 再通\n过 实 践 来 验 证 理 论\n的正确性。 \n理论力学的研究方法\n[p7]  航天航空技术 \n力学的应用\n[p8] 环球金\n融中心 \n上海中心 \n金茂大厦 \n 建筑和桥梁 \n苏通大桥\n[p9]  机械工程 \n机器蛇 \n机器人\n[p10] 长江三峡工程 \n 大型水利工程设施 \n  海洋钻井平台\n[p11] 芯片中的力学问题 \n 硬盘驱动器 \n 计算机工程\n[p12] 理论力学研究内容 \n● 静力学：研究力系的简化、合成与力系的平衡条件； \n● 运动学：用几何的观点研究物体的运动规律； \n （不涉及运动变化的原因---力） \n● 动力学：研究力与运动的关系。 \n 这三部分内容既有独立的工程实用意义，同时相互之间有密\n切关系。\n[p13] 理论力学是各工科专业的第一门技术基础课。 \n• 培养获取新知识的能力 \n• 培养提出（或发现）问题的能力 \n• 培养解决问题的能力 \n• 培养创新意识（新思想、新方法） \n• 为后续课程打下必要的基础 \n学习理论力学的意义\n[p14] 几点要求 \n•准确理解基本概念； \n•灵活运用基本定理、公式； \n•学会基本方法； \n•一定量的习题训练； \n•积极思维，刻苦钻研"
+ },
+ {
+  "file": "理论力学/02 第1章：几何静力学/01 1-1静力学公理/1.1静力学基础.pdf",
+  "chapter": "02 第1章：几何静力学",
+  "lesson": "01 1-1静力学公理",
+  "name": "1.1静力学基础.pdf",
+  "n_pages": 13,
+  "pages": [
+   {
+    "page": 1,
+    "text": "1 静力学基础 \n航天航空学院 \n力学实验教学国家示范中心 \n \n \n主讲人 伍晓红"
+   },
+   {
+    "page": 2,
+    "text": "静力学的任务：研究物体在力系作用下的平衡规律。 \n• 序言 \n力系：作用在物体上的一组力。 \n平衡：物体相对于惯性参考系保持静止状态或匀速直线 \n 平移状态。"
+   },
+   {
+    "page": 3,
+    "text": "刚体：受到力作用后不会发生变形的物体。 \n 或者说是指在力的作用下，物体内任意两点间距离都不会改变\n的物体。 \n 变形体：受到力作用后发生变形的物体。 \n “刚体”实际上是不存在的，它是一种抽象化的力学模型。 \n 在实际问题中能否将一个物体视为刚体 ，不仅取决于变形的大\n小，还取决于具体问题的要求。"
+   },
+   {
+    "page": 4,
+    "text": "2. 力系的平衡条件及其应用 \n两个基本问题： \n1. 力系的等效替换和简化 \n等效 力系： 对同一刚体产生相同作用效应的力系。 \n力系的简化：用一个简单力系等效替换一个复杂力系。 \n平 衡 力 系： 对刚体不产生任何作用效应的力系。 \n力系的平衡条件：刚体上作用的力系要使刚体保持平衡而应满足的条件。 \n 合 力： 若一个力与一个力系等效，则称此力为该力系的合力。"
+   },
+   {
+    "page": 5,
+    "text": "1. 力的平行四边形公理 \n• 静力学公理 \n2. 二力平衡公理* \n4. 加减平衡力系公理* \n3. 作用力与反作用力公理 \n5. 刚化公理"
+   },
+   {
+    "page": 6,
+    "text": "作用在物体上同一点的两个力，\n可以合成为一个合力。合力的作用点\n也在该点，合力的大小、方向由这两\n个力为边构成的平行四边形的对角线\n确定。 \nR 1 2F F F\n此公理给出了力系简化的基本方法。 \n公理1 力的平行四边形公理 \n \n F1 \n \nF2 \n FR \n \nO"
+   },
+   {
+    "page": 7,
+    "text": "受两个力作用的刚体，其平衡的充分必要条件是这两个力大小\n相等，方向相反，且沿着同一作用线。 \n公理2 二力平衡公理* \n悬挂法"
+   },
+   {
+    "page": 8,
+    "text": "在已知力系上加上或减去任意平衡力系，并不改变原力系对刚体\n的作用。即原力系与加减平衡力系后得到的新力系等效。 \n此公理是研究力系等效的重要依据。 \n4. 加减平衡力系公理* \n 两物体间的相互作用力，大小相等，方向相反，作用线\n沿同一直线。 \n3. 作用力与反作用力公理 3. 作用力与反作用力公理"
+   },
+   {
+    "page": 9,
+    "text": "推论1 力的可传性 \n 作用在刚体上某点的力 ，可以沿着它的作用线移动到刚体内任\n意一点，并不改变该力对刚体的作用效应。 \nＦ \n Ｆ \nＦ′ \nF\" \nＦ′"
+   },
+   {
+    "page": 10,
+    "text": "力的可传性原理仅适用于刚体，而不适用于变形体。 \nF´ F \nF´ F \nF´ F \nF F´"
+   },
+   {
+    "page": 11,
+    "text": "推论2 三力平衡汇交 \n \nO \nA \nB \nG \nC \n 作用在刚体上三个相互平衡的力，若其中两个力的作用线汇\n交于一点，则第三个力的作用线通过汇交点。 \nFTB FTA O \nA \nB \nG \nC \nF\nR"
+   },
+   {
+    "page": 12,
+    "text": "刚体的平衡条件是变形体平衡的必要条件，而非充分条件。 \n5. 刚化公理 \n变形体受已知力系作用而处于平衡，刚化后仍处于平衡 。"
+   },
+   {
+    "page": 13,
+    "text": "思考题 \n题1：4根无重杆件铰接如图所\n示，现在BD两点加上一对等值 、\n反向、共线的力 ，此系统是否\n能够平衡？为什么？ \n题2 ： 刚体上 A 点受\n力F 作用 ， 如 图 所 示，\n问能否在 B 点加上一\n个力使得刚体平衡 ？\n为什么？"
+   }
+  ],
+  "text": "[p1] 1 静力学基础 \n航天航空学院 \n力学实验教学国家示范中心 \n \n \n主讲人 伍晓红\n[p2] 静力学的任务：研究物体在力系作用下的平衡规律。 \n• 序言 \n力系：作用在物体上的一组力。 \n平衡：物体相对于惯性参考系保持静止状态或匀速直线 \n 平移状态。\n[p3] 刚体：受到力作用后不会发生变形的物体。 \n 或者说是指在力的作用下，物体内任意两点间距离都不会改变\n的物体。 \n 变形体：受到力作用后发生变形的物体。 \n “刚体”实际上是不存在的，它是一种抽象化的力学模型。 \n 在实际问题中能否将一个物体视为刚体 ，不仅取决于变形的大\n小，还取决于具体问题的要求。\n[p4] 2. 力系的平衡条件及其应用 \n两个基本问题： \n1. 力系的等效替换和简化 \n等效 力系： 对同一刚体产生相同作用效应的力系。 \n力系的简化：用一个简单力系等效替换一个复杂力系。 \n平 衡 力 系： 对刚体不产生任何作用效应的力系。 \n力系的平衡条件：刚体上作用的力系要使刚体保持平衡而应满足的条件。 \n 合 力： 若一个力与一个力系等效，则称此力为该力系的合力。\n[p5] 1. 力的平行四边形公理 \n• 静力学公理 \n2. 二力平衡公理* \n4. 加减平衡力系公理* \n3. 作用力与反作用力公理 \n5. 刚化公理\n[p6] 作用在物体上同一点的两个力，\n可以合成为一个合力。合力的作用点\n也在该点，合力的大小、方向由这两\n个力为边构成的平行四边形的对角线\n确定。 \nR 1 2F F F\n此公理给出了力系简化的基本方法。 \n公理1 力的平行四边形公理 \n \n F1 \n \nF2 \n FR \n \nO\n[p7] 受两个力作用的刚体，其平衡的充分必要条件是这两个力大小\n相等，方向相反，且沿着同一作用线。 \n公理2 二力平衡公理* \n悬挂法\n[p8] 在已知力系上加上或减去任意平衡力系，并不改变原力系对刚体\n的作用。即原力系与加减平衡力系后得到的新力系等效。 \n此公理是研究力系等效的重要依据。 \n4. 加减平衡力系公理* \n 两物体间的相互作用力，大小相等，方向相反，作用线\n沿同一直线。 \n3. 作用力与反作用力公理 3. 作用力与反作用力公理\n[p9] 推论1 力的可传性 \n 作用在刚体上某点的力 ，可以沿着它的作用线移动到刚体内任\n意一点，并不改变该力对刚体的作用效应。 \nＦ \n Ｆ \nＦ′ \nF\" \nＦ′\n[p10] 力的可传性原理仅适用于刚体，而不适用于变形体。 \nF´ F \nF´ F \nF´ F \nF F´\n[p11] 推论2 三力平衡汇交 \n \nO \nA \nB \nG \nC \n 作用在刚体上三个相互平衡的力，若其中两个力的作用线汇\n交于一点，则第三个力的作用线通过汇交点。 \nFTB FTA O \nA \nB \nG \nC \nF\nR\n[p12] 刚体的平衡条件是变形体平衡的必要条件，而非充分条件。 \n5. 刚化公理 \n变形体受已知力系作用而处于平衡，刚化后仍处于平衡 。\n[p13] 思考题 \n题1：4根无重杆件铰接如图所\n示，现在BD两点加上一对等值 、\n反向、共线的力 ，此系统是否\n能够平衡？为什么？ \n题2 ： 刚体上 A 点受\n力F 作用 ， 如 图 所 示，\n问能否在 B 点加上一\n个力使得刚体平衡 ？\n为什么？"
+ },
+ {
+  "file": "理论力学/02 第1章：几何静力学/02 1-2力系的简化/1.2.1力和力偶.pdf",
+  "chapter": "02 第1章：几何静力学",
+  "lesson": "02 1-2力系的简化",
+  "name": "1.2.1力和力偶.pdf",
+  "n_pages": 19,
+  "pages": [
+   {
+    "page": 1,
+    "text": "2 力和力偶 \n航天航空学院 \n力学实验教学国家示范中心 \n \n \n主讲人 伍晓红"
+   },
+   {
+    "page": 2,
+    "text": "2 \n内效应 \n外效应 \n• 力 \n力：物体间的相互作用，使物体的运动状态或形状 \n 尺寸发生改变。"
+   },
+   {
+    "page": 3,
+    "text": "3 \n力的三要素： 大小、方向和作用点 \n力的几何表示 \nF=Fx i+Fy j+Fz k \n力的解析表示 \nO k \nz \ny \nxF\nyFx y i x \nz \nzF\nF A \nj \nA \nF"
+   },
+   {
+    "page": 4,
+    "text": "（1）直接投影法 \ncos\ncos\ncos\nx\ny\nz\nFF\nFF\nFF\n\n\n\n   \n   \n   \nFi\nFj\nFk (2) 二次投影法 \n\n\n\n\n\n\n\n\n\n\n\ncos\nsinsinsin\ncossincos\nFF\nFFF\nFFF\nz\nxyy\nxyx"
+   },
+   {
+    "page": 5,
+    "text": "按力的作用位置可将力作如下分类： \nq \nNF\n┄┄┄┄┄┄┄┄点 \n┄┄线 \n┄┄面 \n┄┄体积 \n力 \n集中力 \n分布力 \n线分布力 \n面分布力 \n体分布力"
+   },
+   {
+    "page": 6,
+    "text": "F \n• 力矩"
+   },
+   {
+    "page": 7,
+    "text": "x \nz \ny O \n() OM F r F\nF \nr \nh \n定位矢量 \n 力对点之矩 \nOM\n大小: \n()OM F Fh\n方位: 垂直于F与r 组成的平面 \n转向: 右手法则 \n单位 \nNm\nh"
+   },
+   {
+    "page": 8,
+    "text": "zyx FFF\nzyx\nkji\n\nFrMO \nkji )()()( xyzxyz yFxFxFzFzFyF \nOx Oy OzM M M  i j k\nz \ny \nyFx \ny \ni j \nk \nx \nzF\nF \nz r \nxF\nO \nr = xi+yj+zk \nF = Fx i+Fy j+Fz k"
+   },
+   {
+    "page": 9,
+    "text": "z \no d \nF \nxyF\nxyF\nzF\n力对轴之矩等于该力在与轴垂直的平面上的投影对轴与平面交点之矩。 \n力对轴之矩 \nF \n( ) ( )z O xy xym m F F d   F"
+   },
+   {
+    "page": 10,
+    "text": "cos\n11\n  OABBOA SS\nO( ) 2 OABSMF\nOO( ) ( ) cos ( )zM    F M F M F k\n11\n( ) 2z OA BM F S \nO\nO\n( ) [ ( )]\n( ) [ ( )]\nxx\nyy\nM\nM\n\n\nF M F\nF M F\n O() z MF\nyxxF yF\nxzzF xF\nzyyF zF\n力矩关系 定律"
+   },
+   {
+    "page": 11,
+    "text": "ABl\nO( ) ( )i ( )j ( )kx y zM M M  M F F F F\n( ) ( )AB A ABM F M F l\n() AB  r F l\n结论：力对轴之矩等于力对轴上任意 一点之矩在该轴上的投影。 \nB \nc b \nz \na y \nx \nF q \nO \nA \n为AB轴的单位矢量"
+   },
+   {
+    "page": 12,
+    "text": "例 在图示长方体的顶点A、D 处分别作用力F1、F2 ，\n求（1）力F1对 x，y，z 轴之矩，（2）力F2 对 z′\n轴之矩。 \nD O \nB \nF1 \nA a \nb \nc \ny \nx \nz z′ \nF2 \n α \nE"
+   },
+   {
+    "page": 13,
+    "text": "222\ncos\ncba\nc\n\n\n)()()( 111 xyxzxx MMM FFF \n0cos1  bF\n0cos1  aF\n)()()( 111 xyyzyy MMM FFF \n0)( 1 FzM\nD \n解： (1) \nF1xy \nF1z \n方法一 \nO \nB \nF1 \nA a \nb \nc \ny \nx \nz z′ \nF2 \n α \nE"
+   },
+   {
+    "page": 14,
+    "text": "222\ncos\ncba\nc\n\n\n1 1 1 1 sin cos sin sin cosF F F      F i j k\n22\ncos a\nab\n \n\nFrFMO )(\nzyx FFF\nzyx\nkji\n\n11cos cosbF aF ij\n11( ) cosxM bF F\n11( ) cosyM aF F\n1( ) 0zM F\n方法二 \nr a b ij\nD O \nB \nF1 \nA a \nb \nc \ny \nx \nz z′ \nF2 \n α \nβ \nE"
+   },
+   {
+    "page": 15,
+    "text": "222\ncos\ncba\nc\n\n\ncos)()( 22 FF Az MM \nbFM A 22)( F\n解： (2) \n2 cosFb \nD O \nB \nF1 \nA a \nb \nc \ny \nx \nz z′ \nF2 \n α \nβ \nE"
+   },
+   {
+    "page": 16,
+    "text": "作用在物体上的一对大小相等、方向相反且作用线 \n相互平行的两个力称为力偶，记作(F, F ' )。 \n• 力偶 \n力偶作用效应： 纯转动"
+   },
+   {
+    "page": 17,
+    "text": "A \nB F \nr\nF' \n)'()( FMFMM OOO \n'FrFr  BA\n)( FrFr  BA\nFrr  )( BA\nBAr\nBArF\nA \nB \nF' \nFF '\nF \nd \nBAM r F\nM \n力偶矩矢量垂直于力偶作用面，其大小和方\n向与取矩点无关。 \nO \nBr\nAr\n力偶矩矢量"
+   },
+   {
+    "page": 18,
+    "text": "力偶的性质和等效条件 \n若两力偶的力偶矩矢相等，则两力偶等效。 \n性质1 力偶不能与一个力等效，力偶只能用力偶来平衡。 \n 性质2 力偶可在其作用面内任意移动，或移到另一平行平面，而不 \n 改变对刚体的作用效应 \n性质3 力偶可以同时改变F、d的大小，只要力偶矩不变，对刚体 \n 的作用不变。 \n力偶矩矢量是自由矢量！"
+   },
+   {
+    "page": 19,
+    "text": "图 示 圆 盘 由O 点处\n的轴承支持 ，在力偶 M \n和力F 的作用下处于平\n衡。能不能说力偶被力\nF 所平衡？为什么？ F \nM \nO \n思考题："
+   }
+  ],
+  "text": "[p1] 2 力和力偶 \n航天航空学院 \n力学实验教学国家示范中心 \n \n \n主讲人 伍晓红\n[p2] 2 \n内效应 \n外效应 \n• 力 \n力：物体间的相互作用，使物体的运动状态或形状 \n 尺寸发生改变。\n[p3] 3 \n力的三要素： 大小、方向和作用点 \n力的几何表示 \nF=Fx i+Fy j+Fz k \n力的解析表示 \nO k \nz \ny \nxF\nyFx y i x \nz \nzF\nF A \nj \nA \nF\n[p4] （1）直接投影法 \ncos\ncos\ncos\nx\ny\nz\nFF\nFF\nFF\n\n\n\n   \n   \n   \nFi\nFj\nFk (2) 二次投影法 \n\n\n\n\n\n\n\n\n\n\n\ncos\nsinsinsin\ncossincos\nFF\nFFF\nFFF\nz\nxyy\nxyx\n[p5] 按力的作用位置可将力作如下分类： \nq \nNF\n┄┄┄┄┄┄┄┄点 \n┄┄线 \n┄┄面 \n┄┄体积 \n力 \n集中力 \n分布力 \n线分布力 \n面分布力 \n体分布力\n[p6] F \n• 力矩\n[p7] x \nz \ny O \n() OM F r F\nF \nr \nh \n定位矢量 \n 力对点之矩 \nOM\n大小: \n()OM F Fh\n方位: 垂直于F与r 组成的平面 \n转向: 右手法则 \n单位 \nNm\nh\n[p8] zyx FFF\nzyx\nkji\n\nFrMO \nkji )()()( xyzxyz yFxFxFzFzFyF \nOx Oy OzM M M  i j k\nz \ny \nyFx \ny \ni j \nk \nx \nzF\nF \nz r \nxF\nO \nr = xi+yj+zk \nF = Fx i+Fy j+Fz k\n[p9] z \no d \nF \nxyF\nxyF\nzF\n力对轴之矩等于该力在与轴垂直的平面上的投影对轴与平面交点之矩。 \n力对轴之矩 \nF \n( ) ( )z O xy xym m F F d   F\n[p10] cos\n11\n  OABBOA SS\nO( ) 2 OABSMF\nOO( ) ( ) cos ( )zM    F M F M F k\n11\n( ) 2z OA BM F S \nO\nO\n( ) [ ( )]\n( ) [ ( )]\nxx\nyy\nM\nM\n\n\nF M F\nF M F\n O() z MF\nyxxF yF\nxzzF xF\nzyyF zF\n力矩关系 定律\n[p11] ABl\nO( ) ( )i ( )j ( )kx y zM M M  M F F F F\n( ) ( )AB A ABM F M F l\n() AB  r F l\n结论：力对轴之矩等于力对轴上任意 一点之矩在该轴上的投影。 \nB \nc b \nz \na y \nx \nF q \nO \nA \n为AB轴的单位矢量\n[p12] 例 在图示长方体的顶点A、D 处分别作用力F1、F2 ，\n求（1）力F1对 x，y，z 轴之矩，（2）力F2 对 z′\n轴之矩。 \nD O \nB \nF1 \nA a \nb \nc \ny \nx \nz z′ \nF2 \n α \nE\n[p13] 222\ncos\ncba\nc\n\n\n)()()( 111 xyxzxx MMM FFF \n0cos1  bF\n0cos1  aF\n)()()( 111 xyyzyy MMM FFF \n0)( 1 FzM\nD \n解： (1) \nF1xy \nF1z \n方法一 \nO \nB \nF1 \nA a \nb \nc \ny \nx \nz z′ \nF2 \n α \nE\n[p14] 222\ncos\ncba\nc\n\n\n1 1 1 1 sin cos sin sin cosF F F      F i j k\n22\ncos a\nab\n \n\nFrFMO )(\nzyx FFF\nzyx\nkji\n\n11cos cosbF aF ij\n11( ) cosxM bF F\n11( ) cosyM aF F\n1( ) 0zM F\n方法二 \nr a b ij\nD O \nB \nF1 \nA a \nb \nc \ny \nx \nz z′ \nF2 \n α \nβ \nE\n[p15] 222\ncos\ncba\nc\n\n\ncos)()( 22 FF Az MM \nbFM A 22)( F\n解： (2) \n2 cosFb \nD O \nB \nF1 \nA a \nb \nc \ny \nx \nz z′ \nF2 \n α \nβ \nE\n[p16] 作用在物体上的一对大小相等、方向相反且作用线 \n相互平行的两个力称为力偶，记作(F, F ' )。 \n• 力偶 \n力偶作用效应： 纯转动\n[p17] A \nB F \nr\nF' \n)'()( FMFMM OOO \n'FrFr  BA\n)( FrFr  BA\nFrr  )( BA\nBAr\nBArF\nA \nB \nF' \nFF '\nF \nd \nBAM r F\nM \n力偶矩矢量垂直于力偶作用面，其大小和方\n向与取矩点无关。 \nO \nBr\nAr\n力偶矩矢量\n[p18] 力偶的性质和等效条件 \n若两力偶的力偶矩矢相等，则两力偶等效。 \n性质1 力偶不能与一个力等效，力偶只能用力偶来平衡。 \n 性质2 力偶可在其作用面内任意移动，或移到另一平行平面，而不 \n 改变对刚体的作用效应 \n性质3 力偶可以同时改变F、d的大小，只要力偶矩不变，对刚体 \n 的作用不变。 \n力偶矩矢量是自由矢量！\n[p19] 图 示 圆 盘 由O 点处\n的轴承支持 ，在力偶 M \n和力F 的作用下处于平\n衡。能不能说力偶被力\nF 所平衡？为什么？ F \nM \nO \n思考题："
+ },
+ {
+  "file": "理论力学/02 第1章：几何静力学/02 1-2力系的简化/1.2.2特殊力系的简化.pdf",
+  "chapter": "02 第1章：几何静力学",
+  "lesson": "02 1-2力系的简化",
+  "name": "1.2.2特殊力系的简化.pdf",
+  "n_pages": 19,
+  "pages": [
+   {
+    "page": 1,
+    "text": "3 特殊力系的简化 \n航天航空学院 \n力学实验教学国家示范中心 \n主讲人 伍晓红"
+   },
+   {
+    "page": 2,
+    "text": "工程实际问题中，研究对象的受力相当复杂。 \n迎 \n面风 \n力 \n侧 面\n风 力"
+   },
+   {
+    "page": 3,
+    "text": "2F\n1F\n3F\n4F\nA \n汇交力系 平行力系 \n 力系的分类 \n力偶系 \n空间一般力系 \n3F\n4F\n1F\n2F\n3F\n1F\n2F\n4F\n4M"
+   },
+   {
+    "page": 4,
+    "text": "汇交力系的简化 \n共点力系:各力作用于物体的同一点的力系。 \n汇交力系:作用在刚体上的各力的作用线汇交于一点的力系 。"
+   },
+   {
+    "page": 5,
+    "text": "汇交力系 共点力系 \n力的可传性 \n合力 \n力的平行四边形法则 \n\n\n\nn\ni\niFFFFF\n1\nn21R \n作用线过汇交点 \n处理的具体方法 \n几何法 \n解析法 \n“图” \n“代数式” \nA \nF2 \nF1 \nF4 F3"
+   },
+   {
+    "page": 6,
+    "text": "2112R FFF \n321R FFFF \n312RR FFF \nA \n1F\n2F\n3F\nRFA \n1F\n2F\n3F\nRF\nR12F\n几何法 \n力多边形法： 汇交力系 的合力为力 多边形的封\n闭边，作用线过汇交点。 \nA \n1F\n2F\n3F"
+   },
+   {
+    "page": 7,
+    "text": "kjiF RzRyRx FFF R\nkjiF iziyixi FFF \nx \ny \nz \nA \nRF\n1F\n2F\nnF\nR R R\n1 1 1\n,,\nn n n\nx ix y iy z iz\ni i i\nF F F F F F\n  \n    \n in FFFFF 21R\n合力投影定理： 合力在某轴上的投影等于各分力\n在同一轴上投影的代数和。 \n解析法"
+   },
+   {
+    "page": 8,
+    "text": "合力矩定理 \nR\n1\n( ) ( )\nn\nO i O\ni\n M F M F\nR\n11\nnn\nii\nii\n    r F r F r F\nx\ny\nz\nO\n1F\n2F\nnF\nRF\nr\n汇交力系各力对任意点之矩的矢量和等于该\n力系的合力对同一点之矩。"
+   },
+   {
+    "page": 9,
+    "text": "平面力偶系 空间力偶系 \n4M\n力偶系的简化 \n力偶系：作用于刚体上的一组力偶称为力偶系。"
+   },
+   {
+    "page": 10,
+    "text": "in MMMMM  21\n方法: 几何法、解析法 \n平面力偶系 \n代数和 \n力偶系 合力偶 \n自由矢量 \n12 niM M M M M     "
+   },
+   {
+    "page": 11,
+    "text": "图示的三角柱刚体是正方体的一半 。在其中三个侧面\n各自作用着一个力偶 。已知力偶 的矩\nM1=20 N· m；力偶 的矩 M2=20 N· m；力偶 \n的矩M3=20 N· m。 试求合力偶矩矢M。 \n11( , ) FF\n22( , ) FF\n33( , ) FFz \nx \ny \nO \nF1 \nF2 \nF3 \n1F\n3F\n2F"
+   },
+   {
+    "page": 12,
+    "text": "11 2 41 2 (N m)  M . j . k \n1 2 3 0x x x xM M M M   \nmN 2.11321  yyyy MMMM\nmN 2.41321  zzzz MMMM\n解：1.画出各力偶矩矢。 \nx \ny M2 \nz \n45° \nO \nM1 \n45° \nM3 \nx \ny \nO \nF1 \nF2 \nF3 \n1F\n3F\n2F"
+   },
+   {
+    "page": 13,
+    "text": "1.两同向平行力的简化 \nA B \nF1 F2 \nF'1 F'2 \nF'1 =－F'2 F1‖F2 \nC \nK \nF \nFB\n \nFA\n \nB´ \nA´ \nFA\n \nFB\n \nBA FFF \n2211 FFFF \n21 FF \n作用线的位置 \n平行力系的简化 \n1\n2\nF\nF\nCB\nCA "
+   },
+   {
+    "page": 14,
+    "text": "2.两反向平行力的简化 \nF \nC \nF1 \nF2 \nA B \n1\n2\nF\nF\nCB\nCA \n若两平行力为反向等值, 能否确定其中心位置？ \nF'1 \nF'2 \nF' F = F1 － F2"
+   },
+   {
+    "page": 15,
+    "text": "如图,求简支梁AB上线性分布载荷的合力。 \nl\nxqqx \n分布力集度为： \n（1）确定合力的大小 解： \nqldxl\nxqdQQ\nl\nl\n2\n1\n0\n \n（2） 确定合力的作用点 \n()A l\nM x q x dx\n2\n2\n0\n1\n3\nl xq dx qll  \n21\n3\ncQ x ql"
+   },
+   {
+    "page": 16,
+    "text": "结论： \n1、合力的大小等于线载荷所组成几何图形的面积。 \n2、合力的方向与线载荷的方向相同。 \n3、合力的作用线通过载荷图的形心。 \nQ \nq \n1\n2 l\nl\nl\nq2 \nq1 \nQ1 Q2 \nq(x) \nQ \nx \ny \nx \nxC \ndx O"
+   },
+   {
+    "page": 17,
+    "text": "3.空间平行力系的中心 \n平行力系的中心坐标公式 \nx\ny\nz\nF1 F2\nF3\nFn\nr1\nr2 r3\nrn\nFR\nxC\nyC\nzC\nrC\nC\nO\nz\ny\nR( ) ( )O O i M F M F\nR 1 1 2 2C n n       r F r F r F r F\nR iFF\nR 1 1 2 2C n nF F F F   r r r r\n合力 \n0 0 0 0\nR 1 1 2 2C n nF F F F       r l r l r l r l"
+   },
+   {
+    "page": 18,
+    "text": "（2）直角坐标形式（投影式） \n\n\n\n\n\n\n\n\n\ni\nii\nC\ni\nii\nC\ni\nii\nC\nF\nzFz\nF\nyFy\nF\nxFx\n \n \n,\n,\nx\ny\nz\nF1 F2\nF3\nFn\nr1\nr2 r3\nrn\nFR\nxC\nyC\nzC\nrC\nC\nO\nz\ny\n1 1 2 2\nR\niinn\nC\ni\nFF F F\nFF\n   \n\nrr r rr\n（1）矢量形式"
+   },
+   {
+    "page": 19,
+    "text": "积分形式重心坐标公式： \n重心 \n物体各部分所受重力组成的空间平行力系的中心，称为此物体的重心。 \nV\nC\nV\ngxdV\nx\ngdV\n\n\n\n\nii\nC\ni\nP\nP\n \n\n\nrr\n\ndV\n密度 微元体体积 \n对均质物体， \n其重心与形心重合。 \n,VV\nCC\nVV\ngydV gzdV\nyz\ngdV gdV\n\n\n\n"
+   }
+  ],
+  "text": "[p1] 3 特殊力系的简化 \n航天航空学院 \n力学实验教学国家示范中心 \n主讲人 伍晓红\n[p2] 工程实际问题中，研究对象的受力相当复杂。 \n迎 \n面风 \n力 \n侧 面\n风 力\n[p3] 2F\n1F\n3F\n4F\nA \n汇交力系 平行力系 \n 力系的分类 \n力偶系 \n空间一般力系 \n3F\n4F\n1F\n2F\n3F\n1F\n2F\n4F\n4M\n[p4] 汇交力系的简化 \n共点力系:各力作用于物体的同一点的力系。 \n汇交力系:作用在刚体上的各力的作用线汇交于一点的力系 。\n[p5] 汇交力系 共点力系 \n力的可传性 \n合力 \n力的平行四边形法则 \n\n\n\nn\ni\niFFFFF\n1\nn21R \n作用线过汇交点 \n处理的具体方法 \n几何法 \n解析法 \n“图” \n“代数式” \nA \nF2 \nF1 \nF4 F3\n[p6] 2112R FFF \n321R FFFF \n312RR FFF \nA \n1F\n2F\n3F\nRFA \n1F\n2F\n3F\nRF\nR12F\n几何法 \n力多边形法： 汇交力系 的合力为力 多边形的封\n闭边，作用线过汇交点。 \nA \n1F\n2F\n3F\n[p7] kjiF RzRyRx FFF R\nkjiF iziyixi FFF \nx \ny \nz \nA \nRF\n1F\n2F\nnF\nR R R\n1 1 1\n,,\nn n n\nx ix y iy z iz\ni i i\nF F F F F F\n  \n    \n in FFFFF 21R\n合力投影定理： 合力在某轴上的投影等于各分力\n在同一轴上投影的代数和。 \n解析法\n[p8] 合力矩定理 \nR\n1\n( ) ( )\nn\nO i O\ni\n M F M F\nR\n11\nnn\nii\nii\n    r F r F r F\nx\ny\nz\nO\n1F\n2F\nnF\nRF\nr\n汇交力系各力对任意点之矩的矢量和等于该\n力系的合力对同一点之矩。\n[p9] 平面力偶系 空间力偶系 \n4M\n力偶系的简化 \n力偶系：作用于刚体上的一组力偶称为力偶系。\n[p10] in MMMMM  21\n方法: 几何法、解析法 \n平面力偶系 \n代数和 \n力偶系 合力偶 \n自由矢量 \n12 niM M M M M     \n[p11] 图示的三角柱刚体是正方体的一半 。在其中三个侧面\n各自作用着一个力偶 。已知力偶 的矩\nM1=20 N· m；力偶 的矩 M2=20 N· m；力偶 \n的矩M3=20 N· m。 试求合力偶矩矢M。 \n11( , ) FF\n22( , ) FF\n33( , ) FFz \nx \ny \nO \nF1 \nF2 \nF3 \n1F\n3F\n2F\n[p12] 11 2 41 2 (N m)  M . j . k \n1 2 3 0x x x xM M M M   \nmN 2.11321  yyyy MMMM\nmN 2.41321  zzzz MMMM\n解：1.画出各力偶矩矢。 \nx \ny M2 \nz \n45° \nO \nM1 \n45° \nM3 \nx \ny \nO \nF1 \nF2 \nF3 \n1F\n3F\n2F\n[p13] 1.两同向平行力的简化 \nA B \nF1 F2 \nF'1 F'2 \nF'1 =－F'2 F1‖F2 \nC \nK \nF \nFB\n \nFA\n \nB´ \nA´ \nFA\n \nFB\n \nBA FFF \n2211 FFFF \n21 FF \n作用线的位置 \n平行力系的简化 \n1\n2\nF\nF\nCB\nCA \n[p14] 2.两反向平行力的简化 \nF \nC \nF1 \nF2 \nA B \n1\n2\nF\nF\nCB\nCA \n若两平行力为反向等值, 能否确定其中心位置？ \nF'1 \nF'2 \nF' F = F1 － F2\n[p15] 如图,求简支梁AB上线性分布载荷的合力。 \nl\nxqqx \n分布力集度为： \n（1）确定合力的大小 解： \nqldxl\nxqdQQ\nl\nl\n2\n1\n0\n \n（2） 确定合力的作用点 \n()A l\nM x q x dx\n2\n2\n0\n1\n3\nl xq dx qll  \n21\n3\ncQ x ql\n[p16] 结论： \n1、合力的大小等于线载荷所组成几何图形的面积。 \n2、合力的方向与线载荷的方向相同。 \n3、合力的作用线通过载荷图的形心。 \nQ \nq \n1\n2 l\nl\nl\nq2 \nq1 \nQ1 Q2 \nq(x) \nQ \nx \ny \nx \nxC \ndx O\n[p17] 3.空间平行力系的中心 \n平行力系的中心坐标公式 \nx\ny\nz\nF1 F2\nF3\nFn\nr1\nr2 r3\nrn\nFR\nxC\nyC\nzC\nrC\nC\nO\nz\ny\nR( ) ( )O O i M F M F\nR 1 1 2 2C n n       r F r F r F r F\nR iFF\nR 1 1 2 2C n nF F F F   r r r r\n合力 \n0 0 0 0\nR 1 1 2 2C n nF F F F       r l r l r l r l\n[p18] （2）直角坐标形式（投影式） \n\n\n\n\n\n\n\n\n\ni\nii\nC\ni\nii\nC\ni\nii\nC\nF\nzFz\nF\nyFy\nF\nxFx\n \n \n,\n,\nx\ny\nz\nF1 F2\nF3\nFn\nr1\nr2 r3\nrn\nFR\nxC\nyC\nzC\nrC\nC\nO\nz\ny\n1 1 2 2\nR\niinn\nC\ni\nFF F F\nFF\n   \n\nrr r rr\n（1）矢量形式\n[p19] 积分形式重心坐标公式： \n重心 \n物体各部分所受重力组成的空间平行力系的中心，称为此物体的重心。 \nV\nC\nV\ngxdV\nx\ngdV\n\n\n\n\nii\nC\ni\nP\nP\n \n\n\nrr\n\ndV\n密度 微元体体积 \n对均质物体， \n其重心与形心重合。 \n,VV\nCC\nVV\ngydV gzdV\nyz\ngdV gdV\n\n\n\n"
+ },
+ {
+  "file": "理论力学/02 第1章：几何静力学/02 1-2力系的简化/1.2.3力的平移定理.pdf",
+  "chapter": "02 第1章：几何静力学",
+  "lesson": "02 1-2力系的简化",
+  "name": "1.2.3力的平移定理.pdf",
+  "n_pages": 6,
+  "pages": [
+   {
+    "page": 1,
+    "text": "4 力的平移定理 \n航天航空学院 \n力学实验教学国家示范中心 \n \n \n主讲人 伍晓红"
+   },
+   {
+    "page": 2,
+    "text": "F \nA B \n   \nF \nA B \nF \nA B \nF' \nF″ \n \n \nF' \nA B \nMB \n'FF"
+   },
+   {
+    "page": 3,
+    "text": "力的平移定理：作用于刚体上任一点的力可以平行移动到刚体\n内任一指定点而不改变对刚体的作用效应，但必须附加一力偶，\n其力偶矩等于原力对新的作用点之矩。"
+   },
+   {
+    "page": 4,
+    "text": "①力平移的过程是可逆的： \n 一个力和一个力偶可以合成为一个大小和方向与原力相同 \n 但作用线平行移动了的力。 \n在什么情况下一个力和一个力偶可以合成为一个合力？ \n作用在同一平面内的一个力和一\n个力偶可以合成为一个合力。 \nF \nA B \nF' \nF″"
+   },
+   {
+    "page": 5,
+    "text": "②力的平移定理是分析力对物体作用效应的重要方法。"
+   },
+   {
+    "page": 6,
+    "text": "A B \nD C E \nF d \n1. 能否将图中的力F从D点移动到E点\n并附加力偶？ \n不能 \nd \nF \nM \nA \nB \nF\n2. 已知作用在同一平面内的力F和力偶M可\n以合成为一个力，请问合力作用线的位置? \nF\nMd \nF\nM \n2AB\nF\n FMr\n 思考题 \nrAB"
+   }
+  ],
+  "text": "[p1] 4 力的平移定理 \n航天航空学院 \n力学实验教学国家示范中心 \n \n \n主讲人 伍晓红\n[p2] F \nA B \n   \nF \nA B \nF \nA B \nF' \nF″ \n \n \nF' \nA B \nMB \n'FF\n[p3] 力的平移定理：作用于刚体上任一点的力可以平行移动到刚体\n内任一指定点而不改变对刚体的作用效应，但必须附加一力偶，\n其力偶矩等于原力对新的作用点之矩。\n[p4] ①力平移的过程是可逆的： \n 一个力和一个力偶可以合成为一个大小和方向与原力相同 \n 但作用线平行移动了的力。 \n在什么情况下一个力和一个力偶可以合成为一个合力？ \n作用在同一平面内的一个力和一\n个力偶可以合成为一个合力。 \nF \nA B \nF' \nF″\n[p5] ②力的平移定理是分析力对物体作用效应的重要方法。\n[p6] A B \nD C E \nF d \n1. 能否将图中的力F从D点移动到E点\n并附加力偶？ \n不能 \nd \nF \nM \nA \nB \nF\n2. 已知作用在同一平面内的力F和力偶M可\n以合成为一个力，请问合力作用线的位置? \nF\nMd \nF\nM \n2AB\nF\n FMr\n 思考题 \nrAB"
+ },
+ {
+  "file": "理论力学/02 第1章：几何静力学/02 1-2力系的简化/1.2.4空间任意力系的简化.pdf",
+  "chapter": "02 第1章：几何静力学",
+  "lesson": "02 1-2力系的简化",
+  "name": "1.2.4空间任意力系的简化.pdf",
+  "n_pages": 16,
+  "pages": [
+   {
+    "page": 1,
+    "text": "5 空间任意力系的简化 \n航天航空学院 \n力学实验教学国家示范中心 \n主讲人 伍晓红"
+   },
+   {
+    "page": 2,
+    "text": "O \n'\n2F\n'\n1F\n1M\n2M\n'\nnF\nnM\n\n \nO \nRF\nOM\nO 简化点 \nA \nB C \no \n1F\n2F\nnF\n空间任意力系的简化 \nR iFF\n)(FMMM OiO \n主矢 主矩 \n"
+   },
+   {
+    "page": 3,
+    "text": "主矢： 力系中各力的矢量和。 \nRiFF\n思考: 力系的主矢与合力的区别? \n 主矢 \nR Rx Ry RzF i F j F k  F\nRx ixFF\nRy iyFF\nRz izFF\n主矢与简化中心选择无关。"
+   },
+   {
+    "page": 4,
+    "text": "主矩：力系中各力对任选矩心O之矩的矢量和。 \n()O O iM M F\n 主矩 \nA \nir P \no \nFi \ny x \nz \nir\n()O i i i OA i     M r F r r F\n()i i OA i   r F r F\nMA\n FR\n \nO A OA R  M M r F"
+   },
+   {
+    "page": 5,
+    "text": "},{},,,{ R21 On MFFFF \n空间任意力系 \n平衡 \n合力偶 \n合力 \n0,0R  OMF\n0,0R  OMF\n0,0R  OMF\n? \n简化结果的讨论 \n \n0,0R  OMF\n1、 \n2、 \n3、 \n4、"
+   },
+   {
+    "page": 6,
+    "text": "(1) \n0, 0ROFM\nRF\nOM\nO \nRF O \nRF\nRF\n O\n′ \nrO\n′ \n \n合力 \nR\n2\nR\nO\nF\n\n OFMr\n0ROFM\nR OFM\nO \n rO\n′ \nO′ \nRF"
+   },
+   {
+    "page": 7,
+    "text": "R OFM\nOM\nRF\nO \n \n力螺旋 \nO \nRF O’ \n1OMd \nRF\n2OM\nO \n1OM\n(2) \n0, 0ROFM\n0ROFM\nO \nRF\n O’ \n1OMd"
+   },
+   {
+    "page": 8,
+    "text": "一个力和一个作用面与力垂直的力偶的组合称为力螺旋。 \n右手螺旋：力矢F与力偶矩MO指向相同（图a）。 \n左手螺旋：力矢F与力偶矩MO指向相反（图b）。 \nF \nMO \n（a） （b） \nMO \nFR 力螺旋中力的作用线称为力螺旋中心轴。 \nMO \nF"
+   },
+   {
+    "page": 9,
+    "text": "拧螺丝时施加的力螺旋 受到的空气阻力构成力螺旋 \n工程中的力螺旋"
+   },
+   {
+    "page": 10,
+    "text": "空间力系简化的最终结果可能为： \n平面力系简化的最终结果可能为： 平衡、合力、合力偶 \n平衡 合力 \n合力偶 力螺旋"
+   },
+   {
+    "page": 11,
+    "text": "一空间力系如图所示，已知F1=F2=100N，M=20N· m，b=300mm，\nl =h=400mm。求该力系对O点的简化结果，以及该力系的最简合\n成结果。 \n解： \nR 1 2 100 100   F F F i j\n1. 求主矢 \n以O为简化点，建立坐标系如图"
+   },
+   {
+    "page": 12,
+    "text": "( , 0, 0)Al\nO 1 1\n1\n( ) 0 0\n00\ni j k\nl Fl\nF\nM F k\nO 2 2 2\n2\n( ) 0 -F\n00\ni j k\nb h F h b\nF\nM F j k\nO O 1 O 2( ) ( ) ( ) 10 10    M F M M F M F j k\n2. 求主矩 \nMMj\n(0, , )B b h\n11(0, , 0)FF力\n22( , 0, 0)FF力\n作用点 \n作用点"
+   },
+   {
+    "page": 13,
+    "text": "力螺旋 \nRo 0FM\nO O 1 O 2( ) ( ) ( ) 10 10    M F M M F M F j k\nR 1 2 100 100   F F F i j\n3. 最简结果"
+   },
+   {
+    "page": 14,
+    "text": "在长方形平板的O，A，B，C点上分别作用着有四个力：F1=1 kN，F2=2 kN，\nF3=F4=3 kN，试求该力系对O点的简化结果以及该力系的最简合成结果。 \nF1 \nF2 F3 \nF4 \nO \nA B \nC x \ny 2m \n3m \n30° \n60\n° \n解：1.求主矢 建立如图坐标系\nOxy。 \n2 3 4cos60 cos30F F F   \nRxxFF \nkN 598.0\nRyyFF \n1 2 4 sin 60 sin 30F F F   \nkN 768.0\nR 0.598 0.768F i j\nRF"
+   },
+   {
+    "page": 15,
+    "text": "  FOO MM\n2 3 42 cos60 2 3 sin 30F F F   \nR\n0.51 mOMd F\nRR FF\n2. 求主矩 \n0.5kN m\nx O \nA B \nC \ny \nFR \nRF\nOM\n3. 最简结果 \n合力"
+   },
+   {
+    "page": 16,
+    "text": "1. 正方体边长为a。通过B点，在平面OABC上作\n用一个什么样的力，可使图示力系简化为一个作用\n线通过正方体形心的合力？ \n思考题 \na \nO A \nC B \nz \ny \nx \nF1 \nF2 \n2.通过B点，在平面OABC上作\n用一个什么样的力，可使图示\n力系简化为一个合力偶？"
+   }
+  ],
+  "text": "[p1] 5 空间任意力系的简化 \n航天航空学院 \n力学实验教学国家示范中心 \n主讲人 伍晓红\n[p2] O \n'\n2F\n'\n1F\n1M\n2M\n'\nnF\nnM\n\n \nO \nRF\nOM\nO 简化点 \nA \nB C \no \n1F\n2F\nnF\n空间任意力系的简化 \nR iFF\n)(FMMM OiO \n主矢 主矩 \n\n[p3] 主矢： 力系中各力的矢量和。 \nRiFF\n思考: 力系的主矢与合力的区别? \n 主矢 \nR Rx Ry RzF i F j F k  F\nRx ixFF\nRy iyFF\nRz izFF\n主矢与简化中心选择无关。\n[p4] 主矩：力系中各力对任选矩心O之矩的矢量和。 \n()O O iM M F\n 主矩 \nA \nir P \no \nFi \ny x \nz \nir\n()O i i i OA i     M r F r r F\n()i i OA i   r F r F\nMA\n FR\n \nO A OA R  M M r F\n[p5] },{},,,{ R21 On MFFFF \n空间任意力系 \n平衡 \n合力偶 \n合力 \n0,0R  OMF\n0,0R  OMF\n0,0R  OMF\n? \n简化结果的讨论 \n \n0,0R  OMF\n1、 \n2、 \n3、 \n4、\n[p6] (1) \n0, 0ROFM\nRF\nOM\nO \nRF O \nRF\nRF\n O\n′ \nrO\n′ \n \n合力 \nR\n2\nR\nO\nF\n\n OFMr\n0ROFM\nR OFM\nO \n rO\n′ \nO′ \nRF\n[p7] R OFM\nOM\nRF\nO \n \n力螺旋 \nO \nRF O’ \n1OMd \nRF\n2OM\nO \n1OM\n(2) \n0, 0ROFM\n0ROFM\nO \nRF\n O’ \n1OMd\n[p8] 一个力和一个作用面与力垂直的力偶的组合称为力螺旋。 \n右手螺旋：力矢F与力偶矩MO指向相同（图a）。 \n左手螺旋：力矢F与力偶矩MO指向相反（图b）。 \nF \nMO \n（a） （b） \nMO \nFR 力螺旋中力的作用线称为力螺旋中心轴。 \nMO \nF\n[p9] 拧螺丝时施加的力螺旋 受到的空气阻力构成力螺旋 \n工程中的力螺旋\n[p10] 空间力系简化的最终结果可能为： \n平面力系简化的最终结果可能为： 平衡、合力、合力偶 \n平衡 合力 \n合力偶 力螺旋\n[p11] 一空间力系如图所示，已知F1=F2=100N，M=20N· m，b=300mm，\nl =h=400mm。求该力系对O点的简化结果，以及该力系的最简合\n成结果。 \n解： \nR 1 2 100 100   F F F i j\n1. 求主矢 \n以O为简化点，建立坐标系如图\n[p12] ( , 0, 0)Al\nO 1 1\n1\n( ) 0 0\n00\ni j k\nl Fl\nF\nM F k\nO 2 2 2\n2\n( ) 0 -F\n00\ni j k\nb h F h b\nF\nM F j k\nO O 1 O 2( ) ( ) ( ) 10 10    M F M M F M F j k\n2. 求主矩 \nMMj\n(0, , )B b h\n11(0, , 0)FF力\n22( , 0, 0)FF力\n作用点 \n作用点\n[p13] 力螺旋 \nRo 0FM\nO O 1 O 2( ) ( ) ( ) 10 10    M F M M F M F j k\nR 1 2 100 100   F F F i j\n3. 最简结果\n[p14] 在长方形平板的O，A，B，C点上分别作用着有四个力：F1=1 kN，F2=2 kN，\nF3=F4=3 kN，试求该力系对O点的简化结果以及该力系的最简合成结果。 \nF1 \nF2 F3 \nF4 \nO \nA B \nC x \ny 2m \n3m \n30° \n60\n° \n解：1.求主矢 建立如图坐标系\nOxy。 \n2 3 4cos60 cos30F F F   \nRxxFF \nkN 598.0\nRyyFF \n1 2 4 sin 60 sin 30F F F   \nkN 768.0\nR 0.598 0.768F i j\nRF\n[p15]   FOO MM\n2 3 42 cos60 2 3 sin 30F F F   \nR\n0.51 mOMd F\nRR FF\n2. 求主矩 \n0.5kN m\nx O \nA B \nC \ny \nFR \nRF\nOM\n3. 最简结果 \n合力\n[p16] 1. 正方体边长为a。通过B点，在平面OABC上作\n用一个什么样的力，可使图示力系简化为一个作用\n线通过正方体形心的合力？ \n思考题 \na \nO A \nC B \nz \ny \nx \nF1 \nF2 \n2.通过B点，在平面OABC上作\n用一个什么样的力，可使图示\n力系简化为一个合力偶？"
+ },
+ {
+  "file": "理论力学/02 第1章：几何静力学/03 1-3约束与受力分析/1.3.1常见约束及其约束力.pdf",
+  "chapter": "02 第1章：几何静力学",
+  "lesson": "03 1-3约束与受力分析",
+  "name": "1.3.1常见约束及其约束力.pdf",
+  "n_pages": 21,
+  "pages": [
+   {
+    "page": 1,
+    "text": "6 常见约束及其约束反力 \n航天航空学院 \n力学实验教学国家示范中心 \n主讲人 伍晓红"
+   },
+   {
+    "page": 2,
+    "text": "在空间的位置或位移不受限制的 \n物体称为自由体。 \n \n限制物体的位移或速度的某些 \n物体或某种限制条件。 \n在空间中的位置或位移受到限制 \n的物体称为非自由体。 \n约束： \n自由体： \n非自由体："
+   },
+   {
+    "page": 3,
+    "text": "主动力： \n促使物体运动或有运动趋势的力，工程上称为载荷。 \n 约束力： \n 约束作用于被约束体的力，称为约束力或约束反力。 \n约束力特点： \n 1. 约束力的大小和方向与主动力有关。 \n 2. 约束力的 方向和它的约束特点有关 ，与该约束所\n能阻碍的物体的位移方向相反 。"
+   },
+   {
+    "page": 4,
+    "text": "1.柔索约束 \n常见约束 \nB \nE \nD C A"
+   },
+   {
+    "page": 5,
+    "text": "约束特性： \nB \nE \nD C A C D \nFC \nFD \n约束力: \n 沿柔索方向，拉力。 \n 只能承受拉力，阻碍物体沿\n绳索伸长方向的位移。单侧约束。"
+   },
+   {
+    "page": 6,
+    "text": "2.光滑接触面约束 \n常见约束 \n约束特性: 只能限制物体沿着接触点处公法线 \n 朝向约束的位移。 \n约束力: 过接触点、沿公法线方向、指向被约束物体。 \n假设条件：不计摩擦"
+   },
+   {
+    "page": 7,
+    "text": "NAF\nNBF\nNCF\nB \nA \nC \nNF公切面 \n公法线"
+   },
+   {
+    "page": 8,
+    "text": "A \nFA \nA 单\n侧 \n约\n束 \nFN \n双\n侧 \n约\n束 \n其\n他 \n情\n况"
+   },
+   {
+    "page": 9,
+    "text": "3.光滑圆柱铰链约\n束 \n常见约束 \n首都机场候机楼顶棚拱架支座"
+   },
+   {
+    "page": 10,
+    "text": "固定铰支座 \n结构特点： \n 通过带有锁紧螺母的圆柱销钉\n将两个钻有同直径销孔的构件连接在一起。"
+   },
+   {
+    "page": 11,
+    "text": "约束特性： \n 构件只能绕销钉轴线相对转动，与销钉轴线相垂直的平面内的径\n向位移被限制。 \n约束反力： \n 在垂直于销钉轴线的平面内通过圆心 ，方位和指向不能确定的\n一个力。通常将其表示为大小未知的两个正交分力。 \nFy \nFx"
+   },
+   {
+    "page": 12,
+    "text": "在固定铰支座的底部安装若干个\n刚性辊轴（滚柱），即构成辊轴支座 ，\n亦称为可动铰支座。 \n4.辊轴支座 \n \n 约束特点： \n 只限制物体沿支承面法线方向的位移。 \nF \n F \nF \n约束力： \n 通过铰链中心，沿支承面法线方\n向。 \n常见约束"
+   },
+   {
+    "page": 13,
+    "text": "5. 光滑球铰链约束 \n常见约束 \n约束结构: 由一物体的球部嵌入另一物体的球窝构成 。 \nO \n Fx \nFy \nFz \n约束特性: 允许物体绕球心 O 转动,不能沿径向移动 。 \n约束反力: 通过球心 O,方向不能预先确定 ,通常用三\n个 \n 正交分力Fx，Fy，Fz来表示。"
+   },
+   {
+    "page": 14,
+    "text": "人造髋关节"
+   },
+   {
+    "page": 15,
+    "text": "颈轴承 \n 止推轴承 \n6.颈轴承和止推轴\n承 \n常见约束"
+   },
+   {
+    "page": 16,
+    "text": "颈轴承 \nyF\nxF\n约束特点：轴承只限制轴在支承处沿半径方向的位移， \n 而不限制沿轴向的位移 \n 约束力： 沿轴半径方向两个方位已知、大小未知。"
+   },
+   {
+    "page": 17,
+    "text": "yF\nxF\nzF\n约束特点：限制轴在支承处沿半径方向和沿轴向的位移 \n约束力： 两个径向力和一个轴向力。 \n止推轴承"
+   },
+   {
+    "page": 18,
+    "text": "约束特点: 两端以光滑铰链（性质同铰链）和其他物 \n 体相连；不计自重且不再受其它力\n的作用。 \nB C \nD \nA \nFD \nFC \nB C \nD \nA \nC \nD \nFD \nFC \n约束力: 通过两铰链中中心连线，等值、反向。 \n7.二力杆（链杆）约束 \n常见约束"
+   },
+   {
+    "page": 20,
+    "text": "约束特点: 不能沿任何方向移动,也不能绕任一轴转动。 \n8. 固定端约束 \n常见约束"
+   },
+   {
+    "page": 21,
+    "text": "约束力: 有约束反力和约束反力偶 \nA \nMA \nFA \n空间插入端 平面插入端 \nA \nFy \nFz MA \n 约束给约束物体的约束力实际上是一个分布力。 \n 无论它们是如何分布 ，根据力系简化理论 ，可将它们向\n一点简化得一个力和一个力偶。 \nA \nMy \nMz \nMx \nFy \nFx \nFz"
+   }
+  ],
+  "text": "[p1] 6 常见约束及其约束反力 \n航天航空学院 \n力学实验教学国家示范中心 \n主讲人 伍晓红\n[p2] 在空间的位置或位移不受限制的 \n物体称为自由体。 \n \n限制物体的位移或速度的某些 \n物体或某种限制条件。 \n在空间中的位置或位移受到限制 \n的物体称为非自由体。 \n约束： \n自由体： \n非自由体：\n[p3] 主动力： \n促使物体运动或有运动趋势的力，工程上称为载荷。 \n 约束力： \n 约束作用于被约束体的力，称为约束力或约束反力。 \n约束力特点： \n 1. 约束力的大小和方向与主动力有关。 \n 2. 约束力的 方向和它的约束特点有关 ，与该约束所\n能阻碍的物体的位移方向相反 。\n[p4] 1.柔索约束 \n常见约束 \nB \nE \nD C A\n[p5] 约束特性： \nB \nE \nD C A C D \nFC \nFD \n约束力: \n 沿柔索方向，拉力。 \n 只能承受拉力，阻碍物体沿\n绳索伸长方向的位移。单侧约束。\n[p6] 2.光滑接触面约束 \n常见约束 \n约束特性: 只能限制物体沿着接触点处公法线 \n 朝向约束的位移。 \n约束力: 过接触点、沿公法线方向、指向被约束物体。 \n假设条件：不计摩擦\n[p7] NAF\nNBF\nNCF\nB \nA \nC \nNF公切面 \n公法线\n[p8] A \nFA \nA 单\n侧 \n约\n束 \nFN \n双\n侧 \n约\n束 \n其\n他 \n情\n况\n[p9] 3.光滑圆柱铰链约\n束 \n常见约束 \n首都机场候机楼顶棚拱架支座\n[p10] 固定铰支座 \n结构特点： \n 通过带有锁紧螺母的圆柱销钉\n将两个钻有同直径销孔的构件连接在一起。\n[p11] 约束特性： \n 构件只能绕销钉轴线相对转动，与销钉轴线相垂直的平面内的径\n向位移被限制。 \n约束反力： \n 在垂直于销钉轴线的平面内通过圆心 ，方位和指向不能确定的\n一个力。通常将其表示为大小未知的两个正交分力。 \nFy \nFx\n[p12] 在固定铰支座的底部安装若干个\n刚性辊轴（滚柱），即构成辊轴支座 ，\n亦称为可动铰支座。 \n4.辊轴支座 \n \n 约束特点： \n 只限制物体沿支承面法线方向的位移。 \nF \n F \nF \n约束力： \n 通过铰链中心，沿支承面法线方\n向。 \n常见约束\n[p13] 5. 光滑球铰链约束 \n常见约束 \n约束结构: 由一物体的球部嵌入另一物体的球窝构成 。 \nO \n Fx \nFy \nFz \n约束特性: 允许物体绕球心 O 转动,不能沿径向移动 。 \n约束反力: 通过球心 O,方向不能预先确定 ,通常用三\n个 \n 正交分力Fx，Fy，Fz来表示。\n[p14] 人造髋关节\n[p15] 颈轴承 \n 止推轴承 \n6.颈轴承和止推轴\n承 \n常见约束\n[p16] 颈轴承 \nyF\nxF\n约束特点：轴承只限制轴在支承处沿半径方向的位移， \n 而不限制沿轴向的位移 \n 约束力： 沿轴半径方向两个方位已知、大小未知。\n[p17] yF\nxF\nzF\n约束特点：限制轴在支承处沿半径方向和沿轴向的位移 \n约束力： 两个径向力和一个轴向力。 \n止推轴承\n[p18] 约束特点: 两端以光滑铰链（性质同铰链）和其他物 \n 体相连；不计自重且不再受其它力\n的作用。 \nB C \nD \nA \nFD \nFC \nB C \nD \nA \nC \nD \nFD \nFC \n约束力: 通过两铰链中中心连线，等值、反向。 \n7.二力杆（链杆）约束 \n常见约束\n[p20] 约束特点: 不能沿任何方向移动,也不能绕任一轴转动。 \n8. 固定端约束 \n常见约束\n[p21] 约束力: 有约束反力和约束反力偶 \nA \nMA \nFA \n空间插入端 平面插入端 \nA \nFy \nFz MA \n 约束给约束物体的约束力实际上是一个分布力。 \n 无论它们是如何分布 ，根据力系简化理论 ，可将它们向\n一点简化得一个力和一个力偶。 \nA \nMy \nMz \nMx \nFy \nFx \nFz"
+ },
+ {
+  "file": "理论力学/02 第1章：几何静力学/03 1-3约束与受力分析/1.3.2受力分析.pdf",
+  "chapter": "02 第1章：几何静力学",
+  "lesson": "03 1-3约束与受力分析",
+  "name": "1.3.2受力分析.pdf",
+  "n_pages": 12,
+  "pages": [
+   {
+    "page": 1,
+    "text": "7 受力分析 \n航天航空学院 \n力学实验教学国家示范中心 \n主讲人 伍晓红"
+   },
+   {
+    "page": 2,
+    "text": "受力分析 \n 针对具体的研究对象,确定出它所受到的全部力(主\n动力和约束反力)。即真实地反映研究对象的受力信息(方位,\n作用位置) 。 \n 受力图: 以图的方式表示物体上所受的全部力。 \n 受力图是分析、解决力学问题的基础。 \n研究对象(受力体) 约束 约束反力"
+   },
+   {
+    "page": 3,
+    "text": "画受力图的步骤 \n二力杆的识别和三力平衡定理在静力学的应用可使受力分析简化。 \n 2、在隔离体上画出其所受的全部主动力、主动力偶； \n 1、选定研究对象，取隔离体； \n 3、在隔离体的每一约束处，画出其所受的全部约束力。"
+   },
+   {
+    "page": 4,
+    "text": "例1 三铰拱受力分析。 \n 杆的重量不计。 \n \n \nB \nC \n \n \n A \nC \nB \nF \n \nFA \nFB \nA \nC \n \n F \nFC FC \n \nC \n B \n F \n \n A \nC \n \nFB \nFC \nFC \nFA"
+   },
+   {
+    "page": 5,
+    "text": "B \nC \nFB \nFBC \n \n A \nC \n \nFA \nFAC C \n \nF \n \n A \nC \nB \nFBy \nFBx \nFAy \nFAx \nF \n \n A \nC \nB \nF \n FA \n \nFB \nFBC \nFAC"
+   },
+   {
+    "page": 6,
+    "text": "例2 平面系统如图所示，匀质球A 重P1，物块B重P2，滑轮C重量不 \n 计，所有摩擦不计。试分别画出物块B , 球A和滑轮C的受力图。 \nC G \nB \nH \nE \nP1 \nA \nF \nD \n \nP2 \nq"
+   },
+   {
+    "page": 7,
+    "text": "C \n解： \n1.物块B的受力图 B \nP2 \nFD \nA \nP1 \nF \nFF \nE \nFE \n2. 球A的受力图 \n3.滑轮 C 的受力图 \nI \nFC \nC G \nB \nH \nE \nP1 \nA \nF \nD \n \nP2 \nq \nFG \nG \nC \n \n \nFCx \nFCy \nFG \nG FH H \nFH H"
+   },
+   {
+    "page": 8,
+    "text": "A \nB \n 思考题 \n画出棘爪AB的受力图（棘爪重量不计）。 \nF1 \nF2 \nA \nB"
+   },
+   {
+    "page": 9,
+    "text": "几点说明： \n 不要漏画力，也不要多画力。 \n 要画研究对象的隔离体图 \n 作用力与反作用力公理必须严格遵守。 \n 同一系统各研究对象的受力图必须整体与局部一致，相互协调。"
+   },
+   {
+    "page": 10,
+    "text": "将实际结构进行 合理抽象和简化，反映结构几何和受力特征的\n力学模型，称为结构计算简图。 \n结构计算简图 \n1.构件的简化 3.荷载的简化 \n实际结构简化为计算简图，需考虑： \n2.支座（约束）的简化 \n4.结点的简化 \n \n \n \n \n \n \n \n \n \n \n \n \n \n铰结点 \n \n \n \n \n \n \n \n \n刚结点 \n \n \n \n组合结点"
+   },
+   {
+    "page": 11,
+    "text": "A \nB \nE \n \n \n吊臂： \n结构的简化 \n荷载的简化 \n标注尺寸 \n计算简图 \n约束的简化 \n \n G \n \nq  \n \n \nl1 \n \nl2 \n \n \nC \nD"
+   }
+  ],
+  "text": "[p1] 7 受力分析 \n航天航空学院 \n力学实验教学国家示范中心 \n主讲人 伍晓红\n[p2] 受力分析 \n 针对具体的研究对象,确定出它所受到的全部力(主\n动力和约束反力)。即真实地反映研究对象的受力信息(方位,\n作用位置) 。 \n 受力图: 以图的方式表示物体上所受的全部力。 \n 受力图是分析、解决力学问题的基础。 \n研究对象(受力体) 约束 约束反力\n[p3] 画受力图的步骤 \n二力杆的识别和三力平衡定理在静力学的应用可使受力分析简化。 \n 2、在隔离体上画出其所受的全部主动力、主动力偶； \n 1、选定研究对象，取隔离体； \n 3、在隔离体的每一约束处，画出其所受的全部约束力。\n[p4] 例1 三铰拱受力分析。 \n 杆的重量不计。 \n \n \nB \nC \n \n \n A \nC \nB \nF \n \nFA \nFB \nA \nC \n \n F \nFC FC \n \nC \n B \n F \n \n A \nC \n \nFB \nFC \nFC \nFA\n[p5] B \nC \nFB \nFBC \n \n A \nC \n \nFA \nFAC C \n \nF \n \n A \nC \nB \nFBy \nFBx \nFAy \nFAx \nF \n \n A \nC \nB \nF \n FA \n \nFB \nFBC \nFAC\n[p6] 例2 平面系统如图所示，匀质球A 重P1，物块B重P2，滑轮C重量不 \n 计，所有摩擦不计。试分别画出物块B , 球A和滑轮C的受力图。 \nC G \nB \nH \nE \nP1 \nA \nF \nD \n \nP2 \nq\n[p7] C \n解： \n1.物块B的受力图 B \nP2 \nFD \nA \nP1 \nF \nFF \nE \nFE \n2. 球A的受力图 \n3.滑轮 C 的受力图 \nI \nFC \nC G \nB \nH \nE \nP1 \nA \nF \nD \n \nP2 \nq \nFG \nG \nC \n \n \nFCx \nFCy \nFG \nG FH H \nFH H\n[p8] A \nB \n 思考题 \n画出棘爪AB的受力图（棘爪重量不计）。 \nF1 \nF2 \nA \nB\n[p9] 几点说明： \n 不要漏画力，也不要多画力。 \n 要画研究对象的隔离体图 \n 作用力与反作用力公理必须严格遵守。 \n 同一系统各研究对象的受力图必须整体与局部一致，相互协调。\n[p10] 将实际结构进行 合理抽象和简化，反映结构几何和受力特征的\n力学模型，称为结构计算简图。 \n结构计算简图 \n1.构件的简化 3.荷载的简化 \n实际结构简化为计算简图，需考虑： \n2.支座（约束）的简化 \n4.结点的简化 \n \n \n \n \n \n \n \n \n \n \n \n \n \n铰结点 \n \n \n \n \n \n \n \n \n刚结点 \n \n \n \n组合结点\n[p11] A \nB \nE \n \n \n吊臂： \n结构的简化 \n荷载的简化 \n标注尺寸 \n计算简图 \n约束的简化 \n \n G \n \nq  \n \n \nl1 \n \nl2 \n \n \nC \nD"
+ },
+ {
+  "file": "理论力学/02 第1章：几何静力学/04 1-4力系的平衡/1.4.1平面力系的平衡方程.pdf",
+  "chapter": "02 第1章：几何静力学",
+  "lesson": "04 1-4力系的平衡",
+  "name": "1.4.1平面力系的平衡方程.pdf",
+  "n_pages": 13,
+  "pages": [
+   {
+    "page": 1,
+    "text": "平面力系的平衡方程 \n航天航空学院 \n力学实验教学国家示范中心 \n \n \n主讲人 伍晓红"
+   },
+   {
+    "page": 2,
+    "text": "任意力系平衡的充分必要条件是：力系的主矢和对任意点简化的\n主矩均等于零矢量。即 \n 0, 0ROFM\n平面力系 \n• 平面力系的平衡方程 \n0\n0\n( ) 0\nix\niy\nOi\nF\nF\nM\n\n \n F\n基本形式"
+   },
+   {
+    "page": 3,
+    "text": "二矩式 \n( ) 0\n( ) 0\n0\nAi\nBi\nix\nM\nM\nF\n \n \n \nF\nF\n平面力系平衡方程的其他形式 \n三矩式 \n为什么呢？ \nx轴不得垂直于A、B的连线。 \nA、B、C三点不得共线。 \n( ) 0\n( ) 0\n( ) 0\nAi\nBi\nCi\nM\nM\nM\n \n \n \nF\nF\nF"
+   },
+   {
+    "page": 4,
+    "text": "4 \n 平面平行力系的平衡方程 \n只有两个方程，可解两个未知量。 \n \n1\n1\n0\n0\nn\niy\ni\nn\noi\ni\nF\nM\n\n\n\n\n\n F"
+   },
+   {
+    "page": 5,
+    "text": "平面汇交力系的平衡方程 \n11\n0, 0\nnn\nix iy\nii\nFF\n\n\n只有两个方程，可解两个未知量。"
+   },
+   {
+    "page": 6,
+    "text": "6 \n显然，关于力平衡的方程自然满足。 \n1\n0\nn\ni\ni\nM\n\n\n只有一个方程，可解一个未知量。 \n 平面力偶系的平衡方程"
+   },
+   {
+    "page": 7,
+    "text": "1．根据问题条件和要求，选取研究对象。 \n2．分析研究对象的受力情况，画受力图。 \n3．根据受力类型列写平衡方程。 \n4．求解。校核和讨论计算结果。 \n平面力系平衡问题求解步骤"
+   },
+   {
+    "page": 8,
+    "text": "例1 塔式起重机如图所示。机架重\nG1=700 kN，作用线通过塔架的中心。最大\n起重量G2=200 kN，最大悬臂长为12 m， \n轨道AB的间距为4 m。平衡荷重G3到机身\n中心线距离为6 m。试问：(1)保证起重机在\n满载和空载时都不翻倒，求平衡荷重G3应\n为多少? (2)当平衡荷重G3=180 kN时，求满\n载时轨道A，B给起重机轮子的约束力？ \nA \n B \n2 m \n 2 m \n6 m \n 12 m \nG1 \nG2 \nG3 \nx \n• 应用举例"
+   },
+   {
+    "page": 9,
+    "text": "A \n B \n2 m \n 2 m \n6 m \n 12 m \nG1 \nG2 \nG3 \nAF\nBF\n(1)保证起重机在满载和空载时都不翻倒，求平衡荷重G3应为多少? \n解：取塔式起重机为研究对象 \n满载时不绕B点翻倒，临界FA=0 \n  0BM  F\n \n  0m 2m 12m 2\nm 2m 6\n21\n3\n\n\nGG\nG min\nkN 753 minG\n 受力如图所示"
+   },
+   {
+    "page": 10,
+    "text": "空载时G2 = 0，不绕A点翻倒，临界FB = 0 \n  0AM  F\n75 kN＜G3＜350 kN \n  0m 2m 2m 6 13  GG max\nkN 3503 maxG\nAF\nBF\nA \n B \n2 m \n 2 m \n6 m \n 12 m \nG1 \nG2 \nG3"
+   },
+   {
+    "page": 11,
+    "text": "  0AM  F\n870 kNBF \n(2) 取G3=180kN，求满载时轨道A ， B给起重机轮子的约束力。 \n    0m 4m 2m 12m 2m 2m 6 213  BFGGG\n0yF \n210 kNAF \nAF\nBF\nA \n B \n2 m \n 2 m \n6 m \n 12 m \nG1 \nG2 \nG3 \n3 1 2-0 ABG G G F F    \n  0BM  F"
+   },
+   {
+    "page": 12,
+    "text": "例2 梁AB上受到一个均布载荷和一个力偶作用，已知载荷集度\n（即梁的每单位长度上所受的力）q = 100 N/m，力偶矩大小M = \n500 N•m。长度AB = 3 m，DB=1 m。求活动铰支D和固定铰支A的\n约束力。 \nq M \nD B A \n1m 2m"
+   },
+   {
+    "page": 13,
+    "text": "175AyF \nB A \n解：取AB梁为研究对象 \n0 xF\n0)(  FM A\n0 yF\nF \nFAy \nFAx D \nFD \nM \ny \nx \nF =q×AB=100×3=300 N \n0AxF\n022  MFABF D\nN \n0 DAy FFF\nq M \nD B A \n1m 2m \nC \nF \n475DF \nN \n受力如图所示"
+   }
+  ],
+  "text": "[p1] 平面力系的平衡方程 \n航天航空学院 \n力学实验教学国家示范中心 \n \n \n主讲人 伍晓红\n[p2] 任意力系平衡的充分必要条件是：力系的主矢和对任意点简化的\n主矩均等于零矢量。即 \n 0, 0ROFM\n平面力系 \n• 平面力系的平衡方程 \n0\n0\n( ) 0\nix\niy\nOi\nF\nF\nM\n\n \n F\n基本形式\n[p3] 二矩式 \n( ) 0\n( ) 0\n0\nAi\nBi\nix\nM\nM\nF\n \n \n \nF\nF\n平面力系平衡方程的其他形式 \n三矩式 \n为什么呢？ \nx轴不得垂直于A、B的连线。 \nA、B、C三点不得共线。 \n( ) 0\n( ) 0\n( ) 0\nAi\nBi\nCi\nM\nM\nM\n \n \n \nF\nF\nF\n[p4] 4 \n 平面平行力系的平衡方程 \n只有两个方程，可解两个未知量。 \n \n1\n1\n0\n0\nn\niy\ni\nn\noi\ni\nF\nM\n\n\n\n\n\n F\n[p5] 平面汇交力系的平衡方程 \n11\n0, 0\nnn\nix iy\nii\nFF\n\n\n只有两个方程，可解两个未知量。\n[p6] 6 \n显然，关于力平衡的方程自然满足。 \n1\n0\nn\ni\ni\nM\n\n\n只有一个方程，可解一个未知量。 \n 平面力偶系的平衡方程\n[p7] 1．根据问题条件和要求，选取研究对象。 \n2．分析研究对象的受力情况，画受力图。 \n3．根据受力类型列写平衡方程。 \n4．求解。校核和讨论计算结果。 \n平面力系平衡问题求解步骤\n[p8] 例1 塔式起重机如图所示。机架重\nG1=700 kN，作用线通过塔架的中心。最大\n起重量G2=200 kN，最大悬臂长为12 m， \n轨道AB的间距为4 m。平衡荷重G3到机身\n中心线距离为6 m。试问：(1)保证起重机在\n满载和空载时都不翻倒，求平衡荷重G3应\n为多少? (2)当平衡荷重G3=180 kN时，求满\n载时轨道A，B给起重机轮子的约束力？ \nA \n B \n2 m \n 2 m \n6 m \n 12 m \nG1 \nG2 \nG3 \nx \n• 应用举例\n[p9] A \n B \n2 m \n 2 m \n6 m \n 12 m \nG1 \nG2 \nG3 \nAF\nBF\n(1)保证起重机在满载和空载时都不翻倒，求平衡荷重G3应为多少? \n解：取塔式起重机为研究对象 \n满载时不绕B点翻倒，临界FA=0 \n  0BM  F\n \n  0m 2m 12m 2\nm 2m 6\n21\n3\n\n\nGG\nG min\nkN 753 minG\n 受力如图所示\n[p10] 空载时G2 = 0，不绕A点翻倒，临界FB = 0 \n  0AM  F\n75 kN＜G3＜350 kN \n  0m 2m 2m 6 13  GG max\nkN 3503 maxG\nAF\nBF\nA \n B \n2 m \n 2 m \n6 m \n 12 m \nG1 \nG2 \nG3\n[p11]   0AM  F\n870 kNBF \n(2) 取G3=180kN，求满载时轨道A ， B给起重机轮子的约束力。 \n    0m 4m 2m 12m 2m 2m 6 213  BFGGG\n0yF \n210 kNAF \nAF\nBF\nA \n B \n2 m \n 2 m \n6 m \n 12 m \nG1 \nG2 \nG3 \n3 1 2-0 ABG G G F F    \n  0BM  F\n[p12] 例2 梁AB上受到一个均布载荷和一个力偶作用，已知载荷集度\n（即梁的每单位长度上所受的力）q = 100 N/m，力偶矩大小M = \n500 N•m。长度AB = 3 m，DB=1 m。求活动铰支D和固定铰支A的\n约束力。 \nq M \nD B A \n1m 2m\n[p13] 175AyF \nB A \n解：取AB梁为研究对象 \n0 xF\n0)(  FM A\n0 yF\nF \nFAy \nFAx D \nFD \nM \ny \nx \nF =q×AB=100×3=300 N \n0AxF\n022  MFABF D\nN \n0 DAy FFF\nq M \nD B A \n1m 2m \nC \nF \n475DF \nN \n受力如图所示"
+ },
+ {
+  "file": "理论力学/02 第1章：几何静力学/04 1-4力系的平衡/1.4.2空间力系.pdf",
+  "chapter": "02 第1章：几何静力学",
+  "lesson": "04 1-4力系的平衡",
+  "name": "1.4.2空间力系.pdf",
+  "n_pages": 9,
+  "pages": [
+   {
+    "page": 1,
+    "text": "空间力系的平衡方程 \n航天航空学院 \n力学实验教学国家示范中心 \n主讲人 伍晓红"
+   },
+   {
+    "page": 2,
+    "text": "空间任意力系平衡的必要与充分条件是：力系的主矢和对任意点\n简化的主矩均等于零矢量。即 \nR 0, 0 O F M\n投影式 \n\n\n\nn\ni\nzi\nn\ni\nyi\nn\ni\nxi FFF\n111\n0 ,0 ,0\n• 空间力系的平衡方程 \n1 1 1\n0, 0, 0\nn n n\nxi yi zi\ni i i\nM M M\n  \n    \n具有六个独立方程，可解六个未知量。"
+   },
+   {
+    "page": 3,
+    "text": "• 空间汇交力系 \n\n\n\nn\ni\nzi\nn\ni\nyi\nn\ni\nxi FFF\n111\n0 ,0 ,0\n1 1 1\n0, 0, 0\nn n n\nzi yi zi\ni i i\nF M M\n  \n    \n• 空间平行力系 \n1 1 1\n0, 0, 0\nn n n\nxi yi zi\ni i i\nM M M\n  \n    \n• 空间力偶系"
+   },
+   {
+    "page": 4,
+    "text": "例1 已知：AB 杆由 AD, BC 两条绳\n拉置于两光滑平面, A、C 在同一垂线\n上，AB杆重 80N，A、B光滑接触 ，\n∠ABC=∠BCE=60º, 且AD水平 ，AC \n铅直。求平衡时，TA，TB 及A、B处的\n约束反力。"
+   },
+   {
+    "page": 5,
+    "text": "' 0DDM \n解：以AB杆为研究对象，画受力图，建坐标系 \nXF  0\nyF  0\nBNP 0\nBNP N80\ncosABTT    60 0\nsinABNT   60 0\nZF  0\n1cos60 0 2\nBT AC P CE      "
+   },
+   {
+    "page": 6,
+    "text": "cot . NB\nPT   60 23 12\ncot cosAC CE  \n60 60\ncos . NABTT  60 11 5\n NAN  20\n1cos60 0 2\nBT AC P CE      "
+   },
+   {
+    "page": 7,
+    "text": "例2 在图中皮带的拉力F2=2F1，曲柄上作用有铅垂力F=2000N。已知皮\n带轮的直径D=400mm，曲柄长R=300mm，皮带1和皮带2与铅垂线间夹\n角分别为 和β,  =30o , β =60o ，其它尺寸如图所示，求皮带拉力和轴\n承约束力。"
+   },
+   {
+    "page": 8,
+    "text": "解： 以整个轴为研究对象，受力分析 \n  0xM  F\n  0yM  F\n12cos30 200 cos60 200 200 400 0 BzF F F F        \n  0zM  F\n 21 02\nDFR F F  \n12sin 30 200 sin 60 200 400 0 BxF F F      \n12 3000 N 6000 NFF\n3348 NBxF \n1799 NBzF "
+   },
+   {
+    "page": 9,
+    "text": "0xF \n0zF \n12sin 30 sin 60 0 Ax BxF F F F    \n12cos30 cos60 0 Az BzF F F F F     \n1004 N 9397 NAx AzFF "
+   }
+  ],
+  "text": "[p1] 空间力系的平衡方程 \n航天航空学院 \n力学实验教学国家示范中心 \n主讲人 伍晓红\n[p2] 空间任意力系平衡的必要与充分条件是：力系的主矢和对任意点\n简化的主矩均等于零矢量。即 \nR 0, 0 O F M\n投影式 \n\n\n\nn\ni\nzi\nn\ni\nyi\nn\ni\nxi FFF\n111\n0 ,0 ,0\n• 空间力系的平衡方程 \n1 1 1\n0, 0, 0\nn n n\nxi yi zi\ni i i\nM M M\n  \n    \n具有六个独立方程，可解六个未知量。\n[p3] • 空间汇交力系 \n\n\n\nn\ni\nzi\nn\ni\nyi\nn\ni\nxi FFF\n111\n0 ,0 ,0\n1 1 1\n0, 0, 0\nn n n\nzi yi zi\ni i i\nF M M\n  \n    \n• 空间平行力系 \n1 1 1\n0, 0, 0\nn n n\nxi yi zi\ni i i\nM M M\n  \n    \n• 空间力偶系\n[p4] 例1 已知：AB 杆由 AD, BC 两条绳\n拉置于两光滑平面, A、C 在同一垂线\n上，AB杆重 80N，A、B光滑接触 ，\n∠ABC=∠BCE=60º, 且AD水平 ，AC \n铅直。求平衡时，TA，TB 及A、B处的\n约束反力。\n[p5] ' 0DDM \n解：以AB杆为研究对象，画受力图，建坐标系 \nXF  0\nyF  0\nBNP 0\nBNP N80\ncosABTT    60 0\nsinABNT   60 0\nZF  0\n1cos60 0 2\nBT AC P CE      \n[p6] cot . NB\nPT   60 23 12\ncot cosAC CE  \n60 60\ncos . NABTT  60 11 5\n NAN  20\n1cos60 0 2\nBT AC P CE      \n[p7] 例2 在图中皮带的拉力F2=2F1，曲柄上作用有铅垂力F=2000N。已知皮\n带轮的直径D=400mm，曲柄长R=300mm，皮带1和皮带2与铅垂线间夹\n角分别为 和β,  =30o , β =60o ，其它尺寸如图所示，求皮带拉力和轴\n承约束力。\n[p8] 解： 以整个轴为研究对象，受力分析 \n  0xM  F\n  0yM  F\n12cos30 200 cos60 200 200 400 0 BzF F F F        \n  0zM  F\n 21 02\nDFR F F  \n12sin 30 200 sin 60 200 400 0 BxF F F      \n12 3000 N 6000 NFF\n3348 NBxF \n1799 NBzF \n[p9] 0xF \n0zF \n12sin 30 sin 60 0 Ax BxF F F F    \n12cos30 cos60 0 Az BzF F F F F     \n1004 N 9397 NAx AzFF "
+ },
+ {
+  "file": "理论力学/02 第1章：几何静力学/04 1-4力系的平衡/1.4.3刚体系的平衡问题.pdf",
+  "chapter": "02 第1章：几何静力学",
+  "lesson": "04 1-4力系的平衡",
+  "name": "1.4.3刚体系的平衡问题.pdf",
+  "n_pages": 16,
+  "pages": [
+   {
+    "page": 1,
+    "text": "10 刚体系统的平衡 \n航天航空学院 \n力学实验教学国家示范中心 \n \n \n主讲人 伍晓红"
+   },
+   {
+    "page": 2,
+    "text": "刚体系统平衡：是指组成该系统的每一个刚体都处于平衡状态。 \n 外力：系统以外的物体作用于刚体系统上的力。 \n 内力：系统内部各个刚体之间的相互作用力。 \n 刚体系统：由若干个刚体通过约束组成的系统。 \n• 基本概念"
+   },
+   {
+    "page": 3,
+    "text": "例1 平面结构的尺寸和载荷如图所示\n。已知：a、F、Q。 \n 不考虑结构重量，求支座A、B \n的约束力。 \n \n \n \n \nC \n2a \n \n \n \nA B \n \nF \n \n \n \n \na \na \n \n \n a 2a a \n \n Q"
+   },
+   {
+    "page": 4,
+    "text": "2a \n \n \n C \n A B \na \n \n \n \n \na \n \n \n a a 2a \n \n \n0AM \n0BM \n0xF 解：研究整体（刚化） \n0Ax BxF F Q  \n40ByF a Q a F a     \n4 3 0AyF a F a Q a      \n1 ()4\nBy FQF\n31\n44\nAy FQF\nFBy \nFBx \n \nF \n Q \nFAy \nFAx"
+   },
+   {
+    "page": 5,
+    "text": "0CM \n2 2 0Ax AyF a F a F a     \n2、考虑左半部分 \n1 ()4\nAxF F Q\n1 (3 )4\nBxF Q F\n \nA \nC \n \n \nFCy \nFCx \nFAy \nFAx \n \nF \n0Ax BxF F Q  "
+   },
+   {
+    "page": 6,
+    "text": "列平衡方程 \n00x Ax CxF F F  \n00y Ay CyF F F F   \n解：以左半部分为研究对象 解法二： \nA \nC \n \n \nFCy \nFCx \nFAy \nFAx \n \nF \n0 2 2 0C Ax AyM F a F a F a      "
+   },
+   {
+    "page": 7,
+    "text": "列平衡方程 \n00x Bx CxF F F Q    \n00y By CyF F F   \n0 2 2 0C Bx ByM F a F a Q a      \n以右半部分为研究对象 \n \n \nB \nC \n \n \nFBy \nFBx \nFCx ′ \nFCy ′ Q \nCyCyCxCx FFFF  ,\n6个方程可解出\n6个未知量 \n思考：法一和法二的不同之处在哪里？哪种方法简单？ \n 总结两种方法的特点。"
+   },
+   {
+    "page": 8,
+    "text": "例2 如图所示结构，已知 F=15 kN， M =40 kN· m。各杆件自重不计。 \n 求A、B和D处的约束力。 \nM  A \nB \nE \nD \nC \n \n \nF \n \n \n \n \n \n \n \n \n4m \n4m \n2m 2m \n \n2m \n2m \n \n60°"
+   },
+   {
+    "page": 9,
+    "text": "2m 2m \nB E \nC \n \n \n60° 解：先取BC为研究对象，画受力图 \nF \n \nFBy \nFBx \nFCx \n \n \nFCy \n  0CMF \n04260sin  ByFF\nFBy = 6.5 k N \nM  A \nB \nE \nD \nC \n \n \nF \n \n \n \n \n \n \n \n \n4m \n4m \n2m 2m \n \n2m \n2m \n \n60°"
+   },
+   {
+    "page": 10,
+    "text": "0xF \ncos60 0Dx BxF F F  \n0yF \n060sin  DyBy FFF\nFDy = 6.5 k N FDx = -13.25 k N \nFBx = -20.75 k N \n   0FM D\nsin 60 4 cos60 4\n6 4 0By Bx\nM F F\nFF\n   \n    \n 2.再取BCD为研究对象 \nFDx FDy \n \nM \nB E \nD \nC \n \n \n \n \n \n4m \n2m 2m 2m \n \nFBy \nFBx \n \nF \n60° \nFBy = 6.5 k N"
+   },
+   {
+    "page": 11,
+    "text": " \nA \nB \n \n \n \n \n \n4m \n \n2m \n \n \nFBx′ \nFBy′ \nFAy \nFAx \nMA \nMA = -15.5 kN·m \n FAx = -20.75 kN \n FAy = 6.5 kN \n0xF \n-0 Ax BxFF \n0yF \n0Ay ByFF \n  0AMF \n4 2 0A By BxM F F     \n 3.再取AB为研究对象 \n 4.校核 \n  0BMF \n4 2 0A Ay AxM F F    "
+   },
+   {
+    "page": 12,
+    "text": "静定问题 ： 未知量个数=独立的平\n衡 \n 方程个数； \n•静定、静不定问题 \n静不定问题：未知量个数>独立的平衡 \n 方程个数。"
+   },
+   {
+    "page": 13,
+    "text": "1.如何判定? \n2.静不定次数 \n3.静不定问题的求解 \n正确的受力分析力系类型独立方程个数 \n静不定次数=未知量个数-独立方程个数 \n对于静不定问题，能否求解出部分未知量？ \n如何解除多余的约束，使其变为静定问题？ \n约束反力与变形有关,需补充变形协调方程(材力)"
+   },
+   {
+    "page": 14,
+    "text": "判断下面结构是否静定？ \n \nFAx \n \nFAy \n是 \n否 \n思考 \n \nFBx \n \nFBy \n \nFAx \n \nFAy \n \nFBx \n \nFBy \n \nFBx \n \nFBy \nM \n \nFAx \n \nFAy \n否"
+   },
+   {
+    "page": 15,
+    "text": "思考 判断下面结构是否静定？"
+   },
+   {
+    "page": 16,
+    "text": "16"
+   }
+  ],
+  "text": "[p1] 10 刚体系统的平衡 \n航天航空学院 \n力学实验教学国家示范中心 \n \n \n主讲人 伍晓红\n[p2] 刚体系统平衡：是指组成该系统的每一个刚体都处于平衡状态。 \n 外力：系统以外的物体作用于刚体系统上的力。 \n 内力：系统内部各个刚体之间的相互作用力。 \n 刚体系统：由若干个刚体通过约束组成的系统。 \n• 基本概念\n[p3] 例1 平面结构的尺寸和载荷如图所示\n。已知：a、F、Q。 \n 不考虑结构重量，求支座A、B \n的约束力。 \n \n \n \n \nC \n2a \n \n \n \nA B \n \nF \n \n \n \n \na \na \n \n \n a 2a a \n \n Q\n[p4] 2a \n \n \n C \n A B \na \n \n \n \n \na \n \n \n a a 2a \n \n \n0AM \n0BM \n0xF 解：研究整体（刚化） \n0Ax BxF F Q  \n40ByF a Q a F a     \n4 3 0AyF a F a Q a      \n1 ()4\nBy FQF\n31\n44\nAy FQF\nFBy \nFBx \n \nF \n Q \nFAy \nFAx\n[p5] 0CM \n2 2 0Ax AyF a F a F a     \n2、考虑左半部分 \n1 ()4\nAxF F Q\n1 (3 )4\nBxF Q F\n \nA \nC \n \n \nFCy \nFCx \nFAy \nFAx \n \nF \n0Ax BxF F Q  \n[p6] 列平衡方程 \n00x Ax CxF F F  \n00y Ay CyF F F F   \n解：以左半部分为研究对象 解法二： \nA \nC \n \n \nFCy \nFCx \nFAy \nFAx \n \nF \n0 2 2 0C Ax AyM F a F a F a      \n[p7] 列平衡方程 \n00x Bx CxF F F Q    \n00y By CyF F F   \n0 2 2 0C Bx ByM F a F a Q a      \n以右半部分为研究对象 \n \n \nB \nC \n \n \nFBy \nFBx \nFCx ′ \nFCy ′ Q \nCyCyCxCx FFFF  ,\n6个方程可解出\n6个未知量 \n思考：法一和法二的不同之处在哪里？哪种方法简单？ \n 总结两种方法的特点。\n[p8] 例2 如图所示结构，已知 F=15 kN， M =40 kN· m。各杆件自重不计。 \n 求A、B和D处的约束力。 \nM  A \nB \nE \nD \nC \n \n \nF \n \n \n \n \n \n \n \n \n4m \n4m \n2m 2m \n \n2m \n2m \n \n60°\n[p9] 2m 2m \nB E \nC \n \n \n60° 解：先取BC为研究对象，画受力图 \nF \n \nFBy \nFBx \nFCx \n \n \nFCy \n  0CMF \n04260sin  ByFF\nFBy = 6.5 k N \nM  A \nB \nE \nD \nC \n \n \nF \n \n \n \n \n \n \n \n \n4m \n4m \n2m 2m \n \n2m \n2m \n \n60°\n[p10] 0xF \ncos60 0Dx BxF F F  \n0yF \n060sin  DyBy FFF\nFDy = 6.5 k N FDx = -13.25 k N \nFBx = -20.75 k N \n   0FM D\nsin 60 4 cos60 4\n6 4 0By Bx\nM F F\nFF\n   \n    \n 2.再取BCD为研究对象 \nFDx FDy \n \nM \nB E \nD \nC \n \n \n \n \n \n4m \n2m 2m 2m \n \nFBy \nFBx \n \nF \n60° \nFBy = 6.5 k N\n[p11]  \nA \nB \n \n \n \n \n \n4m \n \n2m \n \n \nFBx′ \nFBy′ \nFAy \nFAx \nMA \nMA = -15.5 kN·m \n FAx = -20.75 kN \n FAy = 6.5 kN \n0xF \n-0 Ax BxFF \n0yF \n0Ay ByFF \n  0AMF \n4 2 0A By BxM F F     \n 3.再取AB为研究对象 \n 4.校核 \n  0BMF \n4 2 0A Ay AxM F F    \n[p12] 静定问题 ： 未知量个数=独立的平\n衡 \n 方程个数； \n•静定、静不定问题 \n静不定问题：未知量个数>独立的平衡 \n 方程个数。\n[p13] 1.如何判定? \n2.静不定次数 \n3.静不定问题的求解 \n正确的受力分析力系类型独立方程个数 \n静不定次数=未知量个数-独立方程个数 \n对于静不定问题，能否求解出部分未知量？ \n如何解除多余的约束，使其变为静定问题？ \n约束反力与变形有关,需补充变形协调方程(材力)\n[p14] 判断下面结构是否静定？ \n \nFAx \n \nFAy \n是 \n否 \n思考 \n \nFBx \n \nFBy \n \nFAx \n \nFAy \n \nFBx \n \nFBy \n \nFBx \n \nFBy \nM \n \nFAx \n \nFAy \n否\n[p15] 思考 判断下面结构是否静定？\n[p16] 16"
+ },
+ {
+  "file": "理论力学/02 第1章：几何静力学/04 1-4力系的平衡/1.4.4平面桁架内力计算.pdf",
+  "chapter": "02 第1章：几何静力学",
+  "lesson": "04 1-4力系的平衡",
+  "name": "1.4.4平面桁架内力计算.pdf",
+  "n_pages": 16,
+  "pages": [
+   {
+    "page": 1,
+    "text": "10 平面桁架内力计算 \n航天航空学院 \n力学实验教学国家示范中心 \n主讲人 伍晓红"
+   },
+   {
+    "page": 2,
+    "text": "工程中的各种桁架结构"
+   },
+   {
+    "page": 3,
+    "text": "桁架是由若干直杆在两端通过焊接、铆接或榫接所构\n成的几何形状不变的工程承载结构。其具有用料省、自重\n轻、承载能力强等优点，因此在工程中应用广泛。"
+   },
+   {
+    "page": 4,
+    "text": "组成桁架的杆件的轴线都在同一平面内的桁架称为平面桁架。\n否则,称之为空间桁架。 \n空间桁架 \n平面桁架"
+   },
+   {
+    "page": 5,
+    "text": "桁架中各杆轴线的交点称为节点。 \n焊接 螺栓连接 铆接 \n 榫接"
+   },
+   {
+    "page": 6,
+    "text": "平面桁架模型 \n3.所有载荷沿桁架平面作用于节点上。 \n1.节点抽象化为光滑铰链连接。 \n2.各杆件自重不计或平均分配在两端节点上。 \n桁架中每根杆件均为二力杆 \n理想桁架"
+   },
+   {
+    "page": 7,
+    "text": "以基本三角形为基础 ，每增加一个节点 ，需要增加两根轴线\n不平行的杆件，依次类推所构成的桁架称为简单平面桁架。 \n \nB \nA \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n23mn=-\nm -杆件数, n -节点数 \n平面简单桁架 \n（平面静定桁架）"
+   },
+   {
+    "page": 8,
+    "text": "（1）节点法： 以各个节点为研究对象，通过其平衡方程，求出 \n 杆件内力的方法。 \n（2）截面法：假想用一截面把桁架切开，分为两部分，取任一部分 \n 为分离体，列出其平衡方程，解出被切杆件的内力。 \n实际结构多数为空间桁架。可用大型计算软件直接计算。 \n求平面桁架各杆内力的方法"
+   },
+   {
+    "page": 9,
+    "text": "例：求图中所示桁架杆1，2，3的内力。已知P1，P2, 尺寸如图。 \n \n4m \nA \n B \n \n \n \n \n3m×6=18m \nP1 \n P2 \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nC \nD \n E \nF \nH \nK \nP2 \n1 \n2 \n3"
+   },
+   {
+    "page": 10,
+    "text": "解：以整体为研究对象，求出支座约束力。 \n  0xF\n  0yF\n0 AM\n0AxF \n2 1 218 3 9 15 0ByF P P P       \n12+ - -2 0Ay ByF F P P \n21 2AyF P P\n21 2ByF P P\nP1 \n P2 \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nC \nD \n E \nF \nH \nK \nP2 \n1 \n2 \n3 \n \nFAy \nFAx \n \n \nFBy"
+   },
+   {
+    "page": 11,
+    "text": "节点法 \n依次取节点A、C、D、E、F为研究对象 \n00 4F F F 5 y Ay AD，= + =\n00 3F F F 5 x AC AD，= + =\n节点A \n12\n5F P 2P 8 AD = - ( ) \n \nFAy \nA \nFAC \nFAD \n \nA 1 2\n3F P 2P8 C = ( )\nP1 \n P2 \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nC \nD \n E \nF \nH \nK \nP2 \nFAy \n \n \nFBy \n1 \n2 \n3 \nA"
+   },
+   {
+    "page": 12,
+    "text": "0F y =\n0F x =\n节点C \nCD 2FP =\nF 1 2\n3F P 2P8 C = ( )\nFCD \n \nP2 \nC \nFAC \n \n \n FCF \nP1 \n P2 \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nC \nD \n E \nF \nH \nK \nP2 \nFAy \n \n \nFBy \n1 \n2 \n3 \nA \nDF 1\n5FP 8=\nDE 1 2\n3F P P 4 = - ( )\nEFF0 =\n1 1 2\n3F P P4 = - ( )\n21\n5FP 8=-\n3 1 2\n93F P P84 ="
+   },
+   {
+    "page": 13,
+    "text": "m \nm \nF1 \n \n \n F3 \nC \n F \nFAy \nD \n E \nF2 \n用截面m-m分桁架为两部分， \n取桁架左边部分 \n截面法 \nP1 \n P2 \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nC \nD \n E \nF \nH \nK \nP2 \n1 \n2 \n3 \nA \nP2 \n \n \n \n \n \n \n \n \n \n \n0M = E\n24 6 + 0F F P 3   Ay1- - =\n0F  y\n03F F F 51 3 2+ + =\n0F = x\n02\n4F F P 5Ay 2+ - =\n 3\n4\n12F P P 1 =-\n5\n8\n1FP2 =-\n3\n4\n12\n9F P P8 3 ="
+   },
+   {
+    "page": 14,
+    "text": "P1 \n \nP2 \n \nP3"
+   },
+   {
+    "page": 15,
+    "text": "零杆的确定 \n（1）若某节点只与两杆相连 ，\n节点上无主动力 ，两杆不平行 ，\n则两杆均为零杆 。（右图1、2\n杆） \n（2）若某节点与三杆相连，节点上无主动力，两杆平\n行，则第三杆为零杆。 \nP \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nA \n B \nA \nP \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nA \n B \nC \nD \nE \nH \nF"
+   },
+   {
+    "page": 16,
+    "text": "解决工程静力问题的方法 \n同学们自己设计的桁架结构 \n 理论计算 \n建模（结构、约束、载荷）  数值模拟 \n 实验研究"
+   }
+  ],
+  "text": "[p1] 10 平面桁架内力计算 \n航天航空学院 \n力学实验教学国家示范中心 \n主讲人 伍晓红\n[p2] 工程中的各种桁架结构\n[p3] 桁架是由若干直杆在两端通过焊接、铆接或榫接所构\n成的几何形状不变的工程承载结构。其具有用料省、自重\n轻、承载能力强等优点，因此在工程中应用广泛。\n[p4] 组成桁架的杆件的轴线都在同一平面内的桁架称为平面桁架。\n否则,称之为空间桁架。 \n空间桁架 \n平面桁架\n[p5] 桁架中各杆轴线的交点称为节点。 \n焊接 螺栓连接 铆接 \n 榫接\n[p6] 平面桁架模型 \n3.所有载荷沿桁架平面作用于节点上。 \n1.节点抽象化为光滑铰链连接。 \n2.各杆件自重不计或平均分配在两端节点上。 \n桁架中每根杆件均为二力杆 \n理想桁架\n[p7] 以基本三角形为基础 ，每增加一个节点 ，需要增加两根轴线\n不平行的杆件，依次类推所构成的桁架称为简单平面桁架。 \n \nB \nA \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n23mn=-\nm -杆件数, n -节点数 \n平面简单桁架 \n（平面静定桁架）\n[p8] （1）节点法： 以各个节点为研究对象，通过其平衡方程，求出 \n 杆件内力的方法。 \n（2）截面法：假想用一截面把桁架切开，分为两部分，取任一部分 \n 为分离体，列出其平衡方程，解出被切杆件的内力。 \n实际结构多数为空间桁架。可用大型计算软件直接计算。 \n求平面桁架各杆内力的方法\n[p9] 例：求图中所示桁架杆1，2，3的内力。已知P1，P2, 尺寸如图。 \n \n4m \nA \n B \n \n \n \n \n3m×6=18m \nP1 \n P2 \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nC \nD \n E \nF \nH \nK \nP2 \n1 \n2 \n3\n[p10] 解：以整体为研究对象，求出支座约束力。 \n  0xF\n  0yF\n0 AM\n0AxF \n2 1 218 3 9 15 0ByF P P P       \n12+ - -2 0Ay ByF F P P \n21 2AyF P P\n21 2ByF P P\nP1 \n P2 \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nC \nD \n E \nF \nH \nK \nP2 \n1 \n2 \n3 \n \nFAy \nFAx \n \n \nFBy\n[p11] 节点法 \n依次取节点A、C、D、E、F为研究对象 \n00 4F F F 5 y Ay AD，= + =\n00 3F F F 5 x AC AD，= + =\n节点A \n12\n5F P 2P 8 AD = - ( ) \n \nFAy \nA \nFAC \nFAD \n \nA 1 2\n3F P 2P8 C = ( )\nP1 \n P2 \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nC \nD \n E \nF \nH \nK \nP2 \nFAy \n \n \nFBy \n1 \n2 \n3 \nA\n[p12] 0F y =\n0F x =\n节点C \nCD 2FP =\nF 1 2\n3F P 2P8 C = ( )\nFCD \n \nP2 \nC \nFAC \n \n \n FCF \nP1 \n P2 \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nC \nD \n E \nF \nH \nK \nP2 \nFAy \n \n \nFBy \n1 \n2 \n3 \nA \nDF 1\n5FP 8=\nDE 1 2\n3F P P 4 = - ( )\nEFF0 =\n1 1 2\n3F P P4 = - ( )\n21\n5FP 8=-\n3 1 2\n93F P P84 =\n[p13] m \nm \nF1 \n \n \n F3 \nC \n F \nFAy \nD \n E \nF2 \n用截面m-m分桁架为两部分， \n取桁架左边部分 \n截面法 \nP1 \n P2 \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nC \nD \n E \nF \nH \nK \nP2 \n1 \n2 \n3 \nA \nP2 \n \n \n \n \n \n \n \n \n \n \n0M = E\n24 6 + 0F F P 3   Ay1- - =\n0F  y\n03F F F 51 3 2+ + =\n0F = x\n02\n4F F P 5Ay 2+ - =\n 3\n4\n12F P P 1 =-\n5\n8\n1FP2 =-\n3\n4\n12\n9F P P8 3 =\n[p14] P1 \n \nP2 \n \nP3\n[p15] 零杆的确定 \n（1）若某节点只与两杆相连 ，\n节点上无主动力 ，两杆不平行 ，\n则两杆均为零杆 。（右图1、2\n杆） \n（2）若某节点与三杆相连，节点上无主动力，两杆平\n行，则第三杆为零杆。 \nP \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nA \n B \nA \nP \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nA \n B \nC \nD \nE \nH \nF\n[p16] 解决工程静力问题的方法 \n同学们自己设计的桁架结构 \n 理论计算 \n建模（结构、约束、载荷）  数值模拟 \n 实验研究"
+ },
+ {
+  "file": "理论力学/02 第1章：几何静力学/05 1-5考虑摩擦的平衡问题/1.4.5摩擦与自锁.pdf",
+  "chapter": "02 第1章：几何静力学",
+  "lesson": "05 1-5考虑摩擦的平衡问题",
+  "name": "1.4.5摩擦与自锁.pdf",
+  "n_pages": 23,
+  "pages": [
+   {
+    "page": 1,
+    "text": "12 摩擦与自锁 \n航天航空学院 \n力学实验教学国家示范中心 \n主讲人 伍晓红"
+   },
+   {
+    "page": 2,
+    "text": "摩擦的应用"
+   },
+   {
+    "page": 3,
+    "text": "两个相接触的物体具有相对运动（或有相对运动趋势）时，\n接触面有相互作用（力或力偶），以阻碍物体间的相对运动。这\n种现象称为摩擦。 \n \n• 摩擦的定义 \n摩擦的分类 \n (1) \n 干摩擦 \n 湿摩擦 \n (3) \n 滑动摩擦 \n 滚动摩擦 \n (2) \n 动摩擦 \n 静摩擦"
+   },
+   {
+    "page": 4,
+    "text": "当一物体沿着另一物体的表面（或接触面）滑动或具有滑动的\n趋势时，该表面会产生切向阻力的现象称为滑动摩擦，简称摩擦。 \n这个切向阻力称为滑动摩擦力，简称摩擦力。 \n•滑动摩擦的概念 \n滑动摩擦力可分为静滑动摩擦力和动滑动摩擦力。"
+   },
+   {
+    "page": 5,
+    "text": "s maxFF\nNF\nsF\nG\nA\nPF\nmax NFF \n静滑动摩擦力FS \n方向：与相对滑动趋势方向相反 \n大小： \n最大值： \n动滑动摩擦力Fd \nd NF fF\n大小： \n方向： 与相对滑动方向相反 \nFP \nFmax \nFd \n运动状态 静止状态 \n临界状态 \nFs \nO \n•库仑摩擦定律"
+   },
+   {
+    "page": 6,
+    "text": "奇怪的铅笔"
+   },
+   {
+    "page": 7,
+    "text": "O\nG \nFP 1. 摩擦角 \nmaxtg sN\nNN\nFF\nFF\n  \n 全反力与接触面法线间夹角 的最大值 \n称为摩擦角。 \n\n\nmA\nNF\n\nmaxRF\nmaxsF\nNF\nA\nsF\n\nRF\n•摩擦角与自锁现象 \n 摩擦力与法向反力的合力称为全反力, \n通常用FR表示。 \n FR=FN + Ff"
+   },
+   {
+    "page": 8,
+    "text": "FR  \nFN \nFR  \nFN \nFmax Fmax \n2. 摩擦锥：以约束面法向为中心轴，\n以两倍的为顶角 ，所形成的一个\n正圆锥。 \n♣ 摩擦角是静摩擦力取值范围的几\n何表示。 \n♣ 三维受力状态下，摩擦角变为摩\n擦锥。 \n摩擦锥"
+   },
+   {
+    "page": 9,
+    "text": "9 \n摩擦锥 \n平衡 不平衡 \n摩擦自锁：当主动力的合力作用于摩擦锥之内时，无论其大小如\n何变化，物体始终保持平衡。 \n3. 摩擦自锁 \nFP \nFP"
+   },
+   {
+    "page": 10,
+    "text": "摩擦角\n工程应用实例 \n螺旋千斤顶 利用摩擦角测\n静摩擦因数 \n α A \nB"
+   },
+   {
+    "page": 11,
+    "text": "若已知砂粒间的静摩擦\n系数为 f s ，那么自然堆放松散\n的沙子时，能够堆起的最大倾\n角是多少？ \n α \n思考题"
+   },
+   {
+    "page": 12,
+    "text": "摩擦不自锁蝶铰"
+   },
+   {
+    "page": 13,
+    "text": "1) 事实: 汽车、压路辗子在此受力情况下能保持平衡。 \n2) 以圆轮为对象，进行受力分析: \n0pF \n当 时 \n圆轮不平衡。 \n0cM \nG\nPF\nNF\nSF\n而事实上是平衡的。为什么矛盾？ \n• 滚动摩擦"
+   },
+   {
+    "page": 14,
+    "text": "3) 考虑按触处变形 \nG\nPF\nO\nr\nG\nPF\nO\nA\nfM\n分布力向A点简化 \n滚动摩阻的定义 \n 当一物体沿着另一物体的表面滚动或具有滚动的趋势时，除\n可能受到滑动摩擦力外，还受到一个阻力偶的作用。这个阻力偶\n称为滚动摩阻。"
+   },
+   {
+    "page": 15,
+    "text": "d \nMr= FN d \n 3. 滚动摩阻定律 \n 实验表明：滚动摩阻力偶矩具有极限值Mr,max，\n力偶矩超过Mr,max，滚子就不能保持平衡。 \nMr,max=FNδ \nδ称为滚阻系数，具有长度量纲"
+   },
+   {
+    "page": 16,
+    "text": "实验表明，滚动摩阻力偶矩Mf 随主动力 F的增大而增大；但有一\n个最大值 Mmax ,即 \nm ax0 MM f \nNma x FM  \n且 \n 称为滚动摩阻系数，具有长度量纲。 \n滚动摩阻定律"
+   },
+   {
+    "page": 17,
+    "text": "1.向左滚动趋势。 2.向右滚动趋势。3.滑动趋势 。 \n 例 匀质轮子的重量 W=300 N，由半径 R= 0.4 m和半径 r = 0.1 m\n两个同心圆固连而成。已知轮子与地面的滚阻系数δ= 0.005 m，摩擦因\n数 fs =0.2，求拉动轮子所需力FP的最小值。 \n轮子可能发生的三种运动趋势： 解:"
+   },
+   {
+    "page": 18,
+    "text": "列平衡方程 \n1. 轮不滑动，处于向左滚动的临界状态。 \n \n,0 yF\n0N WF\n,0 OM\n0maxr,P  FRMrF\n,0 xF\n0P  FF\n临界时 M r=Mr,max= δFN \n解得 \nN 300N  WF\nFF P\nMr,max=δFN=1.5 N﹒m \nN 5\nmaxr,\nP \n rR\nMF 负值说明轮不可能\n有向左滚动的趋势。"
+   },
+   {
+    "page": 19,
+    "text": "列平衡方程 \n,0 yF\n0N WF\n,0 OM\n0maxr,P  FRMrF\n,0 xF\n0P  FF\n临界时 M r=Mr,max= δFN \n解得 \nN 300N  WF\nFF P\nMr,max=δFN=1.5 N﹒m \nN 5\nmaxr,\nP  rR\nMF\n2. 轮不滑动，处于向右滚动的临界状态。 \n此时滑动摩擦力为 \nN 5P  FF"
+   },
+   {
+    "page": 20,
+    "text": "3. 轮处于滑动的临界状态。 \nF=Fmax= fs FN = fs W= 60 N \n远远大于滚动所需的力FP值。所以\n拉动轮子的力最小值 FP = 5 N。轮\n子向右滚动。 \n问题：绳与水平夹角变化，力值不变；结果会发生什\n么现象？实验观察！ \n此时静摩擦力达到最大值 \n 讨论 轮子只滚动而不滑动的条件 \ns fR \n比较可知先滚动。 \ns fR "
+   },
+   {
+    "page": 21,
+    "text": "讨论滑动： \n临界时 Ff =Fmax= fsFN \nFP1=Ff = fs FN = fs W \n= 0.2 × 10 =2 kN \n,0  yF\n0N WF\n, 0 AM\n0Pmaxr,  RFM\n, 0 xF\n0fP  FF讨论滚动： \n临界时 M r=Mr,max= δ FN \nkN 1.0Nr\n2P  R\nW\nR\nF\nR\nMF \n比较可知先滚动。 \ns fR "
+   },
+   {
+    "page": 22,
+    "text": "两个相接触的物体具有相对运动（或有相对运动趋势）时，\n接触面有相互作用（力或力偶），以阻碍物体间的相对运动。这\n种现象称为摩擦。 \n \n• 摩擦的定义 \n摩擦的分类 \n (1) 按二物体接触面间是否有润滑分类 \n干摩擦： 由固体表面直接接触而产生的摩擦。 \n湿摩擦： 固体表面之间存在某种液体，则这时出现的摩擦。 \n半干摩擦：当润滑油不足时，固体表面将部分保持直接接触，这种在中\n间状态下出现的摩擦。"
+   },
+   {
+    "page": 23,
+    "text": "静摩擦：仅出现相对运动趋势而未发生运动 时的摩擦。 \n(2) 按二物体接触点（面）之间有无相对速度分类 \n 动摩擦：已发生相对运动的物体间的摩擦。 \n \n(3) 按物体接触点（面）之间的运动情况 \n 滑动摩擦 \n 滚动摩擦"
+   }
+  ],
+  "text": "[p1] 12 摩擦与自锁 \n航天航空学院 \n力学实验教学国家示范中心 \n主讲人 伍晓红\n[p2] 摩擦的应用\n[p3] 两个相接触的物体具有相对运动（或有相对运动趋势）时，\n接触面有相互作用（力或力偶），以阻碍物体间的相对运动。这\n种现象称为摩擦。 \n \n• 摩擦的定义 \n摩擦的分类 \n (1) \n 干摩擦 \n 湿摩擦 \n (3) \n 滑动摩擦 \n 滚动摩擦 \n (2) \n 动摩擦 \n 静摩擦\n[p4] 当一物体沿着另一物体的表面（或接触面）滑动或具有滑动的\n趋势时，该表面会产生切向阻力的现象称为滑动摩擦，简称摩擦。 \n这个切向阻力称为滑动摩擦力，简称摩擦力。 \n•滑动摩擦的概念 \n滑动摩擦力可分为静滑动摩擦力和动滑动摩擦力。\n[p5] s maxFF\nNF\nsF\nG\nA\nPF\nmax NFF \n静滑动摩擦力FS \n方向：与相对滑动趋势方向相反 \n大小： \n最大值： \n动滑动摩擦力Fd \nd NF fF\n大小： \n方向： 与相对滑动方向相反 \nFP \nFmax \nFd \n运动状态 静止状态 \n临界状态 \nFs \nO \n•库仑摩擦定律\n[p6] 奇怪的铅笔\n[p7] O\nG \nFP 1. 摩擦角 \nmaxtg sN\nNN\nFF\nFF\n  \n 全反力与接触面法线间夹角 的最大值 \n称为摩擦角。 \n\n\nmA\nNF\n\nmaxRF\nmaxsF\nNF\nA\nsF\n\nRF\n•摩擦角与自锁现象 \n 摩擦力与法向反力的合力称为全反力, \n通常用FR表示。 \n FR=FN + Ff\n[p8] FR  \nFN \nFR  \nFN \nFmax Fmax \n2. 摩擦锥：以约束面法向为中心轴，\n以两倍的为顶角 ，所形成的一个\n正圆锥。 \n♣ 摩擦角是静摩擦力取值范围的几\n何表示。 \n♣ 三维受力状态下，摩擦角变为摩\n擦锥。 \n摩擦锥\n[p9] 9 \n摩擦锥 \n平衡 不平衡 \n摩擦自锁：当主动力的合力作用于摩擦锥之内时，无论其大小如\n何变化，物体始终保持平衡。 \n3. 摩擦自锁 \nFP \nFP\n[p10] 摩擦角\n工程应用实例 \n螺旋千斤顶 利用摩擦角测\n静摩擦因数 \n α A \nB\n[p11] 若已知砂粒间的静摩擦\n系数为 f s ，那么自然堆放松散\n的沙子时，能够堆起的最大倾\n角是多少？ \n α \n思考题\n[p12] 摩擦不自锁蝶铰\n[p13] 1) 事实: 汽车、压路辗子在此受力情况下能保持平衡。 \n2) 以圆轮为对象，进行受力分析: \n0pF \n当 时 \n圆轮不平衡。 \n0cM \nG\nPF\nNF\nSF\n而事实上是平衡的。为什么矛盾？ \n• 滚动摩擦\n[p14] 3) 考虑按触处变形 \nG\nPF\nO\nr\nG\nPF\nO\nA\nfM\n分布力向A点简化 \n滚动摩阻的定义 \n 当一物体沿着另一物体的表面滚动或具有滚动的趋势时，除\n可能受到滑动摩擦力外，还受到一个阻力偶的作用。这个阻力偶\n称为滚动摩阻。\n[p15] d \nMr= FN d \n 3. 滚动摩阻定律 \n 实验表明：滚动摩阻力偶矩具有极限值Mr,max，\n力偶矩超过Mr,max，滚子就不能保持平衡。 \nMr,max=FNδ \nδ称为滚阻系数，具有长度量纲\n[p16] 实验表明，滚动摩阻力偶矩Mf 随主动力 F的增大而增大；但有一\n个最大值 Mmax ,即 \nm ax0 MM f \nNma x FM  \n且 \n 称为滚动摩阻系数，具有长度量纲。 \n滚动摩阻定律\n[p17] 1.向左滚动趋势。 2.向右滚动趋势。3.滑动趋势 。 \n 例 匀质轮子的重量 W=300 N，由半径 R= 0.4 m和半径 r = 0.1 m\n两个同心圆固连而成。已知轮子与地面的滚阻系数δ= 0.005 m，摩擦因\n数 fs =0.2，求拉动轮子所需力FP的最小值。 \n轮子可能发生的三种运动趋势： 解:\n[p18] 列平衡方程 \n1. 轮不滑动，处于向左滚动的临界状态。 \n \n,0 yF\n0N WF\n,0 OM\n0maxr,P  FRMrF\n,0 xF\n0P  FF\n临界时 M r=Mr,max= δFN \n解得 \nN 300N  WF\nFF P\nMr,max=δFN=1.5 N﹒m \nN 5\nmaxr,\nP \n rR\nMF 负值说明轮不可能\n有向左滚动的趋势。\n[p19] 列平衡方程 \n,0 yF\n0N WF\n,0 OM\n0maxr,P  FRMrF\n,0 xF\n0P  FF\n临界时 M r=Mr,max= δFN \n解得 \nN 300N  WF\nFF P\nMr,max=δFN=1.5 N﹒m \nN 5\nmaxr,\nP  rR\nMF\n2. 轮不滑动，处于向右滚动的临界状态。 \n此时滑动摩擦力为 \nN 5P  FF\n[p20] 3. 轮处于滑动的临界状态。 \nF=Fmax= fs FN = fs W= 60 N \n远远大于滚动所需的力FP值。所以\n拉动轮子的力最小值 FP = 5 N。轮\n子向右滚动。 \n问题：绳与水平夹角变化，力值不变；结果会发生什\n么现象？实验观察！ \n此时静摩擦力达到最大值 \n 讨论 轮子只滚动而不滑动的条件 \ns fR \n比较可知先滚动。 \ns fR \n[p21] 讨论滑动： \n临界时 Ff =Fmax= fsFN \nFP1=Ff = fs FN = fs W \n= 0.2 × 10 =2 kN \n,0  yF\n0N WF\n, 0 AM\n0Pmaxr,  RFM\n, 0 xF\n0fP  FF讨论滚动： \n临界时 M r=Mr,max= δ FN \nkN 1.0Nr\n2P  R\nW\nR\nF\nR\nMF \n比较可知先滚动。 \ns fR \n[p22] 两个相接触的物体具有相对运动（或有相对运动趋势）时，\n接触面有相互作用（力或力偶），以阻碍物体间的相对运动。这\n种现象称为摩擦。 \n \n• 摩擦的定义 \n摩擦的分类 \n (1) 按二物体接触面间是否有润滑分类 \n干摩擦： 由固体表面直接接触而产生的摩擦。 \n湿摩擦： 固体表面之间存在某种液体，则这时出现的摩擦。 \n半干摩擦：当润滑油不足时，固体表面将部分保持直接接触，这种在中\n间状态下出现的摩擦。\n[p23] 静摩擦：仅出现相对运动趋势而未发生运动 时的摩擦。 \n(2) 按二物体接触点（面）之间有无相对速度分类 \n 动摩擦：已发生相对运动的物体间的摩擦。 \n \n(3) 按物体接触点（面）之间的运动情况 \n 滑动摩擦 \n 滚动摩擦"
+ },
+ {
+  "file": "理论力学/02 第1章：几何静力学/05 1-5考虑摩擦的平衡问题/1.4.6考虑摩擦的平衡问题.pdf",
+  "chapter": "02 第1章：几何静力学",
+  "lesson": "05 1-5考虑摩擦的平衡问题",
+  "name": "1.4.6考虑摩擦的平衡问题.pdf",
+  "n_pages": 12,
+  "pages": [
+   {
+    "page": 1,
+    "text": "13 考虑摩擦的平衡问题 \n航天航空学院 \n力学实验教学国家示范中心 \n主讲人 伍晓红"
+   },
+   {
+    "page": 2,
+    "text": "考虑摩擦时，求解物体平衡问题的步骤同前，但有以下几个特点： \n• 考虑摩擦时的平衡问题 \n（1）受力图中多了摩擦力。 \n（2）除静力学平衡方程外还有补充方程， \n \n（3）所得结果可能是一定范围。 \n（4）可求解不等式,也可在极限情况求解等式，再根据物理意义 \n 确定范围。 \nfNF μF"
+   },
+   {
+    "page": 3,
+    "text": "两种考虑摩擦的平衡问题： \n(1) 判断物体是否平衡，并求滑动摩擦力 \n (按非临界平衡处理) \n 摩擦力F的指向可以假定，大小由\n平衡方程决定。 \n 未知量个数=独立方程个数 \n 相当于“有上限的约束反力”. \n (2) 确定物体的平衡范围 \n (按临界平衡处理) \n 根据物体的运动趋势来判断其接触 \n 处的摩擦力方向，不能任意假设 \n 未知量个数>独立方程个数,应用 \n Ffmax= μFN 作为补充方程 \n 相当于“大小未知的主动力”."
+   },
+   {
+    "page": 4,
+    "text": "F \nA B \n \nl \nmax ( 2 1)F mg \n \n例1 均质杆AB质量为m，长 l，置于粗糙的水平面上，两者间的静摩擦系\n数为μ。现在杆的一端施加与杆垂直的力F，试求使杆处于平衡时的Fmax 。\n设杆的高度忽略不计。 \n解：取杆 AB 为研究对象 \n( ) 0mg mgF x l xll\n   \n2\n2xl\n( ) 0OMF\n0xF\n22 () 022\nmgx mg l xFx ll\n    \nsOB\nmgFx l\n\n()sAO\nmgF l x l\n O \n \nx"
+   },
+   {
+    "page": 5,
+    "text": "例2 如图所示，长为2l可绕固定铰支座O转动的不计自重的杆OA，搁\n置于重为W、半径为r的匀质圆球上，A端挂一重物G，该圆球置于水\n平地面上。若圆球与平板及地面间的静摩擦系数均为μ ，求平衡时杆\n与水平面夹角 的最大值。 \nC G \nA \nD \nB \nO \n  \n \n \n多点摩擦 未知量数7>平衡方程数6"
+   },
+   {
+    "page": 6,
+    "text": "C \nD \nB \n( ) 0CM  F\nmaxfB NB fDF F F   \n解： 1. 研究轮 C，受力如图 \nW \nO  \nFNB \nFfB \n \n \nFND \nFfD \n0fB fDF r F r   \nfB fDFF\n( ) 0OM  F\n0ND NBF OD F OB W OD     \nND NBF F W\nB点先达到临界状态"
+   },
+   {
+    "page": 7,
+    "text": "0yF \nO  \nC \nW \nD \nB \n \nFNB \nFfB \n \n \nFND \nFfD \ncos sin 0ND NB fBF F F W    \n1 cos sin 0 sf  \n0 \n2arctan\n穷举法 分别假设达到临界状态（考虑所有可能情况， 滑动 \n 方向，滑动还是翻倒，几个同时临界还是分别临界）。 \n 摩擦力的方向也可假设。 \n可先判断哪个点先达到临界状态。"
+   },
+   {
+    "page": 8,
+    "text": "摩擦在工程中的应用实例"
+   },
+   {
+    "page": 9,
+    "text": "例3 皮带绕过带轮，两端作用有力\nT1和T2。已知带轮与皮带接触部分\n的张角为β，静滑动摩擦因数为μ，\n带轮半径为r，皮带滑动趋势为逆\n时针。忽略皮带质量，试计算皮带\n两边拉力T1和T2之间的关系。"
+   },
+   {
+    "page": 10,
+    "text": " \n \n cos cos 022\n sin sin 022\nddT dT T dN\ndddN T dT T\n \n\n            \n             \ndN dT \n解： 设处于滑动临界 \n0\n0\n\n\n\n\ny\nx\nF\nF\nsin 22\ndd \nT1 \nT2 \ncos 1 2\nd \ndN Td "
+   },
+   {
+    "page": 11,
+    "text": "dd\ndd\nμ NT\nNT θ\n=\n=\nd dT μ θT =\n   0TT θ TT θ β12= = = =\nd dT μ θT\n2\n1 0\n=\nT β\nT\nln T μβT\n2\n1\n=\nT T e21= μβ"
+   },
+   {
+    "page": 12,
+    "text": "12 \n已知绳绕树两圈， \nμ=0.5，T1 =500N。 \n求使绳子不打滑的T2范围。 \n 1 \n2 \nT T e μβ\n21\n4\n267000N2\nβ= π\nT \n 就算是一个小孩子，只要能把绳索在不动辘轳上绕几圈，\n抓住绳头，他的力量就能平衡一个极大的重物!"
+   }
+  ],
+  "text": "[p1] 13 考虑摩擦的平衡问题 \n航天航空学院 \n力学实验教学国家示范中心 \n主讲人 伍晓红\n[p2] 考虑摩擦时，求解物体平衡问题的步骤同前，但有以下几个特点： \n• 考虑摩擦时的平衡问题 \n（1）受力图中多了摩擦力。 \n（2）除静力学平衡方程外还有补充方程， \n \n（3）所得结果可能是一定范围。 \n（4）可求解不等式,也可在极限情况求解等式，再根据物理意义 \n 确定范围。 \nfNF μF\n[p3] 两种考虑摩擦的平衡问题： \n(1) 判断物体是否平衡，并求滑动摩擦力 \n (按非临界平衡处理) \n 摩擦力F的指向可以假定，大小由\n平衡方程决定。 \n 未知量个数=独立方程个数 \n 相当于“有上限的约束反力”. \n (2) 确定物体的平衡范围 \n (按临界平衡处理) \n 根据物体的运动趋势来判断其接触 \n 处的摩擦力方向，不能任意假设 \n 未知量个数>独立方程个数,应用 \n Ffmax= μFN 作为补充方程 \n 相当于“大小未知的主动力”.\n[p4] F \nA B \n \nl \nmax ( 2 1)F mg \n \n例1 均质杆AB质量为m，长 l，置于粗糙的水平面上，两者间的静摩擦系\n数为μ。现在杆的一端施加与杆垂直的力F，试求使杆处于平衡时的Fmax 。\n设杆的高度忽略不计。 \n解：取杆 AB 为研究对象 \n( ) 0mg mgF x l xll\n   \n2\n2xl\n( ) 0OMF\n0xF\n22 () 022\nmgx mg l xFx ll\n    \nsOB\nmgFx l\n\n()sAO\nmgF l x l\n O \n \nx\n[p5] 例2 如图所示，长为2l可绕固定铰支座O转动的不计自重的杆OA，搁\n置于重为W、半径为r的匀质圆球上，A端挂一重物G，该圆球置于水\n平地面上。若圆球与平板及地面间的静摩擦系数均为μ ，求平衡时杆\n与水平面夹角 的最大值。 \nC G \nA \nD \nB \nO \n  \n \n \n多点摩擦 未知量数7>平衡方程数6\n[p6] C \nD \nB \n( ) 0CM  F\nmaxfB NB fDF F F   \n解： 1. 研究轮 C，受力如图 \nW \nO  \nFNB \nFfB \n \n \nFND \nFfD \n0fB fDF r F r   \nfB fDFF\n( ) 0OM  F\n0ND NBF OD F OB W OD     \nND NBF F W\nB点先达到临界状态\n[p7] 0yF \nO  \nC \nW \nD \nB \n \nFNB \nFfB \n \n \nFND \nFfD \ncos sin 0ND NB fBF F F W    \n1 cos sin 0 sf  \n0 \n2arctan\n穷举法 分别假设达到临界状态（考虑所有可能情况， 滑动 \n 方向，滑动还是翻倒，几个同时临界还是分别临界）。 \n 摩擦力的方向也可假设。 \n可先判断哪个点先达到临界状态。\n[p8] 摩擦在工程中的应用实例\n[p9] 例3 皮带绕过带轮，两端作用有力\nT1和T2。已知带轮与皮带接触部分\n的张角为β，静滑动摩擦因数为μ，\n带轮半径为r，皮带滑动趋势为逆\n时针。忽略皮带质量，试计算皮带\n两边拉力T1和T2之间的关系。\n[p10]  \n \n cos cos 022\n sin sin 022\nddT dT T dN\ndddN T dT T\n \n\n            \n             \ndN dT \n解： 设处于滑动临界 \n0\n0\n\n\n\n\ny\nx\nF\nF\nsin 22\ndd \nT1 \nT2 \ncos 1 2\nd \ndN Td \n[p11] dd\ndd\nμ NT\nNT θ\n=\n=\nd dT μ θT =\n   0TT θ TT θ β12= = = =\nd dT μ θT\n2\n1 0\n=\nT β\nT\nln T μβT\n2\n1\n=\nT T e21= μβ\n[p12] 12 \n已知绳绕树两圈， \nμ=0.5，T1 =500N。 \n求使绳子不打滑的T2范围。 \n 1 \n2 \nT T e μβ\n21\n4\n267000N2\nβ= π\nT \n 就算是一个小孩子，只要能把绳索在不动辘轳上绕几圈，\n抓住绳头，他的力量就能平衡一个极大的重物!"
+ },
+ {
+  "file": "理论力学/03 第2章：运动学基础/01 2-1 点的运动/2.1运动学基础-点的运动.pdf",
+  "chapter": "03 第2章：运动学基础",
+  "lesson": "01 2-1 点的运动",
+  "name": "2.1运动学基础-点的运动.pdf",
+  "n_pages": 17,
+  "pages": [
+   {
+    "page": 1,
+    "text": "运动学基础1-点的运动 \n吴莹 教授 \n国家力学实验教学示范中心"
+   },
+   {
+    "page": 2,
+    "text": "运动学研究既是 动力学研究 “力与运动 ”关系的基础 ，\n又有它独立的重要意义 。例如，机器各部分之间的运动 ，\n要求协调的配合 ，要达到预期的要求 ，设计时必须进行运\n动分析。"
+   },
+   {
+    "page": 3,
+    "text": "点 \n 许多情况需要分析点的运动几何规律 \n \nA、B、M 点 \n例如：机构中的各点的运动规律 \n 卫星的运动规律"
+   },
+   {
+    "page": 4,
+    "text": "4 \n立交桥的引桥为何不采用直道，而采用双曲线等曲线型呢？ \n涉及点的运动速度、加速度与运行轨道曲率半径间关系问题。"
+   },
+   {
+    "page": 5,
+    "text": "5 \n r(t)＝ r (t＋t)－r(t) \n速度: \nrdt\ndr\nΔt\nΔrlimv\n0Δt\n\n\n位移: \n速度方向沿轨迹切线方向，指向点的运动方向。 \nx \nz \ny \nO \nr(t) \nr (t＋t) \nv M \nM´ \nr \n1 矢径法 \n r = r (t) \n运动方程: \n 物体的运动都是相对的，因此研究物体的运动必须指明\n参考体或参考系。 \nr\nd\nrda\n2\n 2t\n加速度: \nv dva lim d0t tt\n "
+   },
+   {
+    "page": 6,
+    "text": "6 \nx \nz \ny \nO \n j \ni \nk \nr \n a \nv \nM \nx = f1(t) \ny = f2(t) \nz = f3(t) \n2 直角坐标法 \n运动轨迹：运动方程中消去时间参数 t 所得到的方程。 \n速度: \n运动方程: \nkji\nkjiv\nzyx aaa\nzyxa\n\n \n加速度: \nkji zyx vvv \nkji t\nz\nt\ny\nt\nxv d\nd\nd\nd\nd\nd "
+   },
+   {
+    "page": 7,
+    "text": "7 \nA \nC \nB \ny \nO \nx \nM x \ny \n\n\n例题：椭圆规的曲柄 OA可绕\n定轴O转动，端点A以铰链连\n接于规尺 BC ；规尺上的点 B\n和C可分别沿互相垂直的滑槽\n运动，求规尺上任一点 M 的\n运动方程和轨迹方程 。其中\n已知: \n. 2bCM\naABACOA\n\n"
+   },
+   {
+    "page": 8,
+    "text": "8 \n\n\n sin\n cos)(\nby\nbax\n\n\n1)( 2\n2\n2\n2\n b\ny\nba\nx\n解:考虑任意位置， M点的坐标 x，y\n可以表示成 \nA \nC \nB \ny \nO \nx \nM x \ny \n\n\n消去上式中的角 ，即得M点的\n轨迹方程: \n\nkt , M点的速度，加速度？ \n"
+   },
+   {
+    "page": 9,
+    "text": "9 \nv\nM \n问题: 质点M沿椭圆轨道匀速率运动，如何确定其加速度的大小和方向？"
+   },
+   {
+    "page": 10,
+    "text": "运动方程 \n)(tss \nx \ny \nz \nO \nM s \n0 \n+ \n- \nr \n已知点的运动轨迹 \n3 自然坐标法"
+   },
+   {
+    "page": 11,
+    "text": "11 \n•曲率 \nsk\ns \n\n\n\n0\nlim\n\n\nM \nT \nT’ \n\nsMM '\nM’ \nT1 \nk\n1\n•曲率半径 \nMTT1 极限位置的平面称为 密切面 \nM \n密切面 \nτ\nb\nn\n• 自然轴系（游动坐标系） \n-主法线单位矢量 \nn\n-切向单位矢量 \nτ\n-副法线单位矢量 \nb\nnτb "
+   },
+   {
+    "page": 12,
+    "text": "12 \n其中: \n运动轨迹在P点处的切向单位矢量 \nτd\nd vst\ns ＝＝\nτv τv\nτd\nrd ＝s\n速度表示： \nτd\nd\nd\nd\nd\nd st\ns\ns\nr\nt\nrv \n 黑体！"
+   },
+   {
+    "page": 13,
+    "text": "13 \n根据加速度的定义以及弧坐标中速度的表达式 \ntvt\nvvtt d\nτdτd\ndτd\nd\nd\nvda τ\nτ τ)( \ntd\nτd\n=？"
+   },
+   {
+    "page": 14,
+    "text": "14 \n\n 1 τd\nd\nd\nd\nd\nd vst\ns\nt\n其中： \nnd\nτd \nnd\nd\nd\nτd\nd\nτd\n\n\n\nv\ntt \n1\n2\n2sin\nlim\n0\n\n\n\n \n\n\n  \n\n\nτlimd\ndτ\n0\n\n\n \n\n\n\n2sinτ\nlim\n2\n0\ntt d\nd\nd\nd\nd\nd \n\nττ "
+   },
+   {
+    "page": 15,
+    "text": "15 \nM \n密切面 \nnτd\nda ττ\n\n2v\nt\nv \n• 切向加速度——表示速度\n矢量大小的变化率； \n• 法向加速度——表示速度\n矢量方向的变化率； \ntvt\nvvtt d\nτdτd\ndτd\nd\nd\nvda τ\nτ τ)( \nτ\nb\nn\nv\nτa\nna"
+   },
+   {
+    "page": 16,
+    "text": "16 \n道路转弯中的力学问题"
+   },
+   {
+    "page": 17,
+    "text": "谢谢！"
+   }
+  ],
+  "text": "[p1] 运动学基础1-点的运动 \n吴莹 教授 \n国家力学实验教学示范中心\n[p2] 运动学研究既是 动力学研究 “力与运动 ”关系的基础 ，\n又有它独立的重要意义 。例如，机器各部分之间的运动 ，\n要求协调的配合 ，要达到预期的要求 ，设计时必须进行运\n动分析。\n[p3] 点 \n 许多情况需要分析点的运动几何规律 \n \nA、B、M 点 \n例如：机构中的各点的运动规律 \n 卫星的运动规律\n[p4] 4 \n立交桥的引桥为何不采用直道，而采用双曲线等曲线型呢？ \n涉及点的运动速度、加速度与运行轨道曲率半径间关系问题。\n[p5] 5 \n r(t)＝ r (t＋t)－r(t) \n速度: \nrdt\ndr\nΔt\nΔrlimv\n0Δt\n\n\n位移: \n速度方向沿轨迹切线方向，指向点的运动方向。 \nx \nz \ny \nO \nr(t) \nr (t＋t) \nv M \nM´ \nr \n1 矢径法 \n r = r (t) \n运动方程: \n 物体的运动都是相对的，因此研究物体的运动必须指明\n参考体或参考系。 \nr\nd\nrda\n2\n 2t\n加速度: \nv dva lim d0t tt\n \n[p6] 6 \nx \nz \ny \nO \n j \ni \nk \nr \n a \nv \nM \nx = f1(t) \ny = f2(t) \nz = f3(t) \n2 直角坐标法 \n运动轨迹：运动方程中消去时间参数 t 所得到的方程。 \n速度: \n运动方程: \nkji\nkjiv\nzyx aaa\nzyxa\n\n \n加速度: \nkji zyx vvv \nkji t\nz\nt\ny\nt\nxv d\nd\nd\nd\nd\nd \n[p7] 7 \nA \nC \nB \ny \nO \nx \nM x \ny \n\n\n例题：椭圆规的曲柄 OA可绕\n定轴O转动，端点A以铰链连\n接于规尺 BC ；规尺上的点 B\n和C可分别沿互相垂直的滑槽\n运动，求规尺上任一点 M 的\n运动方程和轨迹方程 。其中\n已知: \n. 2bCM\naABACOA\n\n\n[p8] 8 \n\n\n sin\n cos)(\nby\nbax\n\n\n1)( 2\n2\n2\n2\n b\ny\nba\nx\n解:考虑任意位置， M点的坐标 x，y\n可以表示成 \nA \nC \nB \ny \nO \nx \nM x \ny \n\n\n消去上式中的角 ，即得M点的\n轨迹方程: \n\nkt , M点的速度，加速度？ \n\n[p9] 9 \nv\nM \n问题: 质点M沿椭圆轨道匀速率运动，如何确定其加速度的大小和方向？\n[p10] 运动方程 \n)(tss \nx \ny \nz \nO \nM s \n0 \n+ \n- \nr \n已知点的运动轨迹 \n3 自然坐标法\n[p11] 11 \n•曲率 \nsk\ns \n\n\n\n0\nlim\n\n\nM \nT \nT’ \n\nsMM '\nM’ \nT1 \nk\n1\n•曲率半径 \nMTT1 极限位置的平面称为 密切面 \nM \n密切面 \nτ\nb\nn\n• 自然轴系（游动坐标系） \n-主法线单位矢量 \nn\n-切向单位矢量 \nτ\n-副法线单位矢量 \nb\nnτb \n[p12] 12 \n其中: \n运动轨迹在P点处的切向单位矢量 \nτd\nd vst\ns ＝＝\nτv τv\nτd\nrd ＝s\n速度表示： \nτd\nd\nd\nd\nd\nd st\ns\ns\nr\nt\nrv \n 黑体！\n[p13] 13 \n根据加速度的定义以及弧坐标中速度的表达式 \ntvt\nvvtt d\nτdτd\ndτd\nd\nd\nvda τ\nτ τ)( \ntd\nτd\n=？\n[p14] 14 \n\n 1 τd\nd\nd\nd\nd\nd vst\ns\nt\n其中： \nnd\nτd \nnd\nd\nd\nτd\nd\nτd\n\n\n\nv\ntt \n1\n2\n2sin\nlim\n0\n\n\n\n \n\n\n  \n\n\nτlimd\ndτ\n0\n\n\n \n\n\n\n2sinτ\nlim\n2\n0\ntt d\nd\nd\nd\nd\nd \n\nττ \n[p15] 15 \nM \n密切面 \nnτd\nda ττ\n\n2v\nt\nv \n• 切向加速度——表示速度\n矢量大小的变化率； \n• 法向加速度——表示速度\n矢量方向的变化率； \ntvt\nvvtt d\nτdτd\ndτd\nd\nd\nvda τ\nτ τ)( \nτ\nb\nn\nv\nτa\nna\n[p16] 16 \n道路转弯中的力学问题\n[p17] 谢谢！"
+ },
+ {
+  "file": "理论力学/03 第2章：运动学基础/02 2-2 刚体的基本运动/2.2运动学基础-刚体的运动.pdf",
+  "chapter": "03 第2章：运动学基础",
+  "lesson": "02 2-2 刚体的基本运动",
+  "name": "2.2运动学基础-刚体的运动.pdf",
+  "n_pages": 14,
+  "pages": [
+   {
+    "page": 1,
+    "text": "运动学基础2-刚体的运动 \n吴莹 教授 \n国家力学实验教学示范中心"
+   },
+   {
+    "page": 2,
+    "text": "2 \n刚体的运动"
+   },
+   {
+    "page": 3,
+    "text": "3 \n刚体的基本运动，包括平动和定轴转动。 \n 如果在刚体内任取一直线 ，\n在运动过程中这条直线始终与\n它的初始位置平行 ，这种运动\n称为平行移动，简称平动。 \n平动"
+   },
+   {
+    "page": 4,
+    "text": "4 \n由定义可知：rBA为常矢量 \n刚体上各点的速度、加速度也相同 \n结论：研究平移刚体的运动可归结为研究点的运动。 \nz \nO \nx y \nA\nB\n1A\n1B\n2A\n2B\nAa\nAv\nBa\nAr\nBr\n刚体运动时，其上任意直线方位不变 \nBv\nBABA rrr \n0t\nBA\nd\ndr\nBA rr  \nBA vv \nBA aa "
+   },
+   {
+    "page": 5,
+    "text": "5 \n 根据刚体上的点的运动轨迹的不同，平动又可分为直\n线平动和曲线平动。"
+   },
+   {
+    "page": 6,
+    "text": "6 \n 刚体运动时，其上（或其\n扩展部分 ）有一条直线始终\n保持不动 ，则称 刚体做定轴\n转动。 \n这条不动的直线，称为刚体的转轴或轴线。 \n定轴转动"
+   },
+   {
+    "page": 7,
+    "text": "7 \n t 转角：\n \n2\n2\n2\ndd rad/sddtt\n 角加速度：\n rad/sd\nd\nt\n 角速度：\n r/min60\nπ2 转速—nn\n定轴转动方程 \n转动方程 \nx y \nz \nO \nN0 \nN \n"
+   },
+   {
+    "page": 8,
+    "text": "8 \n 角速度矢 \n 角加速度矢 \n角速度矢、角加速度矢 \n方向符合右手螺旋法则 \nkkk   α\nkk  ω"
+   },
+   {
+    "page": 9,
+    "text": "9 \nx y \nz \nO \n \n \nR \nM0 M \n \ns \nRs \n RRsv  \n22\nn\nτ\n\n\nRRva\nRRva\n\n \n2\nnτ\n422\nn\n2\nτ\ntan \n\n\n\naa\nRaaa\ns \no \nR \n  \nM0 \nM \n \nv \na an \na \n \n定轴转动刚体上点速度加速度 \n轴线上各点静止，其它各点均作圆周运动"
+   },
+   {
+    "page": 10,
+    "text": "10 \n速度和加速度的矢量表示 \nrωv "
+   },
+   {
+    "page": 11,
+    "text": "11 \n泊松公式 \nO' \ni' j' \nk' \nO \nx \ny \nz \nz' \ny' \nx' rO' \nA \n由于 \nk'rr o'A \n)k'(rωrωdt\ndrv o'eAe\nA\nA \no'e\no'\no' rωdt\ndrv \ndt\ndk'\ndt\ndr\ndt\ndr o'A \n又由于 \n得到 \nk'ωdt\ndk'\ne \ni'ωdt\ndi'\ne \nj'ωdt\ndj'\ne \n同理"
+   },
+   {
+    "page": 12,
+    "text": "12 \n外啮合 \n内啮合 \n 假设接触点没有相对滑动， \n则两接触点具有相同的速度： \nBA vv \n。\n2211  RvRv BA  ,\n如果已知各轮的齿数分别为z1和z2 \n1\n2\n1\n2\n2\n1\nz\nz\nR\nR  \n\n传动比 \n12i\n轮系的传动比 \n变速的基本原理?"
+   },
+   {
+    "page": 13,
+    "text": "13 \n带轮传动 \n 如图所示皮带转动系统，不考虑胶带的厚度并假定胶带与轮不打滑， \nBA vv \n1\n2\n2\n1\nR\nR \n\n12i"
+   },
+   {
+    "page": 14,
+    "text": "14 \n例题: 已知：O1A＝ O2B ＝l；O1A杆的角速度和角加速度 α 。指出\nC点的运动轨迹，并求出速度和加速度。 \n解：板作平移 \n C点的运动与 A、B两点的运动\n轨迹形状相同 ，以O点为圆心 l为\n半径的圆弧线。 \nlvv AC \n42   l\nAC aa \n2n2τ )()( AA aa \n222 )()( ll  "
+   }
+  ],
+  "text": "[p1] 运动学基础2-刚体的运动 \n吴莹 教授 \n国家力学实验教学示范中心\n[p2] 2 \n刚体的运动\n[p3] 3 \n刚体的基本运动，包括平动和定轴转动。 \n 如果在刚体内任取一直线 ，\n在运动过程中这条直线始终与\n它的初始位置平行 ，这种运动\n称为平行移动，简称平动。 \n平动\n[p4] 4 \n由定义可知：rBA为常矢量 \n刚体上各点的速度、加速度也相同 \n结论：研究平移刚体的运动可归结为研究点的运动。 \nz \nO \nx y \nA\nB\n1A\n1B\n2A\n2B\nAa\nAv\nBa\nAr\nBr\n刚体运动时，其上任意直线方位不变 \nBv\nBABA rrr \n0t\nBA\nd\ndr\nBA rr  \nBA vv \nBA aa \n[p5] 5 \n 根据刚体上的点的运动轨迹的不同，平动又可分为直\n线平动和曲线平动。\n[p6] 6 \n 刚体运动时，其上（或其\n扩展部分 ）有一条直线始终\n保持不动 ，则称 刚体做定轴\n转动。 \n这条不动的直线，称为刚体的转轴或轴线。 \n定轴转动\n[p7] 7 \n t 转角：\n \n2\n2\n2\ndd rad/sddtt\n 角加速度：\n rad/sd\nd\nt\n 角速度：\n r/min60\nπ2 转速—nn\n定轴转动方程 \n转动方程 \nx y \nz \nO \nN0 \nN \n\n[p8] 8 \n 角速度矢 \n 角加速度矢 \n角速度矢、角加速度矢 \n方向符合右手螺旋法则 \nkkk   α\nkk  ω\n[p9] 9 \nx y \nz \nO \n \n \nR \nM0 M \n \ns \nRs \n RRsv  \n22\nn\nτ\n\n\nRRva\nRRva\n\n \n2\nnτ\n422\nn\n2\nτ\ntan \n\n\n\naa\nRaaa\ns \no \nR \n  \nM0 \nM \n \nv \na an \na \n \n定轴转动刚体上点速度加速度 \n轴线上各点静止，其它各点均作圆周运动\n[p10] 10 \n速度和加速度的矢量表示 \nrωv \n[p11] 11 \n泊松公式 \nO' \ni' j' \nk' \nO \nx \ny \nz \nz' \ny' \nx' rO' \nA \n由于 \nk'rr o'A \n)k'(rωrωdt\ndrv o'eAe\nA\nA \no'e\no'\no' rωdt\ndrv \ndt\ndk'\ndt\ndr\ndt\ndr o'A \n又由于 \n得到 \nk'ωdt\ndk'\ne \ni'ωdt\ndi'\ne \nj'ωdt\ndj'\ne \n同理\n[p12] 12 \n外啮合 \n内啮合 \n 假设接触点没有相对滑动， \n则两接触点具有相同的速度： \nBA vv \n。\n2211  RvRv BA  ,\n如果已知各轮的齿数分别为z1和z2 \n1\n2\n1\n2\n2\n1\nz\nz\nR\nR  \n\n传动比 \n12i\n轮系的传动比 \n变速的基本原理?\n[p13] 13 \n带轮传动 \n 如图所示皮带转动系统，不考虑胶带的厚度并假定胶带与轮不打滑， \nBA vv \n1\n2\n2\n1\nR\nR \n\n12i\n[p14] 14 \n例题: 已知：O1A＝ O2B ＝l；O1A杆的角速度和角加速度 α 。指出\nC点的运动轨迹，并求出速度和加速度。 \n解：板作平移 \n C点的运动与 A、B两点的运动\n轨迹形状相同 ，以O点为圆心 l为\n半径的圆弧线。 \nlvv AC \n42   l\nAC aa \n2n2τ )()( AA aa \n222 )()( ll  "
+ },
+ {
+  "file": "理论力学/04 第3章：点的复合运动/01 3-1复合运动基本概念/3.1.1点复合运动的概念.pdf",
+  "chapter": "04 第3章：点的复合运动",
+  "lesson": "01 3-1复合运动基本概念",
+  "name": "3.1.1点复合运动的概念.pdf",
+  "n_pages": 11,
+  "pages": [
+   {
+    "page": 1,
+    "text": "点复合运动概念 \n吴莹 教授 \n西安交通大学航天航空学院 国家级力学实验教学示范中心"
+   },
+   {
+    "page": 2,
+    "text": "2"
+   },
+   {
+    "page": 3,
+    "text": "3 \n 螺旋浆的端点相对于地面作空间曲线运动，但相对于直升机作圆周运动 。"
+   },
+   {
+    "page": 4,
+    "text": "4 \n复合运动方法：采用 分解 与合成 的方法 ，将点的\n复杂运动分解为某些简单运动 ，对各个简单运动\n进行分析 ，再按一定的关系进行合成 ，以此解决\n点的复杂运动问题。"
+   },
+   {
+    "page": 5,
+    "text": "研究对象：一个动点 \n静参考系 \n• 绝对运动 \n 动点相对静参考系 \n• 相对运动 \n 动点相对动参考系 \n• 牵连运动 \n 动系相对于静系 \n动参考系"
+   },
+   {
+    "page": 6,
+    "text": "6 \n 动系的牵连运动 \n +\n \n动点的相对运动 \n动点的绝对运动 \n分解 \n 合成 \n点的 复合运动： 研究点相对于不同参考系运动之\n间的关系，分析点速度和加速度合成规律。"
+   },
+   {
+    "page": 7,
+    "text": "l \nO1 \nO2 \nA \nB \n \n1 \n例题 图示机构中滑块A套 \n在摇杆O2B上, 并与曲柄O1A\n以销子连接。当O1A转动时通\n过滑块A带动O2B 左右摆动，\n设O1A长r，以匀角速1转动\n。试分析滑块A的运动。"
+   },
+   {
+    "page": 8,
+    "text": "l \nO1 \nO2 \nA \nB \n \n1 \n解: 动点为滑块A \n静系：固连在地面 \n动系：固连在O2B杆上 \n \n相对运动： \n沿O2B 杆的直线运动. \n牵连运动： \n绕O2轴的定轴转动. \n绝对运动： \n以O1为圆心，O1A半径的园运动"
+   },
+   {
+    "page": 9,
+    "text": "例题 曲柄导杆机构的运动由\n滑块 A带动。 \n已知OA= r 且转动的角速度\n为。试分析滑块 A的运动。 \nO \nA \n \nB \n C \nD"
+   },
+   {
+    "page": 10,
+    "text": "解:取滑块A为动点 \nO \nA \nB \n C \nD \nvD \n \nx \ny \nx´ \ny´ \n静系：地面 Oxy \n绝对运动：以O为圆心，OA半径的\n圆周运动。 \n相对运动：沿BC杆的直线运动。 \n \n牵连运动：沿铅垂方向的直线平动。 \n \n动系：BC杆 Bx´y´"
+   },
+   {
+    "page": 11,
+    "text": "谢 谢！ \n感谢兄弟院校动画制作！"
+   }
+  ],
+  "text": "[p1] 点复合运动概念 \n吴莹 教授 \n西安交通大学航天航空学院 国家级力学实验教学示范中心\n[p2] 2\n[p3] 3 \n 螺旋浆的端点相对于地面作空间曲线运动，但相对于直升机作圆周运动 。\n[p4] 4 \n复合运动方法：采用 分解 与合成 的方法 ，将点的\n复杂运动分解为某些简单运动 ，对各个简单运动\n进行分析 ，再按一定的关系进行合成 ，以此解决\n点的复杂运动问题。\n[p5] 研究对象：一个动点 \n静参考系 \n• 绝对运动 \n 动点相对静参考系 \n• 相对运动 \n 动点相对动参考系 \n• 牵连运动 \n 动系相对于静系 \n动参考系\n[p6] 6 \n 动系的牵连运动 \n +\n \n动点的相对运动 \n动点的绝对运动 \n分解 \n 合成 \n点的 复合运动： 研究点相对于不同参考系运动之\n间的关系，分析点速度和加速度合成规律。\n[p7] l \nO1 \nO2 \nA \nB \n \n1 \n例题 图示机构中滑块A套 \n在摇杆O2B上, 并与曲柄O1A\n以销子连接。当O1A转动时通\n过滑块A带动O2B 左右摆动，\n设O1A长r，以匀角速1转动\n。试分析滑块A的运动。\n[p8] l \nO1 \nO2 \nA \nB \n \n1 \n解: 动点为滑块A \n静系：固连在地面 \n动系：固连在O2B杆上 \n \n相对运动： \n沿O2B 杆的直线运动. \n牵连运动： \n绕O2轴的定轴转动. \n绝对运动： \n以O1为圆心，O1A半径的园运动\n[p9] 例题 曲柄导杆机构的运动由\n滑块 A带动。 \n已知OA= r 且转动的角速度\n为。试分析滑块 A的运动。 \nO \nA \n \nB \n C \nD\n[p10] 解:取滑块A为动点 \nO \nA \nB \n C \nD \nvD \n \nx \ny \nx´ \ny´ \n静系：地面 Oxy \n绝对运动：以O为圆心，OA半径的\n圆周运动。 \n相对运动：沿BC杆的直线运动。 \n \n牵连运动：沿铅垂方向的直线平动。 \n \n动系：BC杆 Bx´y´\n[p11] 谢 谢！ \n感谢兄弟院校动画制作！"
+ },
+ {
+  "file": "理论力学/04 第3章：点的复合运动/01 3-1复合运动基本概念/3.1.2点复合运动动点动系确定.pdf",
+  "chapter": "04 第3章：点的复合运动",
+  "lesson": "01 3-1复合运动基本概念",
+  "name": "3.1.2点复合运动动点动系确定.pdf",
+  "n_pages": 13,
+  "pages": [
+   {
+    "page": 1,
+    "text": "主 讲：吴莹 教授 \n西安交通大学航天航空学院 国家力学实验教学示范中心 \n点的复合运动 \n --动点、动系的确定"
+   },
+   {
+    "page": 2,
+    "text": "2 \n复合运动方法：采用分解与合成的方法，将点的复\n杂运动分解为某些简单运动，对各个简单运动进行\n分析，再按一定的关系进行合成，以此解决点的复\n杂运动问题。"
+   },
+   {
+    "page": 3,
+    "text": "研究对象：一个动点 \n静参考系 \n• 绝对运动 \n 动点相对静参考系 \n• 相对运动 \n 动点相对动参考系 \n• 牵连运动 \n 动系相对于静系 \n动参考系"
+   },
+   {
+    "page": 5,
+    "text": " 动点、动系一定在两个不同的刚体上 （存在相对\n运动） \n 动点、动系选择时应该使点的相对运动简单 、明\n确（便于运动分析） \n问题：动点、动系如何选择？"
+   },
+   {
+    "page": 6,
+    "text": "动点：顶杆的顶点 \n动系：与凸轮固连 \n相对运动：沿凸轮的曲线运动 \n两个运动物体, A 物体上有一点始终与B 物体接触，并在其上运动"
+   },
+   {
+    "page": 7,
+    "text": "动点：套筒 \n动系：与摇杆固连 \n相对运动：沿摇杆的直线运动 \n两个运动物体, A 物体上有一点始终与B 物体接触，并在其上运动"
+   },
+   {
+    "page": 8,
+    "text": "选持续接触点 （关联点）为动点，动系固结在\n另一个物体上 。 \n 对于两个运动物体 ，一个物体上有一个持续接\n触点与另一个物体接触，并在其上运动的情况。"
+   },
+   {
+    "page": 9,
+    "text": "两个运动物体，无持续接触点 \n动点：凸轮的轴心A点 \n动系：固连在顶杆BCD上 \n相对运动：平行BC的直线运动"
+   },
+   {
+    "page": 10,
+    "text": "对于两个运动物体无持续接触点 (或无关联点 )\n的情况。 \n 选便于运动分析的点为动点 ，动系固结在另一\n个物体上。"
+   },
+   {
+    "page": 11,
+    "text": "E \nM N v a \nR \n \nA \nB D C \n 动点、动系选择唯一吗？ \n是否可以选C点为动点，动系固连在L型杆上 ？ \n相对运动：以E点为圆心的圆周运动 \n动点：L杆上E点 \n动系：固连在上面的构件上 \n相对运动：以C点为圆心的半圆周运动"
+   },
+   {
+    "page": 12,
+    "text": "已知平面机构中，曲柄OA以匀角速度 绕O 轴转动，曲\n柄长OA=r，摆杆AB 可在套筒C 中滑动，摆杆长AB=4r，\n套筒C 绕定轴C 转动。 \n试求:图示瞬时（ ∠OAB=60 ）套筒的转角速度。 \nA \n 动点、动系如何选择？ \n思考题"
+   },
+   {
+    "page": 13,
+    "text": "谢 谢！ \n感谢兄弟院校动画制作！"
+   }
+  ],
+  "text": "[p1] 主 讲：吴莹 教授 \n西安交通大学航天航空学院 国家力学实验教学示范中心 \n点的复合运动 \n --动点、动系的确定\n[p2] 2 \n复合运动方法：采用分解与合成的方法，将点的复\n杂运动分解为某些简单运动，对各个简单运动进行\n分析，再按一定的关系进行合成，以此解决点的复\n杂运动问题。\n[p3] 研究对象：一个动点 \n静参考系 \n• 绝对运动 \n 动点相对静参考系 \n• 相对运动 \n 动点相对动参考系 \n• 牵连运动 \n 动系相对于静系 \n动参考系\n[p5]  动点、动系一定在两个不同的刚体上 （存在相对\n运动） \n 动点、动系选择时应该使点的相对运动简单 、明\n确（便于运动分析） \n问题：动点、动系如何选择？\n[p6] 动点：顶杆的顶点 \n动系：与凸轮固连 \n相对运动：沿凸轮的曲线运动 \n两个运动物体, A 物体上有一点始终与B 物体接触，并在其上运动\n[p7] 动点：套筒 \n动系：与摇杆固连 \n相对运动：沿摇杆的直线运动 \n两个运动物体, A 物体上有一点始终与B 物体接触，并在其上运动\n[p8] 选持续接触点 （关联点）为动点，动系固结在\n另一个物体上 。 \n 对于两个运动物体 ，一个物体上有一个持续接\n触点与另一个物体接触，并在其上运动的情况。\n[p9] 两个运动物体，无持续接触点 \n动点：凸轮的轴心A点 \n动系：固连在顶杆BCD上 \n相对运动：平行BC的直线运动\n[p10] 对于两个运动物体无持续接触点 (或无关联点 )\n的情况。 \n 选便于运动分析的点为动点 ，动系固结在另一\n个物体上。\n[p11] E \nM N v a \nR \n \nA \nB D C \n 动点、动系选择唯一吗？ \n是否可以选C点为动点，动系固连在L型杆上 ？ \n相对运动：以E点为圆心的圆周运动 \n动点：L杆上E点 \n动系：固连在上面的构件上 \n相对运动：以C点为圆心的半圆周运动\n[p12] 已知平面机构中，曲柄OA以匀角速度 绕O 轴转动，曲\n柄长OA=r，摆杆AB 可在套筒C 中滑动，摆杆长AB=4r，\n套筒C 绕定轴C 转动。 \n试求:图示瞬时（ ∠OAB=60 ）套筒的转角速度。 \nA \n 动点、动系如何选择？ \n思考题\n[p13] 谢 谢！ \n感谢兄弟院校动画制作！"
+ },
+ {
+  "file": "理论力学/04 第3章：点的复合运动/01 3-1复合运动基本概念/3.1.3点复合运动牵连点确定.pdf",
+  "chapter": "04 第3章：点的复合运动",
+  "lesson": "01 3-1复合运动基本概念",
+  "name": "3.1.3点复合运动牵连点确定.pdf",
+  "n_pages": 13,
+  "pages": [
+   {
+    "page": 1,
+    "text": "主 讲：吴莹 教授 \n西安交通大学航天航空学院 国家力学实验教学示范中心 \n点的复合运动—牵连点的确定"
+   },
+   {
+    "page": 2,
+    "text": "2 \n 采用分解与合成的方法将点的复杂运动分解为 \n某些简单运动，对各个简单运动进行分析，再按一 \n定的关系进行合成，以此解决点的复杂运动问题。"
+   },
+   {
+    "page": 3,
+    "text": "绝对速度、绝对加速度 \n相对速度、相对加速度 \n牵连速度、牵连加速度 \n牵连点相对定参考系的速度、加速度 ve , ae \nva , aa \nvr , ar \n牵连点：在某瞬时动系中与动点相重合的点 \n3"
+   },
+   {
+    "page": 4,
+    "text": "动量的概念及其计算 \n航天航空学院 \n力学实验教学国家示范中心 \n \n \n主讲人 刘 睫"
+   },
+   {
+    "page": 5,
+    "text": "具体问题中如何确定牵连点 ，\n计算牵连速度和加速度？ \n5"
+   },
+   {
+    "page": 6,
+    "text": "6 \n 例题1:已知O1A=O2B=r, O1O2=l, \n杆O1A以匀角速度ω绕轴O1转动\n。AB杆上有一套筒C，此套筒\n与杆CD相铰接，机构的各部件\n都在同一铅垂平面内。当=60°\n时，试分析CD杆的加速度。 \n \nO1 \nO2 \n\nB \nC \nD \nA \n"
+   },
+   {
+    "page": 7,
+    "text": "牵连运动：曲线平移 \n动系：固连于AB杆 \n动点：CD上的套筒 \nve=vA=ωr \n ae=aA =2r \n牵连点：AB杆上C'点 \n牵连速度：C'点速度 \n牵连加速度：C'点加速度 \nO1 \nO2 \n\nB C \nD \nA \n x´ \ny´ \nve \nvA \n(C') \n7 \n ae"
+   },
+   {
+    "page": 8,
+    "text": "8 \nB A \nr \ne \nO C \nl \n \n"
+   },
+   {
+    "page": 9,
+    "text": "动点：AB杆的A点，动系：与凸轮固连 \n 牵连运动：随凸轮绕O点的定轴转动 \n牵连点： 凸轮上与A端重合的A´点 \nB A \nr \ne \nO C \nl \n \nve \n(A´) \nve =ωOA' =rsin \naen= 2rsin \n牵连速度 \n牵连加速度 \n9 \n \naen \naet \nraet "
+   },
+   {
+    "page": 10,
+    "text": "O \nA \nM \nB C \nD \nR e  \n \n例题3 \n已知平底凸轮机构如图示：\n凸轮 O 的 半 径 为R ， 偏心距\nOA=e，以角速度和角加速\n度绕O转动，并带动平底顶\n杆BCD运动。试分析 该瞬时\n顶杆的加速度。 \n10 \n"
+   },
+   {
+    "page": 11,
+    "text": "O \nA \nM \nB C \nD \nR e  \n \n动点：凸轮中心A点 \n动系：固连在顶杆BCD上 \n牵连运动：铅垂方向平动 \n牵连点：动系上与A点重合的点A' \n(A') 牵连速度、加速度：顶杆的速度、加速度 \nve \nae \n11 \nve=vD \n ae=aD \n"
+   },
+   {
+    "page": 12,
+    "text": "12 \n已知 军舰以v1的速度匀速 前进，\n直升飞机以每小时 v 2 的速度垂\n直降落。试求 直升飞机相对于\n军舰的速度。 \n \n思考题 \n如何确定动点 、动系，以及牵\n连点？"
+   },
+   {
+    "page": 13,
+    "text": "谢 谢！ \n感谢兄弟院校动画制作！"
+   }
+  ],
+  "text": "[p1] 主 讲：吴莹 教授 \n西安交通大学航天航空学院 国家力学实验教学示范中心 \n点的复合运动—牵连点的确定\n[p2] 2 \n 采用分解与合成的方法将点的复杂运动分解为 \n某些简单运动，对各个简单运动进行分析，再按一 \n定的关系进行合成，以此解决点的复杂运动问题。\n[p3] 绝对速度、绝对加速度 \n相对速度、相对加速度 \n牵连速度、牵连加速度 \n牵连点相对定参考系的速度、加速度 ve , ae \nva , aa \nvr , ar \n牵连点：在某瞬时动系中与动点相重合的点 \n3\n[p4] 动量的概念及其计算 \n航天航空学院 \n力学实验教学国家示范中心 \n \n \n主讲人 刘 睫\n[p5] 具体问题中如何确定牵连点 ，\n计算牵连速度和加速度？ \n5\n[p6] 6 \n 例题1:已知O1A=O2B=r, O1O2=l, \n杆O1A以匀角速度ω绕轴O1转动\n。AB杆上有一套筒C，此套筒\n与杆CD相铰接，机构的各部件\n都在同一铅垂平面内。当=60°\n时，试分析CD杆的加速度。 \n \nO1 \nO2 \n\nB \nC \nD \nA \n\n[p7] 牵连运动：曲线平移 \n动系：固连于AB杆 \n动点：CD上的套筒 \nve=vA=ωr \n ae=aA =2r \n牵连点：AB杆上C'点 \n牵连速度：C'点速度 \n牵连加速度：C'点加速度 \nO1 \nO2 \n\nB C \nD \nA \n x´ \ny´ \nve \nvA \n(C') \n7 \n ae\n[p8] 8 \nB A \nr \ne \nO C \nl \n \n\n[p9] 动点：AB杆的A点，动系：与凸轮固连 \n 牵连运动：随凸轮绕O点的定轴转动 \n牵连点： 凸轮上与A端重合的A´点 \nB A \nr \ne \nO C \nl \n \nve \n(A´) \nve =ωOA' =rsin \naen= 2rsin \n牵连速度 \n牵连加速度 \n9 \n \naen \naet \nraet \n[p10] O \nA \nM \nB C \nD \nR e  \n \n例题3 \n已知平底凸轮机构如图示：\n凸轮 O 的 半 径 为R ， 偏心距\nOA=e，以角速度和角加速\n度绕O转动，并带动平底顶\n杆BCD运动。试分析 该瞬时\n顶杆的加速度。 \n10 \n\n[p11] O \nA \nM \nB C \nD \nR e  \n \n动点：凸轮中心A点 \n动系：固连在顶杆BCD上 \n牵连运动：铅垂方向平动 \n牵连点：动系上与A点重合的点A' \n(A') 牵连速度、加速度：顶杆的速度、加速度 \nve \nae \n11 \nve=vD \n ae=aD \n\n[p12] 12 \n已知 军舰以v1的速度匀速 前进，\n直升飞机以每小时 v 2 的速度垂\n直降落。试求 直升飞机相对于\n军舰的速度。 \n \n思考题 \n如何确定动点 、动系，以及牵\n连点？\n[p13] 谢 谢！ \n感谢兄弟院校动画制作！"
+ },
+ {
+  "file": "理论力学/04 第3章：点的复合运动/02 3-2点的速度合成定理/3.2点复合运动-速度分析.pdf",
+  "chapter": "04 第3章：点的复合运动",
+  "lesson": "02 3-2点的速度合成定理",
+  "name": "3.2点复合运动-速度分析.pdf",
+  "n_pages": 11,
+  "pages": [
+   {
+    "page": 1,
+    "text": "主 讲：吴莹 教授 \n西安交通大学航天航空学院 国家力学实验教学示范中心"
+   },
+   {
+    "page": 2,
+    "text": "2 \n 采用分解与合成的方法将点的复杂运动分解为某些\n简单运动，对各个简单运动进行分析，再按一定的关系进\n行合成，以此解决点的复杂运动问题。"
+   },
+   {
+    "page": 3,
+    "text": "绝对速度、绝对加速度 \n相对速度、相对加速度 \n牵连速度、牵连加速度 \n牵连点相对定参考系的速度、加速度 ve , ae \nva , aa \nvr , ar \n牵连点：在某瞬时动系中与动点相重合的点 \n3"
+   },
+   {
+    "page": 4,
+    "text": "4 \n动点M的绝对矢径 \n \n \n'r r rM O'\nM x y zr i j k  \n' ' 'r' i' j' k'x y z  \n动点M相对于动系的相对矢径 \n速度合成定理 \n其中 i´、j´、k´ 为动坐标系三个方向的单位矢\n量 \n同时，动点M的位置矢径 \nO' i' j' \nk' \nO \nx \ny \nz \nz' \ny' \nx' \nM \nr' \nr"
+   },
+   {
+    "page": 5,
+    "text": "5 \n在动系中观察i´, j´, k´ ，显然它们是不\n变的，只有x′, y′, z′ 随着时间变化。 \n' ' '\nr\nr'v i' j' k'   d dx dy dz\ndt dt dt dt\n动点的相对速度 \n' ' 'r' i' j' k'x y z  \nO' i' j' \nk' \nO \nx \ny \nz \nz' \ny' \nx' \nM \nr' \nr"
+   },
+   {
+    "page": 6,
+    "text": "6 \n由于该瞬时的牵连点是动系上一个确定点，\n所以x′, y′, z′是定值。 \n动系在作定轴转动，i′, j′, k′相对于定系是变\n矢量。 \n'' ' ' 'r r i' j' k'   MO x y z\n' ' ' '' ' 'e\nr i j kv Od d d dx y zdt dt dt dt   \n动点的牵连速度 \nO' i' j' \nk' \nO \nx \ny \nz \nz' \ny' \nx' \nM \nr' \n(M') \nr"
+   },
+   {
+    "page": 7,
+    "text": "a\nr r r i j kv i j k O' O'd d ' d d ' d ' d ' dx' dy' dz'x' y' z' ' ' 'dt dt dt dt dt dt dt dt dt        \n 在定系中 观察 上式中的各个变\n量，它们都随着时间改变。 \n动点的绝对速度 \nO' i' j' \nk' \nO \nx \ny \nz \nz' \ny' \nx' \nM \nr' \n(M') \nr \n' ' ' 'r r i' j' k'   MO x y z\nrea vvv "
+   },
+   {
+    "page": 8,
+    "text": "速度合成定理：动 点的绝对速度等于其牵连速度与\n相对速度的矢量和。 \n 适用范围：各种运动 \nrea vvv \n速度合成定理的几何表达是速度平行四边形，在平\n面问题中的解析表达式是两个投影方程， 可以求 解\n两个未知数 。"
+   },
+   {
+    "page": 9,
+    "text": "例题. 图示机构中滑块A套在摇杆 \nO2B上, 并与曲柄 O1A以销子连接.当 \nO1A转动时通过滑块A带动O2B 左右\n摆动。设 O1A长 r, 以匀角速1转动。\n试求该瞬时杆O2B的角速度2。 \nl \nO1 \nO2 \nA \nB \n1 \n"
+   },
+   {
+    "page": 10,
+    "text": "解: 取套筒A为动点，动系固连在O2B杆上 \n \nl \nO1 \nO2 \nA \nB \n1 \nva \nve \nvr \n(A´) 绝对运动：以O1为圆心的圆周运动 \n相对运动：沿O2B 杆的直线运动 \n牵连运动：绕O2轴的定轴转动 \n2 \n \n \n其中 \nrea vvv \n利用几何关系: \nsinavv e\n22\n1\n2\nsin\nrl\nr\n\n  解得: \nva = O1A.1 =r1 \n ve = O2A 2"
+   },
+   {
+    "page": 11,
+    "text": "谢 谢！ \n感谢兄弟院校动画制作！"
+   }
+  ],
+  "text": "[p1] 主 讲：吴莹 教授 \n西安交通大学航天航空学院 国家力学实验教学示范中心\n[p2] 2 \n 采用分解与合成的方法将点的复杂运动分解为某些\n简单运动，对各个简单运动进行分析，再按一定的关系进\n行合成，以此解决点的复杂运动问题。\n[p3] 绝对速度、绝对加速度 \n相对速度、相对加速度 \n牵连速度、牵连加速度 \n牵连点相对定参考系的速度、加速度 ve , ae \nva , aa \nvr , ar \n牵连点：在某瞬时动系中与动点相重合的点 \n3\n[p4] 4 \n动点M的绝对矢径 \n \n \n'r r rM O'\nM x y zr i j k  \n' ' 'r' i' j' k'x y z  \n动点M相对于动系的相对矢径 \n速度合成定理 \n其中 i´、j´、k´ 为动坐标系三个方向的单位矢\n量 \n同时，动点M的位置矢径 \nO' i' j' \nk' \nO \nx \ny \nz \nz' \ny' \nx' \nM \nr' \nr\n[p5] 5 \n在动系中观察i´, j´, k´ ，显然它们是不\n变的，只有x′, y′, z′ 随着时间变化。 \n' ' '\nr\nr'v i' j' k'   d dx dy dz\ndt dt dt dt\n动点的相对速度 \n' ' 'r' i' j' k'x y z  \nO' i' j' \nk' \nO \nx \ny \nz \nz' \ny' \nx' \nM \nr' \nr\n[p6] 6 \n由于该瞬时的牵连点是动系上一个确定点，\n所以x′, y′, z′是定值。 \n动系在作定轴转动，i′, j′, k′相对于定系是变\n矢量。 \n'' ' ' 'r r i' j' k'   MO x y z\n' ' ' '' ' 'e\nr i j kv Od d d dx y zdt dt dt dt   \n动点的牵连速度 \nO' i' j' \nk' \nO \nx \ny \nz \nz' \ny' \nx' \nM \nr' \n(M') \nr\n[p7] a\nr r r i j kv i j k O' O'd d ' d d ' d ' d ' dx' dy' dz'x' y' z' ' ' 'dt dt dt dt dt dt dt dt dt        \n 在定系中 观察 上式中的各个变\n量，它们都随着时间改变。 \n动点的绝对速度 \nO' i' j' \nk' \nO \nx \ny \nz \nz' \ny' \nx' \nM \nr' \n(M') \nr \n' ' ' 'r r i' j' k'   MO x y z\nrea vvv \n[p8] 速度合成定理：动 点的绝对速度等于其牵连速度与\n相对速度的矢量和。 \n 适用范围：各种运动 \nrea vvv \n速度合成定理的几何表达是速度平行四边形，在平\n面问题中的解析表达式是两个投影方程， 可以求 解\n两个未知数 。\n[p9] 例题. 图示机构中滑块A套在摇杆 \nO2B上, 并与曲柄 O1A以销子连接.当 \nO1A转动时通过滑块A带动O2B 左右\n摆动。设 O1A长 r, 以匀角速1转动。\n试求该瞬时杆O2B的角速度2。 \nl \nO1 \nO2 \nA \nB \n1 \n\n[p10] 解: 取套筒A为动点，动系固连在O2B杆上 \n \nl \nO1 \nO2 \nA \nB \n1 \nva \nve \nvr \n(A´) 绝对运动：以O1为圆心的圆周运动 \n相对运动：沿O2B 杆的直线运动 \n牵连运动：绕O2轴的定轴转动 \n2 \n \n \n其中 \nrea vvv \n利用几何关系: \nsinavv e\n22\n1\n2\nsin\nrl\nr\n\n  解得: \nva = O1A.1 =r1 \n ve = O2A 2\n[p11] 谢 谢！ \n感谢兄弟院校动画制作！"
+ },
+ {
+  "file": "理论力学/04 第3章：点的复合运动/03 3-3点的加速度合成定理/3.3.1点复合运动-加速度分析.pdf",
+  "chapter": "04 第3章：点的复合运动",
+  "lesson": "03 3-3点的加速度合成定理",
+  "name": "3.3.1点复合运动-加速度分析.pdf",
+  "n_pages": 20,
+  "pages": [
+   {
+    "page": 1,
+    "text": "主 讲：吴莹 教授 \n西安交通大学航天航空学院 国家力学实验教学示范中心"
+   },
+   {
+    "page": 2,
+    "text": "问题： \na a aa e r\n复合运动速度合成定理 \n是否存在如下加速度合成定理？ \nrea vvv "
+   },
+   {
+    "page": 3,
+    "text": "3 \n 已知半径为R的圆盘以匀角速\n度绕轴O转动，在邻近其边缘的上\n方，静止地悬挂一个小球P。试采\n用合成运动的分析方法来分析小球\n的加速度。 \nP \nω O"
+   },
+   {
+    "page": 4,
+    "text": "4 \nP点的运动分析如下： \n绝对运动：静止 \n牵连运动：圆盘绕O轴作定轴转动 \n P1为牵连点 \n相对运动：以点O为圆心，与圆盘转向相\n反的匀速圆周运动 \n以小球P为动点，圆盘为动系 \n0, 0aava\n(P1) \nω \nP \nO"
+   },
+   {
+    "page": 5,
+    "text": "5 \nP点的速度： \n-vvre\n0v v va e r  \nv e R\n(P1) \nω \nP \nO \nvr \nve"
+   },
+   {
+    "page": 6,
+    "text": "6 \n2na = a n rr R\n2na a n ee R\nP点的加速度 \n22a = a + a n a e r R\n根据前面所给出的公式得到 \nP的真实加速度为0。矛盾！ \nω \nR \nO \nP \n ae \nar"
+   },
+   {
+    "page": 7,
+    "text": "7 \n动点M的绝对矢径 \n \n \n'r r rM O'\nM x y zr i j k  \n' ' 'r' i' j' k'x y z  \n动点M相对于动系的相对矢径 \n牵连运动为定轴转动时的加速度合成 \n其中i´、j´、k´ 为动坐标系三个方向的单位矢\n量 \n同时，动点M的位置矢径 \nO' i' j' \nk' \nO \nx \ny \nz \nz' \ny' \nx' \nM \nr' \nr"
+   },
+   {
+    "page": 8,
+    "text": "8 \n在动系中观察i´, j´, k´ ，显然它们是不\n变的，只有x′, y′, z′ 随着时间变化。 \n' ' '\nr\nr'v i' j' k'   d dx dy dz\ndt dt dt dt\n2 2 2\n2 2 2\n' ' '\nr\nva i' j' k'   rd d x d y d z\ndt dt dt dt\n动点的相对速度和相对加速度 \n' ' 'r' i' j' k'x y z  \nO' i' j' \nk' \nO \nx \ny \nz \nz' \ny' \nx' \nM \nr' \nr"
+   },
+   {
+    "page": 9,
+    "text": "9 \n由于该瞬时的牵连点是动系上一个确定点，\n所以x′, y′, z′是定值。 \n动系做定轴转动，i′, j′, k′相对于定系是变矢\n量。 \n'' ' ' 'r r i' j' k'   MO x y z\n' ' ' '' ' 'e\nr i j kv Od d d dx y zdt dt dt dt   \n2 2 2 2\n'\n2 2 2 2\n' ' '' ' 'e\nr i j ka Od d d d x y zdt dt dt dt   \n牵连速度和牵连加速度 \nO' i' j' \nk' \nO \nx \ny \nz \nz' \ny' \nx' \nM \nr' \n(M') \nr"
+   },
+   {
+    "page": 10,
+    "text": "10 \na\nr r r i j kv i j k O' O'd d ' d d ' d ' d ' dx' dy' dz'x' y' z' ' ' 'dt dt dt dt dt dt dt dt dt        \na\na\nva d\ndt\n2 2 2 2\n2 2 2 2\n2 2 2\n2 2 2\nr i j k i j k\ni j ki j k\nO'd d ' d ' d ' dx' d ' dy' d ' dz' d '( x' y' z' )dt dt dt dt dt dt dt dt dt dt\nd x' d y' d z' dx' d ' dy' d ' dz' d '( ' ' ' )dt dt dt dt dt dt dt dt dt\n      \n     \n 在定系中 观察 上式中的各个变\n量，都随着时间改变。 \n动点的绝对速度和绝对加速度 \nO' i' j' \nk' \nO \nx \ny \nz \nz' \ny' \nx' \nM \nr' \n(M') \nar\nae\nr \n' ' ' 'r r i' j' k'   MO x y z"
+   },
+   {
+    "page": 11,
+    "text": "11 \n' ' ' ' ' ' ' ' '2( ) 2 ( ' ' ') 2 r\ni j k i j k v        ee\ndx d dy d dz d dx dy dz\ndt dt dt dt dt dt dt dt dt \n' 'i i e\nd\ndt \n' 'j j e\nd\ndt \n' 'k k e\nd\ndt \n根据泊松公式 \navc e r 2\nac----科氏加速度 \n' ' ' ' ' '2( )dx d dy d dz d\ndt dt dt dt dt dt    a e r\ni j ka a a"
+   },
+   {
+    "page": 12,
+    "text": "12 \na e r ca = a + a + a\n牵连运动为定轴转动时点的加速度合成定理： \n 在任一瞬时，动点的绝对加速度等于在同一瞬时动点\n相对加速度、牵连加速度和科氏加速度的矢量和。 \n2\n2 sin\nc e r\nc e r\nav\nav \n\n\n"
+   },
+   {
+    "page": 13,
+    "text": "13 \n 当动系平动时，动系转角速度和转角加速度都为零，动\n系上各点速度和加速度都相等，则牵连速度和加速度为： \nrea aaa \nO'\ne\neO'\nO'e\ne\nrr adt\ndvavdt\nd\ndt\ndv \n 当动系平动时，科氏加速度为零，则加速度合成公式： \n牵连运动为平动时点的加速度合成定理："
+   },
+   {
+    "page": 14,
+    "text": "举例 \n15 \n如图所示刨床的急回 机\n构。曲柄的一端与套筒\n用 铰链连接 。 当曲柄绕\n固定轴转动 时，套筒在\n摇杆上 滑动 ， 并带动 摇\n杆绕固定轴摆动。"
+   },
+   {
+    "page": 15,
+    "text": "设曲柄长 OA=r，曲柄\nOA以匀角速度 ω0绕固\n定轴 O 转动 ， 当 摇 杆\nAB与铅垂线夹角为30o\n时，分析 摇杆AB的角\n加速度。 \n15"
+   },
+   {
+    "page": 16,
+    "text": "动系－O1x1y1，固连于摇杆O1B \n1.运动分析 \n绝对运动－以O为圆心的圆周运动 \n相对运动－沿O1B的直线运动 \n牵连运动－摇杆绕O1轴的定轴转动 \n动点－套筒A \n16"
+   },
+   {
+    "page": 17,
+    "text": "2.速度分析 \na0\n1cos60 2\nev v r ω\n0ar\n2\n3sin60 rωvv  \na e rv v v\n根据速度合成定理 \n 已经求得牵连速度 \n相对速度 ω1 \n摇杆的角速度 \n22\n2\n1\nrl\nr\n \n17"
+   },
+   {
+    "page": 18,
+    "text": "3.加速度分析 \n aa : aa= ω0\n2r \n ar : 大小未知 \n ae\nn\n : ae\nn\n = ω0\n2r/8 \n ae\nt\n : ae\nt\n = (O1A) α1，α1为未知 \n aC : \n1r 2Ca ω v\nar \naa \naC ae\nt\n \nae\nn \n 加速度分析 \nω1 \nnt\na e e r Ca a a a a   \n18 √ √ √"
+   },
+   {
+    "page": 19,
+    "text": "加速度分析 \n \nar \naa \naC ae\nt\n \nae\nn \n将上式沿ae\nt 方向投影，得 \naCc o s 3 0 t\nea a a \n22\n0 1 0\n33 224r r r    \n2\n10\n3\n8\n即 \n求得摇杆AB 的角加速度 \n（逆时针） \n19"
+   },
+   {
+    "page": 20,
+    "text": "谢 谢！ \n感谢兄弟院校动画制作！"
+   }
+  ],
+  "text": "[p1] 主 讲：吴莹 教授 \n西安交通大学航天航空学院 国家力学实验教学示范中心\n[p2] 问题： \na a aa e r\n复合运动速度合成定理 \n是否存在如下加速度合成定理？ \nrea vvv \n[p3] 3 \n 已知半径为R的圆盘以匀角速\n度绕轴O转动，在邻近其边缘的上\n方，静止地悬挂一个小球P。试采\n用合成运动的分析方法来分析小球\n的加速度。 \nP \nω O\n[p4] 4 \nP点的运动分析如下： \n绝对运动：静止 \n牵连运动：圆盘绕O轴作定轴转动 \n P1为牵连点 \n相对运动：以点O为圆心，与圆盘转向相\n反的匀速圆周运动 \n以小球P为动点，圆盘为动系 \n0, 0aava\n(P1) \nω \nP \nO\n[p5] 5 \nP点的速度： \n-vvre\n0v v va e r  \nv e R\n(P1) \nω \nP \nO \nvr \nve\n[p6] 6 \n2na = a n rr R\n2na a n ee R\nP点的加速度 \n22a = a + a n a e r R\n根据前面所给出的公式得到 \nP的真实加速度为0。矛盾！ \nω \nR \nO \nP \n ae \nar\n[p7] 7 \n动点M的绝对矢径 \n \n \n'r r rM O'\nM x y zr i j k  \n' ' 'r' i' j' k'x y z  \n动点M相对于动系的相对矢径 \n牵连运动为定轴转动时的加速度合成 \n其中i´、j´、k´ 为动坐标系三个方向的单位矢\n量 \n同时，动点M的位置矢径 \nO' i' j' \nk' \nO \nx \ny \nz \nz' \ny' \nx' \nM \nr' \nr\n[p8] 8 \n在动系中观察i´, j´, k´ ，显然它们是不\n变的，只有x′, y′, z′ 随着时间变化。 \n' ' '\nr\nr'v i' j' k'   d dx dy dz\ndt dt dt dt\n2 2 2\n2 2 2\n' ' '\nr\nva i' j' k'   rd d x d y d z\ndt dt dt dt\n动点的相对速度和相对加速度 \n' ' 'r' i' j' k'x y z  \nO' i' j' \nk' \nO \nx \ny \nz \nz' \ny' \nx' \nM \nr' \nr\n[p9] 9 \n由于该瞬时的牵连点是动系上一个确定点，\n所以x′, y′, z′是定值。 \n动系做定轴转动，i′, j′, k′相对于定系是变矢\n量。 \n'' ' ' 'r r i' j' k'   MO x y z\n' ' ' '' ' 'e\nr i j kv Od d d dx y zdt dt dt dt   \n2 2 2 2\n'\n2 2 2 2\n' ' '' ' 'e\nr i j ka Od d d d x y zdt dt dt dt   \n牵连速度和牵连加速度 \nO' i' j' \nk' \nO \nx \ny \nz \nz' \ny' \nx' \nM \nr' \n(M') \nr\n[p10] 10 \na\nr r r i j kv i j k O' O'd d ' d d ' d ' d ' dx' dy' dz'x' y' z' ' ' 'dt dt dt dt dt dt dt dt dt        \na\na\nva d\ndt\n2 2 2 2\n2 2 2 2\n2 2 2\n2 2 2\nr i j k i j k\ni j ki j k\nO'd d ' d ' d ' dx' d ' dy' d ' dz' d '( x' y' z' )dt dt dt dt dt dt dt dt dt dt\nd x' d y' d z' dx' d ' dy' d ' dz' d '( ' ' ' )dt dt dt dt dt dt dt dt dt\n      \n     \n 在定系中 观察 上式中的各个变\n量，都随着时间改变。 \n动点的绝对速度和绝对加速度 \nO' i' j' \nk' \nO \nx \ny \nz \nz' \ny' \nx' \nM \nr' \n(M') \nar\nae\nr \n' ' ' 'r r i' j' k'   MO x y z\n[p11] 11 \n' ' ' ' ' ' ' ' '2( ) 2 ( ' ' ') 2 r\ni j k i j k v        ee\ndx d dy d dz d dx dy dz\ndt dt dt dt dt dt dt dt dt \n' 'i i e\nd\ndt \n' 'j j e\nd\ndt \n' 'k k e\nd\ndt \n根据泊松公式 \navc e r 2\nac----科氏加速度 \n' ' ' ' ' '2( )dx d dy d dz d\ndt dt dt dt dt dt    a e r\ni j ka a a\n[p12] 12 \na e r ca = a + a + a\n牵连运动为定轴转动时点的加速度合成定理： \n 在任一瞬时，动点的绝对加速度等于在同一瞬时动点\n相对加速度、牵连加速度和科氏加速度的矢量和。 \n2\n2 sin\nc e r\nc e r\nav\nav \n\n\n\n[p13] 13 \n 当动系平动时，动系转角速度和转角加速度都为零，动\n系上各点速度和加速度都相等，则牵连速度和加速度为： \nrea aaa \nO'\ne\neO'\nO'e\ne\nrr adt\ndvavdt\nd\ndt\ndv \n 当动系平动时，科氏加速度为零，则加速度合成公式： \n牵连运动为平动时点的加速度合成定理：\n[p14] 举例 \n15 \n如图所示刨床的急回 机\n构。曲柄的一端与套筒\n用 铰链连接 。 当曲柄绕\n固定轴转动 时，套筒在\n摇杆上 滑动 ， 并带动 摇\n杆绕固定轴摆动。\n[p15] 设曲柄长 OA=r，曲柄\nOA以匀角速度 ω0绕固\n定轴 O 转动 ， 当 摇 杆\nAB与铅垂线夹角为30o\n时，分析 摇杆AB的角\n加速度。 \n15\n[p16] 动系－O1x1y1，固连于摇杆O1B \n1.运动分析 \n绝对运动－以O为圆心的圆周运动 \n相对运动－沿O1B的直线运动 \n牵连运动－摇杆绕O1轴的定轴转动 \n动点－套筒A \n16\n[p17] 2.速度分析 \na0\n1cos60 2\nev v r ω\n0ar\n2\n3sin60 rωvv  \na e rv v v\n根据速度合成定理 \n 已经求得牵连速度 \n相对速度 ω1 \n摇杆的角速度 \n22\n2\n1\nrl\nr\n \n17\n[p18] 3.加速度分析 \n aa : aa= ω0\n2r \n ar : 大小未知 \n ae\nn\n : ae\nn\n = ω0\n2r/8 \n ae\nt\n : ae\nt\n = (O1A) α1，α1为未知 \n aC : \n1r 2Ca ω v\nar \naa \naC ae\nt\n \nae\nn \n 加速度分析 \nω1 \nnt\na e e r Ca a a a a   \n18 √ √ √\n[p19] 加速度分析 \n \nar \naa \naC ae\nt\n \nae\nn \n将上式沿ae\nt 方向投影，得 \naCc o s 3 0 t\nea a a \n22\n0 1 0\n33 224r r r    \n2\n10\n3\n8\n即 \n求得摇杆AB 的角加速度 \n（逆时针） \n19\n[p20] 谢 谢！ \n感谢兄弟院校动画制作！"
+ },
+ {
+  "file": "理论力学/04 第3章：点的复合运动/03 3-3点的加速度合成定理/3.3.2点复合运动-科氏加速度分析.pdf",
+  "chapter": "04 第3章：点的复合运动",
+  "lesson": "03 3-3点的加速度合成定理",
+  "name": "3.3.2点复合运动-科氏加速度分析.pdf",
+  "n_pages": 17,
+  "pages": [
+   {
+    "page": 1,
+    "text": "主 讲：吴莹 教授 \n西安交通大学航天航空学院 国家力学实验教学示范中心 \n点的复合运动—科氏加速度"
+   },
+   {
+    "page": 2,
+    "text": "2 \na a a aa r e c= + +\n牵连运动为定轴转动时点的加速度合成定理： \n 在任一瞬时，动点的绝对加速度等于在同一瞬时动点\n相对加速度、牵连加速度和科氏加速度的矢量和。 \n2\n2 sin\nc e r\nc e r\nav\nav \n\n\n\nac——科氏加速度"
+   },
+   {
+    "page": 3,
+    "text": "已知杆OA在图示平面内绕轴 O匀速转动 ，\n套筒M（可视为质点M）沿直杆OA运动。 \n取M为动点，动系固结于杆OA上。 \n科氏加速度的物理意义？\n3 \n 牵连速度 相对速度 绝对速度 \n \n \nt 瞬时 \nt+Dt 瞬时 \nve\nve\nvr\nvr\nv v va e r\nv v va e r  "
+   },
+   {
+    "page": 4,
+    "text": "△t 时间间隔内的速度变化 \n绝对速度的变化 \na e rv v v\na e rv v v  \n()\n()\nv v v v\nvv\na a e e\nrr\n''\n'\n  \n"
+   },
+   {
+    "page": 5,
+    "text": "作速度矢量三角形，在vr’矢量上截取vr长度 \n相对速度的变化 \nvrD\nvrD\nΔv Δv' Δv ''r r r\n反映了相对速度\n大小的变化 \n反映了牵连运动引起的\n相对速度方向的变化"
+   },
+   {
+    "page": 6,
+    "text": "' ''r r r\no o o\nΔv Δv Δvlim lim lim\nt t t t t tD  D  D \nD D D\n由于牵连运动引起\n的相对速度方向改\n变的加速度 \n相对加速度ar \n6"
+   },
+   {
+    "page": 7,
+    "text": "牵连速度的变化 \n作速度矢量三角形，在ve’矢量上截取ve长 \ne e eΔv Δv' Δv ''\n△ve’ \n△ve’ \n反映了相对运动引起的\n牵连速度大小的变化 \n反映了牵连速度 \n方向的变化 \n’"
+   },
+   {
+    "page": 8,
+    "text": "e e e\no o o\nΔ Δ ' Δ ''lim lim limt t tt t t\nv v v\nD  D  D \nD D D\n由 于 相 对 运动 的 存 在\n而 引 起 牵 连速 度 大 小\n改变的加速度。 \n牵连加速度ae"
+   },
+   {
+    "page": 9,
+    "text": "0 0 0\na a a e r e r\na\n( ) ( )lim lim limt t tt t t\nv v v v v v va\nD  D  D \n  D      D D D\n0 0 0\ne e r r e r( ) ( ) lim lim lim t t tt t t\nv v v v v v\nD  D  D \n   D D   D D D\n0 0 0 0\ne\nt t t t\nvv vv\nD  D  D  D \n   DD DD   D D D D\ne rrlim lim lim limt t t t\n绝对加速度 \n科氏加速度ac \n牵连加速度ae \n相对加速度ar"
+   },
+   {
+    "page": 10,
+    "text": "科氏加速度反映了牵连运动为转动时，牵连运动与相\n对运动的相互影响：动系的牵连运动引起动点相对速度方\n向的改变；动点的相对运动引起牵连速度大小的改变。 \n科氏加速度的物理意义："
+   },
+   {
+    "page": 11,
+    "text": "例 火车M以等速v0沿子午线自南往北行驶 ，如图所示。\n为了考虑地球的自转 ，设定坐标系以地心为原点 ，坐标轴分\n别指向恒星。地球的平均半径为R。求火车M在北纬φ度处的\n科氏加速度。 \n11"
+   },
+   {
+    "page": 12,
+    "text": "v0 \nM \n解： 1. 选择动点与动系 \n动系－O´ x´y´ z´ ， 固结在地球\n上，原点O´与地心重合 ，并使坐\n标面O´ y´ z´与铁轨所在的子午面\n重合，O´ z´轴与地轴重合。 \n动点－火车M \nx´ \ny´ \nz´ \n12"
+   },
+   {
+    "page": 13,
+    "text": "v0 \nM \n2. 运动分析 \n绝对运动－ 空间曲线运动 \n相对运动 － M点在子午面内以 O´\n为圆心 、R为半径和速度为 v0的匀\n速圆弧运动 \n牵连运动－地球绕O´ z´轴的匀角速\n转动 \nx´ \ny´ \nz´ \n52 7.27 1024 60 60\n   \nrad s\n13"
+   },
+   {
+    "page": 14,
+    "text": "v0 \nM \nx´ \ny´ \nz´ \n3. 科氏加速度分析 \n \n方向：指向沿M点纬度线的切线， \n并且向西； \nr02 sin 2 sinCa v v         \naC \n14 \n北半球的江河，其右岸都被明显的冲刷!"
+   },
+   {
+    "page": 15,
+    "text": "科氏加速度在生活中的表现：\n橡胶盘的翘曲现象"
+   },
+   {
+    "page": 16,
+    "text": "思考题"
+   },
+   {
+    "page": 17,
+    "text": "谢 谢！ \n感谢兄弟院校动画制作！"
+   }
+  ],
+  "text": "[p1] 主 讲：吴莹 教授 \n西安交通大学航天航空学院 国家力学实验教学示范中心 \n点的复合运动—科氏加速度\n[p2] 2 \na a a aa r e c= + +\n牵连运动为定轴转动时点的加速度合成定理： \n 在任一瞬时，动点的绝对加速度等于在同一瞬时动点\n相对加速度、牵连加速度和科氏加速度的矢量和。 \n2\n2 sin\nc e r\nc e r\nav\nav \n\n\n\nac——科氏加速度\n[p3] 已知杆OA在图示平面内绕轴 O匀速转动 ，\n套筒M（可视为质点M）沿直杆OA运动。 \n取M为动点，动系固结于杆OA上。 \n科氏加速度的物理意义？\n3 \n 牵连速度 相对速度 绝对速度 \n \n \nt 瞬时 \nt+Dt 瞬时 \nve\nve\nvr\nvr\nv v va e r\nv v va e r  \n[p4] △t 时间间隔内的速度变化 \n绝对速度的变化 \na e rv v v\na e rv v v  \n()\n()\nv v v v\nvv\na a e e\nrr\n''\n'\n  \n\n[p5] 作速度矢量三角形，在vr’矢量上截取vr长度 \n相对速度的变化 \nvrD\nvrD\nΔv Δv' Δv ''r r r\n反映了相对速度\n大小的变化 \n反映了牵连运动引起的\n相对速度方向的变化\n[p6] ' ''r r r\no o o\nΔv Δv Δvlim lim lim\nt t t t t tD  D  D \nD D D\n由于牵连运动引起\n的相对速度方向改\n变的加速度 \n相对加速度ar \n6\n[p7] 牵连速度的变化 \n作速度矢量三角形，在ve’矢量上截取ve长 \ne e eΔv Δv' Δv ''\n△ve’ \n△ve’ \n反映了相对运动引起的\n牵连速度大小的变化 \n反映了牵连速度 \n方向的变化 \n’\n[p8] e e e\no o o\nΔ Δ ' Δ ''lim lim limt t tt t t\nv v v\nD  D  D \nD D D\n由 于 相 对 运动 的 存 在\n而 引 起 牵 连速 度 大 小\n改变的加速度。 \n牵连加速度ae\n[p9] 0 0 0\na a a e r e r\na\n( ) ( )lim lim limt t tt t t\nv v v v v v va\nD  D  D \n  D      D D D\n0 0 0\ne e r r e r( ) ( ) lim lim lim t t tt t t\nv v v v v v\nD  D  D \n   D D   D D D\n0 0 0 0\ne\nt t t t\nvv vv\nD  D  D  D \n   DD DD   D D D D\ne rrlim lim lim limt t t t\n绝对加速度 \n科氏加速度ac \n牵连加速度ae \n相对加速度ar\n[p10] 科氏加速度反映了牵连运动为转动时，牵连运动与相\n对运动的相互影响：动系的牵连运动引起动点相对速度方\n向的改变；动点的相对运动引起牵连速度大小的改变。 \n科氏加速度的物理意义：\n[p11] 例 火车M以等速v0沿子午线自南往北行驶 ，如图所示。\n为了考虑地球的自转 ，设定坐标系以地心为原点 ，坐标轴分\n别指向恒星。地球的平均半径为R。求火车M在北纬φ度处的\n科氏加速度。 \n11\n[p12] v0 \nM \n解： 1. 选择动点与动系 \n动系－O´ x´y´ z´ ， 固结在地球\n上，原点O´与地心重合 ，并使坐\n标面O´ y´ z´与铁轨所在的子午面\n重合，O´ z´轴与地轴重合。 \n动点－火车M \nx´ \ny´ \nz´ \n12\n[p13] v0 \nM \n2. 运动分析 \n绝对运动－ 空间曲线运动 \n相对运动 － M点在子午面内以 O´\n为圆心 、R为半径和速度为 v0的匀\n速圆弧运动 \n牵连运动－地球绕O´ z´轴的匀角速\n转动 \nx´ \ny´ \nz´ \n52 7.27 1024 60 60\n   \nrad s\n13\n[p14] v0 \nM \nx´ \ny´ \nz´ \n3. 科氏加速度分析 \n \n方向：指向沿M点纬度线的切线， \n并且向西； \nr02 sin 2 sinCa v v         \naC \n14 \n北半球的江河，其右岸都被明显的冲刷!\n[p15] 科氏加速度在生活中的表现：\n橡胶盘的翘曲现象\n[p16] 思考题\n[p17] 谢 谢！ \n感谢兄弟院校动画制作！"
+ },
+ {
+  "file": "理论力学/05 动力学专题/01 碰撞/碰撞.pdf",
+  "chapter": "05 动力学专题",
+  "lesson": "01 碰撞",
+  "name": "碰撞.pdf",
+  "n_pages": 14,
+  "pages": [
+   {
+    "page": 1,
+    "text": "吴莹 教授\n西安交通大学航天航空学院\n碰 撞"
+   },
+   {
+    "page": 2,
+    "text": "碰撞是一种常见的力学现象。\n塑料\n2\n物体在极短的时间间隔内速度发生急剧的 改变,同时物体间将产\n生巨大的碰撞力。"
+   },
+   {
+    "page": 3,
+    "text": "3\n飞行员座椅弹射装置\n 勇气号火星探测器着陆\n物体在极短的时间间隔内速度发生急剧的 改变,同时物体间将产生巨\n大的碰撞力。\n飞行器对接"
+   },
+   {
+    "page": 4,
+    "text": "特点：短时间速度发生急剧变化； 碰撞时物体间将产生巨大的\n碰撞力。\n塑料\n力传感器\n接示波器\n例如，用铁锤砸钢板\n锤重4.45N;\n碰撞前锤的速度 0.457 m/s;\n碰撞的时间间隔 0.00044s;\n撞击力峰值 1490 N，\n静载作用的335倍。\n4"
+   },
+   {
+    "page": 5,
+    "text": " 碰撞的基本假设\n 由于碰撞力很大，是一般平常力（如重力、弹性力等）的几百倍甚至几千\n倍， 故平常力在碰撞过程中可以忽略不计。\n 碰撞物体的位移可以忽略不计。采用准刚体模型（局部变形的刚体）。\n\n\n\n\n\n\nn\ni\niCC\nn\ni\ni\nmm\n1\n(*)\n12\n1\n(*)\n12\nIvv\nIpp\n\n\n\n\n\n\nn\ni\niCCC\nn\ni\niOOO\n1\n(*)\n12\n1\n(*)\n12\n)(\n)(\nIMLL\nIMLL\n5\n由于碰撞力随时间而变化，瞬时值很难测定 。通常用碰撞力在碰撞时间内\n的冲量来表示碰撞的强弱，称为碰撞冲量。碰撞过程主要采用动量定理和动量\n矩定理的积分形式分析动力学过程。"
+   },
+   {
+    "page": 6,
+    "text": "碰撞过程分为：变形阶段和恢复阶段\n 由两物体开始接触 ，到沿着公法线方向相对速度为零 ，两物体产生\n最大变形，变形阶段，碰撞冲量为I1 ，\n 物体由于弹性而部分或完全恢复原来的形状 ，重新在公法线方向获\n得分离速度，直到脱离接触，恢复阶段，碰撞冲量为I2\n2\n1\nIe I\n恢复阶段与变形阶段碰撞冲量 I2和I1的大\n小的比值 ，度量碰撞后变形恢复的程度 ，称\n为恢复系数。 e=0为塑性碰撞， e=1为完全弹\n性碰撞。\n 碰撞过程速度分析\n6"
+   },
+   {
+    "page": 7,
+    "text": "T\nI II\nT\nn\nn 切平面的法线称为碰撞法线\nT-T 公共切平面\n2u\n1u\n21,vv\n碰撞前碰撞点的速度 碰撞后碰撞点的速度\n21,uu\n1v\n2v\n212\n1 1 2\nnn\nnn\nuuIe I v v\n \n1 1 1 1 2 2 2 1 ,n n n nm v m v I m v m v I   \n1 1 1 2 2 2 2 2 ,n n n nm u m v I m u m v I   \n不考虑摩擦，碰撞过程两个物体法向冲量互为反作用\n碰撞后相对分离速度和\n碰撞前相对接近速度之比\n 碰撞过程速度分析\n7\n1 2 1\n12\n11()nnv v I mm  \n2 1 2\n12\n11()nnu u I mm  "
+   },
+   {
+    "page": 8,
+    "text": "8\n 塑性碰撞 e=0\n1 2 1 1 2 2 1 2 ( ) / ( )nnu u m v m v m m   \n1 1 2 2\n1 1 2 1 2 2 1 2\n2 2 1 2 1 1 1 2\n,\n[( ) (1 ) ] / ( )\n[( ) (1 ) ] / ( )\nn n n\nn n n\nu v u v\nu m em v m e v m m\nu m em v m e v m m\n   \n    \n    \n12mm\n 完全弹性碰撞 e=1，当 时， 两球法向速度交换\n1 2 2 1 ,,n n n nu v u v\n 球与固定面碰撞 则\n22 ,0mv \n1 1 2 ,0nnu ev u \n再根据碰撞前后质点系在法向上动量守恒，两个小球各自在切向动量守恒\n1 1 2 2\n1 1 2 2 1 1 2 2\n,\nn n n n\nmu mv mu mv\nm v m v m u m u\n   \n  \n1 2\n11\n=n\nn\nu he vh\n 碰撞过程速度分析\n8"
+   },
+   {
+    "page": 9,
+    "text": ",2\n1\n2\n1 2\n22\n2\n111 vmvmT \n2\n22\n2\n112\n2\n1\n2\n1 vmvmT \n在碰撞过程中质点系损失的动能为\n)(2\n1)(2\n1 2\n2\n2\n22\n2\n1\n2\n1121 vvmvvmTTT \n以T1和T2分别表示此两球组成的质点系\n在碰撞过程开始和结束时的动能 ，则有\nC1 C2\n1v\n2v\nv1 v2\n 碰撞过程中的能量损失\n2\n21\n2\n21\n21\n21 )()1()(2 vvemm\nmmTTT \n9"
+   },
+   {
+    "page": 10,
+    "text": "2\n21\n21\n21\n21 )()(2 vvmm\nmmTTT \n如果第二个物体在塑性碰撞开始时处于静止，即 v2=0， 则动能损失\n在塑性碰撞时，e = 0 ，动能损失为\n1\n2\n1\n1\n21\n2\n21\n1\n1 T\nm\nmTmm\nmTTT\n\n\n如何提高打桩机 、锻压机的工作效率 。\n 碰撞过程中的动能损失\n10"
+   },
+   {
+    "page": 11,
+    "text": "击球时手握\n在\n哪里、如何击球\n所\n受的撞击力最小？\n问题\n11"
+   },
+   {
+    "page": 12,
+    "text": "x\ny\no\noxI\noyI\nI\nC\nK\n\ncv\n1\ncu\n2\n例：质量为m的刚体可绕O轴转动，转动惯量为J，受到外冲量I的作\n用，轴承O有约束力冲量，确定约束冲量为零的条件。\n解：应用动量定理\nOyOxCC mm IIIvu \nOyIIy  sin0:\n00  OyII\n0\n条件1：冲量 I 垂直于OC\n12"
+   },
+   {
+    "page": 13,
+    "text": "OxCC IImvmux :\n应用对O轴的动量矩定理\nIlJJ OO  )( 12 \n0 oxI若\nIma  )( 12 \nIlJO  )( 12 \nma\nJl O\nx\ny\no\noxI\noyI\nI\nC\nl\na\nK\ncu\n2\ncv\n1\n\n\n\nn\ni\niOOO\n1\n(*)\n12 )(IMLL\nOyOxCC mm IIIvu \n条件2：冲击点 K 到 O 轴的距离为 l 13\n即"
+   },
+   {
+    "page": 14,
+    "text": "14\n感谢兄弟院校的动画等素材\n谢谢"
+   }
+  ],
+  "text": "[p1] 吴莹 教授\n西安交通大学航天航空学院\n碰 撞\n[p2] 碰撞是一种常见的力学现象。\n塑料\n2\n物体在极短的时间间隔内速度发生急剧的 改变,同时物体间将产\n生巨大的碰撞力。\n[p3] 3\n飞行员座椅弹射装置\n 勇气号火星探测器着陆\n物体在极短的时间间隔内速度发生急剧的 改变,同时物体间将产生巨\n大的碰撞力。\n飞行器对接\n[p4] 特点：短时间速度发生急剧变化； 碰撞时物体间将产生巨大的\n碰撞力。\n塑料\n力传感器\n接示波器\n例如，用铁锤砸钢板\n锤重4.45N;\n碰撞前锤的速度 0.457 m/s;\n碰撞的时间间隔 0.00044s;\n撞击力峰值 1490 N，\n静载作用的335倍。\n4\n[p5]  碰撞的基本假设\n 由于碰撞力很大，是一般平常力（如重力、弹性力等）的几百倍甚至几千\n倍， 故平常力在碰撞过程中可以忽略不计。\n 碰撞物体的位移可以忽略不计。采用准刚体模型（局部变形的刚体）。\n\n\n\n\n\n\nn\ni\niCC\nn\ni\ni\nmm\n1\n(*)\n12\n1\n(*)\n12\nIvv\nIpp\n\n\n\n\n\n\nn\ni\niCCC\nn\ni\niOOO\n1\n(*)\n12\n1\n(*)\n12\n)(\n)(\nIMLL\nIMLL\n5\n由于碰撞力随时间而变化，瞬时值很难测定 。通常用碰撞力在碰撞时间内\n的冲量来表示碰撞的强弱，称为碰撞冲量。碰撞过程主要采用动量定理和动量\n矩定理的积分形式分析动力学过程。\n[p6] 碰撞过程分为：变形阶段和恢复阶段\n 由两物体开始接触 ，到沿着公法线方向相对速度为零 ，两物体产生\n最大变形，变形阶段，碰撞冲量为I1 ，\n 物体由于弹性而部分或完全恢复原来的形状 ，重新在公法线方向获\n得分离速度，直到脱离接触，恢复阶段，碰撞冲量为I2\n2\n1\nIe I\n恢复阶段与变形阶段碰撞冲量 I2和I1的大\n小的比值 ，度量碰撞后变形恢复的程度 ，称\n为恢复系数。 e=0为塑性碰撞， e=1为完全弹\n性碰撞。\n 碰撞过程速度分析\n6\n[p7] T\nI II\nT\nn\nn 切平面的法线称为碰撞法线\nT-T 公共切平面\n2u\n1u\n21,vv\n碰撞前碰撞点的速度 碰撞后碰撞点的速度\n21,uu\n1v\n2v\n212\n1 1 2\nnn\nnn\nuuIe I v v\n \n1 1 1 1 2 2 2 1 ,n n n nm v m v I m v m v I   \n1 1 1 2 2 2 2 2 ,n n n nm u m v I m u m v I   \n不考虑摩擦，碰撞过程两个物体法向冲量互为反作用\n碰撞后相对分离速度和\n碰撞前相对接近速度之比\n 碰撞过程速度分析\n7\n1 2 1\n12\n11()nnv v I mm  \n2 1 2\n12\n11()nnu u I mm  \n[p8] 8\n 塑性碰撞 e=0\n1 2 1 1 2 2 1 2 ( ) / ( )nnu u m v m v m m   \n1 1 2 2\n1 1 2 1 2 2 1 2\n2 2 1 2 1 1 1 2\n,\n[( ) (1 ) ] / ( )\n[( ) (1 ) ] / ( )\nn n n\nn n n\nu v u v\nu m em v m e v m m\nu m em v m e v m m\n   \n    \n    \n12mm\n 完全弹性碰撞 e=1，当 时， 两球法向速度交换\n1 2 2 1 ,,n n n nu v u v\n 球与固定面碰撞 则\n22 ,0mv \n1 1 2 ,0nnu ev u \n再根据碰撞前后质点系在法向上动量守恒，两个小球各自在切向动量守恒\n1 1 2 2\n1 1 2 2 1 1 2 2\n,\nn n n n\nmu mv mu mv\nm v m v m u m u\n   \n  \n1 2\n11\n=n\nn\nu he vh\n 碰撞过程速度分析\n8\n[p9] ,2\n1\n2\n1 2\n22\n2\n111 vmvmT \n2\n22\n2\n112\n2\n1\n2\n1 vmvmT \n在碰撞过程中质点系损失的动能为\n)(2\n1)(2\n1 2\n2\n2\n22\n2\n1\n2\n1121 vvmvvmTTT \n以T1和T2分别表示此两球组成的质点系\n在碰撞过程开始和结束时的动能 ，则有\nC1 C2\n1v\n2v\nv1 v2\n 碰撞过程中的能量损失\n2\n21\n2\n21\n21\n21 )()1()(2 vvemm\nmmTTT \n9\n[p10] 2\n21\n21\n21\n21 )()(2 vvmm\nmmTTT \n如果第二个物体在塑性碰撞开始时处于静止，即 v2=0， 则动能损失\n在塑性碰撞时，e = 0 ，动能损失为\n1\n2\n1\n1\n21\n2\n21\n1\n1 T\nm\nmTmm\nmTTT\n\n\n如何提高打桩机 、锻压机的工作效率 。\n 碰撞过程中的动能损失\n10\n[p11] 击球时手握\n在\n哪里、如何击球\n所\n受的撞击力最小？\n问题\n11\n[p12] x\ny\no\noxI\noyI\nI\nC\nK\n\ncv\n1\ncu\n2\n例：质量为m的刚体可绕O轴转动，转动惯量为J，受到外冲量I的作\n用，轴承O有约束力冲量，确定约束冲量为零的条件。\n解：应用动量定理\nOyOxCC mm IIIvu \nOyIIy  sin0:\n00  OyII\n0\n条件1：冲量 I 垂直于OC\n12\n[p13] OxCC IImvmux :\n应用对O轴的动量矩定理\nIlJJ OO  )( 12 \n0 oxI若\nIma  )( 12 \nIlJO  )( 12 \nma\nJl O\nx\ny\no\noxI\noyI\nI\nC\nl\na\nK\ncu\n2\ncv\n1\n\n\n\nn\ni\niOOO\n1\n(*)\n12 )(IMLL\nOyOxCC mm IIIvu \n条件2：冲击点 K 到 O 轴的距离为 l 13\n即\n[p14] 14\n感谢兄弟院校的动画等素材\n谢谢"
+ }
+]

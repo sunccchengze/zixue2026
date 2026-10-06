@@ -1,0 +1,61 @@
+[
+ {
+  "url": "https://edu-image.nosdn.127.net/component-pdf-reader-images-web-prev_cur_d632f7a5d6bbba8b8684f0bcc644e6fb.ico",
+  "type": "image",
+  "method": "GET",
+  "status": 200,
+  "content_type": "image/x-icon;charset=UTF-8"
+ },
+ {
+  "url": "https://edu-image.nosdn.127.net/component-pdf-reader-images-web-sprite_38f6e566c7118d66bb24b7cd4ea1f118.png",
+  "type": "image",
+  "method": "GET",
+  "status": 200,
+  "content_type": "image/png;charset=UTF-8"
+ },
+ {
+  "url": "https://edu-image.nosdn.127.net/component-pdf-reader-images-buffering_04eed3bc0591209bcf6d291d99939f89.png",
+  "type": "image",
+  "method": "GET",
+  "status": 200,
+  "content_type": "image/png;charset=UTF-8"
+ },
+ {
+  "url": "https://eds-doc.nos-jd.163yun.com/watermark_439a3300aaa64c4d96dc310fae2a139b.pdf?&download=%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E7%A8%8B-%E7%AE%80%E4%BB%8B.pdf",
+  "type": "xhr",
+  "method": "GET",
+  "status": 200,
+  "content_type": "application/octet-stream;charset=UTF-8"
+ },
+ {
+  "url": "https://edu-image.nosdn.127.net/component-pdf-reader-images-web-next_cur_8831c54940bde1bbf2a26d5a32d3eef4.ico",
+  "type": "image",
+  "method": "GET",
+  "status": 200,
+  "content_type": "image/x-icon;charset=UTF-8"
+ },
+ {
+  "url": "https://www.icourse163.org/dwr/call/plaincall/CourseBean.getLessonUnitLearnVo.dwr",
+  "type": "xhr",
+  "method": "POST",
+  "status": 200,
+  "resp_size": 837,
+  "content_type": "text/javascript;charset=UTF-8"
+ },
+ {
+  "url": "https://cst.stu.126.net/u/js/cms/pdf.js?1530862868615",
+  "type": "script",
+  "method": "GET",
+  "status": 200,
+  "resp_size": 249205,
+  "content_type": "application/javascript; charset=utf-8"
+ },
+ {
+  "url": "https://cst.stu.126.net/u/js/cms/pdf.worker.js??1530862838366",
+  "type": "other",
+  "method": "GET",
+  "status": 200,
+  "resp_size": 930880,
+  "content_type": "application/javascript; charset=utf-8"
+ }
+]

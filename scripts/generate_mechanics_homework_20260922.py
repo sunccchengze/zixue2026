@@ -29,7 +29,7 @@ OUT = ROOT / '工程力学/作业'
 FIG = OUT / '2026-09-22-作业/图'
 TMP = ROOT / '.arena-tools/0922'
 BOOK = ROOT / '工程力学/框架版教材/工程力学（框架汇编版）.pdf'
-STEM = '2026-09-22-工程力学作业单（1-2）'
+STEM = '2026-09-22-作业/工程力学作业单（1-2）'
 
 
 def cross(r, f):
@@ -209,7 +209,7 @@ def draw_answers():
 
 
 def make_sheet():
-    spec = json.loads((OUT / '2026-09-22-作业单.json').read_text())
+    spec = json.loads((OUT / '2026-09-22-作业/作业单.json').read_text())
     spec['_base'] = str(OUT)
     sheet.build(spec, OUT / f'{STEM}.docx')
     preview.SONG = preview.HEI = TMP / 'DroidSansFallback.ttf'
