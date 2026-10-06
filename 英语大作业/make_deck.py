@@ -1,7 +1,7 @@
 from pathlib import Path
 PROJECT = Path(__file__).resolve().parent
 # -*- coding: utf-8 -*-
-"""13-slide deck v2 — varied layouts, sharp corners, visible gradients,
+"""13-slide evidence-corrected draft (2026-10-06) — varied layouts, sharp corners, visible gradients,
 oversized type, layered/bleeding imagery."""
 import os
 from PIL import Image
@@ -65,7 +65,7 @@ tb, tf = tbox(s, 0.9, 5.86, 9.6, 0.26)
 para(tf, "Wang D. et al.  ·  Engineering 6 (2020) 1115–1121  ·  Beijing University of Chemical Technology",
      11, (158, 186, 212), first=True)
 tb, tf = tbox(s, 0.9, 6.28, 9.0, 0.30)
-para(tf, "PRESENTED BY   甲   ·   乙   ·   丙   ·   丁", 13.5, WHITE, bold=True, first=True)
+para(tf, "孙承泽   ·   2253710052   ·   能动强基2501", 13.5, WHITE, bold=True, first=True)
 hair(s, 12.34, 2.02, 4.30, CYAN, 1.1, vertical=True, alpha=150)
 rect(s, 12.17, 2.02, 0.11, 0.11, color=CYAN, alpha=200)
 rect(s, 12.17, 6.21, 0.11, 0.11, color=CYAN, alpha=200)
@@ -94,7 +94,7 @@ tf2 = tb2.text_frame
 para(tf2, "CHINA  ·  JANUARY 2020", 9.5, (168, 198, 224), first=True, align=PP_ALIGN.RIGHT)
 band(s, 6.30, 0.58, "So the question became urgent: is there a way to make one mask last longer — safely?",
      AMBER, 15)
-footer(s, 2, TOTAL, "甲", AMBER)
+footer(s, 2, TOTAL, "P1", AMBER)
 
 # ================================================== 03 THREE QUESTIONS (tall columns)
 s = new()
@@ -111,7 +111,7 @@ for i, (n, t, b, c) in enumerate([("01", "KILL?", "Does the procedure actually i
                                   ("03", "SURVIVE?", "Does it hold up after real hours of wear?", GREEN)]):
     col_card(s, 0.9 + i * (cw + gap), 2.28, cw, 4.42, n, t, b, c,
              num_size=48, title_size=26, body_size=12)
-footer(s, 3, TOTAL, "甲", CYAN)
+footer(s, 3, TOTAL, "P1", CYAN)
 
 # ================================================== 04 PROCEDURE (split, figure bleeds right)
 s = new()
@@ -120,22 +120,22 @@ topline(s, CYAN)
 eyebrow(s, 0.9, 0.48, "0 3   ·   M E T H O D", CYAN)
 headline(s, 0.9, 0.74, 6.4, "The Procedure", 34)
 tb, tf = tbox(s, 0.9, 1.48, 5.30, 0.66)
-para(tf, "Two steps, no chemicals, no special equipment.", 13, MUTED, first=True, line=1.22)
-para(tf, "56 °C water, then a hair dryer.", 13, MUTED, line=1.22)
+para(tf, "Historical protocol studied in 2020; not reuse advice.", 13, MUTED, first=True, line=1.22)
+para(tf, "Hot-water treatment followed by charge regeneration.", 13, MUTED, line=1.22)
 hair(s, 6.46, 1.95, 4.85, HAIR, 1.0, vertical=True, alpha=110)
 metric_row(s, 0.9, 2.42, 5.20, 1.55, "56 °C", "FOR 30 MINUTES", "STEP 01  ·  SOAK",
-           "The envelope protein of the virus denatures and the virus loses its ability to infect.",
+           "Temperature target cited from historical guidance; no direct virus challenge here.",
            CYAN, num_size=31, num_w=2.35, c1=(15, 33, 54), c2=(9, 19, 32))
 metric_row(s, 0.9, 4.22, 5.20, 1.55, "10", "MINUTES, HAIR DRYER", "STEP 02  ·  DRY",
            "Recharges the melt-blown filter layer with static electricity.",
            AMBER, num_size=31, num_w=2.35, c1=(15, 33, 54), c2=(9, 19, 32))
-band(s, 5.98, 0.66, "NO CHEMICALS   ·   NO SPECIAL EQUIPMENT   ·   DOABLE IN A KITCHEN",
+band(s, 5.98, 0.66, "2020 STUDY   ·   NOT A HOME REUSE RECOMMENDATION",
      CYAN, 13, x=0.9, w=5.20)
 plate(s, f"{F}/fig1.jpg", 6.75, 1.90, 6.40,
       "Fig. 1 — Household containers, water temperature over 30 min, and a used mask under 365 nm UV light, "
       "before and after treatment.   Wang et al. (2020).", cap_h=0.34, shadow=True)
 rect(s, 6.75, 1.90, 0.06, 4.06, color=CYAN, alpha=200)
-footer(s, 4, TOTAL, "乙", CYAN)
+footer(s, 4, TOTAL, "P2", CYAN)
 
 # ================================================== 05 TEMPERATURE
 s = new()
@@ -163,10 +163,10 @@ para(tf, "Boiling water starts near 90 °C in all three containers.", 12, (212, 
      line=1.34, space_after=9)
 para(tf, "After 30 minutes the basin and the lunch box are still around 60 °C; the thermos holds 85 °C.",
      11.5, MUTED, line=1.34, space_after=9)
-para(tf, "The requirement is met with things people already own.", 11.5, MUTED, line=1.34)
-band(s, 6.28, 0.58, "Three everyday containers — and the water is still hot enough after half an hour.",
+para(tf, "This was measured for the tested containers and conditions.", 11.5, MUTED, line=1.34)
+band(s, 6.28, 0.58, "The tested containers stayed above the cited target; virus killing was not tested.",
      AMBER, 14)
-footer(s, 5, TOTAL, "乙", AMBER)
+footer(s, 5, TOTAL, "P2", AMBER)
 
 # ================================================== 06 STATIC CHARGE (full-width bars)
 s = new()
@@ -175,10 +175,10 @@ topline(s, CYAN)
 eyebrow(s, 0.9, 0.48, "0 5   ·   M E T H O D", CYAN)
 headline(s, 0.9, 0.74, 11.6, "The Hidden Problem: Static Charge", 31)
 tb, tf = tbox(s, 0.9, 1.46, 11.2, 0.30)
-para(tf, "Hot water kills the virus — and it also destroys the charge that makes the mask work.", 13, MUTED, first=True)
+para(tf, "The authors measured charge loss and recovery; they did not directly test virus killing.", 13, MUTED, first=True)
 full_bar(s, 0.9, 2.42, 7.90, 0.54, "New mask", 100, (86, 122, 160), "", val_size=30)
 full_bar(s, 0.9, 3.72, 7.90, 0.54, "Air-dried 10 h", 60, AMBER,
-         "too slow; bacteria can grow in a wet mask", val_size=30)
+         "reported charge recovery after natural drying", val_size=30)
 full_bar(s, 0.9, 5.02, 7.90, 0.54, "Hair dryer 10 min", 90, GREEN,
          "fast, and recovers most of the charge", val_size=30)
 tb, tf = tbox(s, 0.9, 6.18, 7.9, 0.26)
@@ -186,13 +186,13 @@ para(tf, "RECOVERY OF ELECTROSTATIC CHARGE ON THE FILTER LAYER", 9.5, (150, 178,
 eyebrow(s, 9.20, 2.42, "WHY IT MATTERS", CYAN, 10.5, 3.2)
 rule_bar(s, 9.20, 2.76, 0.80, CYAN, 2.4)
 tb, tf = tbox(s, 9.20, 3.00, 3.30, 3.4)
-para(tf, "Electrostatic adsorption is the only mechanism that captures nano-sized particles while keeping "
-         "the mask easy to breathe through.", 12, WHITE, first=True, line=1.34, space_after=10)
-para(tf, "Hot water removes that charge. So the charge has to be put back — that is what the hair-dryer "
-         "step is for.", 11.5, MUTED, line=1.34, space_after=10)
-para(tf, "Drying fast also stops bacteria from growing inside a wet mask.", 11.5, MUTED, line=1.34)
-band(s, 6.42, 0.52, "The recipe: hot water, 56 °C, 30 minutes; hair dryer, 10 minutes.", CYAN, 13.5)
-footer(s, 6, TOTAL, "乙", CYAN)
+para(tf, "Electrostatic capture helps retain small particles without a dense filter. "
+         "Brownian diffusion also contributes.", 12, WHITE, first=True, line=1.34, space_after=10)
+para(tf, "The authors report charge reduction after soaking and recovery after drying. "
+         "This does not establish safe reuse.", 11.5, MUTED, line=1.34, space_after=10)
+para(tf, "Bacterial growth during drying was not directly measured.", 11.5, MUTED, line=1.34)
+band(s, 6.42, 0.52, "Historical test conditions, not a validated household disinfection recipe.", CYAN, 13.5)
+footer(s, 6, TOTAL, "P2", CYAN)
 
 # ================================================== 07 ANATOMY (layered/bleeding figures)
 s = new()
@@ -230,7 +230,7 @@ add_shadow(p2, blur=22, dist=10, alpha=52)
 plate(s, f"{F}/fig3.jpg", 6.48, 4.12, 2.75, shadow=True, rot=-2.4, frame_off=(AMBER, 0.12))
 tb, tf = tbox(s, 6.48, 6.72, 2.9, 0.24)
 para(tf, "Fig. 3 — waterproof test, SEM", 8.2, (120, 148, 176), first=True)
-footer(s, 7, TOTAL, "丙", AMBER)
+footer(s, 7, TOTAL, "P3", AMBER)
 
 # ================================================== 08 MECHANISMS (five columns)
 s = new()
@@ -239,9 +239,9 @@ topline(s, AMBER)
 eyebrow(s, 0.9, 0.48, "0 7   ·   M E C H A N I S M", AMBER)
 headline(s, 0.9, 0.74, 11.0, "Five Filtration Mechanisms", 33)
 tb, tf = tbox(s, 0.9, 1.46, 11.2, 0.30)
-para(tf, "A mask does not work like a sieve. Five mechanisms act together — one of them dominates.", 13, MUTED, first=True)
+para(tf, "A mask is not just a sieve. Capture depends on particle size and several mechanisms.", 13, MUTED, first=True)
 mechs = [("01", "Brownian\ndiffusion", "Random motion drives the smallest particles into fibres."),
-         ("02", "Entrapment", "Particles too large to follow the air stream get stuck."),
+         ("02", "Entrapment", "Particles following the airflow touch a fibre and adhere."),
          ("03", "Inertial\ncollision", "Heavier particles cannot turn with the air and hit a fibre."),
          ("04", "Gravity\nsedimentation", "Large particles simply settle out of the airflow."),
          ("05", "Electrostatic\nadsorption", "Charge pulls nano-sized particles in — at almost no cost to breathing resistance.")]
@@ -258,10 +258,10 @@ for i, (n, t, b) in enumerate(mechs):
     tb, tf = tbox(s, x + 0.28, 2.40, 0.50, 0.50, anchor=MSO_ANCHOR.MIDDLE)
     para(tf, n, 12, (12, 26, 42) if key else (8, 18, 30), bold=True, align=PP_ALIGN.CENTER, first=True)
     rule_bar(s, x + 0.24, 3.52, 0.62, AMBER if key else (78, 112, 144), 1.6)
-band(s, 6.00, 0.80, "THE ONE THAT MATTERS — Electrostatic adsorption is the only mechanism that captures "
-     "nano-sized particles while keeping the mask breathable, and it is exactly the one that hot water destroys.",
+band(s, 6.00, 0.80, "COMPLEMENTARY MECHANISMS — Electrostatic capture helps filtration at low pressure drop; "
+     "diffusion also captures small particles. Performance depends on particle size and filter conditions.",
      AMBER, 14)
-footer(s, 8, TOTAL, "丙", AMBER)
+footer(s, 8, TOTAL, "P3", AMBER)
 
 # ================================================== 09 RESULTS
 s = new()
@@ -270,14 +270,14 @@ topline(s, GREEN)
 eyebrow(s, 0.9, 0.48, "0 8   ·   E V I D E N C E", GREEN)
 headline(s, 0.9, 0.74, 8.0, "Test Results vs Standards", 33)
 tb, tf = tbox(s, 0.9, 1.46, 6.4, 0.46)
-para(tf, "Measured with a TSI 8130 against NaCl aerosol, following the Chinese national standards.", 13, MUTED, first=True, line=1.22)
+para(tf, "PFE: TSI 8130 / NaCl aerosol. BFE: a separate bacterial-count endpoint.", 13, MUTED, first=True, line=1.22)
 metric_row(s, 0.9, 2.12, 5.55, 1.24, ">95", "% MEASURED", "Bacterial filtration — BFE",
            "Required ≥ 95%   ·   YY/T 0969–2013 · YY 0469–2011", GREEN, num_size=34, num_w=2.00,
            c1=(15, 33, 54), c2=(9, 19, 32))
 metric_row(s, 0.9, 3.50, 5.55, 1.24, "92.3", "% MEASURED", "Particle filtration — surgical",
            "Required ≥ 30%   ·   YY 0469–2011", AMBER, num_size=34, num_w=2.00,
            c1=(15, 33, 54), c2=(9, 19, 32))
-metric_row(s, 0.9, 4.88, 5.55, 1.24, ">95", "% MEASURED", "Particle filtration — KN95",
+metric_row(s, 0.9, 4.88, 5.55, 1.24, ">95", "% MEASURED", "Particle filtration — 3M / KF samples",
            "Required ≥ 95%   ·   GB 2626–2019", GREEN, num_size=34, num_w=2.00,
            c1=(15, 33, 54), c2=(9, 19, 32))
 grect(s, 0.9, 6.26, 5.55, 0.50, (13, 28, 46), (9, 18, 31), angle=0)
@@ -288,7 +288,7 @@ plate(s, f"{F}/fig4.jpg", 7.63, 1.86, 5.52,
       "Fig. 4 — BFE and PFE of regenerated masks, performance after 10 cycles, and after "
       "sterilisation at 121 °C.   Wang et al. (2020).", cap_h=0.34, shadow=True)
 rect(s, 7.63, 1.86, 0.06, 5.02, color=GREEN, alpha=200)
-footer(s, 9, TOTAL, "丙", GREEN)
+footer(s, 9, TOTAL, "P3", GREEN)
 
 # ================================================== 10 TEN CYCLES
 s = new()
@@ -317,8 +317,8 @@ para(tf, "PUSHED FURTHER — PRESSURISED STEAM AT 121 °C, 30 MIN", 10.5, AMBER,
 full_bar(s, 4.95, 5.12, 6.30, 0.40, "3M 1860", 99.2, GREEN, "", val_size=24, label_w=1.30)
 full_bar(s, 4.95, 5.74, 6.30, 0.40, "KF94", 96.6, CYAN, "", val_size=24, label_w=1.30)
 tb, tf = tbox(s, 11.55, 5.30, 0.80, 0.90)
-para(tf, "95%\nmin.", 9.5, AMBER, bold=True, align=PP_ALIGN.RIGHT, first=True, line=1.1)
-footer(s, 10, TOTAL, "丙", CYAN)
+para(tf, "95%\nreference", 9.5, AMBER, bold=True, align=PP_ALIGN.RIGHT, first=True, line=1.1)
+footer(s, 10, TOTAL, "P3", CYAN)
 
 # ================================================== 11 REAL WEAR (bleeding photo column)
 s = new()
@@ -342,8 +342,8 @@ rows = [("WATERPROOF", "100 mL in 20 s, vacuum 3 min",
          "After 10 cycles: no seepage. SEM shows the fibres intact.", CYAN),
         ("8 HOURS OF REAL WEAR", "Surgical vs KN95",
          "Surgical fell by 0.5–12% (15 samples). All 10 KN95 stayed above 95%.", AMBER),
-        ("THE REAL CULPRIT", "It is not the hot water",
-         "Dirt and oil from the skin change the wettability of the fibres.", GREEN)]
+        ("A PROPOSED EXPLANATION", "Oil, dirt and wettability",
+         "Authors link wear-related changes to contamination; other causes are not excluded.", GREEN)]
 yy = 2.02
 for i, (tag, sub, body, c) in enumerate(rows):
     rect(s, 6.05, yy, 0.06, 0.90, color=c)
@@ -360,41 +360,41 @@ tb, tf = tbox(s, 10.55, 5.20, 2.0, 0.30)
 para(tf, "Fig. 5 — fluorescent\npenetrant inspection", 8.2, (120, 148, 176), first=True, line=1.12)
 band(s, 5.82, 1.04, "Deployed at scale: one company cut mask use to a third in five weeks.",
      AMBER, 13.5, x=6.05, w=6.38, label="FROM THE LAB TO THE FACTORY")
-footer(s, 11, TOTAL, "丁", AMBER)
+footer(s, 11, TOTAL, "P4", AMBER)
 
 # ================================================== 12 VERDICT
 s = new()
 cover_pic(s, f"{TMP}/bg_plain.jpg", 0, 0, W, H)
 topline(s, GREEN)
 eyebrow(s, 0.9, 0.48, "1 1   ·   V E R D I C T", GREEN)
-headline(s, 0.9, 0.74, 11.0, "Verdict: Approved — With Limits", 33)
+headline(s, 0.9, 0.74, 11.0, "Verdict: Limited Evidence, Not Approval", 33)
 tb, tf = tbox(s, 0.9, 1.46, 11.2, 0.30)
 para(tf, "What the evidence supports — and what it simply does not.", 13, MUTED, first=True)
 hair(s, 6.66, 2.02, 3.30, HAIR, 1.0, vertical=True, alpha=130)
 tb, tf = tbox(s, 0.9, 2.05, 5.40, 0.42)
-para(tf, "P R O V E N", 25, GREEN, bold=True, first=True)
+para(tf, "R E P O R T E D", 25, GREEN, bold=True, first=True)
 rule_bar(s, 0.9, 2.60, 1.10, GREEN, 2.6)
 tb, tf = tbox(s, 0.9, 2.80, 5.40, 1.40)
-para(tf, "Hot water plus a hair dryer keeps the filtration performance of disposable, surgical and KN95 "
-         "masks essentially intact for up to 10 cycles — and it was deployed at scale, with measurable savings.",
+para(tf, "Five brands retained filtration performance over ten cycles under the tested conditions. "
+         "A factory reported lower mask use; this was not an infection-prevention trial.",
      12.5, WHITE, first=True, line=1.34)
 tb, tf = tbox(s, 6.96, 2.05, 5.47, 0.42)
-para(tf, "N O T   P R O V E N", 25, RED, bold=True, first=True)
+para(tf, "N O T   R E P O R T E D", 25, RED, bold=True, first=True)
 rule_bar(s, 6.96, 2.60, 1.10, RED, 2.6)
 tb, tf = tbox(s, 6.96, 2.80, 5.47, 1.40)
 para(tf, "• Virus killing was never measured directly\n"
          "• NaCl particles, not the actual virus\n"
-         "• Only six products were tested\n"
+         "• Small, selected product sample\n"
          "• Fit and seal were never tested at all",
      11.5, (244, 220, 214), first=True, line=1.42)
 band(s, 4.52, 1.02, "In §3.5 the worn KN95 masks were treated with hot water; in the Conclusions the same result "
-     "is described as pressurised steam at 121 °C. Two different treatments — the conclusion stands, but "
-     "published papers still need careful reading.",
+     "is described as pressurised steam at 121 °C. This inconsistency limits attribution of the worn-mask "
+     "result to a specific treatment.",
      AMBER, 11.5, label="ONE INCONSISTENCY")
 band(s, 5.72, 1.06, "For surgical masks the required PFE is only 30%. So “92.3%” sounds impressive partly "
      "because the bar is low. A good reviewer always asks: impressive compared to what?",
      CYAN, 11.5, label="COMPARED TO WHAT?", big="30%")
-footer(s, 12, TOTAL, "丁", GREEN)
+footer(s, 12, TOTAL, "P4", GREEN)
 
 # ================================================== 13 CLOSING
 s = new()
@@ -406,20 +406,32 @@ eyebrow(s, 0.9, 1.42, "1 2   ·   W H Y   T H I S   P A P E R", AMBER)
 headline(s, 0.9, 1.92, 10.2, "Why We Chose This Paper", 42)
 rule_bar(s, 0.9, 2.92, 2.05, AMBER, 4)
 tb, tf = tbox(s, 0.9, 3.26, 9.60, 2.62)
-para(tf, "This is not a discovery. It is a qualification campaign:", 17, (216, 230, 244), first=True,
+para(tf, "This is an engineering case study with incomplete qualification:", 17, (216, 230, 244), first=True,
      line=1.30, space_after=4)
-para(tf, "set the acceptance criteria, run to N cycles, inspect, then release.", 17, WHITE, bold=True,
+para(tf, "define criteria, test samples, and identify evidence gaps.", 17, WHITE, bold=True,
      line=1.30, space_after=14)
 para(tf, "That is exactly what engineers do to turbine blades and filters.", 15, (196, 214, 232),
      line=1.30, space_after=16)
-para(tf, "And in an emergency, the best engineering is often not the most advanced —", 16, (232, 240, 248),
+para(tf, "Emergency engineering still needs evidence —", 16, (232, 240, 248),
      bold=True, line=1.30)
-para(tf, "it is the kind that works with a pot of hot water and a hair dryer.", 24, AMBER, bold=True, line=1.26)
+para(tf, "filtration alone does not establish safe reuse.", 24, AMBER, bold=True, line=1.26)
 tb, tf = tbox(s, 0.9, 6.18, 6.0, 0.32)
 para(tf, "T H A N K   Y O U", 15, WHITE, bold=True, first=True)
 hair(s, 12.34, 1.42, 4.60, AMBER, 1.1, vertical=True, alpha=150)
-footer(s, 13, TOTAL, "丁", AMBER)
+footer(s, 13, TOTAL, "P4", AMBER)
 
+# Evidence caveats belong in the notes as well as the visible text.
+for slide in prs.slides:
+    slide.notes_slide.notes_text_frame.text = (
+        "2026-10-06 evidence-corrected draft. Historical 2020 research review, "
+        "not medical advice or approval for household mask reuse. "
+        "See 修订讲稿-证据边界版.md for full endpoint-specific caveats."
+    )
+prs.slides[9].notes_slide.notes_text_frame.text += (
+    " Sample section 2.1 names 3M 9502, while steam results in section 3.4 "
+    "name 3M 1860; do not silently treat these as one model. KF94 is a distinct "
+    "designation, not proof of interchangeable certification."
+)
 out = str(PROJECT / "build/Mask-Reuse-Qualification-Review.pptx")
 n_anim = animations.animate_presentation(prs)
 prs.save(out)
