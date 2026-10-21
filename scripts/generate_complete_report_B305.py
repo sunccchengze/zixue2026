@@ -169,43 +169,88 @@ for txt in purposes:
 add_heading(doc, "二、实验仪器与实验方法", level=1)
 p = doc.add_paragraph()
 p.paragraph_format.space_before = Pt(2)
+p.paragraph_format.space_after = Pt(3)
+run = p.add_run("1. 实验仪器")
+run.bold = True
+run.font.size = Pt(9.5)
+run.font.name = '黑体'
+run._element.rPr.rFonts.set(qn('w:eastAsia'), '黑体')
+p = doc.add_paragraph()
+p.paragraph_format.space_before = Pt(1)
 p.paragraph_format.space_after = Pt(4)
-run = p.add_run("1. 实验仪器：微机金属电子综合实验仪（内置12位A/D、计算机接口）、理想二极管（直热式钨丝阴极K、圆筒阳极A、保护电极B，阳极内半径 a=4.0 mm）、励磁线圈（r1=24.0 mm、r2=36.0 mm、半长L=18.0 mm、匝数N=800，K'=1.445×10⁻² T/A，B=1.445×10⁻² I_C）、灯丝电源、阳极电源、励磁电源。仪器面板与线路见图1、图2。")
+p.paragraph_format.left_indent = Inches(0.15)
+run = p.add_run("LB-MEP-PC 金属电子综合实验仪（含理想二极管、励磁线圈、灯丝/阳极/励磁电源及微机采集系统）。")
 run.font.size = Pt(9)
 run.font.name = '宋体'
 run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
 
-# 插入图1 图2 并列
-from docx.shared import Inches
-# 为了排版，插入两张小图
 p = doc.add_paragraph()
-p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 p.paragraph_format.space_before = Pt(2)
-p.paragraph_format.space_after = Pt(2)
-run = p.add_run()
-run.add_picture('大物实验预习/assets/B305-图3-24热电子发射原理.png', width=Inches(2.4))
-run = p.add_run("     ")
-run = p.add_run()
-run.add_picture('大物实验预习/assets/B305-图3-26电子轨迹.png', width=Inches(2.8))
-# 图注
-p = doc.add_paragraph()
-p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-p.paragraph_format.space_before = Pt(1)
-p.paragraph_format.space_after = Pt(6)
-run = p.add_run("图1  热电子发射原理电路（图3-24）                          图2  磁场增大时电子轨迹(a)→(d)临界与断流（图3-26）")
-run.font.size = Pt(7.5)
-run.font.name = '宋体'
-run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
-run.italic = True
-run.font.color.rgb = RGBColor(0x33,0x33,0x33)
+p.paragraph_format.space_after = Pt(3)
+run = p.add_run("2. 实验方法（操作步骤）")
+run.bold = True
+run.font.size = Pt(9.5)
+run.font.name = '黑体'
+run._element.rPr.rFonts.set(qn('w:eastAsia'), '黑体')
 
 p = doc.add_paragraph()
 p.paragraph_format.space_before = Pt(2)
-p.paragraph_format.space_after = Pt(2)
-run = p.add_run("2. 实验方法与原理要点：")
+p.paragraph_format.space_after = Pt(1)
+p.paragraph_format.left_indent = Inches(0.18)
+run = p.add_run("（1）逸出功测定")
 run.bold = True
 run.font.size = Pt(9)
-run = p.add_run("（1）逸出功：理查森-杜什曼公式 I=A S T² exp(-eφ/kT) (3.6.1)，取对数 lg(I/T²)=lg A S−eφ/(2.303k)·1/T (3.6.2)，直线斜率求eφ；肖特基效应 I_a=I exp(√(e³E_a)/kT) (3.6.3)，同轴近似 E_a=U_a/(r1 ln(r2/r1)) (3.6.4)，得 lg I_a=lg I+…·√U_a (3.6.5)，外推截距得零场 I。（2）荷质比：½mv²=eU_a+W (3.6.6)，mv²/R=evB (3.6.7)，B=K'I_s (3.6.8)，得 (U_a+W/e)/I_s²=e/m·R²/2·K'² (3.6.9)，临界R=a/2时 (U_a+W/e)/I_C²=e/m·a²/8·K'²=K (3.6.10)，U_a−I_C²直线斜率K求e/m。灯丝温度由I_f查表3-6-1（0.600A→1.88×10³K …0.750A→2.12×10³K）。")
+run.font.name = '宋体'
+run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
+steps1 = [
+    "① 功能选“逸出功·手动”，设定灯丝电流 I_f（初值 0.650 A），预热 2 min 待稳定；",
+    "② 测不同阳极电压 U_a（16.0、25.0、36.0、49.0、64.0、81.0、100.0 V）下的阳极电流 I_a；",
+    "③ I_f 以 0.025 A 递增至 0.800 A，每档稳定后再重复 ②，记录于表 2。",
+]
+for s in steps1:
+    p = doc.add_paragraph()
+    p.paragraph_format.space_before = Pt(1)
+    p.paragraph_format.space_after = Pt(1)
+    p.paragraph_format.left_indent = Inches(0.32)
+    run = p.add_run(s)
+    run.font.size = Pt(8.5)
+    run.font.name = '宋体'
+    run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
+
+p = doc.add_paragraph()
+p.paragraph_format.space_before = Pt(2)
+p.paragraph_format.space_after = Pt(1)
+p.paragraph_format.left_indent = Inches(0.18)
+run = p.add_run("（2）荷质比测定")
+run.bold = True
+run.font.size = Pt(9)
+run.font.name = '宋体'
+run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
+steps2 = [
+    "① 功能切“荷质比”，灯丝电流固定 0.750 A；",
+    "② 阳极电压设 10.0 V，励磁电流 I_s 自 0.100 A 递增，I_a 开始下降起每 0.010 A 记一次，直至 I_a→0；",
+    "③ 依次将 U_a 换为 15.0、20.0、25.0、30.0 V，重复 ②，记录于表 5。",
+]
+for s in steps2:
+    p = doc.add_paragraph()
+    p.paragraph_format.space_before = Pt(1)
+    p.paragraph_format.space_after = Pt(1)
+    p.paragraph_format.left_indent = Inches(0.32)
+    run = p.add_run(s)
+    run.font.size = Pt(8.5)
+    run.font.name = '宋体'
+    run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
+
+p = doc.add_paragraph()
+p.paragraph_format.space_before = Pt(3)
+p.paragraph_format.space_after = Pt(1)
+p.paragraph_format.left_indent = Inches(0.18)
+run = p.add_run("数据处理要点：")
+run.bold = True
+run.font.size = Pt(8.5)
+run.font.name = '宋体'
+run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
+run = p.add_run("lg I_a–√U_a 截距得零场电流 I → lg(I/T²)–1/T 斜率求逸出功；I_a–I_s 曲线取 I_a,max/4 的 Q 点得临界 I_C → U_a–I_C² 斜率求 e/m。")
 run.font.size = Pt(8.5)
 run.font.name = '宋体'
 run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
@@ -223,7 +268,7 @@ add_heading(doc, "三、测量内容及数据处理", level=1)
 p = doc.add_paragraph()
 p.paragraph_format.space_before = Pt(2)
 p.paragraph_format.space_after = Pt(4)
-run = p.add_run("（一）原始数据（课上完成，教师已签字）原始记录照片见附录。")
+run = p.add_run("（一）原始数据（课上记录，见表 2、5）")
 run.bold = True
 run.font.size = Pt(9.5)
 run.font.color.rgb = RGBColor(0x00,0x40,0x80)
@@ -330,7 +375,7 @@ run.font.name = '黑体'
 run._element.rPr.rFonts.set(qn('w:eastAsia'), '黑体')
 
 p = doc.add_paragraph()
-run = p.add_run("对每个温度T，将I_a(μA)×10⁻⁶→A后取lg I_a，√U_a=4.0,5.0,6.0,7.0,8.0,9.0,10.0。按(3.6.5)最小二乘拟合 lg I_a = a + b·√U_a，截距a即lg I（零场）。")
+run = p.add_run("对各 T 作 lg I_a–√U_a 拟合，截距即零场 lg I。")
 run.font.size = Pt(8)
 run.font.name = '宋体'
 run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
@@ -377,7 +422,7 @@ p = doc.add_paragraph()
 p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 p.paragraph_format.space_before = Pt(1)
 p.paragraph_format.space_after = Pt(4)
-run = p.add_run("图3  lg I_a−√U_a 关系（表3-6-3）  7条直线截距外推至√U_a=0得零场电流  作图要求：图名、坐标量与刻度、直线标记、截距读取")
+run = p.add_run("图1  lg I_a–√U_a 关系（7 温度，截距得零场电流）")
 run.font.size = Pt(7)
 run.italic = True
 run.font.name = '宋体'
@@ -393,7 +438,7 @@ run.font.name = '黑体'
 run._element.rPr.rFonts.set(qn('w:eastAsia'), '黑体')
 
 p = doc.add_paragraph()
-run = p.add_run("由上表截距得I₀，按lg(I₀/T²)=lg I₀−2lg T计算，作1/T为横轴的直线。")
+run = p.add_run("由截距 I₀ 计算 lg(I₀/T²)，对 1/T 作图。")
 run.font.size = Pt(8)
 run.font.name = '宋体'
 run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
@@ -429,7 +474,7 @@ for r, row in enumerate(rows3):
                 run.font.size = Pt(7)
 p = doc.add_paragraph()
 p.paragraph_format.space_before = Pt(2)
-run = p.add_run("拟合：lg(I/T²) = −3.5166 −15469.7·(1/T)  R²=0.9853  斜率 b=−1.55×10⁴ K。由(3.6.2) b=−eφ/(2.303k) 得 eφ=−b·2.303·k=4.92×10⁻¹⁹J，φ=3.07 V，即逸出功 W₀=3.07 eV。")
+run = p.add_run("拟合：lg(I/T²)=−3.52−15470·1/T，R²=0.985，斜率求得 φ=3.07 eV（W₀=3.07 eV）。")
 run.font.size = Pt(8)
 run.font.name = '宋体'
 run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
@@ -443,7 +488,7 @@ p = doc.add_paragraph()
 p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 p.paragraph_format.space_before = Pt(1)
 p.paragraph_format.space_after = Pt(2)
-run = p.add_run("图4  理查森直线 lg(I/T²)−1/T（表3-6-4）  斜率求逸出功  作图要求：图名、坐标量、直线标记、斜率读取")
+run = p.add_run("图2  理查森直线 lg(I/T²)–1/T（斜率求逸出功）")
 run.font.size = Pt(7)
 run.italic = True
 run.font.name = '宋体'
@@ -453,7 +498,7 @@ run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
 p = doc.add_paragraph()
 p.paragraph_format.space_before = Pt(2)
 p.paragraph_format.left_indent = Inches(0.2)
-run = p.add_run("逸出功结果：测量值 φ=3.07 eV，理论值（板书）4.54 eV，百分误差 E=|3.07−4.54|/4.54×100%=32.4%（若按课本5.54 eV则44.6%）。误差主要来自低温小电流外推及查表温度系统偏差，但R²=0.985已验证线性规律。")
+run = p.add_run("结果：φ=3.07 eV，理论 4.54 eV，误差 32.4%，R²=0.985 验证线性。")
 run.bold = True
 run.font.size = Pt(8.5)
 run.font.color.rgb = RGBColor(0xC0,0x00,0x00)
@@ -504,7 +549,7 @@ p = doc.add_paragraph()
 p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 p.paragraph_format.space_before = Pt(1)
 p.paragraph_format.space_after = Pt(2)
-run = p.add_run("图5  I_a−I_s 曲线（表3-6-5）  5条U_a曲线，×为Q点（I_a0/4）读I_C  作图要求：图名、曲线标记、I_C读取、坐标量")
+run = p.add_run("图3  I_a–I_s 曲线（5 种 U_a，×为 Q 点 I_a0/4）")
 run.font.size = Pt(7)
 run.italic = True
 run.font.name = '宋体'
@@ -519,7 +564,7 @@ p = doc.add_paragraph()
 p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 p.paragraph_format.space_before = Pt(1)
 p.paragraph_format.space_after = Pt(2)
-run = p.add_run("图6  U_a−I_C² 直线（表3-6-5）  斜率K=72.56 V/A² → e/m=8K/(a²K'²)  作图要求：图名、坐标量、斜率读取")
+run = p.add_run("图4  U_a–I_C² 直线（斜率 K=72.6 V/A² 求 e/m）")
 run.font.size = Pt(7)
 run.italic = True
 run.font.name = '宋体'
@@ -527,13 +572,13 @@ run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
 
 p = doc.add_paragraph()
 p.paragraph_format.space_before = Pt(2)
-run = p.add_run("拟合：U_a = −0.631 +72.5606·I_C²  R²=0.9999，K=72.56 V/A²。由(3.6.10) e/m=8K/(a²K'²)=8×72.56/((4.0×10⁻³)²×(1.445×10⁻²)²)=1.74×10¹¹ C/kg。强制过原点K₀=70.57→1.69×10¹¹ C/kg。")
+run = p.add_run("拟合：U_a=−0.63+72.6·I_C²，R²=0.9999，K=72.6 V/A² → e/m=1.74×10¹¹ C/kg。")
 run.font.size = Pt(8)
 run.font.name = '宋体'
 run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
 p = doc.add_paragraph()
 p.paragraph_format.left_indent = Inches(0.2)
-run = p.add_run("荷质比结果：测量值 1.74×10¹¹ C/kg，理论值（板书）1.76×10¹¹ C/kg，百分误差 E=|1.74−1.76|/1.76×100%=1.28%（过原点则3.98%），验证磁控规律，截距−0.63 V对应W/e可忽略。")
+run = p.add_run("结果：e/m=1.74×10¹¹ C/kg，理论 1.76×10¹¹，误差 1.3%，截距 0.63 V 可忽略。")
 run.bold = True
 run.font.size = Pt(8.5)
 run.font.color.rgb = RGBColor(0x00,0x60,0x00)
@@ -545,78 +590,73 @@ doc.add_page_break()
 add_header_info(doc)
 add_heading(doc, "四、小结（结论、误差分析及建议等）", level=1)
 p = doc.add_paragraph()
-run = p.add_run("1. 结论：")
+run = p.add_run("1. 结论")
 run.bold = True
 run.font.size = Pt(10)
 p = doc.add_paragraph()
 p.paragraph_format.left_indent = Inches(0.15)
-run = p.add_run("（1）lg I_a−√U_a 7条直线与lg(I/T²)−1/T直线线性良好（R²分别为0.36–0.94及0.985），验证了理查森公式及肖特基效应，截距法成功消去加速场影响与A、S不定度；（2）逸出功测得3.07 eV，I_a−I_s 5条S形曲线与U_a−I_C²直线线性极佳（R²=0.9999），测得e/m=1.74×10¹¹ C/kg，与板书理论1.76×10¹¹吻合至1.28%，磁控法可靠。")
+run = p.add_run("两步直线验证理查森公式与肖特基效应（R²=0.985），逸出功 3.07 eV；磁控 S 曲线与 U_a–I_C² 直线（R²=0.9999）得 e/m=1.74×10¹¹ C/kg，误差 1.3%，规律可靠。")
 run.font.size = Pt(9)
 run.font.name = '宋体'
 run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
 
 p = doc.add_paragraph()
-run = p.add_run("2. 误差分析：")
+run = p.add_run("2. 误差分析")
 run.bold = True
 run.font.size = Pt(10)
 p = doc.add_paragraph()
 p.paragraph_format.left_indent = Inches(0.15)
-run = p.add_run("（1）逸出功偏低32%主因：低温端I_a仅8–13 μA，信噪比低、截距外推距离长（√U_a=0远于4–10测量区），且T由I_f查表间接得到、忽略接触电势与辐射散热，导致系统偏低；但高温区R²>0.92已改善。（2）荷质比误差仅1.28%，说明磁控临界统计（I_a0/4取Q）与同轴近似有效，W/e≈0.63 eV远小于U_a可忽略。（3）仪器与人为：励磁电流读数步进0.010 A、I_a在陡降区变化快，内插精度有限；灯丝电流每档需等待2 min，若未稳即读数会使两步直线斜率波动。")
+run = p.add_run("逸出功偏低主因低温小电流、外推距离长及 I_f 查表测温的系统偏差；荷质比误差小说明 I_a0/4 临界与同轴近似有效；I_s 步进 0.010 A 与待稳不足会引起内插与斜率波动。")
 run.font.size = Pt(9)
 run.font.name = '宋体'
 run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
 
 p = doc.add_paragraph()
-run = p.add_run("3. 建议：")
+run = p.add_run("3. 建议")
 run.bold = True
 run.font.size = Pt(10)
 p = doc.add_paragraph()
 p.paragraph_format.left_indent = Inches(0.15)
-run = p.add_run("增加低温区U_a测量点密度以缩短外推距离；直接用光学高温计测T以减小查表误差；磁控部分可在I_C附近加密I_s步进至0.005 A以提高内插精度；后续可降低I_f至0.600 A附近复测U_a−I_C²以检验W/e修正。")
+run = p.add_run("低温区加密 U_a 点、改用光测温；磁控在临界附近将步进减至 0.005 A；严格等待热平衡后再读数。")
 run.font.size = Pt(9)
 run.font.name = '宋体'
 run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
 
 add_heading(doc, "五、实验思考题", level=1)
-p = doc.add_paragraph()
-run = p.add_run("（本实验印刷页275–282未设独立“思考与讨论”栏，以下为按原理与数据处理自拟的预习/课后思考，按板书要求与课堂讨论整理）")
-run.italic = True
-run.font.size = Pt(8)
-run.font.color.rgb = RGBColor(0x66,0x66,0x66)
 
 # 思考题1
 p = doc.add_paragraph()
 p.paragraph_format.space_before = Pt(4)
-run = p.add_run("思考1：为什么不能直接把加速电压下的I_a代入理查森公式？两步直线法各起什么作用？")
+run = p.add_run("1. 为什么不能直接把 U_a 下的 I_a 代入理查森公式？")
 run.bold = True
 run.font.size = Pt(9)
 p = doc.add_paragraph()
 p.paragraph_format.left_indent = Inches(0.15)
-run = p.add_run("答：I_a含肖特基场致增强，直接代入会高估I。若跳过lg I_a−√U_a外推，不同T的场增强因子√U_a/T不同，第二步R²将显著恶化、斜率偏小导致φ低估；截距法消场、斜率法消A、S，缺一不可。")
+run = p.add_run("答：I_a 含肖特基场致增强，直接代入高估 I。先作 lg I_a–√U_a 外推得零场 I，再作 lg(I/T²)–1/T 斜率求 φ，分别消除场影响与 A、S 不定度。")
 run.font.size = Pt(9)
 run.font.name = '宋体'
 run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
 
 p = doc.add_paragraph()
 p.paragraph_format.space_before = Pt(3)
-run = p.add_run("思考2：灯丝温度查表与“等待稳定”“同坐标作7直线”有何意义？")
+run = p.add_run("2. “等待稳定”“同坐标 7 直线”的作用？")
 run.bold = True
 run.font.size = Pt(9)
 p = doc.add_paragraph()
 p.paragraph_format.left_indent = Inches(0.15)
-run = p.add_run("答：T由I_f查表3-6-1（1.88–2.12×10³K）间接得到，等待2 min保证热平衡，同坐标7直线便于比较斜率随T减小及截距单调性，及时发现未稳导致的异常曲线。")
+run = p.add_run("答：每档 I_f 需稳 2 min 再测，同坐标可直观比较不同 T 的截距单调性与斜率变化，及时发现未稳的异常直线。")
 run.font.size = Pt(9)
 run.font.name = '宋体'
 run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
 
 p = doc.add_paragraph()
 p.paragraph_format.space_before = Pt(3)
-run = p.add_run("思考3：I_a−I_s为何渐变而非突变？Q点为何取I_a0/4？")
+run = p.add_run("3. I_a–I_s 为何渐变？Q 取 I_a0/4 的依据？")
 run.bold = True
 run.font.size = Pt(9)
 p = doc.add_paragraph()
 p.paragraph_format.left_indent = Inches(0.15)
-run = p.add_run("答：电子按费米分布有能量展宽且管子不完全同轴，临界B分散，故为S形渐变；Q点取1/4高度为统计平均临界，可减小拖尾影响，后续U_a−I_C²线性R²=0.9999已验证该取法的合理性，W/e截距仅0.63 V可忽略。")
+run = p.add_run("答：能量展宽与非同轴使临界分散，故渐变；取 1/4 高度为统计平均临界，减小拖尾影响，后续直线 R²=0.9999 验证其合理性。")
 run.font.size = Pt(9)
 run.font.name = '宋体'
 run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
