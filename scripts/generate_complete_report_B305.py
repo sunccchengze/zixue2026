@@ -285,15 +285,15 @@ run.font.name = '黑体'
 run._element.rPr.rFonts.set(qn('w:eastAsia'), '黑体')
 
 # 创建表6-2
-headers = ["I_f/A\\U_a/V", "16.0", "25.0", "36.0", "49.0", "64.0", "81.0", "100.0", "T/10³K"]
+headers = ["灯丝电流 \\ I_a/mA / U_a/V", "16.0", "25.0", "36.0", "49.0", "64.0", "81.0", "100.0"]
 data = [
-    ["0.600", "8", "8", "9", "9", "9", "8", "10", "1.88"],
-    ["0.625", "10", "11", "12", "12", "11", "12", "13", "1.92"],
-    ["0.650", "15", "15", "16", "16", "16", "16", "17", "1.96"],
-    ["0.675", "23", "23", "24", "24", "25", "25", "26", "2.00"],
-    ["0.700", "33", "34", "36", "36", "37", "37", "39", "2.04"],
-    ["0.725", "55", "55", "58", "58", "60", "60", "63", "2.08"],
-    ["0.750", "82", "91", "94", "95", "97", "98", "102", "2.12"],
+    ["0.600", "8", "8", "9", "9", "9", "8", "10"],
+    ["0.625", "10", "11", "12", "12", "11", "12", "13"],
+    ["0.650", "15", "15", "16", "16", "16", "16", "17"],
+    ["0.675", "23", "23", "24", "24", "25", "25", "26"],
+    ["0.700", "33", "34", "36", "36", "37", "37", "39"],
+    ["0.725", "55", "55", "58", "58", "60", "60", "63"],
+    ["0.750", "82", "91", "94", "95", "97", "98", "102"],
 ]
 table = doc.add_table(rows=1+len(data), cols=len(headers))
 table.style = 'Light Grid Accent 1'
@@ -380,36 +380,48 @@ run.font.size = Pt(8)
 run.font.name = '宋体'
 run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
 
-# 小表展示结果
-headers2 = ["T/10³K", "I_f/A", "lg I_a (4.0)", "5.0", "6.0", "7.0", "8.0", "9.0", "10.0", "截距lgI", "I₀/μA", "R²"]
-rows2 = [
-    ["1.88","0.600","-5.097","-5.097","-5.046","-5.046","-5.046","-5.097","-5.000","-5.134","7.35","0.364"],
-    ["1.92","0.625","-5.000","-4.959","-4.921","-4.921","-4.959","-4.921","-4.886","-5.033","9.27","0.622"],
-    ["1.96","0.650","-4.824","-4.824","-4.796","-4.796","-4.796","-4.796","-4.770","-4.855","13.97","0.802"],
-    ["2.00","0.675","-4.638","-4.638","-4.620","-4.620","-4.602","-4.602","-4.585","-4.678","21.01","0.944"],
-    ["2.04","0.700","-4.482","-4.469","-4.444","-4.444","-4.432","-4.432","-4.409","-4.520","30.20","0.928"],
-    ["2.08","0.725","-4.260","-4.260","-4.237","-4.237","-4.222","-4.222","-4.201","-4.301","50.05","0.933"],
-    ["2.12","0.750","-4.086","-4.041","-4.027","-4.022","-4.013","-4.009","-3.991","-4.118","76.26","0.851"],
+# 表3 严格按书本形态：表3 不同 T 时 lg I_a–√U_a 的关系（8 列：T 对 √U_a，不增列、不并额外栏）
+# 书本首格为斜分： T(×10³K) / lg I_a / √U_a
+headers_T3 = ["T(×10³K) \\ lg I_a / √U_a", "4.0", "5.0", "6.0", "7.0", "8.0", "9.0", "10.0"]
+rows_T3 = [
+    ["1.88", "-5.097", "-5.097", "-5.046", "-5.046", "-5.046", "-5.097", "-5.000"],
+    ["1.92", "-5.000", "-4.959", "-4.921", "-4.921", "-4.959", "-4.921", "-4.886"],
+    ["1.96", "-4.824", "-4.824", "-4.796", "-4.796", "-4.796", "-4.796", "-4.770"],
+    ["2.00", "-4.638", "-4.638", "-4.620", "-4.620", "-4.602", "-4.602", "-4.585"],
+    ["2.04", "-4.482", "-4.469", "-4.444", "-4.444", "-4.432", "-4.432", "-4.409"],
+    ["2.08", "-4.260", "-4.260", "-4.237", "-4.237", "-4.222", "-4.222", "-4.201"],
+    ["2.12", "-4.086", "-4.041", "-4.027", "-4.022", "-4.013", "-4.009", "-3.991"],
 ]
-table2 = doc.add_table(rows=1+len(rows2), cols=len(headers2))
-table2.style = 'Light Grid Accent 1'
-table2.alignment = WD_TABLE_ALIGNMENT.CENTER
-for i, h in enumerate(headers2):
-    cell = table2.rows[0].cells[i]
-    cell.text = h
-    for para in cell.paragraphs:
+table_T3 = doc.add_table(rows=1+len(rows_T3), cols=len(headers_T3))
+table_T3.style = 'Light Grid Accent 1'
+table_T3.alignment = WD_TABLE_ALIGNMENT.CENTER
+hdr = table_T3.rows[0].cells
+for i, h in enumerate(headers_T3):
+    hdr[i].text = h
+    for para in hdr[i].paragraphs:
         para.alignment = WD_ALIGN_PARAGRAPH.CENTER
         for run in para.runs:
             run.bold = True
-            run.font.size = Pt(6)
-for r, row in enumerate(rows2):
+            run.font.size = Pt(7)
+for r, row in enumerate(rows_T3):
+    cells = table_T3.rows[r+1].cells
     for c, val in enumerate(row):
-        cell = table2.rows[r+1].cells[c]
-        cell.text = val
-        for para in cell.paragraphs:
+        cells[c].text = val
+        for para in cells[c].paragraphs:
             para.alignment = WD_ALIGN_PARAGRAPH.CENTER
             for run in para.runs:
-                run.font.size = Pt(6)
+                run.font.size = Pt(7)
+# 表3 截距等衍生量单列说明（不并入表3，以保持书本形态）
+p = doc.add_paragraph()
+p.paragraph_format.space_before = Pt(2)
+p.paragraph_format.space_after = Pt(1)
+p.paragraph_format.left_indent = Inches(0.15)
+run = p.add_run("注：由上表 7 条 lg I_a–√U_a 拟合得截距 lg I（零场）依次为 −5.134、−5.033、−4.855、−4.678、−4.520、−4.301、−4.118，对应 I₀=7.35、9.27、13.97、21.01、30.20、50.05、76.26 μA。")
+run.font.size = Pt(7)
+run.font.name = '宋体'
+run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
+run.italic = True
+run.font.color.rgb = RGBColor(0x55,0x55,0x55)
 
 # 图1
 p = doc.add_paragraph()
@@ -443,34 +455,32 @@ run.font.size = Pt(8)
 run.font.name = '宋体'
 run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
 
-headers3 = ["T/K", "I₀/A", "I₀/T²(A/K²)", "lg(I/T²)", "1/T(10⁻⁴K⁻¹)"]
-rows3 = [
-    ["1880","7.35×10⁻⁶","2.08×10⁻¹²","-11.6821","5.3191"],
-    ["1920","9.27×10⁻⁶","2.51×10⁻¹²","-11.5995","5.2083"],
-    ["1960","1.40×10⁻⁵","3.64×10⁻¹²","-11.4394","5.1020"],
-    ["2000","2.10×10⁻⁵","5.25×10⁻¹²","-11.2796","5.0000"],
-    ["2040","3.02×10⁻⁵","7.26×10⁻¹²","-11.1393","4.9020"],
-    ["2080","5.01×10⁻⁵","1.16×10⁻¹¹","-10.9368","4.8077"],
-    ["2120","7.63×10⁻⁵","1.70×10⁻¹¹","-10.7704","4.7170"],
-]
-table3 = doc.add_table(rows=1+len(rows3), cols=len(headers3))
-table3.style = 'Light Grid Accent 1'
-table3.alignment = WD_TABLE_ALIGNMENT.CENTER
-for i, h in enumerate(headers3):
-    cell = table3.rows[0].cells[i]
+# 表4 严格按书本形态：表4 lg(I_a/T²)–1/T 的关系（首列为行标题，7 列对应 T）
+headers_T4 = ["灯丝温度 T(×10³K)", "1.88", "1.92", "1.96", "2.00", "2.04", "2.08", "2.12"]
+row_T4_lgIa = ["lg I_a", "-5.134", "-5.033", "-4.855", "-4.678", "-4.520", "-4.301", "-4.118"]
+row_T4_lgIT2 = ["lg(I_a/T²)", "-11.6821", "-11.5995", "-11.4394", "-11.2796", "-11.1393", "-10.9368", "-10.7704"]
+row_T4_invT = ["1/T (10⁻⁴K⁻¹)", "5.3191", "5.2083", "5.1020", "5.0000", "4.9020", "4.8077", "4.7170"]
+table_T4 = doc.add_table(rows=4, cols=len(headers_T4))
+table_T4.style = 'Light Grid Accent 1'
+table_T4.alignment = WD_TABLE_ALIGNMENT.CENTER
+# 首行
+for i, h in enumerate(headers_T4):
+    cell = table_T4.rows[0].cells[i]
     cell.text = h
     for para in cell.paragraphs:
         para.alignment = WD_ALIGN_PARAGRAPH.CENTER
         for run in para.runs:
             run.bold = True
             run.font.size = Pt(7)
-for r, row in enumerate(rows3):
+# 后三行
+for r, row in enumerate([row_T4_lgIa, row_T4_lgIT2, row_T4_invT], start=1):
     for c, val in enumerate(row):
-        cell = table3.rows[r+1].cells[c]
+        cell = table_T4.rows[r].cells[c]
         cell.text = val
         for para in cell.paragraphs:
             para.alignment = WD_ALIGN_PARAGRAPH.CENTER
             for run in para.runs:
+                run.bold = True if c==0 else False
                 run.font.size = Pt(7)
 p = doc.add_paragraph()
 p.paragraph_format.space_before = Pt(2)
