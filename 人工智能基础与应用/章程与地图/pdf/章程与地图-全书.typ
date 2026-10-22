@@ -73,7 +73,7 @@
   ]
   #v(4.4cm)
   #align(center)[
-    #text(size: 8.5pt, fill: luma(150), font: SANS)[Markdown 母版：人工智能基础与应用/讲义/ 下的 .md 文件　·　配套上游：CS336 A1–A5 · nanochat · minimind]
+    #text(size: 8.5pt, fill: luma(150), font: SANS)[Markdown 母版：人工智能基础与应用/学习专题/实训讲义/ 下的 .md 文件　·　配套上游：CS336 A1–A5 · nanochat · minimind]
   ]
   #pagebreak()
 ]

@@ -14,6 +14,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
+from repository_support import relocate
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts/icourse'))
 from archive_safety import archive_url, archive_text, safe_record
@@ -154,7 +155,7 @@ class MaintenanceLinksTests(unittest.TestCase):
             redirects = {r['原路径']: r['归档路径'] for r in csv.DictReader(f, delimiter='\t')}
         checked = 0
         for row in rows:
-            file = ROOT / redirects.get(row['归档路径'], row['归档路径'])
+            file = ROOT / relocate(redirects.get(row['归档路径'], row['归档路径']))
             if file.suffix in ('.pdf', '.docx', '.pptx', '.png', '.mp4') and row['处置'] == '原字节保留':
                 expected = row['原SHA256']
                 # Pre-existing drift: the 2026-10-22 baseline already contains a

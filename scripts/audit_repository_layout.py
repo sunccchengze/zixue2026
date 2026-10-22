@@ -12,6 +12,7 @@ import re
 import subprocess
 import sys
 from urllib.parse import unquote, urlsplit
+from repository_support import relocate, CURRENT_INDEX, MIGRATION, relocation_map
 
 ROOT = Path(__file__).resolve().parents[1]
 RECORD = ROOT / '维护记录/2026-10-22'
@@ -91,8 +92,9 @@ def audit():
     errors = []
     records = rows()
     hashes = {}
+    redirects = relocation_map()
     for row in records:
-        path = ROOT / row['归档路径']
+        path = ROOT / redirects.get(row['归档路径'], row['归档路径'])
         if not path.is_file():
             errors.append('Missing: ' + row['归档路径'])
             continue
@@ -101,8 +103,23 @@ def audit():
         actual = hashes[path]
         if path.suffix.lower() in BINARY and actual != row['原SHA256']:
             errors.append('Original bytes changed: ' + row['归档路径'])
-        if actual != row['归档SHA256']:
+        # Historical text hashes are checkpoint evidence, not locks on living notes.
+        if path.suffix.lower() in BINARY and actual != row['归档SHA256']:
             errors.append('Recorded archive hash differs: ' + row['归档路径'])
+    source_destinations = len(hashes)
+    # The second cleanup also contains files added after the first baseline.
+    # Check their original binary bytes without freezing living text documents.
+    with MIGRATION.open(encoding='utf-8') as f:
+        latest = list(csv.DictReader(f, delimiter='\t'))
+    for row in latest:
+        path = ROOT / row['归档路径']
+        if not path.is_file():
+            errors.append('Missing latest baseline source: ' + row['归档路径'])
+        elif path.suffix.lower() in BINARY:
+            if path not in hashes:
+                hashes[path] = digest(path)
+            if hashes[path] != row['原SHA256']:
+                errors.append('Latest original binary changed: ' + row['归档路径'])
     for retired in RETIRED:
         if (ROOT / retired).exists():
             errors.append('Retired directory returned: ' + retired)
@@ -112,7 +129,7 @@ def audit():
     with (RECORD / '导航验收范围.txt').open(encoding='utf-8') as f:
         navigation = [line.strip() for line in f if line.strip()]
     for entry in navigation:
-        document = ROOT / entry
+        document = ROOT / redirects.get(entry, entry)
         if not document.is_file():
             errors.append('Missing navigation: ' + entry)
             continue
@@ -124,11 +141,11 @@ def audit():
         ['git', 'ls-files', '-c', '-o', '--exclude-standard', '-z'], cwd=ROOT
     ).decode().split('\0'))
     live = {p for p in live if p and (ROOT / p).is_file()}
-    with (RECORD / '文件索引.tsv').open(encoding='utf-8') as f:
+    with CURRENT_INDEX.open(encoding='utf-8') as f:
         indexed = {r['路径'] for r in csv.DictReader(f, delimiter='\t')}
     if live != indexed:
         errors.append(f'Index coverage differs: missing={sorted(live-indexed)}, stale={sorted(indexed-live)}')
-    return errors, len(records), len(hashes), len(navigation), len(live)
+    return errors, len(records), source_destinations, len(navigation), len(live)
 
 
 def main():

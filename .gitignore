@@ -170,3 +170,6 @@ tmp_homework_images/
 **/storage_state*.json
 /国际学术交流英语/课程大作业/口罩重复使用研究/build/
 /build/
+
+# Reproducible outputs inside course/project packages (never auto-delete tracked originals)
+**/build/
