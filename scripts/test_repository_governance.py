@@ -81,6 +81,17 @@ class GovernanceTests(unittest.TestCase):
         physics = (ROOT / '大学物理/考试复习/期中/课件与知识点.md').read_text()
         self.assertIn('未定位到', physics)
 
+    def test_physics_is_question_first_and_shared_file_is_not_claimed_received(self):
+        base = ROOT / '大学物理/考试复习/期中'
+        plan = (base/'README.md').read_text()
+        self.assertIn('做题主导', plan)
+        self.assertIn('先独立做题', plan)
+        self.assertNotIn('只翻卡住的PPT页→做原题', plan)
+        provenance = (base/'资料来源登记.md').read_text()
+        self.assertIn('未下载分享中的PDF本体', provenance)
+        self.assertIn('不能作同版本断言', provenance)
+        self.assertEqual(navigation_errors(base/'资料来源登记.md'), [])
+
     def test_ai_mock_numeric_and_structure_checks(self):
         errors, count = verify()
         self.assertEqual(errors, [])
