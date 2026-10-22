@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>实验路线指南 · 酸碱标准溶液的配制与标定（行动手册）</title>
+<style>
+:root{
+  --ink:#16212e; --muted:#5c6b7a; --bg:#eef1f5; --card:#ffffff;
+  --line:#d8e0ea; --ok:#16a34a; --bad:#dc2626; --warn:#d97706;
+  --s1:#0ea5e9; --s2:#8b5cf6; --s3:#0d9488; --s4:#f59e0b; --s5:#ec4899; --s6:#64748b;
+  --shadow:0 8px 24px rgba(22,40,70,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.7; font-size:16px;
+}
+/* ===== 顶栏 ===== */
+.hero{
+  background:linear-gradient(135deg,#12324d,#0e5a66); color:#eaf7ff;
+  padding:34px 18px 26px;
+}
+.hero-inner{max-width:900px;margin:0 auto}
+.hero .tag{
+  display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);
+  padding:5px 13px;border-radius:999px;font-size:12.5px;letter-spacing:.5px;
+}
+.hero h1{font-size:clamp(22px,4.6vw,34px);line-height:1.3;margin:12px 0 6px;font-weight:800}
+.hero p{opacity:.92;font-size:15px}
+.goal{
+  margin-top:16px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+  border-radius:12px;padding:12px 16px;font-size:14.5px;
+}
+.goal b{color:#8ef0e2}
+
+/* 关键数字速查 */
+.numstrip{
+  max-width:900px;margin:-18px auto 0;padding:0 14px;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:10px;position:relative;z-index:2;
+}
+.numblock{
+  background:var(--card);border-radius:13px;box-shadow:var(--shadow);padding:12px 10px;text-align:center;
+  border-top:4px solid var(--s3);
+}
+.numblock .v{font-size:19px;font-weight:800;font-family:Consolas,monospace;color:#0e5a66}
+.numblock .k{font-size:11.5px;color:var(--muted);margin-top:2px}
+
+/* 进度条 */
+.progresswrap{
+  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);margin-top:18px;
+}
+.progress-inner{max-width:900px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.pbar{flex:1;height:12px;background:#e2e8f0;border-radius:999px;overflow:hidden}
+.pbar>div{height:100%;width:0;background:linear-gradient(90deg,#34d399,#0d9488);transition:width .3s}
+.ptext{font-size:13.5px;font-weight:800;color:#0e5a66;white-space:nowrap}
+button{
+  cursor:pointer;border:none;border-radius:10px;padding:8px 14px;font-size:13px;font-weight:700;
+  background:#fff;color:#334;border:1.6px solid var(--line);font-family:inherit;white-space:nowrap;
+}
+button:hover{border-color:#94a3b8}
+button.primary{background:#0d9488;color:#fff;border-color:#0d9488}
+
+main{max-width:900px;margin:0 auto;padding:22px 14px 70px}
+
+/* 路线总览 */
+.routemap{
+  display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:6px 0 20px;
+}
+.rt{
+  flex:1 1 130px;background:var(--card);border-radius:12px;box-shadow:var(--shadow);
+  padding:12px 10px;text-align:center;text-decoration:none;color:var(--ink);border-bottom:4px solid var(--s1);
+}
+.rt:hover{text-decoration:none;transform:translateY(-2px)}
+.rt .n{font-size:12px;font-weight:800;letter-spacing:1px;color:#fff;background:#0e5a66;border-radius:6px;padding:1px 8px;display:inline-block}
+.rt .t{font-size:13.5px;font-weight:800;margin-top:6px;line-height:1.4}
+.rt .m{font-size:11px;color:var(--muted)}
+.rt-arrow{align-self:center;font-size:20px;color:#94a3b8;font-weight:800}
+
+/* 阶段卡片 */
+.stage{
+  background:var(--card);border-radius:16px;box-shadow:var(--shadow);margin:18px 0;overflow:hidden;
+  scroll-margin-top:76px;
+}
+.stage-head{
+  display:flex;align-items:center;gap:14px;padding:16px 18px;color:#fff;
+}
+.stage-head.s0{background:linear-gradient(120deg,#475569,#64748b)}
+.stage-head.s1{background:linear-gradient(120deg,#0284c7,#38bdf8)}
+.stage-head.s2{background:linear-gradient(120deg,#7c3aed,#a78bfa)}
+.stage-head.s3{background:linear-gradient(120deg,#0f766e,#2dd4bf)}
+.stage-head.s4{background:linear-gradient(120deg,#b45309,#f59e0b)}
+.stage-head.s5{background:linear-gradient(120deg,#be185d,#f472b6)}
+.stage-head.s6{background:linear-gradient(120deg,#334155,#64748b)}
+.stage-num{
+  width:46px;height:46px;border-radius:13px;background:rgba(255,255,255,.22);
+  display:flex;align-items:center;justify-content:center;font-size:21px;font-weight:800;flex:0 0 auto;
+}
+.stage-head h2{font-size:18.5px;line-height:1.35}
+.stage-meta{font-size:12.5px;opacity:.92}
+.stage-flag{
+  margin-left:auto;background:rgba(255,255,255,.2);border-radius:999px;padding:5px 12px;
+  font-size:12px;font-weight:800;white-space:nowrap;
+}
+.stage-body{padding:8px 18px 18px}
+
+/* 行动清单 */
+.actions{list-style:none;margin:10px 0}
+.actions li{margin:8px 0}
+.actions label{
+  display:flex;gap:12px;align-items:flex-start;background:#f7fafc;border:1.6px solid var(--line);
+  border-radius:12px;padding:12px 14px;cursor:pointer;transition:.15s;min-height:50px;
+}
+.actions label:hover{border-color:#93c5fd;background:#f0f7ff}
+.actions input{width:20px;height:20px;margin-top:3px;accent-color:var(--ok);flex:0 0 auto}
+.actions .txt{font-size:15px;font-weight:600;line-height:1.65}
+.actions .txt b{color:#0e5a66}
+.actions li.done label{background:#ecfdf3;border-color:#6ee7b7}
+.actions li.done .txt{color:#6b7c8c;text-decoration:line-through;text-decoration-color:#94a3b8}
+
+.stop{
+  display:inline-block;background:#dc2626;color:#fff;font-size:11.5px;font-weight:800;
+  border-radius:6px;padding:1px 7px;margin-left:6px;vertical-align:1px;
+}
+.warn-t{
+  display:inline-block;background:#fff7ed;color:#c2410c;font-size:11.5px;font-weight:800;
+  border:1px solid #fdba74;border-radius:6px;padding:1px 7px;margin-left:6px;vertical-align:1px;
+}
+
+/* 记录条 */
+.datastrip{
+  background:#0f2b46;color:#cfe8ff;border-radius:12px;padding:13px 16px;margin:12px 0 4px;
+  font-family:Consolas,monospace;font-size:13.5px;line-height:2;
+}
+.datastrip .dtag{
+  display:inline-block;background:rgba(126,232,219,.18);color:#7ee8db;font-size:11px;
+  padding:1px 9px;border-radius:6px;margin-bottom:4px;font-family:inherit;font-weight:700;
+}
+.datastrip .blank{
+  display:inline-block;border-bottom:1.6px dashed #7ee8db;min-width:72px;height:18px;
+  vertical-align:-3px;margin:0 4px;
+}
+
+/* 信息盒 */
+.tip{
+  border-radius:12px;padding:12px 15px;margin:12px 0;font-size:13.8px;line-height:1.75;
+}
+.tip.red{background:#fef2f2;border:1.5px solid #fca5a5;color:#991b1b}
+.tip.amber{background:#fffbeb;border:1.5px solid #fcd34d;color:#92400e}
+.tip.green{background:#f0fdf4;border:1.5px solid #86efac;color:#166534}
+.tip b{font-weight:800}
+
+/* 表格 */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:9px 10px;text-align:center}
+th{background:#eef4f9;font-size:12.5px;color:#2b4258}
+td{font-family:Consolas,monospace}
+td:first-child{font-family:inherit;text-align:left;font-weight:700;background:#f8fafc}
+
+/* 两列小卡 */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin:12px 0}
+.mini{
+  background:#f7fafc;border:1.6px solid var(--line);border-radius:12px;padding:13px 15px;font-size:13.5px;
+}
+.mini h4{font-size:14px;margin:0 0 6px}
+.mini ul{margin-left:1.2em}
+.mini li{margin:4px 0}
+
+/* 颜色对照 */
+.colorcard{
+  display:flex;align-items:center;gap:12px;background:#fff;border:1.6px solid var(--line);
+  border-radius:12px;padding:11px 14px;margin:8px 0;font-size:14px;font-weight:700;
+}
+.drop{width:34px;height:34px;border-radius:50% 50% 50% 50%/45% 45% 55% 55%;flex:0 0 auto;border:2px solid rgba(0,0,0,.12)}
+.drop.clear{background:radial-gradient(circle at 32% 28%, #ffffff, #e2e8f0)}
+.drop.pink{background:radial-gradient(circle at 32% 28%, #ffd6e8, #ff69b4)}
+.drop.deep{background:radial-gradient(circle at 32% 28%, #ff8fb8, #d81b60)}
+.drop.yellow{background:radial-gradient(circle at 32% 28%, #fff3b0, #f5c400)}
+.drop.orange{background:radial-gradient(circle at 32% 28%, #ffd28a, #f57c00)}
+.drop.red{background:radial-gradient(circle at 32% 28%, #ff9d9d, #e02424)}
+.arrowmid{font-size:18px;color:#94a3b8;font-weight:800;flex:0 0 auto}
+
+footer{text-align:center;color:var(--muted);font-size:13px;padding:26px 14px 46px}
+
+@media print{
+  .progresswrap,button{display:none}
+  .stage{box-shadow:none;border:1px solid #ccc;page-break-inside:avoid}
+  body{background:#fff;font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="tag">🧪 实验台行动手册 · 只讲怎么做 · 2026.10.19</div>
+    <h1>酸碱标准溶液的配制与标定<br>完整实验路线指南</h1>
+    <p>从开工到收工的每一步照着做。每条 = 一个动作，做完勾掉。看到 <span class="stop" style="margin:0">停</span> 就停，别多滴。</p>
+    <div class="goal">
+      🎯 <b>今天的产出：</b>两瓶贴好标签的溶液（0.1 mol/L HCl、0.1 mol/L NaOH）＋ 两组标定数据（c(NaOH)×3 份、c(HCl)×3 份）＋ 算好的浓度与相对平均偏差。<br>
+      ⏱️ <b>参考用时：</b>配液 25 min → 滴定管准备 15 min → 标 NaOH 40 min → 标 HCl 30 min → 收工计算 20 min。
+    </div>
+  </div>
+</header>
+
+<div class="numstrip">
+  <div class="numblock"><div class="v">8.3 mL</div><div class="k">浓 HCl 量取量</div></div>
+  <div class="numblock"><div class="v">2.0 g</div><div class="k">NaOH 称量</div></div>
+  <div class="numblock"><div class="v">0.45 g ×3</div><div class="k">KHP 称样</div></div>
+  <div class="numblock"><div class="v">50 mL</div><div class="k">溶解 KHP 的水</div></div>
+  <div class="numblock"><div class="v">1~2 滴</div><div class="k">指示剂用量</div></div>
+  <div class="numblock"><div class="v">25.00 mL</div><div class="k">移取 NaOH</div></div>
+  <div class="numblock"><div class="v">30 s</div><div class="k">终点不褪色</div></div>
+  <div class="numblock"><div class="v">×3 次</div><div class="k">平行测定</div></div>
+</div>
+
+<div class="progresswrap">
+  <div class="progress-inner">
+    <div class="pbar"><div id="pbar-fill"></div></div>
+    <div class="ptext" id="ptext">已完成 0 / 0 步</div>
+    <button onclick="resetAll()">清空重来</button>
+    <button class="primary" onclick="window.print()">打印</button>
+  </div>
+</div>
+
+<main>
+
+<nav class="routemap">
+  <a class="rt" href="#st0" style="border-bottom-color:#475569"><div class="n">STEP 0</div><div class="t">开工前准备</div><div class="m">约 5 min</div></a>
+  <div class="rt-arrow">→</div>
+  <a class="rt" href="#st1"><div class="n">STEP 1</div><div class="t">配 HCl 500 mL</div><div class="m">约 10 min</div></a>
+  <div class="rt-arrow">→</div>
+  <a class="rt" href="#st2" style="border-bottom-color:#8b5cf6"><div class="n">STEP 2</div><div class="t">配 NaOH 500 mL</div><div class="m">约 10 min</div></a>
+  <div class="rt-arrow">→</div>
+  <a class="rt" href="#st3" style="border-bottom-color:#0d9488"><div class="n">STEP 3</div><div class="t">两支滴定管就位</div><div class="m">约 15 min</div></a>
+  <div class="rt-arrow">→</div>
+  <a class="rt" href="#st4" style="border-bottom-color:#f59e0b"><div class="n">STEP 4</div><div class="t">标 NaOH ×3</div><div class="m">约 40 min</div></a>
+  <div class="rt-arrow">→</div>
+  <a class="rt" href="#st5" style="border-bottom-color:#ec4899"><div class="n">STEP 5</div><div class="t">标 HCl ×3</div><div class="m">约 30 min</div></a>
+  <div class="rt-arrow">→</div>
+  <a class="rt" href="#st6" style="border-bottom-color:#64748b"><div class="n">STEP 6</div><div class="t">计算收工</div><div class="m">约 20 min</div></a>
+</nav>
+
+<!-- ============ STEP 0 ============ -->
+<section class="stage" id="st0">
+  <div class="stage-head s0">
+    <div class="stage-num">0</div>
+    <div><h2>开工前准备</h2><div class="stage-meta">约 5 分钟 · 全部搞定再开始配液</div></div>
+    <div class="stage-flag" data-flag>0 / 6</div>
+  </div>
+  <div class="stage-body">
+    <ul class="actions">
+      <li><label><input type="checkbox"><span class="txt">穿好实验服，扎起头发，戴护目镜（需要时）</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">找老师领 <b>邻苯二甲酸氢钾（KHP）</b>：确认已在 105~110 ℃ 烘至恒量、放在<b>干燥器</b>里<span class="warn-t">没烘好先别称</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">领齐：<b>500 mL 试剂瓶 ×2</b>（1 橡皮塞、1 玻璃塞）、<b>250 mL 锥形瓶 ×3</b>、100 mL 烧杯、称量纸、纸条、标签纸</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">3 只锥形瓶用记号笔编号 <b>Ⅰ、Ⅱ、Ⅲ</b></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">烧杯接好<b>新煮沸放冷</b>的去离子水约 400 mL（没现成的就煮开一壶去离子水放凉）</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">实验记录本翻到空白页，写好日期和实验名</span></label></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ STEP 1 ============ -->
+<section class="stage" id="st1">
+  <div class="stage-head s1">
+    <div class="stage-num">1</div>
+    <div><h2>配 0.1 mol/L HCl 500 mL</h2><div class="stage-meta">约 10 分钟 · 用浓盐酸稀释</div></div>
+    <div class="stage-flag" data-flag>0 / 7</div>
+  </div>
+  <div class="stage-body">
+    <ul class="actions">
+      <li><label><input type="checkbox"><span class="txt">算量：V(浓HCl) = 0.1 × 500 ÷ 6 ≈ <b>8.3 mL</b>（把算式记进本子）</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">在<b>通风处</b>打开 6 mol/L HCl 瓶塞（倒放瓶塞）</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">量筒量取 <b>8.3 mL</b> 浓 HCl，读数时视线放平<span class="warn-t">动作快，少吸挥发气</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">沿内壁倒入 <b>500 mL 试剂瓶</b>（用玻璃塞的那只）</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">加去离子水稀释至 <b>500 mL</b>（液面到瓶身标线/量取 500 mL），盖塞</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">盖紧后<b>反复摇匀</b> 20 秒</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">贴标签：<b>0.1 mol/L HCl · 2026.10.19 · 姓名</b></span></label></li>
+    </ul>
+    <div class="datastrip">
+      <div class="dtag">📝 记录</div><br>
+      计算：V = c₂V₂/c₁ = 0.1×500÷6 = <span class="blank"></span> mL ； 实际量取 <span class="blank"></span> mL
+    </div>
+    <div class="tip amber">⚠️ 只要这几点：<b>通风处开瓶</b> · <b>酸入水方向无所谓但要沿壁慢倒</b> · <b>标签当场贴</b>。</div>
+  </div>
+</section>
+
+<!-- ============ STEP 2 ============ -->
+<section class="stage" id="st2">
+  <div class="stage-head s2">
+    <div class="stage-num">2</div>
+    <div><h2>配 0.1 mol/L NaOH 500 mL</h2><div class="stage-meta">约 10 分钟 · 固体 NaOH 溶解</div></div>
+    <div class="stage-flag" data-flag>0 / 8</div>
+  </div>
+  <div class="stage-body">
+    <ul class="actions">
+      <li><label><input type="checkbox"><span class="txt">算量：m(NaOH) = 0.1 × 0.5 × 40.00 = <b>2.0 g</b>（算式记本子）</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">托盘天平放好称量纸/小烧杯，<b>迅速</b>称取 <b>2.0 g</b> NaOH 固体<span class="warn-t">瓶盖开小口，快称快盖</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">倒入 100 mL 烧杯，加<b>新煮沸放冷的水约 50 mL</b></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">玻璃棒搅拌至<b>完全溶解</b>（溶液会发热，正常）</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">放置<b>冷却至室温</b>（摸杯壁不热再走下一步）<span class="stop">停</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">沿玻璃棒倒入 <b>500 mL 试剂瓶</b>（用<b>橡皮塞</b>的那只），加水至 <b>500 mL</b></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">塞<b>橡皮塞</b>，反复摇匀 20 秒<span class="warn-t">禁用玻璃磨口塞</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">贴标签：<b>0.1 mol/L NaOH · 2026.10.19 · 姓名</b></span></label></li>
+    </ul>
+    <div class="datastrip">
+      <div class="dtag">📝 记录</div><br>
+      计算：m = c·V·M = 0.1×0.5×40.00 = <span class="blank"></span> g ； 实际称取 <span class="blank"></span> g
+    </div>
+  </div>
+</section>
+
+<!-- ============ STEP 3 ============ -->
+<section class="stage" id="st3">
+  <div class="stage-head s3">
+    <div class="stage-num">3</div>
+    <div><h2>两支滴定管就位</h2><div class="stage-meta">约 15 分钟 · 酸管装 HCl、碱管装 NaOH</div></div>
+    <div class="stage-flag" data-flag>0 / 10</div>
+  </div>
+  <div class="stage-body">
+    <div class="tip green">🧴 两支管子的套路一样：<b>检漏 → 润洗 2~3 次 → 装液 → 赶气泡 → 调零</b>。酸管（玻璃活塞）装 HCl，碱管（乳胶管+玻璃珠）装 NaOH。</div>
+    <h4 style="margin:14px 0 6px">3A. 酸式滴定管 → 装 HCl</h4>
+    <ul class="actions">
+      <li><label><input type="checkbox"><span class="txt">检漏：装水夹在架上 <b>10 min</b>，活塞转 180° 再试一次，不漏才用</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">用 <b>HCl 溶液润洗 2~3 次</b>（每次 5~10 mL，边转边润，从尖嘴放出）</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">装入 HCl 至 0 刻度以上；<b>赶气泡</b>：猛开活塞让溶液冲出带走气泡</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">调液面到 <b>0.00 mL</b> 附近，静置 1 min 后读<b>初读数</b>（0.01 mL）</span></label></li>
+    </ul>
+    <h4 style="margin:14px 0 6px">3B. 碱式滴定管 → 装 NaOH</h4>
+    <ul class="actions">
+      <li><label><input type="checkbox"><span class="txt">检漏（同上，重点检查乳胶管和玻璃珠处）</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">用 <b>NaOH 溶液润洗 2~3 次</b>（每次 5~10 mL）</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">装入 NaOH 至 0 刻度以上；<b>赶气泡</b>：把乳胶管<b>向上弯曲</b>，捏起使溶液从尖嘴喷出</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">调液面到 <b>0.00 mL</b> 附近，静置 1 min 后读<b>初读数</b>（0.01 mL）</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">两支管的初读数都记进本子，确认尖嘴<b>无气泡、不挂液</b></span></label></li>
+    </ul>
+    <div class="datastrip">
+      <div class="dtag">📝 记录</div><br>
+      酸管（HCl）初读数 = <span class="blank"></span> mL ； 碱管（NaOH）初读数 = <span class="blank"></span> mL
+    </div>
+    <div class="tip red">🚨 润洗不能省！锥形瓶反过来：<b>只用自来水+去离子水洗净即可</b>，不干燥、不润洗。</div>
+  </div>
+</section>
+
+<!-- ============ STEP 4 ============ -->
+<section class="stage" id="st4">
+  <div class="stage-head s4">
+    <div class="stage-num">4</div>
+    <div><h2>标定 NaOH（用 KHP）×3 份</h2><div class="stage-meta">约 40 分钟 · 今天的主角 · Ⅰ→Ⅱ→Ⅲ 各做一遍</div></div>
+    <div class="stage-flag" data-flag>0 / 21</div>
+  </div>
+  <div class="stage-body">
+    <div class="tip amber">🔁 <b>每一份都走这 7 步，做 3 遍。</b>建议做完一份、记一份、勾一份，别攒着。</div>
+
+    <h4 style="margin:14px 0 6px">【第 Ⅰ 份】</h4>
+    <ul class="actions">
+      <li><label><input type="checkbox"><span class="txt">电子天平（<b>万分之一</b>）差减法称 KHP：<b>0.44~0.46 g</b> → 锥形瓶 Ⅰ<span class="warn-t">读数记 0.0001 g</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">加<b>新煮沸放冷的水 50 mL</b>，轻摇锥形瓶至 KHP <b>完全溶解</b><span class="stop">没溶完别滴</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">加<b>酚酞 1~2 滴</b>（就 1~2 滴，别多）</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">用碱管 NaOH 滴定：开始成串快滴，边滴边摇；近终点改<b>一滴一滴</b></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">改<b>半滴</b>：悬半滴→靠瓶壁沾下→洗瓶冲内壁→摇匀，直到变色</span></label></li>
+      <li><label><input type="checkbox"><span class="txt"><b>终点：淡粉红色，30 s 不褪色</b>，立刻停手<span class="stop">停</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">读终读数（0.01 mL）记本子；把 NaOH <b>补到 0 刻度附近</b>，再做下一份</span></label></li>
+    </ul>
+    <div class="datastrip"><div class="dtag">📝 第Ⅰ份</div><br>
+      m(KHP) = <span class="blank"></span> g ； V初 = <span class="blank"></span> mL ； V终 = <span class="blank"></span> mL ； ΔV = <span class="blank"></span> mL
+    </div>
+
+    <h4 style="margin:14px 0 6px">【第 Ⅱ 份】</h4>
+    <ul class="actions">
+      <li><label><input type="checkbox"><span class="txt">差减法称 KHP <b>0.44~0.46 g</b> → 锥形瓶 Ⅱ</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">加水 <b>50 mL</b>，溶完 → 加<b>酚酞 1~2 滴</b></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">NaOH 滴定至<b>淡粉红 30 s 不褪</b><span class="stop">停</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">记终读数；NaOH 补到 0 刻度附近</span></label></li>
+    </ul>
+    <div class="datastrip"><div class="dtag">📝 第Ⅱ份</div><br>
+      m(KHP) = <span class="blank"></span> g ； V初 = <span class="blank"></span> mL ； V终 = <span class="blank"></span> mL ； ΔV = <span class="blank"></span> mL
+    </div>
+
+    <h4 style="margin:14px 0 6px">【第 Ⅲ 份】</h4>
+    <ul class="actions">
+      <li><label><input type="checkbox"><span class="txt">差减法称 KHP <b>0.44~0.46 g</b> → 锥形瓶 Ⅲ</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">加水 <b>50 mL</b>，溶完 → 加<b>酚酞 1~2 滴</b></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">NaOH 滴定至<b>淡粉红 30 s 不褪</b><span class="stop">停</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">记终读数；三份数据自查：ΔV 是否接近（±0.10 mL 内正常）</span></label></li>
+    </ul>
+    <div class="datastrip"><div class="dtag">📝 第Ⅲ份</div><br>
+      m(KHP) = <span class="blank"></span> g ； V初 = <span class="blank"></span> mL ； V终 = <span class="blank"></span> mL ； ΔV = <span class="blank"></span> mL
+    </div>
+    <div class="tip red">🚨 这一步最常见的翻车：<b>滴到深桃红</b>（过了，这份 ΔV 偏大）· <b>KHP 没溶完就滴</b>（无效）· <b>忘了先调零</b>（读数乱）。出了问题→<b>该份作废重做</b>，别硬改数据。</div>
+  </div>
+</section>
+
+<!-- ============ STEP 5 ============ -->
+<section class="stage" id="st5">
+  <div class="stage-head s5">
+    <div class="stage-num">5</div>
+    <div><h2>标定 HCl（用刚标的 NaOH）×3 份</h2><div class="stage-meta">约 30 分钟 · Ⅰ→Ⅱ→Ⅲ 各做一遍</div></div>
+    <div class="stage-flag" data-flag>0 / 15</div>
+  </div>
+  <div class="stage-body">
+    <div class="tip amber">🔁 同样每份 5 步 ×3 遍。<b>移液管先润洗！</b></div>
+
+    <h4 style="margin:14px 0 6px">【第 Ⅰ 份】</h4>
+    <ul class="actions">
+      <li><label><input type="checkbox"><span class="txt">25 mL 移液管用<b>NaOH 溶液润洗 2~3 次</b>（每次约 5 mL，转动全润，放出）</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">洗耳球移取 NaOH <b>25.00 mL</b> → 锥形瓶 Ⅰ：放液 <b>约 3 s</b>，尖嘴残留<b>不吹</b><span class="stop">读 25.00</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">加<b>甲基橙 1~2 滴</b>（此时溶液<b>黄色</b>）</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">用酸管 HCl 滴定：边滴边摇，颜色<b>黄→橙</b>时改半滴</span></label></li>
+      <li><label><input type="checkbox"><span class="txt"><b>终点：橙色，30 s 不褪色</b>，立刻停手（变红=过了）<span class="stop">停</span></span></label></li>
+    </ul>
+    <div class="datastrip"><div class="dtag">📝 第Ⅰ份</div><br>
+      V(HCl)初 = <span class="blank"></span> mL ； V(HCl)终 = <span class="blank"></span> mL ； ΔV = <span class="blank"></span> mL
+    </div>
+
+    <h4 style="margin:14px 0 6px">【第 Ⅱ 份】</h4>
+    <ul class="actions">
+      <li><label><input type="checkbox"><span class="txt">移液管再润洗 2~3 次，移取 NaOH <b>25.00 mL</b> → 锥形瓶 Ⅱ</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">加<b>甲基橙 1~2 滴</b> → HCl 滴定至<b>橙色 30 s 不褪</b><span class="stop">停</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">记 ΔV；HCl 补到 0 刻度附近</span></label></li>
+    </ul>
+    <div class="datastrip"><div class="dtag">📝 第Ⅱ份</div><br>
+      V(HCl)初 = <span class="blank"></span> mL ； V(HCl)终 = <span class="blank"></span> mL ； ΔV = <span class="blank"></span> mL
+    </div>
+
+    <h4 style="margin:14px 0 6px">【第 Ⅲ 份】</h4>
+    <ul class="actions">
+      <li><label><input type="checkbox"><span class="txt">移液管再润洗 2~3 次，移取 NaOH <b>25.00 mL</b> → 锥形瓶 Ⅲ</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">加<b>甲基橙 1~2 滴</b> → HCl 滴定至<b>橙色 30 s 不褪</b><span class="stop">停</span></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">记 ΔV；三份 HCl 体积自查：互相接近（±0.10 mL 内正常）</span></label></li>
+    </ul>
+    <div class="datastrip"><div class="dtag">📝 第Ⅲ份</div><br>
+      V(HCl)初 = <span class="blank"></span> mL ； V(HCl)终 = <span class="blank"></span> mL ； ΔV = <span class="blank"></span> mL
+    </div>
+    <div class="tip red">🚨 别搞反：<b>是 HCl 在滴定管里往下滴，NaOH 在锥形瓶里</b>。甲基橙终点是<b>黄变橙</b>，不是变红。</div>
+  </div>
+</section>
+
+<!-- ============ STEP 6 ============ -->
+<section class="stage" id="st6">
+  <div class="stage-head s6">
+    <div class="stage-num">6</div>
+    <div><h2>计算与收工</h2><div class="stage-meta">约 20 分钟 · 算完、洗完、签字走人</div></div>
+    <div class="stage-flag" data-flag>0 / 10</div>
+  </div>
+  <div class="stage-body">
+    <h4 style="margin:6px 0">6A. 算数据</h4>
+    <ul class="actions">
+      <li><label><input type="checkbox"><span class="txt">逐份算 c(NaOH) = m ÷ (204.22 × ΔV)（V 用 L：ΔV(mL)÷1000），算 3 个值</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">求 c̄(NaOH) 平均值（保留 4 位有效数字）</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">算相对平均偏差 = 平均偏差 ÷ c̄ × 100%，看是否 <b>≤0.2%</b></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">逐份算 c(HCl) = c̄(NaOH) × 25.00 ÷ ΔV(HCl)，求平均值和相对平均偏差</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">不合格的份→说明原因，作废重做后补数据；合格→誊写上报告</span></label></li>
+    </ul>
+
+    <h4 style="margin:6px 0">6B. 收台子</h4>
+    <ul class="actions">
+      <li><label><input type="checkbox"><span class="txt">两瓶溶液盖紧（NaOH=<b>橡皮塞</b>），标签完整留下次用</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">滴定管：洗去废液 → 自来水 → 去离子水润洗，<b>夹好/平放</b>，碱管不能上酸管架乱放</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">锥形瓶、烧杯、量筒洗净归位；废液倒入<b>指定废液桶</b></span></label></li>
+      <li><label><input type="checkbox"><span class="txt">擦干台面，天平周围清扫，物品归位</span></label></li>
+      <li><label><input type="checkbox"><span class="txt">数据本请<b>老师检查签字</b>，再离开实验室</span></label></li>
+    </ul>
+
+    <h4 style="margin:14px 0 6px">📊 数据汇总表（誊报告用）</h4>
+    <table>
+      <tr><th>项目</th><th>Ⅰ</th><th>Ⅱ</th><th>Ⅲ</th></tr>
+      <tr><td>m(KHP) / g</td><td></td><td></td><td></td></tr>
+      <tr><td>V(NaOH)初 / mL</td><td></td><td></td><td></td></tr>
+      <tr><td>V(NaOH)终 / mL</td><td></td><td></td><td></td></tr>
+      <tr><td>ΔV(NaOH) / mL</td><td></td><td></td><td></td></tr>
+      <tr><td>c(NaOH) / mol·L⁻¹</td><td></td><td></td><td></td></tr>
+      <tr><td>c̄(NaOH) · 相对平均偏差</td><td colspan="3"></td></tr>
+      <tr><td>V(HCl)初 / mL</td><td></td><td></td><td></td></tr>
+      <tr><td>V(HCl)终 / mL</td><td></td><td></td><td></td></tr>
+      <tr><td>ΔV(HCl) / mL</td><td></td><td></td><td></td></tr>
+      <tr><td>c(HCl) / mol·L⁻¹</td><td></td><td></td><td></td></tr>
+      <tr><td>c̄(HCl) · 相对平均偏差</td><td colspan="3"></td></tr>
+    </table>
+    <div class="datastrip">
+      <div class="dtag">🧮 公式速查</div><br>
+      c(NaOH) = m(KHP) ÷ [204.22 × ΔV(L)] &nbsp;;&nbsp; c(HCl) = c(NaOH) × 25.00 ÷ ΔV(HCl)<br>
+      相对平均偏差 = (Σ|cᵢ−c̄| ÷ 3) ÷ c̄ × 100%
+    </div>
+  </div>
+</section>
+
+<!-- ============ 附卡：终点颜色 ============ -->
+<section class="stage" id="stx1">
+  <div class="stage-head s3">
+    <div class="stage-num">🎨</div>
+    <div><h2>终点颜色对照卡（贴在滴定台旁边）</h2><div class="stage-meta">看色停手，30 s 不褪色为准</div></div>
+  </div>
+  <div class="stage-body">
+    <div class="mini" style="margin-bottom:8px"><h4>标定 NaOH（酚酞）</h4></div>
+    <div class="colorcard"><div class="drop clear"></div> 滴定中：无色 <span class="arrowmid">→</span> <div class="drop pink"></div> <b>终点：淡粉红</b>（30 s 不褪）<span class="arrowmid">→</span> <div class="drop deep"></div> 深桃红 = 过了，重做</div>
+    <div class="mini" style="margin:14px 0 8px"><h4>标定 HCl（甲基橙）</h4></div>
+    <div class="colorcard"><div class="drop yellow"></div> 滴定中：黄色 <span class="arrowmid">→</span> <div class="drop orange"></div> <b>终点：橙色</b>（30 s 不褪）<span class="arrowmid">→</span> <div class="drop red"></div> 红色 = 过了，重做</div>
+  </div>
+</section>
+
+<!-- ============ 附卡：千万别做 ============ -->
+<section class="stage" id="stx2">
+  <div class="stage-head s0">
+    <div class="stage-num">🚫</div>
+    <div><h2>千万别做（做了数据就歪）</h2><div class="stage-meta">扫一眼，全部是"不要"</div></div>
+  </div>
+  <div class="stage-body">
+    <div class="grid2">
+      <div class="mini"><h4>称量与配液</h4><ul>
+        <li>❌ 用手直接抓 NaOH 固体</li>
+        <li>❌ NaOH 慢慢悠悠敞口称</li>
+        <li>❌ 热溶液直接定容/转移</li>
+        <li>❌ NaOH 瓶用玻璃磨口塞</li>
+        <li>❌ 溶液不贴标签就放着</li>
+      </ul></div>
+      <div class="mini"><h4>滴定管</h4><ul>
+        <li>❌ 不润洗直接装液</li>
+        <li>❌ 带着气泡开始滴定</li>
+        <li>❌ 用锥形瓶蘸标准液润洗</li>
+        <li>❌ 仰头/俯视读数</li>
+        <li>❌ 滴完马上读数（等 1 min）</li>
+      </ul></div>
+      <div class="mini"><h4>滴定过程</h4><ul>
+        <li>❌ 酚酞/甲基橙加一大串</li>
+        <li>❌ 一份滴完不补液直接做下一份</li>
+        <li>❌ 终点粉红越深越好</li>
+        <li>❌ 滴过头偷偷再滴回来凑数</li>
+        <li>❌ 数据追记、涂改、誊"漂亮"</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 附卡：急救 ============ -->
+<section class="stage" id="stx3">
+  <div class="stage-head s5">
+    <div class="stage-num">🚑</div>
+    <div><h2>卡壳急救（按情况直接处理）</h2><div class="stage-meta">只给动作，别纠结</div></div>
+  </div>
+  <div class="stage-body">
+    <table>
+      <tr><th style="width:34%">情况</th><th>立刻这样做</th></tr>
+      <tr><td>KHP 加水后没溶完</td><td>再多加 10~20 mL 水继续摇，溶完再滴（水量不影响结果）</td></tr>
+      <tr><td>滴到深粉红/红色（过了）</td><td>该份作废，重新称 KHP 重做；数据如实记录，别涂改</td></tr>
+      <tr><td>滴定管尖嘴有气泡</td><td>停下，赶掉气泡，重新调零，从初读数重记</td></tr>
+      <tr><td>酚酞不小心加了 4~5 滴</td><td>影响不大但终点会偏深；下一份记得只加 1~2 滴</td></tr>
+      <tr><td>三份 ΔV 差太多（>0.2 mL）</td><td>先查读数和称量记录，找不出原因就挑最可疑的一份重做</td></tr>
+      <tr><td>移取 NaOH 时移液管忘了润洗</td><td>该份作废，润洗后重新移取</td></tr>
+      <tr><td>不确定终点该不该停</td><td>再加半滴：颜色深了→上一份就是终点（作废重做）；刚好淡粉→记录</td></tr>
+      <tr><td>数据记错位置</td><td>单线划掉旁边重写，保持原记录可见</td></tr>
+    </table>
+    <div class="tip green">✅ <b>收工三查：</b>① 两瓶标签贴好盖紧 ② 数据本老师签过字 ③ 台面和水槽干净。</div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  实验路线指南 · 酸碱标准溶液的配制与标定（2026.10.19）· 纯操作版 —— 做完一步勾一步，祝三份数据齐刷刷 🧪
+</footer>
+
+<script>
+(function(){
+  const bars = document.getElementById('pbar-fill');
+  const ptext = document.getElementById('ptext');
+  const allBoxes = () => [...document.querySelectorAll('.actions input[type=checkbox]')];
+
+  function refresh(){
+    const boxes = allBoxes();
+    const done = boxes.filter(b=>b.checked).length;
+    bars.style.width = (boxes.length? done/boxes.length*100 : 0)+'%';
+    ptext.textContent = '已完成 '+done+' / '+boxes.length+' 步';
+    // 各阶段计数
+    document.querySelectorAll('.stage').forEach(stage=>{
+      const flag = stage.querySelector('[data-flag]');
+      if(!flag) return;
+      const bs = stage.querySelectorAll('.actions input[type=checkbox]');
+      const d = stage.querySelectorAll('.actions input[type=checkbox]:checked').length;
+      flag.textContent = d+' / '+bs.length + (bs.length && d===bs.length ? ' ✅' : '');
+    });
+  }
+  document.addEventListener('change', e=>{
+    if(e.target.matches('.actions input[type=checkbox]')){
+      const li = e.target.closest('li');
+      if(li) li.classList.toggle('done', e.target.checked);
+      refresh();
+    }
+  });
+  window.resetAll = function(){
+    allBoxes().forEach(b=>{
+      b.checked = false;
+      const li = b.closest('li');
+      if(li) li.classList.remove('done');
+    });
+    refresh();
+  };
+  refresh();
+})();
+</script>
+</body>
+</html>

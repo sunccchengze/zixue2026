@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>B7 · 从零：依赖藏在 xy 的符号里，平方抵消</title>
+<style>
+:root { --ink:#1b1712; --paper:#f3ead8; --card:#fffdf7; --line:#e2d3b8; --gold:#c9a227; --coral:#c45c4a; --red:#b1322a; }
+* { box-sizing:border-box; }
+body { margin:0; font-family:"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",system-ui,sans-serif;
+  background: radial-gradient(800px 380px at 100% 0%, #e7d7b4, transparent 50%), var(--paper); color:var(--ink); line-height:1.85; }
+.wrap { max-width:980px; margin:0 auto; padding:26px 16px 12px; }
+.hero { background:linear-gradient(135deg,#16352c,#2f6b55 55%,#c9a227); color:#eef8f3; border-radius:22px; padding:26px; }
+.kicker { letter-spacing:.16em; font-size:12px; opacity:.8; }
+h1 { margin:8px 0; font-size:26px; }
+h2 { font-size:21px; margin:32px 0 10px; border-left:5px solid var(--gold); padding-left:12px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px 18px; margin:12px 0; }
+.story { border-left:5px solid var(--gold); }
+.dict { background:#fff8e0; border:1px dashed var(--gold); }
+.eq { text-align:center; background:#e7f0ea; border-radius:12px; padding:12px; margin:10px 0; font-family:"Times New Roman",serif; font-style:italic; font-size:17px; }
+.eq.left { text-align:left; }
+.slow { background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin:10px 0; }
+.slow b { color:#2f6b55; }
+button { border:0; background:#16352c; color:#fff; border-radius:999px; padding:8px 14px; cursor:pointer; margin:4px 4px 0 0; }
+button.gold { background:var(--gold); color:#1b1712; font-weight:700; }
+.readout { background:#1b1712; color:#d7f0e4; border-radius:12px; padding:12px; font-family:ui-monospace,Menlo,monospace; font-size:13px; line-height:1.7; }
+canvas { width:100%; height:auto; background:#fff; border:1px solid var(--line); border-radius:12px; display:block; }
+.sheet { background:#fffef8; border:1px solid #d8c7a2; padding:18px 20px; line-height:28px;
+  background-image: repeating-linear-gradient(transparent, transparent 27px, rgba(196,92,74,.12) 28px); }
+.sheet .title { text-align:center; font-weight:700; letter-spacing:.3em; }
+.red { color:var(--red); font-family:"KaiTi","STKaiti","PingFang SC",serif; font-size:14px; }
+.pit { background:#fff; border-left:4px solid var(--red); padding:8px 12px; margin:8px 0; border-radius:0 10px 10px 0; }
+.step { border:1px solid var(--line); border-radius:12px; padding:10px 12px; margin:8px 0; background:#fff; display:none; }
+.step.on { display:block; } .step.active { outline:2px solid var(--gold); background:#fff8e0; }
+.num { display:inline-block; width:22px; height:22px; border-radius:50%; background:#16352c; color:#fff; text-align:center; line-height:22px; font-size:12px; margin-right:6px; }
+.takeaway { background:#16352c; color:#eef8f3; border-radius:18px; padding:20px; }
+.takeaway h2 { border:0; color:#cfe7d8; padding:0; margin-top:0; }
+.hint { font-size:14px; color:#5c564e; }
+.word { display:inline-block; background:#16352c; color:#eef8f3; border-radius:8px; padding:0 8px; font-family:"Times New Roman",serif; font-style:italic; }
+.nextbar{max-width:980px;margin:28px auto 56px;padding:0 16px;display:flex;justify-content:flex-end;}
+a.nextbtn{display:inline-block;background:#c9a227;color:#1b1712 !important;font-weight:700;text-decoration:none;border-radius:999px;padding:12px 22px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div class="kicker">阿姨带小麦克 · B7 整页重写 · 一道看符号抵消</div>
+  <h1>XY 的依赖藏在 xy 的符号里，平方把符号抹掉就独立了</h1>
+  <p>正方形上 f=(1/4)(1+xy)。边缘都是 1/2，看似像两个均匀独立的分布，但乘积 1/4 丢了 +xy。平方后四个象限对折，+ 与 − 抵消，交叉项消失。</p>
+</header>
+<div class="card dict">
+  <h3>这一页的词</h3>
+  <ul>
+    <li><span class="word">边缘均匀</span>：f<sub>X</sub>=1/2（|x|≤1），f<sub>Y</sub>=1/2。只看一边，都是均匀。</li>
+    <li><span class="word">不独立</span>：f<sub>X</sub>·f<sub>Y</sub>=1/4 ≠ (1/4)(1+xy)=f。少了那一坨 xy。</li>
+    <li><span class="word">变换四个原像</span>：U=X²，V=Y²。0&lt;u,v&lt;1 时有 (±√u, ±√v) 四个点，雅可比 |J|=1/(4√(uv))。</li>
+  </ul>
+</div>
+
+<h2>1. 边缘是均匀，但乘积对不上</h2>
+<div class="slow">
+  <p>固定 x，y 从 −1 到 1：</p>
+  <p class="eq">f<sub>X</sub>(x)=∫<sub>−1</sub><sup>1</sup> (1/4)(1+xy) dy = (1/4)[ y + x·y²/2 ]<sub>−1</sub><sup>1</sup></p>
+  <p>= (1/4)[ (1 + x/2) − (−1 + x/2) ] = (1/4)·2 = 1/2，　|x|≤1</p>
+  <p>xy 那一项对 y 是奇函数，积为 0。同理 f<sub>Y</sub>=1/2。</p>
+  <p>乘积 f<sub>X</sub>f<sub>Y</sub>=1/4，而 f=(1/4)(1+xy)。两者不等。例如 (1,1) 处 f=1/2，乘积 1/4。</p>
+  <p><b>故 X,Y 不独立。</b></p>
+</div>
+
+<div class="card">
+  <canvas id="cB7" width="900" height="360"></canvas>
+  <div class="readout">左：(X,Y) 按 xy 上色，一三象限暖、二四象限冷，说明依赖的符号。<br>右：(U,V)=(X²,Y²) 之后四个象限叠在一起，颜色对消。</div>
+</div>
+
+<h2>2. 平方之后为什么独立</h2>
+<div class="slow">
+  <p>令 U=X²，V=Y²，0&lt;u,v&lt;1。固定 (u,v)，原像四个：</p>
+  <p class="eq">(x,y) = (±√u, ±√v)</p>
+  <p>每个的雅可比：dx dy = |J| du dv，|J|=1/(4√(uv))。这四个点上 f 依次是</p>
+  <p class="eq">(1/4)(1 ± √(uv))，符号两正两负</p>
+  <p>xy = (±√u)(±√v) = ±√(uv)，四点之和：(1+√)+(1−√)+(1−√)+(1+√)=4，交叉项抵消。</p>
+  <p>所以</p>
+  <p class="eq">f<sub>U,V</sub>(u,v)= 4 · (1/4) · (1/(4√(uv))) = 1/(4√(uv))</p>
+  <p>单维：U=X² 的密度 f<sub>U</sub>(u)=1/(2√u)（可由 X 的均匀导出：F<sub>U</sub>(u)=P(|X|≤√u)=√u，所以 f=1/(2√u)）。同理 f<sub>V</sub>=1/(2√v)。</p>
+  <p class="eq">f<sub>U,V</sub> = (1/(2√u))(1/(2√v)) = f<sub>U</sub> f<sub>V</sub></p>
+  <p><b>故 X² 与 Y² 相互独立。</b></p>
+</div>
+
+<h2>考试纸上</h2>
+<div class="card">
+  <button type="button" class="gold" id="sn">写下一段</button>
+  <button type="button" id="sp">上一段</button>
+  <button type="button" id="sa">一次展开</button>
+  <div id="steps"></div>
+</div>
+<div class="card">
+  <div class="sheet">
+    <div class="title">B7</div>
+    <div>f<sub>X</sub>(x)=1/2=f<sub>Y</sub>(y)（|x|≤1,|y|≤1），但 f<sub>X</sub>f<sub>Y</sub>=1/4≠(1/4)(1+xy)，故 X,Y 不独立。</div>
+    <div>令 U=X²，V=Y²。0&lt;u,v&lt;1 时四个原像 (±√u,±√v)，|J|=1/(4√(uv))，</div>
+    <div class="eq">f<sub>U,V</sub>(u,v)=1/(4√(uv))=[1/(2√u)][1/(2√v)]，</div>
+    <div>故 X² 与 Y² 独立。</div>
+  </div>
+</div>
+<div class="card">
+  <div class="pit"><span class="bad">只说「有 xy 所以不独立」。</span> 要写边缘 1/2 与乘积 1/4。</div>
+  <div class="pit"><span class="bad">平方变换只写一个原像。</span> 四个点与正负抵消必须写。</div>
+</div>
+<div class="takeaway">
+  <h2>带走</h2>
+  <ol>
+    <li>边缘均匀 ≠ 独立（差 xy）。</li>
+    <li>平方后四个原像，+ 与 − 抵消。</li>
+    <li>X,Y 不独立；X²,Y² 独立。</li>
+  </ol>
+</div>
+</div>
+<div class="nextbar"><a class="nextbtn" href="22-B9-考试怎么写.html">下一题 · B9</a></div>
+<script>
+(function(){
+  const cv=document.getElementById('cB7'), ctx=cv.getContext('2d');
+  const Lx=20, Lw=420, Rx=500, Rw=300, y0=40, h=300;
+  function draw(){
+    const img=ctx.createImageData(Lw,h);
+    for(let py=0;py<h;py++) for(let px=0;px<Lw;px++){
+      const x=px/Lw*2-1, y=1-py/h*2;
+      const t=(1+x*y)/2;
+      const i=4*(py*Lw+px);
+      img.data[i]=40+180*t; img.data[i+1]=100; img.data[i+2]=40+180*(1-t); img.data[i+3]=255;
+    }
+    ctx.putImageData(img,Lx,y0);
+    ctx.strokeStyle='#1b1712'; ctx.strokeRect(Lx,y0,Lw,h);
+    ctx.fillStyle='#5c564e'; ctx.font='13px sans-serif'; ctx.fillText('(X,Y) 按 xy 上色', Lx+110, 28);
+    ctx.fillStyle='rgba(201,132,58,0.35)'; ctx.fillRect(Rx,y0,Rw,h);
+    ctx.strokeRect(Rx,y0,Rw,h);
+    ctx.fillStyle='#1b1712'; ctx.fillText('(U,V)=(X²,Y²) 第一象限', Rx+40, 28);
+    ctx.fillStyle='#5c564e'; ctx.fillText('四个原像叠在这里', Rx+70, y0+h/2+6);
+    ctx.strokeStyle='#c45c4a'; ctx.setLineDash([6,4]);
+    ctx.beginPath(); ctx.moveTo(Lx+Lw/2, y0); ctx.lineTo(Lx+Lw/2, y0+h); ctx.moveTo(Lx, y0+h/2); ctx.lineTo(Lx+Lw, y0+h/2); ctx.stroke(); ctx.setLineDash([]);
+  }
+  draw();
+  const steps=[
+    {t:'边缘与不独立', b:'f_X=1/2，f_Y=1/2。f_X f_Y=1/4 ≠ (1/4)(1+xy)。故 X,Y 不独立。', r:'旁批：先写边缘再写 ≠。'},
+    {t:'平方四个原像', b:'U=X²,V=Y²。0<u,v<1 时四点 (±√u,±√v)，|J|=1/(4√(uv))。<br>四点 f 值两正两负，xy 抵消，f_{U,V}=1/(4√(uv))=(1/(2√u))(1/(2√v))。', r:'旁批：必须提四点与抵消。'},
+    {t:'结论', b:'故 X² 与 Y² 相互独立。', r:'旁批：两问都要答。'}
+  ];
+  let idx=-1; const box=document.getElementById('steps');
+  function render(all){ box.innerHTML=steps.map((s,i)=>'<div class="step'+(all||i<=idx?' on':'')+(!all&&i===idx?' active':'')+'"><div><span class="num">'+(i+1)+'</span><b>'+s.t+'</b></div><div class="eq left">'+s.b+'</div><div class="red">'+s.r+'</div></div>').join(''); }
+  document.getElementById('sn').onclick=()=>{ idx=Math.min(steps.length-1,idx+1); render(false); };
+  document.getElementById('sp').onclick=()=>{ idx=Math.max(0,idx-1); render(false); };
+  document.getElementById('sa').onclick=()=>{ idx=steps.length-1; render(true); };
+  render(false);
+})();
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4d0cbe23c069840',t:'MTc5MjQyMzUzNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

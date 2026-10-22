@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>酸碱标准溶液的配制与标定 · 交互式超详细实验讲义</title>
+<style>
+:root{
+  --ink:#1c2b3a; --muted:#5b6b7c; --bg:#eef2f7; --card:#ffffff;
+  --accent:#0d9488; --accent2:#4f46e5; --accent3:#f59e0b;
+  --ok:#16a34a; --bad:#dc2626; --warn:#d97706;
+  --line:#dbe3ee; --soft:#f2f7fa;
+  --shadow:0 10px 30px rgba(23,43,77,.10);
+  --radius:16px;
+  --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  background:
+    radial-gradient(1200px 500px at 90% -10%, rgba(79,70,229,.10), transparent 60%),
+    radial-gradient(1000px 480px at -10% 10%, rgba(13,148,136,.12), transparent 55%),
+    var(--bg);
+  color:var(--ink); line-height:1.75; font-size:16px;
+}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ===== HERO ===== */
+.hero{
+  background:linear-gradient(135deg,#0f2b46 0%,#134e6f 42%,#0d6f78 100%);
+  color:#eaf6ff; padding:56px 20px 40px; position:relative; overflow:hidden;
+}
+.hero::after{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(600px 240px at 85% 20%, rgba(255,255,255,.10), transparent 60%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, transparent 1px 64px);
+  pointer-events:none;
+}
+.hero-inner{max-width:1080px;margin:0 auto;position:relative;z-index:1}
+.hero .tag{
+  display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:999px;
+  font-size:13px;letter-spacing:.4px;
+}
+.hero h1{font-size:clamp(26px,4.4vw,44px);line-height:1.25;margin:18px 0 10px;font-weight:800}
+.hero h1 .hl{color:#7ee8db}
+.hero p.sub{font-size:clamp(15px,1.8vw,18px);opacity:.92;max-width:860px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chip{
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);
+  padding:8px 14px;border-radius:12px;font-size:13.5px;display:flex;align-items:center;gap:8px;
+}
+.chip b{font-family:var(--mono);font-size:14px;color:#a7f3e9}
+
+/* ===== NAV ===== */
+.nav{
+  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:6px;
+  overflow-x:auto;padding:10px 16px;scrollbar-width:thin;
+}
+.nav a{
+  flex:0 0 auto;padding:7px 12px;border-radius:999px;color:var(--muted);
+  font-size:13.5px;font-weight:600;white-space:nowrap;
+}
+.nav a:hover{background:var(--soft);color:var(--accent2);text-decoration:none}
+.nav a.active{background:var(--accent2);color:#fff}
+.progress{height:3px;background:transparent;position:relative;overflow:hidden}
+.progress>div{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .15s}
+
+/* ===== LAYOUT ===== */
+main{max-width:1080px;margin:0 auto;padding:28px 18px 80px}
+section{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:30px 28px; margin-bottom:26px; box-shadow:var(--shadow);
+  scroll-margin-top:84px;
+}
+.sec-kicker{
+  display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:1.5px;
+  color:var(--accent);background:rgba(13,148,136,.10);padding:4px 12px;border-radius:999px;margin-bottom:10px;
+}
+h2{font-size:clamp(21px,2.6vw,28px);line-height:1.35;margin-bottom:8px}
+h3{font-size:18.5px;margin:26px 0 10px;padding-left:12px;border-left:4px solid var(--accent)}
+h4{font-size:16px;margin:18px 0 8px;color:#0f3d56}
+p{margin:10px 0;color:#28394c}
+ul,ol{margin:10px 0 10px 1.4em}
+li{margin:6px 0;color:#28394c}
+.lead{font-size:17px;color:#33475e}
+small.note{display:block;color:var(--muted);font-size:13px;margin-top:6px}
+
+/* ===== COMPONENTS ===== */
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+
+.card{
+  background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:18px 18px;
+}
+.card h4{margin-top:0}
+.card .icon{font-size:26px;margin-bottom:6px}
+
+.badge{
+  display:inline-block;padding:3px 10px;border-radius:999px;font-size:12.5px;font-weight:700;
+  background:#e7eefb;color:#345;vertical-align:middle;
+}
+.badge.teal{background:rgba(13,148,136,.14);color:#0b746b}
+.badge.indigo{background:rgba(79,70,229,.13);color:#4338ca}
+.badge.amber{background:rgba(245,158,11,.16);color:#b45309}
+.badge.red{background:rgba(220,38,38,.12);color:#b91c1c}
+.badge.green{background:rgba(22,163,74,.13);color:#15803d}
+
+.callout{
+  border-left:5px solid var(--accent2);background:linear-gradient(90deg,rgba(79,70,229,.08),rgba(79,70,229,.02));
+  padding:14px 18px;border-radius:0 12px 12px 0;margin:16px 0;
+}
+.callout.warn{border-color:var(--warn);background:linear-gradient(90deg,rgba(217,119,6,.10),rgba(217,119,6,.02))}
+.callout.danger{border-color:var(--bad);background:linear-gradient(90deg,rgba(220,38,38,.08),rgba(220,38,38,.02))}
+.callout.ok{border-color:var(--ok);background:linear-gradient(90deg,rgba(22,163,74,.09),rgba(22,163,74,.02))}
+.callout h4{margin:0 0 6px}
+
+.formula{
+  background:#0f2b46;color:#dff3ff;border-radius:14px;padding:18px 20px;margin:14px 0;
+  font-family:var(--mono);font-size:15px;line-height:2.1;overflow-x:auto;
+}
+.formula .f-tag{display:inline-block;background:rgba(126,232,219,.18);color:#7ee8db;
+  padding:2px 10px;border-radius:8px;font-size:12px;margin-bottom:8px;font-family:inherit}
+.formula em{color:#ffd166;font-style:normal}
+
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.5px}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left}
+th{background:#eaf1f8;font-size:13.5px;color:#234}
+tr:nth-child(even) td{background:#f8fbfd}
+
+button, .btn{
+  cursor:pointer;border:none;border-radius:12px;padding:10px 18px;font-size:14.5px;font-weight:700;
+  background:var(--accent2);color:#fff;transition:.18s;font-family:inherit;
+}
+button:hover{transform:translateY(-1px);filter:brightness(1.07)}
+button:active{transform:translateY(0)}
+button.teal{background:var(--accent)}
+button.amber{background:var(--warn)}
+button.ghost{background:#fff;color:var(--accent2);border:2px solid #c7d2fe}
+button.sm{padding:6px 12px;font-size:13px;border-radius:10px}
+button:disabled{opacity:.55;cursor:not-allowed;transform:none}
+
+input[type=number], input[type=text], select{
+  border:1.6px solid var(--line);border-radius:10px;padding:9px 12px;font-size:15px;
+  font-family:var(--mono);background:#fff;color:var(--ink);width:100%;
+}
+input:focus, select:focus{outline:2px solid #a5b4fc;border-color:transparent}
+label{font-size:13px;font-weight:700;color:#3b4d63;display:block;margin-bottom:4px}
+
+.term{
+  border-bottom:2px dotted var(--accent);color:#0b5f58;cursor:pointer;font-weight:600;
+  padding:0 1px;
+}
+.term:hover{background:rgba(13,148,136,.12)}
+#term-pop{
+  position:fixed;z-index:99;display:none;max-width:320px;background:#0f2b46;color:#e8f6ff;
+  padding:12px 14px;border-radius:12px;font-size:13.5px;line-height:1.65;box-shadow:0 16px 40px rgba(0,0,0,.35);
+}
+#term-pop b{color:#7ee8db}
+
+.reveal{opacity:0;transform:translateY(14px);transition:.55s ease}
+.reveal.show{opacity:1;transform:none}
+
+.kpi{display:flex;align-items:baseline;gap:8px}
+.kpi .num{font-size:30px;font-weight:800;font-family:var(--mono);color:var(--accent2)}
+.kpi .unit{font-size:13px;color:var(--muted)}
+
+/* flip cards */
+.flip{background:transparent;perspective:900px;height:170px;cursor:pointer}
+.flip-inner{position:relative;width:100%;height:100%;transition:transform .55s;transform-style:preserve-3d}
+.flip.flipped .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{
+  position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border-radius:14px;padding:14px;display:flex;flex-direction:column;justify-content:center;
+  border:1px solid var(--line);overflow:auto;
+}
+.flip-front{background:linear-gradient(150deg,#ffffff,#eef6ff)}
+.flip-back{background:linear-gradient(150deg,#0f2b46,#155e75);color:#dff3ff;transform:rotateY(180deg);font-size:13px;line-height:1.6}
+.flip-front .big{font-size:24px}
+.flip-front .name{font-weight:800;font-size:16px;margin-top:6px}
+.flip-hint{position:absolute;right:10px;top:8px;font-size:11px;color:#8aa}
+
+/* quiz */
+.quiz-item{
+  border:1.6px solid var(--line);border-radius:14px;padding:18px;margin:14px 0;background:#fbfdff;
+}
+.quiz-q{font-weight:700;margin-bottom:10px}
+.opt{
+  display:block;width:100%;text-align:left;background:#fff;border:1.6px solid var(--line);
+  margin:8px 0;padding:11px 14px;border-radius:11px;font-weight:600;color:var(--ink);
+}
+.opt:hover{border-color:#a5b4fc;background:#f4f6ff}
+.opt.correct{border-color:var(--ok);background:#e9f9ef}
+.opt.wrong{border-color:var(--bad);background:#fdeeee}
+.opt:disabled{cursor:default;transform:none}
+.explain{
+  display:none;margin-top:10px;padding:12px 14px;border-radius:11px;font-size:13.8px;line-height:1.7;
+  background:#eef4fb;border-left:4px solid var(--accent2);color:#2c4258;
+}
+.explain.show{display:block}
+
+/* game */
+.game-card{
+  border:1.8px solid var(--line);background:#fff;border-radius:13px;padding:13px 16px;margin:9px 0;
+  font-weight:600;cursor:pointer;transition:.15s;user-select:none;display:flex;gap:10px;align-items:center;
+}
+.game-card:hover{border-color:#93c5fd;background:#f0f7ff}
+.game-card.picked-ok{background:#e9f9ef;border-color:var(--ok);cursor:default}
+.game-card.picked-bad{animation:shake .4s;background:#fdeeee;border-color:var(--bad)}
+.game-card .order-num{
+  width:28px;height:28px;border-radius:50%;background:var(--accent2);color:#fff;flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;font-size:13.5px;font-family:var(--mono);
+}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}50%{transform:translateX(7px)}75%{transform:translateX(-4px)}}
+
+/* titration sim */
+.sim-wrap{display:grid;grid-template-columns:1.25fr .95fr;gap:18px}
+@media (max-width:880px){.sim-wrap{grid-template-columns:1fr}}
+.sim-panel{background:#f7fafc;border:1px solid var(--line);border-radius:14px;padding:16px}
+#titr-canvas{width:100%;height:360px;display:block;background:#fff;border-radius:12px;border:1px solid var(--line)}
+.ctrl-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0}
+.ctrl-row label{margin:0}
+input[type=range]{width:100%;accent-color:var(--accent2);height:26px}
+.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:11px;overflow:hidden}
+.seg button{border-radius:0;background:#fff;color:#345;padding:8px 14px;font-size:13.5px}
+.seg button.on{background:var(--accent2);color:#fff}
+.flask{
+  width:150px;height:150px;border-radius:18px 18px 70px 70px;margin:10px auto;
+  border:3px solid #94a3b8;background:#fff;position:relative;transition:background .35s;
+  box-shadow:inset 0 -30px 40px rgba(0,0,0,.06);
+}
+.readout{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin:12px 0;
+}
+.readout .r{
+  background:#0f2b46;color:#cfe8ff;border-radius:11px;padding:10px 12px;text-align:center;
+}
+.readout .r .v{font-family:var(--mono);font-size:19px;font-weight:800;color:#7ee8db}
+.readout .r .k{font-size:11.5px;opacity:.85;letter-spacing:.5px}
+
+/* burette reading interactive */
+.burette-stage{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
+#burette-svg{width:100%;max-width:520px;display:block;margin:0 auto}
+.eye-slider-row{display:flex;align-items:center;gap:12px;margin:10px 0}
+.feedback{
+  border-radius:12px;padding:12px 16px;font-weight:700;margin:12px 0;display:none;
+}
+.feedback.ok{display:block;background:#e9f9ef;color:#166534;border:1.5px solid #86efac}
+.feedback.bad{display:block;background:#fdeeee;color:#991b1b;border:1.5px solid #fca5a5}
+
+/* half drop anim */
+.halfdrop-stage{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+#halfdrop-svg{width:290px;height:320px;background:#fff;border:1px solid var(--line);border-radius:14px}
+.hd-anim .droplet{animation:dropgrow 3.2s ease-in-out infinite}
+.hd-anim .flask-body{animation:swirl 3.2s ease-in-out infinite}
+@keyframes dropgrow{
+  0%{r:2;opacity:.2} 35%{r:7;opacity:1} 55%{r:7;opacity:1}
+  70%{transform:translateY(26px);opacity:.9} 100%{transform:translateY(34px);opacity:0}
+}
+@keyframes swirl{0%,100%{transform:rotate(0deg)}30%{transform:rotate(-6deg)}60%{transform:rotate(5deg)}}
+
+/* checklist */
+.check-item{
+  display:flex;gap:12px;align-items:flex-start;padding:11px 14px;border:1.5px solid var(--line);
+  border-radius:12px;margin:8px 0;cursor:pointer;background:#fff;transition:.15s;
+}
+.check-item:hover{border-color:#93c5fd}
+.check-item.done{background:#ecfdf3;border-color:#6ee7b7}
+.check-item input{margin-top:5px;width:18px;height:18px;accent-color:var(--ok);flex:0 0 auto}
+.bar{height:12px;background:#e2e8f0;border-radius:999px;overflow:hidden;margin:12px 0}
+.bar>div{height:100%;width:0;background:linear-gradient(90deg,#34d399,#0d9488);transition:width .3s}
+
+/* steps */
+.step-acc{border:1.6px solid var(--line);border-radius:14px;margin:12px 0;overflow:hidden;background:#fff}
+.step-head{
+  padding:15px 18px;font-weight:800;cursor:pointer;display:flex;gap:12px;align-items:center;
+  background:#f4f8fc;user-select:none;
+}
+.step-head:hover{background:#e8f1fa}
+.step-head .n{
+  width:32px;height:32px;border-radius:10px;background:var(--accent);color:#fff;flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;font-family:var(--mono);
+}
+.step-body{display:none;padding:6px 20px 18px;border-top:1.5px solid var(--line)}
+.step-acc.open .step-body{display:block}
+.step-acc.open .step-head{background:#e0f2f1}
+.step-arrow{margin-left:auto;transition:.25s;font-size:13px;color:var(--muted)}
+.step-acc.open .step-arrow{transform:rotate(180deg)}
+
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--muted);margin:8px 0}
+.legend .dot{width:12px;height:12px;border-radius:50%;display:inline-block;margin-right:5px;vertical-align:-1px}
+
+footer{
+  text-align:center;color:var(--muted);font-size:13.5px;padding:30px 16px 50px;
+}
+.mono{font-family:var(--mono)}
+.hl-text{background:linear-gradient(transparent 62%,rgba(255,214,102,.55) 0);font-weight:700}
+.sr-tag{font-family:var(--mono);font-size:12px;background:#0f2b46;color:#7ee8db;padding:2px 8px;border-radius:6px}
+.center{text-align:center}
+.mt{margin-top:18px}.mb{margin-bottom:18px}
+.flex-between{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+
+/* 两步标定路线图 */
+.roadmap{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;margin:18px 0 8px}
+.rm-node{
+  flex:1 1 190px;background:linear-gradient(160deg,#ffffff,#eef6ff);border:2px solid var(--line);
+  border-radius:14px;padding:14px;cursor:pointer;transition:.18s;min-width:180px;
+}
+.rm-node:hover{border-color:#93c5fd;transform:translateY(-2px)}
+.rm-node.active{border-color:var(--accent2);background:linear-gradient(160deg,#eef2ff,#fff);box-shadow:0 8px 22px rgba(79,70,229,.15)}
+.rm-tag{font-size:11px;font-weight:800;letter-spacing:1px;color:var(--accent2);background:#e0e7ff;display:inline-block;padding:2px 8px;border-radius:6px}
+.rm-node h5{margin:8px 0 4px;font-size:15.5px}
+.rm-node p{margin:4px 0;font-size:12.8px;color:var(--muted);line-height:1.6}
+.rm-arrow{
+  align-self:center;flex:0 0 auto;text-align:center;font-size:12px;font-weight:800;color:#0b746b;
+  background:rgba(13,148,136,.13);padding:8px 13px;border-radius:999px;white-space:nowrap;
+}
+.rm-arrow .arr{display:block;font-size:19px;line-height:1.1}
+.rm-detail{
+  margin:10px 0 6px;padding:14px 16px;border-radius:12px;background:#f1f7fb;border-left:4px solid var(--accent2);
+  font-size:13.8px;display:none;line-height:1.75;
+}
+.rm-detail.show{display:block}
+@media (max-width:760px){.rm-node{flex:1 1 100%}.rm-arrow{width:100%}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="tag">🧪 大学化学实验 · 实验二 &nbsp;|&nbsp; 2026.10.19 今日实验课</div>
+    <h1>酸碱标准溶液的<span class="hl">配制</span>与<span class="hl">标定</span><br>交互式超详细实验讲义</h1>
+    <p class="sub">完全对照《大学化学实验_1-207》讲义「实验二」编写 —— 从"为什么不能直接配"讲到"数据怎么算、误差往哪偏"，配合滴定曲线模拟器、读数练习、误差判断、数据处理工作台等 <b>13 个交互模块</b>，课前预习 + 课中操作 + 课后报告一站搞定。</p>
+    <div class="chips">
+      <div class="chip">🎯 标定对象：<b>NaOH / HCl</b></div>
+      <div class="chip">⚖️ 基准物质：<b>邻苯二甲酸氢钾 0.45 g</b></div>
+      <div class="chip">🌸 指示剂：<b>酚酞 / 甲基橙</b></div>
+      <div class="chip">🔁 平行测定：<b>3 次</b></div>
+      <div class="chip">📏 精密度要求：<b>相对平均偏差</b></div>
+      <div class="chip">🧭 路线：<b>KHP → 标 NaOH → 标 HCl</b></div>
+    </div>
+  </div>
+</header>
+
+<div class="nav">
+  <div class="nav-inner" id="navbar">
+    <a href="#s0">速览</a>
+    <a href="#s1">① 为何间接配</a>
+    <a href="#s2">② 原理与突跃</a>
+    <a href="#s3">③ 基准物质</a>
+    <a href="#s4">④ 仪器试剂</a>
+    <a href="#s5">⑤ 步骤超详解</a>
+    <a href="#s6">⑥ 滴定操作</a>
+    <a href="#s7">⑦ 数据处理</a>
+    <a href="#s8">⑧ 误差分析</a>
+    <a href="#s9">⑨ 思考题</a>
+    <a href="#s10">⑩ 综合测验</a>
+    <a href="#s11">速记清单</a>
+  </div>
+  <div class="progress"><div id="progress-bar"></div></div>
+</div>
+
+<main>
+
+<!-- ================= SECTION 0 速览 ================= -->
+<section id="s0" class="reveal">
+  <div class="sec-kicker">OVERVIEW · 实验速览</div>
+  <h2>今天这节课，到底要做什么？</h2>
+  <p class="lead">一句话：<b>先把 HCl 和 NaOH 配成"大概 0.1 mol/L"，再用基准物质把浓度"校准"到准确</b>。这就是滴定分析的第一课，也是后面 EDTA 滴定、食醋总酸度测定等实验的地基。</p>
+
+  <div class="grid g4 mt">
+    <div class="card"><div class="icon">1️⃣</div><h4>粗配 HCl</h4><p style="font-size:13.5px">由 6 mol/L 浓盐酸稀释出 <b>500 mL 0.1 mol/L</b>，装酸式滴定管对应的试剂瓶。</p></div>
+    <div class="card"><div class="icon">2️⃣</div><h4>粗配 NaOH</h4><p style="font-size:13.5px">托盘天平快速称约 <b>2.0 g</b> NaOH，用<b>新煮沸放冷</b>的水配 500 mL。</p></div>
+    <div class="card"><div class="icon">3️⃣</div><h4>标定 NaOH</h4><p style="font-size:13.5px">精确称 KHP ≈0.45 g ×3 份，<b>酚酞</b>指示，滴至粉红 30 s 不褪色。</p></div>
+    <div class="card"><div class="icon">4️⃣</div><h4>标定 HCl</h4><p style="font-size:13.5px">移取 NaOH 25.00 mL ×3 份，<b>甲基橙</b>指示，滴至黄变橙 30 s 不褪色。</p></div>
+  </div>
+
+  <h3>讲义里的「实验目的」逐条解读</h3>
+  <table>
+    <tr><th style="width:36%">讲义原文</th><th>真正要你掌握的能力</th></tr>
+    <tr><td>(1) 学习 HCl 和 NaOH 标准溶液配制方法</td><td>理解<b>间接配制法</b>：为什么它们不能用直接法？稀释计算 c₁V₁=c₂V₂、m=cVM 怎么算</td></tr>
+    <tr><td>(2) 掌握滴定分析的基本操作方法</td><td>滴定管<b>检漏→润洗→赶气泡→调零→滴定→读数</b>全流程；"成串不成线"、半滴操作、30 s 判终点</td></tr>
+    <tr><td>(3) 学习差减法称量固体物质</td><td>称量瓶 + 纸带的<b>差减称量法</b>：m(样品)=m(前)−m(后)，准确到 0.0001 g（万分之一天平）</td></tr>
+    <tr><td>(4) 学会使用甲基橙和酚酞指示剂判断滴定终点</td><td>酚酞：无色→<b>微红/粉红</b>；甲基橙：<b>黄→橙</b>。会判"刚好变色、30 s 不褪色"</td></tr>
+  </table>
+
+  <div class="callout ok">
+    <h4>🔑 一条主线贯穿全实验</h4>
+    <p style="margin:4px 0"><b>物质的量</b>才是滴定的主角：无论加多少水稀释锥形瓶里的溶液，n(酸) 与 n(碱) 的化学计量关系不变。所有误差分析，最后都归结为一句话——<span class="hl-text">"这个操作让 n 或 V 往哪边偏了？"</span></p>
+  </div>
+
+  <h3>🧭 两步标定路线图（老师强调的顺序，点方框看细节）</h3>
+  <div class="roadmap" id="roadmap">
+    <div class="rm-node active" data-rm="a">
+      <span class="rm-tag">STEP A · 只有它"身份清白"</span>
+      <h5>邻苯二甲酸氢钾 KHP</h5>
+      <p>基准物质：105~110 ℃ 烘至恒量、干燥器保存；万分之一天平<b>差减法</b>称 ≈0.45 g ×3 份</p>
+    </div>
+    <div class="rm-arrow">① 标定（酚酞）<span class="arr">➜</span>滴定 NaOH</div>
+    <div class="rm-node" data-rm="b">
+      <span class="rm-tag">STEP B · 浓度变"准确已知"</span>
+      <h5>NaOH 标准溶液</h5>
+      <p>c(NaOH) = m(KHP) / [204.22 × V(NaOH)]，粉红 30 s 不褪为终点，平行 3 次</p>
+    </div>
+    <div class="rm-arrow">② 互标（甲基橙）<span class="arr">➜</span>滴定 HCl</div>
+    <div class="rm-node" data-rm="c">
+      <span class="rm-tag">STEP C · 大功告成</span>
+      <h5>HCl 标准溶液</h5>
+      <p>移取 NaOH 25.00 mL，c(HCl)=c(NaOH)×25.00/V(HCl)，黄→橙 30 s 不褪</p>
+    </div>
+  </div>
+  <div class="rm-detail show" id="rm-detail">
+    <b>为什么必须是这个顺序？</b>KHP 是基准物质，能<b>直接</b>确定物质的量；NaOH 不能。所以先把 KHP 当"砝码"校准 NaOH（第一步），NaOH 拿到准确浓度后才有资格当"标准"去校准 HCl（第二步）。<b>链条一环扣一环：第一步 V 读歪了，第二步全部跟着歪。</b>
+    <br>对应讲义「四、实验内容」第 3 条（NaOH 标定）→ 第 4 条（HCl 标定）；也对应下方步骤 3、4 和排序游戏的标准答案。
+  </div>
+</section>
+
+<!-- ================= SECTION 1 为何间接配 ================= -->
+<section id="s1" class="reveal">
+  <div class="sec-kicker">PART 01 · 背后的化学</div>
+  <h2>为什么 HCl 和 NaOH 不能"直接配"标准溶液？</h2>
+  <p class="lead">能<b>直接法</b>配标准溶液的物质叫<span class="term" data-def="基准物质（一级标准物质）：能用于直接配制标准溶液或标定操作溶液浓度的高纯度、组成确定、性质稳定的物质。">基准物质</span>，要求极苛刻。而 NaOH 和浓 HCl 恰好每条都不达标——不是它们"不够纯"这么简单，而是<b>化学性质本身会和空气做生意</b>。</p>
+
+  <div class="grid g2 mt">
+    <div class="card" style="background:linear-gradient(160deg,#fff7ed,#ffffff)">
+      <div class="icon">🧱</div>
+      <h4>NaOH 固体：又吸水、又吃 CO₂</h4>
+      <p style="font-size:14px">① <b>吸湿性极强</b>：表面很快糊一层 NaOH 溶液，你称到的是"NaOH + 水"；<br>
+      ② <b>吸收 CO₂</b>：2NaOH + CO₂ → Na₂CO₃ + H₂O，固体里混入 Na₂CO₃，有效 NaOH 变少；<br>
+      ③ 因此 NaOH 的物质的量<b>无法由称量值确定</b>，只能先粗配、再标定。浓碱还会腐蚀玻璃活塞（生成硅酸钠使活塞粘连），所以碱液必须用<b>碱式滴定管/橡皮塞</b>。</p>
+    </div>
+    <div class="card" style="background:linear-gradient(160deg,#eef2ff,#ffffff)">
+      <div class="icon">💨</div>
+      <h4>浓盐酸：氯化氢会"逃跑"</h4>
+      <p style="font-size:14px">① 浓 HCl 有<b>挥发性</b>，开瓶后 HCl 不断逸出，浓度随时间下降；<br>
+      ② 它本身是<b>混合物</b>（恒沸组成约 20.2%），标签浓度只是"大概值"；<br>
+      ③ 所以只能用量筒按比例<b>稀释成近似浓度</b>，再用基准物质或已标定的 NaOH 反过来确定准确浓度。</p>
+    </div>
+  </div>
+
+  <h3>直接法 vs 间接法（点一点，看看差别）</h3>
+  <div class="grid g2">
+    <div class="card" id="direct-card" style="cursor:pointer" onclick="toggleCard(this)">
+      <h4>✅ 直接法 <span class="badge green">基准物质专属</span></h4>
+      <p style="font-size:14px"><b>流程：</b>准确称量 → 溶解 → 定量转移 → 容量瓶定容 → 浓度直接算出。</p>
+      <div class="reveal-more" style="display:none">
+        <p style="font-size:13.5px"><b>公式：</b> c = m / (M·V) <br>
+        <b>例子：</b>称 0.4512 g KHP 于容量瓶定容 250.00 mL，c = 0.4512/(204.22×0.2500) 可直接算准。<br>
+        <b>前提：</b>纯度 ≥99.9%、组成与化学式完全相符、性质稳定、定量反应、摩尔质量大。</p>
+      </div>
+    </div>
+    <div class="card" id="indirect-card" style="cursor:pointer" onclick="toggleCard(this)">
+      <h4>🔧 间接法（标定法） <span class="badge amber">今天用的</span></h4>
+      <p style="font-size:14px"><b>流程：</b>粗配近似浓度 → 用基准物质（或另一标准溶液）标定 → 算出准确浓度。</p>
+      <div class="reveal-more" style="display:none">
+        <p style="font-size:13.5px"><b>本实验两步标定：</b><br>
+        ① KHP（基准）→ 标定 NaOH 的准确浓度；<br>
+        ② 再用 NaOH（已知准确浓度）→ 标定 HCl。<br>
+        <b>关键：</b>粗配时用托盘天平、量筒即可；标定时必须换<b>万分之一天平、移液管、滴定管</b>。</p>
+      </div>
+    </div>
+  </div>
+  <small class="note">💡 上面两张卡片可以点击展开/收起。想一个问题：如果用"敞口放置的 NaOH 固体"直接称量配标准溶液，浓度会偏高还是偏低？（答案见【误差分析】）</small>
+
+  <div class="callout">
+    <h4>📖 讲义原文（实验原理 · 第一句）</h4>
+    <p style="margin:4px 0;font-size:14.5px">"NaOH 易吸收空气中的水分和 CO₂，浓 HCl 易挥发，所以不能直接配制标准溶液，只能用间接法配制成近似浓度的溶液。然后用一级标准物质或另一已知准确浓度的标准溶液对其进行标定，计算出准确浓度。"</p>
+  </div>
+</section>
+
+<!-- ================= SECTION 2 原理与突跃 ================= -->
+<section id="s2" class="reveal">
+  <div class="sec-kicker">PART 02 · 核心原理</div>
+  <h2>标定反应、计算公式、滴定突跃与指示剂</h2>
+
+  <h3>2.1 标定 NaOH：邻苯二甲酸氢钾（KHP）登场</h3>
+  <p>邻苯二甲酸氢钾，化学式 <b>KHC₈H₄O₄</b>（也写作 KHP，摩尔质量 <b>204.22 g/mol</b>），分子中只有一个可被 NaOH 滴定的酸性氢，反应按 1:1 定量进行：</p>
+  <div class="formula">
+    <div class="f-tag">滴定反应（1 : 1）</div>
+    KHC<sub>8</sub>H<sub>4</sub>O<sub>4</sub> + NaOH → KNaC<sub>8</sub>H<sub>4</sub>O<sub>4</sub> + H<sub>2</sub>O<br>
+    n(NaOH) = n(KHP) &nbsp;⟹&nbsp; <em>c(NaOH) = m(KHP) / [ M(KHP) × V(NaOH) ]</em>
+  </div>
+  <p><b>为什么计量点选酚酞？</b>产物 KNaC₈H₄O₄ 是强碱弱酸盐，A²⁻ 水解使计量点溶液显<b>碱性</b>（0.1 mol/L 体系约 pH ≈ 8.7~9.0），而酚酞变色范围 8.0~9.6 恰好落在突跃内——变色时离计量点只差半滴。</p>
+
+  <h3>2.2 标定 HCl：酸碱"互相标定"</h3>
+  <p>NaOH 浓度确定后，它就成了"已知准确浓度的标准溶液"，反过来滴定 HCl：</p>
+  <div class="formula">
+    <div class="f-tag">互相滴定</div>
+    H<sup>+</sup> + OH<sup>−</sup> → H<sub>2</sub>O<br>
+    <em>c(HCl) × V(HCl) = c(NaOH) × V(NaOH)</em> &nbsp;⟹&nbsp; <em>c(HCl) = c(NaOH)·V(NaOH) / V(HCl)</em>
+  </div>
+  <p>操作上：<b>移液管</b>准确移取 25.00 mL NaOH 于锥形瓶，加<b>甲基橙</b> 1~2 滴，用 HCl 滴定至<b>黄色变为橙色</b>且 30 s 不褪色。</p>
+
+  <h3>2.3 滴定突跃：终点敢"半滴定生死"的底气</h3>
+  <p>讲义数据：用 0.1000 mol/L NaOH 滴定 20.00 mL 0.1000 mol/L HCl，化学计量点 pH = 7.0；计量点前后 ±0.1%（即 19.98~20.02 mL）pH 由 <b>4.30 猛增到 9.70</b>——这个几乎垂直的 pH 突变就是<b>滴定突跃</b>（范围 pH 4.30~9.70）。<b>变色范围落在突跃范围内的指示剂都能用</b>：甲基橙(3.1~4.4)、甲基红(4.4~6.2)、酚酞(8.0~9.6)。</p>
+
+  <!-- ============ 交互 1：滴定曲线模拟器 ============ -->
+  <div class="callout ok" style="border-color:var(--ok)">
+    <h4>🎛️ 交互 ① 滴定曲线模拟器（拖滑块，看颜色与 pH 实时变化）</h4>
+    <p style="font-size:13.5px;margin:6px 0">切换"强酸 HCl"或"弱酸 KHP"模式；拖动滴定剂体积滑块，观察曲线上的点、烧杯颜色、指示剂变色；换指示剂看变色区间与突跃的关系。</p>
+  </div>
+
+  <div class="sim-wrap">
+    <div class="sim-panel">
+      <div class="ctrl-row">
+        <div class="seg" id="mode-seg">
+          <button class="on" data-mode="hcl">NaOH → HCl（强酸）</button>
+          <button data-mode="khp">NaOH → KHP（弱酸）</button>
+        </div>
+      </div>
+      <div class="ctrl-row">
+        <span class="badge indigo">指示剂：</span>
+        <div class="seg" id="ind-seg">
+          <button data-ind="mo">甲基橙</button>
+          <button data-ind="mr">甲基红</button>
+          <button class="on" data-ind="pp">酚酞</button>
+          <button data-ind="none">不加</button>
+        </div>
+      </div>
+      <canvas id="titr-canvas"></canvas>
+      <div class="legend">
+        <span><span class="dot" style="background:#4f46e5"></span>滴定曲线 pH</span>
+        <span><span class="dot" style="background:#f59e0b"></span>滴定突跃（±0.1%）</span>
+        <span><span class="dot" style="background:#0d9488"></span>指示剂变色范围</span>
+        <span><span class="dot" style="background:#dc2626"></span>当前滴定点</span>
+      </div>
+    </div>
+    <div class="sim-panel">
+      <label>V(NaOH 加入体积 / mL)</label>
+      <input type="range" id="vb-slider" min="0" max="25" step="0.01" value="0">
+      <div class="ctrl-row">
+        <button class="sm teal" id="btn-eq">跳到化学计量点</button>
+        <button class="sm ghost" id="btn-half">半滴终点前</button>
+        <button class="sm ghost" id="btn-reset">复位 0 mL</button>
+      </div>
+      <div class="readout">
+        <div class="r"><div class="v" id="ro-v">0.00</div><div class="k">V(NaOH) / mL</div></div>
+        <div class="r"><div class="v" id="ro-ph">1.00</div><div class="k">pH</div></div>
+        <div class="r"><div class="v" id="ro-tit">0%</div><div class="k">滴定分数</div></div>
+      </div>
+      <div class="flask" id="sim-flask" title="锥形瓶颜色预览"></div>
+      <div class="center" style="font-size:13.5px;color:var(--muted)">
+        溶液颜色：<b id="ro-color" style="color:#0f2b46">无色</b>（模拟指示剂显色）
+      </div>
+      <div class="callout" style="margin:12px 0 0" id="sim-tip">
+        <p style="margin:2px 0;font-size:13px" id="sim-tip-text">把滑块拖到 19.98 → 20.02 mL 之间（强酸模式），看看 pH 怎么"垂直起飞"——那就是突跃。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 交互 2：指示剂选择小测 ============ -->
+  <h3>2.4 交互 ② 指示剂快问快答</h3>
+  <p style="font-size:14px">根据情境选择正确指示剂（每题即时反馈）：</p>
+  <div id="ind-quiz"></div>
+</section>
+
+<!-- ================= SECTION 3 基准物质 ================= -->
+<section id="s3" class="reveal">
+  <div class="sec-kicker">PART 03 · 基准物质</div>
+  <h2>为什么偏偏是邻苯二甲酸氢钾？</h2>
+  <p class="lead">讲义给出基准物质的 <b>5 项要求</b>。先把标准立起来，再看 KHP 如何"全科满分"。</p>
+
+  <h3>3.1 基准物质五大铁律</h3>
+  <div class="grid g4">
+    <div class="card"><h4>① 高纯度</h4><p style="font-size:13.5px">质量分数 ≥ 99.9%，杂质不干扰滴定。</p></div>
+    <div class="card"><h4>② 组成确定</h4><p style="font-size:13.5px">组成与化学式完全相符；含结晶水时结晶水数目必须严格一致。</p></div>
+    <div class="card"><h4>③ 性质稳定</h4><p style="font-size:13.5px">不吸水、不失水、不被空气氧化，不与 O₂/CO₂ 反应。</p></div>
+    <div class="card"><h4>④ 定量反应</h4><p style="font-size:13.5px">按反应式定量进行、无副反应，反应速率快。</p></div>
+    <div class="card"><h4>⑤ 摩尔质量大</h4><p style="font-size:13.5px">M 越大，称量相对误差越小（Δm/m 被"稀释"）。</p></div>
+    <div class="card" style="background:linear-gradient(160deg,#ecfdf5,#fff)">
+      <h4>🏆 KHP 战绩</h4><p style="font-size:13.5px">纯度高易提纯 · 不吸湿稳定 · M = 204.22 已算大 · 一元酸性氢 1:1 反应 · 水中溶解度好。附表6 标注：干燥 110~120 ℃，标定对象"碱"。</p>
+    </div>
+  </div>
+  <div class="callout warn">
+    <h4>⚠️ KHP 使用前必须"干燥至恒量"</h4>
+    <p style="font-size:14px;margin:4px 0">讲义要求：基准 KHP 先在烘箱 <b>105~110 ℃ 烘干至恒量</b>，保存于<b>干燥器</b>中冷却后称量。<b>恒量</b>＝连续两次烘干、冷却、称量，质量差不超过 0.2~0.3 mg。若 KHP 含水，称得的 m 偏大？不——含水时"m(KHP)"里有水，实际 n(酸)偏少，滴定耗 V(NaOH) 偏小，算出的 c(NaOH) <b>偏高</b>。细节见【误差分析】。</p>
+  </div>
+
+  <!-- ============ 交互 3：基准物质翻牌 ============ -->
+  <h3>3.3 交互 ③ 候选物"安检门"翻牌（点击卡片）</h3>
+  <p style="font-size:14px">下面每种物质能不能当基准物质？点击卡片查看判定与理由：</p>
+  <div class="grid g3" id="std-cards"></div>
+</section>
+
+<!-- ================= SECTION 4 仪器与试剂 ================= -->
+<section id="s4" class="reveal">
+  <div class="sec-kicker">PART 04 · 仪器与试剂</div>
+  <h2>实验台上的每一件东西，为什么是它？</h2>
+  <p class="lead">以下清单与讲义「三、仪器与试剂」完全一致。重点不是背清单，而是理解<b>每件仪器的精度等级用在哪一步</b>：粗配用托盘天平/量筒，标定用万分之一天平/移液管/滴定管。</p>
+
+  <h3>4.1 仪器清单</h3>
+  <table>
+    <tr><th>仪器</th><th>规格（讲义）</th><th>在本实验中的角色</th></tr>
+    <tr><td>酸式滴定管</td><td>50 mL</td><td>装 <b>HCl</b>（玻璃活塞，不能装碱液）</td></tr>
+    <tr><td>碱式滴定管</td><td>50 mL</td><td>装 <b>NaOH</b>（乳胶管+玻璃珠，防腐蚀活塞）</td></tr>
+    <tr><td>移液管</td><td>25 mL</td><td>标定 HCl 时准确移取 <b>25.00 mL NaOH</b>（量出式 Ex，读 25.00）</td></tr>
+    <tr><td>电子天平</td><td>万分之一（0.0001 g）</td><td>差减法精确称 <b>KHP</b>（0.45 g ×3 份）</td></tr>
+    <tr><td>托盘天平</td><td>—</td><td>快速称 NaOH 固体约 2.0 g（粗配，精确到 0.1 g 即可）</td></tr>
+    <tr><td>锥形瓶</td><td>250 mL</td><td>滴定反应容器（3 只，平行测定）</td></tr>
+    <tr><td>烧杯</td><td>100 mL</td><td>溶解 NaOH 固体</td></tr>
+    <tr><td>试剂瓶</td><td>500 mL（橡皮塞、玻璃塞各一）</td><td>NaOH 瓶用<b>橡皮塞</b>；HCl 瓶可用玻璃塞</td></tr>
+    <tr><td>量筒</td><td>5 mL、250 mL</td><td>量取浓 HCl（约 8.3 mL）、粗量配液用水</td></tr>
+    <tr><td>其他</td><td>—</td><td>滴定管架、洗耳球、称量纸、凡士林、橡皮圈、标签纸、滤纸、干燥器（存 KHP）</td></tr>
+  </table>
+
+  <h3>4.2 试剂清单</h3>
+  <table>
+    <tr><th>试剂</th><th>规格/状态</th><th>注意</th></tr>
+    <tr><td>盐酸</td><td>6 mol/L（浓）</td><td>挥发！开瓶在通风处，量取要快</td></tr>
+    <tr><td>氢氧化钠</td><td>固体</td><td>迅速称量；用<b>新煮沸放冷</b>的去离子水溶解（驱除 CO₂）</td></tr>
+    <tr><td>邻苯二甲酸氢钾</td><td>基准物质</td><td>105~110 ℃ 烘至恒量，<b>干燥器</b>中保存冷却</td></tr>
+    <tr><td>甲基橙</td><td>0.1% 水溶液</td><td>标定 HCl 用；黄→橙</td></tr>
+    <tr><td>酚酞</td><td>0.1% 乙醇溶液</td><td>标定 NaOH 用；无色→粉红</td></tr>
+    <tr><td>去离子水</td><td>新煮沸放冷</td><td>煮沸驱 CO₂，防 Na₂CO₃ 生成；放冷避免热溶液体积误差</td></tr>
+  </table>
+
+  <!-- ============ 交互 4：仪器翻牌 ============ -->
+  <h3>4.3 交互 ④ 仪器翻牌墙（点击查看用途与易错点）</h3>
+  <div class="grid g4" id="apparatus-cards"></div>
+
+  <h3>4.4 酸式 vs 碱式滴定管：一眼分辨</h3>
+  <div class="grid g2">
+    <div class="card">
+      <h4>🔵 酸式滴定管（装 HCl）</h4>
+      <ul style="font-size:13.8px">
+        <li>下端是<b>玻璃活塞</b>：用凡士林涂油、橡皮圈固定活塞</li>
+        <li>检漏：装水夹持 10 min，活塞转 180° 再试</li>
+        <li>赶气泡：迅速开大活塞，溶液冲出带走气泡</li>
+        <li>握法：左手拇指、食指、中指控活塞，<b>手心向内凹</b>，防顶出活塞</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🟢 碱式滴定管（装 NaOH）</h4>
+      <ul style="font-size:13.8px">
+        <li>下端是<b>乳胶管 + 玻璃珠</b>（碱会粘死玻璃活塞）</li>
+        <li>操控：拇指与食指挤玻璃珠旁乳胶管，留缝隙出液</li>
+        <li>赶气泡：<b>乳胶管向上弯曲</b>，捏起使溶液从尖嘴喷出</li>
+        <li>禁忌：不能捏玻璃珠<b>下部</b>乳胶管（会产生气泡）</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <h4>🧠 记忆钩子</h4>
+    <p style="margin:2px 0;font-size:14px">"酸塞碱珠"——酸式用活塞（酸不腐蚀玻璃），碱式用玻璃珠+胶管（碱会咬死活塞）。今天两根滴定管都要用：<b>NaOH 进碱管，HCl 进酸管</b>。</p>
+  </div>
+</section>
+
+<!-- ================= SECTION 5 步骤超详解 ================= -->
+<section id="s5" class="reveal">
+  <div class="sec-kicker">PART 05 · 核心流程</div>
+  <h2>实验步骤超详解：一步一步跟着做</h2>
+  <p class="lead">四大步骤与讲义「四、实验内容」逐字对应。每一步都展开：<b>做什么 → 为什么 → 易错点</b>。先算后做，数据要当场记录。</p>
+
+  <!-- ============ 交互 5：配液计算器 ============ -->
+  <div class="callout ok" style="border-color:var(--ok)">
+    <h4>🧮 交互 ⑤ 配液计算器（动手前先算准）</h4>
+  </div>
+  <div class="grid g2">
+    <div class="card">
+      <h4>酸液稀释：算量取多少 6 mol/L HCl</h4>
+      <label>目标浓度 c₂ (mol/L)</label><input type="number" id="ac-c2" value="0.1" step="0.001">
+      <label class="mt">目标体积 V₂ (mL)</label><input type="number" id="ac-v2" value="500" step="1">
+      <label class="mt">浓盐酸浓度 c₁ (mol/L)</label><input type="number" id="ac-c1" value="6" step="0.1">
+      <div class="formula" style="margin:12px 0 0;font-size:13.5px">
+        <div class="f-tag">c₁V₁ = c₂V₂</div>
+        V₁ = <span id="ac-result" style="color:#7ee8db">8.33</span> mL → 用量筒量取，倒入试剂瓶再加水至 500 mL
+      </div>
+    </div>
+    <div class="card">
+      <h4>碱液粗配：算称多少 NaOH 固体</h4>
+      <label>目标浓度 c (mol/L)</label><input type="number" id="na-c" value="0.1" step="0.001">
+      <label class="mt">目标体积 V (mL)</label><input type="number" id="na-v" value="500" step="1">
+      <label class="mt">NaOH 摩尔质量 M (g/mol)</label><input type="number" id="na-m" value="40.00" step="0.01">
+      <div class="formula" style="margin:12px 0 0;font-size:13.5px">
+        <div class="f-tag">m = c·V·M</div>
+        m(NaOH) = <span id="na-result" style="color:#7ee8db">2.00</span> g → 托盘天平<b>迅速</b>称取（NaOH 吸湿吸 CO₂）
+      </div>
+    </div>
+  </div>
+  <small class="note">💬 讲义口径：HCl 用量筒量取后"倒入试剂瓶中，加去离子水稀释至 500 mL"；NaOH 在烧杯中用 50 mL 新煮沸放冷的水溶解，冷却后再转移稀释。</small>
+
+  <!-- ============ 步骤手风琴 ============ -->
+  <div class="step-acc open" id="step1">
+    <div class="step-head" onclick="toggleStep(this)"><div class="n">1</div>0.1 mol/L HCl 溶液的配制<span class="step-arrow">▼</span></div>
+    <div class="step-body">
+      <h4>操作</h4>
+      <ol>
+        <li>计算所需 6 mol/L HCl 体积：V = 0.1×500/6 ≈ <b>8.3 mL</b>。</li>
+        <li>用 <b>5 mL/10 mL 量筒</b>（或讲义的量筒规格）量取 8.3 mL 浓 HCl，沿瓶壁倒入 500 mL 试剂瓶。</li>
+        <li>加去离子水稀释至 500 mL，盖塞摇匀，<b>贴标签</b>（名称、浓度 0.1 mol/L、日期、配制人）。</li>
+      </ol>
+      <h4>为什么</h4>
+      <p style="font-size:14px">浓 HCl 挥发、浓度不确知，所以只能配"近似 0.1 mol/L"，准确值留给后面标定。稀释计算 c₁V₁=c₂V₂ 只需量筒级精度。</p>
+      <h4>易错点</h4>
+      <ul style="font-size:13.8px">
+        <li>浓 HCl 有刺激性挥发气体——<b>在通风处量取</b>，量筒量后尽快倒入。</li>
+        <li>标签必须当场贴：无标签溶液=废液。</li>
+        <li>玻璃塞试剂瓶可用于酸液；但注意瓶塞与瓶口配套。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step-acc" id="step2">
+    <div class="step-head" onclick="toggleStep(this)"><div class="n">2</div>0.1 mol/L NaOH 溶液的配制<span class="step-arrow">▼</span></div>
+    <div class="step-body">
+      <h4>操作</h4>
+      <ol>
+        <li>计算：m = 0.1×0.5×40.00 = <b>2.0 g</b>。</li>
+        <li>托盘天平<b>迅速</b>称取 2.0 g NaOH 于 100 mL 烧杯（暴露越短越好）。</li>
+        <li>加 <b>新煮沸放冷</b>的去离子水约 50 mL，搅拌溶解（放热！）。</li>
+        <li><b>冷却至室温</b>后转移到 500 mL 试剂瓶，加水稀释至 500 mL。</li>
+        <li>塞<b>橡皮塞</b>（不能用玻璃磨口塞），摇匀，贴标签。</li>
+      </ol>
+      <h4>为什么水要"新煮沸放冷"？</h4>
+      <p style="font-size:14px">去离子水中溶有 CO₂，会与 NaOH 生成 Na₂CO₃：2NaOH + CO₂ → Na₂CO₃ + H₂O，使溶液含碱性杂质、标定结果失真。煮沸驱逐 CO₂，放冷避免热溶液造成体积误差与容器炸裂风险。</p>
+      <h4>易错点</h4>
+      <ul style="font-size:13.8px">
+        <li>NaOH 溶解<b>放热</b>，必须冷却后再转移/稀释（热液体积不准）。</li>
+        <li>用玻璃塞长期存放→生成硅酸钠把塞子"焊死"。橡皮塞！</li>
+        <li>称量动作慢吞吞→固体吸水+吸 CO₂，称量值失去意义（粗配虽容忍，也别离谱）。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step-acc" id="step3">
+    <div class="step-head" onclick="toggleStep(this)"><div class="n">3</div>0.1 mol/L NaOH 的标定（KHP，酚酞）★ 今日核心<span class="step-arrow">▼</span></div>
+    <div class="step-body">
+      <h4>操作（平行 3 次）</h4>
+      <ol>
+        <li>万分之一电子天平，<b>差减法</b>准确称取已干燥至恒量的 KHP <b>约 0.45 g</b>（0.44~0.46 g），置于 250 mL 锥形瓶。<small class="note">记录质量到 0.0001 g！三份样品在三只锥形瓶中编号 Ⅰ、Ⅱ、Ⅲ。</small></li>
+        <li>加新煮沸放冷的去离子水 <b>50 mL</b>，轻摇至完全溶解（KHP 溶解稍慢，务必全溶）。</li>
+        <li>加<b>酚酞 1~2 滴</b>（0.1% 乙醇溶液），此时溶液无色。</li>
+        <li>用 NaOH 溶液（碱式滴定管）滴定：先快后慢，接近终点时一滴一滴、必要时<b>半滴</b>，摇匀。</li>
+        <li>终点：<b>溶液呈粉红色，30 s 内不褪色</b>。记录 V(NaOH) 终读数。</li>
+        <li>每次滴定结束把液面<b>补到零点附近</b>再做下一份（减少读数系统误差）。</li>
+        <li>3 份完成后计算 c(NaOH)ᵢ、平均值 c̄ 与<b>相对平均偏差</b>。</li>
+      </ol>
+      <h4>为什么</h4>
+      <p style="font-size:14px">KHP 是基准物质，n 已由称量精确确定；滴定消耗的 V 由滴定管读出（0.01 mL）。c = m/(204.22×V)。计量点生成 KNaC₈H₄O₄，水解显碱性（pH≈8.7~9.0）→ 选酚酞。"粉红 30 s 不褪色"= 终点后空气 CO₂ 中和过量碱的速度判定，标准的"30 s 规则"。</p>
+      <h4>易错点</h4>
+      <ul style="font-size:13.8px">
+        <li>KHP 没全溶就滴→结果无意义；水少加了可以补，不必重称。</li>
+        <li>酚酞加 3~4 滴→指示剂本身耗碱+颜色过深难判终点（思考题③）。</li>
+        <li>终点滴成"深桃红"→过了，V 偏大，c 偏低。理想：<b>淡粉红</b>。</li>
+        <li>读数前等 1 min 让挂壁液流下；视线与弯月面最低点同高。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step-acc" id="step4">
+    <div class="step-head" onclick="toggleStep(this)"><div class="n">4</div>0.1 mol/L HCl 的标定（甲基橙，互相标定）<span class="step-arrow">▼</span></div>
+    <div class="step-body">
+      <h4>操作（平行 3 次）</h4>
+      <ol>
+        <li>洗净的 25 mL 移液管用<b>待取 NaOH 润洗 2~3 次</b>（每次 5 mL 左右），洗耳球吸液。</li>
+        <li>准确移取 NaOH 溶液 <b>25.00 mL</b> 于 250 mL 锥形瓶（尖嘴靠壁、放液 3 s、残尖不吹）。</li>
+        <li>加<b>甲基橙 1~2 滴</b>，此时溶液<b>黄色</b>（NaOH 碱性）。</li>
+        <li>用 HCl（酸式滴定管）滴定，边滴边摇；<b>黄色变为橙色</b>且 30 s 不褪色即终点。</li>
+        <li>记录 V(HCl)，平行 3 次；计算 c(HCl) = c(NaOH)×25.00/V(HCl)，求平均值与相对平均偏差。</li>
+      </ol>
+      <h4>为什么</h4>
+      <p style="font-size:14px">NaOH 已被 KHP 标定，浓度准确已知→成为"标准溶液"去标定 HCl。强酸强碱滴定突跃 4.30~9.70，甲基橙变色范围 3.1~4.4 <b>刚好擦进突跃下沿</b>：颜色由黄经橙转红，以"橙色 30 s 不褪"为终点（不要滴到红！）。</p>
+      <h4>易错点</h4>
+      <ul style="font-size:13.8px">
+        <li>移液管没润洗→取出的 NaOH 被管内水稀释，n 偏小。</li>
+        <li>锥形瓶<b>不能</b>用 NaOH 润洗！只用自来水+去离子水洗净即可（瓶内残留水无影响）。</li>
+        <li>甲基橙终点从黄→橙，若变红说明 HCl 过量，读数偏大。</li>
+        <li>移液管放液后尖嘴残留液<b>不吹</b>（移液管标定已考虑残液）。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ 交互 6：步骤排序游戏 ============ -->
+  <h3>交互 ⑥ 步骤排序挑战（按正确操作顺序点击卡片）</h3>
+  <p style="font-size:14px">下面是打乱的 8 个关键操作。<b>按真实实验顺序依次点击</b>；点错会提示，可重来。</p>
+  <div class="flex-between">
+    <div id="order-progress" class="badge indigo">已排对 0 / 8</div>
+    <div>
+      <button class="sm ghost" onclick="resetOrderGame()">重新挑战</button>
+      <button class="sm amber" onclick="revealOrderAnswer()">查看答案</button>
+    </div>
+  </div>
+  <div id="order-game"></div>
+</section>
+
+<!-- ================= SECTION 6 滴定操作 ================= -->
+<section id="s6" class="reveal">
+  <div class="sec-kicker">PART 06 · 手上功夫</div>
+  <h2>滴定操作精讲：让 0.01 mL 都算数</h2>
+
+  <h3>6.1 滴定管使用七步曲（讲义 2.7 节浓缩）</h3>
+  <div class="grid g2">
+    <div class="card">
+      <h4>准备阶段</h4>
+      <ol style="font-size:13.8px">
+        <li><b>检漏</b>：装水夹持 10 min，活塞转 180° 再试；滤纸试活塞处。</li>
+        <li><b>润洗</b>：待装液润洗 2~3 次，每次 5~10 mL，润洗液从尖嘴放出（防稀释标准液）。</li>
+        <li><b>装液赶气泡</b>：酸式猛开活塞冲气；碱式弯胶管喷液。</li>
+        <li><b>调零</b>：补液至 0 刻度以上，逐滴调至 0.00；读初读数。</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h4>滴定与读数</h4>
+      <ol style="font-size:13.8px">
+        <li><b>手势</b>：左手控阀/珠，右手腕力旋摇锥形瓶，瓶下垫白瓷板。</li>
+        <li><b>速度</b>："成串不成线"；开始每秒 3~4 滴，近终点逐滴，最后半滴。</li>
+        <li><b>半滴</b>：悬而不滴→靠瓶壁沾下→洗瓶冲内壁→摇匀。</li>
+        <li><b>读数</b>：等 1 min，弯月面最低点与视线同高，读到 <b>0.01 mL</b>（如 24.60）。</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ============ 交互 7：读数视差 ============ -->
+  <h3>6.2 交互 ⑦ 滴定管读数视差实验台</h3>
+  <p style="font-size:14px">拖动滑块改变<b>眼睛高度</b>（俯视 ↔ 平视 ↔ 仰视），观察读数怎么被"看歪"，并对照正确读数。真实滴定管刻度<b>自上而下增大</b>。</p>
+  <div class="burette-stage">
+    <div class="eye-slider-row">
+      <span class="badge">👁️ 眼睛高度</span>
+      <input type="range" id="eye-slider" min="-100" max="100" step="1" value="0" style="flex:1">
+      <button class="sm ghost" onclick="setEye(0)">复位平视</button>
+    </div>
+    <svg id="burette-svg" viewBox="0 0 520 330"></svg>
+    <div class="feedback ok" id="eye-feedback">✔ 读数正确：24.60 mL</div>
+    <div class="callout" style="margin-top:10px">
+      <p style="margin:2px 0;font-size:13.5px"><b>规则记忆：</b>滴定管零刻度在上、刻度值向下增大 → <b>仰视读数偏小，俯视读数偏大</b>。若初读数与终读数由<b>同一人同样姿势</b>读取，误差部分抵消——这正是讲义思考题的考点！</p>
+    </div>
+    <div class="ctrl-row">
+      <button class="sm teal" onclick="showReadingCard()">用"读数卡"再试一次</button>
+      <span id="card-hint" style="font-size:13px;color:var(--muted)">读数卡：黑纸条放在弯月面下约 1 mm，读黑色弯月面最低点（已在图中示意）</span>
+    </div>
+  </div>
+
+  <!-- ============ 交互 8：半滴动画 ============ -->
+  <h3>6.3 交互 ⑧ 半滴操作动画</h3>
+  <div class="halfdrop-stage">
+    <svg id="halfdrop-svg" viewBox="0 0 290 320"></svg>
+    <div style="flex:1;min-width:250px">
+      <h4>半滴 = 终点的最后武器</h4>
+      <p style="font-size:14px">当一滴就会过量时，改用半滴：</p>
+      <ol style="font-size:14px">
+        <li>控制活塞使液滴<b>悬而不滴</b>（挂在尖嘴上）；</li>
+        <li>用锥形瓶<b>内壁轻轻一靠</b>，把这"半滴"沾下来；</li>
+        <li>用洗瓶<b>少量去离子水冲洗内壁</b>，摇匀；</li>
+        <li>颜色 30 s 不褪即终点。</li>
+      </ol>
+      <button class="teal" id="hd-play">⏸ 暂停动画</button>
+      <small class="note">半滴体积约 0.02 mL，正是滴定管读数的最小刻度级别——好终点是"抠"出来的。</small>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <h4>⚠️ 操作纪律（讲义注意事项浓缩）</h4>
+    <ul style="margin:6px 0 0;font-size:14px">
+      <li>装液前必须润洗滴定管 2~3 次 → 防稀释。</li>
+      <li>滴定前检查尖嘴气泡并排除 → 防体积虚高。</li>
+      <li>近终点勤摇、慢滴、看色变"由慢到快"，防滴过。</li>
+      <li>每次滴定结束将标准液补至零点附近再做下一份。</li>
+      <li>平行 3 次；原始数据当场记，不能追记、不能涂改（错划一条线）。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= SECTION 7 数据处理 ================= -->
+<section id="s7" class="reveal">
+  <div class="sec-kicker">PART 07 · 数据处理</div>
+  <h2>从原始数据到报告：算得对，还要算得"好看"</h2>
+
+  <h3>7.1 三组核心公式</h3>
+  <div class="formula">
+    <div class="f-tag">① 标定 NaOH（KHP）</div>
+    c(NaOH)<sub>i</sub> = m<sub>i</sub>(KHP) / [ 204.22 g/mol × V<sub>i</sub>(NaOH) ]<br>
+    <span style="opacity:.85">（m 以 g、V 以 L 计；若 V 用 mL：c = 1000 m / (204.22 V)）</span><br><br>
+    <div class="f-tag">② 标定 HCl（互相滴定）</div>
+    c(HCl)<sub>i</sub> = c(NaOH) × V(NaOH) / V(HCl)<sub>i</sub> ，其中 V(NaOH) = 25.00 mL<br><br>
+    <div class="f-tag">③ 精密度：相对平均偏差</div>
+    d̄ = ( Σ |c<sub>i</sub> − c̄| ) / n &nbsp;;&nbsp; <em>相对平均偏差 = (d̄ / c̄) × 100%</em> ， n = 3
+  </div>
+  <p><b>相对平均偏差</b>反映的是<b>精密度</b>（平行数据之间贴不贴），不是准确度。一般要求 ≤ 0.2%（以任课教师要求为准）；超了要找原因、重做。</p>
+
+  <h3>7.2 有效数字速查（讲义 2.14.3）</h3>
+  <table>
+    <tr><th>项目</th><th>规则</th><th>例子</th></tr>
+    <tr><td>滴定管读数</td><td>估读到 0.01 mL，两位小数</td><td>24.60 mL（4 位有效数字）</td></tr>
+    <tr><td>万分之一天平</td><td>0.0001 g，四位小数</td><td>0.4512 g（4 位）</td></tr>
+    <tr><td>移液管/容量瓶</td><td>25.00 mL、250.00 mL，按 ±0.01 记</td><td>25.00（4 位）</td></tr>
+    <tr><td>修约</td><td>四舍六入五成双；只修约一次</td><td>12.2649→12.26</td></tr>
+    <tr><td>误差表示</td><td>取 1 位（最多 2 位）</td><td>0.15%</td></tr>
+    <tr><td>首位 ≥8</td><td>可多算一位</td><td>9.83 视作 4 位</td></tr>
+  </table>
+
+  <!-- ============ 交互 9：数据处理器 ============ -->
+  <h3>7.3 交互 ⑨ 标定数据处理工作台</h3>
+  <p style="font-size:14px">把你的三份数据填进去（默认已预填一组示例数据），实时计算浓度、平均值与相对平均偏差。也可以用它验证课堂数据。</p>
+
+  <div class="card" style="background:#fff">
+    <h4>Ⅰ. NaOH 标定数据（KHP）</h4>
+    <table id="naoh-table">
+      <tr><th>项目</th><th>Ⅰ</th><th>Ⅱ</th><th>Ⅲ</th></tr>
+      <tr><td>m(KHP) / g</td>
+        <td><input type="number" class="dm" id="m1" value="0.4512" step="0.0001"></td>
+        <td><input type="number" class="dm" id="m2" value="0.4487" step="0.0001"></td>
+        <td><input type="number" class="dm" id="m3" value="0.4503" step="0.0001"></td></tr>
+      <tr><td>V 初读数 / mL</td>
+        <td><input type="number" class="dm" id="v1i" value="0.00" step="0.01"></td>
+        <td><input type="number" class="dm" id="v2i" value="0.00" step="0.01"></td>
+        <td><input type="number" class="dm" id="v3i" value="0.00" step="0.01"></td></tr>
+      <tr><td>V 终读数 / mL</td>
+        <td><input type="number" class="dm" id="v1f" value="22.05" step="0.01"></td>
+        <td><input type="number" class="dm" id="v2f" value="21.93" step="0.01"></td>
+        <td><input type="number" class="dm" id="v3f" value="22.00" step="0.01"></td></tr>
+      <tr><td><b>ΔV / mL</b></td><td id="d1">—</td><td id="d2">—</td><td id="d3">—</td></tr>
+      <tr><td><b>c(NaOH) / mol·L⁻¹</b></td><td id="c1">—</td><td id="c2">—</td><td id="c3">—</td></tr>
+    </table>
+    <div class="readout">
+      <div class="r"><div class="v" id="naoh-mean">—</div><div class="k">c̄(NaOH)</div></div>
+      <div class="r"><div class="v" id="naoh-d">—</div><div class="k">平均偏差 d̄</div></div>
+      <div class="r"><div class="v" id="naoh-rmd">—</div><div class="k">相对平均偏差</div></div>
+      <div class="r"><div class="v" id="naoh-verdict">—</div><div class="k">精密度判定</div></div>
+    </div>
+    <button class="teal" onclick="calcNaOH()">计算</button>
+    <button class="ghost" onclick="fillExample()">恢复示例数据</button>
+    <div class="explain" id="naoh-explain"></div>
+  </div>
+
+  <div class="card mt" style="background:#fff">
+    <h4>Ⅱ. HCl 标定数据（互相滴定，V(NaOH)=25.00 mL）</h4>
+    <div class="grid g3">
+      <div><label>c(NaOH) 平均值 (mol/L)</label><input type="number" id="hcl-cnaoh" value="0.09994" step="0.00001"></div>
+      <div><label>V(HCl) 平均值 (mL)</label><input type="number" id="hcl-vhcl" value="24.86" step="0.01"></div>
+      <div><label>V(NaOH) 移取 (mL)</label><input type="number" id="hcl-vnaoh" value="25.00" step="0.01"></div>
+    </div>
+    <button class="teal mt" onclick="calcHCl()">计算 c(HCl)</button>
+    <div class="formula" id="hcl-result" style="margin-top:12px;display:none"></div>
+  </div>
+  <small class="note">📌 报告还要做：<b>可疑值取舍</b>（若某份明显坏点，说明原因后舍弃）、平均浓度修约到合理位数（通常 4 位有效数字）、相对平均偏差以 % 表示取 1~2 位小数。</small>
+</section>
+
+<!-- ================= SECTION 8 误差分析 ================= -->
+<section id="s8" class="reveal">
+  <div class="sec-kicker">PART 08 · 误差分析</div>
+  <h2>交互 ⑩ 误差判断训练营：偏高、偏低，还是无影响？</h2>
+  <p class="lead">统一情境：NaOH 标定中 <b>c(NaOH) = m(KHP)/[M·V(NaOH)]</b>（V 在分母），HCl 标定中 <b>c(HCl)=c(NaOH)·25.00/V(HCl)</b>。先想清楚"谁变了、在分子还是分母"，再下结论。</p>
+  <div class="flex-between">
+    <div class="badge indigo" id="err-score">得分 0 / 8</div>
+    <button class="sm ghost" onclick="resetErrors()">重置本练习</button>
+  </div>
+  <div id="error-game"></div>
+  <div class="callout">
+    <h4>💡 万能分析框架（三步）</h4>
+    <p style="margin:2px 0;font-size:14px">① 这个操作改变的是 <b>n（物质的量）</b> 还是 <b>V（读数）</b>？——加水不改 n；润洗不当改浓度/读数。<br>
+    ② 变化量出现在公式<b>分子还是分母</b>？<br>
+    ③ 结论：分子变大→结果偏高；分母变大→结果偏低。同向变化时用"实际 vs 计算"对比最快。</p>
+  </div>
+</section>
+
+<!-- ================= SECTION 9 思考题 ================= -->
+<section id="s9" class="reveal">
+  <div class="sec-kicker">PART 09 · 思考题</div>
+  <h2>讲义思考题 · 附参考答案（点击展开）</h2>
+
+  <div class="step-acc" id="q1">
+    <div class="step-head" onclick="toggleStep(this)"><div class="n">Q1</div>滴定管为什么先要用待装溶液润洗 2~3 次？锥形瓶是否需要预先干燥？是否要用标准溶液润洗？<span class="step-arrow">▼</span></div>
+    <div class="step-body">
+      <p><b>润洗滴定管：</b>滴定管洗净后内壁残留去离子水，会稀释装入的标准溶液，使其浓度低于标签/标定值，滴定时消耗体积偏大，导致结果产生系统误差。用待装液润洗 2~3 次使内壁附着的液体与待装液浓度一致。</p>
+      <p><b>锥形瓶不必干燥：</b>滴定按物质的量反应，瓶内残留少量水不改变待测物/样品的 n，只改变浓度，对结果无影响。</p>
+      <p><b>锥形瓶绝不能用标准液（或待取液）润洗：</b>润洗会使瓶内壁额外附着 NaOH（或样品），等于悄悄增加了物质的量，滴定结果偏高。</p>
+    </div>
+  </div>
+
+  <div class="step-acc" id="q2">
+    <div class="step-head" onclick="toggleStep(this)"><div class="n">Q2</div>判断下列情况对实验结果有无影响：①滴定中往锥形瓶加少量水；②终点后立即读数；③滴定后尖嘴有气泡/残留液滴<span class="step-arrow">▼</span></div>
+    <div class="step-body">
+      <p><b>① 加水：无影响。</b>水不改变 n(KHP) 或 n(NaOH)，化学计量关系只看物质的量；稀释反而有利于观察颜色。</p>
+      <p><b>② 立即读数：有影响。</b>滴定刚结束时管壁还挂着液膜未流下，液面略高于平衡位置，读数偏小（V 偏小）。应垂直静置约 1 min 再读数。</p>
+      <p><b>③ 尖嘴气泡/液滴：有影响。</b>若滴定前尖嘴有气泡、滴定后消失，气泡体积被算进了消耗体积，V 读数偏大；若滴定后尖嘴挂有液滴未计入锥形瓶，这部分体积已离开滴定管却未参与反应，也使 V 相对偏大。两种情况在 NaOH 标定中都使 c = m/(M·V) 偏低。</p>
+    </div>
+  </div>
+
+  <div class="step-acc" id="q3">
+    <div class="step-head" onclick="toggleStep(this)"><div class="n">Q3</div>酸碱滴定中指示剂用量能否多加？为什么？<span class="step-arrow">▼</span></div>
+    <div class="step-body">
+      <p><b>不能多加。</b>指示剂本身多是有机弱酸或弱碱（酚酞是弱酸），会参与质子转移、消耗滴定剂；用量过多会带来额外的终点误差。同时指示剂过量会使颜色过深，终点变色不敏锐、难以判断"刚好变色"。一般 <b>1~2 滴</b>足矣。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 10 综合测验 ================= -->
+<section id="s10" class="reveal">
+  <div class="sec-kicker">PART 10 · 综合测验</div>
+  <h2>交互 ⑪ 课前/课后 10 题小测（含解析）</h2>
+  <div class="flex-between">
+    <div class="badge indigo" id="quiz-score">尚未提交</div>
+    <div>
+      <button class="teal" onclick="gradeQuiz()">提交评分</button>
+      <button class="ghost" onclick="resetQuiz()">重做</button>
+    </div>
+  </div>
+  <div id="mc-quiz"></div>
+</section>
+
+<!-- ================= SECTION 11 速记清单 ================= -->
+<section id="s11" class="reveal">
+  <div class="sec-kicker">CHECKLIST · 速记与自检</div>
+  <h2>交互 ⑫ 实验前/中/后检查清单 &nbsp;+&nbsp; 交互 ⑬ 速记卡</h2>
+
+  <div class="bar"><div id="check-bar"></div></div>
+  <div class="flex-between">
+    <div class="badge teal" id="check-count">完成 0 / 12</div>
+    <button class="sm ghost" onclick="resetChecks()">清空勾选</button>
+  </div>
+
+  <h3>实验台检查清单（边做边勾）</h3>
+  <div id="checklist"></div>
+
+  <h3>考前 60 秒速记卡（点击翻面）</h3>
+  <div class="grid g3" id="memory-cards"></div>
+
+  <div class="callout ok">
+    <h4>🔗 这个实验为什么重要？</h4>
+    <p style="margin:2px 0;font-size:14px">今天标定的 NaOH 后面还会反复上岗：<b>实验十八「食醋中总酸度的测定」</b>就用它滴定 HAc（酚酞、突跃 7.74~9.70）；HCl/NaOH 的互标思想也是 EDTA 标定、氧化还原滴定的通用范式。<b>把今天的 V 读准、c 算准，就是给整个学期的定量实验打地基。</b></p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  🧪 大学化学实验 · 实验二《酸碱标准溶液的配制与标定》交互式讲义 &nbsp;|&nbsp; 对照《大学化学实验_1-207》讲义实验二编写<br>
+  2026.10.19 · 祝实验顺利，三次平行全部 ≤0.2%！
+</footer>
+
+<div id="term-pop"></div>
+
+<script>
+/* ==================== 基础工具 ==================== */
+function toggleStep(head){ head.parentElement.classList.toggle('open'); }
+function toggleCard(card){
+  const m = card.querySelector('.reveal-more');
+  if(m) m.style.display = (m.style.display==='none'||m.style.display==='') ? 'block' : 'none';
+}
+
+/* 术语弹窗 */
+const pop = document.getElementById('term-pop');
+document.querySelectorAll('.term').forEach(t=>{
+  t.addEventListener('click', e=>{
+    e.stopPropagation();
+    pop.innerHTML = '<b>'+t.textContent+'</b><br>'+t.dataset.def;
+    pop.style.display='block';
+    const r = t.getBoundingClientRect();
+    let left = Math.min(Math.max(8, r.left), window.innerWidth-340);
+    let top = r.bottom+10;
+    if(top > window.innerHeight-140) top = r.top - pop.offsetHeight-10;
+    pop.style.left=left+'px'; pop.style.top=top+'px';
+  });
+});
+document.addEventListener('click', ()=> pop.style.display='none');
+
+/* 滚动进度 + 导航高亮 + 出场动画 */
+const bar = document.getElementById('progress-bar');
+window.addEventListener('scroll', ()=>{
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.width = (window.scrollY/h*100)+'%';
+});
+const navLinks = [...document.querySelectorAll('#navbar a')];
+if('IntersectionObserver' in window){
+  const secObserver = new IntersectionObserver(es=>{
+    es.forEach(en=>{
+      if(en.isIntersecting){
+        navLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+en.target.id));
+      }
+    });
+  },{rootMargin:'-30% 0px -60% 0px'});
+  document.querySelectorAll('main section').forEach(s=>secObserver.observe(s));
+
+  const revObserver = new IntersectionObserver(es=>{
+    es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('show'); revObserver.unobserve(en.target);} });
+  },{threshold:.06});
+  document.querySelectorAll('.reveal').forEach(el=>revObserver.observe(el));
+}else{
+  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('show'));
+}
+
+/* ==================== 交互① 滴定曲线模拟器 ==================== */
+const cvs = document.getElementById('titr-canvas');
+const ctx = cvs.getContext('2d');
+const sim = { mode:'hcl', ind:'pp', vb:0 };
+const M_KHP = 204.22, MASS_KHP = 0.4500, CB = 0.1000, VA = 20.00, CA = 0.1000, VW = 50;
+
+function vEq(){ return sim.mode==='hcl' ? (CA*VA)/CB : (MASS_KHP/M_KHP*1000)/CB; }
+function vMax(){ return sim.mode==='hcl' ? 25 : 30; }
+
+function phStrong(Vb){
+  const nH = CA*VA - CB*Vb, Vt = VA + Vb;
+  if(Math.abs(nH) < 1e-10) return 7.0;
+  if(nH > 0) return -Math.log10(nH/Vt);
+  return 14 + Math.log10((-nH)/Vt);
+}
+function phKHP(Vb){
+  const n0 = MASS_KHP/M_KHP*1000, pKa2 = 5.41;
+  if(Vb <= 0) return 4.18;
+  const nB = CB*Vb;
+  if(nB < n0*0.005) return 4.18 + (nB/(n0*0.005))*0.30;
+  if(nB < n0 - 1e-9) return Math.max(4.18, pKa2 + Math.log10(nB/(n0-nB)));
+  if(Math.abs(nB-n0) < 1e-9){
+    const CA2 = n0/(VW + n0/CB), pKb = 14 - pKa2;
+    return 14 - 0.5*(pKb - Math.log10(CA2));
+  }
+  return 14 + Math.log10((nB-n0)/(VW+Vb));
+}
+function pH(Vb){ return sim.mode==='hcl' ? phStrong(Vb) : phKHP(Vb); }
+
+function mix(a,b,t){
+  t = Math.max(0,Math.min(1,t));
+  return [Math.round(a[0]+(b[0]-a[0])*t), Math.round(a[1]+(b[1]-a[1])*t), Math.round(a[2]+(b[2]-a[2])*t)];
+}
+function solutionColor(ph, ind){
+  if(ind==='none') return [255,255,255];
+  if(ind==='pp'){
+    if(ph < 8.0) return [255,255,255];
+    if(ph < 9.6) return mix([255,255,255],[255,105,180],(ph-8.0)/1.6);
+    return mix([255,105,180],[217,25,99],(ph-9.6)/1.5);
+  }
+  if(ind==='mo'){
+    if(ph < 3.1) return [226,56,44];
+    if(ph < 4.4) return mix([226,56,44],[245,166,35],(ph-3.1)/1.3);
+    return mix([245,166,35],[255,210,60],(ph-4.4)/1.2);
+  }
+  if(ind==='mr'){
+    if(ph < 4.4) return [226,56,44];
+    if(ph < 6.2) return mix([226,56,44],[255,210,60],(ph-4.4)/1.8);
+    return [255,210,60];
+  }
+  return [255,255,255];
+}
+function colorName(ph, ind){
+  if(ind==='none') return '无色（未加指示剂）';
+  if(ind==='pp') return ph<8 ? '无色' : (ph<9.6 ? '浅粉红' : '粉红→深红');
+  if(ind==='mo') return ph<3.1 ? '红色' : (ph<4.4 ? '橙色' : '黄色');
+  if(ind==='mr') return ph<4.4 ? '红色' : (ph<6.2 ? '橙色' : '黄色');
+  return '—';
+}
+function indRange(ind){
+  return ind==='mo' ? [3.1,4.4] : ind==='mr' ? [4.4,6.2] : ind==='pp' ? [8.0,9.6] : null;
+}
+function jumpRange(){
+  const Ve = vEq();
+  return [pH(Ve*0.999), pH(Ve*1.001)];
+}
+
+function drawTitr(){
+  const dpr = window.devicePixelRatio || 1;
+  const w = cvs.clientWidth, h = cvs.clientHeight;
+  cvs.width = w*dpr; cvs.height = h*dpr;
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.clearRect(0,0,w,h);
+  const L=46,R=16,T=16,B=40, X=x=>L+x/vMax()*(w-L-R), Y=p=>T+(14-p)/14*(h-T-B);
+
+  /* 网格 */
+  ctx.font='11px sans-serif'; ctx.fillStyle='#8aa0b5'; ctx.strokeStyle='#e3eaf3'; ctx.lineWidth=1;
+  for(let p=0;p<=14;p+=2){
+    ctx.beginPath(); ctx.moveTo(L,Y(p)); ctx.lineTo(w-R,Y(p)); ctx.stroke();
+    ctx.fillText(p, 14, Y(p)+4);
+  }
+  for(let v=0;v<=vMax();v+=5){
+    ctx.beginPath(); ctx.moveTo(X(v),T); ctx.lineTo(X(v),h-B); ctx.stroke();
+    ctx.fillText(v+'', X(v)-6, h-B+16);
+  }
+  ctx.fillStyle='#5b6b7c';
+  ctx.fillText('pH', 8, T+8);
+  ctx.fillText('V(NaOH)/mL', w-88, h-8);
+
+  /* 突跃带 */
+  const jr = jumpRange();
+  ctx.fillStyle='rgba(245,158,11,.16)';
+  ctx.fillRect(L, Y(Math.max(...jr)), w-L-R, Math.abs(Y(jr[0])-Y(jr[1])));
+
+  /* 指示剂带 */
+  const ir = indRange(sim.ind);
+  if(ir){
+    ctx.fillStyle='rgba(13,148,136,.13)';
+    ctx.fillRect(L, Y(ir[1]), w-L-R, Y(ir[0])-Y(ir[1]));
+    ctx.strokeStyle='rgba(13,148,136,.5)'; ctx.setLineDash([4,4]);
+    ctx.beginPath(); ctx.moveTo(L,Y(ir[0])); ctx.lineTo(w-R,Y(ir[0]));
+    ctx.moveTo(L,Y(ir[1])); ctx.lineTo(w-R,Y(ir[1])); ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  /* 计量点竖线 */
+  const Ve = vEq();
+  ctx.strokeStyle='rgba(79,70,229,.45)'; ctx.setLineDash([5,5]);
+  ctx.beginPath(); ctx.moveTo(X(Ve),T); ctx.lineTo(X(Ve),h-B); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle='#4f46e5'; ctx.fillText('计量点 '+Ve.toFixed(2)+' mL', Math.min(X(Ve)+6, w-130), T+14);
+
+  /* 曲线 */
+  ctx.strokeStyle='#4f46e5'; ctx.lineWidth=2.6; ctx.beginPath();
+  const N=500;
+  for(let i=0;i<=N;i++){
+    const v = vMax()*i/N, y = Y(Math.max(0,Math.min(14,pH(v))));
+    if(i===0) ctx.moveTo(X(v),y); else ctx.lineTo(X(v),y);
+  }
+  ctx.stroke();
+
+  /* 当前点 */
+  const ph = pH(sim.vb);
+  ctx.fillStyle='#dc2626';
+  ctx.beginPath(); ctx.arc(X(sim.vb), Y(ph), 7, 0, Math.PI*2); ctx.fill();
+  ctx.fillStyle='#fff';
+  ctx.beginPath(); ctx.arc(X(sim.vb), Y(ph), 3, 0, Math.PI*2); ctx.fill();
+}
+
+function updateSimUI(){
+  const ph = pH(sim.vb), Ve = vEq(), frac = sim.vb/Ve*100;
+  document.getElementById('ro-v').textContent = sim.vb.toFixed(2);
+  document.getElementById('ro-ph').textContent = ph.toFixed(2);
+  document.getElementById('ro-tit').textContent = frac.toFixed(1)+'%';
+  const col = solutionColor(ph, sim.ind);
+  const rgb = 'rgb('+col[0]+','+col[1]+','+col[2]+')';
+  const dark = 'rgb('+Math.round(col[0]*.85)+','+Math.round(col[1]*.85)+','+Math.round(col[2]*.85)+')';
+  document.getElementById('sim-flask').style.background =
+    'radial-gradient(circle at 35% 28%, '+rgb+', '+dark+' 130%)';
+  document.getElementById('ro-color').textContent = colorName(ph, sim.ind);
+
+  let tip = '';
+  const jr = jumpRange();
+  if(sim.mode==='khp' && (sim.ind==='mo'||sim.ind==='mr')){
+    tip = '⚠️ KHP 是弱酸，计量点在 pH≈9：甲基橙/甲基红会在计量点<b>之前</b>变色，终点提前、c(NaOH) 偏高！快切到酚酞。';
+  }else if(sim.mode==='hcl' && Math.abs(sim.vb-Ve) < 0.08){
+    tip = '🎯 正在化学计量点附近！±0.1% 内 pH 从 '+jr[0].toFixed(2)+' 跳到 '+jr[1].toFixed(2)+'，指示剂只要变色范围落在其中即可。';
+  }else if(sim.vb < Ve*0.5){
+    tip = '滴定初期 pH 变化缓慢，可快速成串滴加（"成串不成线"）；越接近计量点越要慢。';
+  }else if(sim.vb < Ve){
+    tip = '接近终点：改成逐滴甚至半滴，每加一次充分摇匀，观察颜色变化速度。';
+  }else if(sim.vb > Ve*1.02){
+    tip = '已过计量点：滴定剂过量，若实际实验中颜色已深，说明滴过了——V 偏大，结果偏低。';
+  }else{
+    tip = '强酸模式：这就是讲义图 4-1 的滴定曲线，突跃范围 pH 4.30~9.70。';
+  }
+  document.getElementById('sim-tip-text').innerHTML = tip;
+  drawTitr();
+}
+
+document.querySelectorAll('#mode-seg button').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    document.querySelectorAll('#mode-seg button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    sim.mode = b.dataset.mode;
+    const slider = document.getElementById('vb-slider');
+    slider.max = vMax(); sim.vb = 0; slider.value = 0;
+    if(sim.mode==='khp' && sim.ind!=='pp' && sim.ind!=='none'){
+      document.querySelectorAll('#ind-seg button').forEach(x=>x.classList.remove('on'));
+      document.querySelector('#ind-seg button[data-ind="pp"]').classList.add('on');
+      sim.ind='pp';
+    }
+    updateSimUI();
+  });
+});
+document.querySelectorAll('#ind-seg button').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    document.querySelectorAll('#ind-seg button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on'); sim.ind = b.dataset.ind; updateSimUI();
+  });
+});
+document.getElementById('vb-slider').addEventListener('input', e=>{
+  sim.vb = parseFloat(e.target.value); updateSimUI();
+});
+document.getElementById('btn-eq').addEventListener('click', ()=>{
+  sim.vb = Math.round(vEq()*100)/100;
+  document.getElementById('vb-slider').value = sim.vb; updateSimUI();
+});
+document.getElementById('btn-half').addEventListener('click', ()=>{
+  sim.vb = Math.round((vEq()-0.03)*100)/100;
+  document.getElementById('vb-slider').value = sim.vb; updateSimUI();
+});
+document.getElementById('btn-reset').addEventListener('click', ()=>{
+  sim.vb = 0; document.getElementById('vb-slider').value = 0; updateSimUI();
+});
+window.addEventListener('resize', drawTitr);
+
+/* ==================== 交互② 指示剂小测 ==================== */
+const indQuizData = [
+  { q:'用 NaOH 滴定基准物邻苯二甲酸氢钾（KHP），应选哪种指示剂？',
+    opts:['甲基橙','酚酞','石蕊'], ans:1,
+    exp:'计量点生成 KNaC₈H₄O₄，水解显碱性（pH≈8.7~9.0），酚酞变色范围 8.0~9.6 恰落在突跃内。' },
+  { q:'用 HCl 滴定 NaOH（讲义的互标实验），甲基橙的终点颜色是？',
+    opts:['无色变粉红','黄色变橙色','红色变黄色'], ans:1,
+    exp:'NaOH 溶液中甲基橙显黄色；滴定至终点由黄色变为橙色且 30 s 不褪色。滴到红色就过量了。' },
+  { q:'若标定 KHP 时误用甲基橙作指示剂，终点会提前到达，c(NaOH) 结果将？',
+    opts:['偏高','偏低','无影响'], ans:0,
+    exp:'甲基橙在 pH≈4.4 就变黄，远在计量点（pH≈9）之前。终点提前 → V(NaOH) 偏小 → c=m/(MV) 偏高。' }
+];
+const indQuizBox = document.getElementById('ind-quiz');
+indQuizData.forEach((it,i)=>{
+  const div = document.createElement('div');
+  div.className='quiz-item';
+  div.innerHTML = '<div class="quiz-q">'+(i+1)+'. '+it.q+'</div>' +
+    it.opts.map((o,j)=>'<button class="opt" data-j="'+j+'">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('') +
+    '<div class="explain"></div>';
+  indQuizBox.appendChild(div);
+  div.querySelectorAll('.opt').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const j = +btn.dataset.j, ex = div.querySelector('.explain');
+      div.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+      if(j===it.ans){ btn.classList.add('correct'); ex.innerHTML='✅ 正确！'+it.exp; }
+      else{
+        btn.classList.add('wrong');
+        div.querySelectorAll('.opt')[it.ans].classList.add('correct');
+        ex.innerHTML='❌ 不对。'+it.exp;
+      }
+      ex.classList.add('show');
+    });
+  });
+});
+
+/* ==================== 交互③ 基准物质翻牌 ==================== */
+const stdData = [
+  {name:'邻苯二甲酸氢钾 KHC₈H₄O₄', icon:'🏆', ok:true,
+   back:'✅ <b>合格</b>：纯度高、不吸湿、M=204.22 较大、1:1 定量反应。105~110℃ 干燥后标定 NaOH——今天的主角！'},
+  {name:'氢氧化钠固体', icon:'🧱', ok:false,
+   back:'❌ <b>不合格</b>：吸湿、吸收 CO₂ 生成 Na₂CO₃，组成与纯度无法确认，只能粗配后被标定。'},
+  {name:'浓盐酸', icon:'💨', ok:false,
+   back:'❌ <b>不合格</b>：HCl 挥发、浓度随时间变化，本身是恒沸混合物，只能稀释成近似浓度再标定。'},
+  {name:'硼砂 Na₂B₄O₇·10H₂O', icon:'💎', ok:true,
+   back:'✅ <b>合格（标酸）</b>：基准物质，但含 10 个结晶水，需在装有 NaCl-蔗糖饱和溶液的干燥器中恒湿保存，防风化失水。'},
+  {name:'草酸 H₂C₂O₄·2H₂O', icon:'🌿', ok:true,
+   back:'✅ <b>合格（标碱）</b>：室温空气干燥即可。但 M=126 较小，称量相对误差稍大，所以标 NaOH 首选仍是 KHP。'},
+  {name:'高锰酸钾', icon:'🟣', ok:false,
+   back:'❌ <b>不合格</b>：不易提纯、溶液见光分解、会与有机物反应，无法直接配制标准溶液。'}
+];
+const stdBox = document.getElementById('std-cards');
+stdData.forEach(d=>{
+  const el = document.createElement('div');
+  el.className='flip';
+  el.innerHTML = '<div class="flip-inner"><div class="flip-front"><div class="big">'+d.icon+'</div>'+
+    '<div class="name">'+d.name+'</div><div class="flip-hint">点击查看判定</div></div>'+
+    '<div class="flip-back">'+d.back+'</div></div>';
+  el.addEventListener('click', ()=> el.classList.toggle('flipped'));
+  stdBox.appendChild(el);
+});
+
+/* ==================== 交互④ 仪器翻牌 ==================== */
+const appData = [
+  {icon:'🔵', name:'酸式滴定管 50 mL', back:'装 <b>HCl</b>。玻璃活塞涂凡士林、橡皮圈固定；读数到 0.01 mL；不能装碱液（活塞会粘死）。'},
+  {icon:'🟢', name:'碱式滴定管 50 mL', back:'装 <b>NaOH</b>。乳胶管+玻璃珠控流；赶气泡要把胶管<b>向上弯曲</b>；不可捏玻璃珠下部。'},
+  {icon:'💧', name:'移液管 25 mL', back:'移取 25.00 mL NaOH 标定 HCl。用待取液润洗 2~3 次；放液 3 s，<b>残尖不吹</b>。'},
+  {icon:'⚖️', name:'万分之一天平', back:'差减法称 KHP，精确到 0.0001 g。同一实验全程用同一台天平；称量瓶只用纸带拿取。'},
+  {icon:'🍶', name:'锥形瓶 250 mL ×3', back:'滴定容器。只需洗净，<b>不干燥、不润洗</b>；瓶下垫白瓷板便于观察颜色；右手腕力旋摇。'},
+  {icon:'🧴', name:'称量瓶 + 纸带', back:'差减法称量：m(样品)=m(前)−m(后)。转移试样 1~2 次完成，防吸湿；瓶盖只在接收容器上方开合。'},
+  {icon:'🧊', name:'干燥器', back:'存放已烘干至恒量的 KHP。取放快、盖缝涂凡士林；热物体先冷却再放入。'},
+  {icon:'🏷️', name:'试剂瓶 500 mL', back:'NaOH 用<b>橡皮塞</b>（玻璃塞会粘死）；HCl 可用玻璃塞。标签：名称、浓度、日期、配制人。'}
+];
+const appBox = document.getElementById('apparatus-cards');
+appData.forEach(d=>{
+  const el = document.createElement('div');
+  el.className='flip';
+  el.innerHTML = '<div class="flip-inner"><div class="flip-front"><div class="big">'+d.icon+'</div>'+
+    '<div class="name">'+d.name+'</div><div class="flip-hint">点击翻面</div></div>'+
+    '<div class="flip-back">'+d.back+'</div></div>';
+  el.addEventListener('click', ()=> el.classList.toggle('flipped'));
+  appBox.appendChild(el);
+});
+
+/* ==================== 交互⑤ 配液计算器 ==================== */
+function calcAcid(){
+  const c2=parseFloat(document.getElementById('ac-c2').value),
+        v2=parseFloat(document.getElementById('ac-v2').value),
+        c1=parseFloat(document.getElementById('ac-c1').value);
+  const out=document.getElementById('ac-result');
+  out.textContent = (c1>0 && c2>0 && v2>0) ? (c2*v2/c1).toFixed(2) : '??';
+}
+function calcNa(){
+  const c=parseFloat(document.getElementById('na-c').value),
+        v=parseFloat(document.getElementById('na-v').value),
+        m=parseFloat(document.getElementById('na-m').value);
+  const out=document.getElementById('na-result');
+  out.textContent = (c>0 && v>0 && m>0) ? (c*v/1000*m).toFixed(2) : '??';
+}
+['ac-c2','ac-v2','ac-c1'].forEach(id=>document.getElementById(id).addEventListener('input', calcAcid));
+['na-c','na-v','na-m'].forEach(id=>document.getElementById(id).addEventListener('input', calcNa));
+
+/* ==================== 交互⑥ 步骤排序游戏 ==================== */
+const orderSteps = [
+  '计算并量取浓 HCl、称取 NaOH，粗配两份溶液并贴好标签',
+  '滴定管检漏，用待装溶液分别润洗 2~3 次',
+  '差减法准确称取 KHP 约 0.45 g 于锥形瓶 ×3（0.0001 g）',
+  '加新煮沸放冷的水 50 mL 溶解 KHP，加酚酞 1~2 滴',
+  '碱式滴定管装 NaOH，赶气泡、调零',
+  '用 NaOH 滴至粉红色 30 s 不褪色，记录 V，平行 3 次并计算',
+  '移液管润洗后移取 NaOH 25.00 mL ×3，各加甲基橙 1~2 滴',
+  '用 HCl 滴至黄色变橙色 30 s 不褪，记录数据、计算浓度与相对平均偏差'
+];
+const orderGame = document.getElementById('order-game');
+let orderNext = 0, orderLocked = false;
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+function buildOrderGame(){
+  orderGame.innerHTML=''; orderNext=0; orderLocked=false;
+  document.getElementById('order-progress').textContent='已排对 0 / 8';
+  const idx = shuffle(orderSteps.map((s,i)=>i));
+  idx.forEach(i=>{
+    const card = document.createElement('div');
+    card.className='game-card'; card.dataset.i=i;
+    card.innerHTML='<div class="order-num">?</div><div>'+orderSteps[i]+'</div>';
+    card.addEventListener('click', ()=>{
+      if(card.classList.contains('picked-ok')||orderLocked) return;
+      if(i===orderNext){
+        card.classList.add('picked-ok');
+        card.querySelector('.order-num').textContent=(++orderNext);
+        document.getElementById('order-progress').textContent='已排对 '+orderNext+' / 8';
+        if(orderNext===8) document.getElementById('order-progress').textContent='🎉 全部排对！就是这个顺序';
+      }else{
+        card.classList.remove('picked-bad'); void card.offsetWidth; card.classList.add('picked-bad');
+      }
+    });
+    orderGame.appendChild(card);
+  });
+}
+function resetOrderGame(){ buildOrderGame(); }
+function revealOrderAnswer(){
+  orderLocked=true;
+  orderGame.querySelectorAll('.game-card').forEach(card=>{
+    const i=+card.dataset.i;
+    card.classList.add('picked-ok');
+    card.querySelector('.order-num').textContent=i+1;
+    if(i===orderSteps.length-1) document.getElementById('order-progress').textContent='📖 已显示正确顺序（1→8）';
+  });
+}
+buildOrderGame();
+
+/* ==================== 交互⑦ 读数视差 ==================== */
+const TRUE_V = 24.60;
+const yOf = v => 50 + (v-24.00)*100;
+function drawBurette(){
+  const slider = +document.getElementById('eye-slider').value;
+  const eyeY = yOf(TRUE_V) + (slider/100)*90;
+  const reading = TRUE_V - (slider/100)*0.40;
+  const svg = document.getElementById('burette-svg');
+  let ticks='';
+  for(let v=24.0; v<=25.001; v+=0.10){
+    const y=yOf(v), major = Math.abs(v*10 - Math.round(v*10))<1e-6 && Math.round(v*10)%5===0;
+    ticks += '<line x1="255" y1="'+y+'" x2="'+(major?285:272)+'" y2="'+y+'" stroke="#64748b" stroke-width="'+(major?2:1)+'"/>';
+    if(major) ticks += '<text x="292" y="'+(y+4)+'" font-size="13" fill="#475569">'+v.toFixed(1)+'</text>';
+    else ticks += '<text x="292" y="'+(y+4)+'" font-size="9" fill="#94a3b8">'+(Math.round(v*10)%10===0? v.toFixed(2):'')+'</text>';
+  }
+  svg.innerHTML = `
+    <defs>
+      <linearGradient id="liq" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#bae6fd"/><stop offset=".5" stop-color="#7dd3fc"/><stop offset="1" stop-color="#bae6fd"/>
+      </linearGradient>
+    </defs>
+    <!-- 管身 -->
+    <rect x="195" y="30" width="60" height="250" rx="6" fill="#f0f9ff" stroke="#94a3b8" stroke-width="2.5"/>
+    <rect x="212" y="280" width="26" height="34" fill="#f0f9ff" stroke="#94a3b8" stroke-width="2.5"/>
+    <circle cx="225" cy="314" r="3" fill="#38bdf8"/>
+    <!-- 液体 -->
+    <rect x="197.5" y="${yOf(TRUE_V)}" width="55" height="${280-yOf(TRUE_V)}" fill="url(#liq)" opacity=".85"/>
+    <!-- 弯月面 -->
+    <path d="M197.5 ${yOf(TRUE_V)} Q225 ${yOf(TRUE_V)+12} 252.5 ${yOf(TRUE_V)}" fill="none" stroke="#0284c7" stroke-width="2.5"/>
+    <line x1="195" y1="${yOf(TRUE_V)}" x2="330" y2="${yOf(TRUE_V)}" stroke="#16a34a" stroke-width="1.8" stroke-dasharray="6 4"/>
+    <text x="334" y="${yOf(TRUE_V)+4}" font-size="12" fill="#15803d">真实 24.60</text>
+    <line x1="195" y1="${yOf(reading)}" x2="330" y2="${yOf(reading)}" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="6 4"/>
+    <text x="334" y="${yOf(reading)+4}" font-size="12" fill="#b91c1c">读成 ${reading.toFixed(2)}</text>
+    ${ticks}
+    <!-- 读数卡 -->
+    <rect id="read-card-rect" x="150" y="${yOf(TRUE_V)+12}" width="140" height="26" fill="#1f2937" opacity="${window.__cardOn?0.92:0}" rx="3"/>
+    <text x="152" y="${yOf(TRUE_V)+34}" font-size="9" fill="#e5e7eb" opacity="${window.__cardOn?1:0}">读数卡（黑带）</text>
+    <!-- 眼睛 -->
+    <circle cx="70" cy="${eyeY}" r="16" fill="#fef3c7" stroke="#d97706" stroke-width="2.5"/>
+    <circle cx="70" cy="${eyeY}" r="6" fill="#92400e"/>
+    <line x1="86" y1="${eyeY}" x2="225" y2="${yOf(reading)}" stroke="#d97706" stroke-width="2" stroke-dasharray="5 4"/>
+    <text x="42" y="${eyeY-24}" font-size="12" fill="#92400e">${slider>5?'仰视':(slider<-5?'俯视':'平视')}</text>
+    <text x="42" y="${eyeY+30}" font-size="10" fill="#b45309">${slider>5?'读数偏小':(slider<-5?'读数偏大':'正确姿势')}</text>
+  `;
+  const fb = document.getElementById('eye-feedback');
+  const err = reading - TRUE_V;
+  if(Math.abs(err) < 0.011){
+    fb.className='feedback ok'; fb.innerHTML='✔ 读数正确：24.60 mL（弯月面最低点、视线同高）';
+  }else{
+    fb.className='feedback bad';
+    fb.innerHTML='✘ 你读成 '+reading.toFixed(2)+' mL，误差 '+(err>0?'+':'')+err.toFixed(2)+' mL。'+
+      (slider>5?'仰视使读数偏小（滴定管刻度自上而下增大）。':(slider<-5?'俯视使读数偏大。':'把滑块拖回 0 复位平视。'));
+  }
+}
+window.__cardOn=false;
+document.getElementById('eye-slider').addEventListener('input', drawBurette);
+function setEye(v){ document.getElementById('eye-slider').value=v; drawBurette(); }
+function showReadingCard(){ window.__cardOn=!window.__cardOn; drawBurette(); }
+drawBurette();
+
+/* ==================== 交互⑧ 半滴动画 ==================== */
+const hdSvg = document.getElementById('halfdrop-svg');
+hdSvg.innerHTML = `
+  <rect x="120" y="10" width="40" height="60" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2.5"/>
+  <rect x="132" y="70" width="16" height="30" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2.5"/>
+  <polygon points="132,100 148,100 141,118" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+  <circle cx="141" cy="132" r="8" fill="#38bdf8" opacity=".9">
+    <animate attributeName="r" values="3;8;8;3" keyTimes="0;0.35;0.75;1" dur="3.2s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="126;132;150;158" keyTimes="0;0.45;0.8;1" dur="3.2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0.95;0.95;0" keyTimes="0;0.25;0.8;1" dur="3.2s" repeatCount="indefinite"/>
+  </circle>
+  <g>
+    <animateTransform attributeName="transform" type="rotate" values="0 150 240; -7 150 240; 6 150 240; 0 150 240" keyTimes="0;0.35;0.7;1" dur="3.2s" repeatCount="indefinite"/>
+    <path class="flask-body" d="M120 175 L120 220 L85 285 Q82 300 100 300 L200 300 Q218 300 215 285 L180 220 L180 175 Z"
+      fill="#e0f2fe" stroke="#64748b" stroke-width="3"/>
+    <ellipse cx="150" cy="278" rx="52" ry="12" fill="#7dd3fc" opacity=".7"/>
+    <rect x="116" y="168" width="68" height="10" rx="3" fill="#cbd5e1" stroke="#64748b" stroke-width="2"/>
+    <text x="104" y="322" font-size="12" fill="#64748b">半滴沾于瓶壁 → 洗水冲下 → 摇匀</text>
+  </g>
+`;
+const hdPlayBtn = document.getElementById('hd-play');
+hdPlayBtn.addEventListener('click', ()=>{
+  const paused = typeof hdSvg.animationsPaused === 'function' && hdSvg.animationsPaused();
+  if(paused){ hdSvg.unpauseAnimations(); hdPlayBtn.textContent='⏸ 暂停动画'; }
+  else { hdSvg.pauseAnimations(); hdPlayBtn.textContent='▶ 继续动画'; }
+});
+
+/* ==================== 交互⑨ 数据处理 ==================== */
+function calcNaOH(){
+  const ms=['m1','m2','m3'], vis=['v1i','v2i','v3i'], vfs=['v1f','v2f','v3f'];
+  const cs=[];
+  const ex=document.getElementById('naoh-explain');
+  let bad='';
+  for(let i=0;i<3;i++){
+    const m=parseFloat(document.getElementById(ms[i]).value),
+          vi=parseFloat(document.getElementById(vis[i]).value),
+          vf=parseFloat(document.getElementById(vfs[i]).value),
+          dv=vf-vi;
+    const dEl=document.getElementById('d'+(i+1)), cEl=document.getElementById('c'+(i+1));
+    if(!(m>0) || !(dv>0)){
+      dEl.textContent='—'; cEl.textContent='—'; bad='请检查第 '+(i+1)+' 组数据：质量应>0，终读数应大于初读数。';
+      continue;
+    }
+    dEl.textContent=dv.toFixed(2);
+    const c=1000*m/(M_KHP*dv);
+    cs.push(c); cEl.textContent=c.toFixed(4);
+  }
+  if(bad){
+    ex.innerHTML='⚠️ '+bad; ex.classList.add('show'); return;
+  }
+  const mean=cs.reduce((a,b)=>a+b,0)/cs.length;
+  const dbar=cs.reduce((a,b)=>a+Math.abs(b-mean),0)/cs.length;
+  const rmd=dbar/mean*100;
+  document.getElementById('naoh-mean').textContent=mean.toFixed(4);
+  document.getElementById('naoh-d').textContent=dbar.toFixed(5);
+  document.getElementById('naoh-rmd').textContent=rmd.toFixed(2)+'%';
+  const ok=rmd<=0.2;
+  const v=document.getElementById('naoh-verdict');
+  v.textContent = ok?'合格 ✓':'偏大 ✗';
+  v.style.color = ok?'#7ee8db':'#fca5a5';
+  ex.innerHTML='<b>计算过程：</b> c = 1000 m / (204.22 × ΔV)。三份浓度：'+
+    cs.map((c,i)=>'c'+['Ⅰ','Ⅱ','Ⅲ'][i]+'='+c.toFixed(4)).join('，')+
+    '。c̄ = '+mean.toFixed(4)+' mol/L，d̄ = '+dbar.toFixed(5)+
+    '，相对平均偏差 = d̄/c̄×100% = <b>'+rmd.toFixed(2)+'%</b>（'+(ok?'满足一般 ≤0.2% 的要求':'超过 0.2%，建议查找原因后重做')+
+    '）。有效数字：c 通常保留 4 位，相对偏差取 1~2 位小数。';
+  ex.classList.add('show');
+}
+function calcHCl(){
+  const cnaoh=parseFloat(document.getElementById('hcl-cnaoh').value),
+        vhcl=parseFloat(document.getElementById('hcl-vhcl').value),
+        vnaoh=parseFloat(document.getElementById('hcl-vnaoh').value),
+        box=document.getElementById('hcl-result');
+  box.style.display='block';
+  if(!(cnaoh>0)||!(vhcl>0)||!(vnaoh>0)){
+    box.innerHTML='⚠️ 请输入正数'; return;
+  }
+  const c=cnaoh*vnaoh/vhcl;
+  box.innerHTML='<div class="f-tag">结果</div>'+
+    'c(HCl) = c(NaOH)×V(NaOH)/V(HCl) = '+cnaoh.toFixed(4)+' × '+vnaoh.toFixed(2)+' / '+vhcl.toFixed(2)+
+    ' = <em style="color:#7ee8db">'+c.toFixed(4)+' mol/L</em><br>'+
+    '<span style="opacity:.8">再代入 3 个平行 V(HCl) 分别计算，求平均值与相对平均偏差（同 NaOH 数据处理）。</span>';
+}
+function fillExample(){
+  const data={m1:'0.4512',m2:'0.4487',m3:'0.4503',v1i:'0.00',v2i:'0.00',v3i:'0.00',v1f:'22.05',v2f:'21.93',v3f:'22.00'};
+  for(const k in data) document.getElementById(k).value=data[k];
+  calcNaOH();
+}
+
+/* ==================== 交互⑩ 误差判断 ==================== */
+const errData = [
+  { q:'滴定管用蒸馏水洗净后未润洗，直接装入 NaOH 滴定 KHP（c=m/204.22V）',
+    ans:'low',
+    exp:'管内残留水稀释了 NaOH，滴定剂实际浓度变小，滴定同样多的 KHP 需要更大体积 V → 读数 V 偏大 → c(NaOH) 偏低。' },
+  { q:'KHP 未烘干至恒量（仍含少量水分）',
+    ans:'high',
+    exp:'m(KHP) 中混入水，实际 n(KHP) 比计算用的偏少，滴定消耗 V(NaOH) 偏小 → c=m/(204.22V) 偏高。' },
+  { q:'锥形瓶先用 NaOH 溶液润洗过，再加入 KHP 滴定',
+    ans:'high',
+    exp:'瓶壁附着的额外 NaOH 会先中和一部分 KHP，滴定时消耗的 V(NaOH) 偏小 → 计算出的 c(NaOH) 偏高。（锥形瓶只能用蒸馏水洗！）' },
+  { q:'滴定前尖嘴有气泡，滴定结束后气泡消失',
+    ans:'low',
+    exp:'气泡体积被当作液体体积读进了 ΔV，V 读数偏大 → c(NaOH)=m/(MV) 偏低。' },
+  { q:'终点时粉红色过深（多半滴以上才停）',
+    ans:'low',
+    exp:'NaOH 过量，V(NaOH) 读数偏大 → c(NaOH) 偏低。理想终点是淡粉红 30 s 不褪。' },
+  { q:'滴定过程中用力过猛，少量溶液从锥形瓶中溅出',
+    ans:'high',
+    exp:'溅出的溶液带走了部分 KHP，剩余能被滴定的 n(KHP) 变少，V(NaOH) 偏小 → c(NaOH) 偏高。' },
+  { q:'移取 NaOH 标定 HCl 时，移液管未用 NaOH 润洗（c(HCl)=cNaOH·25.00/VHCl）',
+    ans:'high',
+    exp:'管内残留水稀释 NaOH，25.00 mL 中实际 n(NaOH) 偏少，消耗 V(HCl) 偏小，而公式仍按 25.00 mL 算 → c(HCl) 偏高。' },
+  { q:'滴定到终点后立即读数（未等 1 min 让挂壁液流下）',
+    ans:'high',
+    exp:'管壁液膜未流下，液面偏高，终读数偏小 → ΔV 偏小 → c(NaOH)=m/(MΔV) 偏高。应静置约 1 min 再读数。' }
+];
+const errBox = document.getElementById('error-game');
+let errScore=0, errDone=0;
+function buildErrors(){
+  errBox.innerHTML=''; errScore=0; errDone=0;
+  document.getElementById('err-score').textContent='得分 0 / 8';
+  errData.forEach((it,i)=>{
+    const div=document.createElement('div');
+    div.className='quiz-item';
+    div.innerHTML='<div class="quiz-q">'+(i+1)+'. '+it.q+'</div>'+
+      '<button class="opt" data-v="high">📈 偏高</button>'+
+      '<button class="opt" data-v="low">📉 偏低</button>'+
+      '<button class="opt" data-v="none">➖ 无影响</button>'+
+      '<div class="explain"></div>';
+    errBox.appendChild(div);
+    div.querySelectorAll('.opt').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        if(div.dataset.done) return;
+        div.dataset.done='1'; errDone++;
+        const v=btn.dataset.v, ex=div.querySelector('.explain');
+        div.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+        const correctBtn=[...div.querySelectorAll('.opt')].find(b=>b.dataset.v===it.ans);
+        if(v===it.ans){ btn.classList.add('correct'); errScore++; ex.innerHTML='✅ 正确！'+it.exp; }
+        else{
+          btn.classList.add('wrong'); correctBtn.classList.add('correct');
+          ex.innerHTML='❌ 正确答案：'+(it.ans==='high'?'偏高':it.ans==='low'?'偏低':'无影响')+'。'+it.exp;
+        }
+        ex.classList.add('show');
+        document.getElementById('err-score').textContent='得分 '+errScore+' / 8（已答 '+errDone+'）';
+      });
+    });
+  });
+}
+function resetErrors(){ buildErrors(); }
+buildErrors();
+
+/* ==================== 交互⑪ 综合测验 ==================== */
+const mcData = [
+  { q:'NaOH 不能用直接法配制标准溶液的根本原因是？',
+    opts:['NaOH 在水中溶解度太大','NaOH 易吸湿并吸收 CO₂，组成不恒定','NaOH 与玻璃反应无法存放','NaOH 摩尔质量太小'], ans:1,
+    exp:'固体 NaOH 吸水又与 CO₂ 生成 Na₂CO₃，称量值不能代表 n(NaOH)，只能粗配后标定。' },
+  { q:'标定 NaOH 溶液最常用的基准物质是？',
+    opts:['硼砂','无水碳酸钠','邻苯二甲酸氢钾','草酸'], ans:2,
+    exp:'KHP 纯度高、稳定、不吸湿、M=204.22 较大、1:1 反应，是标碱的首选（讲义原话："最常用的是邻苯二甲酸氢钾"）。' },
+  { q:'KHP 标定 NaOH 时，指示剂应选？',
+    opts:['甲基橙','甲基红','酚酞','淀粉'], ans:2,
+    exp:'计量点产物水解显碱性 pH≈8.7~9.0，酚酞 8.0~9.6 正好在突跃内。' },
+  { q:'KHP 滴定计量点溶液显碱性的原因是？',
+    opts:['KHP 本身是碱','过量 NaOH 水解','产物强碱弱酸盐 A²⁻ 水解','CO₂ 溶于水'], ans:2,
+    exp:'生成的 KNaC₈H₄O₄ 中 A²⁻ 是弱酸根，水解产生 OH⁻：A²⁻ + H₂O ⇌ HA⁻ + OH⁻。' },
+  { q:'0.1 mol/L NaOH 溶液应装在？',
+    opts:['酸式滴定管','碱式滴定管','量筒','容量瓶'], ans:1,
+    exp:'碱液会腐蚀玻璃活塞使其粘死，必须用碱式滴定管（乳胶管+玻璃珠）。' },
+  { q:'配制 NaOH 溶液的水要"新煮沸放冷"，主要目的是？',
+    opts:['杀菌消毒','驱除水中溶解的 CO₂','除去 Ca²⁺、Mg²⁺','降低水温加速溶解'], ans:1,
+    exp:'CO₂ 会与 NaOH 生成 Na₂CO₃ 影响浓度与标定，煮沸驱逐 CO₂；放冷避免热溶液造成体积误差。' },
+  { q:'滴定管读数应记录到？',
+    opts:['0.1 mL','0.01 mL','0.001 mL','整数 mL'], ans:1,
+    exp:'滴定管最小刻度 0.1 mL，估读一位到 0.01 mL，如 24.60 mL（四位有效数字）。' },
+  { q:'0.1000 mol/L NaOH 滴定 20.00 mL 0.1000 mol/L HCl 的突跃范围是？',
+    opts:['pH 3.1~4.4','pH 4.30~9.70','pH 8.0~9.6','pH 1~13'], ans:1,
+    exp:'讲义图 4-1：计量点 pH=7.0，±0.1% 内 pH 4.30~9.70，所以甲基橙、甲基红、酚酞均可选用。' },
+  { q:'相对平均偏差主要衡量的是？',
+    opts:['准确度','精密度','滴定突跃大小','指示剂灵敏度'], ans:1,
+    exp:'平行测定数据之间的接近程度=精密度。系统误差不影响精密度但影响准确度。' },
+  { q:'本实验中 HCl 滴定 NaOH（甲基橙）的正确终点判断是？',
+    opts:['无色变粉红，30 s 不褪','黄色变橙色，30 s 不褪','黄色变红色，立即读数','橙色变黄色，30 s 不褪'], ans:1,
+    exp:'甲基橙在碱中显黄，滴至橙色即终点；变红说明 HCl 已过量。' }
+];
+const mcBox = document.getElementById('mc-quiz');
+function buildQuiz(){
+  mcBox.innerHTML='';
+  mcData.forEach((it,i)=>{
+    const div=document.createElement('div');
+    div.className='quiz-item';
+    div.innerHTML='<div class="quiz-q">'+(i+1)+'. '+it.q+'</div>'+
+      it.opts.map((o,j)=>'<button class="opt" data-j="'+j+'">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+
+      '<div class="explain"></div>';
+    mcBox.appendChild(div);
+    div.querySelectorAll('.opt').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        div.querySelectorAll('.opt').forEach(b=>b.classList.remove('correct','wrong'));
+        div.querySelectorAll('.opt').forEach(b=>b.classList.remove('selected'));
+        btn.classList.add('selected');
+        div.dataset.pick=btn.dataset.j;
+      });
+    });
+  });
+  document.getElementById('quiz-score').textContent='尚未提交';
+}
+function gradeQuiz(){
+  let score=0;
+  mcBox.querySelectorAll('.quiz-item').forEach((div,i)=>{
+    const it=mcData[i], pick=div.dataset.pick, ex=div.querySelector('.explain');
+    div.querySelectorAll('.opt').forEach(b=>{
+      b.disabled=true; b.classList.remove('selected');
+      if(+b.dataset.j===it.ans) b.classList.add('correct');
+    });
+    if(pick!==undefined && +pick===it.ans){ score++; ex.innerHTML='✅ 正确！'+it.exp; }
+    else if(pick===undefined) ex.innerHTML='⬜ 未作答。正确答案：'+String.fromCharCode(65+it.ans)+'。'+it.exp;
+    else ex.innerHTML='❌ 正确答案：'+String.fromCharCode(65+it.ans)+'。'+it.exp;
+    ex.classList.add('show');
+  });
+  const badge=document.getElementById('quiz-score');
+  badge.textContent='得分 '+score+' / '+mcData.length+(score>=9?' 🎉优秀':score>=7?' 👍良好':' 💪再看一遍错题');
+}
+function resetQuiz(){
+  mcBox.querySelectorAll('.opt').forEach(b=>b.disabled=false);
+  buildQuiz();
+}
+buildQuiz();
+
+/* ==================== 交互⑫ 检查清单 ==================== */
+const checks = [
+  'KHP 已在 105~110 ℃ 烘干至恒量，冷却后存于干燥器',
+  '0.1 mol/L HCl、0.1 mol/L NaOH 标签写好（名称、浓度、日期、配制人）',
+  '两支滴定管检漏合格，用待装液润洗 2~3 次',
+  '碱式滴定管尖嘴气泡已排除，液面调零',
+  'KHP 三份均已完全溶解（0.45 g + 50 mL 水）',
+  '酚酞只加了 1~2 滴（甲基橙也是 1~2 滴）',
+  '滴定手势正确：左手控阀、右手旋摇、白瓷板衬底',
+  '接近终点改用"半滴"，终点色 30 s 不褪即停',
+  '每次滴定结束把液面补到零点附近再做下一份',
+  '读数前静置 1 min，视线与弯月面最低点同高，读到 0.01 mL',
+  '三份数据当场记录，单位与有效数字规范',
+  '计算 c̄ 与相对平均偏差，确认 ≤0.2%（或老师要求值）'
+];
+const checkBox=document.getElementById('checklist');
+function buildChecks(){
+  checkBox.innerHTML='';
+  checks.forEach((t,i)=>{
+    const lab=document.createElement('label');
+    lab.className='check-item'; lab.style.display='flex';
+    lab.innerHTML='<input type="checkbox" id="ck'+i+'"><span>'+t+'</span>';
+    lab.querySelector('input').addEventListener('change', updateChecks);
+    checkBox.appendChild(lab);
+  });
+  updateChecks();
+}
+function updateChecks(){
+  let n=0;
+  checks.forEach((t,i)=>{
+    const input=document.getElementById('ck'+i);
+    if(!input) return;
+    const item=input.closest('.check-item');
+    item.classList.toggle('done', input.checked);
+    if(input.checked) n++;
+  });
+  document.getElementById('check-bar').style.width=(n/checks.length*100)+'%';
+  document.getElementById('check-count').textContent='完成 '+n+' / '+checks.length;
+}
+function resetChecks(){
+  checks.forEach((t,i)=>{ const el=document.getElementById('ck'+i); if(el) el.checked=false; });
+  updateChecks();
+}
+buildChecks();
+
+/* ==================== 交互⑬ 速记卡 ==================== */
+const memData = [
+  {front:'📐 标定公式', back:'c(NaOH) = m(KHP) / [204.22 × V(NaOH)]<br>1:1 反应；c(HCl)=c(NaOH)·25.00/V(HCl)'},
+  {front:'🌸 酚酞终点', back:'无色 → <b>微红/粉红</b>，30 s 不褪色。<br>用于 KHP 标定 NaOH（计量点 pH≈8.7~9.0）'},
+  {front:'🟡 甲基橙终点', back:'<b>黄色 → 橙色</b>，30 s 不褪色（别滴到红！）<br>用于 HCl 标定 NaOH'},
+  {front:'⚡ 突跃范围', back:'0.1 M NaOH → 0.1 M HCl：<b>pH 4.30~9.70</b>（±0.1%）<br>指示剂变色范围落在其中即可'},
+  {front:'🚿 润洗规则', back:'滴定管、移液管：<b>待装液润洗 2~3 次</b><br>锥形瓶：<b>不干燥、不润洗</b>；瓶内加水无影响'},
+  {front:'📊 相对平均偏差', back:'d̄ = Σ|cᵢ−c̄|/n ； 相对平均偏差 = d̄/c̄×100%<br>衡量<b>精密度</b>，一般要求 ≤0.2%'}
+];
+const memBox=document.getElementById('memory-cards');
+memData.forEach(d=>{
+  const el=document.createElement('div');
+  el.className='flip';
+  el.innerHTML='<div class="flip-inner"><div class="flip-front"><div class="name" style="font-size:17px;text-align:center">'+d.front+'</div><div class="flip-hint">点击翻面</div></div>'+
+    '<div class="flip-back">'+d.back+'</div></div>';
+  el.addEventListener('click', ()=>el.classList.toggle('flipped'));
+  memBox.appendChild(el);
+});
+
+/* ==================== 路线图交互 ==================== */
+const rmDetails = {
+  a:'<b>STEP A · KHP 准备：</b>基准 KHP 先在 105~110 ℃ 烘干至<b>恒量</b>，放干燥器冷却。用<b>差减法</b>称取约 0.45 g（精确到 0.0001 g）×3 份于锥形瓶。它是整个浓度链条的"第一颗扣子"——含水或撒样都会让后面全错。',
+  b:'<b>STEP B · 标定 NaOH（第一步滴定）：</b>KHP 加 50 mL 水溶解 → 加<b>酚酞 1~2 滴</b> → 用碱式滴定管中的 NaOH 滴至<b>粉红色 30 s 不褪色</b>。c(NaOH) = m(KHP)/[204.22×V(NaOH)]，三份取平均并算相对平均偏差。',
+  c:'<b>STEP C · 标定 HCl（第二步互标）：</b>移液管（先用 NaOH 润洗 2~3 次）移取 NaOH <b>25.00 mL</b> → 加<b>甲基橙 1~2 滴</b>（现黄色）→ 用酸式滴定管中的 HCl 滴至<b>黄色变橙色 30 s 不褪</b>。c(HCl) = c(NaOH)×25.00/V(HCl)。',
+  default:'<b>为什么必须是这个顺序？</b>KHP 是基准物质，能<b>直接</b>确定物质的量；NaOH 不能。所以先把 KHP 当"砝码"校准 NaOH（第一步），NaOH 拿到准确浓度后才有资格当"标准"去校准 HCl（第二步）。<b>链条一环扣一环：第一步 V 读歪了，第二步全部跟着歪。</b><br>对应讲义「四、实验内容」第 3 条（NaOH 标定）→ 第 4 条（HCl 标定）；也对应下方步骤 3、4 和排序游戏的标准答案。'
+};
+document.querySelectorAll('#roadmap .rm-node').forEach(n=>{
+  n.addEventListener('click', ()=>{
+    document.querySelectorAll('#roadmap .rm-node').forEach(x=>x.classList.remove('active'));
+    n.classList.add('active');
+    const d=document.getElementById('rm-detail');
+    d.innerHTML = rmDetails[n.dataset.rm] || rmDetails.default;
+    d.classList.add('show');
+  });
+});
+
+/* 初始化 */
+calcAcid(); calcNa(); updateSimUI();
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4cc685c4c0d8508',t:'MTc5MjM3NzUxNw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

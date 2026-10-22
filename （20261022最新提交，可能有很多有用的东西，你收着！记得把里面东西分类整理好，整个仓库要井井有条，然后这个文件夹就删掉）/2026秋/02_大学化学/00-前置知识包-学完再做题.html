@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第三章前置知识包 · 从零到会做 A13-B11</title>
+<style>
+:root{--ink:#1b1712;--paper:#f3ead8;--card:#fffdf7;--line:#e2d3b8;--gold:#c9a227;--coral:#c45c4a;--red:#b1322a;--sage:#2f6b55;--sky:#2f5f7a}
+*{box-sizing:border-box}
+body{margin:0;font-family:"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",system-ui,sans-serif;background:radial-gradient(900px 420px at 0% 0%,#d7ebe3,transparent 55%),radial-gradient(900px 420px at 100% 0%,#e7d7b4,transparent 50%),var(--paper);color:var(--ink);line-height:1.85}
+a{color:var(--sky)}
+.wrap{max-width:1060px;margin:0 auto;padding:26px 16px 12px}
+.hero{background:linear-gradient(135deg,#16352c,#2f6b55 52%,#c9a227);color:#eef8f3;border-radius:22px;padding:28px 26px}
+.kicker{letter-spacing:.16em;font-size:12px;opacity:.8}
+h1{margin:8px 0 6px;font-size:28px;line-height:1.25}
+.hero p{margin:6px 0 0;opacity:.95}
+h2{font-size:22px;margin:36px 0 10px;border-left:5px solid var(--gold);padding-left:12px}
+h3{margin:10px 0 8px;font-size:18px}
+h4{margin:10px 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:12px 0}
+.dict{background:#fff8e0;border:1px dashed var(--gold)}
+.story{border-left:5px solid var(--gold)}
+.eq{text-align:center;background:#e7f0ea;border-radius:12px;padding:12px;margin:10px 0;font-family:"Times New Roman",serif;font-style:italic;font-size:17px}
+.eq.left{text-align:left}
+.eq.white{background:#fff;border:1px solid var(--line)}
+.slow{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0}
+.slow b{color:var(--sage)}
+.pill{display:inline-block;background:#16352c;color:#eef8f3;border-radius:999px;padding:2px 10px;font-size:12px;letter-spacing:.06em;margin-right:6px}
+.word{display:inline-block;background:#16352c;color:#eef8f3;border-radius:8px;padding:0 8px;font-family:"Times New Roman",serif;font-style:italic}
+.badge{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:12px}
+button{border:0;background:#16352c;color:#fff;border-radius:999px;padding:8px 14px;cursor:pointer;margin:4px 4px 0 0}
+button.gold{background:var(--gold);color:#1b1712;font-weight:700}
+button.ghost{background:#fff;color:#16352c;border:1px solid var(--line)}
+label{display:block;font-size:13px;color:#5c564e;margin-top:8px}
+input[type=range]{width:100%}
+canvas{width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:12px;display:block}
+.readout{background:#1b1712;color:#d7f0e4;border-radius:12px;padding:12px;font-family:ui-monospace,Menlo,monospace;font-size:13px;line-height:1.7}
+.ok{color:#9be7b8;font-weight:700}.bad{color:#ff8b7a;font-weight:700}
+.red{color:var(--red);font-family:"KaiTi","STKaiti","PingFang SC",serif;font-size:14px}
+.pit{background:#fff;border-left:4px solid var(--red);padding:8px 12px;margin:8px 0;border-radius:0 10px 10px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:860px){.grid{grid-template-columns:1fr}}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.toc a{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px;text-decoration:none;color:#1b1712;font-size:13px}
+.toc a:hover{border-color:var(--gold)}
+hr.soft{border:0;border-top:1px dashed var(--line);margin:14px 0}
+table{border-collapse:collapse;margin:8px auto}
+th,td{border:1px solid #cbb992;padding:6px 10px;text-align:center}
+th{background:#f3ece0}
+td.hot{background:#fff1c4}
+.kv{display:flex;flex-wrap:wrap;gap:8px}
+.kv span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:13px}
+.takeaway{background:#16352c;color:#eef8f3;border-radius:18px;padding:20px}
+.takeaway h2{border:0;color:#cfe7d8;padding:0;margin-top:0}
+.nextbar{max-width:1060px;margin:28px auto 56px;padding:0 16px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+a.nextbtn{display:inline-block;background:#c9a227;color:#1b1712 !important;font-weight:700;text-decoration:none;border-radius:999px;padding:12px 22px}
+.hint{font-size:14px;color:#5c564e}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div class="kicker">阿姨带小麦克 · 第三章前置包 · 学完再做题，一口不跳</div>
+  <h1>先认工具，再算答案：做 A13–B11 前必须会的 7 件事</h1>
+  <p>小麦克 6 岁，会微积分。阿姨按「故事 → 数字 → 齿轮」讲：先用日常故事想通，再给数字例子，最后齿轮写成考试能写的式子。名词第一次出现就现场认，不查字典。</p>
+  <div class="toc">
+    <a href="#c1">① 随机变量与分布</a><a href="#c2">② 联合与边缘</a><a href="#c3">③ 竖线：条件分布</a><a href="#c4">④ 独立：两关</a><a href="#c5">⑤ 五位明星分布</a><a href="#c6">⑥ 泊松分色</a><a href="#c7">⑦ 函数的分布</a><a href="#sheet">总表与口诀</a>
+  </div>
+  <p class="hint">本页可当目录：每节末尾有「到此为止你会」。全部学完，A13 的 C<sub>n</sub><sup>k</sup>、A17 的积分、A21/B5/B9 的卷积都不陌生。</p>
+</header>
+
+<!-- C1 -->
+<h2 id="c1">① 随机变量：把结果变成数字</h2>
+<div class="card dict">
+  <h3>这一节会认</h3>
+  <ul>
+    <li><span class="word">随机变量 X</span>：一次试验的结果用数字记下来。例：抛硬币，正面记 1 反面记 0；数婴儿个数，记 0,1,2,…</li>
+    <li><span class="word">分布</span>：它取每个值的机会是多少。离散用表/柱子，连续用曲线下的面积。</li>
+    <li><span class="word">F(x)=P(X≤x)</span> 分布函数：问“不超过 x”的概率。它不跳的时候，求导得到密度 f。</li>
+  </ul>
+</div>
+<div class="grid">
+  <div class="slow">
+    <h4>离散：柱子高度就是概率</h4>
+    <p>例：B(1, 1/2) 一枚均匀硬币：P(X=1)=1/2，P(X=0)=1/2。两根柱子高度和为 1。</p>
+    <p class="eq">P(X=0)+P(X=1)=1</p>
+    <p class="hint">作业里 A15、A19、A27、B1、B11 全是离散表。A13 的 Y|X=n 也是离散（n 枚硬币数正面）。</p>
+  </div>
+  <div class="slow">
+    <h4>连续：面积才是概率</h4>
+    <p>有密度 f(x)≥0，且 ∫ f=1。P(a≤X≤b)=∫<sub>a</sub><sup>b</sup> f(x)dx，就是曲线下的面积。一个点 x<sub>0</sub> 的概率是 0。</p>
+    <p class="eq">∫<sub>−∞</sub><sup>∞</sup> f(x)dx=1</p>
+    <p class="hint">A17、A21、A23、A25、B5、B7、B9 都是连续密度。厚度 × 宽度 = 概率。</p>
+  </div>
+</div>
+<div class="card">
+  <h3>点开看：同一次抛硬币，离散表 vs 连续均匀的面积</h3>
+  <div class="grid">
+    <div>
+      <label>均匀硬币 p = <span id="pv1">0.5</span></label>
+      <input type="range" id="p1" min="0.1" max="0.9" step="0.05" value="0.5">
+      <canvas id="cDisc" width="440" height="220"></canvas>
+      <div class="readout" id="rDisc"></div>
+    </div>
+    <div>
+      <label>均匀 U[a,b]：拖 a,b</label>
+      <div style="display:flex;gap:8px"><span class="badge">a</span><input type="range" id="ua" min="0" max="1.2" step="0.1" value="0"><span class="badge">b</span><input type="range" id="ub" min="0.8" max="2.2" step="0.1" value="1"></div>
+      <canvas id="cCont" width="440" height="220"></canvas>
+      <div class="readout" id="rCont"></div>
+    </div>
+  </div>
+</div>
+<div class="card story"><b>到此为止你会：</b> 读懂题面里的“分布律/密度/分布函数”三种写法是一回事的三种外衣；会把“概率和为1 / 面积为1”当第一检查。</div>
+
+<!-- C2 -->
+<h2 id="c2">② 联合与边缘：两件事一起看，再只看一边</h2>
+<div class="card dict">
+  <ul>
+    <li><span class="word">联合</span>：f(x,y) 或 表格格子 P(X=i,Y=j)。厚度在平面上。</li>
+    <li><span class="word">边缘</span>：只关心 X，不问 Y。离散把一行加起来；连续把 y 积掉。记 f<sub>X</sub>、f<sub>Y</sub>。零编号代指：每次把 f(x,y) 写全，不用“上式”。</li>
+    <li><span class="word">支撑</span>：f≠0 的地盘。离散是哪些格子非零，连续是哪个区域。</li>
+  </ul>
+</div>
+<div class="grid">
+  <div class="slow">
+    <h4>离散：行和 = X 的边缘，列和 = Y 的边缘</h4>
+    <table id="toyTab">
+      <tr><th>X\Y</th><th>-1</th><th>0</th><th>1</th><th>行和</th></tr>
+      <tr><th>1</th><td>1/6</td><td data-a="1">1/9</td><td>1/18</td><td id="r1"></td></tr>
+      <tr><th>2</th><td>1/3</td><td data-a="1">a</td><td data-b="1">b</td><td id="r2"></td></tr>
+      <tr><th>列和</th><td id="c0"></td><td id="c1"></td><td id="c2"></td><td id="all"></td></tr>
+    </table>
+    <p class="hint">点 a、b 那两格：它们是 A15 未知格。行和/列和要对上独立条件。</p>
+  </div>
+  <div class="slow">
+    <h4>连续：对 y 积分得 f<sub>X</sub></h4>
+    <p>支撑矩形 0≤x≤1, 0≤y≤2，f(x,y)=x²+xy/3（A17 第1问）。</p>
+    <p class="eq">f<sub>X</sub>(x)=∫<sub>0</sub><sup>2</sup>(x²+xy/3)dy = 2x²+2x/3</p>
+    <p class="hint">x 当常数，∫x²dy=x²·2，∫(x/3)y dy=(x/3)·2。纸上要写积分限 0→2。</p>
+  </div>
+</div>
+<div class="card">
+  <h3>小游戏：钉死 x，竖条积分 = f<sub>X</sub>(x)</h3>
+  <label>x = <span id="xv2">0.5</span></label><input type="range" id="xs2" min="0" max="1" step="0.01" value="0.5">
+  <canvas id="cJoint" width="900" height="260"></canvas>
+  <div class="readout" id="rJoint"></div>
+</div>
+<div class="card story"><b>到此为止你会：</b> 从联合表/密度算边缘；会把 A15 的 a+b=1/3、A17 的两段积分写全，且知道积分限从支撑来。</div>
+
+<!-- C3 -->
+<h2 id="c3">③ 竖线就是“已经知道”：条件分布</h2>
+<div class="card dict">
+  <ul>
+    <li><span class="word">P(Y=k | X=n)</span> 或 Y|X=n：已经知道 X=n，再看 Y。定义：P(Y=k|X=n)=P(X=n,Y=k)/P(X=n)（离散）；密度版 f(y|x)=f(x,y)/f<sub>X</sub>(x)。</li>
+    <li><span class="word">竖线不是除号</span>：| 右边是已知条件，像滤镜筛掉不符合的样本。</li>
+  </ul>
+</div>
+<div class="slow">
+  <p><b>例子（A13 的核心）：</b> 已知生了 n 个婴儿，n 枚硬币各以 1/2 抛向“男”。则</p>
+  <p class="eq">Y|X=n ∼ B(n, 1/2)，即 P(Y=k|X=n)=C<sub>n</sub><sup>k</sup>(1/2)<sup>n</sup>，k=0,…,n</p>
+  <p>C<sub>n</sub><sup>k</sup> 读“n 选 k”，计数有多少条男女序列恰有 k 男，第一问里<b>不拆成阶乘</b>，原式命名留着就是最清楚的。</p>
+  <p class="hint">A11 也同理：Y=y 已知时 X 的条件密度在 y 上分段，常数 c=3y/2。</p>
+</div>
+<div class="card">
+  <div class="grid">
+    <div>
+      <h4>离散条件：筛掉 X≠n 的格子</h4>
+      <canvas id="cCondDisc" width="440" height="220"></canvas>
+      <div class="readout" id="rCondDisc">四格表，点“已知 X=1”看 Y 的条件分布如何归一。</div>
+      <button type="button" class="gold" id="btnCond">已知 X=1</button><button type="button" class="ghost" id="btnCond2">已知 X=0</button>
+    </div>
+    <div>
+      <h4>连续条件：切一刀，看截面形状</h4>
+      <label>y = <span id="yv3">0.8</span></label><input type="range" id="ys3" min="-0.9" max="0.9" step="0.05" value="0.8">
+      <canvas id="cCondCont" width="440" height="220"></canvas>
+      <div class="readout" id="rCondCont"></div>
+    </div>
+  </div>
+</div>
+<div class="card story"><b>到此为止你会：</b> 读懂 Y|X=n ∼ B(n,1/2) 与 f(y|x)；会用“先筛再归一”算条件表；A13 的联合 = 条件 × X 的泊松，停在 C<sub>n</sub><sup>k</sup>(1/2)<sup>n</sup>·e<sup>−λ</sup>λ<sup>n</sup>/n!。</div>
+
+<!-- C4 -->
+<h2 id="c4">④ 独立：必须过两关</h2>
+<div class="card dict">
+  <ul>
+    <li><span class="word">独立的含义</span>：知道 X 完全不改变 Y 的机会。离散：每格 = 行和×列和；连续：f(x,y)=f<sub>X</sub>(x)f<sub>Y</sub>(y) 且支撑是矩形（或乘积型）。</li>
+    <li><span class="word">两关</span>：① 地盘是矩形（x 的范围不跟着 y 变）；② 公式能拆成只含 x 的一串 × 只含 y 的一串。</li>
+    <li><span class="word">两两独立 ≠ 相互独立</span>：B3 的立方体上 f=(1/8)(1−xyz) 是反例。</li>
+  </ul>
+</div>
+<div class="grid">
+  <div class="slow">
+    <h4>反例 1：三角形支撑（A17 第3问）</h4>
+    <p>支撑 |y|&lt;x&lt;1，每给一个 x，y 的允许长度都变长。第一关直接失败，<b>不必算密度</b>，已判不独立。</p>
+    <canvas id="cTri" width="440" height="200"></canvas>
+    <label>x = <span id="tx4">0.6</span></label><input type="range" id="ts4" min="0.1" max="0.98" step="0.02" value="0.6">
+  </div>
+  <div class="slow">
+    <h4>反例 2：边缘均匀但不独立（A23/B7）</h4>
+    <p>f(x,y)=1/4(1+xy) 在 |x|≤1,|y|≤1 上。边缘各是 1/2（均匀），但乘积 1/4 ≠ (1/4)(1+xy)。拖动看颜色按 xy 变暖/冷。</p>
+    <canvas id="cXY" width="440" height="200"></canvas>
+  </div>
+</div>
+<div class="card story"><b>到此为止你会：</b> A17 四问“否/是/否/是”的两关判法；A23 求 Z 时不能用 f<sub>X</sub>*f<sub>Y</sub> 卷积（它们不独立）；B7 为何 X,Y 不独立但 X²,Y² 独立（四个原像正负抵消）。</div>
+
+<!-- C5 -->
+<h2 id="c5">⑤ 五位明星分布：认脸</h2>
+<div class="card"><p class="hint">参数有日常含义：p 是成功率，n 是次数，λ 是平均个数，[a,b] 是均匀区间长度。调参看形状。</p></div>
+<div class="grid">
+  <div class="card">
+    <h3>B(1, 1/2) 与 B(n,p)：一枚与 n 枚硬币</h3>
+    <p class="eq">B(1,1/2)：P=1/2,1/2　|　B(n,p)：P(X=k)=C<sub>n</sub><sup>k</sup> p<sup>k</sup>(1−p)<sup>n−k</sup></p>
+    <label>n=<span id="bn">3</span>，p=<span id="bp">0.5</span></label>
+    <div style="display:flex;gap:8px"><input type="range" id="bnr" min="1" max="8" step="1" value="3"><input type="range" id="bpr" min="0.1" max="0.9" step="0.05" value="0.5"></div>
+    <canvas id="cBinom" width="440" height="220"></canvas>
+    <div class="readout" id="rBinom"></div>
+    <p class="hint">A19 的 X+Y∼B(2,1/2) 就是 n=2。2X 只取 0,2，不是同一个分布。</p>
+  </div>
+  <div class="card">
+    <h3>Pois(λ)：数一数，平均 λ 个</h3>
+    <p class="eq">P(X=k)=e<sup>−λ</sup> λ<sup>k</sup>/k!，k=0,1,…　λ可 &gt;1</p>
+    <label>λ=<span id="lamv">2.5</span></label><input type="range" id="lam" min="0.5" max="6" step="0.5" value="2.5">
+    <canvas id="cPois" width="440" height="220"></canvas>
+    <div class="readout" id="rPois"></div>
+    <p class="hint">A13 的 X∼Pois(λ) 总人数；泊松可分色成男/女各 Pois(λ/2) 独立。</p>
+  </div>
+</div>
+<div class="grid">
+  <div class="card">
+    <h3>U[a,b] 均匀：等高矩形</h3>
+    <p class="eq">f(x)=1/(b−a)，a≤x≤b（区间长 ⇒ 高度）</p>
+    <label>b−a=<span id="wv">1.0</span></label><input type="range" id="wr" min="0.6" max="2" step="0.2" value="1">
+    <canvas id="cUni" width="440" height="180"></canvas>
+    <div class="readout" id="rUni"></div>
+    <p class="hint">A25 的 X∼U[0,5] 密度 1/5；B9 的 X,Y∼U[a,b] 正方形密度 1/(b−a)²。</p>
+  </div>
+  <div class="card">
+    <h3>Exp(λ) 指数：等多久</h3>
+    <p class="eq">f(x)=λ e<sup>−λx</sup>，x&gt;0　平均等待 1/λ，尾 P(X≥x)=e<sup>−λx</sup></p>
+    <label>λ=<span id="expv">1</span></label><input type="range" id="expr" min="0.5" max="3" step="0.5" value="1">
+    <canvas id="cExp" width="440" height="180"></canvas>
+    <div class="readout" id="rExp"></div>
+    <p class="hint">A21 两段等待之和；A25 的 Y∼Exp(5)。</p>
+  </div>
+</div>
+<div class="card">
+  <h3>Ge(p) 几何：等到第一次成功要抛几次（从 1 起）</h3>
+  <p class="eq">P(X=k)=p q<sup>k−1</sup>，k=1,2,…　q=1−p　尾 P(X≥k)=q<sup>k−1</sup></p>
+  <label>p=<span id="geov">0.4</span></label><input type="range" id="geor" min="0.15" max="0.85" step="0.05" value="0.4">
+  <canvas id="cGeo" width="900" height="200"></canvas>
+  <div class="readout" id="rGeo"></div>
+  <p class="hint">B11 约定从 1 起；Z=X+Y∼负二项 (n−1)p²q<sup>n−2</sup>；V=min 仍几何，参数 p(2−p)。</p>
+</div>
+<div class="card story"><b>到此为止你会：</b> 看题面就喊出分布名；会写 B(1,1/2) 的 1/2、U 的 1/(b−a)、Pois 的 e<sup>−λ</sup>λ<sup>k</sup>/k!、Exp 的 λe<sup>−λx</sup>、Ge 的 pq<sup>k−1</sup>，且 biết λ 可大于 1。</div>
+
+<!-- C6 -->
+<h2 id="c6">⑥ 泊松分色：A13 的第二、三问</h2>
+<div class="card dict">
+  <ul>
+    <li><span class="word">分色/稀释</span>：总泊松 λ 的婴儿，每人独立以 1/2 染蓝（男）或粉（女）。则蓝与粉各自 Pois(λ/2) 且独立。</li>
+    <li><span class="word">后果</span>：Y∼Pois(λ/2)；已知男 k 人，总人数 X = k + 女，女 ∼Pois(λ/2)，所以 X|Y=k 可看作 k+Pois(λ/2)。</li>
+  </ul>
+</div>
+<div class="card">
+  <div class="grid">
+    <div>
+      <h4>摇 λ 个点，再抛硬币染色</h4>
+      <label>λ=<span id="lam2">3.5</span></label><input type="range" id="lamR" min="1" max="8" step="0.5" value="3.5">
+      <button type="button" class="gold" id="btnDice">再摇一轮</button>
+      <canvas id="cThin" width="440" height="260"></canvas>
+    </div>
+    <div>
+      <p class="eq">P(Y=k)=e<sup>−λ/2</sup>(λ/2)<sup>k</sup>/k!　独立于性别</p>
+      <p class="eq">P(X=n,Y=k)=C<sub>n</sub><sup>k</sup>(1/2)<sup>n</sup>·e<sup>−λ</sup>λ<sup>n</sup>/n!</p>
+      <p>主答案就停在带 C<sub>n</sub><sup>k</sup> 的联合这一行；化成 (λ/2)<sup>n</sup>/[k!(n−k)!] 需分两步，不跳。</p>
+      <div class="readout" id="rThin"></div>
+      <p class="hint">B5 的 1/x 与这里的稀释同是变换思想：总 → 分。</p>
+    </div>
+  </div>
+</div>
+
+<!-- C7 -->
+<h2 id="c7">⑦ 函数的分布：把格子/条带归堆</h2>
+<div class="card dict">
+  <ul>
+    <li><span class="word">离散归堆</span>：X,Y 的四格定好，函数值相同的格子概率相加即得 Z=X+Y、U=max、V=min（A27、B11）。</li>
+    <li><span class="word">连续卷积</span>：独立时和的密度 f<sub>Z</sub>(z)=∫ f<sub>X</sub>(x)f<sub>Y</sub>(z−x)dx（A21、A25 第1问）。限 0→z 或分段。</li>
+    <li><span class="word">变换雅可比</span>：一维 Y=g(X) ⇒ f<sub>Y</sub>=f<sub>X</sub>/|g'|；二维积 S=XY 时 f<sub>S</sub>(s)=∫ f(x,s/x)/|x| dx（B5）；(X²,Y²) 四个原像（B7）。</li>
+    <li><span class="word">次序极差</span>：正方形均匀的 max/min 上三角密度×2（B9）。</li>
+  </ul>
+</div>
+<div class="grid">
+  <div class="slow">
+    <h4>离散：点一格看它贡献给谁（A27/B11）</h4>
+    <table id="tMini">
+      <tr><th></th><th>Y=0</th><th>Y=1</th></tr>
+      <tr><th>X=0</th><td data-x="0" data-y="0">1/4</td><td data-x="0" data-y="1">1/4</td></tr>
+      <tr><th>X=1</th><td data-x="1" data-y="0">1/4</td><td data-x="1" data-y="1">1/4</td></tr>
+    </table>
+    <div class="readout" id="rMini">点一格。</div>
+    <p class="hint">A19 2X=一枚×2；A27 的 0.06/0.19…都是斜线相加。</p>
+  </div>
+  <div class="slow">
+    <h4>连续和：滑 z 看红条（A21 卷积）</h4>
+    <label>z=<span id="zv7">1.2</span>，λ1=<span id="l1v">1</span> λ2=<span id="l2v">2</span></label>
+    <div style="display:flex;gap:8px"><input type="range" id="z7" min="0.2" max="3.5" step="0.1" value="1.2"><input type="range" id="l1r" min="0.5" max="2.5" step="0.5" value="1"><input type="range" id="l2r" min="0.5" max="2.5" step="0.5" value="2"></div>
+    <canvas id="cConv" width="440" height="200"></canvas>
+    <div class="readout" id="rConv"></div>
+  </div>
+</div>
+<div class="grid">
+  <div class="slow">
+    <h4>积：矩形里双曲线（B5）</h4>
+    <label>s=<span id="sv7">0.6</span></label><input type="range" id="s7" min="0.1" max="1.9" step="0.05" value="0.6">
+    <canvas id="cProd" width="440" height="200"></canvas>
+    <div class="readout" id="rProd"></div>
+  </div>
+  <div class="slow">
+    <h4>极差：上三角的红线长 b−a−r（B9）</h4>
+    <label>r/(b−a)=<span id="rv9">0.3</span></label><input type="range" id="rv9r" min="0.05" max="0.95" step="0.05" value="0.3">
+    <canvas id="cRange" width="440" height="200"></canvas>
+    <div class="readout" id="rRange"></div>
+  </div>
+</div>
+<div class="card story"><b>到此为止你会：</b> 见到 X+Y/max/min/XY/R 就知道用哪把刀：格子相加 / 卷积 / 雅可比 1/x / 上三角×2。</div>
+
+<!-- sheet -->
+<h2 id="sheet">总表与口诀 · 贴在桌前</h2>
+<div class="card">
+  <div class="kv">
+    <span>离散边缘：行/列求和</span><span>连续边缘：∫ f dy / dx</span><span>条件：筛 → 除</span><span>独立两关：矩形+乘积</span><span>B(n,p)：C<sub>n</sub><sup>k</sup>p<sup>k</sup>q<sup>n−k</sup></span><span>Pois：e<sup>−λ</sup>λ<sup>k</sup>/k!</span><span>U：1/(b−a)</span><span>Exp：λe<sup>−λx</sup></span><span>Ge：pq<sup>k−1</sup></span><span>和：离散归堆 / 连续卷积</span><span>积：f<sub>S</sub>=∫ f(x,s/x)/|x|dx</span><span>极差：×2/(b−a)² → 2(b−a−r)/(b−a)²</span>
+  </div>
+</div>
+<div class="card">
+  <h3>做题前的三句检查（A13–B11 通用）</h3>
+  <ol>
+    <li><b>地盘先写：</b> 支撑是矩形还是三角形？x 的范围会不会跟着 y 变。不是矩形直接判不独立。</li>
+    <li><b>命名留原式：</b> C<sub>n</sub><sup>k</sup>、λ<sup>n</sup>/n!、1/2 不拆；卷积限写 0→z 或 [s,2] 与分段。</li>
+    <li><b>归一收尾：</b> 柱子和=1 / 体积=1；离散表每档加回 1；连续密度在非支撑为 0。</li>
+  </ol>
+</div>
+<div class="takeaway">
+  <h2>学完就能上路</h2>
+  <ul>
+    <li>A13 的泊松+二项、A15 的行列和、A17 的积分拆两段你都会写。</li>
+    <li>A19/A27/B11 的格子归堆、A21/A25 的卷积、A23/B5/B7/B9 的切条/双曲线/平方/极差都有刀。</li>
+    <li>考试纸上：地盘 + 公式 + 积分限/归堆过程 + 结果 + 支撑补 0。</li>
+  </ul>
+</div>
+</div>
+<div class="nextbar">
+  <a class="nextbtn" href="09-A11-考试怎么写.html">去做 A11 →</a>
+  <a class="nextbtn" href="10-A13-考试怎么写.html">或直跳 A13</a>
+</div>
+<script>
+(function(){
+  // C1
+  const p1=document.getElementById('p1'), cDis=document.getElementById('cDisc'), dCtx=cDis.getContext('2d');
+  function drawDisc(){ const p=+p1.value; document.getElementById('pv1').textContent=p.toFixed(2);
+    dCtx.clearRect(0,0,cDis.width,cDis.height); const pad=30, bw=80, h=120;
+    [1-p,p].forEach((v,i)=>{ dCtx.fillStyle=i?'#2f6b55':'#c45c4a'; const bh=v*h*1.2; dCtx.fillRect(pad+i*120, cDis.height-pad-bh, bw, bh); dCtx.fillStyle='#1b1712'; dCtx.font='13px sans-serif'; dCtx.fillText((i?'X=1 ':'X=0 ')+(v*100).toFixed(0)+'%', pad+i*120, cDis.height-10); });
+    document.getElementById('rDisc').innerHTML='P(X=1)=p='+(p).toFixed(2)+'，P(X=0)=1−p='+ (1-p).toFixed(2)+'。和为 1。';
+  } p1.oninput=drawDisc; drawDisc();
+  const ua=document.getElementById('ua'), ub=document.getElementById('ub'), cCont=document.getElementById('cCont'), uCtx=cCont.getContext('2d');
+  function drawCont(){ let a=+ua.value,b=+ub.value; if(b<=a) b=a+0.6; document.getElementById('ub').value=b;
+    const pad=30; uCtx.clearRect(0,0,cCont.width,cCont.height); const W=cCont.width-2*pad, H=120;
+    const ax=pad+a/2.5*W, bx=pad+b/2.5*W, h=H; const dens=1/(b-a);
+    uCtx.fillStyle='rgba(47,107,85,0.2)'; uCtx.fillRect(ax, cCont.height-pad-h, bx-ax, h);
+    uCtx.strokeStyle='#2f6b55'; uCtx.strokeRect(ax, cCont.height-pad-h, bx-ax, h);
+    document.getElementById('rCont').innerHTML='U['+a.toFixed(1)+','+b.toFixed(1)+']，长度 '+(b-a).toFixed(1)+' ⇒ 高度 1/(b−a)='+dens.toFixed(2)+'。面积 =1。';
+  } ua.oninput=ub.oninput=drawCont; drawCont();
+
+  // C2 joint
+  const xs2=document.getElementById('xs2'), cJ=document.getElementById('cJoint'), jCtx=cJ.getContext('2d');
+  function drawJoint(){ const x=+xs2.value; document.getElementById('xv2').textContent=x.toFixed(2);
+    jCtx.clearRect(0,0,cJ.width,cJ.height); const pad=40;
+    function X(u){return pad+u/1.1*(cJ.width-2*pad)} function Y(v){return cJ.height-pad-v/2.2*(cJ.height-2*pad)}
+    // heat
+    const img=jCtx.createImageData(cJ.width, cJ.height); // simplified: draw rect
+    jCtx.fillStyle='rgba(47,107,85,0.08)'; jCtx.fillRect(X(0),Y(2),X(1)-X(0),Y(0)-Y(2));
+    jCtx.strokeStyle='#2f6b55'; jCtx.strokeRect(X(0),Y(2),X(1)-X(0),Y(0)-Y(2));
+    const x0=X(x); jCtx.fillStyle='rgba(201,162,39,0.4)'; jCtx.fillRect(x0-6,Y(2),12,Y(0)-Y(2));
+    jCtx.strokeStyle='#c9a227'; jCtx.strokeRect(x0-6,Y(2),12,Y(0)-Y(2));
+    const fx=2*x*x+2*x/3;
+    document.getElementById('rJoint').innerHTML='竖条 x='+x.toFixed(2)+'，∫<sub>0</sub><sup>2</sup>(x²+xy/3)dy = 2x²+2x/3 = <span style="color:#9be7b8;font-weight:700">'+fx.toFixed(3)+'</span>';
+    // update toy table row sums? toy uses A15 1/6etc hardcode r1
+  } xs2.oninput=drawJoint; drawJoint();
+  // toy table sums
+  (function(){ const a=2/9,b=1/9; document.getElementById('r1').textContent=(1/6+1/9+1/18).toFixed(3); document.getElementById('r2').textContent=(1/3+a+b).toFixed(3); document.getElementById('c0').textContent=(1/6+1/3).toFixed(3); document.getElementById('c1').textContent=(1/9+a).toFixed(3); document.getElementById('c2').textContent=(1/18+b).toFixed(3); document.getElementById('all').textContent='1.00'; })();
+
+  // C3 conditional
+  const cCD=document.getElementById('cCondDisc'), cdCtx=cCD.getContext('2d');
+  let cond='1';
+  function drawCondDisc(){ cdCtx.clearRect(0,0,cCD.width,cCD.height); const m=[[0.05,0.08],[0.12,0.09]]; // X0:0.05,0.08 X1:0.12...
+    const xIdx= cond==='1'?1:0;
+    cdCtx.fillStyle='#f3ece0'; cdCtx.fillRect(20,20,200,100); cdCtx.fillRect(20,130,200,70);
+    cdCtx.strokeStyle='#c9a227'; cdCtx.strokeRect(20, xIdx?130:20,200, xIdx?70:100);
+    cdCtx.fillStyle='#1b1712'; cdCtx.font='12px sans-serif'; cdCtx.fillText('X='+cond+' 的行被选中，归一后即条件分布', 26, 210);
+    document.getElementById('rCondDisc').textContent = cond==='1' ? '已知 X=1：P(Y=0|X=1)=0.12/0.21… 归一后和为1' : '已知 X=0：两格归一';
+  } drawCondDisc();
+  document.getElementById('btnCond').onclick=()=>{cond='1';drawCondDisc()}; document.getElementById('btnCond2').onclick=()=>{cond='0';drawCondDisc()};
+  const ys3=document.getElementById('ys3'), cCC=document.getElementById('cCondCont'), ccCtx=cCC.getContext('2d');
+  function drawCondCont(){ const y=+ys3.value; document.getElementById('yv3').textContent=y.toFixed(2);
+    ccCtx.clearRect(0,0,cCC.width,cCC.height); const pad=30;
+    function X(x){return pad+(x+1)/2*(cCC.width-2*pad)} function Y(v){return cCC.height-pad-v*40}
+    // draw f(x,y)=? use A23 like 1/4(1+xy) truncated
+    const y0=cCC.height-pad - (y+1)*40; ccCtx.strokeStyle='#ddd'; ccCtx.beginPath(); ccCtx.moveTo(10,y0); ccCtx.lineTo(cCC.width-10,y0); ccCtx.stroke();
+    ccCtx.beginPath(); ccCtx.strokeStyle='#2f6b55'; for(let x=-1;x<=1;x+=0.02){ const f=0.25*(1+x*y); const px=X(x), py=cCC.height-pad - f*120; if(x===-1) ccCtx.moveTo(px,py); else ccCtx.lineTo(px,py);} ccCtx.stroke();
+    document.getElementById('rCondCont').innerHTML='切面 y='+y.toFixed(2)+'，截面 ∝ 1+xy，归一后即 f<sub>X|Y</sub>。';
+  } ys3.oninput=drawCondCont; drawCondCont();
+
+  // C4 tri + xy
+  const cTri=document.getElementById('cTri'), tCtx=cTri.getContext('2d'), ts4=document.getElementById('ts4');
+  function drawTri(){ const x=+ts4.value; document.getElementById('tx4').textContent=x.toFixed(2);
+    tCtx.clearRect(0,0,cTri.width,cTri.height); function X(u){return 60+u*300} function Y(v){return 100-v*80}
+    tCtx.fillStyle='rgba(201,132,58,0.25)'; tCtx.beginPath(); tCtx.moveTo(X(0),Y(0)); tCtx.lineTo(X(1),Y(1)); tCtx.lineTo(X(1),Y(-1)); tCtx.closePath(); tCtx.fill();
+    tCtx.strokeStyle='#c45c4a'; tCtx.beginPath(); tCtx.moveTo(X(x),Y(-x)); tCtx.lineTo(X(x),Y(x)); tCtx.stroke();
+  } ts4.oninput=drawTri; drawTri();
+  const cXY=document.getElementById('cXY'), xyCtx=cXY.getContext('2d');
+  (function(){ const img=xyCtx.createImageData(320,160); for(let py=0;py<160;py++) for(let px=0;px<320;px++){ const x=px/320*2-1,y=1-py/160*2; const t=(1+x*y)/2; const i=4*(py*320+px); img.data[i]=40+180*t; img.data[i+1]=110; img.data[i+2]=40+180*(1-t); img.data[i+3]=255; } xyCtx.putImageData(img,60,20); xyCtx.strokeRect(60,20,320,160); })();
+
+  // C5 binom/pois/uni/exp/geo
+  const bnr=document.getElementById('bnr'), bpr=document.getElementById('bpr'), cB=document.getElementById('cBinom'), bCtx=cB.getContext('2d');
+  function comb(n,k){ let r=1; for(let i=1;i<=k;i++) r=r*(n-k+i)/i; return r; }
+  function drawBin(){ const n=+bnr.value,p=+bpr.value; document.getElementById('bn').textContent=n; document.getElementById('bp').textContent=p.toFixed(2);
+    bCtx.clearRect(0,0,cB.width,cB.height); const pad=30, bw=(cB.width-2*pad)/(n+1)-6; for(let k=0;k<=n;k++){ const pk=comb(n,k)*Math.pow(p,k)*Math.pow(1-p,n-k); const h=pk*140; bCtx.fillStyle='#2f6b55'; bCtx.fillRect(pad+k*(bw+6), cB.height-pad-h, bw, h); bCtx.fillStyle='#1b1712'; bCtx.font='11px sans-serif'; bCtx.fillText(k, pad+k*(bw+6)+bw/2-3, cB.height-10); }
+    document.getElementById('rBinom').innerHTML='C<sub>'+n+'</sub><sup>k</sup>p<sup>k</sup>(1−p)<sup>n−k</sup>，和为1。n=2 时即 A19。';
+  } bnr.oninput=bpr.oninput=drawBin; drawBin();
+  const lam=document.getElementById('lam'), cP=document.getElementById('cPois'), pCtx=cP.getContext('2d');
+  function drawPois(){ const L=+lam.value; document.getElementById('lamv').textContent=L.toFixed(1);
+    pCtx.clearRect(0,0,cP.width,cP.height); const pad=30; let maxk=10; for(let k=0;k<=maxk;k++){ const pk=Math.exp(-L)*Math.pow(L,k)/fact(k); const h=pk*220; const bw=(cP.width-2*pad)/(maxk+1)-4; pCtx.fillStyle='#c45c4a'; pCtx.fillRect(pad+k*(bw+4), cP.height-pad-h, bw, h); } document.getElementById('rPois').innerHTML='Pois('+L.toFixed(1)+')，平均 '+L.toFixed(1)+'，最可能在 '+Math.floor(L)+' 附近。';
+  } function fact(n){let r=1;for(let i=2;i<=n;i++) r*=i;return r;} lam.oninput=drawPois; drawPois();
+  const wr=document.getElementById('wr'), cU=document.getElementById('cUni'), u2Ctx=cU.getContext('2d');
+  function drawU(){ const w=+wr.value; document.getElementById('wv').textContent=w.toFixed(1); u2Ctx.clearRect(0,0,cU.width,cU.height); const pad=30, ax=pad+40, bx=ax+w/2*200, h=80; u2Ctx.fillStyle='rgba(47,107,85,0.2)'; u2Ctx.fillRect(ax,cU.height-pad-h,bx-ax,h); u2Ctx.strokeStyle='#2f6b55'; u2Ctx.strokeRect(ax,cU.height-pad-h,bx-ax,h); document.getElementById('rUni').innerHTML='长度 '+w.toFixed(1)+' ⇒ 高度 '+(1/w).toFixed(2)+'。';
+  } wr.oninput=drawU; drawU();
+  const expr=document.getElementById('expr'), cE=document.getElementById('cExp'), eCtx=cE.getContext('2d');
+  function drawE(){ const L=+expr.value; document.getElementById('expv').textContent=L.toFixed(1); eCtx.clearRect(0,0,cE.width,cE.height); eCtx.beginPath(); eCtx.strokeStyle='#c45c4a'; for(let x=0;x<=3;x+=0.02){ const y=L*Math.exp(-L*x); const px=30+x/3*(cE.width-60), py=cE.height-30-y*60; if(x===0) eCtx.moveTo(px,py); else eCtx.lineTo(px,py);} eCtx.stroke(); document.getElementById('rExp').innerHTML='平均 '+(1/L).toFixed(2)+'，尾 e<sup>−'+L.toFixed(1)+'x</sup>。';
+  } expr.oninput=drawE; drawE();
+  const geor=document.getElementById('geor'), cG=document.getElementById('cGeo'), gCtx=cG.getContext('2d');
+  function drawG(){ const p=+geor.value; document.getElementById('geov').textContent=p.toFixed(2); gCtx.clearRect(0,0,cG.width,cG.height); const pad=30, maxk=10; for(let k=1;k<=maxk;k++){ const pk=p*Math.pow(1-p,k-1); const h=pk*500; const bw=(cG.width-2*pad)/(maxk)-4; gCtx.fillStyle='#6a4a24'; gCtx.fillRect(pad+(k-1)*(bw+4), cG.height-pad-h, bw, h); } document.getElementById('rGeo').innerHTML='Ge('+p.toFixed(2)+')，P(X=k)=p(1−p)<sup>k−1</sup>，k=1,2,…';
+  } geor.oninput=drawG; drawG();
+
+  // C6 thinning
+  const lamR=document.getElementById('lamR'), cTh=document.getElementById('cThin'), thCtx=cTh.getContext('2d');
+  function thin(){ const L=+lamR.value; document.getElementById('lam2').textContent=L.toFixed(1);
+    thCtx.clearRect(0,0,cTh.width,cTh.height); const n=Math.max(1,Math.round(L+ (Math.random()-0.5)*2));
+    const pad=20; for(let i=0;i<n;i++){ const x=pad+Math.random()*(cTh.width-2*pad), y=30+Math.random()*140; const isBoy=Math.random()<0.5; thCtx.fillStyle=isBoy?'#2f5f7a':'#c45c4a'; thCtx.beginPath(); thCtx.arc(x,y,10,0,Math.PI*2); thCtx.fill(); }
+    thCtx.fillStyle='#1b1712'; thCtx.font='12px sans-serif'; thCtx.fillText('蓝=男 粉=女 各 Pois(λ/2)', pad, 220);
+    document.getElementById('rThin').innerHTML='这次摇到 '+n+' 个，蓝约 '+Math.round(n/2)+' 个。大量重复：蓝与粉各自 Poisson，均值 λ/2。';
+  } lamR.oninput=thin; document.getElementById('btnDice').onclick=thin; thin();
+
+  // C7 mini/convolution/product/range
+  document.querySelectorAll('#tMini td[data-x]').forEach(td=>{
+    td.style.cursor='pointer'; td.onclick=()=>{
+      document.querySelectorAll('#tMini td').forEach(x=>x.style.background=''); td.style.background='#fff1c4';
+      const x=+td.dataset.x,y=+td.dataset.y; document.getElementById('rMini').innerHTML='格子('+x+','+y+') 1/4 → X+Y='+(x+y)+', max='+Math.max(x,y)+', min='+Math.min(x,y);
+    };
+  });
+  const z7=document.getElementById('z7'), l1r=document.getElementById('l1r'), l2r=document.getElementById('l2r'), cCv=document.getElementById('cConv'), cvCtx=cCv.getContext('2d');
+  function fz(z,a,b){ if(z<=0) return 0; if(Math.abs(a-b)<1e-6) return a*a*z*Math.exp(-a*z); return a*b/(a-b)*(Math.exp(-b*z)-Math.exp(-a*z)); }
+  function drawCv(){ const z=+z7.value,a=+l1r.value,b=+l2r.value; document.getElementById('zv7').textContent=z.toFixed(1); document.getElementById('l1v').textContent=a.toFixed(1); document.getElementById('l2v').textContent=b.toFixed(1);
+    cvCtx.clearRect(0,0,cCv.width,cCv.height); const pad=30, maxz=4; cvCtx.beginPath(); cvCtx.strokeStyle='#c45c4a'; for(let t=0;t<=maxz;t+=0.05){ const px=pad+t/maxz*(cCv.width-2*pad), py=cCv.height-pad-fz(t,a,b)*120; if(t===0) cvCtx.moveTo(px,py); else cvCtx.lineTo(px,py);} cvCtx.stroke(); const pxz=pad+z/maxz*(cCv.width-2*pad); cvCtx.strokeStyle='#c9a227'; cvCtx.beginPath(); cvCtx.moveTo(pxz,20); cvCtx.lineTo(pxz,cCv.height-pad); cvCtx.stroke(); document.getElementById('rConv').innerHTML='卷积：f<sub>Z</sub>(z)=∫<sub>0</sub><sup>z</sup> f<sub>X</sub>(x)f<sub>Y</sub>(z−x)dx，金线处 '+fz(z,a,b).toFixed(3);
+  } z7.oninput=l1r.oninput=l2r.oninput=drawCv; drawCv();
+  const s7=document.getElementById('s7'), cPr=document.getElementById('cProd'), prCtx=cPr.getContext('2d');
+  function drawPr(){ const s=+s7.value; document.getElementById('sv7').textContent=s.toFixed(2); prCtx.clearRect(0,0,cPr.width,cPr.height); const pad=30; prCtx.fillStyle='rgba(201,132,58,0.15)'; prCtx.fillRect(pad,pad,200,100); prCtx.strokeStyle='#c9a227'; prCtx.strokeRect(pad,pad,200,100); prCtx.beginPath(); prCtx.strokeStyle='#c45c4a'; let first=true; for(let x=s;x<=2;x+=0.02){ const y=s/x; if(y>1) continue; const px=pad+x/2*200, py=pad+100 - y*100; if(first){prCtx.moveTo(px,py);first=false}else prCtx.lineTo(px,py);} prCtx.stroke(); document.getElementById('rProd').innerHTML='y=s/x，x∈[s,2]，f<sub>S</sub>=∫<sub>s</sub><sup>2</sup>(1/2)(1/x)dx=(1/2)ln(2/s)='+ (0.5*Math.log(2/s)).toFixed(3);
+  } s7.oninput=drawPr; drawPr();
+  const rv9r=document.getElementById('rv9r'), cRa=document.getElementById('cRange'), raCtx=cRa.getContext('2d');
+  function drawRa(){ const t=+rv9r.value; document.getElementById('rv9').textContent=t.toFixed(2); raCtx.clearRect(0,0,cRa.width,cRa.height); const pad=30,s=200; raCtx.strokeRect(pad,pad,s,s); raCtx.fillStyle='rgba(201,132,58,0.15)'; raCtx.beginPath(); raCtx.moveTo(pad,pad+s); raCtx.lineTo(pad+s,pad); raCtx.lineTo(pad+s,pad+s); raCtx.closePath(); raCtx.fill(); raCtx.strokeStyle='#c45c4a'; raCtx.lineWidth=3; const x1=pad+t*s, y0=pad+s - t*s; raCtx.beginPath(); raCtx.moveTo(x1,pad+s); raCtx.lineTo(pad+s,y0); raCtx.stroke(); document.getElementById('rRange').innerHTML='红线长 ∝ (b−a−r)，所以 f<sub>R</sub>=2(b−a−r)/(b−a)²';
+  } rv9r.oninput=drawRa; drawRa();
+})();
+</script>
+</body>
+</html>
