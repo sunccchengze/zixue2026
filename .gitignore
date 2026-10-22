@@ -154,3 +154,19 @@ __pycache__/
 # generated figs for docus
 tmp_generated_figs/
 tmp_homework_images/
+
+# Local review files, office profiles and authentication state
+.arena/
+**/.config/libreoffice/
+# MS Office owner/lock temp files (~$xxx.docx) — never track; they embed the
+# editing machine's user name. A tracked one was removed 2026-10-06.
+~$*
+**/~$*
+.~lock.*#
+.sudo_as_admin_successful
+**/cookies.txt
+**/*cookies*.json
+**/spoc_cookies.txt
+**/storage_state*.json
+/英语大作业/build/
+/build/

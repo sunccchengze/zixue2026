@@ -1,3 +1,5 @@
+from pathlib import Path
+PROJECT = Path(__file__).resolve().parent
 """Pixel-level QA + auto-hardening for the deck.
 
 Why this exists: the old check *estimated* text width (avg glyph = 0.50 em).
@@ -14,8 +16,8 @@ from pptx import Presentation
 from pptx.util import Emu
 
 EMU = 914400.0
-DECK = "/home/user/Mask-Reuse-Qualification-Review.pptx"
-RD = "/home/user/build/render"
+DECK = str(PROJECT / "Mask-Reuse-Qualification-Review.pptx")
+RD = str(PROJECT / "build/render")
 DPI = 150
 HEADROOM = 0.80          # longest line may fill at most 80% of its box
 MIN_GROWTH = 0.01        # inches; ignore smaller nudges
