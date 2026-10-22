@@ -196,7 +196,7 @@
 
 == 与其它学科联动
 
-- #raw("probability/")：RL 的期望/方差/条件期望地基已建成 → 讲 GRPO 时直接搭桥，不重讲
+- #raw("概率论与数理统计/")：RL 的期望/方差/条件期望地基已建成 → 讲 GRPO 时直接搭桥，不重讲
 - #raw("论文精读/")：Chinchilla / DPO / GRPO / ReAct / SWE-agent 等论文走论文精读流程
 - #raw("turbine-blade-ai-platform")（用户真实项目）：大论文与结项报告的应用案例来源
 
@@ -321,7 +321,7 @@ PDF 生成日期：2026-09-17（母版有改动就要重跑 #raw("环境/pdf/生
 
 #block(width: 100%, above: 9pt, below: 9pt, inset: (left: 12pt, right: 8pt, y: 6pt), stroke: (left: 3pt + luma(180)), fill: luma(252))[
 #text(size: 9.8pt)[
-对应：#strong[贯穿全程，W1 起]｜前置讲义，不单独占周次，随用随补 对标材料：李沐 d2l ch2–ch5 + ch11（优化）· Karpathy micrograd 视频 · #raw("probability/") 课题01–08（已建成，直接搭桥） #strong[为什么先讲这个]：后面所有的"为什么训练崩了""为什么显存不够""为什么换分词器 loss 不能比"， 答案都在这一讲里。#strong[它不是复习，是工具箱。]
+对应：#strong[贯穿全程，W1 起]｜前置讲义，不单独占周次，随用随补 对标材料：李沐 d2l ch2–ch5 + ch11（优化）· Karpathy micrograd 视频 · #raw("概率论与数理统计/") 课题01–08（已建成，直接搭桥） #strong[为什么先讲这个]：后面所有的"为什么训练崩了""为什么显存不够""为什么换分词器 loss 不能比"， 答案都在这一讲里。#strong[它不是复习，是工具箱。]
 ]
 ]
 
@@ -504,7 +504,7 @@ PY", block: true, lang: "bash")
 + #strong[【推导】] 用 $e^(-m)$ 的恒等变形，证明"减最大值"不改变 softmax 的输出（写出两步）。
 + #strong[【估算】] 一个 0.1B 参数模型用 Adam 训练（bf16 参数 + fp32 优化器状态）： ①权重+梯度+优化器状态占多少 GB？②若 T4 只有 16GB，留给激活的预算是多少？
 + #strong[【预测】] 训练中把 loss 从 fp32 计算改成 fp16 计算：训练会更快还是更慢？会出现什么新故障？ （提示：T4 无 bf16；GradScaler 是干什么的）
-+ #strong[【联系】] #raw("probability/") 里学过的"期望"和这里的"交叉熵"是同一个东西的两种说法吗？ 试着用期望的符号把交叉熵写出来。
++ #strong[【联系】] #raw("概率论与数理统计/") 里学过的"期望"和这里的"交叉熵"是同一个东西的两种说法吗？ 试着用期望的符号把交叉熵写出来。
 + #strong[【诊断】] 曲线在 400 步突然 NaN。按本讲 §五 的顺序，你会先看哪三个量？
 
 #v(4pt)
@@ -1870,9 +1870,9 @@ PY", block: true, lang: "bash")
 
 == 六、跨学科搭桥（讲课时主动用）
 
-- RL 的目标函数 → #raw("probability/") 的期望、方差、条件期望（REINFORCE = 用样本估期望）
-- 语言模型的困惑度/交叉熵 → #raw("probability/") 的信息量直觉
-- scaling law 的幂律拟合 → #raw("probability/") 的最小二乘与回归
+- RL 的目标函数 → #raw("概率论与数理统计/") 的期望、方差、条件期望（REINFORCE = 用样本估期望）
+- 语言模型的困惑度/交叉熵 → #raw("概率论与数理统计/") 的信息量直觉
+- scaling law 的幂律拟合 → #raw("概率论与数理统计/") 的最小二乘与回归
 - 结项报告 → #raw("论文精读/") 的论文写作规范；demo → #raw("人工智能基础与应用/") 的大论文素材
 
 #pagebreak()
@@ -2716,7 +2716,7 @@ Kaplan 等（2020）与 Chinchilla（2022）发现：loss 随参数量 $N$ 与�
 
 - #strong[讲义]：#raw("讲义/M4-M9-待展开大纲.md") 的 M4 部分（W3 展开为完整版 #raw("M4-训练.md")）
 - #strong[对标]：CS336 lecture 09/11（scaling laws）· #raw("nanochat/runs/scaling_laws.sh") 与其 miniseries 文档 · d2l 的线性回归/最小二乘（拟合的数学基础）
-- #strong[搭桥]：#raw("probability/") 的方差与回归 —— 拟合优度、残差分析直接可用
+- #strong[搭桥]：#raw("概率论与数理统计/") 的方差与回归 —— 拟合优度、残差分析直接可用
 
 == 七、代码级提问示例
 
@@ -3137,7 +3137,7 @@ Triton 让这件事对非 CUDA 专家也可做：用 Python 风格的 DSL 写"�
 
 - #strong[讲义]：#raw("M6-后训练.md")（W10 展开）
 - #strong[对标]：#strong[rasbt《Reasoning from Scratch》ch3（先建评测）+ ch6–ch7（GRPO）] · #strong[《RLHF Book》ch4/6/8/14] · CS336 A5 + lecture 15–17 · #raw("minimind/trainer/train_grpo.py")（中文工程实现）· #raw("nano-aha-moment")（单文件）
-- #strong[搭桥（重点）]：#raw("probability/") 的#strong[期望、方差、条件期望]——GRPO 的优势归一化就是"标准化"， KL 惩罚就是"分布差异"，REINFORCE 就是"用样本均值估期望"
+- #strong[搭桥（重点）]：#raw("概率论与数理统计/") 的#strong[期望、方差、条件期望]——GRPO 的优势归一化就是"标准化"， KL 惩罚就是"分布差异"，REINFORCE 就是"用样本均值估期望"
 
 == 七、代码级提问示例
 

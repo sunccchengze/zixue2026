@@ -1,6 +1,6 @@
 # LEARNINGS · 论文精读学科学习画像
 
-> 只记可迁移模式。全仓库通用画像见 `probability/memory/LEARNINGS.md`；
+> 只记可迁移模式。全仓库通用画像见 `概率论与数理统计/memory/LEARNINGS.md`；
 > **本文件 2026-08-31 第 2 版依据用户 GitHub 一手材料重写**（见下"证据来源"）。
 
 ---

@@ -263,7 +263,7 @@
 \begin{itemize}
 \tightlist
 \item
-  \texttt{probability/}：RL 的期望/方差/条件期望地基已建成 → 讲 GRPO 时直接搭桥，不重讲
+  \texttt{概率论与数理统计/}：RL 的期望/方差/条件期望地基已建成 → 讲 GRPO 时直接搭桥，不重讲
 \item
   \texttt{论文精读/}：Chinchilla / DPO / GRPO / ReAct / SWE-agent 等论文走论文精读流程
 \item
@@ -410,7 +410,7 @@ PDF 生成日期：2026-09-17（母版有改动就要重跑 \texttt{环境/pdf/�
 \section{讲义 M0 · 数学与机器学习地基}\label{ux8bb2ux4e49-m0-ux6570ux5b66ux4e0eux673aux5668ux5b66ux4e60ux5730ux57fa}
 
 \begin{quote}
-对应：\textbf{贯穿全程，W1 起}｜前置讲义，不单独占周次，随用随补 对标材料：李沐 d2l ch2--ch5 + ch11（优化）· Karpathy micrograd 视频 · \texttt{probability/} 课题01--08（已建成，直接搭桥） \textbf{为什么先讲这个}：后面所有的''为什么训练崩了''\,``为什么显存不够''``为什么换分词器 loss 不能比''， 答案都在这一讲里。\textbf{它不是复习，是工具箱。}
+对应：\textbf{贯穿全程，W1 起}｜前置讲义，不单独占周次，随用随补 对标材料：李沐 d2l ch2--ch5 + ch11（优化）· Karpathy micrograd 视频 · \texttt{概率论与数理统计/} 课题01--08（已建成，直接搭桥） \textbf{为什么先讲这个}：后面所有的''为什么训练崩了''\,``为什么显存不够''``为什么换分词器 loss 不能比''， 答案都在这一讲里。\textbf{它不是复习，是工具箱。}
 \end{quote}
 
 \subsection{〇、本讲要回答的 5 个问题}\label{ux672cux8bb2ux8981ux56deux7b54ux7684-5-ux4e2aux95eeux9898}
@@ -583,7 +583,7 @@ PDF 生成日期：2026-09-17（母版有改动就要重跑 \texttt{环境/pdf/�
 \item
   \textbf{【预测】} 训练中把 loss 从 fp32 计算改成 fp16 计算：训练会更快还是更慢？会出现什么新故障？ （提示：T4 无 bf16；GradScaler 是干什么的）
 \item
-  \textbf{【联系】} \texttt{probability/} 里学过的''期望''和这里的''交叉熵''是同一个东西的两种说法吗？ 试着用期望的符号把交叉熵写出来。
+  \textbf{【联系】} \texttt{概率论与数理统计/} 里学过的''期望''和这里的''交叉熵''是同一个东西的两种说法吗？ 试着用期望的符号把交叉熵写出来。
 \item
   \textbf{【诊断】} 曲线在 400 步突然 NaN。按本讲 §五 的顺序，你会先看哪三个量？
 \end{enumerate}
@@ -2170,11 +2170,11 @@ W15--16 & \textbf{M9（选题）} & 前沿采样：MoE/长上下文/合成数据
 \begin{itemize}
 \tightlist
 \item
-  RL 的目标函数 → \texttt{probability/} 的期望、方差、条件期望（REINFORCE = 用样本估期望）
+  RL 的目标函数 → \texttt{概率论与数理统计/} 的期望、方差、条件期望（REINFORCE = 用样本估期望）
 \item
-  语言模型的困惑度/交叉熵 → \texttt{probability/} 的信息量直觉
+  语言模型的困惑度/交叉熵 → \texttt{概率论与数理统计/} 的信息量直觉
 \item
-  scaling law 的幂律拟合 → \texttt{probability/} 的最小二乘与回归
+  scaling law 的幂律拟合 → \texttt{概率论与数理统计/} 的最小二乘与回归
 \item
   结项报告 → \texttt{论文精读/} 的论文写作规范；demo → \texttt{人工智能基础与应用/} 的大论文素材
 \end{itemize}
@@ -3400,7 +3400,7 @@ sweep 原始数据 & \texttt{证据/sweep.csv} & 含配置、loss、耗时、算
 \item
   \textbf{对标}：CS336 lecture 09/11（scaling laws）· \texttt{nanochat/runs/scaling\_laws.sh} 与其 miniseries 文档 · d2l 的线性回归/最小二乘（拟合的数学基础）
 \item
-  \textbf{搭桥}：\texttt{probability/} 的方差与回归 ------ 拟合优度、残差分析直接可用
+  \textbf{搭桥}：\texttt{概率论与数理统计/} 的方差与回归 ------ 拟合优度、残差分析直接可用
 \end{itemize}
 
 \subsection{七、代码级提问示例}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95eeux793aux4f8b}
@@ -3996,7 +3996,7 @@ reward hacking 记录 & \texttt{证据/} & 现象 + 机制解释 \\
 \item
   \textbf{对标}：\textbf{rasbt《Reasoning from Scratch》ch3（先建评测）+ ch6--ch7（GRPO）} · \textbf{《RLHF Book》ch4/6/8/14} · CS336 A5 + lecture 15--17 · \texttt{minimind/trainer/train\_grpo.py}（中文工程实现）· \texttt{nano-aha-moment}（单文件）
 \item
-  \textbf{搭桥（重点）}：\texttt{probability/} 的\textbf{期望、方差、条件期望}------GRPO 的优势归一化就是''标准化''， KL 惩罚就是''分布差异''，REINFORCE 就是''用样本均值估期望''
+  \textbf{搭桥（重点）}：\texttt{概率论与数理统计/} 的\textbf{期望、方差、条件期望}------GRPO 的优势归一化就是''标准化''， KL 惩罚就是''分布差异''，REINFORCE 就是''用样本均值估期望''
 \end{itemize}
 
 \subsection{七、代码级提问示例}\label{ux4e03ux4ee3ux7801ux7ea7ux63d0ux95eeux793aux4f8b-5}

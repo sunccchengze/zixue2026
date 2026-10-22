@@ -10,7 +10,7 @@
 复变函数与积分变换/memory/
 ├── MEMORY_SYSTEM.md      本文件：架构说明 + 新会话接入协议
 ├── HANDOFF.md            交接总账本：现在进展到哪一步、下一步做什么（最重要，永远最新）
-├── LEARNINGS.md          本学科学习画像（用户全科画像单点维护于 probability/memory/LEARNINGS.md）
+├── LEARNINGS.md          本学科学习画像（用户全科画像单点维护于 概率论与数理统计/memory/LEARNINGS.md）
 ├── ERRORS.md             判例库：通用红线 + 本学科用户判例（每条带红线）
 ├── MEMORY.md             当前理解主账本：核心直觉+预测→打脸→修正日志
 ├── PROGRESS.md           14课题进度台账：每个课题的状态（未开始/攻关中/已验收）
@@ -22,7 +22,7 @@
 ## 新会话接入协议（下一个我必须做的事）
 
 1. 先读本学科 `_开局指令-给新会话Agent.md`（若有），再读 `HANDOFF.md`——了解上次卡在哪、下一步该问什么。
-2. 扫一眼 `LEARNINGS.md`、`ERRORS.md` 与 `probability/memory/LEARNINGS.md`（用户画像单点）——
+2. 扫一眼 `LEARNINGS.md`、`ERRORS.md` 与 `概率论与数理统计/memory/LEARNINGS.md`（用户画像单点）——
    避免用已经验证"没用"的讲法，避免踩踩过的坑。
 3. 查 `PROGRESS.md`——知道现在在14课题地图的第几站。
 4. 查 `drill-ledger/index.md`——看有没有"到期该复习"的旧知识点，优先处理（间隔重复的核心原则：

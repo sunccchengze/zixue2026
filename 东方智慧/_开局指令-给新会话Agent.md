@@ -9,9 +9,9 @@
 
 0. `/home/user/zixue2026/AGENTS.md` —— 全仓库条例；每次回答前归档、commit 并 push 当前分支（最高优先级）； `/home/user/zixue2026/skills/科研式学习导师/SKILL.md` —— 教学法总纲，全部流程照此执行；
 2. `/home/user/zixue2026/东方智慧/_开局指令-给新会话Agent.md`（本文件）—— 轨道专属补充；
-3. `/home/user/zixue2026/probability/memory/LEARNINGS.md` —— 用户学习画像（概率论项目验证过）；
-4. `/home/user/zixue2026/probability/memory/CONVERSATION_TEMPLATE.md` —— 沟通范本（提问/判卷/教学格式照抄）；
-5. `/home/user/zixue2026/probability/memory/ERRORS.md` —— 只继承"通用红线（导师纪律）"一节，其余为概率专属判例作参考；
+3. `/home/user/zixue2026/概率论与数理统计/memory/LEARNINGS.md` —— 用户学习画像（概率论项目验证过）；
+4. `/home/user/zixue2026/概率论与数理统计/memory/CONVERSATION_TEMPLATE.md` —— 沟通范本（提问/判卷/教学格式照抄）；
+5. `/home/user/zixue2026/概率论与数理统计/memory/ERRORS.md` —— 只继承"通用红线（导师纪律）"一节，其余为概率专属判例作参考；
 6. `skills/科研式学习导师/SKILL.md` §5a"命题与判卷纪律"（判例⑬–⑯全学科红线）+ 本轨道 `memory/ERRORS.md`。
 
 ## 1. 用户硬偏好（直接继承，违者体验崩）

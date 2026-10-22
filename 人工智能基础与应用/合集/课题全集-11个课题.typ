@@ -445,7 +445,7 @@ Kaplan 等（2020）与 Chinchilla（2022）发现：loss 随参数量 $N$ 与�
 
 - #strong[讲义]：#raw("讲义/M4-M9-待展开大纲.md") 的 M4 部分（W3 展开为完整版 #raw("M4-训练.md")）
 - #strong[对标]：CS336 lecture 09/11（scaling laws）· #raw("nanochat/runs/scaling_laws.sh") 与其 miniseries 文档 · d2l 的线性回归/最小二乘（拟合的数学基础）
-- #strong[搭桥]：#raw("probability/") 的方差与回归 —— 拟合优度、残差分析直接可用
+- #strong[搭桥]：#raw("概率论与数理统计/") 的方差与回归 —— 拟合优度、残差分析直接可用
 
 == 七、代码级提问示例
 
@@ -866,7 +866,7 @@ Triton 让这件事对非 CUDA 专家也可做：用 Python 风格的 DSL 写"�
 
 - #strong[讲义]：#raw("M6-后训练.md")（W10 展开）
 - #strong[对标]：#strong[rasbt《Reasoning from Scratch》ch3（先建评测）+ ch6–ch7（GRPO）] · #strong[《RLHF Book》ch4/6/8/14] · CS336 A5 + lecture 15–17 · #raw("minimind/trainer/train_grpo.py")（中文工程实现）· #raw("nano-aha-moment")（单文件）
-- #strong[搭桥（重点）]：#raw("probability/") 的#strong[期望、方差、条件期望]——GRPO 的优势归一化就是"标准化"， KL 惩罚就是"分布差异"，REINFORCE 就是"用样本均值估期望"
+- #strong[搭桥（重点）]：#raw("概率论与数理统计/") 的#strong[期望、方差、条件期望]——GRPO 的优势归一化就是"标准化"， KL 惩罚就是"分布差异"，REINFORCE 就是"用样本均值估期望"
 
 == 七、代码级提问示例
 

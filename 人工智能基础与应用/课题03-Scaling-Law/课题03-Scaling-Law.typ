@@ -144,7 +144,7 @@ Kaplan 等（2020）与 Chinchilla（2022）发现：loss 随参数量 $N$ 与�
 
 - #strong[讲义]：#raw("讲义/M4-M9-待展开大纲.md") 的 M4 部分（W3 展开为完整版 #raw("M4-训练.md")）
 - #strong[对标]：CS336 lecture 09/11（scaling laws）· #raw("nanochat/runs/scaling_laws.sh") 与其 miniseries 文档 · d2l 的线性回归/最小二乘（拟合的数学基础）
-- #strong[搭桥]：#raw("probability/") 的方差与回归 —— 拟合优度、残差分析直接可用
+- #strong[搭桥]：#raw("概率论与数理统计/") 的方差与回归 —— 拟合优度、残差分析直接可用
 
 == 七、代码级提问示例
 

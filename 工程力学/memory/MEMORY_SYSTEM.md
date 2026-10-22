@@ -9,7 +9,7 @@
 工程力学/memory/
 ├── MEMORY_SYSTEM.md      本文件：架构说明 + 新会话接入协议
 ├── HANDOFF.md            交接总账本：现在进展到哪一步、下一步做什么（最重要，永远最新）
-├── LEARNINGS.md          本学科学到的：用户卡点、有效讲法（通用硬偏好在 probability/memory/LEARNINGS.md 单点维护）
+├── LEARNINGS.md          本学科学到的：用户卡点、有效讲法（通用硬偏好在 概率论与数理统计/memory/LEARNINGS.md 单点维护）
 ├── ERRORS.md             判例库：通用红线（继承）+ 本学科用户判例
 ├── MEMORY.md             当前理解主账本：核心直觉+预测→打脸→修正日志
 ├── PROGRESS.md           课题台账：每个课题的状态（⬜/🟡/✅）
@@ -22,8 +22,8 @@
 
 1. 先读本学科 `_开局指令-给新会话Agent.md`（唯一入口，含必读清单与第一问）；
 2. 读 `memory/HANDOFF.md`——了解上次卡在哪、下一步该问什么；
-3. 扫共享 `probability/memory/LEARNINGS.md`（用户画像单点维护）+ 本学科 `memory/LEARNINGS.md`；
-4. 读 `probability/memory/ERRORS.md` 的"通用红线"节 + 本学科 `memory/ERRORS.md` 用户判例；
+3. 扫共享 `概率论与数理统计/memory/LEARNINGS.md`（用户画像单点维护）+ 本学科 `memory/LEARNINGS.md`；
+4. 读 `概率论与数理统计/memory/ERRORS.md` 的"通用红线"节 + 本学科 `memory/ERRORS.md` 用户判例；
 5. 查 `memory/PROGRESS.md` 与 `memory/drill-ledger/index.md`（到期卡优先）；
 6. 开场不重新自我介绍、不重讲规则，直接从 HANDOFF 的"下一句"继续。
 

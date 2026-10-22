@@ -65,7 +65,7 @@ MOOC数学物理方程课件已归入 `资料原件/数学物理方程_课程课
 - 若后续超过~30轮或token过长，主动提醒用户换新会话，准备：
   - 开场白：`读 /home/user/zixue2026/数理方程/_开局指令-给新会话Agent.md 并按其执行。先读完技能总纲和用户画像，把课程表草案校正成正式路线图，建好记忆系统，然后开始课题01的校准访谈。全程中文。`
   - 交接：更新本HANDOFF、LEARNINGS、PROGRESS、drill-ledger
-  - 资产：`skills/科研式学习导师/SKILL.md` 总纲，`probability/memory/LEARNINGS.md` 画像
+  - 资产：`skills/科研式学习导师/SKILL.md` 总纲，`概率论与数理统计/memory/LEARNINGS.md` 画像
 
 ## 会话记录
 

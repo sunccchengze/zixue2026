@@ -5,9 +5,9 @@
 ## 0. 必读（按顺序）
 
 1. `/home/user/zixue2026/skills/科研式学习导师/SKILL.md` —— 教学法总纲，全部流程照此执行；
-2. `/home/user/zixue2026/probability/memory/LEARNINGS.md` —— 用户学习画像（概率论项目验证过）；
-3. `/home/user/zixue2026/probability/memory/CONVERSATION_TEMPLATE.md` —— 沟通范本（提问/判卷/教学格式照抄）；
-4. `/home/user/zixue2026/probability/memory/ERRORS.md` —— 只继承"通用红线（导师纪律）"一节，其余为概率专属判例作参考。
+2. `/home/user/zixue2026/概率论与数理统计/memory/LEARNINGS.md` —— 用户学习画像（概率论项目验证过）；
+3. `/home/user/zixue2026/概率论与数理统计/memory/CONVERSATION_TEMPLATE.md` —— 沟通范本（提问/判卷/教学格式照抄）；
+4. `/home/user/zixue2026/概率论与数理统计/memory/ERRORS.md` —— 只继承"通用红线（导师纪律）"一节，其余为概率专属判例作参考。
 
 ## 1. 用户硬偏好（直接继承，违者体验崩）
 

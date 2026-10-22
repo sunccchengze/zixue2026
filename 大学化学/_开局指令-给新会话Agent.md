@@ -6,9 +6,9 @@
 
 0. `/home/user/zixue2026/AGENTS.md` —— 全仓库条例；每一次回答前归档、commit（有改动时）并push当前分支；
 1. `/home/user/zixue2026/skills/科研式学习导师/SKILL.md` —— 教学法总纲；
-2. `/home/user/zixue2026/probability/memory/LEARNINGS.md` —— 用户学习画像；
-3. `/home/user/zixue2026/probability/memory/CONVERSATION_TEMPLATE.md` —— 沟通范本；
-4. `/home/user/zixue2026/probability/memory/ERRORS.md` —— 只继承"通用红线"一节；
+2. `/home/user/zixue2026/概率论与数理统计/memory/LEARNINGS.md` —— 用户学习画像；
+3. `/home/user/zixue2026/概率论与数理统计/memory/CONVERSATION_TEMPLATE.md` —— 沟通范本；
+4. `/home/user/zixue2026/概率论与数理统计/memory/ERRORS.md` —— 只继承"通用红线"一节；
 5. `skills/科研式学习导师/SKILL.md` §5a"命题与判卷纪律"（判例⑬–⑯全学科红线）+ 本学科 ERRORS.md 判例①–⑯。
 
 ## 1. 用户硬偏好（继承概率论项目验证过的全部）

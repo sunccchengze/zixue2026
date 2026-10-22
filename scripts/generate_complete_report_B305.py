@@ -5,6 +5,8 @@
 实验：金属电子逸出功与荷质比的测定（3.6）
 格式严格对应模板：页眉 班级/学号/姓名/课序号，封面，4大节，无扫描水印
 """
+from pathlib import Path
+REPO = Path(__file__).resolve().parents[1]
 import math
 from docx import Document
 from docx.shared import Inches, Pt, Mm, RGBColor
@@ -433,7 +435,7 @@ p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 p.paragraph_format.space_before = Pt(4)
 p.paragraph_format.space_after = Pt(1)
 run = p.add_run()
-run.add_picture('大物实验预习/assets/B305_plot1_lgIa_sqrtUa.png', width=Inches(5.8))
+run.add_picture(REPO / '大学物理实验/assets/B305_plot1_lgIa_sqrtUa.png', width=Inches(5.8))
 p = doc.add_paragraph()
 p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 p.paragraph_format.space_before = Pt(1)
@@ -497,7 +499,7 @@ p = doc.add_paragraph()
 p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 p.paragraph_format.space_before = Pt(3)
 run = p.add_run()
-run.add_picture('大物实验预习/assets/B305_plot2_Richardson.png', width=Inches(4.6))
+run.add_picture(REPO / '大学物理实验/assets/B305_plot2_Richardson.png', width=Inches(4.6))
 p = doc.add_paragraph()
 p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 p.paragraph_format.space_before = Pt(1)
@@ -558,7 +560,7 @@ p = doc.add_paragraph()
 p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 p.paragraph_format.space_before = Pt(3)
 run = p.add_run()
-run.add_picture('大物实验预习/assets/B305_plot3_Ia_Is.png', width=Inches(5.8))
+run.add_picture(REPO / '大学物理实验/assets/B305_plot3_Ia_Is.png', width=Inches(5.8))
 p = doc.add_paragraph()
 p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 p.paragraph_format.space_before = Pt(1)
@@ -573,7 +575,7 @@ p = doc.add_paragraph()
 p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 p.paragraph_format.space_before = Pt(3)
 run = p.add_run()
-run.add_picture('大物实验预习/assets/B305_plot4_Ua_Ic2.png', width=Inches(4.6))
+run.add_picture(REPO / '大学物理实验/assets/B305_plot4_Ua_Ic2.png', width=Inches(4.6))
 p = doc.add_paragraph()
 p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 p.paragraph_format.space_before = Pt(1)
@@ -678,8 +680,5 @@ run._element.rPr.rFonts.set(qn('w:eastAsia'), '宋体')
 add_footer_page(doc, 31)
 
 # ---------- 保存 ----------
-doc.save('大物实验报告-金属电子逸出功与荷质比的测定-完整版(模板29-31).docx')
-# 也保存到大物实验预习目录一份
-import shutil, pathlib
-shutil.copy('大物实验报告-金属电子逸出功与荷质比的测定-完整版(模板29-31).docx', '大物实验预习/实验报告-金属电子逸出功与荷质比的测定-完整版(模板29-31).docx')
+doc.save(REPO / '大学物理实验/实验报告/B305-金属电子逸出功与荷质比/实验报告-金属电子逸出功与荷质比的测定-完整版(模板29-31).docx')
 print("DONE: Generated 模板29-31 docx with 3 pages")

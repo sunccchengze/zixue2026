@@ -6,6 +6,8 @@ B305 金属电子逸出功与荷质比 - 全部作图脚本
 生成：Fig1 lgIa-sqrtUa (表3), Fig2 Richardson (表4), Fig3 Ia-Is (表5), Fig4 Ua-Ic2
 数据来自教师签字的表3-6-2、表3-6-5原始记录
 """
+from pathlib import Path
+REPO = Path(__file__).resolve().parents[1]
 import math
 import matplotlib
 matplotlib.use('Agg')
@@ -73,7 +75,7 @@ plt.grid(True, linestyle=':', alpha=0.6)
 plt.legend(fontsize=6.5, ncol=1, loc='upper left', bbox_to_anchor=(1.02, 1.0), framealpha=0.95, borderpad=0.4)
 plt.xlim(0,10.5)
 plt.tight_layout(rect=[0, 0, 0.78, 1])
-plt.savefig('大物实验预习/assets/B305_plot1_lgIa_sqrtUa.png', dpi=300, bbox_inches='tight')
+plt.savefig(REPO / '大学物理实验/assets/B305_plot1_lgIa_sqrtUa.png', dpi=300, bbox_inches='tight')
 plt.savefig('/tmp/B305_plot1_lgIa_sqrtUa.png', dpi=300, bbox_inches='tight')
 plt.close()
 print("Fig1 saved, intercepts:", ["{:.4f}".format(v) for v in lgI_zero])
@@ -101,7 +103,7 @@ plt.title('Fig.2 Richardson plot lg(I/T2) vs 1/T (Table 3-6-4)\nSlope = -eφ/(2.
 plt.grid(True, linestyle=':', alpha=0.6)
 plt.legend(fontsize=8, loc='upper right')
 plt.tight_layout()
-plt.savefig('大物实验预习/assets/B305_plot2_Richardson.png', dpi=300)
+plt.savefig(REPO / '大学物理实验/assets/B305_plot2_Richardson.png', dpi=300)
 plt.savefig('/tmp/B305_plot2_Richardson.png', dpi=300)
 plt.close()
 
@@ -131,7 +133,7 @@ plt.title('Fig.3 $I_a$ - $I_s$ curves for different $U_a$ (Table 3-6-5)\nCross =
 plt.grid(True, linestyle=':', alpha=0.6)
 plt.legend(fontsize=8, loc='upper right')
 plt.tight_layout()
-plt.savefig('大物实验预习/assets/B305_plot3_Ia_Is.png', dpi=300)
+plt.savefig(REPO / '大学物理实验/assets/B305_plot3_Ia_Is.png', dpi=300)
 plt.savefig('/tmp/B305_plot3_Ia_Is.png', dpi=300)
 plt.close()
 
@@ -178,7 +180,7 @@ plt.title('Fig.4 $U_a$ - $I_c^2$ linear relation (Table 3-6-5)\n$K$ = slope → 
 plt.grid(True, linestyle=':', alpha=0.6)
 plt.legend(fontsize=7.5, loc='upper left')
 plt.tight_layout()
-plt.savefig('大物实验预习/assets/B305_plot4_Ua_Ic2.png', dpi=300)
+plt.savefig(REPO / '大学物理实验/assets/B305_plot4_Ua_Ic2.png', dpi=300)
 plt.savefig('/tmp/B305_plot4_Ua_Ic2.png', dpi=300)
 plt.close()
 
