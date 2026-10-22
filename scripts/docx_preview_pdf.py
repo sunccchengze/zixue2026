@@ -35,8 +35,29 @@ PT_PER_CM = 72 / 2.54
 FONT_CACHE: dict[str, pymupdf.Font] = {}
 
 
+def _ensure_fonts() -> None:
+    """沙箱常无中文字体（/opt 不随快照保留）。缺字体时用 PyMuPDF 内置 CJK
+    （china-ss / Droid Sans Fallback）抽出落盘，保证预览 PDF 中文不出方框。"""
+    try:
+        FONT_DIR.mkdir(parents=True, exist_ok=True)
+        if not LATIN.exists():
+            import shutil
+            sys_dejavu = Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")
+            if sys_dejavu.exists():
+                shutil.copyfile(sys_dejavu, LATIN)
+        if not SONG.exists() or not HEI.exists():
+            data = pymupdf.Font("china-ss").buffer
+            if not SONG.exists():
+                SONG.write_bytes(data)
+            if not HEI.exists():
+                HEI.write_bytes(data)
+    except Exception:  # noqa: BLE001 —— 抽字体失败则维持原回退，不让预览崩
+        pass
+
+
 def get_font(bold: bool) -> tuple[str, str]:
     """返回 (注册名, 字体文件路径)；同名同文件才复用，避免 PyMuPDF 串字体"""
+    _ensure_fonts()
     path = HEI if bold else SONG
     if not path.exists():
         path = LATIN

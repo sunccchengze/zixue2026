@@ -1,0 +1,7 @@
+[
+ {
+  "type": "xhr",
+  "method": "POST",
+  "url": "https://ac.dun.163.com/v3/d"
+ }
+]

@@ -1,0 +1,4 @@
+//#DWR-INSERT
+//#DWR-REPLY
+var s0=[];
+dwr.engine._remoteHandleCallback('805921','0',{units:s0});
