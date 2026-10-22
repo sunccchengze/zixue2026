@@ -12,25 +12,17 @@
 2. 检查 `git status` 与 diff，确认没有误改其他学科；
 3. 有改动时执行 `git add -A` 并创建说明清楚的 commit；没有文件改动时不强造空提交；
 4. 无论本回合是否产生新提交，都执行 `git push origin <当前分支>`，确认远端已同步；
-5. **直接快进合入 main（2026-09-05 用户明文指令，全库永久生效，绕开 PR）**：
-   每次推送工作分支后，立即依次执行——
-   ```bash
-   git fetch origin main
-   git merge-base --is-ancestor origin/main HEAD && echo FF-OK || echo 先报告用户解决
-   git push origin <当前分支>:main      # 纯 Git 协议快进，不触发 PR 事件
-   git ls-remote --heads origin main <当前分支>   # 校验双 ref 同点
-   ```
-   只在 main 有自己没有的提交（无法快进）时停下并报告用户手动处理；
-   **绝不 -f 强推 main，从不 merge/close PR**（Arena 会在 PR 合并/关闭时关掉会话远程通道，
-   见 `跨库学习留档.md` §二铁律）。
-6. push 成功后才发送最终答复，并在答复中简短说明已推送（含 main 是否同步）；
-   若认证或网络失败，必须明确告知用户，不能假装已保存。
+5. **只保存到平台分配的当前工作分支**；不切换/创建其他分支，不推送main，不强推，不自动建立、合并或关闭PR。
+6. push成功后才发送最终答复；失败须说明，不能假装同步成功。
 
-### 分支安全
+### 分支安全与当前结构
 
-- 只提交、推送平台为当前会话分配的工作分支；不得擅自切换、创建或推送其他分支——**唯一例外**：按上文 §回合级保存 第 5 步把工作分支快进推送到 `main`（用户 2026-09-05 明文指令）。
-- 不使用会覆盖他人工作的强制推送；发生冲突时先检查并安全解决。
-- 每学科仍须同步更新自己的 `HANDOFF.md`、`PROGRESS.md` 与记忆账本；push不能代替记忆归档。
+- 不运行历史日志里的main同步或旧分支清理命令。当前会话分支为 `arena/776543ba-zixue2026`，仅向它推送。
+- 每学科的学习记忆照常归档；目录维护不算已学习或已掌握。
+- **目录规则唯一源**：根 `仓库目录规范.json`；**版本选用唯一源**：根 `课程资产登记.json`。
+- `当前入口.md`、`当前版本.md` 与课程README由 `python scripts/manage_repository.py refresh` 生成；不要手工另写一套当前版本目录树。
+- 新增/移动文件后运行 `python scripts/manage_repository.py refresh`，再运行 `python scripts/manage_repository.py check` 与原件保全审计。
+- 三科当前复习任务见 `期中复习总计划.md`。需要真题、课件知识点、AI模拟与自检复盘；不自动要求交卷/判卷，不编造考试日期或把任务标成完成。
 
 ## 全学科输入方式
 
@@ -65,5 +57,5 @@
 - `仓库使用手册.md`（放文件前必读：目录骨架与放置规则）
 - `多学科并行-总调度.md`
 - `skills/科研式学习导师/SKILL.md`（含"§5a 命题与判卷纪律"：全学科通用的出题/收口/判卷红线，源自判例⑬–⑯）
-- `probability/memory/LEARNINGS.md`
-- `probability/memory/CONVERSATION_TEMPLATE.md`
+- `概率论与数理统计/memory/LEARNINGS.md`
+- `概率论与数理统计/memory/CONVERSATION_TEMPLATE.md`

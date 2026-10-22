@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Offline checks for revised presentation evidence boundaries.
 
-Build first: python 英语大作业/make_deck.py
+Build first: python 国际学术交流英语/课程大作业/口罩重复使用研究/make_deck.py
 Run: python -m unittest discover -s scripts -p test_presentation_evidence.py -v
 These checks do not replace rendering, listening, or scientific peer review.
 """
@@ -11,7 +11,7 @@ from pathlib import Path
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-PROJECT = ROOT / '英语大作业'
+PROJECT = ROOT / '国际学术交流英语/课程大作业/口罩重复使用研究'
 
 
 class EvidenceTests(unittest.TestCase):
@@ -44,7 +44,7 @@ class EvidenceTests(unittest.TestCase):
         coefficient = 8.314462618 * 298.15 / (2 * 96485.33212)
         self.assertAlmostEqual(coefficient * math.log(10), 0.029580, places=6)
         self.assertAlmostEqual(coefficient * math.log(100), 0.059159, places=6)
-        text = (ROOT / '大化大作业/修订讲稿-理论条件版.md').read_text()
+        text = (ROOT / '大学化学/课程大作业/能斯特方程/修订讲稿-理论条件版.md').read_text()
         self.assertIn('不是实际实验读数', text)
         self.assertIn('暂撤下定量柱图', text)
 

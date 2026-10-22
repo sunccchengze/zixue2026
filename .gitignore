@@ -168,5 +168,8 @@ tmp_homework_images/
 **/*cookies*.json
 **/spoc_cookies.txt
 **/storage_state*.json
-/英语大作业/build/
+/国际学术交流英语/课程大作业/口罩重复使用研究/build/
 /build/
+
+# Reproducible outputs inside course/project packages (never auto-delete tracked originals)
+**/build/

@@ -1,0 +1,196 @@
+现文档路径	链接文字	基线目标	说明
+skills/library/DeepTutor/README.md	Contributing Guide	CONTRIBUTING.md	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+skills/library/DeepTutor/README.md	CONTAINERIZATION.md	./CONTAINERIZATION.md	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+skills/library/DeepTutor/README.md	CONTAINERIZATION.md	./CONTAINERIZATION.md	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+skills/library/DeepTutor/README.md	temporary local Codex OAuth bridge guide	./CONTAINERIZATION.md#temporary-local-codex-oauth-bridge	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+skills/library/DeepTutor/README.md	**Contributing Guide**	CONTRIBUTING.md	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+skills/library/DeepTutor/README.md	Apache License 2.0	LICENSE	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+skills/library/latex-posters/SKILL.md	references/ai_graphics_for_posters.md	references/ai_graphics_for_posters.md	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+skills/library/latex-posters/SKILL.md	references/compilation_and_quality_control.md	references/compilation_and_quality_control.md	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+skills/library/latex-posters/SKILL.md	references/latex_poster_reference.md	references/latex_poster_reference.md	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+skills/library/latex-posters/SKILL.md	references/poster_patterns_and_presentation.md	references/poster_patterns_and_presentation.md	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+skills/library/latex-posters/SKILL.md	references/ai_graphics_for_posters.md	references/ai_graphics_for_posters.md	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+skills/library/latex-posters/SKILL.md	references/latex_poster_reference.md	references/latex_poster_reference.md	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+skills/library/latex-posters/SKILL.md	references/compilation_and_quality_control.md	references/compilation_and_quality_control.md	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+skills/library/latex-posters/SKILL.md	references/poster_patterns_and_presentation.md	references/poster_patterns_and_presentation.md	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+skills/library/latex-posters/SKILL.md	references/latex_poster_packages.md	references/latex_poster_packages.md	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+skills/library/latex-posters/SKILL.md	references/poster_layout_design.md	references/poster_layout_design.md	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+skills/library/latex-posters/SKILL.md	references/poster_design_principles.md	references/poster_design_principles.md	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+skills/library/latex-posters/SKILL.md	references/poster_content_guide.md	references/poster_content_guide.md	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+skills/library/manim-video/SKILL.md	assets/network_graph_scene.py	assets/network_graph_scene.py	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+人工智能基础与应用/memory/ERRORS.md	T	...	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+工程力学/memory/LEARNINGS.md	说明	图/文件.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/chapter0.md	CFD 黑箱的内部：几何 → 网格 → 迭代求残差 → 积分出力，优化器要把它问上千次	./images/wp00_cfd_blackbox_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/chapter0.md	CFD 黑箱：进一组几何参数，出几个性能数字；五模块流程见讲 01	./images/L01_s2_xdsm_matrix_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/chapter0.md	单位球体积随维度坍向壳层：二维实心、五维八成在壳、十维九成九在壳	./images/L01_s3_volume_shell_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/chapter0.md	维度灾难不是比喻：同样 1000 个点撒进 1 维 / 2 维 / 74 维	./images/L01_s5_curse_of_dim_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/front_matter.md	机器学习 × 气动外形优化 · 全书技术路线（十二讲，中文标注版）	./images/wp00_roadmap_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/01.md	正向 vs 反向：一次回传拿到全部偏导（手绘笔记版）	./images/L02_s3_adjoint_one_backpass_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/01.md	六个挑战，其实是三句话：形状太啰嗦、算得太贵、优化太笨（手绘手账版）	./images/L01_s5_six_challenges_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/02.md	Kriging 解剖：一条趋势 + 一张关系表，θ 决定谁跟谁像（手绘笔记版）	./images/L02_s2_kriging_anatomy_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/02.md	期望改进 = 预测收益 + 不确定性的期权费：峰不在预测最好处，而在没人测过处	./images/L02_s3_ei_acquisition_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/02.md	梯度增强等于给每个样本配一条斜率；探索—利用只是方差前那个系数	./images/L06_s3_gek_and_exploration_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/03.md	先认得自己在设计空间的哪一块，再决定问哪个专家；分界处最不可靠	./images/L03_s4_moe_routing_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/03.md	每维摊到几个点：N^(1/d) 的坍缩（手账版）	./images/L01_s5_curse_of_dim_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/04.md	半监督的全部便宜在于：无标签数据也在参与训练，只是不出现在误差里	./images/L04_s2_label_budget_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/04.md	半监督与 RL 的成本视角：把 CFD 挪出循环的两种办法（手账版，与讲 09 共用）	./images/L09_s2_interactive_loop_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/05.md	自编码器自己当标准答案；PINN 把方程残差写进损失，于是没有标签也能算	./images/L05_s4_ae_and_pinn_loss_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/05.md	从外形到场、从场到系数：两条流水线（手账版，与讲 07 共用）	./images/L08_s2_flowfield_pipeline_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/06.md	把设计空间收窄的两把剪刀：模态参数化（里面）与几何过滤（外面）	./images/L06_s2_designspace_shrink_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/06.md	二十维 → 六维：每维点数从 1.41 涨到 3.16；门控把「白烧一次 CFD」从 93.5% 压到 2.8%	./images/L06_s4_shrink_and_gate_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/07.md	系数建模 vs 流场建模：两种世界观的流水线对照	./images/L08_s2_flowfield_pipeline_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/07.md	同一道题，四把尺子：R² 的可比性陷阱（手账版）	./images/L07_s5_scoreboard_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/08.md	换初场省迭代、换离散省网格、换约束省整次模拟：钱分别省在入口、内部与出口	./images/L08_s3_three_acceleration_routes_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/08.md	替代约束的本质：把「会不会抖」换成「后段压力梯度积分够不够小」，用少数试验标一个阈值	./images/L08_s5_separation_sensor_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/09.md	四种优化架构：省评估次数、把人放进环里、把经验训练成策略、把映射反过来学	./images/L09_s2_four_architectures_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/09.md	交互式设计的本质：把 CFD 的成本从循环里挪进训练里（手绘笔记版）	./images/L09_s2_interactive_loop_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/10.md	六个挑战：§5 的三条结论其实是在回收这六格（手账版，与讲 01 共用）	./images/L01_s5_six_challenges_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/10.md	三条结论与五条展望：左边决定你现在能引什么，右边决定你明年做什么	./images/L10_s4_three_claims_five_outlooks_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/11.md	方法覆盖矩阵：左列是这 68 页写了的，右列是 528 条参考文献里 0 命中的	./images/L11_s2_blindspots_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/11.md	"样本密度坍缩：右列五项为什么长期空着——不是没人想到，是""每维摊不到点""的地方没人敢做"	./images/L01_s5_curse_of_dim_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/12.md	机器学习 × 气动外形优化 · 十二讲技术路线（中文标注版）	./images/wp00_roadmap_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/archive/v1/lectures/12.md	一页报告的版面骨架与交稿前五项自查	./images/L12_s3_one_page_report_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/chapter0.md	燃气轮机压到最简：一根管子干四件事，转子+静子＝一级	./images/ch0v2_s1_engine_four_steps_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/chapter0.md	CFD 黑箱的内部：几何 → 网格 → 迭代求残差 → 积分出力，优化器要把它问上千次	./images/wp00_cfd_blackbox_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/chapter0.md	CFD 黑箱：进一组几何参数，出几个性能数字；五模块流程见讲 01	./images/L01_s2_xdsm_matrix_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/chapter0.md	暴力枚举出局：10^8 次 CFD ≈ 2.3 万年（对数轴；2 小时/次是量级估计，示意）	./images/ch0v2_s3_blind_search_timeline_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/chapter0.md	全书唯一的分叉：无梯度法（二次/三次增长） vs 梯度法（近线性）	./images/ch0v2_s3_two_routes_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/chapter0.md	维度灾难不是比喻：同样 1000 个点撒进 1 维 / 2 维 / 74 维	./images/L01_s5_curse_of_dim_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/chapter0.md	单位球体积随维度坍向壳层：二维实心、五维八成在壳、十维九成九在壳	./images/L01_s3_volume_shell_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/front_matter.md	十二讲四站旅程图：地基站 → 工具箱站 → 战场站 → 收口站	./images/wp02_progress_map_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/front_matter.md	机器学习 × 气动外形优化 · 全书技术路线（十二讲，中文标注版）	./images/wp00_roadmap_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/01.md	五种人围着一张桌子转：CFD 那张卡吞时间最多	./images/L01v2_s1_five_roles_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/01.md	流程实况：五步走完一圈（第 3 步里的 CFD 格吞时间）	./images/L01v2_s2_five_steps_pipeline_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/01.md	正向 vs 反向：一次回传拿到全部偏导（手绘笔记版）	./images/L02_s3_adjoint_one_backpass_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/01.md	200 对 1：有限差分 200 次 vs 伴随 1 次（n = 100 个设计变量）	./images/L01v2_s3_gradient_cost_bar_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/01.md	六个挑战，其实是三句话：形状太啰嗦、算得太贵、优化太笨（手绘手账版）	./images/L01_s5_six_challenges_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/02.md	三种猜地形的办法：KNN 查表、多项式乱飞、Kriging 带置信带	./images/L02v2_s1_three_terrain_guessers_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/02.md	两头夹击：d 升精度下滑、N 升不适合大数据，Kriging 主场是中维少样本	./images/L02v2_s2_two_sides_squeeze_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/02.md	θ 是一个旋钮：拧宽了钝，拧窄了抖（每维一个）	./images/L02v2_s3_theta_knob_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/02.md	d 升：R 全变 ≈0，相关矩阵退化成单位阵，Kriging 只剩趋势	./images/L02v2_s4_r_to_identity_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/02.md	Kriging 解剖：一条趋势 + 一张关系表，θ 决定谁跟谁像（手绘笔记版）	./images/L02_s2_kriging_anatomy_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/02.md	点 B 预测更差，EI 反而更大（预期选 A / 实测 EI 选 B）	./images/L02v2_s5_ei_two_points_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/02.md	期望改进 = 预测收益 + 不确定性的期权费：峰不在预测最好处，而在没人测过处	./images/L02_s3_ei_acquisition_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/02.md	伴随的梯度躺在你的输出里：喂给 GEK 白捡 N×d 条约束	./images/L02v2_s6_gek_giveaway_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/02.md	预期样本减半 / 实测平均 1.13×，n=10 反而 0.93× 更差	./images/L02v2_s7_gek_reality_check_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/02.md	梯度增强等于给每个样本配一条斜率；探索—利用只是方差前那个系数	./images/L06_s3_gek_and_exploration_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/02.md	Kriging 三段式流水线：选 f、R → MLE 估 θ → 预测附送 σ（对照 Fig.8）	./images/L02v2_s8_fig8_three_stages_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/03.md	一千个叶型只沿三条脾气在变：180 个坐标换成 3 个数	./images/L03v2_s1_blade_modes_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/03.md	降维一次解决三件事：维度变小、畸形挡在外面、搜索变便宜	./images/L03v2_s2_three_fixes_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/03.md	三点 PCA 手算：预期留两个数，实测一个数就够	./images/L03v2_s3_pca_handcalc_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/03.md	特征值递减柱与累计方差曲线：99% 那条线指着的横轴点就是 k	./images/L03v2_s3_var_stack_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/03.md	先分块，再各自拟合：两块区域的交界处，两个专家都说了不算	./images/L03_s4_moe_routing_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/03.md	五张工具卡：输入形状、输出形状、什么时候用	./images/L03v2_s4_tool_cards_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/03.md	线性模态按系数等比叠加，非线性模态一改就全局联动（对照 Fig.42）	./images/L03v2_s5_linear_vs_nonlinear_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/03.md	Fig.21/22 读法：归一化是命门，去掉短轴后点序不变（对照原图）	./images/L03v2_s7_fig21_reading_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/03.md	直线捷径会穿过没有数据的空白区，沿面绕行才落在流形上	./images/L03v2_s7_manifold_geodesic_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/03.md	DMD：快照序列切两半，SVD 之后得到模态与增长率（对照 Fig.24）	./images/L03v2_s7_dmd_two_halves_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/03.md	每维摊到几个点：N^(1/d) 的坍缩（手账版）	./images/L01_s5_curse_of_dim_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/03.md	74 维统计特征 → PCA → 8 到 20 维 → 代理 → 采样，畸形形状被挡在流形外	./images/L03v2_s10_platform_pipeline_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/04.md	一摞作业的四种批法：全批、不批、批一半、只有期末分	./images/L04v2_s1_exam_scene_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/04.md	半监督的全部便宜在于：无标签数据也在参与训练，只是不出现在误差里	./images/L04_s2_label_budget_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/04.md	伪标签三步：训 M0、贴伪标签、合并再训，中间挂着 λ 与置信闸门	./images/L04v2_s3_pseudo_three_steps_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/04.md	预期误差被稀释，实测误差被固化并逐轮放大	./images/L04v2_s3_self_reinforce_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/04.md	数据配置落在能量谷底，模型自造的配置被压向高处	./images/L04v2_s3_rbm_energy_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/04.md	对比散度：长链采到平衡太慢，走 k 步就够用	./images/L04v2_s3_cd_k_steps_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/04.md	两层全连、层内不连：给定一层，另一层各神经元条件独立	./images/L04v2_s3_rbm_bipartite_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/04.md	智能体与环境的一圈：动作出去，状态与奖励回来，一格就是几小时	./images/L04v2_s3_rl_loop_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/04.md	四行决策卡：该用、谨慎、了解即可、与本讲无关	./images/L04v2_s6_when_to_use_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/04.md	半监督与 RL 的成本视角：把 CFD 挪出循环的两种办法（手账版，与讲 09 共用）	./images/L09_s2_interactive_loop_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/04.md	三张图的读法提示：回流线、正负相位、缺成本标注	./images/L04v2_s7_fig_reading_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/04.md	左：未收敛数据别丢，过闸门再做伪标签；右：先走一维 bandit，别直接上深度强化学习	./images/L04v2_s10_platform_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/05.md	一件外形数据走过八个工位，最后吐出气动系数	./images/L05v2_s1_factory_line_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/05.md	"家族树：一根主干分出""看结构""与""压缩生成""两支，另有""加物理""一条侧枝"	./images/L05v2_s2_family_tree_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/05.md	自编码器自己当标准答案；PINN 把方程残差写进损失，于是没有标签也能算	./images/L05_s4_ae_and_pinn_loss_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/05.md	两层线性层的参数量算账：74×256+256 与 256²+256	./images/L05v2_s3_param_count_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/05.md	三种激活：直线、S 形、取正值；导数的大小决定梯度能不能传回去	./images/L05v2_s3_activation_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/05.md	梯度消失链：每回传一层乘 0.25，九层之后细成一条线	./images/L05v2_s3_backprop_chain_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/05.md	沙漏形结构：编码压到瓶颈层，解码再还原，输入输出要尽量一样	./images/L05v2_s3_ae_bottleneck_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/05.md	自编码瓶颈是一个点，变分自编码的瓶颈是均值与标准差	./images/L05v2_s3_vae_mu_sigma_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/05.md	损失的两项：有答案的数据项，加没有答案的配点残差项	./images/L05v2_s3_pinn_two_terms_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/05.md	三张图的读法：回传只是求梯度、瓶颈层是重点、一个点变一坨概率	./images/L05v2_s7_fig_reading_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/05.md	从外形到场、从场到系数：两条流水线（手账版，与讲 07 共用）	./images/L08_s2_flowfield_pipeline_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/05.md	三行诊断：缺物理项、不确定度互污、只看拟合优度	./images/L05v2_s10_platform_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/06.md	左：调音台把上百个控制点收成八个推子；右：门禁不减变量，只拦人	./images/L06v2_s1_mixer_gate_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/06.md	两把剪刀：一把从里面剪掉维度，一把从外面剪掉坏点	./images/L06v2_s2_two_scissors_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/06.md	二十维收成六维：每维摊到的点数从一点四一涨到三点一六	./images/L06v2_s3_shrink_visual_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/06.md	合法性得分从真实到畸形单调平滑衰减，才能当可导约束用	./images/L06v2_s3_validity_score_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/06.md	预期：放宽能量线只是少两个模态；实测：每维点数从三点一六跳到七点九五	./images/L06v2_s3_energy_line_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/06.md	取点幅度从一倍标准差放大到一点六倍，畸形就开始漏进来	./images/L06v2_s3_subspace_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/06.md	三条抽模态的路线：先攒好形状、用公开库、生成加过滤	./images/L06v2_s4_three_routes_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/06.md	把设计空间收窄的两把剪刀：模态参数化（里面）与几何过滤（外面）	./images/L06_s2_designspace_shrink_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/06.md	三张图的读法：翻倍看形变、少了方差曲线、平滑才能进梯度	./images/L06v2_s5_fig_reading_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/06.md	二十维 → 六维：每维点数从 1.41 涨到 3.16；门控把「白烧一次 CFD」从 93.5% 压到 2.8%	./images/L06_s4_shrink_and_gate_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/06.md	七十四维拆成三层：设计通道、工况通道、中间表征	./images/L06v2_s8_channel_split_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/06.md	门禁前后：一次 CFD 白烧的概率从九成三压到百分之三	./images/L06v2_s8_gate_pipeline_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/07.md	左：老中医给一个结论；右：全科体检给一整张图	./images/L07v2_s1_tcm_ct_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/07.md	两处死穴：样本与维度互相拉扯；代理只能替代搜索，不能替代验证	./images/L07v2_s2_two_deadlocks_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/07.md	0.4% 的三级台阶：相对误差 → 绝对误差 → 你自己效率的量级	./images/L07v2_s3_04pct_ladder_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/07.md	预期：两个百分数可以直接比；实测：必须先换成同一绝对量纲	./images/L07v2_s3_r2_trap_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/07.md	三个数 vs 一整张场：后面所有指标都挂在激波位置对不对上	./images/L07v2_s3_field_vs_coeff_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/07.md	系数建模 vs 流场建模：两种世界观的流水线对照	./images/L08_s2_flowfield_pipeline_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/07.md	选型决策树：先问要不要分布，再问样本与网格	./images/L07v2_s4_decision_tree_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/07.md	三处读表提示：查对象不查水平、同样缺误差列、证明的是跨工况泛化	./images/L07v2_s5_table_reading_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/07.md	同一道题，四把尺子：R² 的可比性陷阱（手账版）	./images/L07_s5_scoreboard_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/07.md	最近邻距离门控：前沿落在训练云之外，超出就只显示外推警告	./images/L07v2_s3_extrapolation_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/07.md	平台升级路径：三个标量 → 沿叶高分布 → 设计器	./images/L07v2_s8_platform_upgrade_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/07.md	双口径并列：搜索阶段十万倍（代理推理）与全闭环零倍（尚未验证）	./images/L07v2_s10_two_calibers_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/08.md	左：别从门口起步（少走几步）；右：每一步迈得更聪明（改走路的方法）	./images/L08v2_s1_two_shortcuts_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/08.md	成本式三因子：迭代次数、单步时间、网格点数，看谁被砍掉	./images/L08v2_s2_three_factors_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/08.md	换闭合的收益：不是算得更快，是同样算力下算出来更真	./images/L08v2_s3_closure_trade_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/08.md	预期：两个加速倍数可直接比；实测：分母不同，不可直接比大小	./images/L08v2_s3_speedup_range_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/08.md	细网格基准与粗 4–8 倍网格：省下的时间按网格点数超线性增长	./images/L08v2_s3_grid_coarse_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/08.md	换初场省迭代、换离散省网格、换约束省整次模拟：钱分别省在入口、内部与出口	./images/L08_s3_three_acceleration_routes_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/08.md	SU2 落地通路：几何参数 → 代理预测场量 → 写重启文件 → 求解器接着算	./images/L08v2_s4_su2_restart_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/08.md	读图四步：看横轴、比对峰值、找阈值线（图里没有）、问样本量	./images/L08v2_s5_fig45_reading_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/08.md	替代约束的本质：把「会不会抖」换成「后段压力梯度积分够不够小」，用少数试验标一个阈值	./images/L08_s5_separation_sensor_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/08.md	换约束这一步：非定常很贵 → 机理量 + 标定阈值 4%（阈值只由有限次观测定过）	./images/L08v2_s5_constraint_swap_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/08.md	三招能不能叠：论文没给叠加后的实测数字，这是空白，也是选题	./images/L08v2_s6_can_stack_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/08.md	你的平台接法：先补分布输出，才有初场可喂，再测加速	./images/L08v2_s8_platform_hookup_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/09.md	四位医生：翻病历本的、当场秒答的、练了很久的、按描述画心的	./images/L09v2_s1_four_doctors_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/09.md	四种优化架构：省评估次数、把人放进环里、把经验训练成策略、把映射反过来学	./images/L09_s2_four_architectures_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/09.md	维度切换速查卡：17 维及以下用 Kriging / 流形映射，30 维起换 ANN	./images/L09v2_s3_dim_switch_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/09.md	只看收益选 B；加上合法性闸门后 B 被划掉，改选 A	./images/L09v2_s2_ei_filter_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/09.md	钱从循环里挪进了训练里：这就是交互式的全部秘密	./images/L09v2_s3_interactive_cost_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/09.md	头五步吃完大部分减阻：快来自动作先验，不是算法天赋	./images/L09v2_s4_rl_five_steps_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/09.md	统一门控式：收益 − 合法性惩罚 − 外推惩罚，三项分别来自模型、统计量与你	./images/L09v2_s3_gate_formula_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/09.md	同一个目标性能，能画出无激波、弱激波、强激波三种外形	./images/L09v2_s5_illposed_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/09.md	四种架构选型速查：要多少样本、多快、能不能带约束、高维还行不行	./images/L09v2_s4_arch_picker_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/09.md	交互式设计的本质：把 CFD 的成本从循环里挪进训练里（手绘笔记版）	./images/L09_s2_interactive_loop_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/09.md	上：缺信息的旗舰图（没有轴含义、没有延迟、没有界面）；下：信息齐全的对照	./images/L09v2_s5_fig46_vs_47_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/09.md	拒答阈值：最近邻距离超过阈值就在前端亮红条	./images/L09v2_s8_platform_gate_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/10.md	三张收据：维度账已核、精度账有保留、成本账未结	./images/L10v2_s2_three_receipts_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/10.md	结论①：74 维采不动，降到 8 维才谈得上采样	./images/L10v2_s3_claim1_dim_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/10.md	结论②：样本之间可信，样本之外靠假设硬撑	./images/L10v2_s3_claim2_interp_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/10.md	结论③：不连续、多目标、带不确定性——这三格才是新架构的主场	./images/L10v2_s3_claim3_arch_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/10.md	"预期：结论会说方法很好；实测：作者自己写下""用在较不难的问题上且没对比"""	./images/L10v2_s3_self_criticism_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/10.md	"核心强项在""传统方法解不了""这一格，不是""换个更贵的算法再算一遍"""	./images/L10v2_s3_core_strength_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/10.md	外推分数：留出集误差与外推子集误差必须两栏都报	./images/L10v2_s4_extrapolation_score_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/10.md	三页：三条结论 + 我们做到哪一步 / 两个未解 / 同预算对比	./images/L10v2_s6_ppt_three_pages_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/10.md	六个挑战：§5 的三条结论其实是在回收这六格（手账版，与讲 01 共用）	./images/L01_s5_six_challenges_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/10.md	三条结论与五条展望：左边决定你现在能引什么，右边决定你明年做什么	./images/L10_s4_three_claims_five_outlooks_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/10.md	上：零图零表零数字；下：方法 / 收益（带口径）/ 代价 三列总表	./images/L10v2_s5_no_figures_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/10.md	验收三问：可算、可测、可做	./images/L10v2_s8_acceptance_checklist_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/11.md	2022 年的地图与境外五城：线这边它画了，线那边它没画	./images/L11v2_s1_borderline_map_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/11.md	自查三步：取页区间 → 抓编号 → 计数排序，你照着能自己跑脚本	./images/L11v2_s3_repro_steps_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/11.md	引用密度与样本密度：在稀疏的地方，一切结论都是外推	./images/L11v2_s3_density_analogy_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/11.md	四种口径的尺子刻度不同，不可互换	./images/L11v2_s3_four_calibers_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/11.md	三步：列边界表 → 挑一条做小实验 → 写成可复现对比	./images/L11v2_s4_three_products_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/11.md	方法覆盖矩阵：左列是这 68 页写了的，右列是 528 条参考文献里 0 命中的	./images/L11_s2_blindspots_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/11.md	体检表速览：脚本实测，每次装配前重跑	./images/L11v2_s5_scan_table_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/11.md	"讲给组会：先讲承重，再讲盲区，最后一句是""地图与国境线"""	./images/L11v2_s5_tell_group_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/11.md	"样本密度坍缩：右列五项为什么长期空着——不是没人想到，是""每维摊不到点""的地方没人敢做"	./images/L01_s5_curse_of_dim_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/11.md	六条批评的定位：页码刻度挂在综述这沓纸上	./images/L11v2_s6_six_critiques_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/11.md	给你的平台四条指令：补基线 / 四件套报数 / 先升输出 / 训练账上首页	./images/L11v2_s8_platform_four_orders_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/12.md	三种状态：记得图、记得话、记得账——只有第三种能过组会	./images/L12v2_s1_three_states_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/12.md	左：三处标红的不合格报告；右：四段齐全的合格报告	./images/L12v2_s2_report_v1_v2_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/12.md	六层阶梯：画面 → 拆词 → 操作（及格线）→ 公式 → 数据 → 边界与回收	./images/L12v2_s3_six_layers_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/12.md	三级清单：今天（约一小时）/ 两周（一个会话周期）/ 本学期（可以写成文）	./images/L12v2_s4_todo_three_columns_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/12.md	机器学习 × 气动外形优化 · 十二讲技术路线（中文标注版）	./images/wp00_roadmap_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/12.md	一页报告的版面骨架与交稿前五项自查	./images/L12_s3_one_page_report_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/12.md	路线图三问：哪一格变聪明、你站第几格、只能补一格补哪格	./images/L12v2_s5_roadmap_three_q_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/12.md	阅读队列：五篇待读按优先级排；答错的题按一、三、七天回炉	./images/L12v2_s6_reading_queue_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/lectures/12.md	三笔账期末成绩单：现在的值 → 目标 → 判据来源	./images/L12v2_s8_three_accounts_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/part6.md	全书概念地图：流程与瓶颈 → 工具箱 → 战场 → 架构 → 三笔账	./images/back_concept_map_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/part6.md	十二讲按三笔账着色：维度账 / 精度账 / 成本账	./images/part6v2_s1_matrix_map_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链
+论文精读/白皮书/docs/part6.md	六个软肋 → 六个选题：一条软肋正好长出一个题目	./images/part6v2_s2_six_weakspots_zh.png	基线树内无对应文件/目录；可能为示例或未收录附件，不是搬迁新增断链

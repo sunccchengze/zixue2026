@@ -10,7 +10,7 @@
 ├── memory/
 │   ├── MEMORY_SYSTEM.md    本文件：架构说明 + 新会话接入协议
 │   ├── HANDOFF.md          交接总账本：进展/下一句该问什么/判卷预案（最重要，永远最新）
-│   ├── LEARNINGS.md        本学科学习画像（跨学科通用画像在 probability/memory/LEARNINGS.md 单点维护）
+│   ├── LEARNINGS.md        本学科学习画像（跨学科通用画像在 概率论与数理统计/memory/LEARNINGS.md 单点维护）
 │   ├── ERRORS.md           判例库：通用红线（导师纪律）+ 大物用户判例（逐条积累）
 │   ├── MEMORY.md           当前理解主账本：核心直觉+预测→打脸→修正日志
 │   ├── PROGRESS.md         19课题+选修模块进度台账
@@ -26,7 +26,7 @@
 
 1. 读 `大学物理/_开局指令-给新会话Agent.md`（若首条消息就是它的开场白，按序执行）；
 2. 读 `HANDOFF.md`——进展到哪、下一句该问什么、判卷预案；
-3. 扫 `LEARNINGS.md`（本学科）+ `probability/memory/LEARNINGS.md`（跨学科通用偏好，
+3. 扫 `LEARNINGS.md`（本学科）+ `概率论与数理统计/memory/LEARNINGS.md`（跨学科通用偏好，
    总调度表规定它单点更新、全学科同步）；
 4. 查 `ERRORS.md`——先看通用红线，再审用户判例，出题前必查；
 5. 查 `PROGRESS.md` 与 `drill-ledger/index.md`——**先清到期卡片（欠账优先），再开新内容**；

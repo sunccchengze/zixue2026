@@ -1,6 +1,6 @@
 # LEARNINGS · 数理方程学习画像
 
-来源：继承自 `probability/memory/LEARNINGS.md`（2026-08-17验证版）+ 本学科校准追加
+来源：继承自 `概率论与数理统计/memory/LEARNINGS.md`（2026-08-17验证版）+ 本学科校准追加
 
 ## 偏好（继承，最高优先级）
 

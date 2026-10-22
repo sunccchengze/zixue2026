@@ -73,7 +73,7 @@
   ]
   #v(4.4cm)
   #align(center)[
-    #text(size: 8.5pt, fill: luma(150), font: SANS)[Markdown 母版：人工智能基础与应用/讲义/ 下的 .md 文件　·　配套上游：CS336 A1–A5 · nanochat · minimind]
+    #text(size: 8.5pt, fill: luma(150), font: SANS)[Markdown 母版：人工智能基础与应用/学习专题/实训讲义/ 下的 .md 文件　·　配套上游：CS336 A1–A5 · nanochat · minimind]
   ]
   #pagebreak()
 ]
@@ -650,9 +650,9 @@
 
 == 六、跨学科搭桥（讲课时主动用）
 
-- RL 的目标函数 → #raw("probability/") 的期望、方差、条件期望（REINFORCE = 用样本估期望）
-- 语言模型的困惑度/交叉熵 → #raw("probability/") 的信息量直觉
-- scaling law 的幂律拟合 → #raw("probability/") 的最小二乘与回归
+- RL 的目标函数 → #raw("概率论与数理统计/") 的期望、方差、条件期望（REINFORCE = 用样本估期望）
+- 语言模型的困惑度/交叉熵 → #raw("概率论与数理统计/") 的信息量直觉
+- scaling law 的幂律拟合 → #raw("概率论与数理统计/") 的最小二乘与回归
 - 结项报告 → #raw("论文精读/") 的论文写作规范；demo → #raw("人工智能基础与应用/") 的大论文素材
 
 #pagebreak()
