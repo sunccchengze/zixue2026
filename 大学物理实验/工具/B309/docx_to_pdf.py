@@ -431,7 +431,7 @@ def convert_docx_to_pdf(docx_path: Path, pdf_path: Path) -> int:
   lang: "zh",
 )
 #show math.equation: set text(font: ("New Computer Modern Math", "KaTeX_Main", "Source Han Serif"))
-#set par(leading: 0.8em, justify: true) // 放宽 PDF 正文行距，使视觉行距不低于 Word 的 1.5 倍设置
+#set par(leading: 1.0em, justify: true) // PDF 采用更宽松的行距，明确体现至少 1.5 倍的视觉效果
 
 """ + "\n\n".join(body_blocks) + "\n"
 
