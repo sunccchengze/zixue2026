@@ -658,17 +658,45 @@
       "package": "大学物理实验/实验项目/实验报告/B309-等厚干涉",
       "entry": "大学物理实验/实验项目/实验报告/B309-等厚干涉/README.md",
       "state": "待验收",
-      "reason": "原始记录与AI生成稿分角色；未逐页重算和渲染，不承诺可直接提交。",
+      "reason": "已按手写实测数据完成重算与 KaTeX 公式排版；DOCX 采用 Word 原生 OMML 数学对象，已转换并渲染检查 PDF（3 页）；仍待教师最终验收，不承诺可直接提交。",
       "current": [
         {
-          "role": "数据处理/记录Markdown",
+          "role": "完整报告 Markdown（KaTeX 源）",
+          "path": "大学物理实验/实验项目/实验报告/B309-等厚干涉/实验报告-等厚干涉-完整版.md"
+        },
+        {
+          "role": "完整报告 DOCX（原生 OMML 公式）",
+          "path": "大学物理实验/实验项目/实验报告/B309-等厚干涉/实验报告-等厚干涉-完整版.docx"
+        },
+        {
+          "role": "PDF（DOCX 转换版，3 页）",
+          "path": "大学物理实验/实验项目/实验报告/B309-等厚干涉/实验报告-等厚干涉-完整版.pdf"
+        },
+        {
+          "role": "原始数据记录模板（课本原样）",
           "path": "大学物理实验/实验项目/实验报告/B309-等厚干涉/原始数据记录-B309-等厚干涉-表格模板-课本原样.md"
         }
       ],
-      "sources": [],
-      "tools": [],
+      "sources": [
+        "大学物理实验/资料原件/大学物理实验 第三版_1-348/（已压缩）大学物理实验 第三版_1-348_201-250.pdf",
+        "大学物理实验/实验项目/assets/B309-图2-135显微镜观测.png",
+        "大学物理实验/实验项目/assets/B309-表1-牛顿环原表.png",
+        "大学物理实验/实验项目/assets/B309-表2-劈尖原表.png"
+      ],
+      "tools": [
+        "大学物理实验/工具/B309/README.md",
+        "大学物理实验/工具/B309/generate_B309_docx.py",
+        "大学物理实验/工具/B309/docx_to_pdf.py",
+        "大学物理实验/工具/B309/fonts/KATEX-LICENSE.txt",
+        "大学物理实验/工具/B309/fonts/OPEN-FONT-LICENSE.txt"
+      ],
       "history": [],
-      "reproduce": []
+      "reproduce": [
+        "python -m pip install python-docx lxml typst",
+        "npm install --no-save --no-package-lock katex",
+        "python 大学物理实验/工具/B309/generate_B309_docx.py",
+        "python 大学物理实验/工具/B309/docx_to_pdf.py"
+      ]
     },
     {
       "id": "lab-physics-B305-金属电子逸出功与荷质比",

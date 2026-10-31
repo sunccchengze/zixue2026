@@ -1,0 +1,2 @@
+# PDFs are generated/binary deliverables; avoid treating cross-reference and line-ending bytes as text.
+*.pdf binary
