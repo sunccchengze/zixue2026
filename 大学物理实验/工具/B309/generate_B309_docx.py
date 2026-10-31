@@ -443,53 +443,54 @@ def define_report():
 
     # 三、测量内容及数据处理
     reg_sec("三、", "测量内容及数据处理", "Measurement & Data Reduction")
-    reg_para("3.1 原始数据摘抄（实测，已签字；手写计算值与平均结果照录，末行 $\\bar{u}$ 为手写平均）：", size=8.5, bold=True, color="1F4E78", space_after=3)
+    reg_para("3.1 原始读数与派生数据（原始实测读数保留，派生量按读数复算）：", size=8.5, bold=True, color="1F4E78", space_after=3)
+    reg_para("**复核说明：**保留表中所有原始显微镜读数不变；原稿若干派生数与这些读数相减/平方不一致，本版按原始读数复算。差值校验为：牛顿环 $14.623-9.907=4.716$、$14.510-10.038=4.472$、$14.224-10.317=3.907$、$5.652^2=31.945$；劈尖 $34.621-19.370=15.251$、$33.452-0.000=33.452$。表内派生量显示至 $0.001$，统计计算使用未舍入值。", size=7.5, color="595959", italic=True, space_after=3)
     reg_para("表 2-22-1  平凸透镜曲率半径 $R$ 的测量（钠光 $\\lambda = 589.3\\text{ nm}$，$m = 5$，单位 $\\text{mm}$）", size=9, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, color="1F4E78", space_after=2)
     headers1 = ["级数 $k$", "初读数 $/\\text{mm}$", "末读数 $/\\text{mm}$", "$d_k = \\lvert x_{\\text{末}} - x_{\\text{初}} \\rvert\\ /\\text{mm}$", "$d_k^2\\ /\\text{mm}^2$", "$u_k = d_{k+5}^2 - d_k^2\\ /\\text{mm}^2$"]
     rows1 = [
-        ["$15$", "$15.187$", "$9.342$", "$5.845$", "$34.164$", "$u_{10} = 11.904$"],
-        ["$14$", "$15.101$", "$9.449$", "$5.652$", "$31.925$", "$u_9 = 11.955$"],
-        ["$13$", "$14.979$", "$9.551$", "$5.428$", "$29.463$", "$u_8 = 12.240$"],
-        ["$12$", "$14.869$", "$9.666$", "$5.203$", "$27.071$", "$u_7 = 11.830$"],
+        ["$15$", "$15.187$", "$9.342$", "$5.845$", "$34.164$", "$u_{10} = 11.923$"],
+        ["$14$", "$15.101$", "$9.449$", "$5.652$", "$31.945$", "$u_9 = 11.946$"],
+        ["$13$", "$14.979$", "$9.551$", "$5.428$", "$29.463$", "$u_8 = 12.241$"],
+        ["$12$", "$14.869$", "$9.666$", "$5.203$", "$27.071$", "$u_7 = 11.807$"],
         ["$11$", "$14.758$", "$9.796$", "$4.962$", "$24.621$", "$u_6 = 11.862$"],
-        ["$10$", "$14.623$", "$9.907$", "$4.718$", "$22.260$", "$\\bar{u} = 11.958$"],
-        ["$9$", "$14.510$", "$10.038$", "$4.471$", "$19.990$", ""],
+        ["$10$", "$14.623$", "$9.907$", "$4.716$", "$22.241$", "$\\bar{u} = 11.956$"],
+        ["$9$", "$14.510$", "$10.038$", "$4.472$", "$19.999$", ""],
         ["$8$", "$14.315$", "$10.165$", "$4.150$", "$17.223$", ""],
-        ["$7$", "$14.224$", "$10.317$", "$3.904$", "$15.241$", ""],
+        ["$7$", "$14.224$", "$10.317$", "$3.907$", "$15.265$", ""],
         ["$6$", "$14.049$", "$10.477$", "$3.572$", "$12.759$", ""],
     ]
     reg_table(headers1, rows1, col_widths=[0.6, 0.98, 0.98, 1.45, 0.95, 1.55], header_shade="1F4E78", font_size=7.5)
-    reg_para("注：$u_{10} = d_{15}^2 - d_{10}^2 = 34.164 - 22.260 = 11.904$，$\\dots$，$u_6 = d_{11}^2 - d_6^2 = 24.621 - 12.759 = 11.862$；$\\bar{u} = \\frac{1}{5}\\sum_{k=6}^{10} u_k = \\frac{59.791}{5} = 11.958\\text{ mm}^2$（与手写平均一致）。$5.652^2 = 31.945$ 与表记 $31.925$ 差 $0.02\\text{ mm}^2$ 属手算舍入。",
+    reg_para("注：初、末读数为原始实测值，本表 $d_k$、$d_k^2$、$u_k$ 均由这些读数复算；计算使用未舍入的差值与平方，表中显示至 $0.001$。例如 $u_{10}=5.845^2-4.716^2=11.923369$、$u_9=5.652^2-4.472^2=11.946320$；$\\bar{u}=11.9558386\\text{ mm}^2\\approx11.956\\text{ mm}^2$。",
              size=7.2, color="595959", italic=True, space_after=5)
 
-    reg_para("表 2-22-2  金属箔厚度 $D$ 的测量（劈尖，现场数得暗纹总级数 $N = 70$）", size=9, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, color="1F4E78", space_after=2, page_break_before=True)
+    reg_para("表 2-22-2  金属箔厚度 $D$ 的测量（劈尖，现场数得暗纹总级数 $N = 70$）", size=9, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, color="1F4E78", space_after=2)
     reg_para("劈尖暗纹级数 $N = 70$ 级　　上段：逐差法求相邻暗纹间距 $\\bar{s}$", size=8, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=2)
     headers2a = ["级数 $k$", "读数 $n_k\\ /\\text{mm}$", "$l_k = \\lvert n_{k+40} - n_k \\rvert\\ /\\text{mm}$", "统计"]
     rows2a = [
         ["$0$", "$49.475$", "$l_{10} = 19.026\\ (=\\lvert n_{40} - n_0 \\rvert)$", "$40$ 条间距"],
         ["$10$", "$44.128$", "$l_{20} = 17.572\\ (=\\lvert n_{50} - n_{10} \\rvert)$", ""],
         ["$20$", "$39.115$", "$l_{30} = 16.260\\ (=\\lvert n_{60} - n_{20} \\rvert)$", ""],
-        ["$30$", "$34.621$", "$l_{40} = 15.231\\ (=\\lvert n_{70} - n_{30} \\rvert)$", ""],
-        ["$40$", "$30.449$", "$\\bar{l} = 17.022$", "$4$ 个 $l_k$ 平均"],
+        ["$30$", "$34.621$", "$l_{40} = 15.251\\ (=\\lvert n_{70} - n_{30} \\rvert)$", ""],
+        ["$40$", "$30.449$", "$\\bar{l} = 17.027$", "$4$ 个 $l_k$ 平均"],
         ["$50$", "$26.556$", "—", "—"],
         ["$60$", "$22.855$", "—", "—"],
         ["$70$", "$19.370$", "—", "—"],
         ["$80$", "—", "—", "—"],
     ]
     reg_table(headers2a, rows2a, col_widths=[0.7, 1.3, 2.3, 1.5], header_shade="548235", font_size=7.5)
-    reg_para("$\\bar{l} = \\frac{19.026 + 17.572 + 16.260 + 15.231}{4} = 17.022\\text{ mm}$，$\\bar{s} = \\frac{\\bar{l}}{40} = 0.4256\\text{ mm}$；四个 $l_k$ 呈单调递减（$19.026 \\to 15.231\\text{ mm}$），反映劈尖楔角非完全均匀。",
+    reg_para("$\\bar{l} = \\frac{19.026 + 17.572 + 16.260 + 15.251}{4} = 17.02725\\text{ mm}\\approx17.027\\text{ mm}$，$\\bar{s} = \\frac{\\bar{l}}{40} = 0.425681\\text{ mm}\\approx0.4257\\text{ mm}$；四个 $l_k$ 呈单调递减（$19.026 \\to 15.251\\text{ mm}$），反映劈尖楔角非完全均匀。",
              size=7.2, color="595959", italic=True, space_after=4)
 
     reg_para("下段：劈尖长度 $L$（$50$ 级处）", size=8, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=2)
     headers2b = ["组别 $i$", "$n_{0i}\\ /\\text{mm}$", "$n_i\\ /\\text{mm}$", "$L_i = \\lvert n_i - n_{0i} \\rvert\\ /\\text{mm}$"]
     rows2b = [
-        ["$1$", "$0.000$", "$33.452$", "$33.450$"],
+        ["$1$", "$0.000$", "$33.452$", "$33.452$"],
         ["$2$", "$-0.065$", "$33.455$", "$33.520$"],
         ["$3$", "$0.000$", "$33.585$", "$33.585$"],
         ["平均", "—", "—", "$\\bar{L} = 33.519\\text{ mm}$"],
     ]
     reg_table(headers2b, rows2b, col_widths=[0.9, 1.5, 1.5, 1.9], header_shade="548235", font_size=7.5)
-    reg_para("$L_1 = 33.452 - 0.000 = 33.452 \\approx 33.450\\text{ mm}$（手写舍入差 $0.002\\text{ mm}$），$L_2 = 33.455 - (-0.065) = 33.520\\text{ mm}$，$L_3 = 33.585\\text{ mm}$；$\\bar{L} = \\frac{100.555}{3} = 33.519\\text{ mm}$。",
+    reg_para("三次长度均由原始读数相减：$L_1=33.452-0.000=33.452\\text{ mm}$，$L_2=33.455-(-0.065)=33.520\\text{ mm}$，$L_3=33.585-0.000=33.585\\text{ mm}$；$\\bar{L}=33.519\\text{ mm}$。",
              size=7.2, color="595959", italic=True, space_after=4)
 
     reg_image(ASSETS / "B309-表1-牛顿环原表-裁切.png", width_in=4.2, caption="附：课本 p230 原表 2-22-1 局部截图（右侧 u 均值栏为 5 行合并大格）")
@@ -501,28 +502,29 @@ def define_report():
     reg_para("（1）牛顿环求 $R$（逐差法，$m = 5$）", size=9, bold=True, space_after=2, space_before=2)
     reg_para("由等厚干涉暗纹条件 $\\delta = 2e_k + \\frac{\\lambda}{2} = (2k+1)\\frac{\\lambda}{2}$ 及几何关系 $e_k \\approx \\frac{r_k^2}{2R} = \\frac{d_k^2}{8R}$，采用逐差法（$m = 5$）消去接触点附加厚度，得式 (2.22.4)：", size=9, space_after=2, indent=18)
     reg_eq(r"R = \frac{d_{k+m}^2 - d_k^2}{4m\lambda} = \frac{d_{k+5}^2 - d_k^2}{20\lambda} = \frac{u_k}{20\lambda}", size=9)
-    reg_para("由表 2-22-1 得 $\\bar{u} = 11.958\\text{ mm}^2$。各残差 $u_k - \\bar{u}$ 依次为 $-0.054$、$-0.003$、$+0.282$、$-0.128$、$-0.096\\text{ mm}^2$，残差平方和 $\\sum_{k=6}^{10}(u_k - \\bar{u})^2 = 0.1080\\text{ mm}^4$，故实验标准偏差与平均值标准偏差为：", size=9, space_after=2, indent=18)
-    reg_eq(r"s(u_k) = \sqrt{\frac{\sum_{k=6}^{10}(u_k - \bar{u})^2}{5 - 1}} = \sqrt{\frac{0.1080}{4}} = 0.164\text{ mm}^2, \qquad s_{\bar{u}} = \frac{s(u_k)}{\sqrt{5}} = \frac{0.164}{2.236} = 0.0735\text{ mm}^2", size=9)
+    reg_para("由表 2-22-1 得 $\\bar{u}=11.95584\\text{ mm}^2$。按未舍入数据，各残差 $u_k-\\bar{u}$（$k=6,7,8,9,10$）约为 $-0.0936$、$-0.1493$、$+0.2848$、$-0.0095$、$-0.0325\\text{ mm}^2$，残差平方和为 $0.11332\\text{ mm}^4$，故：", size=9, space_after=2, indent=18)
+    reg_eq(r"s(u_k) = \sqrt{\frac{0.11332}{4}} = 0.1683\text{ mm}^2, \qquad s_{\bar{u}} = \frac{s(u_k)}{\sqrt{5}} = 0.07527\text{ mm}^2", size=9)
     reg_para("代入 $20\\lambda = 0.011786\\text{ mm}$，得曲率半径平均值及其标准不确定度、相对不确定度：", size=9, space_after=2, indent=18)
-    reg_eq(r"\bar{R} = \frac{\bar{u}}{20\lambda} = \frac{11.958}{0.011786} = 1014.6\text{ mm} = 1.015\text{ m}, \quad s_R = \frac{s_{\bar{u}}}{20\lambda} = 6.24\text{ mm}, \quad E_R = \frac{s_R}{\bar{R}} = 0.62\%", size=9)
-    reg_box("结果：  $R = (1.015 \\pm 0.006)\\text{ m} = (1015 \\pm 6)\\text{ mm}$　　（$E_R = 0.62\\%$，$k = 1$）",
+    reg_eq(r"\bar{R} = \frac{\bar{u}}{20\lambda} = \frac{11.95584}{0.011786} = 1014.4\text{ mm} = 1.0144\text{ m}, \quad s_R = \frac{s_{\bar{u}}}{20\lambda} = 6.39\text{ mm}, \quad E_R = \frac{s_R}{\bar{R}} = 0.63\%", size=9)
+    reg_box("结果：  $R = (1.0144 \\pm 0.0064)\\text{ m} = (1014.4 \\pm 6.4)\\text{ mm}$　　（$E_R = 0.63\\%$，$k = 1$）",
             fill="FFF2CC", border_color="BF9000", text_color="7F6003", size=9.5, space_before=3, space_after=4)
+    reg_para("与课本标称约 $1.0\\text{ m}$ 符合；若取包含因子 $k = 2$，$U = 2s_R \\approx 12.8\\text{ mm}$，则 $R = (1.014 \\pm 0.013)\\text{ m}$。", size=8, color="595959", italic=True, space_after=2)
 
     reg_para("（2）劈尖求 $D$（两式对照，以 (2.22.6) 式为准）", size=9, bold=True, space_after=2, space_before=3)
     reg_para("总暗纹计数式 (2.22.5)（仅计数，不计误差，作对照）：$D_N = N\\cdot\\frac{\\lambda}{2} = 70 \\times \\frac{0.0005893}{2} = 0.0206\\text{ mm} = 20.6\\ \\mu\\text{m}$。", size=9, space_after=2, indent=18)
-    reg_para("条纹间距式 (2.22.6)：代入 $\\bar{s} = 0.4256\\text{ mm}$、$\\bar{L} = 33.519\\text{ mm}$，得：", size=9, space_after=2, indent=18)
-    reg_eq(r"D = \frac{\bar{L}}{\bar{s}}\cdot\frac{\lambda}{2} = \frac{33.519}{0.4256}\times\frac{0.0005893}{2} = 0.0232\text{ mm} = 23.2\ \mu\text{m}", size=9)
-    reg_para("不确定度传递与合成：$4$ 个 $l_k$ 的标准偏差 $s(l_k) = \\sqrt{\\frac{\\sum(l_k - \\bar{l})^2}{3}} = 1.644\\text{ mm}$，故 $s_{\\bar{l}} = \\frac{s(l_k)}{\\sqrt{4}} = 0.822\\text{ mm}$，$E_{\\bar{l}} = \\frac{0.822}{17.022} = 4.83\\%$；$3$ 个 $L_i$ 的标准偏差 $s(L_i) = 0.0675\\text{ mm}$，故 $s_{\\bar{L}} = \\frac{0.0675}{\\sqrt{3}} = 0.0390\\text{ mm}$，$E_{\\bar{L}} = \\frac{0.0390}{33.519} = 0.12\\%$。方和根合成：", size=9, space_after=2, indent=18)
-    reg_eq(r"E_D = \sqrt{E_{\bar{l}}^2 + E_{\bar{L}}^2} = \sqrt{(4.83\%)^2 + (0.12\%)^2} = 4.83\%, \qquad s_D = E_D \cdot D = 0.0483 \times 0.0232 = 0.00112\text{ mm} \approx 1.1\ \mu\text{m}", size=9)
+    reg_para("条纹间距式 (2.22.6)：代入 $\\bar{s} = 0.4257\\text{ mm}$、$\\bar{L} = 33.519\\text{ mm}$，得：", size=9, space_after=2, indent=18)
+    reg_eq(r"D = \frac{\bar{L}}{\bar{s}}\cdot\frac{\lambda}{2} = \frac{33.519}{0.4257}\times\frac{0.0005893}{2} = 0.0232\text{ mm} = 23.2\ \mu\text{m}", size=9)
+    reg_para("不确定度传递与合成：$4$ 个 $l_k$ 的标准偏差 $s(l_k) = \\sqrt{\\frac{\\sum(l_k - \\bar{l})^2}{3}} = 1.6366\\text{ mm}$，故 $s_{\\bar{l}} = \\frac{s(l_k)}{\\sqrt{4}} = 0.8183\\text{ mm}$，$E_{\\bar{l}} = 4.806\\%$；$3$ 个 $L_i$ 的标准偏差 $s(L_i) = 0.06651\\text{ mm}$，故 $s_{\\bar{L}} = \\frac{s(L_i)}{\\sqrt{3}} = 0.03840\\text{ mm}$，$E_{\\bar{L}} = 0.1146\\%$。方和根合成：", size=9, space_after=2, indent=18)
+    reg_eq(r"E_D = \sqrt{E_{\bar{l}}^2 + E_{\bar{L}}^2} = 4.807\%, \qquad s_D = E_D \cdot D = 0.001115\text{ mm} \approx 1.1\ \mu\text{m}", size=9)
     reg_box("结果：  $D = (0.0232 \\pm 0.0011)\\text{ mm} = (23.2 \\pm 1.1)\\ \\mu\\text{m}$　　（$E_D = 4.8\\%$，$k = 1$）",
             fill="E2EFDA", border_color="548235", text_color="375C1E", size=9.5, space_before=3, space_after=3)
-    reg_para("以 (2.22.6) 式为准；(2.22.5) 式偏小约 $11\\%$，因所数 $N = 70$ 未达垫片边缘且 $\\bar{s}$ 轻微非均匀（$\\frac{\\bar{L}}{\\bar{s}} \\approx 78.8$，末条距边缘尚约 $9$ 条间距）。若 $N$ 正好到边缘且劈尖均匀，两式结果一致。",
+    reg_para("以 (2.22.6) 式为准；(2.22.5) 式偏小约 $11\\%$，因所数 $N = 70$ 未达垫片边缘且 $\\bar{s}$ 轻微非均匀（$\\frac{\\bar{L}}{\\bar{s}} \\approx 78.74$，末条距边缘尚约 $9$ 条间距）。若 $N$ 正好到边缘且劈尖均匀，两式结果一致。",
              size=7.5, color="595959", italic=True, space_after=5, indent=18)
 
     # 四、小结
     reg_sec("四、", "小结（结论、误差分析及建议）", "Summary")
-    reg_para("**结论：**牛顿环逐差法测得平凸透镜曲率半径 $R = (1015 \\pm 6)\\text{ mm} = (1.015 \\pm 0.006)\\text{ m}$（$E_R = 0.62\\%$），与课本标称约 $1.0\\text{ m}$ 符合；劈尖以 $\\frac{\\bar{L}}{\\bar{s}}\\cdot\\frac{\\lambda}{2}$ 法测得金属箔厚度 $D = (23.2 \\pm 1.1)\\ \\mu\\text{m}$（$E_D = 4.8\\%$），对照计数式 $D_N = 20.6\\ \\mu\\text{m}$ 偏小 $2.6\\ \\mu\\text{m}$，反映末条暗纹距薄端边缘尚约 $9$ 条间距，验证了两式的适用条件。", size=9, space_after=2)
-    reg_para("**误差分析：**$R$ 的 $0.62\\%$ 主要为 $5$ 个 $u_k$ 的随机分散（$s(u_k) = 0.164\\text{ mm}^2$），源于读数显微镜 $0.01\\text{ mm}$ 读数估读与十字叉丝对准误差；全程单向移动已抑制回程差，逐差法已消除中心接触点附加光程差。$D$ 的 $4.8\\%$ 几乎全来自 $\\bar{s}$（即 $\\bar{l}$）的 $4.83\\%$（$l_k$ 从 $19.026 \\to 15.231\\text{ mm}$ 系统递减），$\\bar{L}$ 仅 $0.12\\%$ 可忽略，说明劈尖平板微弯或接触处压紧不均使楔角 $\\alpha$ 随位置缓变（若均匀则 $4$ 个 $l_k$ 应在 $17.0\\text{ mm}$ 附近一致）。", size=9, space_after=2)
+    reg_para("**结论：**牛顿环逐差法测得平凸透镜曲率半径 $R = (1014.4 \\pm 6.4)\\text{ mm} = (1.0144 \\pm 0.0064)\\text{ m}$（$E_R = 0.63\\%$），与课本标称约 $1.0\\text{ m}$ 符合；劈尖以 $\\frac{\\bar{L}}{\\bar{s}}\\cdot\\frac{\\lambda}{2}$ 法测得金属箔厚度 $D = (23.2 \\pm 1.1)\\ \\mu\\text{m}$（$E_D = 4.8\\%$），对照计数式 $D_N = 20.6\\ \\mu\\text{m}$ 偏小 $2.6\\ \\mu\\text{m}$，反映末条暗纹距薄端边缘尚约 $9$ 条间距，验证了两式的适用条件。", size=9, space_after=2)
+    reg_para("**误差分析：**$R$ 的 $0.63\\%$ 主要为 $5$ 个 $u_k$ 的随机分散（$s(u_k) = 0.1683\\text{ mm}^2$），源于读数显微镜 $0.01\\text{ mm}$ 读数估读与十字叉丝对准误差；全程单向移动已抑制回程差，逐差法已消除中心接触点附加光程差。$D$ 的 $4.8\\%$ 几乎全来自 $\\bar{s}$（即 $\\bar{l}$）的 $4.806\\%$（$l_k$ 从 $19.026 \\to 15.251\\text{ mm}$ 系统递减），$\\bar{L}$ 仅 $0.115\\%$ 可忽略，说明劈尖平板微弯或接触处压紧不均使楔角 $\\alpha$ 随位置缓变（若均匀则 $4$ 个 $l_k$ 应在 $17.0\\text{ mm}$ 附近一致）。", size=9, space_after=2)
     reg_para("**建议：**① 牛顿环对准时使叉丝严格切于暗环正中弦位并估读至 $0.001\\text{ mm}$；② 劈尖测 $s$ 避开两端受压边缘段，或增至 $5\\sim 9$ 段平均以抑制楔角缓变；③ 长度 $L$ 用同一显微镜单向三次独立定端，减小端点判读误差。", size=9, space_after=4)
 
     # 五、实验思考题
@@ -549,9 +551,9 @@ def define_report():
     reg_para("答：由 $r_k = \\sqrt{kR\\lambda}$ 得相邻两级暗环半径差 $\\Delta r_k = r_{k+1} - r_k = \\frac{r_{k+1}^2 - r_k^2}{r_{k+1} + r_k} = \\frac{R\\lambda}{r_{k+1} + r_k} \\approx \\frac{1}{2}\\sqrt{\\frac{R\\lambda}{k}} \\propto \\frac{1}{\\sqrt{k}}$，随级数 $k$ 增大而减小，故外密内疏；而劈尖倾角 $\\alpha$ 恒定，间距 $s = \\frac{\\lambda}{2\\alpha}$ 为常数，故呈等距直条纹。",
              size=9, space_after=4, indent=18)
 
-    reg_box("附录  原始手写记录（教师签字页）· 仪器参数与公式编号均照课本；页面 A4，KaTeX 原生公式排版，便于直接打印装订",
+    reg_box("附录  原始记录与数据复核说明",
             fill="F2F2F2", border_color="D9D9D9", text_color="595959", all_borders=False, left_sz="0", align="center", size=7.2, space_before=6, space_after=2)
-    reg_para("原始记录栏（报告纸 p30）已按课本原样铅笔绘表、黑色签字笔填数，教师签字原件备查。",
+    reg_para("原始记录纸（报告纸 p30）由本人保存备查；本报告不含原始手写记录影像。所附教材表格裁切图仅供核对课本表式，不是实测数据记录。",
              size=7, color="808080", italic=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=6)
 
 
