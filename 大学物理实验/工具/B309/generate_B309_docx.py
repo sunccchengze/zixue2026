@@ -748,6 +748,18 @@ def build_docx():
                 cp.paragraph_format.space_after = Pt(5)
                 append_rich_content(cp, kw["caption"], size=kw["cap_size"], italic=True, color="333333")
 
+    # 最终统一覆盖所有正文、公式、标题及表格段落，避免局部默认值造成行距低于 1.5 倍。
+    all_paragraphs = list(doc.paragraphs)
+    for table in doc.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                all_paragraphs.extend(cell.paragraphs)
+    for sec in doc.sections:
+        all_paragraphs.extend(sec.header.paragraphs)
+        all_paragraphs.extend(sec.footer.paragraphs)
+    for paragraph in all_paragraphs:
+        paragraph.paragraph_format.line_spacing = 1.5
+
     OUT.parent.mkdir(parents=True, exist_ok=True)
     doc.save(str(OUT))
 

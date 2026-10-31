@@ -4,7 +4,7 @@
 
 1. `实验报告-等厚干涉-完整版.md` 是 KaTeX 源稿：行内数学使用 `$…$`，独立公式使用 `$$…$$`。
 2. `generate_B309_docx.py` 调用 KaTeX 输出 MathML，再映射为 Word 原生 Office Math Markup Language（OMML）对象；DOCX 公式不是截图。
-3. `docx_to_pdf.py` 读取 DOCX 段落、表格、图片和 OMML 公式，以 Typst 排版导出 PDF。当前环境无 LibreOffice；这是读取 DOCX 后按其内容与样式导出的三页 PDF，页数及页面已渲染检查。
+3. `docx_to_pdf.py` 读取 DOCX 段落、表格、图片和 OMML 公式，以 Typst 排版导出 PDF。正文、公式、标题及表格统一使用至少 1.5 倍行距；当前环境无 LibreOffice，这是读取 DOCX 后按其内容与样式导出的 PDF，页数及页面已渲染检查。
 
 ## 依赖与复现
 
