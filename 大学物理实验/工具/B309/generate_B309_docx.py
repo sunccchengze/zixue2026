@@ -297,6 +297,7 @@ MATH_RE = re.compile(r"\$\$([\s\S]+?)\$\$|\$([^\$\n]+?)\$")
 
 def append_rich_content(p, text: str, size=9, bold=False, color=None, italic=False,
                         font="宋体", en_font="Times New Roman"):
+    size *= 1.12  # 保持正文/注释在纸面上的可读字号，同时保留标题层级
     pos = 0
     markdown_bold = False
     for m in MATH_RE.finditer(text):
@@ -341,7 +342,7 @@ def _add_text_segment(p, text: str, size=9, bold=False, markdown_bold=False,
     return markdown_bold
 
 
-def set_margins(section, top=0.58, bottom=0.58, left=0.68, right=0.68):
+def set_margins(section, top=0.72, bottom=0.72, left=0.78, right=0.78):
     section.top_margin = Inches(top)
     section.bottom_margin = Inches(bottom)
     section.left_margin = Inches(left)
@@ -390,16 +391,17 @@ def reg_eq(tex, **kw):
     BLOCKS.append(("eq", f"$${tex}$$", kw))
 
 
-def reg_box(text, fill, border_color, text_color, left_sz="6", all_borders=True, align="center", size=9.5, space_before=4, space_after=4):
+def reg_box(text, fill, border_color, text_color, left_sz="6", all_borders=True, align="center", size=9.5, space_before=4, space_after=4, page_break_before=False):
     BLOCKS.append(("box", text, {
         "fill": fill, "border_color": border_color, "text_color": text_color,
         "left_sz": left_sz, "all_borders": all_borders, "align": align,
         "size": size, "space_before": space_before, "space_after": space_after,
+        "page_break_before": page_break_before,
     }))
 
 
-def reg_sec(num, title, en=""):
-    BLOCKS.append(("sec", f"{num}  {title}", {"en": en}))
+def reg_sec(num, title, en="", page_break_before=False):
+    BLOCKS.append(("sec", f"{num}  {title}", {"en": en, "page_break_before": page_break_before}))
 
 
 def reg_table(headers, rows, col_widths, header_shade="1F4E78", font_size=7.5):
@@ -411,38 +413,56 @@ def reg_image(path, width_in=5.0, caption=None, cap_size=7.5):
 
 
 def define_report():
-    reg_para("大学物理实验报告", size=16, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, color="1F4E78", space_after=2, space_before=4)
-    reg_para("等厚干涉及其应用 — 牛顿环测曲率半径 / 劈尖测箔厚（实验 2.22 / B309）", size=11, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, color="2E75B6", space_after=2)
-    reg_para("实测数据完整版（五节结构：目的｜仪器与方法｜测量内容及数据处理｜小结｜思考题）", size=7.5, align=WD_ALIGN_PARAGRAPH.CENTER, color="595959", space_after=3)
-    reg_para("依据《大学物理实验（第三版）》实验 2.22（印刷页 219–224）· 钠光 $\\lambda = 589.3\\text{ nm}$ · 读数显微镜 $0.01\\text{ mm}$ · 图 2-135",
-             size=7.5, align=WD_ALIGN_PARAGRAPH.CENTER, color="333333", italic=True, space_after=4, bottom_rule="2E75B6")
+    reg_para("UNIVERSITY PHYSICS LABORATORY  ·  B309", size=8.5, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, color="B58A28", space_after=3, space_before=10)
+    reg_para("大学物理实验报告", size=23, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, color="17324D", space_after=1)
+    reg_para("等厚干涉及其应用", size=17, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, color="2E75B6", space_after=3)
+    reg_para("牛顿环测曲率半径  ·  劈尖测金属箔厚度", size=10.5, align=WD_ALIGN_PARAGRAPH.CENTER, color="607080", space_after=5)
+    reg_para("实验 2.22  /  B309", size=9, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, color="B58A28", space_after=7, bottom_rule="D6A83B")
 
     reg_table(
-        ["姓名", "学号", "班级", "课程", "教师", "日期", "实验室"],
-        [["孙承泽", "2253710052", "能动强基2501", "大学物理实验 I-2", "刘瑞丰", "2026-10-31", "B309"]],
-        col_widths=[0.9, 1.15, 1.25, 1.35, 0.85, 1.05, 0.8],
-        header_shade="2E75B6",
-        font_size=7.8,
+        ["姓名 / 学号", "班级", "课程 / 教师", "实验编号 / 日期"],
+        [["孙承泽  ·  2253710052", "能动强基2501", "大学物理实验 I-2  ·  刘瑞丰", "B309  ·  2026-10-31"]],
+        col_widths=[1.65, 1.45, 2.05, 1.5],
+        header_shade="EAF1F6",
+        font_size=8.2,
     )
-    reg_para("注：课上完成原始数据表 2-22-1、2-22-2 并获教师签字；本报告按实测数据全处理，公式采用 KaTeX 语法编译排版，图片链 ../../assets/。",
-             size=7, color="595959", italic=True, space_after=6, space_before=2)
+    reg_para("测量结果速览  /  Results at a glance", size=8.5, bold=True, color="17324D", space_before=8, space_after=2)
+    reg_table(
+        ["牛顿环  ·  曲率半径 $R$", "劈尖  ·  金属箔厚度 $D$"],
+        [["$R = (1014.4 \\pm 6.4)\\text{ mm}$", "$D = (23.2 \\pm 1.1)\\ \\mu\\text{m}$"],
+         ["$E_R = 0.63\\%$  ·  $k=1$", "$E_D = 4.8\\%$  ·  $k=1$"]],
+        col_widths=[3.3, 3.3], header_shade="17324D", font_size=10,
+    )
+    reg_para("数据处理以转录的原始显微镜读数为准；原始读数未改写，所有差值及派生量均据此复核。",
+             size=8.2, color="607080", italic=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_before=2, space_after=4)
+    reg_para("依据《大学物理实验（第三版）》实验 2.22（印刷页 219–224）  ·  钠光 $\\lambda = 589.3\\text{ nm}$  ·  测微鼓轮分度值 $0.01\\text{ mm}$",
+             size=8, align=WD_ALIGN_PARAGRAPH.CENTER, color="607080", space_after=6)
 
     # 一、实验目的
     reg_sec("一、", "实验目的", "Objectives")
-    reg_para("1. 观察等厚干涉现象（牛顿环同心圆 $e = \\dfrac{r^2}{2R}$、劈尖平行直条纹 $e = k\\dfrac{\\lambda}{2}$），验证分振幅薄膜干涉与半波损失 $\\dfrac{\\lambda}{2}$；", size=9, space_after=2)
-    reg_para("2. 掌握读数显微镜的调节与单向测量法，用牛顿环逐差法测定平凸透镜曲率半径 $R$；", size=9, space_after=2)
-    reg_para("3. 用劈尖测定金属箔厚度 $D$，掌握 $D = N\\dfrac{\\lambda}{2}$ 与 $D = \\dfrac{L}{s}\\cdot\\dfrac{\\lambda}{2}$ 两式的适用条件及逐差法不确定度合成。", size=9, space_after=4)
+    reg_para("1. 观察牛顿环同心圆与劈尖平行直条纹，认识分振幅薄膜干涉中的半波损失现象；", size=9.5, space_after=3)
+    reg_para("2. 掌握读数显微镜调节与单向测量法，用牛顿环逐差法测定平凸透镜曲率半径；", size=9.5, space_after=3)
+    reg_para("3. 比较劈尖总暗纹计数与条纹间距两种测箔厚方法，并完成不确定度评定。", size=9.5, space_after=4)
+    reg_image(ASSETS / "B309-图-等厚干涉几何示意.png", width_in=6.4,
+              caption="图 1  牛顿环等厚线与空气劈尖参数示意（结构与比例均为示意，不代表实测装置）。", cap_size=8)
 
     # 二、实验仪器与实验方法（精简版：仅仪器+方法+一句原理+图2-135）
-    reg_sec("二、", "实验仪器与实验方法", "Apparatus & Method")
+    reg_sec("二、", "实验仪器与实验方法", "Apparatus & Method", page_break_before=True)
     reg_para("**实验仪器：**读数显微镜（含测微鼓轮 $0.01\\text{ mm}$、十字叉丝、载物台，$41\\times$ 显微镜头）、钠光灯（$\\lambda = 589.3\\text{ nm}$）、牛顿环装置（平凸透镜待测 $R \\approx 1\\text{ m}$＋平板玻璃）、劈尖装置（两光学平板一端垫待测金属箔）、$45^\\circ$ 半反玻璃片 $\\text{M}$、金属箔、擦镜纸。", size=9, space_after=2)
-    reg_para("**实验方法与步骤（按课本 p221–222，钠光 $\\lambda = 589.3\\text{ nm}$，逐差法 $m = 5$）：**① 调节：$\\text{M}$ 镜 $45^\\circ$ 对钠光、反光镜转开不遮光，叉丝调至垂直于载物台移动方向，镜筒调焦至视场清晰（牛顿环为同心圆、劈尖为等间距直条纹）；② 牛顿环：单向测 $6\\sim 15$ 级左右读数，求直径 $d_k$；③ 劈尖：数总暗纹级数 $N$，每隔 $10$ 条读 $n_k$ 求 $l_k$ 与 $\\bar{s}$，另测三次 $L$ 求 $\\bar{L}$；全程单向移动，转过头须退回多级重测。", size=9, space_after=2)
+    reg_para("**实验方法与步骤（按课本 p221–222，钠光 $\\lambda = 589.3\\text{ nm}$，逐差法 $m = 5$）：**① 调节：$\\text{M}$ 镜 $45^\\circ$ 对钠光、反光镜转开不遮光，叉丝调至垂直于载物台移动方向，镜筒调焦至视场清晰（牛顿环为同心圆、劈尖为等间距直条纹）；② 牛顿环：单向测 $6\\sim 15$ 级左右读数，求直径 $d_k$；③ 劈尖：数总暗纹级数 $N$，每隔 $10$ 条读 $n_k$ 求 $l_k$ 与 $\\bar{s}$，另测三次 $L$ 求 $\\bar{L}$；全程单向移动，转过头须退回多级重测。", size=9.5, space_after=4)
+    reg_table(
+        ["观察项目", "读数与质量控制"],
+        [["牛顿环", "暗环清晰后单向读 $6\\sim15$ 级两侧位置；叉丝对准同一暗环，中心穿越后仍保持同向。"],
+         ["劈尖", "确认暗纹平行；每隔 $10$ 条读数求 $l_k$，另独立测量 $L$ 三次。"],
+         ["数据", "原始读数照录；改变移动方向后退回多级再测，派生值只由原始读数计算。"]],
+        col_widths=[1.25, 5.25], header_shade="17324D", font_size=8.3,
+    )
     reg_para("原理仅一句：本实验为等厚干涉，公式 (2.22.4) $R = \\dfrac{d_{k+5}^2 - d_k^2}{20\\lambda}$、(2.22.5) $D = N\\dfrac{\\lambda}{2}$、(2.22.6) $D = \\dfrac{\\bar{L}}{\\bar{s}}\\cdot\\dfrac{\\lambda}{2}$ 详见 §三 数据处理，其中 $\\lambda = 589.3\\text{ nm} = 0.0005893\\text{ mm}$，$20\\lambda = 0.011786\\text{ mm}$。",
              size=7.8, color="595959", italic=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=4)
     reg_image(ASSETS / "B309-图2-135显微镜观测-裁切.png", width_in=2.0, caption="图 2-135  读数显微镜＋45°半反镜 M 观测光路（方法调节用）")
 
     # 三、测量内容及数据处理
-    reg_sec("三、", "测量内容及数据处理", "Measurement & Data Reduction")
+    reg_sec("三、", "测量内容及数据处理", "Measurement & Data Reduction", page_break_before=True)
     reg_para("3.1 原始读数与派生数据（原始实测读数保留，派生量按读数复算）：", size=8.5, bold=True, color="1F4E78", space_after=3)
     reg_para("**复核说明：**保留表中所有原始显微镜读数不变；原稿若干派生数与这些读数相减/平方不一致，本版按原始读数复算。差值校验为：牛顿环 $14.623-9.907=4.716$、$14.510-10.038=4.472$、$14.224-10.317=3.907$、$5.652^2=31.945$；劈尖 $34.621-19.370=15.251$、$33.452-0.000=33.452$。表内派生量显示至 $0.001$，统计计算使用未舍入值。", size=7.5, color="595959", italic=True, space_after=3)
     reg_para("表 2-22-1  平凸透镜曲率半径 $R$ 的测量（钠光 $\\lambda = 589.3\\text{ nm}$，$m = 5$，单位 $\\text{mm}$）", size=9, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, color="1F4E78", space_after=2)
@@ -463,14 +483,14 @@ def define_report():
     reg_para("注：初、末读数为原始实测值，本表 $d_k$、$d_k^2$、$u_k$ 均由这些读数复算；计算使用未舍入的差值与平方，表中显示至 $0.001$。例如 $u_{10}=5.845^2-4.716^2=11.923369$、$u_9=5.652^2-4.472^2=11.946320$；$\\bar{u}=11.9558386\\text{ mm}^2\\approx11.956\\text{ mm}^2$。",
              size=7.2, color="595959", italic=True, space_after=5)
 
-    reg_para("表 2-22-2  金属箔厚度 $D$ 的测量（劈尖，现场数得暗纹总级数 $N = 70$）", size=9, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, color="1F4E78", space_after=2)
+    reg_para("表 2-22-2  金属箔厚度 $D$ 的测量（劈尖，现场数得暗纹总级数 $N = 70$）", size=10, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, color="17324D", space_after=5, space_before=12, page_break_before=True)
     reg_para("劈尖暗纹级数 $N = 70$ 级　　上段：逐差法求相邻暗纹间距 $\\bar{s}$", size=8, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=2)
     headers2a = ["级数 $k$", "读数 $n_k\\ /\\text{mm}$", "$l_k = \\lvert n_{k+40} - n_k \\rvert\\ /\\text{mm}$", "统计"]
     rows2a = [
-        ["$0$", "$49.475$", "$l_{10} = 19.026\\ (=\\lvert n_{40} - n_0 \\rvert)$", "$40$ 条间距"],
-        ["$10$", "$44.128$", "$l_{20} = 17.572\\ (=\\lvert n_{50} - n_{10} \\rvert)$", ""],
-        ["$20$", "$39.115$", "$l_{30} = 16.260\\ (=\\lvert n_{60} - n_{20} \\rvert)$", ""],
-        ["$30$", "$34.621$", "$l_{40} = 15.251\\ (=\\lvert n_{70} - n_{30} \\rvert)$", ""],
+        ["$0$", "$49.475$", "$19.026$", "$40$ 条间距"],
+        ["$10$", "$44.128$", "$17.572$", ""],
+        ["$20$", "$39.115$", "$16.260$", ""],
+        ["$30$", "$34.621$", "$15.251$", ""],
         ["$40$", "$30.449$", "$\\bar{l} = 17.027$", "$4$ 个 $l_k$ 平均"],
         ["$50$", "$26.556$", "—", "—"],
         ["$60$", "$22.855$", "—", "—"],
@@ -493,11 +513,10 @@ def define_report():
     reg_para("三次长度均由原始读数相减：$L_1=33.452-0.000=33.452\\text{ mm}$，$L_2=33.455-(-0.065)=33.520\\text{ mm}$，$L_3=33.585-0.000=33.585\\text{ mm}$；$\\bar{L}=33.519\\text{ mm}$。",
              size=7.2, color="595959", italic=True, space_after=4)
 
-    reg_image(ASSETS / "B309-表1-牛顿环原表-裁切.png", width_in=4.2, caption="附：课本 p230 原表 2-22-1 局部截图（右侧 u 均值栏为 5 行合并大格）")
-    reg_image(ASSETS / "B309-表2-劈尖原表-裁切.png", width_in=4.2, caption="附：课本 p231 原表 2-22-2 局部截图（上半 s 均值、下半 L 均值栏为合并大格）")
+    # 课本表格扫描留在 assets 供核对；报告正文只保留清晰排印的实测表，避免重复展示教材空白模板。
 
     # 3.2 数据处理与不确定度
-    reg_para("3.2 数据处理与不确定度（$k = 1$，不计 $\\lambda$ 误差）", size=9.5, bold=True, color="1F4E78", space_before=4, space_after=3)
+    reg_para("3.2 数据处理与不确定度（$k = 1$，不计 $\\lambda$ 误差）", size=11, bold=True, color="17324D", space_before=4, space_after=6, page_break_before=True)
 
     reg_para("（1）牛顿环求 $R$（逐差法，$m = 5$）", size=9, bold=True, space_after=2, space_before=2)
     reg_para("由等厚干涉暗纹条件 $\\delta = 2e_k + \\frac{\\lambda}{2} = (2k+1)\\frac{\\lambda}{2}$ 及几何关系 $e_k \\approx \\frac{r_k^2}{2R} = \\frac{d_k^2}{8R}$，采用逐差法（$m = 5$）消去接触点附加厚度，得式 (2.22.4)：", size=9, space_after=2, indent=18)
@@ -507,17 +526,21 @@ def define_report():
     reg_para("代入 $20\\lambda = 0.011786\\text{ mm}$，得曲率半径平均值及其标准不确定度、相对不确定度：", size=9, space_after=2, indent=18)
     reg_eq(r"\bar{R} = \frac{\bar{u}}{20\lambda} = \frac{11.95584}{0.011786} = 1014.4\text{ mm} = 1.0144\text{ m}, \quad s_R = \frac{s_{\bar{u}}}{20\lambda} = 6.39\text{ mm}, \quad E_R = \frac{s_R}{\bar{R}} = 0.63\%", size=9)
     reg_box("结果：  $R = (1.0144 \\pm 0.0064)\\text{ m} = (1014.4 \\pm 6.4)\\text{ mm}$　　（$E_R = 0.63\\%$，$k = 1$）",
-            fill="FFF2CC", border_color="BF9000", text_color="7F6003", size=9.5, space_before=3, space_after=4)
-    reg_para("与课本标称约 $1.0\\text{ m}$ 符合；若取包含因子 $k = 2$，$U = 2s_R \\approx 12.8\\text{ mm}$，则 $R = (1.014 \\pm 0.013)\\text{ m}$。", size=8, color="595959", italic=True, space_after=2)
+            fill="FFF2CC", border_color="D6A83B", text_color="7F6003", size=9.5, space_before=3, space_after=4)
+    reg_image(ASSETS / "B309-图-牛顿环逐差量u_k.png", width_in=5.4,
+              caption="图 2  牛顿环逐差量 $u_k$ 的离散；阴影表示 $\\pm s(u_k)$，数据源为表 2-22-1。", cap_size=8)
+    reg_para("与课本标称约 $1.0\\text{ m}$ 符合；若取包含因子 $k = 2$，$U = 2s_R \\approx 12.8\\text{ mm}$，则 $R = (1.014 \\pm 0.013)\\text{ m}$。", size=8.5, color="607080", italic=True, space_after=2)
 
-    reg_para("（2）劈尖求 $D$（两式对照，以 (2.22.6) 式为准）", size=9, bold=True, space_after=2, space_before=3)
+    reg_para("（2）劈尖求 $D$（两式对照，以 (2.22.6) 式为准）", size=10, bold=True, color="17324D", space_after=5, space_before=4, page_break_before=True)
     reg_para("总暗纹计数式 (2.22.5)（仅计数，不计误差，作对照）：$D_N = N\\cdot\\frac{\\lambda}{2} = 70 \\times \\frac{0.0005893}{2} = 0.0206\\text{ mm} = 20.6\\ \\mu\\text{m}$。", size=9, space_after=2, indent=18)
     reg_para("条纹间距式 (2.22.6)：代入 $\\bar{s} = 0.4257\\text{ mm}$、$\\bar{L} = 33.519\\text{ mm}$，得：", size=9, space_after=2, indent=18)
     reg_eq(r"D = \frac{\bar{L}}{\bar{s}}\cdot\frac{\lambda}{2} = \frac{33.519}{0.4257}\times\frac{0.0005893}{2} = 0.0232\text{ mm} = 23.2\ \mu\text{m}", size=9)
     reg_para("不确定度传递与合成：$4$ 个 $l_k$ 的标准偏差 $s(l_k) = \\sqrt{\\frac{\\sum(l_k - \\bar{l})^2}{3}} = 1.6366\\text{ mm}$，故 $s_{\\bar{l}} = \\frac{s(l_k)}{\\sqrt{4}} = 0.8183\\text{ mm}$，$E_{\\bar{l}} = 4.806\\%$；$3$ 个 $L_i$ 的标准偏差 $s(L_i) = 0.06651\\text{ mm}$，故 $s_{\\bar{L}} = \\frac{s(L_i)}{\\sqrt{3}} = 0.03840\\text{ mm}$，$E_{\\bar{L}} = 0.1146\\%$。方和根合成：", size=9, space_after=2, indent=18)
     reg_eq(r"E_D = \sqrt{E_{\bar{l}}^2 + E_{\bar{L}}^2} = 4.807\%, \qquad s_D = E_D \cdot D = 0.001115\text{ mm} \approx 1.1\ \mu\text{m}", size=9)
     reg_box("结果：  $D = (0.0232 \\pm 0.0011)\\text{ mm} = (23.2 \\pm 1.1)\\ \\mu\\text{m}$　　（$E_D = 4.8\\%$，$k = 1$）",
-            fill="E2EFDA", border_color="548235", text_color="375C1E", size=9.5, space_before=3, space_after=3)
+            fill="EAF3E6", border_color="6C914D", text_color="375C1E", size=9.5, space_before=3, space_after=3)
+    reg_image(ASSETS / "B309-图-劈尖间距l_k.png", width_in=5.4,
+              caption="图 3  劈尖四个逐差量 $l_k$ 及其均值；阴影表示 $\\pm s(l_k)$，数据源为表 2-22-2。", cap_size=8)
     reg_para("以 (2.22.6) 式为准；(2.22.5) 式偏小约 $11\\%$，因所数 $N = 70$ 未达垫片边缘且 $\\bar{s}$ 轻微非均匀（$\\frac{\\bar{L}}{\\bar{s}} \\approx 78.74$，末条距边缘尚约 $9$ 条间距）。若 $N$ 正好到边缘且劈尖均匀，两式结果一致。",
              size=7.5, color="595959", italic=True, space_after=5, indent=18)
 
@@ -528,7 +551,7 @@ def define_report():
     reg_para("**建议：**① 牛顿环对准时使叉丝严格切于暗环正中弦位并估读至 $0.001\\text{ mm}$；② 劈尖测 $s$ 避开两端受压边缘段，或增至 $5\\sim 9$ 段平均以抑制楔角缓变；③ 长度 $L$ 用同一显微镜单向三次独立定端，减小端点判读误差。", size=9, space_after=4)
 
     # 五、实验思考题
-    reg_sec("五、", "实验思考题（重点：思考题2 为评分1分题，课本p224第2题）", "Exercises")
+    reg_sec("五、", "实验思考题（重点：思考题2 为评分1分题，课本p224第2题）", "Exercises", page_break_before=True)
     reg_para("按课本 p224 七题中选三作答，按计算与证明题标准分步推导；题干以灰字抄录便于核分。评分：格式 2 分、$R$ 计算 3 分、$D$ 计算 3 分、思考题 2 占 1 分、小结 1 分。",
              size=7.2, color="595959", italic=True, space_after=4)
 
@@ -538,7 +561,7 @@ def define_report():
              size=9, space_after=4, indent=18)
 
     reg_box("思考题2（p224-2，评分1分：牛顿环中心亮斑及其对 $R$ 测量的影响）",
-            fill="FFF2CC", border_color="BF9000", text_color="7F6003", all_borders=False, align="left", size=9, space_before=4, space_after=2)
+            fill="FFF2CC", border_color="BF9000", text_color="7F6003", all_borders=False, align="left", size=9, space_before=4, space_after=2, page_break_before=True)
     reg_para("答：**原因：**接触点夹有微尘或未压紧时存在附加空气隙 $e_0 > 0$，中心光程差 $\\delta_0 = 2e_0 + \\frac{\\lambda}{2}$；当满足明纹条件 $2e_0 + \\frac{\\lambda}{2} = j\\lambda$（如 $e_0 = \\frac{\\lambda}{4}$）时中心即为亮斑。**影响及证明：**对逐差法测 $R$ **无影响**（仅对单环式 $r_k^2 = kR\\lambda$ 有系统误差）。设附加厚度为 $e_0$，第 $k$ 级暗环处总厚度 $e_k' = \\frac{r_k^2}{2R} + e_0$，代入暗纹条件：",
              size=9, space_after=2, indent=18)
     reg_eq(r"2\left(\frac{r_k^2}{2R} + e_0\right) + \frac{\lambda}{2} = (2k + 1)\frac{\lambda}{2} \implies r_k^2 = (k\lambda - 2e_0)R", size=9)
@@ -553,8 +576,8 @@ def define_report():
 
     reg_box("附录  原始记录与数据复核说明",
             fill="F2F2F2", border_color="D9D9D9", text_color="595959", all_borders=False, left_sz="0", align="center", size=7.2, space_before=6, space_after=2)
-    reg_para("原始记录纸（报告纸 p30）由本人保存备查；本报告不含原始手写记录影像。所附教材表格裁切图仅供核对课本表式，不是实测数据记录。",
-             size=7, color="808080", italic=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=6)
+    reg_para("原始手写记录影像目前未提供，因此本次仅复核转录读数的算术一致性，未逐位核验手写原件；报告数据来源为用户提供的转录读数。",
+             size=8, color="607080", italic=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=6)
 
 
 def build_docx():
@@ -570,6 +593,8 @@ def build_docx():
             all_strings.extend(headers)
             for row in rows:
                 all_strings.extend(row)
+        elif kind == "image" and kw.get("caption"):
+            all_strings.append(kw["caption"])
     precompile_katex(all_strings)
 
     doc = Document()
@@ -577,9 +602,9 @@ def build_docx():
     style = doc.styles["Normal"]
     style.font.name = "宋体"
     style._element.rPr.rFonts.set(qn("w:eastAsia"), "宋体")
-    style.font.size = Pt(9)
-    style.paragraph_format.line_spacing = 1.08
-    style.paragraph_format.space_after = Pt(3)
+    style.font.size = Pt(10.2)
+    style.paragraph_format.line_spacing = 1.5
+    style.paragraph_format.space_after = Pt(5)
 
     for sec in doc.sections:
         set_margins(sec)
@@ -589,12 +614,15 @@ def build_docx():
     section = doc.sections[0]
     hp = section.header.paragraphs[0]
     hp.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r = hp.add_run("大学物理实验 I-2 · B309 等厚干涉及其应用 · 实验 2.22")
-    r.font.size = Pt(7.5)
-    r.font.color.rgb = RGBColor(0x66, 0x66, 0x66)
+    r = hp.add_run("大学物理实验 I-2  ·  B309 等厚干涉及其应用  ·  实验 2.22")
+    r.font.size = Pt(8)
+    r.font.color.rgb = RGBColor(0x60, 0x70, 0x80)
     r.font.name = "宋体"
     r._element.rPr.rFonts.set(qn("w:eastAsia"), "宋体")
     r._element.rPr.rFonts.set(qn("w:ascii"), "Times New Roman")
+    hp._p.get_or_add_pPr().append(parse_xml(
+        f'<w:pBdr {nsdecls("w")}><w:bottom w:val="single" w:sz="4" w:space="3" w:color="D6A83B"/></w:pBdr>'
+    ))
 
     fp = section.footer.paragraphs[0]
     fp.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -664,6 +692,7 @@ def build_docx():
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER if kw["align"] == "center" else WD_ALIGN_PARAGRAPH.LEFT
             p.paragraph_format.space_before = Pt(kw["space_before"])
             p.paragraph_format.space_after = Pt(kw["space_after"])
+            p.paragraph_format.page_break_before = kw.get("page_break_before", False)
             append_rich_content(p, payload, size=kw["size"], bold=(kw["fill"] != "F2F2F2"),
                                 italic=(kw["fill"] == "F2F2F2"), color=kw["text_color"])
 
@@ -676,10 +705,12 @@ def build_docx():
             ))
             p.paragraph_format.space_before = Pt(7)
             p.paragraph_format.space_after = Pt(4)
+            p.paragraph_format.page_break_before = kw.get("page_break_before", False)
+            p.paragraph_format.keep_with_next = True
             r = p.add_run(f"  {payload}")
             r.bold = True
-            r.font.size = Pt(11)
-            r.font.color.rgb = RGBColor(0x1F, 0x4E, 0x78)
+            r.font.size = Pt(12)
+            r.font.color.rgb = RGBColor(0x17, 0x32, 0x4D)
             r.font.name = "宋体"
             r._element.rPr.rFonts.set(qn("w:eastAsia"), "宋体")
             r._element.rPr.rFonts.set(qn("w:ascii"), "Times New Roman")
@@ -694,7 +725,7 @@ def build_docx():
             headers, rows = payload
             col_widths = kw["col_widths"]
             header_shade = kw["header_shade"]
-            fs = kw["font_size"]
+            fs = kw["font_size"] * 1.23
             table = doc.add_table(rows=1 + len(rows), cols=len(headers))
             table.alignment = WD_TABLE_ALIGNMENT.CENTER
             table.autofit = False
@@ -709,7 +740,8 @@ def build_docx():
                 p.alignment = WD_ALIGN_PARAGRAPH.CENTER
                 p.paragraph_format.space_before = Pt(2)
                 p.paragraph_format.space_after = Pt(2)
-                append_rich_content(p, str(h), size=fs, bold=True, color="FFFFFF")
+                header_color = "17324D" if header_shade.upper() in {"EAF1F6", "F3F6F9", "E2EFDA"} else "FFFFFF"
+                append_rich_content(p, str(h), size=fs, bold=True, color=header_color)
                 set_cell_border(
                     cell,
                     top={"val": "single", "sz": "4", "color": "404040"},

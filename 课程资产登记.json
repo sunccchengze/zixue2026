@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updated": "2026-10-22",
+  "updated": "2026-11-01",
   "courses": [
     {
       "path": "大学物理",
@@ -658,7 +658,7 @@
       "package": "大学物理实验/实验项目/实验报告/B309-等厚干涉",
       "entry": "大学物理实验/实验项目/实验报告/B309-等厚干涉/README.md",
       "state": "待验收",
-      "reason": "已按手写实测数据完成重算与 KaTeX 公式排版；DOCX 采用 Word 原生 OMML 数学对象，已转换并渲染检查 PDF（3 页）；仍待教师最终验收，不承诺可直接提交。",
+      "reason": "已按用户提供的精排版参考重排为 8 页 A4 报告，含封面结果摘要、分节实测表、编号推导、派生数据图和统一页眉页码；DOCX 全文行距至少 1.5 倍，已生成并逐页视觉检查。原始手写记录影像未提供，仅复核转录读数的算术一致性；仍待教师最终验收，不承诺可直接提交。",
       "current": [
         {
           "role": "完整报告 Markdown（KaTeX 源）",
@@ -669,7 +669,7 @@
           "path": "大学物理实验/实验项目/实验报告/B309-等厚干涉/实验报告-等厚干涉-完整版.docx"
         },
         {
-          "role": "PDF（DOCX 转换版，3 页）",
+          "role": "PDF（DOCX 转换版，8 页，已渲染检查）",
           "path": "大学物理实验/实验项目/实验报告/B309-等厚干涉/实验报告-等厚干涉-完整版.pdf"
         },
         {
@@ -681,10 +681,14 @@
         "大学物理实验/资料原件/大学物理实验 第三版_1-348/（已压缩）大学物理实验 第三版_1-348_201-250.pdf",
         "大学物理实验/实验项目/assets/B309-图2-135显微镜观测.png",
         "大学物理实验/实验项目/assets/B309-表1-牛顿环原表.png",
-        "大学物理实验/实验项目/assets/B309-表2-劈尖原表.png"
+        "大学物理实验/实验项目/assets/B309-表2-劈尖原表.png",
+        "大学物理实验/实验项目/assets/B309-图-等厚干涉几何示意.png",
+        "大学物理实验/实验项目/assets/B309-图-牛顿环逐差量u_k.png",
+        "大学物理实验/实验项目/assets/B309-图-劈尖间距l_k.png"
       ],
       "tools": [
         "大学物理实验/工具/B309/README.md",
+        "大学物理实验/工具/B309/generate_B309_charts.py",
         "大学物理实验/工具/B309/generate_B309_docx.py",
         "大学物理实验/工具/B309/docx_to_pdf.py",
         "大学物理实验/工具/B309/fonts/KATEX-LICENSE.txt",
@@ -692,8 +696,9 @@
       ],
       "history": [],
       "reproduce": [
-        "python -m pip install python-docx lxml typst",
+        "python -m pip install python-docx lxml typst Pillow",
         "npm install --no-save --no-package-lock katex",
+        "python 大学物理实验/工具/B309/generate_B309_charts.py",
         "python 大学物理实验/工具/B309/generate_B309_docx.py",
         "python 大学物理实验/工具/B309/docx_to_pdf.py"
       ]
