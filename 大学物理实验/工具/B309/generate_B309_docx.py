@@ -445,6 +445,16 @@ def define_report():
     reg_para("3. 比较劈尖总暗纹计数与条纹间距两种测箔厚方法，并完成不确定度评定。", size=9.5, space_after=4)
     reg_image(ASSETS / "B309-图-等厚干涉几何示意.png", width_in=6.4,
               caption="图 1  牛顿环等厚线与空气劈尖参数示意（结构与比例均为示意，不代表实测装置）。", cap_size=8)
+    reg_para("数据处理路径", size=8.5, bold=True, color="17324D", space_before=3, space_after=2)
+    reg_table(["01 读数", "02 逐差", "03 统计", "04 表示"],
+              [["原始值照录", "$u_k$、$l_k$", "$s$ 与传递", "$R$、$D$ ± $s$"],
+               ["不改写输入", "消去固定项", "$k=1$ 标准不确定度", "保留单位与有效位"]],
+              col_widths=[1.62, 1.62, 1.62, 1.62], header_shade="EAF1F6", font_size=7.8)
+    reg_para("判据：$R$ 取五级逐差法；箔厚 $D$ 以平均条纹间距法为主，$N=70$ 计数值仅作对照。", size=7.8, color="607080", italic=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_before=2, space_after=1)
+    reg_para("复核边界：手写原始记录影像未提供；本版仅复核转录读数的算术一致性，不声称逐位核验手写原件。", size=7.8, color="607080", italic=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_before=1, space_after=1)
+    reg_para("阅读导引：§2 仪器与方法 → §3 原始读数、回归交叉核验与不确定度 → §4 结论 → §5 思考题。", size=8, color="607080", italic=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_before=1, space_after=1)
+    reg_para("图表为基于转录读数重绘的分析图，并非原始记录影像；原始读数与计算派生量分列，便于追溯。", size=7.8, color="607080", italic=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_before=0, space_after=2)
+    reg_para("全文保留原始读数；图表标题均置于图注，回归线仅作独立一致性检查，主结果仍按指定逐差法计算。", size=7.8, color="607080", italic=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_before=0, space_after=2)
 
     # 二、实验仪器与实验方法（精简版：仅仪器+方法+一句原理+图2-135）
     reg_sec("二、", "实验仪器与实验方法", "Apparatus & Method", page_break_before=True)
@@ -457,9 +467,11 @@ def define_report():
          ["数据", "原始读数照录；改变移动方向后退回多级再测，派生值只由原始读数计算。"]],
         col_widths=[1.25, 5.25], header_shade="17324D", font_size=8.3,
     )
-    reg_para("原理仅一句：本实验为等厚干涉，公式 (2.22.4) $R = \\dfrac{d_{k+5}^2 - d_k^2}{20\\lambda}$、(2.22.5) $D = N\\dfrac{\\lambda}{2}$、(2.22.6) $D = \\dfrac{\\bar{L}}{\\bar{s}}\\cdot\\dfrac{\\lambda}{2}$ 详见 §三 数据处理，其中 $\\lambda = 589.3\\text{ nm} = 0.0005893\\text{ mm}$，$20\\lambda = 0.011786\\text{ mm}$。",
-             size=7.8, color="595959", italic=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=4)
-    reg_image(ASSETS / "B309-图2-135显微镜观测-裁切.png", width_in=2.0, caption="图 2-135  读数显微镜＋45°半反镜 M 观测光路（方法调节用）")
+    reg_para("处理模型与适用条件（$\\lambda = 589.3\\text{ nm} = 0.0005893\\text{ mm}$）：", size=8.2, bold=True, color="17324D", space_before=3, space_after=1)
+    reg_eq(r"d_k^2 = 4R\lambda k + C, \qquad R = \frac{d_{k+5}^2-d_k^2}{20\lambda} = \frac{u_k}{20\lambda}", size=8.6)
+    reg_eq(r"D_N = N\frac{\lambda}{2}, \qquad \alpha \approx \frac{D}{L}, \quad s \approx \frac{\lambda}{2\alpha} \implies D \approx \frac{L}{s}\frac{\lambda}{2}", size=8.6)
+    reg_para("牛顿环平方差消去接触点常数 $C$；劈尖计数式仅作对照，厚度主结果采用实测平均条纹间距与长度。$20\\lambda = 0.011786\\text{ mm}$。", size=7.8, color="595959", italic=True, space_after=3)
+    reg_image(ASSETS / "B309-图2-135显微镜观测-裁切.png", width_in=2.7, caption="图 2-135  读数显微镜＋45°半反镜 M 观测光路（方法调节用）")
 
     # 三、测量内容及数据处理
     reg_sec("三、", "测量内容及数据处理", "Measurement & Data Reduction", page_break_before=True)
@@ -481,7 +493,10 @@ def define_report():
     ]
     reg_table(headers1, rows1, col_widths=[0.6, 0.98, 0.98, 1.45, 0.95, 1.55], header_shade="1F4E78", font_size=7.5)
     reg_para("注：初、末读数为原始实测值，本表 $d_k$、$d_k^2$、$u_k$ 均由这些读数复算；计算使用未舍入的差值与平方，表中显示至 $0.001$。例如 $u_{10}=5.845^2-4.716^2=11.923369$、$u_9=5.652^2-4.472^2=11.946320$；$\\bar{u}=11.9558386\\text{ mm}^2\\approx11.956\\text{ mm}^2$。",
-             size=7.2, color="595959", italic=True, space_after=5)
+             size=7.2, color="595959", italic=True, space_after=3)
+    reg_image(ASSETS / "B309-图-牛顿环d²-k线性拟合.png", width_in=6.2,
+              caption="图 2  牛顿环 $d_k^2$—级数 $k$ 线性回归交叉核验（点为表 2-22-1 原始读数的平方，线为最小二乘拟合）。", cap_size=7.8)
+    reg_para("十组读数拟合斜率 $a=2.38914\\text{ mm}^2/\\text{级}$，$R^2=0.999716$；按 $a=4R\\lambda$ 得 $R_{\\rm fit}=1.01355\\text{ m}$，与逐差主结果 $1.0144\\text{ m}$ 相差约 $0.08\\%$。该回归仅作独立一致性检查，报告主结果仍采用五级逐差法。", size=8, color="607080", italic=True, space_after=4)
 
     reg_para("表 2-22-2  金属箔厚度 $D$ 的测量（劈尖，现场数得暗纹总级数 $N = 70$）", size=10, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, color="17324D", space_after=5, space_before=12, page_break_before=True)
     reg_para("劈尖暗纹级数 $N = 70$ 级　　上段：逐差法求相邻暗纹间距 $\\bar{s}$", size=8, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=2)
@@ -511,7 +526,10 @@ def define_report():
     ]
     reg_table(headers2b, rows2b, col_widths=[0.9, 1.5, 1.5, 1.9], header_shade="548235", font_size=7.5)
     reg_para("三次长度均由原始读数相减：$L_1=33.452-0.000=33.452\\text{ mm}$，$L_2=33.455-(-0.065)=33.520\\text{ mm}$，$L_3=33.585-0.000=33.585\\text{ mm}$；$\\bar{L}=33.519\\text{ mm}$。",
-             size=7.2, color="595959", italic=True, space_after=4)
+             size=7.2, color="595959", italic=True, space_after=3)
+    reg_image(ASSETS / "B309-图-劈尖间距l_k.png", width_in=6.2,
+              caption="图 3  劈尖四个逐差量 $l_k$ 及其均值；阴影表示 $\\pm s(l_k)$，数据源为表 2-22-2。", cap_size=7.8)
+    reg_para("四个观测段的逐差量单调递减，图示离散范围亦体现楔角的非均匀性；厚度主结果据四段平均值计算。", size=8, color="607080", italic=True, space_after=3)
 
     # 课本表格扫描留在 assets 供核对；报告正文只保留清晰排印的实测表，避免重复展示教材空白模板。
 
@@ -521,14 +539,22 @@ def define_report():
     reg_para("（1）牛顿环求 $R$（逐差法，$m = 5$）", size=9, bold=True, space_after=2, space_before=2)
     reg_para("由等厚干涉暗纹条件 $\\delta = 2e_k + \\frac{\\lambda}{2} = (2k+1)\\frac{\\lambda}{2}$ 及几何关系 $e_k \\approx \\frac{r_k^2}{2R} = \\frac{d_k^2}{8R}$，采用逐差法（$m = 5$）消去接触点附加厚度，得式 (2.22.4)：", size=9, space_after=2, indent=18)
     reg_eq(r"R = \frac{d_{k+m}^2 - d_k^2}{4m\lambda} = \frac{d_{k+5}^2 - d_k^2}{20\lambda} = \frac{u_k}{20\lambda}", size=9)
-    reg_para("由表 2-22-1 得 $\\bar{u}=11.95584\\text{ mm}^2$。按未舍入数据，各残差 $u_k-\\bar{u}$（$k=6,7,8,9,10$）约为 $-0.0936$、$-0.1493$、$+0.2848$、$-0.0095$、$-0.0325\\text{ mm}^2$，残差平方和为 $0.11332\\text{ mm}^4$，故：", size=9, space_after=2, indent=18)
+    reg_para("由表 2-22-1 得 $\\bar{u}=11.9558386\\text{ mm}^2$。表中列出未舍入差值与均值偏差，便于复核样本标准差：", size=9, space_after=2, indent=18)
+    reg_table(["$k$", "$u_k$（mm²）", "$u_k-\\bar{u}$（mm²）", "$(u_k-\\bar{u})^2$（mm⁴）"],
+              [["6", "11.862260", "−0.093579", "0.008757"],
+               ["7", "11.806560", "−0.149279", "0.022284"],
+               ["8", "12.240684", "+0.284845", "0.081137"],
+               ["9", "11.946320", "−0.009519", "0.000091"],
+               ["10", "11.923369", "−0.032470", "0.001054"],
+               ["Σ", "—", "—", "0.113323"]],
+              col_widths=[0.6, 1.35, 1.6, 1.75], header_shade="EAF1F6", font_size=7.6)
     reg_eq(r"s(u_k) = \sqrt{\frac{0.11332}{4}} = 0.1683\text{ mm}^2, \qquad s_{\bar{u}} = \frac{s(u_k)}{\sqrt{5}} = 0.07527\text{ mm}^2", size=9)
     reg_para("代入 $20\\lambda = 0.011786\\text{ mm}$，得曲率半径平均值及其标准不确定度、相对不确定度：", size=9, space_after=2, indent=18)
     reg_eq(r"\bar{R} = \frac{\bar{u}}{20\lambda} = \frac{11.95584}{0.011786} = 1014.4\text{ mm} = 1.0144\text{ m}, \quad s_R = \frac{s_{\bar{u}}}{20\lambda} = 6.39\text{ mm}, \quad E_R = \frac{s_R}{\bar{R}} = 0.63\%", size=9)
     reg_box("结果：  $R = (1.0144 \\pm 0.0064)\\text{ m} = (1014.4 \\pm 6.4)\\text{ mm}$　　（$E_R = 0.63\\%$，$k = 1$）",
             fill="FFF2CC", border_color="D6A83B", text_color="7F6003", size=9.5, space_before=3, space_after=4)
-    reg_image(ASSETS / "B309-图-牛顿环逐差量u_k.png", width_in=5.4,
-              caption="图 2  牛顿环逐差量 $u_k$ 的离散；阴影表示 $\\pm s(u_k)$，数据源为表 2-22-1。", cap_size=8)
+    reg_image(ASSETS / "B309-图-牛顿环逐差量u_k.png", width_in=6.4,
+              caption="图 4  牛顿环逐差量 $u_k$ 的离散；阴影表示 $\\pm s(u_k)$，数据源为表 2-22-1。", cap_size=8)
     reg_para("与课本标称约 $1.0\\text{ m}$ 符合；若取包含因子 $k = 2$，$U = 2s_R \\approx 12.8\\text{ mm}$，则 $R = (1.014 \\pm 0.013)\\text{ m}$。", size=8.5, color="607080", italic=True, space_after=2)
 
     reg_para("（2）劈尖求 $D$（两式对照，以 (2.22.6) 式为准）", size=10, bold=True, color="17324D", space_after=5, space_before=4, page_break_before=True)
@@ -539,8 +565,6 @@ def define_report():
     reg_eq(r"E_D = \sqrt{E_{\bar{l}}^2 + E_{\bar{L}}^2} = 4.807\%, \qquad s_D = E_D \cdot D = 0.001115\text{ mm} \approx 1.1\ \mu\text{m}", size=9)
     reg_box("结果：  $D = (0.0232 \\pm 0.0011)\\text{ mm} = (23.2 \\pm 1.1)\\ \\mu\\text{m}$　　（$E_D = 4.8\\%$，$k = 1$）",
             fill="EAF3E6", border_color="6C914D", text_color="375C1E", size=9.5, space_before=3, space_after=3)
-    reg_image(ASSETS / "B309-图-劈尖间距l_k.png", width_in=5.4,
-              caption="图 3  劈尖四个逐差量 $l_k$ 及其均值；阴影表示 $\\pm s(l_k)$，数据源为表 2-22-2。", cap_size=8)
     reg_para("以 (2.22.6) 式为准；(2.22.5) 式偏小约 $11\\%$，因所数 $N = 70$ 未达垫片边缘且 $\\bar{s}$ 轻微非均匀（$\\frac{\\bar{L}}{\\bar{s}} \\approx 78.74$，末条距边缘尚约 $9$ 条间距）。若 $N$ 正好到边缘且劈尖均匀，两式结果一致。",
              size=7.5, color="595959", italic=True, space_after=5, indent=18)
 
@@ -549,6 +573,20 @@ def define_report():
     reg_para("**结论：**牛顿环逐差法测得平凸透镜曲率半径 $R = (1014.4 \\pm 6.4)\\text{ mm} = (1.0144 \\pm 0.0064)\\text{ m}$（$E_R = 0.63\\%$），与课本标称约 $1.0\\text{ m}$ 符合；劈尖以 $\\frac{\\bar{L}}{\\bar{s}}\\cdot\\frac{\\lambda}{2}$ 法测得金属箔厚度 $D = (23.2 \\pm 1.1)\\ \\mu\\text{m}$（$E_D = 4.8\\%$），对照计数式 $D_N = 20.6\\ \\mu\\text{m}$ 偏小 $2.6\\ \\mu\\text{m}$，反映末条暗纹距薄端边缘尚约 $9$ 条间距，验证了两式的适用条件。", size=9, space_after=2)
     reg_para("**误差分析：**$R$ 的 $0.63\\%$ 主要为 $5$ 个 $u_k$ 的随机分散（$s(u_k) = 0.1683\\text{ mm}^2$），源于读数显微镜 $0.01\\text{ mm}$ 读数估读与十字叉丝对准误差；全程单向移动已抑制回程差，逐差法已消除中心接触点附加光程差。$D$ 的 $4.8\\%$ 几乎全来自 $\\bar{s}$（即 $\\bar{l}$）的 $4.806\\%$（$l_k$ 从 $19.026 \\to 15.251\\text{ mm}$ 系统递减），$\\bar{L}$ 仅 $0.115\\%$ 可忽略，说明劈尖平板微弯或接触处压紧不均使楔角 $\\alpha$ 随位置缓变（若均匀则 $4$ 个 $l_k$ 应在 $17.0\\text{ mm}$ 附近一致）。", size=9, space_after=2)
     reg_para("**建议：**① 牛顿环对准时使叉丝严格切于暗环正中弦位并估读至 $0.001\\text{ mm}$；② 劈尖测 $s$ 避开两端受压边缘段，或增至 $5\\sim 9$ 段平均以抑制楔角缓变；③ 长度 $L$ 用同一显微镜单向三次独立定端，减小端点判读误差。", size=9, space_after=4)
+    reg_para("结果与主要不确定度来源", size=8.5, bold=True, color="17324D", space_before=2, space_after=2)
+    reg_table(["测量量", "报告结果（$k=1$）", "主要影响项"],
+              [["曲率半径 $R$", "$(1.0144\\pm0.0064)\\text{ m}$；$E_R=0.63\\%$", "$u_k$ 的随机离散"],
+               ["金属箔厚 $D$", "$(23.2\\pm1.1)\\mu\\text{m}$；$E_D=4.8\\%$", "$l_k$ 随位置递减，楔角非均匀"]],
+              col_widths=[1.35, 2.55, 2.6], header_shade="EAF1F6", font_size=7.7)
+    reg_para("评分点核对（总分 10 分）", size=8.5, bold=True, color="17324D", space_before=3, space_after=2)
+    reg_table(["评分项", "分值", "报告定位"],
+              [["格式与量纲", "2", "全文；数据表与公式"],
+               ["$R$ 计算", "3", "§3；逐差法及不确定度"],
+               ["$D$ 计算", "3", "§3；两法对照及误差合成"],
+               ["思考题 2", "1", "§5；中心亮斑证明"],
+               ["小结", "1", "§4；结论、误差与建议"],
+               ["合计", "10", "—"]],
+              col_widths=[1.4, 0.65, 4.45], header_shade="17324D", font_size=7.5)
 
     # 五、实验思考题
     reg_sec("五、", "实验思考题（重点：思考题2 为评分1分题，课本p224第2题）", "Exercises", page_break_before=True)
@@ -561,7 +599,7 @@ def define_report():
              size=9, space_after=4, indent=18)
 
     reg_box("思考题2（p224-2，评分1分：牛顿环中心亮斑及其对 $R$ 测量的影响）",
-            fill="FFF2CC", border_color="BF9000", text_color="7F6003", all_borders=False, align="left", size=9, space_before=4, space_after=2, page_break_before=True)
+            fill="FFF2CC", border_color="BF9000", text_color="7F6003", all_borders=False, align="left", size=9, space_before=4, space_after=2, page_break_before=False)
     reg_para("答：**原因：**接触点夹有微尘或未压紧时存在附加空气隙 $e_0 > 0$，中心光程差 $\\delta_0 = 2e_0 + \\frac{\\lambda}{2}$；当满足明纹条件 $2e_0 + \\frac{\\lambda}{2} = j\\lambda$（如 $e_0 = \\frac{\\lambda}{4}$）时中心即为亮斑。**影响及证明：**对逐差法测 $R$ **无影响**（仅对单环式 $r_k^2 = kR\\lambda$ 有系统误差）。设附加厚度为 $e_0$，第 $k$ 级暗环处总厚度 $e_k' = \\frac{r_k^2}{2R} + e_0$，代入暗纹条件：",
              size=9, space_after=2, indent=18)
     reg_eq(r"2\left(\frac{r_k^2}{2R} + e_0\right) + \frac{\lambda}{2} = (2k + 1)\frac{\lambda}{2} \implies r_k^2 = (k\lambda - 2e_0)R", size=9)

@@ -658,7 +658,7 @@
       "package": "大学物理实验/实验项目/实验报告/B309-等厚干涉",
       "entry": "大学物理实验/实验项目/实验报告/B309-等厚干涉/README.md",
       "state": "待验收",
-      "reason": "已按用户提供的精排版参考重排为 8 页 A4 报告，含封面结果摘要、分节实测表、编号推导、派生数据图和统一页眉页码；DOCX 全文行距至少 1.5 倍，已生成并逐页视觉检查。原始手写记录影像未提供，仅复核转录读数的算术一致性；仍待教师最终验收，不承诺可直接提交。",
+      "reason": "已按用户提供的精排版参考重排为 7 页 A4 报告，含封面摘要、分节实测表、推导、不确定度表与派生数据图；DOCX 全文行距至少 1.5 倍，含327个OMML对象。新增 d_k²-k 最小二乘拟合作为牛顿环逐差结果的独立交叉核验（R_fit=1.01355 m，R²=0.999716），不替代主结果、不改写原始转录读数。PDF量化预检与逐页视觉检查通过：A4、页面边界、关键结果文本及非末页底部留白≤60 mm。原始手写记录影像未提供，仅复核转录读数的算术一致性；仍待教师最终验收，不承诺可直接提交。",
       "current": [
         {
           "role": "完整报告 Markdown（KaTeX 源）",
@@ -669,7 +669,7 @@
           "path": "大学物理实验/实验项目/实验报告/B309-等厚干涉/实验报告-等厚干涉-完整版.docx"
         },
         {
-          "role": "PDF（DOCX 转换版，8 页，已渲染检查）",
+          "role": "PDF（DOCX 转换版，7 页，量化预检与逐页视觉检查通过）",
           "path": "大学物理实验/实验项目/实验报告/B309-等厚干涉/实验报告-等厚干涉-完整版.pdf"
         },
         {
@@ -684,23 +684,26 @@
         "大学物理实验/实验项目/assets/B309-表2-劈尖原表.png",
         "大学物理实验/实验项目/assets/B309-图-等厚干涉几何示意.png",
         "大学物理实验/实验项目/assets/B309-图-牛顿环逐差量u_k.png",
-        "大学物理实验/实验项目/assets/B309-图-劈尖间距l_k.png"
+        "大学物理实验/实验项目/assets/B309-图-劈尖间距l_k.png",
+        "大学物理实验/实验项目/assets/B309-图-牛顿环d²-k线性拟合.png"
       ],
       "tools": [
         "大学物理实验/工具/B309/README.md",
         "大学物理实验/工具/B309/generate_B309_charts.py",
         "大学物理实验/工具/B309/generate_B309_docx.py",
         "大学物理实验/工具/B309/docx_to_pdf.py",
+        "大学物理实验/工具/B309/audit_B309_pdf.py",
         "大学物理实验/工具/B309/fonts/KATEX-LICENSE.txt",
         "大学物理实验/工具/B309/fonts/OPEN-FONT-LICENSE.txt"
       ],
       "history": [],
       "reproduce": [
-        "python -m pip install python-docx lxml typst Pillow",
+        "python -m pip install python-docx lxml typst Pillow pymupdf",
         "npm install --no-save --no-package-lock katex",
         "python 大学物理实验/工具/B309/generate_B309_charts.py",
         "python 大学物理实验/工具/B309/generate_B309_docx.py",
-        "python 大学物理实验/工具/B309/docx_to_pdf.py"
+        "python 大学物理实验/工具/B309/docx_to_pdf.py",
+        "python 大学物理实验/工具/B309/audit_B309_pdf.py --preview-dir /tmp/b309-preview"
       ]
     },
     {

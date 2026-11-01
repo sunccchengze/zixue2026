@@ -431,7 +431,7 @@ def convert_docx_to_pdf(docx_path: Path, pdf_path: Path) -> int:
   lang: "zh",
 )
 #show math.equation: set text(font: ("New Computer Modern Math", "KaTeX_Main", "Source Han Serif"))
-#set par(leading: 1.38em, justify: true) // 保留至少 1.5 倍的阅读节奏，避免公式与汉字段落拥挤
+#set par(leading: 1.50em, justify: true) // 按手册将 PDF 正文行距提高至约 1.5 倍，避免公式与汉字段落拥挤
 
 """ + "\n\n".join(body_blocks) + "\n"
 

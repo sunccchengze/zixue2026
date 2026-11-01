@@ -26,7 +26,7 @@ def font(size: int, bold: bool = False):
         return ImageFont.load_default()
 
 def draw_chart(filename, values, labels, mean, y_min, y_max, y_ticks,
-               y_label, annotation, decimals=3):
+               y_label, decimals=3):
     w, h = 1500, 820
     im = Image.new("RGB", (w, h), WHITE)
     d = ImageDraw.Draw(im)
@@ -64,12 +64,11 @@ def draw_chart(filename, values, labels, mean, y_min, y_max, y_ticks,
         d.text((x-tw/2, label_y), t, fill=NAVY, font=f_tick)
         bbox = d.textbbox((0, 0), lab, font=f_tick)
         d.text((x-(bbox[2]-bbox[0])/2, y1+24), lab, fill=MUTED, font=f_tick)
-    mean_label = f"mean = {mean:.4f}" if "u_k" in filename else f"mean = {mean:.3f} mm"
+    mean_label = f"均值 = {mean:.4f} mm²" if "u_k" in filename else f"均值 = {mean:.3f} mm"
     mean_box = d.textbbox((0, 0), mean_label, font=f_note)
     d.rounded_rectangle((x0+18, y0+15, x0+mean_box[2]-mean_box[0]+42, y0+55), radius=7, fill=WHITE)
     d.text((x0+30, y0+18), mean_label, fill=BLUE, font=f_note)
-    # Axis descriptions are intentionally English/math-only for consistent glyph support.
-    d.text((x0, 18), annotation, fill=NAVY, font=font(27, True))
+    # Figure titles are kept in the document caption; the plot itself carries only data labels.
     axis_text = "级数 k"
     axis_box = d.textbbox((0, 0), axis_text, font=f_axis)
     d.text((x0+(x1-x0-(axis_box[2]-axis_box[0]))/2, h-57), axis_text, fill=MUTED, font=f_axis)
@@ -81,19 +80,67 @@ def draw_chart(filename, values, labels, mean, y_min, y_max, y_ticks,
     im.paste(label, (18, (h-label.height)//2), label)
     im.save(OUT / filename, dpi=(220,220), optimize=True)
 
+def draw_newton_linear_fit():
+    """Plot d_k^2 against k and its least-squares fit using the ten transcribed readings."""
+    k = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    d = [3.572, 3.907, 4.150, 4.472, 4.716, 4.962, 5.203, 5.428, 5.652, 5.845]
+    yy_data = [v*v for v in d]
+    xm, ym = sum(k)/len(k), sum(yy_data)/len(yy_data)
+    slope = sum((x-xm)*(y-ym) for x,y in zip(k,yy_data))/sum((x-xm)**2 for x in k)
+    intercept = ym-slope*xm
+    ss_res = sum((y-(slope*x+intercept))**2 for x,y in zip(k,yy_data))
+    ss_tot = sum((y-ym)**2 for y in yy_data)
+    r2 = 1-ss_res/ss_tot
+    r_fit_m = slope/(4*0.0005893)/1000
+
+    w, h = 1500, 820
+    im = Image.new("RGB", (w,h), WHITE)
+    dr = ImageDraw.Draw(im)
+    f_axis, f_tick, f_note = font(29), font(25), font(24)
+    left, top, right, bottom = 155, 70, 70, 145
+    x0,y0,x1,y1=left,top,w-right,h-bottom
+    x_min,x_max=5.5,15.5
+    y_min,y_max=10.0,36.0
+    def px(x): return x0+(x-x_min)/(x_max-x_min)*(x1-x0)
+    def py(y): return y1-(y-y_min)/(y_max-y_min)*(y1-y0)
+    for tick in (12,16,20,24,28,32,36):
+        y=py(tick); dr.line((x0,y,x1,y),fill=GRID,width=2)
+        dr.text((x0-65,y-15),str(tick),fill=MUTED,font=f_tick)
+    for tick in (6,8,10,12,14):
+        x=px(tick); dr.line((x,y1,x,y1+8),fill=NAVY,width=2)
+        box=dr.textbbox((0,0),str(tick),font=f_tick)
+        dr.text((x-(box[2]-box[0])/2,y1+22),str(tick),fill=MUTED,font=f_tick)
+    dr.line((x0,y0,x0,y1,x1,y1),fill=NAVY,width=4)
+    fit_pts=[(px(x_min),py(slope*x_min+intercept)),(px(x_max),py(slope*x_max+intercept))]
+    dr.line(fit_pts,fill=BLUE,width=5)
+    for x,y in zip(k,yy_data):
+        r=9; cx,cy=px(x),py(y)
+        dr.ellipse((cx-r,cy-r,cx+r,cy+r),fill=GOLD,outline=NAVY,width=3)
+    note=f"R_fit = {r_fit_m:.5f} m    R² = {r2:.6f}"
+    bb=dr.textbbox((0,0),note,font=f_note)
+    dr.rounded_rectangle((x1-(bb[2]-bb[0])-24,y0+16,x1-12,y0+56),radius=7,fill=WHITE)
+    dr.text((x1-(bb[2]-bb[0])-18,y0+20),note,fill=NAVY,font=f_note)
+    xl="环级数 k"; bb=dr.textbbox((0,0),xl,font=f_axis)
+    dr.text((x0+(x1-x0-(bb[2]-bb[0]))/2,h-57),xl,fill=MUTED,font=f_axis)
+    yl=Image.new("RGBA",(300,52),(255,255,255,0)); yd=ImageDraw.Draw(yl)
+    yd.text((0,0),"d_k²（mm²）",fill=MUTED,font=f_axis); yl=yl.rotate(90,expand=True)
+    im.paste(yl,(18,(h-yl.height)//2),yl)
+    im.save(OUT/"B309-图-牛顿环d²-k线性拟合.png",dpi=(300,300),optimize=True)
+    return slope,intercept,r2,r_fit_m
+
 # Derived values shown in the report tables; original microscope readings remain unchanged.
 draw_chart("B309-图-牛顿环逐差量u_k.png",
            [11.862, 11.807, 12.241, 11.946, 11.923],
            ["k=6", "k=7", "k=8", "k=9", "k=10"],
            11.95584, 11.75, 12.30,
            [11.8, 11.9, 12.0, 12.1, 12.2, 12.3],
-           "u_k（mm²）", "牛顿环逐差量 u_k｜均值与 ±s(u_k)", 3)
+           "u_k（mm²）", 3)
 draw_chart("B309-图-劈尖间距l_k.png",
            [19.026, 17.572, 16.260, 15.251],
            ["k=0", "k=10", "k=20", "k=30"],
            17.02725, 14.0, 20.5,
            [14, 15, 16, 17, 18, 19, 20],
-           "l_k（mm）", "劈尖逐差量 l_k｜均值与 ±s(l_k)", 3)
+           "l_k（mm）", 3)
 # A compact conceptual illustration, intentionally separate from the measured-data plots.
 def draw_geometry():
     w, h = 1500, 560
@@ -144,4 +191,6 @@ def draw_geometry():
     im.save(OUT / "B309-图-等厚干涉几何示意.png", dpi=(220,220), optimize=True)
 
 draw_geometry()
-print("Generated:", *(str(OUT / name) for name in ("B309-图-牛顿环逐差量u_k.png", "B309-图-劈尖间距l_k.png", "B309-图-等厚干涉几何示意.png")), sep="\n")
+fit_summary = draw_newton_linear_fit()
+print("Newton-ring least-squares check: slope={:.8f} mm^2, intercept={:.6f} mm^2, R^2={:.6f}, R_fit={:.5f} m".format(*fit_summary))
+print("Generated:", *(str(OUT / name) for name in ("B309-图-牛顿环逐差量u_k.png", "B309-图-劈尖间距l_k.png", "B309-图-等厚干涉几何示意.png", "B309-图-牛顿环d²-k线性拟合.png")), sep="\n")
