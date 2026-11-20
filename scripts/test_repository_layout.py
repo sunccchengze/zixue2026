@@ -3,7 +3,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from audit_repository_layout import ROOT, audit, local_target, markdown_links, rows
+from audit_repository_layout import ROOT, audit, baseline_path, local_target, markdown_links, rows
 
 
 class LinkParserTests(unittest.TestCase):
@@ -25,6 +25,15 @@ class LinkParserTests(unittest.TestCase):
 
 
 class LayoutTests(unittest.TestCase):
+    def test_baseline_mapping_requires_matching_hash_and_archive_path(self):
+        current = ROOT / 'live.png'
+        mapping = {'live.png': {'baseline_sha256': 'oldhash', 'preserved_path': '归档/old.png'}}
+        self.assertEqual(baseline_path(current, 'oldhash', mapping), ROOT / '归档/old.png')
+        self.assertEqual(baseline_path(current, 'otherhash', mapping), current)
+        mapping['live.png']['preserved_path'] = '../outside.png'
+        with self.assertRaises(ValueError):
+            baseline_path(current, 'oldhash', mapping)
+
     def test_preservation_navigation_and_coverage(self):
         errors, *_ = audit()
         self.assertEqual(errors, [])

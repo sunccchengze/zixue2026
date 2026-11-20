@@ -1,0 +1,5 @@
+# PDFs are generated/binary deliverables; avoid treating cross-reference and line-ending bytes as text.
+*.pdf binary
+
+# The pre-sync WIP archive is byte-preserved evidence, not a style-reviewed draft.
+归档/待核工作区快照-同步前/** whitespace=-blank-at-eol,-blank-at-eof

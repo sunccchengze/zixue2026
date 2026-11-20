@@ -7,6 +7,7 @@ This checks preservation and navigation, not academic correctness.
 """
 import csv
 import hashlib
+import json
 from pathlib import Path
 import re
 import subprocess
@@ -19,6 +20,19 @@ RECORD = ROOT / '维护记录/2026-10-22'
 BINARY = {'.pdf', '.docx', '.pptx', '.xlsx', '.xls', '.rar', '.zip', '.png', '.jpg',
           '.jpeg', '.gif', '.mp4', '.lnk', '.bin'}
 RETIRED = ['probability', '大物实验预习', '大化大作业', '英语大作业', '未分类']
+BASELINE_MAP = ROOT / '维护记录/2026-09-29-归档/二进制旧基线映射.json'
+
+
+def baseline_path(current, expected, mapping):
+    """Locate an explicitly preserved old version, only for its recorded hash."""
+    key = current.relative_to(ROOT).as_posix()
+    entry = mapping.get(key)
+    if entry is None or entry['baseline_sha256'] != expected:
+        return current
+    target = (ROOT / entry['preserved_path']).resolve()
+    if not target.is_relative_to(ROOT / '归档'):
+        raise ValueError('Baseline preservation path outside archive: ' + key)
+    return target
 
 
 def digest(path):
@@ -93,8 +107,12 @@ def audit():
     records = rows()
     hashes = {}
     redirects = relocation_map()
+    mapping = json.loads(BASELINE_MAP.read_text(encoding='utf-8'))
     for row in records:
-        path = ROOT / redirects.get(row['归档路径'], row['归档路径'])
+        current = ROOT / redirects.get(row['归档路径'], row['归档路径'])
+        if not current.is_file():
+            errors.append('Missing current destination: ' + row['归档路径'])
+        path = baseline_path(current, row['原SHA256'], mapping)
         if not path.is_file():
             errors.append('Missing: ' + row['归档路径'])
             continue
@@ -112,7 +130,10 @@ def audit():
     with MIGRATION.open(encoding='utf-8') as f:
         latest = list(csv.DictReader(f, delimiter='\t'))
     for row in latest:
-        path = ROOT / row['归档路径']
+        current = ROOT / row['归档路径']
+        if not current.is_file():
+            errors.append('Missing latest destination: ' + row['归档路径'])
+        path = baseline_path(current, row['原SHA256'], mapping)
         if not path.is_file():
             errors.append('Missing latest baseline source: ' + row['归档路径'])
         elif path.suffix.lower() in BINARY:
